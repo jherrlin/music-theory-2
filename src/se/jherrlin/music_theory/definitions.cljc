@@ -7,14 +7,6 @@
    [se.jherrlin.music-theory.definitions.helpers :as helpers]))
 
 
-
-;; [:pattern :scale]
-;; [:pattern :chord]
-;; [:chord]
-;; [:scale]
-
-
-
 (def definitions
   (atom {:chords         {}
          :chord-patterns {}
@@ -32,8 +24,11 @@
 
 (defn- define-chord-pattern
   "Interpret the chord pattern and add it to the chord pattern state."
-  [id meta-data pattern]
-  )
+  [id {:keys [belongs-to tuning] :as meta-data} pattern]
+  (let [pattern (helpers/define-scale-pattern id belongs-to tuning meta-data pattern)]
+    (do
+      (swap! definitions assoc-in [:chord-patterns id] pattern)
+      (swap! definitions assoc-in [:ids id] pattern))))
 
 (defn- define-scale
   "Interpret the scale and add it to the scale state."
@@ -43,8 +38,8 @@
    (let [scale (helpers/define-scale id scale-names meta-data intervals-str)]
      (do
        (doseq [s scale-names]
-           (swap! definitions assoc-in [:scales s] scale))
-         (swap! definitions assoc-in [:ids id] scale)))))
+         (swap! definitions assoc-in [:scales s] scale))
+       (swap! definitions assoc-in [:ids id] scale)))))
 
 (defn- define-scale-pattern
   "Interpret the scale pattern and add it to the scale pattern state."
@@ -87,3 +82,16 @@
    6   -   7   1
    3   4   -   5
    -   1   -   2")
+
+;;
+;; Chord pattern
+;;
+(define-chord-pattern #uuid "94f5f7a4-d852-431f-90ca-9e99f89bbb9c"
+  {:belongs-to :major
+   :tuning     :guitar}
+  "3   -   -   -
+   -   1   -   -
+   5   -   -   -
+   -   -   3   -
+   -   -   -   1
+   -   -   -   -")

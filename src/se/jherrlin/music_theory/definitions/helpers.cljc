@@ -109,3 +109,39 @@
     (if (models.fretboard-pattern/validate-fretboard-pattern? pattern*)
       pattern*
       (throw (ex-info "Scale pattern is not valid" (models.fretboard-pattern/explain-fretboard-pattern pattern*))))))
+
+(defn define-chord-pattern
+  [id belongs-to tuning meta-data pattern]
+  (let [pattern'   (->> pattern
+                        (utils/intevals-string->intervals-matrix)
+                        (utils/trim-matrix))
+        meta-data  (qualify-keywords meta-data "fretboard-pattern")
+        ;; On what strings are the pattern defined. Mainly used for triads.
+        on-strings (->> pattern'
+                        (map-indexed vector)
+                        (vec)
+                        (filter (fn [[string-idx intervals-on-string]]
+                                  (some seq intervals-on-string)))
+                        (map (fn [[string-idx _]] string-idx))
+                        (vec))
+        inversion? (->> pattern'
+                        (reverse)
+                        (apply concat)
+                        (remove nil?)
+                        (first)
+                        (= "1")
+                        (not))
+        pattern*   (merge
+                    {:id                           id
+                     :type                         [:chord :pattern]
+                     :fretboard-pattern/belongs-to belongs-to
+                     :fretboard-pattern/tuning     tuning
+                     :fretboard-pattern/pattern    pattern'
+                     :fretboard-pattern/str        pattern
+                     :fretboard-pattern/inversion? inversion?
+                     :fretboard-pattern/on-strings on-strings
+                     :fretboard-pattern/order      1000}
+                    meta-data)]
+    (if (models.fretboard-pattern/validate-fretboard-pattern? pattern*)
+      pattern*
+      (throw (ex-info "Scale pattern is not valid" (models.fretboard-pattern/explain-fretboard-pattern pattern*))))))
