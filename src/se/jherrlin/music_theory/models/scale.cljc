@@ -8,12 +8,12 @@
 
   Defines a scale without notion of instrument."
   [:map
-   [:id               uuid?]
-   [:type             [:= :scale]]
-   [:scale/scale      set?]
-   [:scale/intervals  [:vector string?]]
-   [:scale/indexes    [:vector number?]]
-   [:scale/text       {:optional true} string?]])
+   [:id                  uuid?]
+   [:type                [:= [:scale]]]
+   [:scale/scale-names   set?]
+   [:scale/intervals     [:vector string?]]
+   [:scale/indexes       [:vector number?]]
+   [:scale/text          {:optional true} string?]])
 
 (def Scales
   [:map-of :uuid Scale])

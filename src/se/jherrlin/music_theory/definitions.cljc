@@ -37,8 +37,14 @@
 
 (defn- define-scale
   "Interpret the scale and add it to the scale state."
-  [id scale-names intervals-str]
-  )
+  ([id scale-names intervals-str]
+   (define-scale id scale-names {} intervals-str))
+  ([id scale-names meta-data intervals-str]
+   (let [scale (helpers/define-scale id scale-names meta-data intervals-str)]
+     (do
+       (doseq [s scale-names]
+           (swap! definitions assoc-in [:scales s] scale))
+         (swap! definitions assoc-in [:ids id] scale)))))
 
 (defn- define-scale-pattern
   "Interpret the scale pattern and add it to the scale pattern state."
@@ -57,3 +63,10 @@
    :explanation  "major"
    :order        1}
   "1 3 5")
+
+;;
+;; Scales
+;;
+(define-scale #uuid "39af7096-b5c6-45e9-b743-6791b217a3df"
+  #{:major :ionian}
+  "1, 2, 3, 4, 5, 6, 7")

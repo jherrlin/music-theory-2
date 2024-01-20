@@ -12,6 +12,13 @@
    [se.jherrlin.music-theory.models.tone :as models.tone]))
 
 
+(defn qualify-keywords [m n]
+  (reduce-kv
+   (fn [m' k v]
+     (assoc m' (->> k name (str n "/") keyword) v))
+   {}
+   m))
+
 (defn define-chord
   [id chord-name suffix intervals-str meta-data]
   {:pre [(uuid? id) (string? suffix) (map? meta-data) (string? intervals-str)]}
@@ -39,11 +46,29 @@
                         :chord/suffix         suffix
                         :chord/categories     categories
                         :chord/order          1000}
-                       (->> meta-data
-                            (reduce-kv
-                             (fn [m k v]
-                               (assoc m (->> k name (str "chord/") keyword) v))
-                             {})))]
-     (if (models.chord/valid-chord? chord)
-       chord
-       (throw (ex-info "Chord is not valid" (models.chord/explain-chord chord))))))
+                       (qualify-keywords meta-data "chord"))]
+    (if (models.chord/valid-chord? chord)
+      chord
+      (throw (ex-info "Chord is not valid" (models.chord/explain-chord chord))))))
+
+(defn define-scale
+  [id scale-names meta-data intervals-str]
+  (let [intervals' (->> (re-seq (re-pattern models.chord/regex) intervals-str)
+                        (vec))
+        indexes    (intervals/functions-to-semitones intervals')
+        categories (let [intervals (set intervals')]
+                     (cond-> #{}
+                       (intervals "3")  (conj :major)
+                       (intervals "b3") (conj :minor)))
+        scale      (merge
+                    {:id                id
+                     :type              [:scale]
+                     :scale/scale-names scale-names
+                     :scale/intervals   intervals'
+                     :scale/indexes     indexes
+                     :scale/categories  categories
+                     :scale/order       1000}
+                   (qualify-keywords meta-data "scale"))]
+     (if (models.scale/valid-scale? scale)
+       scale
+       (throw (ex-info "Scale is not valid" (models.scale/explain-scale scale))))))
