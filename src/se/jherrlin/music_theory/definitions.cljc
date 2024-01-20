@@ -16,11 +16,11 @@
 
 
 (def definitions
-  (atom {:chords          {}
-         :chord-patterns  {}
-         :scales          {}
-         :scales-patterns {}
-         :ids             {}}))
+  (atom {:chords         {}
+         :chord-patterns {}
+         :scales         {}
+         :scale-patterns {}
+         :ids            {}}))
 
 (defn- define-chord
   "Interpret the chord and add it to the chord state."
@@ -48,8 +48,11 @@
 
 (defn- define-scale-pattern
   "Interpret the scale pattern and add it to the scale pattern state."
-  [id meta-data pattern]
-  )
+  [id {:keys [belongs-to tuning] :as meta-data} pattern]
+  (let [pattern (helpers/define-scale-pattern id belongs-to tuning meta-data pattern)]
+    (do
+      (swap! definitions assoc-in [:scale-patterns id] pattern)
+      (swap! definitions assoc-in [:ids id] pattern))))
 
 
 
@@ -70,3 +73,17 @@
 (define-scale #uuid "39af7096-b5c6-45e9-b743-6791b217a3df"
   #{:major :ionian}
   "1, 2, 3, 4, 5, 6, 7")
+
+;;
+;; Scale patterns
+;;
+(define-scale-pattern #uuid "55189945-37fa-4071-9170-b0b068a23174"
+  {:belongs-to :ionian
+   :tuning     :guitar
+   :order      1}
+  "7   1   -   2
+   -   5   -   6
+   2   -   3   4
+   6   -   7   1
+   3   4   -   5
+   -   1   -   2")
