@@ -102,3 +102,31 @@
   [:vector string?])
 
 (m/validate Intervals ["1" "b3" "7"])
+
+(def IntervalToneWithOctave
+  [:map
+   [:tone keyword?]
+   [:octave number?]])
+
+(def valid-interval-tone-with-octave?
+  (partial m/validate IntervalToneWithOctave))
+
+(comment
+  (valid-interval-tone-with-octave?
+   {:tone   :e
+    :octave 2})
+  )
+
+(def IntervalTonesWithOctave
+  [:vector
+   {:min 1}
+   IntervalToneWithOctave])
+
+(def valid-interval-tones-with-octave?
+  (partial m/validate IntervalTonesWithOctave))
+
+(comment
+  (valid-interval-tones-with-octave?
+   [{:tone   :e
+     :octave 2}])
+  )
