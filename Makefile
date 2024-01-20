@@ -1,7 +1,7 @@
 .PHONY: all test clean
 
-SERVICE_NAME = guitar-theory-training
-VERSION = 0.0.1
+SERVICE_NAME = music-theory
+VERSION = 2
 
 
 release-frontend:

@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tone": "^14.7.77"
+  },
+  "devDependencies": {
+    "shadow-cljs": "^2.16.12"
+  }
+}
