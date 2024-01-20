@@ -23,15 +23,15 @@
 
   Defines a chord without notion of instrument."
   [:map
-   [:id                 uuid?]
-   [:type               [:= :chord]]
-   [:chord/chord        keyword?]
-   [:chord/intervals    [:vector string?]]
-   [:chord/indexes      [:vector number?]]
-   [:chord/name         string?]
-   [:chord/sufix        string?]
-   [:chord/explanation  {:optional true} string?]
-   [:chord/text         {:optional true} string?]])
+   [:id                   uuid?]
+   [:type                 [:= [:chord]]]
+   [:chord/chord-name     keyword?]
+   [:chord/chord-name-str string?]
+   [:chord/intervals      [:vector string?]]
+   [:chord/indexes        [:vector number?]]
+   [:chord/suffix         string?]
+   [:chord/explanation    {:optional true} string?]
+   [:chord/text           {:optional true} string?]])
 
 (def Chords
   [:map-of :uuid Chord])
