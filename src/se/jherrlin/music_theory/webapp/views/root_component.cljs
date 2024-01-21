@@ -3,7 +3,7 @@
    [re-frame.core :as re-frame]))
 
 
-(defn root-component [header-menu]
+(defn root-component [{:keys [play-tone] :as m}]
   (let [current-route @(re-frame/subscribe [:current-route])]
     [:<>
      (when current-route
@@ -14,6 +14,11 @@
 
         ;; [frontend.notifications/view]
         ;; [header-menu router]
+
+        ;; [:button
+        ;;  {:on-click (fn [_]
+        ;;               (play-tone :c 8))}
+        ;;  "Play"]
 
         [:div {:style {:height      "100%"
                        :overflow-y  "auto"

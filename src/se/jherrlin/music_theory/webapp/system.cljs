@@ -26,10 +26,11 @@
 
 (def system-config
   {:webapp/tonejs nil
-   :webapp/dom    {:root-component root-component}
+   :webapp/dom    {:root-component root-component
+                   :play-tone      (ig/ref :webapp/tonejs)}
    :webapp/router {:routes (routes/routes)}})
 
-(defn init
+(defn ^:dev/after-load init
   "This is the starting point of the web application."
   []
   (timbre/info "Starting webapp.")

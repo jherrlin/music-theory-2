@@ -7,10 +7,10 @@
    [reitit.frontend.easy :as rfe]))
 
 
-(defn ^:dev/after-load render [root-component]
+(defn render [root-component m]
   (re-frame/clear-subscription-cache!)
-  (rd/render [root-component] (.getElementById js/document "app")))
+  (rd/render [root-component m] (.getElementById js/document "app")))
 
-(defmethod ig/init-key :webapp/dom [_ {:keys [root-component]}]
+(defmethod ig/init-key :webapp/dom [_ {:keys [root-component] :as m}]
   (timbre/info "Rendering root-component.")
-  (render root-component))
+  (render root-component m))

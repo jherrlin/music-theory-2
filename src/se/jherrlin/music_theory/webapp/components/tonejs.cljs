@@ -8,11 +8,10 @@
 
 (defn play-tone [tone octave]
   (let [synth (.toDestination (tone/Synth.))
-        t (str (-> tone name str/capitalize) octave)]
-    (timbre/debug "Playing tone" t)
-    (.triggerAttackRelease synth t "8n")))
-
+        tone  (str (-> tone name str/capitalize) octave)]
+    (timbre/debug "Playing tone" tone)
+    (.triggerAttackRelease synth tone "8n")))
 
 (defmethod ig/init-key :webapp/tonejs [_ {:keys []}]
   (timbre/info "Starting ToneJs object.")
-  {:tonejs/play-tone play-tone})
+  play-tone)
