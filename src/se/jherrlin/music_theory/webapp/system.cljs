@@ -14,6 +14,7 @@
    [se.jherrlin.music-theory.webapp.components.reitit :as reitit]
    [se.jherrlin.music-theory.webapp.routes :as routes]
    [se.jherrlin.music-theory.webapp.components.dom :as dom]
+   [se.jherrlin.music-theory.webapp.components.music-theory :as music-theory]
    [se.jherrlin.music-theory.webapp.views.root-component :refer [root-component]]))
 
 
@@ -25,10 +26,12 @@
     (println "dev mode")))
 
 (def system-config
-  {:webapp/tonejs nil
-   :webapp/dom    {:root-component root-component
-                   :play-tone      (ig/ref :webapp/tonejs)}
-   :webapp/router {:routes (routes/routes)}})
+  {:webapp/tonejs       nil
+   :webapp/music-theory nil
+   :webapp/dom          {:root-component root-component
+                         :play-tone      (ig/ref :webapp/tonejs)
+                         :music-theory   (ig/ref :webapp/music-theory)}
+   :webapp/router       {:routes (routes/routes)}})
 
 (defn ^:dev/after-load init
   "This is the starting point of the web application."
