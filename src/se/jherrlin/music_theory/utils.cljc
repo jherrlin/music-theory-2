@@ -234,6 +234,8 @@
   ([string-tune octave number-of-frets]
    (fretboard-string (all-tones) string-tune octave number-of-frets))
   ([all-tones string-tune octave number-of-frets]
+   (fretboard-string all-tones string-tune octave number-of-frets 0))
+  ([all-tones string-tune octave number-of-frets start-index]
    {:pre [(models.tone/valid-index-tones? all-tones)
           (models.tone/valid-interval-tone? string-tune)
           (number? octave)
@@ -242,7 +244,7 @@
                                      (fn [x t]
                                        {:x    x
                                         :tone t})
-                                     (iterate inc 0)
+                                     (iterate inc (if (= start-index 0) 0 start-index))
                                      (->> (tones-starting-at all-tones string-tune)
                                           (cycle)
                                           (take (inc number-of-frets))))]
@@ -250,7 +252,15 @@
             octave'                        octave
             new-vec                        []]
        (if (nil? rest)
-         new-vec
+         (if (= start-index 0)
+           new-vec
+           ;; For example banjo that starts with a couple of blanks
+           (->> (concat
+                 (take start-index (map
+                                    #(hash-map :x %1 :blank true)
+                                    (iterate inc 0)))
+                 new-vec)
+                (take number-of-frets)))
          (let [o (if (and (tone :c) (seq new-vec)) (inc octave') octave')]
            (recur
             rest
@@ -261,7 +271,8 @@
  (all-tones)
  :c
  5
- 12)
+ 12
+ 5)
 
 (defn fretboard-strings
   "Generate fretboard matrix.
@@ -1314,10 +1325,10 @@
        scale'
        (throw (ex-info "Scale is not valid" (models.scale/explain-scale scale')))))))
 
-(define-scale
-  (random-uuid)
-  #{:ionian :major}
-  "1, 2, 3, 4, 5, 6, 7")
+;; (define-scale
+;;   (random-uuid)
+;;   #{:ionian :major}
+;;   "1, 2, 3, 4, 5, 6, 7")
 
 (defn define-pattern
   ([id pattern]

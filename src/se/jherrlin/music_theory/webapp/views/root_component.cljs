@@ -1,6 +1,7 @@
 (ns se.jherrlin.music-theory.webapp.views.root-component
   (:require
-   [re-frame.core :as re-frame]))
+   [re-frame.core :as re-frame]
+   [se.jherrlin.music-theory.webapp.views.menus]))
 
 
 (defn root-component [{:keys [play-tone] :as m}]
@@ -19,6 +20,8 @@
         ;;  {:on-click (fn [_]
         ;;               (play-tone :c 8))}
         ;;  "Play"]
+
+        [se.jherrlin.music-theory.webapp.views.menus/select-instrument]
 
         [:div {:style {:height      "100%"
                        :overflow-y  "auto"
