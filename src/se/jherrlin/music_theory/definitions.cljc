@@ -14,6 +14,70 @@
          :scale-patterns {}
          :ids            {}}))
 
+(comment
+  @definitions
+  )
+
+(defn chords []
+  (get @definitions :chords))
+
+(defn chord [k]
+  (get-in @definitions [:chords k]))
+
+(comment
+  (chord :diminished-seventh)
+  )
+
+(defn scales
+  []
+  (->> (get @definitions :scales)
+       (sort-by :scale/order)))
+
+(defn scale
+  [k]
+  (get-in @definitions [:scales k]))
+
+(defn chord-patterns []
+  (->> (get @definitions :chord-patterns)
+       (sort-by :fretboard-pattern/order)))
+
+(defn chord-pattern [id]
+  (get-in @definitions [:chord-patterns id]))
+
+(defn chord-patterns-belonging-to [belongs-to tuning]
+  (->> (get @definitions :chord-patterns)
+       (vals)
+       (filter (fn [{bt :fretboard-pattern/belongs-to
+                     t  :fretboard-pattern/tuning}]
+                 (and (= bt belongs-to)
+                      (= t tuning))))
+       (sort-by :fretboard-pattern/order)
+       (map :id)))
+
+(defn scale-patterns []
+  (->> (get @definitions :scale-patterns)
+       (vals)
+       (sort-by :fretboard-pattern/order)))
+
+(defn scale-patterns-belonging-to [belongs-to tuning]
+  (->> (get @definitions :scale-patterns)
+       (vals)
+       (filter (fn [{bt :fretboard-pattern/belongs-to
+                     t  :fretboard-pattern/tuning}]
+                 (and (= bt belongs-to)
+                      (= t tuning))))
+       (sort-by :fretboard-pattern/order)
+       (map :id)))
+
+(defn scale-pattern [id]
+  (get-in @definitions [:scale-patterns id]))
+
+(defn ids []
+  (get @definitions :ids))
+
+(defn by-id [id]
+  (get-in @definitions [:ids id]))
+
 (defn- define-chord
   "Interpret the chord and add it to the chord state."
   [id chord-name {:keys [suffix] :as meta-data} chord-str]
