@@ -28,7 +28,7 @@
    (.getElementById js/document "app")))
 
 (defn ^:dev/after-load init []
-  (println "starting...")
+  (println "Init...")
   (re-frame/clear-subscription-cache!)
   (re-frame/dispatch-sync [:initialize-db])
   (dev-setup)

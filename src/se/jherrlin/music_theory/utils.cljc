@@ -187,6 +187,22 @@
   [2]
   [3]])
 
+(defn add-qualified-ns
+  "Add ns to keys in map `m`."
+  [m ns']
+  (reduce-kv
+   (fn [m k v]
+     (let [new-k (keyword (str (name ns') "/" (name k)))]
+       (assoc m new-k v)))
+   {}
+   m))
+
+(add-qualified-ns
+ {:instrument :guitar,
+  :key-of     :c,
+  :id         #uuid "1cd72972-ca33-4962-871c-1551b7ea5244"}
+ :instrument)
+
 
 
 
@@ -231,13 +247,11 @@
   `tuning`           - Tuning on string.
   `octave`           - What octave the string starts on.
   `number-of-frets`  - Width of the freatboard."
-  ([string-tune octave number-of-frets]
-   (fretboard-string (all-tones) string-tune octave number-of-frets))
-  ([all-tones string-tune octave number-of-frets]
-   (fretboard-string all-tones string-tune octave number-of-frets 0))
-  ([all-tones string-tune octave number-of-frets start-index]
+  ([m number-of-frets]
+   (fretboard-string (all-tones) m number-of-frets))
+  ([all-tones {:keys [tone octave start-index] :or {start-index 0}} number-of-frets]
    {:pre [(models.tone/valid-index-tones? all-tones)
-          (models.tone/valid-interval-tone? string-tune)
+          (models.tone/valid-interval-tone? tone)
           (number? octave)
           (number? number-of-frets)]}
    (let [string-without-octave-data (mapv
@@ -245,7 +259,7 @@
                                        {:x    x
                                         :tone t})
                                      (iterate inc (if (= start-index 0) 0 start-index))
-                                     (->> (tones-starting-at all-tones string-tune)
+                                     (->> (tones-starting-at all-tones tone)
                                           (cycle)
                                           (take (inc number-of-frets))))]
      (loop [[{tone :tone :as fret} & rest] string-without-octave-data
@@ -260,7 +274,8 @@
                                     #(hash-map :x %1 :blank true)
                                     (iterate inc 0)))
                  new-vec)
-                (take number-of-frets)))
+                (take number-of-frets)
+                (vec)))
          (let [o (if (and (tone :c) (seq new-vec)) (inc octave') octave')]
            (recur
             rest
@@ -269,10 +284,8 @@
 
 (fretboard-string
  (all-tones)
- :c
- 5
- 12
- 5)
+ {:tone :e, :octave 2, :start-index 5}
+ 12)
 
 (defn fretboard-strings
   "Generate fretboard matrix.
@@ -288,10 +301,10 @@
    (->> string-tunes
         (reverse)
         (mapv
-         (fn [y {:keys [tone octave]}]
+         (fn [y m]
            (mapv
             #(assoc % :y y)
-            (fretboard-string all-tones tone octave number-of-frets)))
+            (fretboard-string all-tones m number-of-frets)))
          (iterate inc 0)))))
 
 (fretboard-strings
@@ -1303,87 +1316,8 @@
 
 
 
-(defn define-scale
-  ([id scale intervals-str]
-   (define-scale id scale {} intervals-str))
-  ([id scale meta-data intervals-str]
-   (let [intervals' (->> (re-seq (re-pattern models.chord/regex) intervals-str)
-                         (vec))
-         indexes    (intervals/functions-to-semitones intervals')
-         scale'      (merge
-                     {:id              id
-                      :type            :scale
-                      :scale/scale     scale
-                      :scale/intervals intervals'
-                      :scale/indexes   indexes
-                      :scale/order     1000}
-                     (->> meta-data
-                          (map (fn [[k v]]
-                                 [(->> k name (str "scale/") keyword) v]))
-                          (into {})))]
-     (if (models.scale/valid-scale? scale')
-       scale'
-       (throw (ex-info "Scale is not valid" (models.scale/explain-scale scale')))))))
 
-;; (define-scale
-;;   (random-uuid)
-;;   #{:ionian :major}
-;;   "1, 2, 3, 4, 5, 6, 7")
 
-(defn define-pattern
-  ([id pattern]
-   (define-pattern id {} pattern))
-  ([id {:keys [tuning type belongs-to] :as meta-data} pattern]
-   (let [pattern'   (->> pattern
-                         (intevals-string->intervals-matrix)
-                         (trim-matrix))
-         meta-data  (->> meta-data
-                         (map (fn [[k v]]
-                                [(->> k name (str "fretboard-pattern/") keyword) v]))
-                         (into {}))
-         ;; On what strings are the pattern defined. Mainly used for triads.
-         on-strings (->> pattern'
-                         (map-indexed vector)
-                         (vec)
-                         (filter (fn [[string-idx intervals-on-string]]
-                                   (some seq intervals-on-string)))
-                         (map (fn [[string-idx _]] string-idx))
-                         (vec))
-         inversion? (->> pattern'
-                         (reverse)
-                         (apply concat)
-                         (remove nil?)
-                         (first)
-                         (= "1")
-                         (not))
-         pattern*   (merge
-                     {:fretboard-pattern/order 1000}
-                     meta-data
-                     {:id                           id
-                      :type                         :pattern
-                      :fretboard-pattern/belongs-to belongs-to
-                      :fretboard-pattern/type       type
-                      :fretboard-pattern/tuning     tuning
-                      :fretboard-pattern/pattern    pattern'
-                      :fretboard-pattern/str        pattern
-                      :fretboard-pattern/inversion? inversion?
-                      :fretboard-pattern/on-strings on-strings})]
-     (if (models.fretboard-pattern/validate-fretboard-pattern? pattern*)
-       pattern*
-       (throw (ex-info "Pattern is not valid" (models.fretboard-pattern/explain-fretboard-pattern pattern*)))))))
-
-(define-pattern (random-uuid)
-  {:belongs-to :major
-   :name   :major
-   :chord  :major
-   :tuning [:e :b :g :d :a :e]
-   :type   :chord}
-  "3   -
-   -   1
-   5   -
-   -   -
-   -   -
-   -   -")
 
 (defn chords-map [chords]
   (->> (for [root                                              (->> (all-tones)

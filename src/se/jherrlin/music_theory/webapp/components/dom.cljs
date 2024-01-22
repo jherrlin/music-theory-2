@@ -4,8 +4,16 @@
    [taoensso.timbre :as timbre]
     [re-frame.core :as re-frame]
    [reagent.dom :as rd]
-   [reitit.frontend.easy :as rfe]))
+   [reitit.frontend.easy :as rfe]
+   ;;[reagent.dom.client :as rdc]
+   ))
 
+;; new way of doing it
+;; (defonce garage-calculator-root
+;;   (rdc/create-root (js/document.getElementById "garage-calculator")))
+
+;; (rdc/render garage-calculator-root
+;;             [app-container [room-calculator :garage]])
 
 (defn render [root-component m]
   (re-frame/clear-subscription-cache!)

@@ -15,7 +15,8 @@
    [se.jherrlin.music-theory.webapp.routes :as routes]
    [se.jherrlin.music-theory.webapp.components.dom :as dom]
    [se.jherrlin.music-theory.webapp.components.music-theory :as music-theory]
-   [se.jherrlin.music-theory.webapp.views.root-component :refer [root-component]]))
+   [se.jherrlin.music-theory.webapp.views.root-component :refer [root-component]]
+   [se.jherrlin.music-theory.webapp.events]))
 
 
 (def debug? ^boolean goog.DEBUG)
@@ -37,4 +38,6 @@
   "This is the starting point of the web application."
   []
   (timbre/info "Starting webapp.")
+  (re-frame/clear-subscription-cache!)
+  (re-frame/dispatch-sync [:initialize-db])
   (ig/init system-config))
