@@ -32,11 +32,11 @@
                         :as-text        false
                         :trim-fretboard true
                         :debug          false}
-   :mat nil})
+   :mat                nil})
 
 (def events-
   [{:n :key-of
-    :s (fn [db [k]] (get db k :c))}
+    :s (fn [db [k]] (get-in db [:path-params k]))}
    {:n :current-route}
    {:n :current-route-name
     :s (fn [db [k]] (get db k :home))}
