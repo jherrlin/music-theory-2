@@ -34,3 +34,11 @@
     {:tone :d, :octave 4, :start-index 0}]
    10)
   )
+
+(def tones-starting-at utils/tones-starting-at)
+
+(comment
+  (tones-starting-at :c)
+  )
+
+(def add-intervals-to-fretboard-matrix utils/add-intervals-to-fretboard-matrixeb)

@@ -7,7 +7,7 @@
                    :flow-direction "column"
                    :overflow-x     "auto"
                    :white-space    "nowrap"}}
-     (for [{:instrument/keys [text id] :as m}
+     (for [{:keys [text id] :as m}
            instruments]
        ^{:key (str "instrument-selection-" id)}
        [:a {:style {:margin-right "10px"}

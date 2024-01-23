@@ -826,7 +826,7 @@
                             (tone tone')))
                   (first)
                   (second))]
-    (assoc m :out i)
+    (assoc m :interval i)
     m))
 
 (defn add-pattern-with-intervals
@@ -886,6 +886,11 @@
       (partial add-intervals [[:e "1"] [:b "b3"] [:g "5"]]))
      (add-layer
       (partial add-root nil)))
+
+(defn add-intervals-to-fretboard-matrix [matrix tones-and-intervals]
+  (add-layer
+   (partial add-intervals tones-and-intervals)
+   matrix))
 
 (defn fretboard-str
   [tone-f matrix]

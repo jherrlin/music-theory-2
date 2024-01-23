@@ -8,7 +8,8 @@
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
-   [se.jherrlin.music-theory.utils :as utils]))
+   [se.jherrlin.music-theory.utils :as utils]
+   [se.jherrlin.music-theory.webapp.views.instruments.fretboard :as instruments-fretboard]))
 
 
 (defmulti type-view :type)
@@ -28,7 +29,10 @@
    (debug-view @re-frame.db/app-db))
   ([x]
    [:pre
-    (with-out-str (cljs.pprint/pprint x))]))
+    (with-out-str
+      (cljs.pprint/pprint
+       (-> x
+           (dissoc :current-route))))]))
 
 (comment
   @(re-frame/subscribe [:general-data])
@@ -41,23 +45,14 @@
         _                            (def id id)
         query-params                 @(re-frame/subscribe [:query-params])
         _                            (def query-params query-params)
-        current-route-name           @(re-frame/subscribe [:current-route-name])
-        _                            (def current-route-name current-route-name)
-        key-of                       @(re-frame/subscribe [:key-of])
-        _                            (def key-of key-of)
-        instrument                   @(re-frame/subscribe [:instrument])
-        _                            (def instrument-type instrument-type)
-        as-intervals                 @(re-frame/subscribe [:as-intervals])
-        _                            (def as-intervals as-intervals)
-        nr-of-octavs                 @(re-frame/subscribe [:nr-of-octavs])
-        _                            (def nr-of-octavs nr-of-octavs)
-        as-text                      @(re-frame/subscribe [:as-text])
-        _                            (def as-text as-text)
-        nr-of-frets                  @(re-frame/subscribe [:nr-of-frets])
-        _                            (def nr-of-frets nr-of-frets)]
+        fretboard-matrix             @(re-frame/subscribe [:fretboard-matrix])
+        _                            (def fretboard-matrix fretboard-matrix)]
     [:<>
      [:div "focus"]
-     [debug-view]]
+     [debug-view]
+     [instruments-fretboard/styled-view
+      {:matrix fretboard-matrix}]
+     ]
     ))
 
 

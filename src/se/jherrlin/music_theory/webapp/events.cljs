@@ -1,8 +1,7 @@
 (ns se.jherrlin.music-theory.webapp.events
   (:require
    [reagent.dom :as rd]
-   [re-frame.core :as re-frame]
-   [re-frame.alpha]
+   [re-frame.alpha :as re-frame]
    [reitit.coercion.spec :as rss]
    [reitit.frontend :as rf]
    [reitit.frontend.controllers :as rfc]
@@ -22,52 +21,28 @@
    :current-route-name :home
    :path-params        {:key-of              :c
                         :instrument          :guitar
-                        :scale               :major
-                        :harmonization-scale :major
                         :chord               :major
-                        :harmonization-fn    :triad}
+                        :scale               :major
+                        :harmonization-scale :major}
    :query-params       {:nr-of-frets    15
                         :nr-of-octavs   2
                         :as-intervals   false
                         :as-text        false
-                        :trim-fretboard true
-                        :debug          false}
-   :mat                nil})
+                        :trim-fretboard false
+                        :debug          false}})
 
 (def events-
-  [{:n :key-of
-    :s (fn [db [k]] (get-in db [:path-params k]))}
-   {:n :current-route}
-   {:n :current-route-name
-    :s (fn [db [k]] (get db k :home))}
+  [{:n :current-route}
+   {:n :current-route-name}
    {:n :path-params
     :e merge'
     :s (fn [db [k]] (get db k))}
-   {:n :instrument
-    :s (fn [db [k]] (get-in db [:path-params k]))
-    :e (fn [db [k v]] (assoc-in db [:path-params k] v))}
-   {:n :scale
-    :s (fn [db [k]] (get-in db [:path-params k]))
-    :e (fn [db [k v]] (assoc-in db [:path-params k] v))}
-   {:n :harmonization-scale
-    :s (fn [db [k]] (get-in db [:path-params k]))
-    :e (fn [db [k v]] (assoc-in db [:path-params k] v))}
-   {:n :chord
-    :s (fn [db [k]] (get-in db [:path-params k]))
-    :e (fn [db [k v]] (assoc-in db [:path-params k] v))}
-   {:n :harmonization-fn
-    :s (fn [db [k]] (get-in db [:path-params k]))
-    :e (fn [db [k v]] (assoc-in db [:path-params k] v))}
    {:n :query-params
     :e merge'
-    :s (fn [db [k]]
-         (get db k))}
-   {:n :nr-of-frets
-    :s (fn [db [k]] (get-in db [:query-params k]))
-    :e (fn [db [k v]] (assoc-in db [:query-params k] v))}
-   {:n :nr-of-octavs
-    :s (fn [db [k]] (get-in db [:query-params k]))
-    :e (fn [db [k v]] (assoc-in db [:query-params k] v))}
+    :s (fn [db [k]] (get db k))}
+
+   {:n :key-of
+    :s (fn [db [k]] (get-in db [:path-params k]))}
    {:n :as-intervals
     :s (fn [db [k]] (get-in db [:query-params k]))
     :e (fn [db [k v]] (assoc-in db [:query-params k] v))}
@@ -85,40 +60,35 @@
   (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
   (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
 
-(re-frame/reg-sub
- :derp
- (fn [db _]
-   (get db :derp)))
+(re-frame/reg-flow
+ {:id     ::instrument
+  :inputs {:i [:path-params :instrument]}
+  :output (fn [{:keys [i]}] (music-theory/instrument i))
+  :path   [:instrument]})
+
+(re-frame/reg-flow
+ {:id     ::fretboard-matrix
+  :inputs {:instrument  (re-frame/flow<- ::instrument)
+           :nr-of-frets [:query-params :nr-of-frets]
+           :key-of      [:path-params :key-of]}
+  :output (fn [{:keys [instrument nr-of-frets key-of]}]
+            (let [{:keys [type tuning]} instrument]
+              (when (and (= type :fretboard) instrument nr-of-frets key-of)
+                (let [fretboard (music-theory/fretboard-strings tuning nr-of-frets)
+                      tones-mateched-with-intervals
+                      (mapv
+                       vector
+                       (->> (music-theory/tones-starting-at key-of)
+                            (map first))
+                       ["1" "b2" "2" "b3" "3" "4" "b5" "5" "b6" "6" "b7" "7"])]
+                  (music-theory/add-intervals-to-fretboard-matrix
+                   fretboard
+                   tones-mateched-with-intervals)))))
+  :path [:fretboard-matrix]})
 
 (re-frame/reg-sub
- :general-data
- (fn [db _]
-   (when db
-     (let [{type        :instrument/type
-            tuning      :instrument/tuning
-            :as         instrument}
-           (-> (get-in db [:path-params :instrument])
-               (music-theory/instrument))
-
-           {nr-of-frets :query-params/nr-of-frets
-            :as query-params}
-           (-> (get-in db [:query-params])
-               (utils/add-qualified-ns :query-params))]
-       (merge
-        instrument
-        query-params
-        (some-> (get-in db [:path-params])
-                (utils/add-qualified-ns :path-params))
-
-        (when (= type :fretboard)
-          {:fretboard-matrix (music-theory/fretboard-strings tuning nr-of-frets)}))))))
-
-(re-frame/reg-sub
- :data-for-id
- (fn [db [_ id]]
-   (some-> id
-           (music-theory/by-id)
-           (utils/add-qualified-ns :definition))))
+ :fretboard-matrix
+ (fn [db [n']] (get db n')))
 
 (re-frame/reg-event-db
  :navigated
@@ -145,16 +115,7 @@
      init-db)))
 
 (defn do-on-url-change
-  [new-route-name
-   {:keys [key-of instrument scale chord id]
-    :as   path-params}
-   {:keys [nr-of-frets] :as query-params}]
+  [new-route-name path-params query-params]
   (re-frame/dispatch [:current-route-name new-route-name])
   (re-frame/dispatch [:path-params path-params])
-  (re-frame/dispatch [:query-params query-params])
-  (when key-of
-    (re-frame/dispatch [:key-of key-of]))
-  (when scale
-    (re-frame/dispatch [:scale scale]))
-  (when chord
-    (re-frame/dispatch [:chord chord])))
+  (re-frame/dispatch [:query-params query-params]))
