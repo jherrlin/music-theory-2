@@ -41,4 +41,4 @@
   (tones-starting-at :c)
   )
 
-(def add-intervals-to-fretboard-matrix utils/add-intervals-to-fretboard-matrixeb)
+(def add-intervals-to-fretboard-matrix utils/add-intervals-to-fretboard-matrix)

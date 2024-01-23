@@ -826,7 +826,12 @@
                             (tone tone')))
                   (first)
                   (second))]
-    (assoc m :interval i)
+    (cond-> m
+      :always            (assoc :interval i)
+      :always            (assoc :tone-str (-> tone (sharp-or-flat "b") name str/capitalize))
+      (= 2 (count tone)) (assoc :sharp (-> tone (sharp-or-flat "#") name str/capitalize))
+      (= 2 (count tone)) (assoc :flat (-> tone (sharp-or-flat "b") name str/capitalize))
+      (= "1" i)          (assoc :root? true))
     m))
 
 (defn add-pattern-with-intervals
