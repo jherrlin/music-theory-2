@@ -37,7 +37,10 @@
 (comment
   @(re-frame/subscribe [:general-data])
   @(re-frame/subscribe [:data-for-id #uuid "1cd72972-ca33-4962-871c-1551b7ea5244"])
+  (music-theory/by-id #uuid "1cd72972-ca33-4962-871c-1551b7ea5244")
   )
+
+
 
 (defn focus-view []
   (let [{:keys [id] :as path-params} @(re-frame/subscribe [:path-params])
@@ -51,22 +54,13 @@
      [:div "focus"]
      [debug-view]
      [instruments-fretboard/styled-view
-      {:matrix fretboard-matrix}]
-     ]
-    ))
+      {:matrix fretboard-matrix
+       :display-fn :interval}]
+     [instruments-fretboard/styled-view
+      {:matrix fretboard-matrix
+       :display-fn :tone-str}]]))
 
 
-
-
-
-
-
-
-
-
-
-(-> (music-theory/by-id #uuid "1cd72972-ca33-4962-871c-1551b7ea5244")
-     (utils/add-qualified-ns :chord))
 
 
 

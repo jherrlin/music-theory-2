@@ -12,7 +12,7 @@
      n)])
 
 (defn fret
-  [{:keys [on-click circle-text background-color fret-color y circle-color]
+  [{:keys [on-click circle-text background-color fret-color y circle-color blank?]
     :or   {y                0
            background-color "#000000d6"
            fret-color       "linear-gradient(to right, #FFFFFF , #706e68)"}}]
@@ -26,19 +26,21 @@
                       :height         (str fret-height "rem")
                       :display        "flex"
                       :flex-direction "row"}}
-     [:div {:style {:background-color background-color
-                    :width            (str (- fret-width 0.3) "rem")
-                    :height           "100%"
-                    :justify-content  :center
-                    :display          "flex"
-                    :flex-direction   "column"}}
-      [:div {:style {:display          "flex"
-                     :align-items      :center
-                     :justify-content  :center
-                     :background-image string-color
-                     :height           string-height
-                     :width            (str fret-width "rem")
-                     :z-index          100}}
+     [:div (when-not blank?
+             {:style {:background-color background-color
+                      :width            (str (- fret-width 0.3) "rem")
+                      :height           "100%"
+                      :justify-content  :center
+                      :display          "flex"
+                      :flex-direction   "column"}})
+      [:div (when-not blank?
+              {:style {:display          "flex"
+                       :align-items      :center
+                       :justify-content  :center
+                       :background-image string-color
+                       :height           string-height
+                       :width            (str fret-width "rem")
+                       :z-index          100}})
        (when circle-text
          [:div {:style {:display          "flex"
                         :align-items      :center
@@ -55,10 +57,21 @@
                     :width            "0.5rem"
                     :height           "100%"}}]]))
 
-(defn styled-view [{:keys [on-click matrix]
-                    :or   {on-click (fn [{:keys [x y tone out root?] :as m'}]
-                                      (def m' m')
-                                      (js/console.log m'))}
+(defn left-is-blank? [x y matrix]
+  (let [xy-map (->> matrix
+                    (apply concat)
+                    (map (fn [{:keys [x y] :as m}]
+                           [[x y] m]))
+                    (into {}))
+        fret (get-in xy-map [[(dec x) y]])]
+    (or (get fret :blank?)
+        (nil? fret))))
+
+(defn styled-view [{:keys [on-click matrix display-fn]
+                    :or   {display-fn :out
+                           on-click   (fn [{:keys [x y tone out root?] :as m'}]
+                                        (def m' m')
+                                        (js/console.log m'))}
                     :as   m}]
   (let [min-x (->> matrix first (map :x) (apply min))
         max-x (->> matrix first (map :x) (apply max))]
@@ -66,22 +79,24 @@
      [:div {:style {:display "flex"}}
       (for [{:keys [x]} (-> matrix first)]
         ^{:key (str "fretboard-fret-" x)}
-         [fret-number x])]
+        [fret-number x])]
      (for [[idx fretboard-string] (map-indexed vector matrix)]
        ^{:key (str "fretboard-string-" idx)}
        [:div {:style {:display "flex"}}
-        (for [{:keys [x y tone out root?] :as m} fretboard-string]
+        (for [{:keys [x y tone out root? blank?] :as m} fretboard-string]
           ^{:key (str "fretboard-string-" x "-" y)}
-           [fret
-            {:y                (/ y 10)
-             :circle-color     (when root? "#ff7600")
-             :on-click         (fn [_] (on-click m))
-             :circle-text      (when out out)
-             :background-color (if (= x 0)
-                                 "white"
-                                 "#000000d6")
-             :fret-color       (cond
-                                 (= x 0)     "linear-gradient(black, black, black)"
-                                 (= x max-x) "linear-gradient(#000000d6, #000000d6, #000000d6)"
-                                 :else
-                                 "linear-gradient(to right, #FFFFFF , #706e68)")}])])]))
+          [fret
+           {:blank?           blank?
+            :y                (/ y 10)
+            :circle-color     (when root? "#ff7600")
+            :on-click         (fn [_] (on-click m))
+            :circle-text      (display-fn m)
+            :background-color (if (left-is-blank? x y matrix)
+                                "white"
+                                "#000000d6")
+            :fret-color       (cond
+                                (left-is-blank? x y matrix) "white"
+                                (= x 0)                     "linear-gradient(black, black, black)"
+                                (= x max-x)                 "linear-gradient(#000000d6, #000000d6, #000000d6)"
+                                :else
+                                "linear-gradient(to right, #FFFFFF , #706e68)")}])])]))

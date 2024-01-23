@@ -271,7 +271,7 @@
            ;; For example banjo that starts with a couple of blanks
            (->> (concat
                  (take start-index (map
-                                    #(hash-map :x %1 :blank true)
+                                    #(hash-map :x %1 :blank? true)
                                     (iterate inc 0)))
                  new-vec)
                 (take number-of-frets)
@@ -320,7 +320,8 @@
   {:tone        :b
    :octave      3}
   {:tone        :e
-   :octave      2}]
+   :octave      2
+   :start-index 5}]
  13)
 
 (defn sharp-or-flat
@@ -784,7 +785,10 @@
 (interval-tones ["1" "b3" "5"] :c)
 
 (defn add-layer [f fretboard-matrix]
-  (map-matrix f fretboard-matrix))
+  (map-matrix
+   (fn [{:keys [blank?] :as m}]
+     (if blank? m (f m)))
+   fretboard-matrix))
 
 (defn add-pattern
   [{:keys [x y tone pattern-match? interval out] :as m}]
