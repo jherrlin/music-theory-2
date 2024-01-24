@@ -5,7 +5,7 @@
    [se.jherrlin.music-theory.webapp.views.focus :as focus]))
 
 
-(defn routes []
+(defn routes [{:keys [play-tone] :as deps}]
   (timbre/info "Collecting routes.")
   [(home/routes)
-   (focus/routes)])
+   (focus/routes deps)])

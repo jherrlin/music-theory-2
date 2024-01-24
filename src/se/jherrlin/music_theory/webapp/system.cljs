@@ -32,7 +32,8 @@
    :webapp/dom          {:root-component root-component
                          :play-tone      (ig/ref :webapp/tonejs)
                          :music-theory   (ig/ref :webapp/music-theory)}
-   :webapp/router       {:routes (routes/routes)}})
+   :webapp/router       {:routes (routes/routes
+                                  {:play-tone (ig/ref :webapp/tonejs)})}})
 
 (defn ^:dev/after-load init
   "This is the starting point of the web application."

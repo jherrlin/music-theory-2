@@ -28,7 +28,7 @@
                                       :octave      3
                                       :start-index 0}
                                      {:tone        :e
-                                      :octave      2
+                                      :octave      4
                                       :start-index 0}]}
    :mandolin          {:id          :mandolin
                        :text        "Mandolin"

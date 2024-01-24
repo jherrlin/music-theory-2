@@ -45,6 +45,8 @@
 (def with-all-intervals utils/with-all-intervals)
 (def with-all-tones utils/with-all-tones)
 (def interval-tones utils/interval-tones)
+(defn intervals->tones [interval-tones intervals]
+  (mapv vector interval-tones intervals))
 (def trim-matrix utils/trim-matrix)
 (def pattern-with-intervals utils/pattern-with-intervals)
 (def pattern-with-tones utils/pattern-with-tones)

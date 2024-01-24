@@ -24,7 +24,8 @@
   [{pattern :fretboard-pattern/pattern :as definition}
    instrument
    {:keys [key-of] :as path-params}
-   {:keys [as-intervals trim-fretboard] :as query-params}]
+   {:keys [as-intervals trim-fretboard] :as query-params}
+   {:keys [play-tone] :as deps}]
   (let [fretboard-matrix @(re-frame/subscribe [:fretboard-matrix])
         matrix           ((if as-intervals
                             music-theory/pattern-with-intervals
@@ -42,7 +43,9 @@
      #_[debug-view definition]
      #_[debug-view fretboard']
      [instruments-fretboard/styled-view
-      {:matrix
+      {:on-click       (fn [{:keys [tone-str octave]}]
+                         (play-tone (str tone-str octave)))
+       :matrix
        (cond->> fretboard'
          trim-fretboard (music-theory/trim-matrix #(every? nil? (map :out %))))
        :dark-orange-fn (fn [{:keys [root?] :as m}]
@@ -54,21 +57,23 @@
   [definition instrument
    {:keys [key-of] :as path-params}
    {:keys [as-intervals trim-fretboard] :as query-params}
-   intervals]
+   intervals
+   {:keys [play-tone] :as deps}]
   (let [fretboard-matrix @(re-frame/subscribe [:fretboard-matrix])
         interval-tones   (music-theory/interval-tones intervals key-of)
-        fretboard (if as-intervals
-                    (music-theory/with-all-intervals
-                      (mapv vector interval-tones intervals)
-                      fretboard-matrix)
-                    (music-theory/with-all-tones
-                      interval-tones
-                      fretboard-matrix))]
+        fretboard        (if as-intervals
+                           (music-theory/with-all-intervals
+                             (mapv vector interval-tones intervals)
+                             fretboard-matrix)
+                           (music-theory/with-all-tones
+                             interval-tones
+                             fretboard-matrix))
+        _ (def fretboard fretboard)]
     [:<>
-     #_[debug-view definition]
-     #_[debug-view fretboard]
      [instruments-fretboard/styled-view
-      {:matrix         (cond->> fretboard
+      {:on-click       (fn [{:keys [tone-str octave]}]
+                         (play-tone (str tone-str octave)))
+       :matrix         (cond->> fretboard
                          trim-fretboard (music-theory/trim-matrix
                                          #(every? nil? (map :out %))))
        :dark-orange-fn (fn [{:keys [root?] :as m}]
@@ -78,27 +83,28 @@
        }]]))
 
 (defmulti instrument-view
-  (fn [definition instrument path-params query-params]
+  (fn [definition instrument path-params query-params deps]
     [(get instrument :type) (get definition :type)]))
 
 ;; http://localhost:8080/#/focus/guitar/c/1cd72972-ca33-4962-871c-1551b7ea5244
 (defmethod instrument-view [:fretboard [:chord]]
-  [definition instrument path-params query-params]
+  [definition instrument path-params query-params deps]
   (let [intervals (get definition :chord/intervals)]
     [instrument-view-fretboard-chord-and-scale
-     definition instrument path-params query-params intervals]))
+     definition instrument path-params query-params intervals deps]))
 
 ;; http://localhost:8080/#/focus/guitar/c/4db09dd6-9a44-4a1b-8c0f-6ed82796c8b5
 (defmethod instrument-view [:fretboard [:chord :pattern]]
   [{pattern :fretboard-pattern/pattern :as definition}
    instrument
    {:keys [key-of] :as path-params}
-   {:keys [as-intervals trim-fretboard] :as query-params}]
-  [instrument-view-fretboard-pattern definition instrument path-params query-params])
+   {:keys [as-intervals trim-fretboard] :as query-params}
+   deps]
+  [instrument-view-fretboard-pattern definition instrument path-params query-params deps])
 
 ;; http://localhost:8080/#/focus/guitar/e/3df70e72-dd4c-4e91-85b5-13de2bb062ce
 (defmethod instrument-view [:fretboard [:scale]]
-  [definition instrument path-params query-params]
+  [definition instrument path-params query-params deps]
   (let [intervals (get definition :scale/intervals)]
     [instrument-view-fretboard-chord-and-scale
      definition instrument path-params query-params intervals]))
@@ -108,61 +114,138 @@
   [{pattern :fretboard-pattern/pattern :as definition}
    instrument
    {:keys [key-of] :as path-params}
-   {:keys [as-intervals trim-fretboard] :as query-params}]
+   {:keys [as-intervals trim-fretboard] :as query-params}
+   deps]
   [instrument-view-fretboard-pattern definition instrument path-params query-params])
 
 (defmethod instrument-view :default
-  [definition instrument path-params query-params]
+  [definition instrument path-params query-params deps]
   [:div
    [:h2 "Not implemented"]
    [debug-view definition]])
 
 
 
-(defmulti definition-view (fn [definition instrument path-params query-params]
+(defmulti definition-view-detailed (fn [definition instrument path-params query-params]
                             (get definition :type)))
 
+(defn intervals-to-tones [intervals tones]
+  [:pre {:style {:overflow-x "auto"}}
+   (->> (map
+         (fn [interval index]
+           (str (utils/fformat "%8s" interval) " -> " (-> index name str/capitalize)))
+         intervals
+         tones)
+        (str/join "\n")
+        (apply str)
+        (str "Interval -> Tone\n"))])
 
-(defmethod definition-view [:chord]
-  [definition instrument {:keys [key-of] :as path-params}
+(defn highlight-tones [tones key-of]
+  [:div {:style {:margin-top  "1em"
+                 :display     "flex"
+                 :align-items "center"
+                 :overflow-x  "auto"
+                 :overflow-y  "auto"}}
+
+   (for [{:keys [tone match?]}
+         (let [tones-set (set tones)]
+           (->> key-of
+                (music-theory/tones-starting-at)
+                (map (fn [tone]
+                       (cond-> {:tone tone}
+                         (seq (set/intersection tones-set tone))
+                         (assoc :match? true))))))]
+     ^{:key (str tone "something")}
+     [:div {:style {:width     "4.5em"
+                    :font-size "0.9em"}}
+      (for [t' (sort-by (fn [x]
+                          (let [x (str x)]
+                            (cond
+                              (and (= (count x) 3) (str/includes? x "#"))
+                              1
+                              (= (count x) 3)
+                              2
+                              :else 0))) tone)]
+        ^{:key (str tone t')}
+        [:div {:style {:margin-top "0em"}}
+         [:div
+          {:style {:color       (if-not match? "grey")
+                   :font-weight (if match? "bold")}}
+          (-> t' name str/capitalize)]])])])
+
+(defn chord-name
+  [key-of suffix explanation]
+  [:div {:style {:margin-top      "1em"
+                 :height          "100%"
+                 :display         "inline-flex"
+                 :justify-content :center
+                 :align-items     :center}}
+   [:h2 (str "Chord: " (-> key-of name str/capitalize) suffix)]
+   (when explanation
+     [:p {:style {:margin-left "2rem"}}
+      (str "(" explanation ")")])])
+
+(defn instrument-tuning [tuning]
+  [:div {:style {:display "flex"}}
+   [:<>
+    "Instrument tuning: "
+    (for [{:keys [tone octave] :as m} tuning]
+      ^{:key (str m)}
+      [:div
+       [:div {:style {:margin-left "1em"}}
+        (str (-> tone name str/capitalize) "(" octave ")")]])]])
+
+(defn instrument-description [description]
+  [:p description])
+
+
+
+;; http://localhost:8080/#/focus/guitar/c/1cd72972-ca33-4962-871c-1551b7ea5244
+(defmethod definition-view-detailed [:chord]
+  [{suffix      :chord/suffix
+    explanation :chord/explanation
+    :as         definition}
+   {instrument-description' :description
+    :keys                   [tuning] :as instrument}
+   {:keys [key-of] :as path-params}
    {:keys [as-intervals] :as query-params}]
   (let [intervals      (get definition :chord/intervals)
-        interval-tones (music-theory/interval-tones intervals key-of)]
-    [:div
-   [:h2 "[:chord]"]
-     [:p (str intervals)]
-     [:p (str interval-tones)]
-     [instrument-view definition instrument path-params query-params]]
-    )
-  )
+        interval-tones (music-theory/interval-tones intervals key-of)
+        interval->tone (music-theory/intervals->tones intervals interval-tones)]
+    [:<>
+     [instrument-description instrument-description']
+     [instrument-tuning tuning]
+     [intervals-to-tones intervals interval-tones]
+     [highlight-tones interval-tones key-of]
+     [chord-name key-of suffix explanation]]))
 
-(defmethod definition-view [:chord :pattern]
+(defmethod definition-view-detailed [:chord :pattern]
   [definition instrument path-params query-params]
-  [:div
+  [:<>
    [:h2 "[:chord :pattern]"]
-   [instrument-view definition instrument path-params query-params]])
+   [debug-view definition]
+   [debug-view instrument]])
 
-(defmethod definition-view [:scale]
+(defmethod definition-view-detailed [:scale]
   [definition instrument path-params query-params]
-  [:div
+  [:<>
    [:h2 "[:scale]"]
-   [instrument-view definition instrument path-params query-params]])
+   [debug-view definition]
+   [debug-view instrument]])
 
-(defmethod definition-view [:scale :pattern]
+(defmethod definition-view-detailed [:scale :pattern]
   [definition instrument path-params query-params]
-  [:div
+  [:<>
    [:h2 "[:scale :pattern]"]
-   [instrument-view definition instrument path-params query-params]])
+   [debug-view definition]
+   [debug-view instrument]])
 
-(defmethod definition-view :default
+(defmethod definition-view-detailed :default
   [definition instrument path-params query-params]
   [:div
    [:h2 ":default"]
-   [instrument-view definition instrument path-params query-params]])
-
-
-
-
+   [debug-view definition]
+   [debug-view instrument]])
 
 (comment
   @(re-frame/subscribe [:general-data])
@@ -172,38 +255,36 @@
 
 
 
-(defn focus-view []
+(defn focus-view [{:keys [play-tone] :as deps}]
   (let [{:keys [id instrument] :as path-params} @(re-frame/subscribe [:path-params])
-        _                            (def path-params path-params)
-        _                            (def id id)
-        query-params                 @(re-frame/subscribe [:query-params])
-        _                            (def query-params query-params)
-        fretboard-matrix             @(re-frame/subscribe [:fretboard-matrix])
+        _                                       (def path-params path-params)
+        _                                       (def id id)
+        query-params                            @(re-frame/subscribe [:query-params])
+        _                                       (def query-params query-params)
+        fretboard-matrix                        @(re-frame/subscribe [:fretboard-matrix])
+        definition                              (music-theory/by-id id)
+        instrument'                             (music-theory/instrument instrument)
         ]
     [:<>
-     [:div "focus"]
-     [instrument-view
-      (music-theory/by-id id)
-      (music-theory/instrument instrument)
-      path-params
-      query-params]
-     [debug-view]
+     [definition-view-detailed definition instrument' path-params query-params]
+     [instrument-view definition instrument' path-params query-params deps]
+     #_[debug-view]
      #_[instruments-fretboard/styled-view
-      {:matrix fretboard-matrix
-       :display-fn :interval}]
+        {:matrix     fretboard-matrix
+         :display-fn :interval}]
      #_[instruments-fretboard/styled-view
-      {:matrix fretboard-matrix
-       :display-fn :tone-str}]]))
+        {:matrix     fretboard-matrix
+         :display-fn :tone-str}]]))
 
 
 
 
 
-(defn routes []
+(defn routes [deps]
   (let [route-name :focus]
     ["/focus/:instrument/:key-of/:id"
      {:name       route-name
-      :view       [focus-view]
+      :view       [focus-view deps]
       :coercion   reitit.coercion.malli/coercion
       :parameters {:path  [:map
                            [:instrument      keyword?]
