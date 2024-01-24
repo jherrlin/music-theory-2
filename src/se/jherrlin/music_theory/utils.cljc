@@ -526,10 +526,68 @@
    -   -   -
    -   -   -")
 
+(defn deep-merge [a & maps]
+  (if (map? a)
+    (apply merge-with deep-merge a maps)
+    (apply merge-with deep-merge maps)))
+
+(defn fretboard-map-to-matrix [m]
+  (let [fretboard-with (->> m
+                            vals
+                            (map :x)
+                            (apply max))]
+    (->> (partition-by :y (->> m vals (sort-by :y)))
+         (mapv (fn [coll]
+                  (vec (sort-by :x coll)))))))
+
+(defn fretboard-matrix-to-map [matrix]
+  (->> matrix
+       (apply concat)
+       (reduce (fn [acc {:keys [x y] :as m}]
+                 (assoc acc [x y] m))
+               {})))
+
+(comment
+  (let [fretboard [[{:x 0, :tone #{:e}, :octave 2, :y 0}
+                    {:x 1, :tone #{:f}, :octave 2, :y 0}
+                    {:x 2, :tone #{:gb :f#}, :octave 2, :y 0}
+                    {:x 3, :tone #{:g}, :octave 2, :y 0}
+                    {:x 4, :tone #{:g# :ab}, :octave 2, :y 0}]
+                   [{:x 0, :tone #{:b}, :octave 3, :y 1}
+                    {:x 1, :tone #{:c}, :octave 4, :y 1}
+                    {:x 2, :tone #{:db :c#}, :octave 4, :y 1}
+                    {:x 3, :tone #{:d}, :octave 4, :y 1}
+                    {:x 4, :tone #{:d# :eb}, :octave 4, :y 1}]
+                   [{:x 0, :tone #{:g}, :octave 3, :y 2}
+                    {:x 1, :tone #{:g# :ab}, :octave 3, :y 2}
+                    {:x 2, :tone #{:a}, :octave 3, :y 2}
+                    {:x 3, :tone #{:bb :a#}, :octave 3, :y 2}
+                    {:x 4, :tone #{:b}, :octave 3, :y 2}]
+                   [{:x 0, :tone #{:d}, :octave 3, :y 3}
+                    {:x 1, :tone #{:d# :eb}, :octave 3, :y 3}
+                    {:x 2, :tone #{:e}, :octave 3, :y 3}
+                    {:x 3, :tone #{:f}, :octave 3, :y 3}
+                    {:x 4, :tone #{:gb :f#}, :octave 3, :y 3}]
+                   [{:x 0, :tone #{:a}, :octave 2, :y 4}
+                    {:x 1, :tone #{:bb :a#}, :octave 2, :y 4}
+                    {:x 2, :tone #{:b}, :octave 2, :y 4}
+                    {:x 3, :tone #{:c}, :octave 3, :y 4}
+                    {:x 4, :tone #{:db :c#}, :octave 3, :y 4}]
+                   [{:x 0, :tone #{:e}, :octave 2, :y 5}
+                    {:x 1, :tone #{:f}, :octave 2, :y 5}
+                    {:x 2, :tone #{:gb :f#}, :octave 2, :y 5}
+                    {:x 3, :tone #{:g}, :octave 2, :y 5}
+                    {:x 4, :tone #{:g# :ab}, :octave 2, :y 5}]]]
+    (=
+     fretboard
+     (->> (fretboard-matrix-to-map fretboard)
+          (fretboard-map-to-matrix))))
+  )
+
 (defn find-fretboard-pattern
   "Find patterns on the fretboard"
   [all-tones key-of interval-matrix fretboard-matrix]
-  (let [;; interval-matrix       (trim-matrix interval-matrix)
+  (let [ ;; interval-matrix       (trim-matrix interval-matrix)
         interval-matrix-width (-> interval-matrix first count)
         fretboard-count       (-> fretboard-matrix first count)]
     (loop [counter           0
@@ -562,36 +620,29 @@
                                                   interval-semitones)]
                           (assoc tone'
                                  :match? (and box-match? (= tone fretboard-tone))
-                                 :interval interval')))))
+                                 :pattern-found-tone (-> (sharp-or-flat tone interval')
+                                                         (name)
+                                                         (str/capitalize))
+                                 :pattern-found-interval interval')))))
             found-pattern-xys'
             (if-not box-match?
               found-pattern-xys
               (->> pattern-check
                    (filter :match?)
-                   (map #(select-keys % [:x :y :interval]))
+                   (map #(select-keys % [:x :y :match? :pattern-found-tone :pattern-found-interval]))
                    (set)
                    (into found-pattern-xys)))]
         (if (< counter fretboard-count)
           (recur
            (inc counter)
            found-pattern-xys')
-          (->> fretboard-matrix
-               (apply concat)
-               (map (fn [{:keys [x y] :as m}]
-                      (if-not (contains? (->> found-pattern-xys'
-                                              (map (juxt :x :y))
-                                              (set))
-                                         [x y])
-                        m
-                        (assoc m
-                               :pattern-match? true
-                               :interval (->> found-pattern-xys'
-                                              (filter (fn [{x' :x y' :y}]
-                                                        (= [x y] [x' y'])))
-                                              (first)
-                                              :interval)))))
-               (partition fretboard-count)
-               (mapv #(mapv identity %))))))))
+          (fretboard-map-to-matrix
+           (deep-merge
+            (fretboard-matrix-to-map fretboard-matrix)
+            (->> found-pattern-xys'
+                 (reduce (fn [acc {:keys [x y] :as m}]
+                           (assoc acc [x y] m))
+                         {})))))))))
 
 (find-fretboard-pattern
  (all-tones)
@@ -725,6 +776,10 @@
  #_[:c :e :g]
  [:c :eb :g])
 
+
+
+
+
 (defn merge-matrix [width f xs]
   (->> xs
        (map f)
@@ -838,11 +893,7 @@
       (= "1" i)          (assoc :root? true))
     m))
 
-(defn add-pattern-with-intervals
-  [{:keys [x y tone pattern-match? interval out] :as m}]
-  (if (and pattern-match? interval)
-    (assoc m :out interval)
-    m))
+
 
 (->> (find-fretboard-pattern
       (all-tones)
@@ -867,7 +918,7 @@
          :octave 3}
         {:tone   :e
          :octave 2}]
-       12))
+       5))
      (add-layer
       #_add-flats
       #_add-sharps
@@ -1013,9 +1064,7 @@
         (all-tones)
         key-of
         pattern
-        fretboard-matrix)
-       (add-layer add-pattern-with-intervals)
-       (add-layer (partial add-root nil))))
+        fretboard-matrix)))
 
 (->> (pattern-with-intervals
       :a
@@ -1051,8 +1100,7 @@
         key-of
         pattern
         fretboard-matrix)
-       (add-layer add-pattern)
-       (add-layer (partial add-root key-of))))
+       (add-layer add-pattern)))
 
 (->> (fretboard-strings
       (all-tones)

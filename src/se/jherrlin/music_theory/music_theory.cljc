@@ -42,3 +42,11 @@
   )
 
 (def add-intervals-to-fretboard-matrix utils/add-intervals-to-fretboard-matrix)
+(def with-all-intervals utils/with-all-intervals)
+(def with-all-tones utils/with-all-tones)
+(def interval-tones utils/interval-tones)
+(def trim-matrix utils/trim-matrix)
+(def pattern-with-intervals utils/pattern-with-intervals)
+(def pattern-with-tones utils/pattern-with-tones)
+
+(interval-tones ["1" "b3" "5"] :c)

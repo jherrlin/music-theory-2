@@ -15,7 +15,10 @@
          :ids            {}}))
 
 (comment
-  @definitions
+  (get @definitions :chords)
+  (get @definitions :chord-patterns)
+  (get @definitions :scales)
+  (get @definitions :scale-patterns)
   )
 
 (defn chords []
@@ -89,7 +92,7 @@
 (defn- define-chord-pattern
   "Interpret the chord pattern and add it to the chord pattern state."
   [id {:keys [belongs-to tuning] :as meta-data} pattern]
-  (let [pattern (helpers/define-scale-pattern id belongs-to tuning meta-data pattern)]
+  (let [pattern (helpers/define-chord-pattern id belongs-to tuning meta-data pattern)]
     (do
       (swap! definitions assoc-in [:chord-patterns id] pattern)
       (swap! definitions assoc-in [:ids id] pattern))))

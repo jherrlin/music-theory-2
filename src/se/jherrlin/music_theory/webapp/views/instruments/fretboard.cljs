@@ -52,10 +52,11 @@
                         :z-index          0}}
           circle-text])]]
 
-     [:div {:style {:background-image fret-color
-                    :z-index          50
-                    :width            "0.5rem"
-                    :height           "100%"}}]]))
+     (when-not blank?
+       [:div {:style {:background-image fret-color
+                      :z-index          50
+                      :width            "0.5rem"
+                      :height           "100%"}}])]))
 
 (defn left-is-blank? [x y matrix]
   (let [xy-map (->> matrix
@@ -67,11 +68,16 @@
     (or (get fret :blank?)
         (nil? fret))))
 
-(defn styled-view [{:keys [on-click matrix display-fn]
-                    :or   {display-fn :out
-                           on-click   (fn [{:keys [x y tone out root?] :as m'}]
-                                        (def m' m')
-                                        (js/console.log m'))}
+(defn styled-view [{:keys [on-click matrix
+                           orange-fn
+                           grey-fn
+                           dark-orange-fn]
+                    :or   {orange-fn      :out
+                           grey-fn        (constantly false)
+                           dark-orange-fn (constantly false)
+                           on-click       (fn [{:keys [x y tone out root?] :as m'}]
+                                            (def m' m')
+                                            (js/console.log m'))}
                     :as   m}]
   (let [min-x (->> matrix first (map :x) (apply min))
         max-x (->> matrix first (map :x) (apply max))]
@@ -85,18 +91,27 @@
        [:div {:style {:display "flex"}}
         (for [{:keys [x y tone out root? blank?] :as m} fretboard-string]
           ^{:key (str "fretboard-string-" x "-" y)}
-          [fret
-           {:blank?           blank?
-            :y                (/ y 10)
-            :circle-color     (when root? "#ff7600")
-            :on-click         (fn [_] (on-click m))
-            :circle-text      (display-fn m)
-            :background-color (if (left-is-blank? x y matrix)
-                                "white"
-                                "#000000d6")
-            :fret-color       (cond
-                                (left-is-blank? x y matrix) "white"
-                                (= x 0)                     "linear-gradient(black, black, black)"
-                                (= x max-x)                 "linear-gradient(#000000d6, #000000d6, #000000d6)"
-                                :else
-                                "linear-gradient(to right, #FFFFFF , #706e68)")}])])]))
+          (let [orange-fn'      (orange-fn m)
+                dark-orange-fn' (dark-orange-fn m)
+                grey-fn'        (grey-fn m)]
+            [fret
+             {:blank?           blank?
+              :y                (/ y 10)
+              :circle-color     (cond
+                                  dark-orange-fn' "#ff7600"
+                                  orange-fn'      "orange"
+                                  grey-fn'        "grey")
+              :on-click         (fn [_] (on-click m))
+              :circle-text      (cond
+                                  orange-fn' orange-fn'
+                                  grey-fn'   grey-fn'
+                                  :else      nil)
+              :background-color (if (left-is-blank? x y matrix)
+                                  "white"
+                                  "#000000d6")
+              :fret-color       (cond
+                                  (left-is-blank? x y matrix) "white"
+                                  (= x 0)                     "linear-gradient(black, black, black)"
+                                  (= x max-x)                 "linear-gradient(#000000d6, #000000d6, #000000d6)"
+                                  :else
+                                  "linear-gradient(to right, #FFFFFF , #706e68)")}]))])]))
