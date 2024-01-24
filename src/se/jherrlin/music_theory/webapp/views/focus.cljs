@@ -20,38 +20,7 @@
     (with-out-str
       (cljs.pprint/pprint x))]))
 
-(defmulti instrument-view
-  (fn [definition instrument path-params query-params]
-    [(get instrument :type) (get definition :type)]))
-
-(defmethod instrument-view [:fretboard [:chord]]
-  [definition instrument
-   {:keys [key-of] :as path-params}
-   {:keys [as-intervals trim-fretboard] :as query-params}]
-  (let [fretboard-matrix @(re-frame/subscribe [:fretboard-matrix])
-        intervals        (get definition :chord/intervals)
-        interval-tones   (music-theory/interval-tones intervals key-of)
-        fretboard (if as-intervals
-                    (music-theory/with-all-intervals
-                      (mapv vector interval-tones intervals)
-                      fretboard-matrix)
-                    (music-theory/with-all-tones
-                      interval-tones
-                      fretboard-matrix))]
-    [:<>
-     #_[debug-view definition]
-     #_[debug-view fretboard]
-     [instruments-fretboard/styled-view
-      {:matrix         (cond->> fretboard
-                         trim-fretboard (music-theory/trim-matrix
-                                         #(every? nil? (map :out %))))
-       :dark-orange-fn (fn [{:keys [root?] :as m}]
-                         (and root? (get m :out)))
-       :orange-fn      :out #_:pattern-found-tone #_:pattern-found-interval
-                                        ;:grey-fn        nil #_:tone-str           #_:interval
-       }]]))
-
-(defmethod instrument-view [:fretboard [:chord :pattern]]
+(defn instrument-view-fretboard-pattern
   [{pattern :fretboard-pattern/pattern :as definition}
    instrument
    {:keys [key-of] :as path-params}
@@ -79,14 +48,14 @@
        :dark-orange-fn (fn [{:keys [root?] :as m}]
                          (and root? (get m :pattern-found-tone)))
        :orange-fn      :pattern-found-tone #_:pattern-found-interval
-       :grey-fn        :tone-str #_:interval}]]))
+       :grey-fn        :tone-str           #_:interval}]]))
 
-(defmethod instrument-view [:fretboard [:scale]]
+(defn instrument-view-fretboard-chord-and-scale
   [definition instrument
    {:keys [key-of] :as path-params}
-   {:keys [as-intervals trim-fretboard] :as query-params}]
+   {:keys [as-intervals trim-fretboard] :as query-params}
+   intervals]
   (let [fretboard-matrix @(re-frame/subscribe [:fretboard-matrix])
-        intervals        (get definition :scale/intervals)
         interval-tones   (music-theory/interval-tones intervals key-of)
         fretboard (if as-intervals
                     (music-theory/with-all-intervals
@@ -108,9 +77,39 @@
                                         ;:grey-fn        nil #_:tone-str           #_:interval
        }]]))
 
+(defmulti instrument-view
+  (fn [definition instrument path-params query-params]
+    [(get instrument :type) (get definition :type)]))
 
+;; http://localhost:8080/#/focus/guitar/c/1cd72972-ca33-4962-871c-1551b7ea5244
+(defmethod instrument-view [:fretboard [:chord]]
+  [definition instrument path-params query-params]
+  (let [intervals (get definition :chord/intervals)]
+    [instrument-view-fretboard-chord-and-scale
+     definition instrument path-params query-params intervals]))
 
+;; http://localhost:8080/#/focus/guitar/c/4db09dd6-9a44-4a1b-8c0f-6ed82796c8b5
+(defmethod instrument-view [:fretboard [:chord :pattern]]
+  [{pattern :fretboard-pattern/pattern :as definition}
+   instrument
+   {:keys [key-of] :as path-params}
+   {:keys [as-intervals trim-fretboard] :as query-params}]
+  [instrument-view-fretboard-pattern definition instrument path-params query-params])
 
+;; http://localhost:8080/#/focus/guitar/e/3df70e72-dd4c-4e91-85b5-13de2bb062ce
+(defmethod instrument-view [:fretboard [:scale]]
+  [definition instrument path-params query-params]
+  (let [intervals (get definition :scale/intervals)]
+    [instrument-view-fretboard-chord-and-scale
+     definition instrument path-params query-params intervals]))
+
+;; http://localhost:8080/#/focus/guitar/c/dbc69a09-b3dc-4bfa-a4df-6dd767b65d25
+(defmethod instrument-view [:fretboard [:scale :pattern]]
+  [{pattern :fretboard-pattern/pattern :as definition}
+   instrument
+   {:keys [key-of] :as path-params}
+   {:keys [as-intervals trim-fretboard] :as query-params}]
+  [instrument-view-fretboard-pattern definition instrument path-params query-params])
 
 (defmethod instrument-view :default
   [definition instrument path-params query-params]
@@ -123,19 +122,6 @@
 (defmulti definition-view (fn [definition instrument path-params query-params]
                             (get definition :type)))
 
-
-{:chord/intervals      ["1" "3" "5"],
- :chord/chord-name-str "major",
- :chord/chord-name     :major,
- :chord/order          1,
- :type                 [:chord],
- :chord/categories     #{:major},
- :chord/display-text   "major",
- :id                   #uuid "1cd72972-ca33-4962-871c-1551b7ea5244",
- :chord/intervals-str  "1, 3, 5",
- :chord/explanation    "major",
- :chord/suffix         "",
- :chord/indexes        [0 4 7]}
 
 (defmethod definition-view [:chord]
   [definition instrument {:keys [key-of] :as path-params}
