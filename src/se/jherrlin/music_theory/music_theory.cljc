@@ -19,6 +19,17 @@
 
 (def by-id definitions/by-id)
 
+(def chord definitions/chord)
+
+(comment
+  (chord :major)
+  )
+
+(def chord-patterns-belonging-to definitions/chord-patterns-belonging-to)
+(comment
+  (chord-patterns-belonging-to :major :guitar)
+  )
+
 (comment
   (by-id #uuid "1cd72972-ca33-4962-871c-1551b7ea5244")
   )

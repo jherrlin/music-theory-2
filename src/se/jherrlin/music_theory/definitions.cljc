@@ -47,15 +47,14 @@
 (defn chord-pattern [id]
   (get-in @definitions [:chord-patterns id]))
 
-(defn chord-patterns-belonging-to [belongs-to tuning]
+(defn chord-patterns-belonging-to [belongs-to instrument]
   (->> (get @definitions :chord-patterns)
        (vals)
        (filter (fn [{bt :fretboard-pattern/belongs-to
                      t  :fretboard-pattern/tuning}]
                  (and (= bt belongs-to)
-                      (= t tuning))))
-       (sort-by :fretboard-pattern/order)
-       (map :id)))
+                      (= t instrument))))
+       (sort-by :fretboard-pattern/order)))
 
 (defn scale-patterns []
   (->> (get @definitions :scale-patterns)
