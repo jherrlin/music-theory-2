@@ -24,6 +24,33 @@
   (fn [definition instrument path-params query-params]
     [(get instrument :type) (get definition :type)]))
 
+(defmethod instrument-view [:fretboard [:chord]]
+  [definition instrument
+   {:keys [key-of] :as path-params}
+   {:keys [as-intervals trim-fretboard] :as query-params}]
+  (let [fretboard-matrix @(re-frame/subscribe [:fretboard-matrix])
+        intervals        (get definition :chord/intervals)
+        interval-tones   (music-theory/interval-tones intervals key-of)
+        fretboard (if as-intervals
+                    (music-theory/with-all-intervals
+                      (mapv vector interval-tones intervals)
+                      fretboard-matrix)
+                    (music-theory/with-all-tones
+                      interval-tones
+                      fretboard-matrix))]
+    [:<>
+     #_[debug-view definition]
+     #_[debug-view fretboard]
+     [instruments-fretboard/styled-view
+      {:matrix         (cond->> fretboard
+                         trim-fretboard (music-theory/trim-matrix
+                                         #(every? nil? (map :out %))))
+       :dark-orange-fn (fn [{:keys [root?] :as m}]
+                         (and root? (get m :out)))
+       :orange-fn      :out #_:pattern-found-tone #_:pattern-found-interval
+                                        ;:grey-fn        nil #_:tone-str           #_:interval
+       }]]))
+
 (defmethod instrument-view [:fretboard [:chord :pattern]]
   [{pattern :fretboard-pattern/pattern :as definition}
    instrument
@@ -36,16 +63,14 @@
                           key-of
                           pattern
                           fretboard-matrix)
-        _                (def matrix matrix)
-        _                (def as-intervals as-intervals)
         fretboard'       ((if as-intervals
                             music-theory/pattern-with-intervals
                             music-theory/pattern-with-tones)
                           key-of
                           pattern
-                          fretboard-matrix)
-        _                (def fretboard' fretboard')]
+                          fretboard-matrix)]
     [:<>
+     #_[debug-view definition]
      #_[debug-view fretboard']
      [instruments-fretboard/styled-view
       {:matrix
@@ -56,23 +81,23 @@
        :orange-fn      :pattern-found-tone #_:pattern-found-interval
        :grey-fn        :tone-str #_:interval}]]))
 
-(defmethod instrument-view [:fretboard [:chord]]
+(defmethod instrument-view [:fretboard [:scale]]
   [definition instrument
    {:keys [key-of] :as path-params}
    {:keys [as-intervals trim-fretboard] :as query-params}]
   (let [fretboard-matrix @(re-frame/subscribe [:fretboard-matrix])
-        intervals        (get definition :chord/intervals)
+        intervals        (get definition :scale/intervals)
         interval-tones   (music-theory/interval-tones intervals key-of)
         fretboard (if as-intervals
-                                 (music-theory/with-all-intervals
-                                   (mapv vector interval-tones intervals)
-                                   fretboard-matrix)
-                                 (music-theory/with-all-tones
-                                   interval-tones
-                                   fretboard-matrix))
-        _ (def fretboard fretboard)]
+                    (music-theory/with-all-intervals
+                      (mapv vector interval-tones intervals)
+                      fretboard-matrix)
+                    (music-theory/with-all-tones
+                      interval-tones
+                      fretboard-matrix))]
     [:<>
-     [debug-view fretboard]
+     #_[debug-view definition]
+     #_[debug-view fretboard]
      [instruments-fretboard/styled-view
       {:matrix         (cond->> fretboard
                          trim-fretboard (music-theory/trim-matrix
@@ -80,8 +105,10 @@
        :dark-orange-fn (fn [{:keys [root?] :as m}]
                          (and root? (get m :out)))
        :orange-fn      :out #_:pattern-found-tone #_:pattern-found-interval
-       ;:grey-fn        nil #_:tone-str           #_:interval
+                                        ;:grey-fn        nil #_:tone-str           #_:interval
        }]]))
+
+
 
 
 
