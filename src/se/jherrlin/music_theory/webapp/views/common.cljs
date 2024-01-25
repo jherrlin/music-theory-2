@@ -29,7 +29,7 @@
                    :flow-direction "column"
                    :overflow-x     "auto"
                    :white-space    "nowrap"}}
-     [:a {:style {:margin-right "10px"} :href (rfe/href :home)}
+     #_[:a {:style {:margin-right "10px"} :href (rfe/href :home)}
        [:button
         {:disabled (= current-route-name :home)}
         "Home"]]
@@ -39,7 +39,7 @@
         {:disabled (= current-route-name :chord)}
         "Chords"]]
 
-     #_[:a {:style {:margin-right "10px"}
+     [:a {:style {:margin-right "10px"}
           :href  (rfe/href :scale path-params query-params)}
        [:button
         {:disabled (= current-route-name :scale)}
@@ -81,6 +81,21 @@
          [:button
           {:disabled (= chord chord-name)}
           chord-name-str]]])]))
+
+(defn scale-selection []
+  (let [current-route-name              @(re-frame/subscribe [:current-route-name])
+        {:keys [scale] :as path-params} @(re-frame/subscribe [:path-params])
+        query-params                    @(re-frame/subscribe [:query-params])]
+    [:div
+     (for [{scale' :scale
+            id     :id
+            :as    m} music-theory/scales]
+       ^{:key (str "scale-selection-" id scale')}
+       [:div {:style {:margin-right "10px" :display "inline"}}
+        [:a {:href (rfe/href :scale (assoc path-params :scale scale') query-params)}
+         [:button
+          {:disabled (= scale scale')}
+          (-> scale' name (str/replace "-" " ") str/capitalize)]]])]))
 
 (defn scales-to-chord [path-params query-params chord-intervals]
   (let [scales-to-chord (music-theory/scales-to-chord music-theory/scales chord-intervals)]
@@ -365,3 +380,60 @@
    [:h2 ":default"]
    [debug-view definition]
    [debug-view instrument]])
+
+(defn settings
+  [{:keys [as-text? as-intervals? nr-of-frets? nr-of-octavs? trim-fretboard?]
+    :or   {as-intervals? true}
+    :as   m}]
+  (let [current-route-name                                                                                   @(re-frame/subscribe [:current-route-name])
+        path-params                                                                                          @(re-frame/subscribe [:path-params])
+        _                                                                                                    (def path-params path-params)
+        {:keys [trim-fretboard nr-of-frets as-text nr-of-octavs as-intervals nr-of-octavs] :as query-params} @(re-frame/subscribe [:query-params])
+        _                                                                                                    (def query-params query-params)
+        _ (def current-route-name current-route-name)
+        _ (def as-intervals as-intervals)
+        _ (def nr-of-octavs nr-of-octavs)
+        _ (def as-text as-text)
+        _ (def nr-of-frets nr-of-frets)
+        _ (def trim-fretboard trim-fretboard)]
+    [:div {:style {:display "flex"}}
+     (when as-intervals?
+       [:div
+        [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :as-intervals (not as-intervals))]])
+                 :checked  as-intervals
+                 :type     "checkbox" :id "as-intervals-checkbox" :name "as-intervals-checkbox"}]
+        [:label {:for "as-intervals-checkbox"} "Show intervals"]])
+
+     (when as-text?
+       [:div {:style {:margin-left "1rem"}}
+        [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :as-text (not as-text))]])
+                 :checked  as-text
+                 :type     "checkbox" :id "as-text-checkbox" :name "as-text-checkbox"}]
+        [:label {:for "as-text-checkbox"} "Fretboard in text"]])
+
+     (when trim-fretboard?
+       [:div {:style {:margin-left "1rem"}}
+        [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :trim-fretboard (not trim-fretboard))]])
+                 :checked  trim-fretboard
+                 :type     "checkbox" :id "trim-fretboard-checkbox" :name "trim-fretboard-checkbox"}]
+        [:label {:for "trim-fretboard-checkbox"} "Trim fretboard"]])
+
+     (when nr-of-frets?
+       [:div {:style {:margin-left "1rem"}}
+        [:label {:for "nr-of-frets-input"} "Nr of frets:"]
+        [:input {:style     {:width "3rem"}
+                 :on-change #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :nr-of-frets (-> % .-target .-value))]])
+                 :value     nr-of-frets
+                 :max       37
+                 :min       2
+                 :type      "number" :id "nr-of-frets-input" :name "nr-of-frets-input"}]])
+
+     (when nr-of-octavs?
+       [:div {:style {:margin-left "1rem"}}
+        [:label {:for "nr-of-octavs-input"} "Nr of octavs:"]
+        [:input {:style     {:width "3rem"}
+                 :on-change #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :nr-of-octavs (-> % .-target .-value))]])
+                 :value     nr-of-octavs
+                 :max       4
+                 :min       1
+                 :type      "number" :id "nr-of-octavs-input" :name "nr-of-octavs-input"}]])]))

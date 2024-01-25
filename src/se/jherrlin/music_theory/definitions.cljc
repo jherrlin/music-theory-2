@@ -33,15 +33,15 @@
   (chord :diminished-seventh)
   )
 
+(defn scale
+  [k]
+  (get-in @definitions [:scales k]))
+
 (defn scales
   []
   (->> (get @definitions :scales)
        (vals)
        (sort-by :scale/order)))
-
-(defn scale
-  [k]
-  (get-in @definitions [:scales k]))
 
 (defn chord-patterns []
   (->> (get @definitions :chord-patterns)
@@ -49,6 +49,15 @@
 
 (defn chord-pattern [id]
   (get-in @definitions [:chord-patterns id]))
+
+(defn scale-patterns-for-scale-and-instrument [scale instrument]
+  (->> (get @definitions :scale-patterns)
+       (vals)
+       (filter (fn [{bt :fretboard-pattern/belongs-to
+                     t  :fretboard-pattern/tuning}]
+                 (and (= bt scale)
+                      (= t instrument))))
+       (sort-by :fretboard-pattern/order)))
 
 (defn chord-patterns-belonging-to [belongs-to instrument]
   (->> (get @definitions :chord-patterns)
@@ -76,16 +85,6 @@
   (->> (get @definitions :scale-patterns)
        (vals)
        (sort-by :fretboard-pattern/order)))
-
-(defn scale-patterns-belonging-to [belongs-to tuning]
-  (->> (get @definitions :scale-patterns)
-       (vals)
-       (filter (fn [{bt :fretboard-pattern/belongs-to
-                     t  :fretboard-pattern/tuning}]
-                 (and (= bt belongs-to)
-                      (= t tuning))))
-       (sort-by :fretboard-pattern/order)
-       (map :id)))
 
 (defn scale-pattern [id]
   (get-in @definitions [:scale-patterns id]))
@@ -120,7 +119,7 @@
    (let [scale (helpers/define-scale id scale-names meta-data intervals-str)]
      (do
        (doseq [s scale-names]
-         (swap! definitions assoc-in [:scales s] scale))
+         (swap! definitions assoc-in [:scales s] (assoc scale :scale s)))
        (swap! definitions assoc-in [:ids id] scale)))))
 
 (defn- define-scale-pattern
@@ -384,11 +383,38 @@
 ;; ---------------
 (define-scale #uuid "39af7096-b5c6-45e9-b743-6791b217a3df"
   #{:major :ionian}
+  {:order 1}
   "1, 2, 3, 4, 5, 6, 7")
 
 (define-scale #uuid "d091b747-63b9-4db2-9daa-6e9974852080"
   #{:minor :aeolian :natural-minor}
+  {:order 2}
   "1, 2, b3, 4, 5, b6, b7")
+
+(define-scale #uuid "ddf306a1-b119-4eda-b3c3-1f5215cbe6d8"
+  #{:harmonic-minor}
+  {:order 3}
+  "1, 2, b3, 4, 5, b6, 7")
+
+(define-scale #uuid "6d8e0cba-658d-4072-838e-3d50d926ed0f"
+  #{:melodic-minor}
+  {:order 4}
+  "1, 2, b3, 4, 5, 6, 7")
+
+(define-scale #uuid "bac1ab62-34df-4232-b205-b197d25d8892"
+  #{:pentatonic-blues}
+  {:order 5}
+  "1, b3, 4, b5, 5, b7")
+
+(define-scale #uuid "82751272-7c3a-445e-a589-24c1ad87a30e"
+  #{:pentatonic-minor}
+  {:order 6}
+  "1, b3, 4, 5, b7")
+
+(define-scale #uuid "e7ad3188-1e4c-4d19-bd4b-99e97213c6f6"
+  #{:pentatonic-major}
+  {:order 7}
+  "1, 2, 3, 5, 6")
 
 (define-scale #uuid "8c0a7209-4ac4-4ec7-b8a5-e4fdaf449ad6"
   #{:lydian}
@@ -409,26 +435,6 @@
 (define-scale #uuid "862ef869-25e9-47f9-ab5e-8146f8a8b3e6"
   #{:locrian}
   "1, b2, b3, 4, b5, b6, b7")
-
-(define-scale #uuid "ddf306a1-b119-4eda-b3c3-1f5215cbe6d8"
-  #{:harmonic-minor}
-  "1, 2, b3, 4, 5, b6, 7")
-
-(define-scale #uuid "6d8e0cba-658d-4072-838e-3d50d926ed0f"
-  #{:melodic-minor}
-  "1, 2, b3, 4, 5, 6, 7")
-
-(define-scale #uuid "e7ad3188-1e4c-4d19-bd4b-99e97213c6f6"
-  #{:pentatonic-major}
-  "1, 2, 3, 5, 6")
-
-(define-scale #uuid "82751272-7c3a-445e-a589-24c1ad87a30e"
-  #{:pentatonic-minor}
-  "1, b3, 4, 5, b7")
-
-(define-scale #uuid "bac1ab62-34df-4232-b205-b197d25d8892"
-  #{:pentatonic-blues}
-  "1, b3, 4, b5, 5, b7")
 
 (define-scale #uuid "2dd35839-9d00-45bd-b4e8-43868aa9836c"
   #{:pentatonic-neutral}

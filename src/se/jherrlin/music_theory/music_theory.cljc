@@ -31,9 +31,16 @@
 
 (def chord-patterns-belonging-to definitions/chord-patterns-belonging-to)
 (def chord-pattern-triads-belonging-to definitions/chord-pattern-triads-belonging-to)
+
 (comment
   (chord-patterns-belonging-to :major :guitar)
   (chord-pattern-triads-belonging-to :major :guitar)
+  )
+
+(def scale-patterns-for-scale-and-instrument definitions/scale-patterns-for-scale-and-instrument)
+
+(comment
+  (scale-patterns-for-scale-and-instrument :major :guitar)
   )
 
 (comment
