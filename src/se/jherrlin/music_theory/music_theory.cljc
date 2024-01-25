@@ -2,7 +2,8 @@
   (:require
    [se.jherrlin.music-theory.instruments :as instruments]
    [se.jherrlin.music-theory.definitions :as definitions]
-   [se.jherrlin.music-theory.utils :as utils]))
+   [se.jherrlin.music-theory.utils :as utils]
+   [clojure.set :as set]))
 
 
 (def instruments (instruments/instruments))
@@ -20,14 +21,19 @@
 (def by-id definitions/by-id)
 
 (def chord definitions/chord)
+(def chords (definitions/chords))
+(def scale definitions/scale)
+(def scales (definitions/scales))
 
 (comment
   (chord :major)
   )
 
 (def chord-patterns-belonging-to definitions/chord-patterns-belonging-to)
+(def chord-pattern-triads-belonging-to definitions/chord-pattern-triads-belonging-to)
 (comment
   (chord-patterns-belonging-to :major :guitar)
+  (chord-pattern-triads-belonging-to :major :guitar)
   )
 
 (comment
@@ -63,3 +69,9 @@
 (def pattern-with-tones utils/pattern-with-tones)
 
 (interval-tones ["1" "b3" "5"] :c)
+
+(defn scales-to-chord [scales chord-intervals]
+  (->> scales
+       (filter
+        (fn [{scale-intervals :scale/intervals}]
+          (set/subset? (set chord-intervals) (set scale-intervals))))))

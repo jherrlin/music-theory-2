@@ -20,6 +20,128 @@
     (with-out-str
       (cljs.pprint/pprint x))]))
 
+(defn menu []
+  (let [current-route-name @(re-frame/subscribe [:current-route-name])
+        path-params        @(re-frame/subscribe [:path-params])
+        query-params       @(re-frame/subscribe [:query-params])
+        key-of             @(re-frame/subscribe [:key-of])]
+    [:div {:style {:display        "flow"
+                   :flow-direction "column"
+                   :overflow-x     "auto"
+                   :white-space    "nowrap"}}
+     [:a {:style {:margin-right "10px"} :href (rfe/href :home)}
+       [:button
+        {:disabled (= current-route-name :home)}
+        "Home"]]
+     [:a {:style {:margin-right "10px"}
+          :href  (rfe/href :chord path-params query-params)}
+       [:button
+        {:disabled (= current-route-name :chord)}
+        "Chords"]]
+
+     #_[:a {:style {:margin-right "10px"}
+          :href  (rfe/href :scale path-params query-params)}
+       [:button
+        {:disabled (= current-route-name :scale)}
+        "Scales"]]
+
+     #_[:a {:style {:margin-right "10px"}
+          :href  (rfe/href :harmonizations path-params query-params)}
+       [:button
+        {:disabled (= current-route-name :harmonizations)}
+        "Harmonizations"]]
+
+     #_[:a {:style {:margin-right "10px"}
+          :href  (rfe/href :table path-params query-params)}
+       [:button
+        {:disabled (= current-route-name :table)}
+        "Table"]]
+
+     #_[:a {:style {:margin-right "10px"}
+          :href  (rfe/href :bookmarks path-params query-params)}
+      [:button
+       {:disabled (= current-route-name :bookmarks)}
+       "Bookmarks"]]]))
+
+(defn chord-selection []
+  (let [current-route-name              @(re-frame/subscribe [:current-route-name])
+        {:keys [chord] :as path-params} @(re-frame/subscribe [:path-params])
+        query-params                    @(re-frame/subscribe [:query-params])]
+    [:div
+     (for [{chord-name     :chord/chord-name
+            chord-name-str :chord/chord-name-str
+            id             :id
+            :as            m} music-theory/chords]
+       ^{:key (str "chord-selection-" id)}
+       [:div {:style {:margin-right "10px" :display "inline"}}
+        [:a {:href (rfe/href
+                    :chord
+                    (assoc path-params :chord chord-name)
+                    query-params)}
+         [:button
+          {:disabled (= chord chord-name)}
+          chord-name-str]]])]))
+
+(defn scales-to-chord [path-params query-params chord-intervals]
+  (let [scales-to-chord (music-theory/scales-to-chord music-theory/scales chord-intervals)]
+    (when (seq scales-to-chord)
+      [:<>
+       [:h3 "Scales to chord"]
+       (for [{scale :scale/scale-names
+              id    :id}
+             scales-to-chord]
+         ^{:key id}
+         [:div {:style {:margin-right "10px" :display "inline"}}
+          [:a {:href
+               (rfe/href :scale (assoc path-params :scale (-> scale first)) query-params)}
+           [:button
+            (->> scale
+                 (map (comp str/capitalize #(str/replace % "-" "") name))
+                 (str/join " / "))]]])])))
+
+(defn key-selection []
+  (let [current-route      @(re-frame/subscribe [:current-route])
+        path-params        @(re-frame/subscribe [:path-params])
+        query-params       @(re-frame/subscribe [:query-params])
+        current-route-name @(re-frame/subscribe [:current-route-name])
+        key-of             @(re-frame/subscribe [:key-of])]
+    [:div {:style {:display        "flow"
+                   :flow-direction "column"
+                   :overflow-x     "auto"
+                   :white-space    "nowrap"}}
+     (for [{:keys [title key]}
+           (->> [:a :a# :b :c :c# :d :d# :e :f :f# :g :g#]
+                (map (fn [x] {:key   x
+                              :title (-> x name str/capitalize)})))]
+       ^{:key title}
+       [:a {:style {:margin-right "10px"}
+            :href  (rfe/href current-route-name (assoc path-params :key-of key) query-params)}
+        [:button
+         {:disabled (= key-of key)}
+         title]])]))
+
+(defn instrument-selection []
+  (let [current-route                        @(re-frame/subscribe [:current-route])
+        {:keys [instrument] :as path-params} @(re-frame/subscribe [:path-params])
+        query-params                         @(re-frame/subscribe [:query-params])
+        current-route-name                   @(re-frame/subscribe [:current-route-name])
+        key-of                               @(re-frame/subscribe [:key-of])
+        instruments                          music-theory/instruments]
+    [:div {:style {:display        "flow"
+                   :flow-direction "column"
+                   :overflow-x     "auto"
+                   :white-space    "nowrap"}}
+     (for [{:keys [id text] :as m} instruments]
+       ^{:key (str "instrument-selection-" id)}
+       [:a {:style {:margin-right "10px"}
+            :href  (rfe/href
+                    current-route-name
+                    (assoc path-params :instrument id)
+                    query-params)}
+         [:button
+          {:disabled (= instrument id)}
+          text]])]))
+
 (defn instrument-view-fretboard-pattern
   [{pattern :fretboard-pattern/pattern :as definition}
    instrument

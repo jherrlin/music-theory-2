@@ -15,28 +15,49 @@
 (defn chord-component [deps]
   (let [{:keys [id chord instrument] :as path-params}
         @(re-frame/subscribe [:path-params])
-        _                (def path-params path-params)
-        _                (def id id)
-        query-params     @(re-frame/subscribe [:query-params])
-        _                (def query-params query-params)
-        fretboard-matrix @(re-frame/subscribe [:fretboard-matrix])
-        _                (def fretboard-matrix fretboard-matrix)
-        chord-definition (music-theory/chord chord)
-        _                (def chord-definition chord-definition)
-        instrument'      (music-theory/instrument instrument)
-        _                (def instrument' instrument')
-        chord-patterns   (music-theory/chord-patterns-belonging-to chord instrument)
-        _                (def chord-patterns chord-patterns)]
+        _                                  (def path-params path-params)
+        _                                  (def id id)
+        query-params                       @(re-frame/subscribe [:query-params])
+        _                                  (def query-params query-params)
+        fretboard-matrix                   @(re-frame/subscribe [:fretboard-matrix])
+        _                                  (def fretboard-matrix fretboard-matrix)
+        chord-definition                   (music-theory/chord chord)
+        _                                  (def chord-definition chord-definition)
+        instrument'                        (music-theory/instrument instrument)
+        _                                  (def instrument' instrument')
+        chord-patterns                     (music-theory/chord-patterns-belonging-to chord instrument)
+        _                                  (def chord-patterns chord-patterns)
+        chord-triad-patterns               (music-theory/chord-pattern-triads-belonging-to chord instrument)
+        _                                  (def chord-triad-patterns chord-triad-patterns)
+        {chord-intervals :chord/intervals} (music-theory/chord chord)]
     [:<>
+     [common/menu]
+     [common/instrument-selection]
+     [common/chord-selection]
+     [common/key-selection]
+
      [common/definition-view-detailed
       chord-definition instrument' path-params query-params]
      [common/instrument-view
       chord-definition instrument' path-params query-params deps]
 
+     (when (seq chord-patterns)
+       [:h2 "Chord patterns"])
+
      (for [{:keys [id] :as pattern-definitions} chord-patterns]
        ^{:key (str id)}
        [common/instrument-view
-        pattern-definitions instrument' path-params query-params deps])]))
+        pattern-definitions instrument' path-params query-params deps])
+
+     (when (seq chord-triad-patterns)
+       [:h2 "Triads"])
+
+     (for [{:keys [id] :as pattern-definitions} chord-triad-patterns]
+       ^{:key (str id)}
+       [common/instrument-view
+        pattern-definitions instrument' path-params query-params deps])
+
+     [common/scales-to-chord path-params query-params chord-intervals]]))
 
 (defn routes [deps]
   (let [route-name :chord]

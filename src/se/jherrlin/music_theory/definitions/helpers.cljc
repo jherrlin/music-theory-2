@@ -151,4 +151,4 @@
                      meta-data)]
     (if (models.fretboard-pattern/validate-fretboard-pattern? pattern*)
       pattern*
-      (throw (ex-info "Scale pattern is not valid" (models.fretboard-pattern/explain-fretboard-pattern pattern*))))))
+      (throw (ex-info "Chord pattern is not valid" (models.fretboard-pattern/explain-fretboard-pattern pattern*))))))

@@ -22,7 +22,9 @@
   )
 
 (defn chords []
-  (get @definitions :chords))
+  (->> (get @definitions :chords)
+       (vals)
+       (sort-by :chord/order)))
 
 (defn chord [k]
   (get-in @definitions [:chords k]))
@@ -34,6 +36,7 @@
 (defn scales
   []
   (->> (get @definitions :scales)
+       (vals)
        (sort-by :scale/order)))
 
 (defn scale
@@ -50,10 +53,23 @@
 (defn chord-patterns-belonging-to [belongs-to instrument]
   (->> (get @definitions :chord-patterns)
        (vals)
-       (filter (fn [{bt :fretboard-pattern/belongs-to
-                     t  :fretboard-pattern/tuning}]
+       (filter (fn [{bt     :fretboard-pattern/belongs-to
+                     t      :fretboard-pattern/tuning
+                     triad? :fretboard-pattern/triad?}]
                  (and (= bt belongs-to)
-                      (= t instrument))))
+                      (= t instrument)
+                      (false? triad?))))
+       (sort-by :fretboard-pattern/order)))
+
+(defn chord-pattern-triads-belonging-to [belongs-to instrument]
+  (->> (get @definitions :chord-patterns)
+       (vals)
+       (filter (fn [{bt     :fretboard-pattern/belongs-to
+                     t      :fretboard-pattern/tuning
+                     triad? :fretboard-pattern/triad?}]
+                 (and (= bt belongs-to)
+                      (= t instrument)
+                      triad?)))
        (sort-by :fretboard-pattern/order)))
 
 (defn scale-patterns []

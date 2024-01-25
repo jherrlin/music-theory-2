@@ -21,7 +21,7 @@
         ;;               (play-tone :c 8))}
         ;;  "Play"]
 
-        [se.jherrlin.music-theory.webapp.views.menus/select-instrument]
+        ;; [se.jherrlin.music-theory.webapp.views.menus/select-instrument]
 
         [:div {:style {:height      "100%"
                        :overflow-y  "auto"
