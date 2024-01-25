@@ -50,14 +50,22 @@
 (defn chord-pattern [id]
   (get-in @definitions [:chord-patterns id]))
 
-(defn scale-patterns-for-scale-and-instrument [scale instrument]
+(defn scale-patterns-for-scale-and-instrument
+  [scale-names instrument]
+  {:pre [(set? scale-names)]}
   (->> (get @definitions :scale-patterns)
        (vals)
        (filter (fn [{bt :fretboard-pattern/belongs-to
                      t  :fretboard-pattern/tuning}]
-                 (and (= bt scale)
+                 (and (scale-names bt)
                       (= t instrument))))
        (sort-by :fretboard-pattern/order)))
+
+(comment
+  (scale-patterns-for-scale-and-instrument
+   #{:natural-minor :minor :aeolian}
+   :guitar)
+  )
 
 (defn chord-patterns-belonging-to [belongs-to instrument]
   (->> (get @definitions :chord-patterns)

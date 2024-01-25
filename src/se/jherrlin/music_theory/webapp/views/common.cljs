@@ -258,11 +258,6 @@
    [:h2 "Not implemented"]
    [debug-view definition]])
 
-
-
-(defmulti definition-view-detailed (fn [definition instrument path-params query-params]
-                            (get definition :type)))
-
 (defn intervals-to-tones [intervals tones]
   [:pre {:style {:overflow-x "auto"}}
    (->> (map
@@ -314,7 +309,7 @@
                  :display         "inline-flex"
                  :justify-content :center
                  :align-items     :center}}
-   [:h2 (str "Chord: " (-> key-of name str/capitalize) suffix)]
+   [:h3 (str "Chord: " (-> key-of name str/capitalize) suffix)]
    (when explanation
      [:p {:style {:margin-left "2rem"}}
       (str "(" explanation ")")])])
@@ -332,7 +327,14 @@
 (defn instrument-description [description]
   [:p description])
 
+(defn scale-names [names]
+  (->> #{:natural-minor :minor :aeolian}
+       (map (fn [n]
+              (-> n name (str/replace "-" " ") str/capitalize)))
+       (str/join " / ")))
 
+(defmulti definition-view-detailed (fn [definition instrument path-params query-params]
+                                     (get definition :type)))
 
 ;; http://localhost:8080/#/focus/guitar/c/1cd72972-ca33-4962-871c-1551b7ea5244
 (defmethod definition-view-detailed [:chord]
@@ -344,8 +346,7 @@
    {:keys [key-of] :as path-params}
    {:keys [as-intervals] :as query-params}]
   (let [intervals      (get definition :chord/intervals)
-        interval-tones (music-theory/interval-tones intervals key-of)
-        interval->tone (music-theory/intervals->tones intervals interval-tones)]
+        interval-tones (music-theory/interval-tones intervals key-of)]
     [:<>
      [instrument-description instrument-description']
      [instrument-tuning tuning]
@@ -361,11 +362,26 @@
    [debug-view instrument]])
 
 (defmethod definition-view-detailed [:scale]
-  [definition instrument path-params query-params]
-  [:<>
-   [:h2 "[:scale]"]
-   [debug-view definition]
-   [debug-view instrument]])
+  [{scale-names' :scale/scale-names
+    intervals    :scale/intervals
+    :as          definition}
+   {instrument-description' :description
+    :keys                   [tuning] :as instrument}
+   {:keys [key-of] :as path-params}
+   query-params]
+  (let [_              (def definition definition)
+        _              (def instrument instrument)
+        _              (def path-params path-params)
+        _              (def query-params query-params)
+        interval-tones (music-theory/interval-tones intervals key-of)]
+    [:<>
+     [:h3 (str "Scale: " (scale-names scale-names'))]
+     [instrument-description instrument-description']
+     [instrument-tuning tuning]
+     [intervals-to-tones intervals interval-tones]
+     [highlight-tones interval-tones key-of]
+     #_[debug-view definition]
+     #_[debug-view instrument]]))
 
 (defmethod definition-view-detailed [:scale :pattern]
   [definition instrument path-params query-params]

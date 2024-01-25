@@ -22,9 +22,13 @@
         _                                             (def scale-definition scale-definition)
         instrument'                                   (music-theory/instrument instrument)
         _                                             (def instrument' instrument')
-        scale-patterns                                (music-theory/scale-patterns-for-scale-and-instrument scale instrument)
+        {scale-intervals :scale/intervals
+         scale-names     :scale/scale-names
+         :as             scale'}                      (music-theory/scale scale)
+        _                                             (def scale' scale')
+        scale-patterns                                (music-theory/scale-patterns-for-scale-and-instrument scale-names instrument)
         _                                             (def scale-patterns scale-patterns)
-        {scale-intervals :scale/intervals}            (music-theory/scale scale)]
+        ]
     [:<>
      [common/menu]
      [common/instrument-selection]
