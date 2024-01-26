@@ -13,11 +13,11 @@
 
 
 (defn chord-component [deps]
-  (let [{:keys [id chord instrument] :as path-params}
+  (let [{:keys [chord instrument] :as path-params}
         @(re-frame/subscribe [:path-params])
         query-params                            @(re-frame/subscribe [:query-params])
         fretboard-matrix                        @(re-frame/subscribe [:fretboard-matrix])
-        chord-definition                        (music-theory/chord chord)
+        {:keys [id] :as chord-definition}       (music-theory/chord chord)
         {instrument-type :type :as instrument'} (music-theory/instrument instrument)
         chord-patterns                          (music-theory/chord-patterns-belonging-to chord instrument)
         chord-triad-patterns                    (music-theory/chord-pattern-triads-belonging-to chord instrument)

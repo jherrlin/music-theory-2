@@ -51,11 +51,11 @@
         {:disabled (= current-route-name :harmonizations)}
         "Harmonizations"]]
 
-     #_[:a {:style {:margin-right "10px"}
-            :href  (rfe/href :table path-params query-params)}
-       [:button
-        {:disabled (= current-route-name :table)}
-        "Table"]]
+     [:a {:style {:margin-right "10px"}
+          :href  (rfe/href :table path-params query-params)}
+      [:button
+       {:disabled (= current-route-name :table)}
+       "Table"]]
 
      #_[:a {:style {:margin-right "10px"}
             :href  (rfe/href :bookmarks path-params query-params)}
@@ -299,14 +299,13 @@
                           key-of
                           pattern
                           fretboard-matrix)]
-    [:<>
-     [instrument-view-fretboard-pattern
-      {:definition       definition
-       :instrument       instrument
-       :path-params      path-params
-       :query-params     query-params
-       :deps             deps
-       :fretboard-matrix fretboard'}]]))
+    [instrument-view-fretboard-pattern
+     {:definition       definition
+      :instrument       instrument
+      :path-params      path-params
+      :query-params     query-params
+      :deps             deps
+      :fretboard-matrix fretboard'}]))
 
 (defmethod instrument-view :default
   [definition instrument path-params query-params deps]

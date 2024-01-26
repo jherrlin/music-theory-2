@@ -92,3 +92,5 @@
        (filter
         (fn [{chord-intervals :chord/intervals}]
           (set/subset? (set chord-intervals) (set scale-intervals))))))
+
+(def tones-by-key-and-intervals utils/tones-by-key-and-intervals)
