@@ -86,6 +86,23 @@
                                       :start-index 0}
                                      {:tone        :d
                                       :octave      4
+                                      :start-index 0}]}
+   :mandocello        {:id          :mandocello
+                       :text        "Mandocello"
+                       :description "Standard mandocello tuning"
+                       :type        :fretboard
+                       :order       6
+                       :tuning      [{:tone        :c
+                                      :octave      2
+                                      :start-index 0}
+                                     {:tone        :g
+                                      :octave      2
+                                      :start-index 0}
+                                     {:tone        :d
+                                      :octave      3
+                                      :start-index 0}
+                                     {:tone        :a
+                                      :octave      3
                                       :start-index 0}]}})
 
 (defn instrument
