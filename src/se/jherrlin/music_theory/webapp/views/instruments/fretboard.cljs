@@ -78,7 +78,6 @@
                            grey-fn        (constantly false)
                            dark-orange-fn (constantly false)
                            on-click       (fn [{:keys [x y tone out root?] :as m'}]
-                                            (def m' m')
                                             (js/console.log m'))}
                     :as   m}]
   (let [min-x (->> matrix first (map :x) (apply min))

@@ -784,25 +784,6 @@
        (partition-all width)
        (mapv #(mapv identity %))))
 
-(defn scales-to-chord [scales chord-indexes]
-  (->> scales
-       (vals)
-       (filter
-        (fn [{:scale/keys [indexes]}]
-          (set/subset? (set chord-indexes) (set indexes))))))
-
-(comment
-  (scales-to-chord
-   @v4.se.jherrlin.music-theory.definitions/scales
-   [0 4 7]))
-
-(defn chords-to-scale [chords scale-indexes]
-  (->> chords
-       (vals)
-       (sort-by :chord/order)
-       (filter (fn [{:chord/keys [indexes]}]
-                 (set/subset? (set indexes) (set scale-indexes))))))
-
 (comment
   (chords-to-scale
    @v4.se.jherrlin.music-theory.definitions/chords

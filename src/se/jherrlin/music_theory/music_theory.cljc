@@ -86,3 +86,9 @@
        (filter
         (fn [{scale-intervals :scale/intervals}]
           (set/subset? (set chord-intervals) (set scale-intervals))))))
+
+(defn chords-to-scale [chords scale-intervals]
+  (->> chords
+       (filter
+        (fn [{chord-intervals :chord/intervals}]
+          (set/subset? (set chord-intervals) (set scale-intervals))))))

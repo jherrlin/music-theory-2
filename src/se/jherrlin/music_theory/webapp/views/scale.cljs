@@ -14,44 +14,53 @@
 
 (defn scale-component [deps]
   (let [{:keys [id scale instrument] :as path-params} @(re-frame/subscribe [:path-params])
-        _                                             (def scale scale)
-        _                                             (def instrument instrument)
         query-params                                  @(re-frame/subscribe [:query-params])
         fretboard-matrix                              @(re-frame/subscribe [:fretboard-matrix])
-        scale-definition                              (music-theory/scale scale)
-        _                                             (def scale-definition scale-definition)
-        instrument'                                   (music-theory/instrument instrument)
-        _                                             (def instrument' instrument')
+        {instrument-type :type :as instrument'}       (music-theory/instrument instrument)
         {scale-intervals :scale/intervals
          scale-names     :scale/scale-names
          :as             scale'}                      (music-theory/scale scale)
-        _                                             (def scale' scale')
-        scale-patterns                                (music-theory/scale-patterns-for-scale-and-instrument scale-names instrument)
-        _                                             (def scale-patterns scale-patterns)
-        ]
+        _                                             (def scale-intervals scale-intervals)
+        scale-patterns                                (music-theory/scale-patterns-for-scale-and-instrument scale-names instrument)]
     [:<>
      [common/menu]
      [:br]
      [common/instrument-selection]
      [:br]
+     [common/instrument-details instrument']
+     [:br]
+     [:br]
      [common/key-selection]
+     [:br]
      [:br]
      [common/scale-selection]
      [:br]
-
+     [:br]
+     [common/settings
+      {:as-text?        (= instrument-type :fretboard)
+       :nr-of-frets?    (= instrument-type :fretboard)
+       :trim-fretboard? (= instrument-type :fretboard)
+       :nr-of-octavs?   (= instrument-type :keyboard)}]
+     [:br]
      [common/definition-view-detailed
-      scale-definition instrument' path-params query-params]
+      scale' instrument' path-params query-params]
+     [:br]
+     [:br]
      [common/instrument-view
-      scale-definition instrument' path-params query-params deps]
+      scale' instrument' path-params query-params deps]
 
      (when (seq scale-patterns)
        [:<>
         [:h2 "Scale patterns"]
         (for [{:keys [id] :as pattern-definitions} scale-patterns]
           ^{:key (str "scale-patterns-" id)}
-          [common/instrument-view
-           pattern-definitions instrument' path-params query-params deps])])]))
+          [:<>
+           [common/instrument-view
+            pattern-definitions instrument' path-params query-params deps]
+           [:br]
+           [:br]])])
 
+     [common/chords-to-scale path-params query-params scale-intervals]]))
 
 (defn routes [deps]
   (let [route-name :scale]

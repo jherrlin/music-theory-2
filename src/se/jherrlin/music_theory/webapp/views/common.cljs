@@ -119,6 +119,20 @@
                  (map (comp str/capitalize #(str/replace % "-" "") name))
                  (str/join " / "))]]])])))
 
+(defn chords-to-scale [path-params query-params scale-intervals]
+  (let [cts (music-theory/chords-to-scale music-theory/chords scale-intervals)]
+    (when (seq cts)
+      [:<>
+       (for [{:keys          [id]
+              chord-name     :chord/chord-name
+              chord-name-str :chord/chord-name-str
+              :as            chord} cts]
+         ^{:key (str "chords-to-scale-" id)}
+         [:div {:style {:margin-right "10px" :display "inline"}}
+          [:a {:href
+               (rfe/href :scale (assoc path-params :chord chord-name) query-params)}
+           [:button (str/capitalize chord-name-str)]]])])))
+
 (defn key-selection []
   (let [current-route      @(re-frame/subscribe [:current-route])
         path-params        @(re-frame/subscribe [:path-params])
@@ -224,14 +238,12 @@
   (fn [definition instrument path-params query-params deps]
     [(get instrument :type) (get definition :type)]))
 
-;; http://localhost:8080/#/focus/guitar/c/1cd72972-ca33-4962-871c-1551b7ea5244
 (defmethod instrument-view [:fretboard [:chord]]
   [definition instrument path-params query-params deps]
   (let [intervals (get definition :chord/intervals)]
     [instrument-view-fretboard-chord-and-scale
      definition instrument path-params query-params intervals deps]))
 
-;; http://localhost:8080/#/focus/guitar/c/4db09dd6-9a44-4a1b-8c0f-6ed82796c8b5
 (defmethod instrument-view [:fretboard [:chord :pattern]]
   [{pattern :fretboard-pattern/pattern :as definition}
    instrument
@@ -262,14 +274,12 @@
                      (play-tone pattern-found-tone octave)))}
       "Play"]]))
 
-;; http://localhost:8080/#/focus/guitar/e/3df70e72-dd4c-4e91-85b5-13de2bb062ce
 (defmethod instrument-view [:fretboard [:scale]]
   [definition instrument path-params query-params deps]
   (let [intervals (get definition :scale/intervals)]
     [instrument-view-fretboard-chord-and-scale
      definition instrument path-params query-params intervals deps]))
 
-;; http://localhost:8080/#/focus/guitar/c/dbc69a09-b3dc-4bfa-a4df-6dd767b65d25
 (defmethod instrument-view [:fretboard [:scale :pattern]]
   [{pattern :fretboard-pattern/pattern :as definition}
    instrument
@@ -389,7 +399,6 @@
 (defmulti definition-view-detailed (fn [definition instrument path-params query-params]
                                      (get definition :type)))
 
-;; http://localhost:8080/#/focus/guitar/c/1cd72972-ca33-4962-871c-1551b7ea5244
 (defmethod definition-view-detailed [:chord]
   [{suffix      :chord/suffix
     explanation :chord/explanation
@@ -422,11 +431,10 @@
    query-params]
   (let [interval-tones (music-theory/interval-tones intervals key-of)]
     [:<>
-     [:h3 (str "Scale: " (scale-names scale-names'))]
+     [:h1 (str "Scale: " (scale-names scale-names'))]
+     [:br]
      [intervals-to-tones intervals interval-tones]
-     [highlight-tones interval-tones key-of]
-     #_[debug-view definition]
-     #_[debug-view instrument]]))
+     [highlight-tones interval-tones key-of]]))
 
 (defmethod definition-view-detailed [:scale :pattern]
   [definition instrument path-params query-params]
@@ -471,10 +479,12 @@
                  :type     "checkbox" :id "as-text-checkbox" :name "as-text-checkbox"}]
         [:label {:for "as-text-checkbox"} "Fretboard in text?"]])
 
+     ;; TODO: trim fretboard doesnt work correctly.
      (when trim-fretboard?
        [:div {:style {:margin-left "1rem"}}
         [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :trim-fretboard (not trim-fretboard))]])
                  :checked  trim-fretboard
+                 :disabled true
                  :type     "checkbox" :id "trim-fretboard-checkbox" :name "trim-fretboard-checkbox"}]
         [:label {:for "trim-fretboard-checkbox"} "Trim fretboard?"]])
 
