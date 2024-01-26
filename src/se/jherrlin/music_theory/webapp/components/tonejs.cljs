@@ -7,8 +7,9 @@
 
 
 (defn play-tone [tone octave]
+  {:pre [(string? tone)]}
   (let [synth (.toDestination (tone/Synth.))
-        tone  (str (-> tone name str/capitalize) octave)]
+        tone  (str tone octave)]
     (timbre/debug "Playing tone" tone)
     (.triggerAttackRelease synth tone "8n")))
 

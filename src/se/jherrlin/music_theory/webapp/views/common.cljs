@@ -162,31 +162,21 @@
           {:disabled (= instrument id)}
           text]])]))
 
+
+
 (defn instrument-view-fretboard-pattern
-  [{pattern :fretboard-pattern/pattern :as definition}
-   instrument
-   {:keys [key-of] :as path-params}
-   {:keys [as-intervals trim-fretboard] :as query-params}
-   {:keys [play-tone] :as deps}]
-  (let [fretboard-matrix @(re-frame/subscribe [:fretboard-matrix])
-        matrix           ((if as-intervals
-                            music-theory/pattern-with-intervals
-                            music-theory/pattern-with-tones)
-                          key-of
-                          pattern
-                          fretboard-matrix)
-        fretboard'       ((if as-intervals
-                            music-theory/pattern-with-intervals
-                            music-theory/pattern-with-tones)
-                          key-of
-                          pattern
-                          fretboard-matrix)]
+  [{:keys [definition instrument path-params query-params deps
+           fretboard-matrix]}]
+  (let [{pattern :fretboard-pattern/pattern}  definition
+        {:keys [key-of]}                      path-params
+        {:keys [as-intervals trim-fretboard]} query-params
+        {:keys [play-tone]}                   deps]
     [:<>
      [instruments-fretboard/styled-view
       {:on-click       (fn [{:keys [tone-str octave]}]
                          (play-tone (str tone-str octave)))
        :matrix
-       (cond->> fretboard'
+       (cond->> fretboard-matrix
          trim-fretboard (music-theory/trim-matrix #(every? nil? (map :out %))))
        :dark-orange-fn (fn [{:keys [root?] :as m}]
                          (and root? (get m :pattern-found-tone)))
@@ -239,8 +229,35 @@
    {:keys [key-of] :as path-params}
    {:keys [as-intervals trim-fretboard] :as query-params}
    {:keys [play-tone] :as deps}]
-  [:<>
-   [instrument-view-fretboard-pattern definition instrument path-params query-params deps]])
+  (let [fretboard-matrix @(re-frame/subscribe [:fretboard-matrix])
+        matrix           ((if as-intervals
+                            music-theory/pattern-with-intervals
+                            music-theory/pattern-with-tones)
+                          key-of
+                          pattern
+                          fretboard-matrix)
+        fretboard'       ((if as-intervals
+                            music-theory/pattern-with-intervals
+                            music-theory/pattern-with-tones)
+                          key-of
+                          pattern
+                          fretboard-matrix)]
+    [:<>
+     [instrument-view-fretboard-pattern
+      {:definition       definition
+       :instrument       instrument
+       :path-params      path-params
+       :query-params     query-params
+       :deps             deps
+       :fretboard-matrix fretboard'}]
+     [:button
+      {:on-click (fn [_]
+                   (doseq [{:keys [octave pattern-found-tone]} (->> fretboard'
+                                                                    (apply concat)
+                                                                    (filter :match?)
+                                                                    (sort-by :y #(compare %2 %1)))]
+                     (play-tone pattern-found-tone octave)))}
+      "Play"]]))
 
 ;; http://localhost:8080/#/focus/guitar/e/3df70e72-dd4c-4e91-85b5-13de2bb062ce
 (defmethod instrument-view [:fretboard [:scale]]
@@ -255,8 +272,28 @@
    instrument
    {:keys [key-of] :as path-params}
    {:keys [as-intervals trim-fretboard] :as query-params}
-   deps]
-  [instrument-view-fretboard-pattern definition instrument path-params query-params])
+   {:keys [play-tone] :as deps}]
+  (let [fretboard-matrix @(re-frame/subscribe [:fretboard-matrix])
+        matrix           ((if as-intervals
+                            music-theory/pattern-with-intervals
+                            music-theory/pattern-with-tones)
+                          key-of
+                          pattern
+                          fretboard-matrix)
+        fretboard'       ((if as-intervals
+                            music-theory/pattern-with-intervals
+                            music-theory/pattern-with-tones)
+                          key-of
+                          pattern
+                          fretboard-matrix)]
+    [:<>
+     [instrument-view-fretboard-pattern
+      {:definition       definition
+       :instrument       instrument
+       :path-params      path-params
+       :query-params     query-params
+       :deps             deps
+       :fretboard-matrix fretboard'}]]))
 
 (defmethod instrument-view :default
   [definition instrument path-params query-params deps]
