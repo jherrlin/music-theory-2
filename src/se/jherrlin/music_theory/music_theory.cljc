@@ -80,6 +80,9 @@
 
 (defn scales-to-chord [scales chord-intervals]
   (->> scales
+       (map (juxt :scale/scale-names identity))
+       (into {})
+       (vals)
        (filter
         (fn [{scale-intervals :scale/intervals}]
           (set/subset? (set chord-intervals) (set scale-intervals))))))
