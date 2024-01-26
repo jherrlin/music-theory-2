@@ -241,7 +241,7 @@
   [definition instrument path-params query-params deps]
   (let [intervals (get definition :scale/intervals)]
     [instrument-view-fretboard-chord-and-scale
-     definition instrument path-params query-params intervals]))
+     definition instrument path-params query-params intervals deps]))
 
 ;; http://localhost:8080/#/focus/guitar/c/dbc69a09-b3dc-4bfa-a4df-6dd767b65d25
 (defmethod instrument-view [:fretboard [:scale :pattern]]
@@ -403,15 +403,7 @@
     :as   m}]
   (let [current-route-name                                                                                   @(re-frame/subscribe [:current-route-name])
         path-params                                                                                          @(re-frame/subscribe [:path-params])
-        _                                                                                                    (def path-params path-params)
-        {:keys [trim-fretboard nr-of-frets as-text nr-of-octavs as-intervals nr-of-octavs] :as query-params} @(re-frame/subscribe [:query-params])
-        _                                                                                                    (def query-params query-params)
-        _ (def current-route-name current-route-name)
-        _ (def as-intervals as-intervals)
-        _ (def nr-of-octavs nr-of-octavs)
-        _ (def as-text as-text)
-        _ (def nr-of-frets nr-of-frets)
-        _ (def trim-fretboard trim-fretboard)]
+        {:keys [trim-fretboard nr-of-frets as-text nr-of-octavs as-intervals nr-of-octavs] :as query-params} @(re-frame/subscribe [:query-params])]
     [:div {:style {:display "flex"}}
      (when as-intervals?
        [:div

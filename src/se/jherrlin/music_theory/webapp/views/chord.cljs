@@ -24,9 +24,13 @@
         {chord-intervals :chord/intervals}      (music-theory/chord chord)]
     [:<>
      [common/menu]
+     [:br]
      [common/instrument-selection]
-     [common/chord-selection]
+     [:br]
      [common/key-selection]
+     [:br]
+     [common/chord-selection]
+     [:br]
 
      [common/settings
       {:as-text?        (= instrument-type :fretboard)

@@ -31,9 +31,13 @@
         ]
     [:<>
      [common/menu]
+     [:br]
      [common/instrument-selection]
-     [common/scale-selection]
+     [:br]
      [common/key-selection]
+     [:br]
+     [common/scale-selection]
+     [:br]
 
      [common/definition-view-detailed
       scale-definition instrument' path-params query-params]
