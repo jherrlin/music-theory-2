@@ -43,4 +43,4 @@ workflows:
       - build-and-commit:
           filters:
             branches:
-              only: master
+              only: main
