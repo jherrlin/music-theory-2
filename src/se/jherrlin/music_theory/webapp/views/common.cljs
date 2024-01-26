@@ -355,7 +355,7 @@
                  :display         "inline-flex"
                  :justify-content :center
                  :align-items     :center}}
-   [:h3 (str "Chord: " (-> key-of name str/capitalize) suffix)]
+   [:h1 (str "Chord: " (-> key-of name str/capitalize) suffix)]
    (when explanation
      [:p {:style {:margin-left "2rem"}}
       (str "(" explanation ")")])])
@@ -379,6 +379,13 @@
               (-> n name (str/replace "-" " ") str/capitalize)))
        (str/join " / ")))
 
+(defn instrument-details
+  [{instrument-description' :description
+    :keys                   [tuning] :as instrument}]
+  [:<>
+   [instrument-description instrument-description']
+   [instrument-tuning tuning]])
+
 (defmulti definition-view-detailed (fn [definition instrument path-params query-params]
                                      (get definition :type)))
 
@@ -394,11 +401,9 @@
   (let [intervals      (get definition :chord/intervals)
         interval-tones (music-theory/interval-tones intervals key-of)]
     [:<>
-     [instrument-description instrument-description']
-     [instrument-tuning tuning]
+     [chord-name key-of suffix explanation]
      [intervals-to-tones intervals interval-tones]
-     [highlight-tones interval-tones key-of]
-     [chord-name key-of suffix explanation]]))
+     [highlight-tones interval-tones key-of]]))
 
 (defmethod definition-view-detailed [:chord :pattern]
   [definition instrument path-params query-params]
@@ -415,15 +420,9 @@
     :keys                   [tuning] :as instrument}
    {:keys [key-of] :as path-params}
    query-params]
-  (let [_              (def definition definition)
-        _              (def instrument instrument)
-        _              (def path-params path-params)
-        _              (def query-params query-params)
-        interval-tones (music-theory/interval-tones intervals key-of)]
+  (let [interval-tones (music-theory/interval-tones intervals key-of)]
     [:<>
      [:h3 (str "Scale: " (scale-names scale-names'))]
-     [instrument-description instrument-description']
-     [instrument-tuning tuning]
      [intervals-to-tones intervals interval-tones]
      [highlight-tones interval-tones key-of]
      #_[debug-view definition]

@@ -27,19 +27,25 @@
      [:br]
      [common/instrument-selection]
      [:br]
+     [common/instrument-details instrument']
+     [:br]
+     [:br]
      [common/key-selection]
+     [:br]
      [:br]
      [common/chord-selection]
      [:br]
-
+     [:br]
      [common/settings
       {:as-text?        (= instrument-type :fretboard)
        :nr-of-frets?    (= instrument-type :fretboard)
        :trim-fretboard? (= instrument-type :fretboard)
        :nr-of-octavs?   (= instrument-type :keyboard)}]
-
+     [:br]
      [common/definition-view-detailed
       chord-definition instrument' path-params query-params]
+     [:br]
+     [:br]
      [common/instrument-view
       chord-definition instrument' path-params query-params deps]
 
@@ -48,17 +54,23 @@
 
      (for [{:keys [id] :as pattern-definitions} chord-patterns]
        ^{:key (str "chord-patterns-" id)}
-       [common/instrument-view
-        pattern-definitions instrument' path-params query-params deps])
+       [:<>
+        [common/instrument-view
+         pattern-definitions instrument' path-params query-params deps]
+        [:br]
+        [:br]])
 
      (when (seq chord-triad-patterns)
        [:h2 "Triads"])
 
      (for [{:keys [id] :as pattern-definitions} chord-triad-patterns]
        ^{:key (str "chord-triad-patterns-" id)}
-       [common/instrument-view
-        pattern-definitions instrument' path-params query-params deps])
-
+       [:<>
+        [common/instrument-view
+         pattern-definitions instrument' path-params query-params deps]
+        [:br]
+        [:br]])
+     [:br]
      [common/scales-to-chord path-params query-params chord-intervals]]))
 
 (defn routes [deps]
