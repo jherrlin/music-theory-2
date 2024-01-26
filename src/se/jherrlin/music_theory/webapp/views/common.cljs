@@ -167,7 +167,8 @@
 (defn instrument-view-fretboard-pattern
   [{:keys [definition instrument path-params query-params deps
            fretboard-matrix]}]
-  (let [{pattern :fretboard-pattern/pattern}              definition
+  (let [{pattern :fretboard-pattern/pattern
+         id      :id}                                     definition
         {:keys [key-of]}                                  path-params
         {:keys [as-intervals trim-fretboard
                 surrounding-intervals surrounding-tones]} query-params
@@ -177,7 +178,8 @@
           trim-fretboard (music-theory/trim-matrix #(every? nil? (map :out %))))]
     [:<>
      [instruments-fretboard/styled-view
-      (cond-> {:on-click       (fn [{:keys [tone-str octave]}]
+      (cond-> {:id             id
+               :on-click       (fn [{:keys [tone-str octave]}]
                                  (play-tone (str tone-str octave)))
                :matrix         fretboard-matrix'
                :dark-orange-fn (fn [{:keys [root?] :as m}]
@@ -187,7 +189,8 @@
         surrounding-tones     (assoc :grey-fn :tone-str))]]))
 
 (defn instrument-view-fretboard-chord-and-scale
-  [definition instrument
+  [{id :id :as definition}
+   instrument
    {:keys [key-of] :as path-params}
    {:keys
     [as-intervals trim-fretboard surrounding-intervals surrounding-tones]
@@ -206,10 +209,9 @@
         fretboard-matrix' (cond->> fretboard
                             trim-fretboard (music-theory/trim-matrix
                                             #(every? nil? (map :out %))))]
-    (def fretboard-matrix fretboard-matrix)
-    (def fretboard-matrix' fretboard-matrix')
     [instruments-fretboard/styled-view
-     (cond-> {:on-click       (fn [{:keys [tone-str octave]}]
+     (cond-> {:id            id
+              :on-click       (fn [{:keys [tone-str octave]}]
                                 (play-tone (str tone-str octave)))
               :matrix         fretboard-matrix'
               :dark-orange-fn (fn [{:keys [root?] :as m}]

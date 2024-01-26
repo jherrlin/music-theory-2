@@ -68,7 +68,9 @@
     (or (get fret :blank?)
         (nil? fret))))
 
-(defn styled-view [{:keys [on-click matrix
+(defn styled-view [{:keys [id
+                           matrix
+                           on-click
                            orange-fn
                            grey-fn
                            dark-orange-fn]
@@ -83,17 +85,17 @@
         max-x (->> matrix first (map :x) (apply max))]
     [:div {:style {:overflow-x "auto"}}
      [:div {:style {:display "flex"}}
-      (for [{:keys [x]} (-> matrix first)]
-        ^{:key (str "fretboard-fret-" x)}
+      (for [{:keys [x y]} (-> matrix first)]
+        ^{:key (str "fretboard-fret-nr-" x id)}
         [fret-number x])]
-     (for [[idx fretboard-string] (map-indexed vector matrix)]
-       ^{:key (str "fretboard-string-" idx)}
+     (for [fretboard-string matrix]
+       ^{:key (str fretboard-string id)}
        [:div {:style {:display "flex"}}
         (for [{:keys [x y tone out root? blank?] :as m} fretboard-string]
-          ^{:key (str "fretboard-string-" x "-" y)}
           (let [orange-fn'      (orange-fn m)
                 dark-orange-fn' (dark-orange-fn m)
                 grey-fn'        (grey-fn m)]
+            ^{:key (str "fret-" x y id)}
             [fret
              {:blank?           blank?
               :y                (/ y 10)
