@@ -478,24 +478,34 @@
         [:label {:for "trim-fretboard-checkbox"} "Trim fretboard?"]])
 
      (when surrounding-intervals?
-       (let [id    "surrounding-intervals-checkbox"
-             label "Surrounding intervals?"
-             key   :surrounding-intervals
-             value surrounding-intervals]
+       (let [id        "surrounding-intervals-checkbox"
+             label     "Surrounding intervals?"
+             key       :surrounding-intervals
+             old-value surrounding-intervals
+             new-value (not surrounding-intervals)]
          [:div {:style {:margin-left "1rem"}}
-          [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params key (not value))]])
-                   :checked  value
+          [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params
+                                                         (assoc query-params key new-value
+                                                                :surrounding-tones (if new-value
+                                                                                     false
+                                                                                     surrounding-tones))]])
+                   :checked  old-value
                    :type     "checkbox" :id id :name id}]
           [:label {:for id} label]]))
 
      (when surrounding-tones?
-       (let [id    "surrounding-tones-checkbox"
-             label "Surrounding tones?"
-             key   :surrounding-tones
-             value surrounding-tones]
+       (let [id        "surrounding-tones-checkbox"
+             label     "Surrounding tones?"
+             key       :surrounding-tones
+             old-value surrounding-tones
+             new-value (not surrounding-tones)]
          [:div {:style {:margin-left "1rem"}}
-          [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params key (not value))]])
-                   :checked  surrounding-tones
+          [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params
+                                                         (assoc query-params key new-value
+                                                                :surrounding-intervals (if new-value
+                                                                                         false
+                                                                                         surrounding-intervals))]])
+                   :checked  old-value
                    :type     "checkbox" :id id :name id}]
           [:label {:for id} label]]))
 

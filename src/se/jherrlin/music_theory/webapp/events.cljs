@@ -15,7 +15,6 @@
 (defn merge' [db [k m]]
   (assoc db k (merge (get db k) m)))
 
-
 (def init-db
   {:current-route      nil
    :current-route-name :home
@@ -56,7 +55,6 @@
    {:n :query-params
     :e merge'
     :s (fn [db [k]] (get db k))}
-
    {:n :key-of
     :s (fn [db [k]] (get-in db [:path-params k]))}
    {:n :as-intervals
