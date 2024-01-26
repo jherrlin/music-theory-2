@@ -526,11 +526,6 @@
    -   -   -
    -   -   -")
 
-(defn deep-merge [a & maps]
-  (if (map? a)
-    (apply merge-with deep-merge a maps)
-    (apply merge-with deep-merge maps)))
-
 (defn fretboard-map-to-matrix [m]
   (let [fretboard-with (->> m
                             vals
@@ -636,13 +631,14 @@
           (recur
            (inc counter)
            found-pattern-xys')
-          (fretboard-map-to-matrix
-           (deep-merge
-            (fretboard-matrix-to-map fretboard-matrix)
-            (->> found-pattern-xys'
-                 (reduce (fn [acc {:keys [x y] :as m}]
-                           (assoc acc [x y] m))
-                         {})))))))))
+          (reduce
+           (fn [fm {:keys [x y match? pattern-found-tone pattern-found-interval]}]
+             (update-in fm [y x] assoc
+                        :match? match?
+                        :pattern-found-tone pattern-found-tone
+                        :pattern-found-interval pattern-found-interval))
+           fretboard-matrix
+           found-pattern-xys'))))))
 
 (find-fretboard-pattern
  (all-tones)
@@ -667,7 +663,7 @@
     :octave 3}
    {:tone   :e
     :octave 2}]
-  5))
+  3))
 
 (defn match-chord-with-scales
   "Find what scales that works with a chord, by the chord indexes.

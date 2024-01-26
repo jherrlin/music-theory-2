@@ -46,22 +46,27 @@
         "Scales"]]
 
      #_[:a {:style {:margin-right "10px"}
-          :href  (rfe/href :harmonizations path-params query-params)}
+            :href  (rfe/href :harmonizations path-params query-params)}
        [:button
         {:disabled (= current-route-name :harmonizations)}
         "Harmonizations"]]
 
      #_[:a {:style {:margin-right "10px"}
-          :href  (rfe/href :table path-params query-params)}
+            :href  (rfe/href :table path-params query-params)}
        [:button
         {:disabled (= current-route-name :table)}
         "Table"]]
 
      #_[:a {:style {:margin-right "10px"}
-          :href  (rfe/href :bookmarks path-params query-params)}
+            :href  (rfe/href :bookmarks path-params query-params)}
       [:button
        {:disabled (= current-route-name :bookmarks)}
-       "Bookmarks"]]]))
+       "Bookmarks"]]
+     [:a {:style  {:margin-right "10px"}
+          :href   "https://github.com/jherrlin/music-theory-2"
+          :target "_blank"}
+      [:button
+       "Source code"]]]))
 
 (defn chord-selection []
   (let [current-route-name              @(re-frame/subscribe [:current-route-name])
@@ -233,8 +238,9 @@
    instrument
    {:keys [key-of] :as path-params}
    {:keys [as-intervals trim-fretboard] :as query-params}
-   deps]
-  [instrument-view-fretboard-pattern definition instrument path-params query-params deps])
+   {:keys [play-tone] :as deps}]
+  [:<>
+   [instrument-view-fretboard-pattern definition instrument path-params query-params deps]])
 
 ;; http://localhost:8080/#/focus/guitar/e/3df70e72-dd4c-4e91-85b5-13de2bb062ce
 (defmethod instrument-view [:fretboard [:scale]]

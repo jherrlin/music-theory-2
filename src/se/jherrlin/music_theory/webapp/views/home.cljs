@@ -1,10 +1,14 @@
 (ns se.jherrlin.music-theory.webapp.views.home
   (:require
-   [taoensso.timbre :as timbre]))
+   [taoensso.timbre :as timbre]
+   [se.jherrlin.music-theory.webapp.views.common :as common]))
 
 
 (defn view []
-  [:div "Welcome home!"])
+  [:<>
+   [common/menu]
+   [:br]
+   [:h2 "Welcome"]])
 
 (defn routes []
   ["/"
