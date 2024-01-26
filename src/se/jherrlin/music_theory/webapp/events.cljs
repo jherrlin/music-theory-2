@@ -24,12 +24,28 @@
                         :chord               :major
                         :scale               :major
                         :harmonization-scale :major}
-   :query-params       {:nr-of-frets    15
-                        :nr-of-octavs   2
-                        :as-intervals   false
-                        :as-text        false
-                        :trim-fretboard false
-                        :debug          false}})
+   :query-params       {:nr-of-frets           15
+                        :nr-of-octavs          2
+                        :as-intervals          false
+                        :as-text               false
+                        :trim-fretboard        false
+                        :debug                 false
+                        :surrounding-intervals false
+                        :surrounding-tones     false}})
+
+(def Query
+  [:map
+   [:nr-of-frets           {:optional true} int?]
+   [:nr-of-octavs          {:optional true} int?]
+   [:as-intervals          {:optional true} boolean?]
+   [:as-text               {:optional true} boolean?]
+   [:trim-fretboard        {:optional true} boolean?]
+   [:surrounding-intervals {:optional true} boolean?]
+   [:surrounding-tones     {:optional true} boolean?]])
+
+(def query-keys
+  [:nr-of-frets :as-intervals :as-text :nr-of-octavs :trim-fretboard
+   :surrounding-intervals :surrounding-tones])
 
 (def events-
   [{:n :current-route}

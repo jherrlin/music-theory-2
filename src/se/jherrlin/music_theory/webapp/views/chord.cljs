@@ -71,14 +71,9 @@
                            [:instrument      keyword?]
                            [:key-of          keyword?]
                            [:chord           keyword?]]
-                   :query [:map
-                           [:nr-of-frets    {:optional true} int?]
-                           [:nr-of-octavs   {:optional true} int?]
-                           [:as-intervals   {:optional true} boolean?]
-                           [:as-text        {:optional true} boolean?]
-                           [:trim-fretboard {:optional true} boolean?]]}
+                   :query events/Query}
       :controllers
       [{:parameters {:path  [:instrument :key-of :chord]
-                     :query [:nr-of-frets :as-intervals :as-text :nr-of-octavs :trim-fretboard]}
+                     :query events/query-keys}
         :start      (fn [{p :path q :query}]
                       (events/do-on-url-change route-name p q))}]}]))

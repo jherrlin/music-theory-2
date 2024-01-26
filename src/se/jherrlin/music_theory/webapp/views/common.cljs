@@ -29,7 +29,7 @@
                    :flow-direction "column"
                    :overflow-x     "auto"
                    :white-space    "nowrap"}}
-     #_[:a {:style {:margin-right "10px"} :href (rfe/href :home)}
+     [:a {:style {:margin-right "10px"} :href (rfe/href :home)}
        [:button
         {:disabled (= current-route-name :home)}
         "Home"]]
