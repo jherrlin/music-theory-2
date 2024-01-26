@@ -47,8 +47,7 @@
    :surrounding-intervals :surrounding-tones])
 
 (def events-
-  [{:n :current-route}
-   {:n :current-route-name}
+  [{:n :current-route-name}
    {:n :path-params
     :e merge'
     :s (fn [db [k]] (get db k))}
@@ -110,16 +109,6 @@
    (let [old-match   (:current-route db)
          controllers (rfc/apply-controllers (:controllers old-match) new-match)]
      (assoc db :current-route (assoc new-match :controllers controllers)))))
-
-(re-frame/reg-fx
- :push-state
- (fn [route]
-   (apply rfe/push-state route)))
-
-(re-frame/reg-event-fx
- :href
- (fn [_ [_ route]]
-   {:push-state route}))
 
 (re-frame/reg-event-db
  :initialize-db

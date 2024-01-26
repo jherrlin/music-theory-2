@@ -24,6 +24,11 @@
  (fn [_ [_ & route]]
    {:push-state route}))
 
+(re-frame/reg-event-fx
+ :href
+ (fn [_ [_ route]]
+   {:push-state route}))
+
 (re-frame/reg-event-db
  ::navigated
  (fn [db [_ new-match]]
@@ -36,9 +41,10 @@
  (fn [db]
    (:current-route db)))
 
-(re-frame/reg-fx :push-state
-                 (fn [route]
-                   (apply rfe/push-state route)))
+(re-frame/reg-fx
+ :push-state
+ (fn [route]
+   (apply rfe/push-state route)))
 
 (defn on-navigate [new-match]
   (when new-match
