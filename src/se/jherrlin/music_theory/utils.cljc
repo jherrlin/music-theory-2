@@ -842,8 +842,8 @@
    fretboard-matrix))
 
 (defn add-pattern
-  [{:keys [x y tone pattern-match? interval out] :as m}]
-  (if (seq interval)
+  [{:keys [x y tone match? interval out] :as m}]
+  (if match?
     (assoc m :out (-> (sharp-or-flat tone interval) name str/capitalize))
     m))
 
@@ -1068,13 +1068,20 @@
 
 ;; Public functions
 
+(defn add-pattern-with-intervals
+  [{:keys [x y tone match? interval out] :as m}]
+  (if match?
+    (assoc m :out interval)
+    m))
+
 (defn pattern-with-intervals
   [key-of pattern fretboard-matrix]
   (->> (find-fretboard-pattern
         (all-tones)
         key-of
         pattern
-        fretboard-matrix)))
+        fretboard-matrix)
+       (add-layer add-pattern-with-intervals)))
 
 (->> (pattern-with-intervals
       :a

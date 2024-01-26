@@ -179,10 +179,10 @@
      [instruments-fretboard/styled-view
       (cond-> {:on-click       (fn [{:keys [tone-str octave]}]
                                  (play-tone (str tone-str octave)))
-               :matrix fretboard-matrix'
+               :matrix         fretboard-matrix'
                :dark-orange-fn (fn [{:keys [root?] :as m}]
                                  (and root? (get m :pattern-found-tone)))
-               :orange-fn      :pattern-found-tone #_:pattern-found-interval}
+               :orange-fn      :out}
         surrounding-intervals (assoc :grey-fn :interval)
         surrounding-tones     (assoc :grey-fn :tone-str))]]))
 
@@ -234,16 +234,10 @@
   [{pattern :fretboard-pattern/pattern :as definition}
    instrument
    {:keys [key-of] :as path-params}
-   {:keys [as-intervals trim-fretboard] :as query-params}
+   {:keys [as-intervals] :as query-params}
    {:keys [play-tone] :as deps}]
   (let [fretboard-matrix @(re-frame/subscribe [:fretboard-matrix])
         matrix           ((if as-intervals
-                            music-theory/pattern-with-intervals
-                            music-theory/pattern-with-tones)
-                          key-of
-                          pattern
-                          fretboard-matrix)
-        fretboard'       ((if as-intervals
                             music-theory/pattern-with-intervals
                             music-theory/pattern-with-tones)
                           key-of
@@ -256,10 +250,10 @@
        :path-params      path-params
        :query-params     query-params
        :deps             deps
-       :fretboard-matrix fretboard'}]
+       :fretboard-matrix matrix}]
      [:button
       {:on-click (fn [_]
-                   (doseq [{:keys [octave pattern-found-tone]} (->> fretboard'
+                   (doseq [{:keys [octave pattern-found-tone]} (->> matrix
                                                                     (apply concat)
                                                                     (filter :match?)
                                                                     (sort-by :y #(compare %2 %1)))]
