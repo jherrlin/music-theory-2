@@ -881,6 +881,21 @@
                             (tone tone')))
                   (first)
                   (second))]
+    (assoc m :out i)
+    m))
+
+(defn add-basics
+  "Show as intervals.
+
+  Example:
+  chord-tones-and-intervals: `[[:c \"1\"] [:d \"2\"] [:e \"3\"] [:f \"4\"] [:g \"5\"] [:a \"6\"] [:b \"7\"]]`"
+  [chord-tones-and-intervals {:keys [x y tone pattern-match? interval out] :as m}]
+  {:pre [(set? tone)]}
+  (if-let [i (->> chord-tones-and-intervals
+                  (filter (fn [[tone' interval']]
+                            (tone tone')))
+                  (first)
+                  (second))]
     (cond-> m
       :always            (assoc :interval i)
       :always            (assoc :tone-str (-> tone (sharp-or-flat "b") name str/capitalize))
@@ -888,8 +903,6 @@
       (= 2 (count tone)) (assoc :flat (-> tone (sharp-or-flat "b") name str/capitalize))
       (= "1" i)          (assoc :root? true))
     m))
-
-
 
 (->> (find-fretboard-pattern
       (all-tones)
@@ -943,9 +956,10 @@
      (add-layer
       (partial add-root nil)))
 
+;; TODO: rename
 (defn add-intervals-to-fretboard-matrix [matrix tones-and-intervals]
   (add-layer
-   (partial add-intervals tones-and-intervals)
+   (partial add-basics tones-and-intervals)
    matrix))
 
 (defn fretboard-str
@@ -1158,8 +1172,7 @@
   chord-tones-and-intervals: `[[:c \"1\"] [:d \"2\"] [:e \"3\"] [:f \"4\"] [:g \"5\"] [:a \"6\"] [:b \"7\"]]`"
   [chord-tones-and-intervals fretboard-matrix]
   (->> fretboard-matrix
-       (add-layer (partial add-intervals chord-tones-and-intervals))
-       (add-layer (partial add-root nil))))
+       (add-layer (partial add-intervals chord-tones-and-intervals))))
 
 (->> (with-all-intervals
        [[:e "1"] [:b "b3"] [:g "5"]]

@@ -167,49 +167,56 @@
 (defn instrument-view-fretboard-pattern
   [{:keys [definition instrument path-params query-params deps
            fretboard-matrix]}]
-  (let [{pattern :fretboard-pattern/pattern}  definition
-        {:keys [key-of]}                      path-params
-        {:keys [as-intervals trim-fretboard]} query-params
-        {:keys [play-tone]}                   deps]
+  (let [{pattern :fretboard-pattern/pattern}              definition
+        {:keys [key-of]}                                  path-params
+        {:keys [as-intervals trim-fretboard
+                surrounding-intervals surrounding-tones]} query-params
+        {:keys [play-tone]}                               deps
+        fretboard-matrix'
+        (cond->> fretboard-matrix
+          trim-fretboard (music-theory/trim-matrix #(every? nil? (map :out %))))]
     [:<>
      [instruments-fretboard/styled-view
-      {:on-click       (fn [{:keys [tone-str octave]}]
-                         (play-tone (str tone-str octave)))
-       :matrix
-       (cond->> fretboard-matrix
-         trim-fretboard (music-theory/trim-matrix #(every? nil? (map :out %))))
-       :dark-orange-fn (fn [{:keys [root?] :as m}]
-                         (and root? (get m :pattern-found-tone)))
-       :orange-fn      :pattern-found-tone #_:pattern-found-interval
-       :grey-fn        :tone-str           #_:interval}]]))
+      (cond-> {:on-click       (fn [{:keys [tone-str octave]}]
+                                 (play-tone (str tone-str octave)))
+               :matrix fretboard-matrix'
+               :dark-orange-fn (fn [{:keys [root?] :as m}]
+                                 (and root? (get m :pattern-found-tone)))
+               :orange-fn      :pattern-found-tone #_:pattern-found-interval}
+        surrounding-intervals (assoc :grey-fn :interval)
+        surrounding-tones     (assoc :grey-fn :tone-str))]]))
 
 (defn instrument-view-fretboard-chord-and-scale
   [definition instrument
    {:keys [key-of] :as path-params}
-   {:keys [as-intervals trim-fretboard] :as query-params}
+   {:keys
+    [as-intervals trim-fretboard surrounding-intervals surrounding-tones]
+    :as query-params}
    intervals
    {:keys [play-tone] :as deps}]
-  (let [fretboard-matrix @(re-frame/subscribe [:fretboard-matrix])
-        interval-tones   (music-theory/interval-tones intervals key-of)
-        fretboard        (if as-intervals
-                           (music-theory/with-all-intervals
-                             (mapv vector interval-tones intervals)
-                             fretboard-matrix)
-                           (music-theory/with-all-tones
-                             interval-tones
-                             fretboard-matrix))]
-    [:<>
-     [instruments-fretboard/styled-view
-      {:on-click       (fn [{:keys [tone-str octave]}]
-                         (play-tone (str tone-str octave)))
-       :matrix         (cond->> fretboard
-                         trim-fretboard (music-theory/trim-matrix
-                                         #(every? nil? (map :out %))))
-       :dark-orange-fn (fn [{:keys [root?] :as m}]
-                         (and root? (get m :out)))
-       :orange-fn      :out #_:pattern-found-tone #_:pattern-found-interval
-       :grey-fn        :tone-str           #_:interval
-       }]]))
+  (let [fretboard-matrix  @(re-frame/subscribe [:fretboard-matrix])
+        interval-tones    (music-theory/interval-tones intervals key-of)
+        fretboard         (if as-intervals
+                            (music-theory/with-all-intervals
+                              (mapv vector interval-tones intervals)
+                              fretboard-matrix)
+                            (music-theory/with-all-tones
+                              interval-tones
+                              fretboard-matrix))
+        fretboard-matrix' (cond->> fretboard
+                            trim-fretboard (music-theory/trim-matrix
+                                            #(every? nil? (map :out %))))]
+    (def fretboard-matrix fretboard-matrix)
+    (def fretboard-matrix' fretboard-matrix')
+    [instruments-fretboard/styled-view
+     (cond-> {:on-click       (fn [{:keys [tone-str octave]}]
+                                (play-tone (str tone-str octave)))
+              :matrix         fretboard-matrix'
+              :dark-orange-fn (fn [{:keys [root?] :as m}]
+                                (and root? (get m :out)))
+              :orange-fn      :out}
+       surrounding-intervals (assoc :grey-fn :interval)
+       surrounding-tones     (assoc :grey-fn :tone-str))]))
 
 (defmulti instrument-view
   (fn [definition instrument path-params query-params deps]
@@ -441,33 +448,62 @@
    [debug-view instrument]])
 
 (defn settings
-  [{:keys [as-text? as-intervals? nr-of-frets? nr-of-octavs? trim-fretboard?]
-    :or   {as-intervals? true}
+  [{:keys [as-text? as-intervals? nr-of-frets? nr-of-octavs? trim-fretboard?
+           surrounding-intervals? surrounding-tones?]
+    ;; If the menu option should be shown or not
+    :or   {as-intervals?          true
+           surrounding-intervals? true
+           surrounding-tones?     true}
     :as   m}]
-  (let [current-route-name                                                                                   @(re-frame/subscribe [:current-route-name])
-        path-params                                                                                          @(re-frame/subscribe [:path-params])
-        {:keys [trim-fretboard nr-of-frets as-text nr-of-octavs as-intervals nr-of-octavs] :as query-params} @(re-frame/subscribe [:query-params])]
+  (let [current-route-name @(re-frame/subscribe [:current-route-name])
+        path-params        @(re-frame/subscribe [:path-params])
+        {:keys
+         [trim-fretboard nr-of-frets as-text nr-of-octavs as-intervals nr-of-octavs
+          surrounding-intervals surrounding-tones] :as query-params}
+        @(re-frame/subscribe [:query-params])]
     [:div {:style {:display "flex"}}
      (when as-intervals?
        [:div
         [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :as-intervals (not as-intervals))]])
                  :checked  as-intervals
                  :type     "checkbox" :id "as-intervals-checkbox" :name "as-intervals-checkbox"}]
-        [:label {:for "as-intervals-checkbox"} "Show intervals"]])
+        [:label {:for "as-intervals-checkbox"} "Show intervals?"]])
 
      (when as-text?
        [:div {:style {:margin-left "1rem"}}
         [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :as-text (not as-text))]])
                  :checked  as-text
                  :type     "checkbox" :id "as-text-checkbox" :name "as-text-checkbox"}]
-        [:label {:for "as-text-checkbox"} "Fretboard in text"]])
+        [:label {:for "as-text-checkbox"} "Fretboard in text?"]])
 
      (when trim-fretboard?
        [:div {:style {:margin-left "1rem"}}
         [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :trim-fretboard (not trim-fretboard))]])
                  :checked  trim-fretboard
                  :type     "checkbox" :id "trim-fretboard-checkbox" :name "trim-fretboard-checkbox"}]
-        [:label {:for "trim-fretboard-checkbox"} "Trim fretboard"]])
+        [:label {:for "trim-fretboard-checkbox"} "Trim fretboard?"]])
+
+     (when surrounding-intervals?
+       (let [id    "surrounding-intervals-checkbox"
+             label "Surrounding intervals?"
+             key   :surrounding-intervals
+             value surrounding-intervals]
+         [:div {:style {:margin-left "1rem"}}
+          [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params key (not value))]])
+                   :checked  value
+                   :type     "checkbox" :id id :name id}]
+          [:label {:for id} label]]))
+
+     (when surrounding-tones?
+       (let [id    "surrounding-tones-checkbox"
+             label "Surrounding tones?"
+             key   :surrounding-tones
+             value surrounding-tones]
+         [:div {:style {:margin-left "1rem"}}
+          [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params key (not value))]])
+                   :checked  surrounding-tones
+                   :type     "checkbox" :id id :name id}]
+          [:label {:for id} label]]))
 
      (when nr-of-frets?
        [:div {:style {:margin-left "1rem"}}
