@@ -12,7 +12,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "10:f3:26:96:3e:60:99:94:81:22:0e:ca:89:d4:ca:2a"
+            - "SHA256:AKBnW00688qMrbkk/zHqrO7lkN5KK5PqiMvz8mcnKcM"
       - checkout
       - run: sudo npm install -g shadow-cljs
       - run: npm install

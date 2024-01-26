@@ -2,11 +2,12 @@
 
 
 (def definitions
-  {:piano             {:id          :piano
-                       :text        "Piano"
-                       :description "Standard guitar tuning"
-                       :type        :keyboard
-                       :order       1}
+  {
+   ;; :piano             {:id          :piano
+   ;;                     :text        "Piano"
+   ;;                     :description "Standard guitar tuning"
+   ;;                     :type        :keyboard
+   ;;                     :order       1}
    :guitar            {:id          :guitar
                        :text        "Guitar"
                        :description "Standard guitar tuning"
