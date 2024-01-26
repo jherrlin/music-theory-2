@@ -12,12 +12,12 @@
 
 (defn routes []
   ["/"
-   {:name      :route/home
+   {:name      :home
     :view      [#'view]
     :controllers
     [{:start
       (fn [_]
-        (timbre/info "Entering route :route/home"))
+        (timbre/info "Entering route :home"))
       :stop
       (fn [_]
-        (timbre/info "Leaving route :route/home"))}]}])
+        (timbre/info "Leaving route :home"))}]}])
