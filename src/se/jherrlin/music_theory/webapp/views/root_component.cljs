@@ -1,7 +1,6 @@
 (ns se.jherrlin.music-theory.webapp.views.root-component
   (:require
-   [re-frame.core :as re-frame]
-   [se.jherrlin.music-theory.webapp.views.menus]))
+   [re-frame.core :as re-frame]))
 
 
 (defn root-component [{:keys [play-tone] :as m}]
@@ -12,17 +11,6 @@
         {:style {:height         "100%"
                  :display        "flex"
                  :flex-direction "column"}}
-
-        ;; [frontend.notifications/view]
-        ;; [header-menu router]
-
-        ;; [:button
-        ;;  {:on-click (fn [_]
-        ;;               (play-tone :c 8))}
-        ;;  "Play"]
-
-        ;; [se.jherrlin.music-theory.webapp.views.menus/select-instrument]
-
         [:div {:style {:height      "100%"
                        :overflow-y  "auto"
                        :overflow-x  "hidden"
