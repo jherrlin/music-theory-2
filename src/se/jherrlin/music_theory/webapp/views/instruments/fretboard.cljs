@@ -12,10 +12,12 @@
      n)])
 
 (defn fret
-  [{:keys [on-click circle-text background-color fret-color y circle-color blank?]
+  [{:keys [on-click circle-text background-color fret-color y circle-color blank?
+           octave show-octave?]
     :or   {y                0
            background-color "#000000d6"
-           fret-color       "linear-gradient(to right, #FFFFFF , #706e68)"}}]
+           fret-color       "linear-gradient(to right, #FFFFFF , #706e68)"
+           show-octave?     false}}]
   (let [string-color  "linear-gradient(#737270 , #b9bab3, #737270)"
         circle-color  (or circle-color "orange")
         string-height (str (+ 0.2 y) "rem")
@@ -50,7 +52,12 @@
                         :background-color circle-color
                         :border-radius    "50%"
                         :z-index          0}}
-          circle-text])]]
+          [:<>
+           circle-text
+           (when show-octave?
+             [:div {:style {:font-size  "small"
+                            :margin-top "0.5em"}}
+              octave])]])]]
 
      (when-not blank?
        [:div {:style {:background-image fret-color
@@ -73,7 +80,8 @@
                            on-click
                            orange-fn
                            grey-fn
-                           dark-orange-fn]
+                           dark-orange-fn
+                           show-octave?]
                     :or   {orange-fn      :out
                            grey-fn        (constantly false)
                            dark-orange-fn (constantly false)
@@ -90,13 +98,15 @@
      (for [fretboard-string matrix]
        ^{:key (str fretboard-string id)}
        [:div {:style {:display "flex"}}
-        (for [{:keys [x y tone out root? blank?] :as m} fretboard-string]
+        (for [{:keys [x y tone out root? blank? octave] :as m} fretboard-string]
           (let [orange-fn'      (orange-fn m)
                 dark-orange-fn' (dark-orange-fn m)
                 grey-fn'        (grey-fn m)]
             ^{:key (str "fret-" x y id)}
             [fret
-             {:blank?           blank?
+             {:show-octave?     show-octave?
+              :octave           octave
+              :blank?           blank?
               :y                (/ y 10)
               :circle-color     (cond
                                   dark-orange-fn' "#ff7600"

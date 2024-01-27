@@ -185,7 +185,8 @@
          id      :id}                                     definition
         {:keys [key-of]}                                  path-params
         {:keys [as-intervals trim-fretboard
-                surrounding-intervals surrounding-tones]} query-params
+                surrounding-intervals surrounding-tones
+                show-octave]} query-params
         {:keys [play-tone]}                               deps
         fretboard-matrix'
         (cond->> fretboard-matrix
@@ -199,6 +200,7 @@
                :dark-orange-fn (fn [{:keys [root?] :as m}]
                                  (and root? (get m :pattern-found-tone)))
                :orange-fn      :out}
+        show-octave           (assoc :show-octave? true)
         surrounding-intervals (assoc :grey-fn :interval)
         surrounding-tones     (assoc :grey-fn :tone-str))]]))
 
@@ -207,7 +209,8 @@
    instrument
    {:keys [key-of] :as path-params}
    {:keys
-    [as-intervals trim-fretboard surrounding-intervals surrounding-tones]
+    [as-intervals trim-fretboard surrounding-intervals surrounding-tones
+     show-octave]
     :as query-params}
    intervals
    {:keys [play-tone] :as deps}]
@@ -231,6 +234,7 @@
               :dark-orange-fn (fn [{:keys [root?] :as m}]
                                 (and root? (get m :out)))
               :orange-fn      :out}
+       show-octave           (assoc :show-octave? true)
        surrounding-intervals (assoc :grey-fn :interval)
        surrounding-tones     (assoc :grey-fn :tone-str))]))
 
@@ -451,17 +455,19 @@
 
 (defn settings
   [{:keys [as-text? as-intervals? nr-of-frets? nr-of-octavs? trim-fretboard?
-           surrounding-intervals? surrounding-tones?]
+           surrounding-intervals? surrounding-tones? octave?]
     ;; If the menu option should be shown or not
     :or   {as-intervals?          true
            surrounding-intervals? true
-           surrounding-tones?     true}
+           surrounding-tones?     true
+           octave?                true}
     :as   m}]
   (let [current-route-name @(re-frame/subscribe [:current-route-name])
         path-params        @(re-frame/subscribe [:path-params])
         {:keys
          [trim-fretboard nr-of-frets as-text nr-of-octavs as-intervals nr-of-octavs
-          surrounding-intervals surrounding-tones] :as query-params}
+          surrounding-intervals surrounding-tones show-octave]
+         :as query-params}
         @(re-frame/subscribe [:query-params])]
     [:div {:style {:display "flex"}}
      (when as-intervals?
@@ -517,6 +523,22 @@
                                                                                          surrounding-intervals))]])
                    :checked  old-value
                    :type     "checkbox" :id id :name id}]
+          [:label {:for id} label]]))
+
+     (when octave?
+       (let [id        "show-octave-checkbox"
+             label     "Show octave?"
+             key       :show-octave
+             old-value show-octave
+             new-value (not show-octave)]
+         [:div {:style {:margin-left "1rem"}}
+          [:input {:on-click #(re-frame/dispatch
+                               [:href [current-route-name path-params
+                                       (assoc query-params key new-value)]])
+                   :checked  old-value
+                   :type     "checkbox"
+                   :id       id
+                   :name     id}]
           [:label {:for id} label]]))
 
      (when nr-of-frets?
