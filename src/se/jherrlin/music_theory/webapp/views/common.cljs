@@ -469,94 +469,98 @@
           surrounding-intervals surrounding-tones show-octave]
          :as query-params}
         @(re-frame/subscribe [:query-params])]
-    [:div {:style {:display "flex"}}
-     (when as-intervals?
-       [:div
-        [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :as-intervals (not as-intervals))]])
-                 :checked  as-intervals
-                 :type     "checkbox" :id "as-intervals-checkbox" :name "as-intervals-checkbox"}]
-        [:label {:for "as-intervals-checkbox"} "Show intervals?"]])
+    [:div
+     [:div {:style {:display "flex"}}
+      (when as-intervals?
+        [:div
+         [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :as-intervals (not as-intervals))]])
+                  :checked  as-intervals
+                  :type     "checkbox" :id "as-intervals-checkbox" :name "as-intervals-checkbox"}]
+         [:label {:for "as-intervals-checkbox"} "Show intervals?"]])
 
-     (when as-text?
-       [:div {:style {:margin-left "1rem"}}
-        [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :as-text (not as-text))]])
-                 :checked  as-text
-                 :type     "checkbox" :id "as-text-checkbox" :name "as-text-checkbox"}]
-        [:label {:for "as-text-checkbox"} "Fretboard in text?"]])
+      (when as-text?
+        [:div {:style {:margin-left "1rem"}}
+         [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :as-text (not as-text))]])
+                  :checked  as-text
+                  :type     "checkbox" :id "as-text-checkbox" :name "as-text-checkbox"}]
+         [:label {:for "as-text-checkbox"} "Fretboard in text?"]])
 
-     ;; TODO: trim fretboard doesnt work correctly.
-     (when trim-fretboard?
-       [:div {:style {:margin-left "1rem"}}
-        [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :trim-fretboard (not trim-fretboard))]])
-                 :checked  trim-fretboard
-                 :disabled true
-                 :type     "checkbox" :id "trim-fretboard-checkbox" :name "trim-fretboard-checkbox"}]
-        [:label {:for "trim-fretboard-checkbox"} "Trim fretboard?"]])
+      ;; TODO: trim fretboard doesnt work correctly.
+      (when trim-fretboard?
+        [:div {:style {:margin-left "1rem"}}
+         [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :trim-fretboard (not trim-fretboard))]])
+                  :checked  trim-fretboard
+                  :disabled true
+                  :type     "checkbox" :id "trim-fretboard-checkbox" :name "trim-fretboard-checkbox"}]
+         [:label {:for "trim-fretboard-checkbox"} "Trim fretboard?"]])
 
-     (when surrounding-intervals?
-       (let [id        "surrounding-intervals-checkbox"
-             label     "Surrounding intervals?"
-             key       :surrounding-intervals
-             old-value surrounding-intervals
-             new-value (not surrounding-intervals)]
-         [:div {:style {:margin-left "1rem"}}
-          [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params
-                                                         (assoc query-params key new-value
-                                                                :surrounding-tones (if new-value
-                                                                                     false
-                                                                                     surrounding-tones))]])
-                   :checked  old-value
-                   :type     "checkbox" :id id :name id}]
-          [:label {:for id} label]]))
+      (when surrounding-intervals?
+        (let [id        "surrounding-intervals-checkbox"
+              label     "Surrounding intervals?"
+              key       :surrounding-intervals
+              old-value surrounding-intervals
+              new-value (not surrounding-intervals)]
+          [:div {:style {:margin-left "1rem"}}
+           [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params
+                                                          (assoc query-params key new-value
+                                                                 :surrounding-tones (if new-value
+                                                                                      false
+                                                                                      surrounding-tones))]])
+                    :checked  old-value
+                    :type     "checkbox" :id id :name id}]
+           [:label {:for id} label]]))
 
-     (when surrounding-tones?
-       (let [id        "surrounding-tones-checkbox"
-             label     "Surrounding tones?"
-             key       :surrounding-tones
-             old-value surrounding-tones
-             new-value (not surrounding-tones)]
-         [:div {:style {:margin-left "1rem"}}
-          [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params
-                                                         (assoc query-params key new-value
-                                                                :surrounding-intervals (if new-value
-                                                                                         false
-                                                                                         surrounding-intervals))]])
-                   :checked  old-value
-                   :type     "checkbox" :id id :name id}]
-          [:label {:for id} label]]))
+      (when surrounding-tones?
+        (let [id        "surrounding-tones-checkbox"
+              label     "Surrounding tones?"
+              key       :surrounding-tones
+              old-value surrounding-tones
+              new-value (not surrounding-tones)]
+          [:div {:style {:margin-left "1rem"}}
+           [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params
+                                                          (assoc query-params key new-value
+                                                                 :surrounding-intervals (if new-value
+                                                                                          false
+                                                                                          surrounding-intervals))]])
+                    :checked  old-value
+                    :type     "checkbox" :id id :name id}]
+           [:label {:for id} label]]))
 
-     (when octave?
-       (let [id        "show-octave-checkbox"
-             label     "Show octave?"
-             key       :show-octave
-             old-value show-octave
-             new-value (not show-octave)]
-         [:div {:style {:margin-left "1rem"}}
-          [:input {:on-click #(re-frame/dispatch
-                               [:href [current-route-name path-params
-                                       (assoc query-params key new-value)]])
-                   :checked  old-value
-                   :type     "checkbox"
-                   :id       id
-                   :name     id}]
-          [:label {:for id} label]]))
+      (when octave?
+        (let [id        "show-octave-checkbox"
+              label     "Show octave?"
+              key       :show-octave
+              old-value show-octave
+              new-value (not show-octave)]
+          [:div {:style {:margin-left "1rem"}}
+           [:input {:on-click #(re-frame/dispatch
+                                [:href [current-route-name path-params
+                                        (assoc query-params key new-value)]])
+                    :checked  old-value
+                    :type     "checkbox"
+                    :id       id
+                    :name     id}]
+           [:label {:for id} label]]))]
 
-     (when nr-of-frets?
-       [:div {:style {:margin-left "1rem"}}
-        [:label {:for "nr-of-frets-input"} "Nr of frets:"]
-        [:input {:style     {:width "3rem"}
-                 :on-change #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :nr-of-frets (-> % .-target .-value))]])
-                 :value     nr-of-frets
-                 :max       37
-                 :min       2
-                 :type      "number" :id "nr-of-frets-input" :name "nr-of-frets-input"}]])
+     [:br]
 
-     (when nr-of-octavs?
-       [:div {:style {:margin-left "1rem"}}
-        [:label {:for "nr-of-octavs-input"} "Nr of octavs:"]
-        [:input {:style     {:width "3rem"}
-                 :on-change #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :nr-of-octavs (-> % .-target .-value))]])
-                 :value     nr-of-octavs
-                 :max       4
-                 :min       1
-                 :type      "number" :id "nr-of-octavs-input" :name "nr-of-octavs-input"}]])]))
+     [:div {:style {:display "flex"}}
+      (when nr-of-frets?
+        [:div
+         [:label {:for "nr-of-frets-input"} "Nr of frets:"]
+         [:input {:style     {:width "3rem"}
+                  :on-change #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :nr-of-frets (-> % .-target .-value))]])
+                  :value     nr-of-frets
+                  :max       37
+                  :min       2
+                  :type      "number" :id "nr-of-frets-input" :name "nr-of-frets-input"}]])
+
+      (when nr-of-octavs?
+        [:div
+         [:label {:for "nr-of-octavs-input"} "Nr of octavs:"]
+         [:input {:style     {:width "3rem"}
+                  :on-change #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :nr-of-octavs (-> % .-target .-value))]])
+                  :value     nr-of-octavs
+                  :max       4
+                  :min       1
+                  :type      "number" :id "nr-of-octavs-input" :name "nr-of-octavs-input"}]])]]))
