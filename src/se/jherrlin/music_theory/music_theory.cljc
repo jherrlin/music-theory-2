@@ -21,13 +21,13 @@
 
 (def by-id definitions/by-id)
 
-(def chord definitions/chord)
+(def get-chord definitions/chord)
 (def chords (definitions/chords))
 (def scale definitions/scale)
 (def scales (definitions/scales))
 
 (comment
-  (chord :major)
+  (get-chord :major)
   )
 
 (def chord-patterns-belonging-to definitions/chord-patterns-belonging-to)

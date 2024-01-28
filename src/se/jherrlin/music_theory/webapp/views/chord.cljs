@@ -19,7 +19,7 @@
         fretboard-matrix                        @(re-frame/subscribe [:fretboard-matrix])
         {:keys           [id]
          chord-intervals :chord/intervals
-         :as             chord-definition}      (music-theory/chord chord)
+         :as             chord-definition}      (music-theory/get-chord chord)
         {instrument-type :type :as instrument'} (music-theory/instrument instrument)
         chord-patterns                          (music-theory/chord-patterns-belonging-to chord instrument)
         chord-triad-patterns                    (music-theory/chord-pattern-triads-belonging-to chord instrument)]
