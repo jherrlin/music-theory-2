@@ -1238,7 +1238,7 @@
 
 (defn gen-harmonization [scales chords key-of scale' steps-fn]
   (let [scale         (->> scales
-                           (filter (comp #(% scale') :scale/scale))
+                           (filter (comp #(% scale') :scale/scale-names))
                            first)
 
         scale-indexes (get scale :scale/indexes)

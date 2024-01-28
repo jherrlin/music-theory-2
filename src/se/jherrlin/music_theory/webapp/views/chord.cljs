@@ -17,11 +17,12 @@
         @(re-frame/subscribe [:path-params])
         query-params                            @(re-frame/subscribe [:query-params])
         fretboard-matrix                        @(re-frame/subscribe [:fretboard-matrix])
-        {:keys [id] :as chord-definition}       (music-theory/chord chord)
+        {:keys           [id]
+         chord-intervals :chord/intervals
+         :as             chord-definition}      (music-theory/chord chord)
         {instrument-type :type :as instrument'} (music-theory/instrument instrument)
         chord-patterns                          (music-theory/chord-patterns-belonging-to chord instrument)
-        chord-triad-patterns                    (music-theory/chord-pattern-triads-belonging-to chord instrument)
-        {chord-intervals :chord/intervals}      (music-theory/chord chord)]
+        chord-triad-patterns                    (music-theory/chord-pattern-triads-belonging-to chord instrument)]
     [:<>
      [common/menu]
      [:br]

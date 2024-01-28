@@ -478,7 +478,7 @@
                   :type     "checkbox" :id "as-intervals-checkbox" :name "as-intervals-checkbox"}]
          [:label {:for "as-intervals-checkbox"} "Show intervals?"]])
 
-      (when as-text?
+      #_(when as-text?
         [:div {:style {:margin-left "1rem"}}
          [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :as-text (not as-text))]])
                   :checked  as-text
@@ -486,7 +486,7 @@
          [:label {:for "as-text-checkbox"} "Fretboard in text?"]])
 
       ;; TODO: trim fretboard doesnt work correctly.
-      (when trim-fretboard?
+      #_(when trim-fretboard?
         [:div {:style {:margin-left "1rem"}}
          [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :trim-fretboard (not trim-fretboard))]])
                   :checked  trim-fretboard

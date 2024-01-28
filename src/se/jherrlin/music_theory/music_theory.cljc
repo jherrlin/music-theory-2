@@ -2,6 +2,7 @@
   (:require
    [se.jherrlin.music-theory.instruments :as instruments]
    [se.jherrlin.music-theory.definitions :as definitions]
+   [se.jherrlin.music-theory.harmonizations :as harmonizations]
    [se.jherrlin.music-theory.utils :as utils]
    [clojure.set :as set]))
 
@@ -94,3 +95,41 @@
           (set/subset? (set chord-intervals) (set scale-intervals))))))
 
 (def tones-by-key-and-intervals utils/tones-by-key-and-intervals)
+
+
+(def harmonization harmonizations/harmonization)
+
+(defmulti harmonization-by-type #(get-in % [:harmonization :type]))
+
+(defmethod harmonization-by-type :predefined
+  [{:keys [instrument harmonization scale key-of] :as m}]
+  (let [scale-intervals (:scale/intervals scale)
+        interval-tones  (interval-tones scale-intervals key-of)]
+    #_{:m               m
+       :scale-intervals scale-intervals
+       :interval-tones  interval-tones
+       :chords (map
+                (fn [key-of harmonization-chord]
+
+                  (assoc harmonization-chord
+                         :chord (chord (get chord' :chord))
+                         :key-of key-of))
+                interval-tones
+                (get harmonization :chords))}))
+
+
+(let [instrument'          :guitar
+      key-of'              :c
+      harmonization-id'    :major-triads
+      harmonization-scale' :major
+
+      instrument''     (instrument instrument')
+      harmonization''  (harmonization harmonization-id')
+      scale''          (scale harmonization-scale')]
+  (harmonization-by-type
+   {:instrument    instrument''
+    :harmonization harmonization''
+    :scale         scale''
+    :key-of        key-of'}))
+
+#_(harmonization :major-triads)
