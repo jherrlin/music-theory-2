@@ -83,6 +83,18 @@
   :path   [:instrument]})
 
 (re-frame/reg-flow
+ {:id     ::scale
+  :inputs {:s [:path-params :scale]}
+  :output (fn [{:keys [s]}] (music-theory/get-scale s))
+  :path   [:scale]})
+
+(re-frame/reg-flow
+ {:id     ::chord
+  :inputs {:c [:path-params :chord]}
+  :output (fn [{:keys [c]}] (music-theory/get-chord c))
+  :path   [:chord]})
+
+(re-frame/reg-flow
  {:id     ::fretboard-matrix
   :inputs {:instrument  (re-frame/flow<- ::instrument)
            :nr-of-frets [:query-params :nr-of-frets]
@@ -97,7 +109,7 @@
                        (->> (music-theory/tones-starting-at key-of)
                             (map first))
                        ["1" "b2" "2" "b3" "3" "4" "b5" "5" "b6" "6" "b7" "7"])]
-                  (music-theory/add-intervals-to-fretboard-matrix ;; TODO: rename
+                  (music-theory/add-basics-to-fretboard-matrix
                    fretboard
                    tones-matched-with-intervals)))))
   :path [:fretboard-matrix]})

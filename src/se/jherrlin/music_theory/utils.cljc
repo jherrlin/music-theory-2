@@ -937,8 +937,7 @@
      (add-layer
       (partial add-root nil)))
 
-;; TODO: rename
-(defn add-intervals-to-fretboard-matrix [matrix tones-and-intervals]
+(defn add-basics-to-fretboard-matrix [matrix tones-and-intervals]
   (add-layer
    (partial add-basics tones-and-intervals)
    matrix))

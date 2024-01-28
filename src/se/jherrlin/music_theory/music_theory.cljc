@@ -66,8 +66,7 @@
   (tones-starting-at :c)
   )
 
-;; TODO: rename
-(def add-intervals-to-fretboard-matrix utils/add-intervals-to-fretboard-matrix)
+(def add-basics-to-fretboard-matrix utils/add-basics-to-fretboard-matrix)
 (def with-all-intervals utils/with-all-intervals)
 (def with-all-tones utils/with-all-tones)
 (def interval-tones utils/interval-tones)

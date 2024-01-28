@@ -67,14 +67,15 @@
    :guitar)
   )
 
-(defn chord-patterns-belonging-to [belongs-to instrument]
+(defn chord-patterns-belonging-to [belongs-to instrument-kw]
+  {:pre [(keyword? belongs-to) (keyword? instrument-kw)]}
   (->> (get @definitions :chord-patterns)
        (vals)
        (filter (fn [{bt     :fretboard-pattern/belongs-to
                      t      :fretboard-pattern/tuning
                      triad? :fretboard-pattern/triad?}]
                  (and (= bt belongs-to)
-                      (= t instrument)
+                      (= t instrument-kw)
                       (false? triad?))))
        (sort-by :fretboard-pattern/order)))
 
