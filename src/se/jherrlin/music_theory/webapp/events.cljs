@@ -82,6 +82,8 @@
   :output (fn [{:keys [i]}] (music-theory/get-instrument i))
   :path   [:instrument]})
 
+(re-frame/reg-sub :instrument (fn [db [n']] (get db n')))
+
 (re-frame/reg-flow
  {:id     ::scale
   :inputs {:s [:path-params :scale]}
@@ -93,6 +95,20 @@
   :inputs {:c [:path-params :chord]}
   :output (fn [{:keys [c]}] (music-theory/get-chord c))
   :path   [:chord]})
+
+(re-frame/reg-flow
+ {:id     ::harmonization
+  :inputs {:h [:path-params :harmonization-id]}
+  :output (fn [{:keys [h]}] (music-theory/get-harmonization h))
+  :path   [:harmonization]})
+
+(re-frame/reg-flow
+ {:id     ::harmonization-scale
+  :inputs {:s [:path-params :harmonization-scale]}
+  :output (fn [{:keys [s]}] (music-theory/get-scale s))
+  :path   [:harmonization-scale]})
+
+(re-frame/reg-sub :harmonization-scale (fn [db [n']] (get db n')))
 
 (re-frame/reg-flow
  {:id     ::fretboard-matrix

@@ -45,7 +45,7 @@
         {:disabled (= current-route-name :scale)}
         "Scales"]]
 
-     #_[:a {:style {:margin-right "10px"}
+     [:a {:style {:margin-right "10px"}
             :href  (rfe/href :harmonizations path-params query-params)}
        [:button
         {:disabled (= current-route-name :harmonizations)}
@@ -387,7 +387,7 @@
   [:p description])
 
 (defn scale-names [names]
-  (->> #{:natural-minor :minor :aeolian}
+  (->> names
        (map (fn [n]
               (-> n name (str/replace "-" " ") str/capitalize)))
        (str/join " / ")))
@@ -438,6 +438,21 @@
      [:br]
      [intervals-to-tones intervals interval-tones]
      [highlight-tones interval-tones key-of]]))
+
+(defn select-harmonization []
+  (let [{:keys [harmonization-id] :as path-params}  @(re-frame/subscribe [:path-params])
+        query-params @(re-frame/subscribe [:query-params])]
+    [:div {:style {:display        "flow"
+                   :flow-direction "column"
+                   :overflow-x     "auto"
+                   :white-space    "nowrap"}}
+     (for [{:keys [id description] :as harmonization} music-theory/harmonizations]
+       ^{:key (str "select-harmonization-" id)}
+       [:a {:style {:margin-right "10px"}
+            :href  (rfe/href :harmonizations (assoc path-params :harmonization-id id) query-params)}
+        [:button
+         {:disabled (= id harmonization-id)}
+         description]])]))
 
 (defmethod definition-view-detailed [:scale :pattern]
   [definition instrument path-params query-params]

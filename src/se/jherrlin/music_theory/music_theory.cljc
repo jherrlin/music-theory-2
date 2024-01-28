@@ -96,42 +96,5 @@
 (def tones-by-key-and-intervals utils/tones-by-key-and-intervals)
 
 
-(def harmonization harmonizations/harmonization)
-
-(defmulti harmonization-by-type #(get-in % [:harmonization :type]))
-
-(defmethod harmonization-by-type :predefined
-  [{:keys [instrument harmonization scale key-of] :as m}]
-  (let [scale-intervals (:scale/intervals scale)
-        interval-tones  (interval-tones scale-intervals key-of)]
-    {:m               m
-     :scale-intervals scale-intervals
-     :interval-tones  interval-tones
-     :intervals->tones (intervals->tones
-                        scale-intervals
-                        interval-tones)
-     :chords          (map
-                       (fn [key-of harmonization-chord]
-
-                         (assoc harmonization-chord
-                                :chord (get-chord (get harmonization-chord :chord))
-                                :key-of key-of))
-                       interval-tones
-                       (get harmonization :chords))}))
-
-
-(let [instrument'          :guitar
-      key-of'              :c
-      harmonization-id'    :major-triads
-      harmonization-scale' :major
-
-      instrument''     (get-instrument instrument')
-      harmonization''  (harmonization harmonization-id')
-      scale''          (get-scale harmonization-scale')]
-  (harmonization-by-type
-   {:instrument    instrument''
-    :harmonization harmonization''
-    :scale         scale''
-    :key-of        key-of'}))
-
-#_(harmonization :major-triads)
+(def get-harmonization harmonizations/harmonization)
+(def harmonizations harmonizations/harmonizations)
