@@ -16,10 +16,10 @@
   (let [{:keys [id scale instrument] :as path-params} @(re-frame/subscribe [:path-params])
         query-params                                  @(re-frame/subscribe [:query-params])
         fretboard-matrix                              @(re-frame/subscribe [:fretboard-matrix])
-        {instrument-type :type :as instrument'}       (music-theory/instrument instrument)
+        {instrument-type :type :as instrument'}       (music-theory/get-instrument instrument)
         {scale-intervals :scale/intervals
          scale-names     :scale/scale-names
-         :as             scale'}                      (music-theory/scale scale)
+         :as             scale'}                      (music-theory/get-scale scale)
         _                                             (def scale-intervals scale-intervals)
         scale-patterns                                (music-theory/scale-patterns-for-scale-and-instrument scale-names instrument)]
     [:<>

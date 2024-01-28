@@ -13,17 +13,17 @@
   instruments
   )
 
-(def instrument instruments/instrument)
+(def get-instrument instruments/instrument)
 
 (comment
-  (instrument :five-string-banjo)
+  (get-instrument :five-string-banjo)
   )
 
 (def by-id definitions/by-id)
 
 (def get-chord definitions/chord)
 (def chords (definitions/chords))
-(def scale definitions/scale)
+(def get-scale definitions/scale)
 (def scales (definitions/scales))
 
 (comment
@@ -123,9 +123,9 @@
       harmonization-id'    :major-triads
       harmonization-scale' :major
 
-      instrument''     (instrument instrument')
+      instrument''     (get-instrument instrument')
       harmonization''  (harmonization harmonization-id')
-      scale''          (scale harmonization-scale')]
+      scale''          (get-scale harmonization-scale')]
   (harmonization-by-type
    {:instrument    instrument''
     :harmonization harmonization''

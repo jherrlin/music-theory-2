@@ -79,7 +79,7 @@
 (re-frame/reg-flow
  {:id     ::instrument
   :inputs {:i [:path-params :instrument]}
-  :output (fn [{:keys [i]}] (music-theory/instrument i))
+  :output (fn [{:keys [i]}] (music-theory/get-instrument i))
   :path   [:instrument]})
 
 (re-frame/reg-flow

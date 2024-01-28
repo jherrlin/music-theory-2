@@ -15,7 +15,7 @@
   (let [{:keys [instrument key-of harmonization-fn harmonization-scale] :as path-params}
         @(re-frame/subscribe [:path-params])
         query-params                            @(re-frame/subscribe [:query-params])
-        {instrument-type :type :as instrument'} (music-theory/instrument instrument)]
+        {instrument-type :type :as instrument'} (music-theory/get-instrument instrument)]
     [:<>
      [common/menu]
      [:br]

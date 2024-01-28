@@ -18,7 +18,7 @@
         query-params                            @(re-frame/subscribe [:query-params])
         fretboard-matrix                        @(re-frame/subscribe [:fretboard-matrix])
         definition                              (music-theory/by-id id)
-        instrument'                             (music-theory/instrument instrument)]
+        instrument'                             (music-theory/get-instrument instrument)]
     [:<>
      [common/definition-view-detailed definition instrument' path-params query-params]
      [common/instrument-view definition instrument' path-params query-params deps]]))

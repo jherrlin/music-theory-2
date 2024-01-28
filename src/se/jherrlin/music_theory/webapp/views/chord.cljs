@@ -20,7 +20,7 @@
         {:keys           [id]
          chord-intervals :chord/intervals
          :as             chord-definition}      (music-theory/get-chord chord)
-        {instrument-type :type :as instrument'} (music-theory/instrument instrument)
+        {instrument-type :type :as instrument'} (music-theory/get-instrument instrument)
         chord-patterns                          (music-theory/chord-patterns-belonging-to chord instrument)
         chord-triad-patterns                    (music-theory/chord-pattern-triads-belonging-to chord instrument)]
     [:<>
