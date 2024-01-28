@@ -105,17 +105,20 @@
   [{:keys [instrument harmonization scale key-of] :as m}]
   (let [scale-intervals (:scale/intervals scale)
         interval-tones  (interval-tones scale-intervals key-of)]
-    #_{:m               m
-       :scale-intervals scale-intervals
-       :interval-tones  interval-tones
-       :chords (map
-                (fn [key-of harmonization-chord]
+    {:m               m
+     :scale-intervals scale-intervals
+     :interval-tones  interval-tones
+     :intervals->tones (intervals->tones
+                        scale-intervals
+                        interval-tones)
+     :chords          (map
+                       (fn [key-of harmonization-chord]
 
-                  (assoc harmonization-chord
-                         :chord (chord (get chord' :chord))
-                         :key-of key-of))
-                interval-tones
-                (get harmonization :chords))}))
+                         (assoc harmonization-chord
+                                :chord (get-chord (get harmonization-chord :chord))
+                                :key-of key-of))
+                       interval-tones
+                       (get harmonization :chords))}))
 
 
 (let [instrument'          :guitar
