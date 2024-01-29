@@ -9,7 +9,8 @@
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
    [se.jherrlin.music-theory.utils :as utils]
-   [se.jherrlin.music-theory.webapp.views.instruments.fretboard :as instruments-fretboard]))
+   [se.jherrlin.music-theory.webapp.views.instruments.fretboard :as instruments-fretboard]
+   [se.jherrlin.music-theory.harmonizations :as harmonizations]))
 
 
 (defn debug-view
@@ -237,6 +238,55 @@
        show-octave           (assoc :show-octave? true)
        surrounding-intervals (assoc :grey-fn :interval)
        surrounding-tones     (assoc :grey-fn :tone-str))]))
+
+(defmulti harmonizations-chord-details
+  (fn [definition instrument path-params query-params]
+    [(get instrument :type) (get definition :type)]))
+
+(defmethod harmonizations-chord-details [:fretboard [:chord]]
+  [{suffix :chord/suffix
+    intervals :chord/intervals
+    :keys  [symbol idx chord mode family interval-tones] :as definition}
+   instrument
+   {:keys [key-of] :as path-params}
+   query-params]
+  [debug-view [definition path-params]]
+  [:div {:style {:display     :flex
+                 :align-items :center}}
+   [:h2 {:style {:margin-right "2em"}} (str idx " / " symbol)]
+
+   [:a
+    {:href (rfe/href
+            :chord
+            (assoc path-params :chord chord :key-of key-of)
+            query-params)}
+    [:p {:style {:margin-right "2em"}}
+     (str (-> key-of name str/capitalize) suffix)]]
+
+   [:a {:href (rfe/href :scale
+                        (assoc path-params :scale mode :key-of key-of)
+                        query-params)}
+    [:p {:style {:margin-right "2em"}} (-> mode name str/capitalize)]]
+
+   [:p {:style {:margin-right "2em"}} (-> family name str/capitalize)]
+
+   [:p {:style {:margin-right "2em"}}
+            (->> intervals (str/join ", "))]
+
+   [:p {:style {:margin-right "2em"}}
+            (->> interval-tones
+                 (map (comp str/capitalize name))
+                 (str/join ", "))]]
+
+;; idx
+  ;; link to chord
+  ;; link to scale
+  ;; interval and tones
+  )
+
+(defmethod harmonizations-chord-details :default
+  [definition instrument path-params query-params]
+  [:h1 "not implemented"])
 
 (defmulti instrument-view
   (fn [definition instrument path-params query-params deps]

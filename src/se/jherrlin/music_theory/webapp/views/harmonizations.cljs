@@ -18,26 +18,22 @@
 
 (re-frame/reg-flow
  {:id     ::harmonization-chords
-  :inputs {:instrument    (re-frame/flow<- ::events/instrument)
-           :harmonization (re-frame/flow<- ::events/harmonization)
+  :inputs {:harmonization (re-frame/flow<- ::events/harmonization)
            :scale         (re-frame/flow<- ::events/harmonization-scale)
            :key-of        [:path-params :key-of]}
   :output (fn [{{harmonization-chords :chords}     :harmonization
                 {scale-intervals :scale/intervals} :scale
-                :keys
-                [instrument harmonization scale key-of]}]
+                :keys [key-of]}]
             (let [interval-tones (music-theory/interval-tones scale-intervals key-of)]
-              (def harmonization-chords harmonization-chords)
-              (def interval-tones interval-tones)
               (->> harmonization-chords
                    (map (fn [{:keys [idx-fn] :as m}]
                           (assoc m :key-of (idx-fn interval-tones))))
                    (map
                     (fn [{:keys [key-of] :as harmonization-chord}]
-                      (let [chord                              (music-theory/get-chord (get harmonization-chord :chord))
+                      (let [chord
+                            (music-theory/get-chord (get harmonization-chord :chord))
                             {chord-intervals :chord/intervals} chord]
-                        (-> chord
-                            (merge harmonization-chord)
+                        (-> (merge harmonization-chord chord)
                             (assoc :key-of key-of
                                    :interval-tones (music-theory/interval-tones
                                                     chord-intervals
@@ -126,14 +122,20 @@
       deps]
 
      [:<>
-      (for [{:keys [id idx] :as harmonization-chord} harmonization-chords]
+      (for [{:keys [id idx key-of] :as harmonization-chord} harmonization-chords]
         ^{:key (str "harmonization-chord-" id idx)}
-        [common/instrument-view
-         harmonization-chord
-         instrument
-         path-params
-         query-params
-         deps])]]))
+        [:<>
+         [common/harmonizations-chord-details
+          harmonization-chord
+          instrument
+          (assoc path-params :key-of key-of)
+          query-params]
+         [common/instrument-view
+          harmonization-chord
+          instrument
+          (assoc path-params :key-of key-of)
+          query-params
+          deps]])]]))
 
 
 (defn routes [deps]
