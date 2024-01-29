@@ -195,18 +195,25 @@
 
 
 (defn instrument-view-fretboard-pattern
-  [{:keys [definition instrument path-params query-params deps
+  [{:keys [definition
+           instrument
+           path-params query-params deps
            fretboard-matrix]}]
   (let [{pattern :fretboard-pattern/pattern
-         id      :id}                                     definition
-        {:keys [key-of]}                                  path-params
+         id      :id}         definition
+        {instrument-id :id}   instrument
+        {:keys [key-of]}      path-params
         {:keys [as-intervals trim-fretboard
                 surrounding-intervals surrounding-tones
                 show-octave]} query-params
-        {:keys [play-tone]}                               deps
+        {:keys [play-tone]}   deps
         fretboard-matrix'
         (cond->> fretboard-matrix
-          trim-fretboard (music-theory/trim-matrix #(every? nil? (map :out %))))]
+          trim-fretboard (music-theory/trim-matrix #(every? nil? (map :out %))))
+        unit                  {:id         id
+                               :key-of     key-of
+                               :instrument instrument-id}
+        bookmark-exists?      @(re-frame/subscribe [:bookmark-exists? unit])]
     [:<>
      [instruments-fretboard/styled-view
       (cond-> {:id             id
@@ -218,11 +225,22 @@
                :orange-fn      :out}
         show-octave           (assoc :show-octave? true)
         surrounding-intervals (assoc :grey-fn :interval)
-        surrounding-tones     (assoc :grey-fn :tone-str))]]))
+        surrounding-tones     (assoc :grey-fn :tone-str))]
+     (if bookmark-exists?
+       [:button
+        {:on-click
+         #(re-frame/dispatch
+           [:remove-bookmark unit])}
+        "Remove bookmark"]
+       [:button
+        {:on-click
+         #(re-frame/dispatch
+           [:add-bookmark unit])}
+        "Add bookmark"])]))
 
 (defn instrument-view-fretboard-chord-and-scale
   [{id :id :as definition}
-   instrument
+   {instrument-id :id :as instrument}
    {:keys [key-of] :as path-params}
    {:keys
     [as-intervals trim-fretboard surrounding-intervals surrounding-tones
@@ -241,18 +259,34 @@
                               fretboard-matrix))
         fretboard-matrix' (cond->> fretboard
                             trim-fretboard (music-theory/trim-matrix
-                                            #(every? nil? (map :out %))))]
-    [instruments-fretboard/styled-view
-     (cond-> {:id            id
-              :on-click       (fn [{:keys [tone-str octave]}]
-                                (play-tone (str tone-str octave)))
-              :matrix         fretboard-matrix'
-              :dark-orange-fn (fn [{:keys [root?] :as m}]
-                                (and root? (get m :out)))
-              :orange-fn      :out}
-       show-octave           (assoc :show-octave? true)
-       surrounding-intervals (assoc :grey-fn :interval)
-       surrounding-tones     (assoc :grey-fn :tone-str))]))
+                                            #(every? nil? (map :out %))))
+        unit              {:id         id
+                           :key-of     key-of
+                           :instrument instrument-id}
+        bookmark-exists? @(re-frame/subscribe [:bookmark-exists? unit])]
+    [:<>
+     [instruments-fretboard/styled-view
+      (cond-> {:id            id
+               :on-click       (fn [{:keys [tone-str octave]}]
+                                 (play-tone (str tone-str octave)))
+               :matrix         fretboard-matrix'
+               :dark-orange-fn (fn [{:keys [root?] :as m}]
+                                 (and root? (get m :out)))
+               :orange-fn      :out}
+        show-octave           (assoc :show-octave? true)
+        surrounding-intervals (assoc :grey-fn :interval)
+        surrounding-tones     (assoc :grey-fn :tone-str))]
+     (if bookmark-exists?
+       [:button
+        {:on-click
+         #(re-frame/dispatch
+           [:remove-bookmark unit])}
+        "Remove bookmark"]
+       [:button
+        {:on-click
+         #(re-frame/dispatch
+           [:add-bookmark unit])}
+        "Add bookmark"])]))
 
 (defmulti harmonizations-chord-details
   (fn [definition instrument path-params query-params]
@@ -459,20 +493,66 @@
    [instrument-description instrument-description']
    [instrument-tuning tuning]])
 
+(defn tuning-view [tuning]
+  [:div {:style {:display "flex"}}
+   (for [{:keys [tone octave start-index]} tuning]
+     ^{:key (str "tuning-view" tone octave start-index)}
+     [:div {:style {:margin-left "0.5em"
+                    :display     "flex"}}
+      (-> tone name str/capitalize)
+      [:div {:style {:font-size "small"
+                     :margin-top "0.5em"}}
+       octave]])])
+
+
 (defmulti definition-info-for-focus
   (fn [definition instrument path-params query-params]
     [(get instrument :type) (get definition :type)]))
 
 (defmethod definition-info-for-focus [:fretboard [:chord :pattern]]
-  [{chord-name :fretboard-pattern/belongs-to :as definition}
-   instrument path-params query-params]
-  (let [chord (music-theory/get-chord chord-name)]
+  [{chord-name :fretboard-pattern/belongs-to
+    :as        definition}
+   {:keys [tuning] :as instrument}
+   {:keys [key-of] :as path-params}
+   query-params]
+  (let [{chord-intervals :chord/intervals
+         suffix          :chord/suffix :as chord} (music-theory/get-chord chord-name)]
     [:<>
-     [:h1 "[:fretboard [:chord :pattern]]"]
-     [debug-view definition]
-     [debug-view chord]
-     [debug-view instrument]
-     [debug-view path-params]]))
+     [:div {:style {:display "flex"}}
+      [:div {:style {:margin-left "1em"}}
+       (str "Chord: " (-> key-of name str/capitalize) suffix)]
+
+      [:div {:style {:margin-left "1em"}}
+       (->> (map
+             #(str/join " -> " [%1 (-> %2  name str/capitalize)])
+             chord-intervals
+             (music-theory/interval-tones chord-intervals key-of))
+            (str/join ", "))]
+
+      [:div {:style {:margin-left "1em"}}
+       [tuning-view tuning]]]]))
+
+(defmethod definition-info-for-focus [:fretboard [:chord]]
+  [{chord-intervals :chord/intervals
+    suffix          :chord/suffix
+    :as             definition}
+   {:keys [tuning] :as instrument}
+   {:keys [key-of] :as path-params}
+   query-params]
+  [:<>
+   [:div {:style {:display "flex"}}
+    [:div {:style {:margin-left "1em"}}
+     (str "Chord: " (-> key-of name str/capitalize) suffix)]
+
+    [:div {:style {:margin-left "1em"}}
+     (->> (map
+           #(str/join " -> " [%1 (-> %2  name str/capitalize)])
+           chord-intervals
+           (music-theory/interval-tones chord-intervals key-of))
+          (str/join ", "))]
+
+    [:div {:style {:margin-left "1em"}}
+     [tuning-view tuning]]]])
 
 (defmethod definition-info-for-focus :default
   [definition instrument path-params query-params]

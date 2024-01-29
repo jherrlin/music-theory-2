@@ -133,7 +133,7 @@
    [:key-of              keyword?]])
 
 (def valid-unit?   (partial m/validate Unit))
-(def explain-scale (partial m/explain  Unit))
+(def explain-unit  (partial m/explain  Unit))
 
 (defn unit-to-str [{:keys [instrument key-of id]}]
   (str (-> instrument name) "," (-> key-of name) "," id))
