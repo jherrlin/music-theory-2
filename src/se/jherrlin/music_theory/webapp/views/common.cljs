@@ -88,7 +88,7 @@
           {:disabled (= chord chord-name)}
           chord-name-str]]])]))
 
-(defn scale-selection []
+(defn scale-selection [route-name-k path-param-k]
   (let [current-route-name              @(re-frame/subscribe [:current-route-name])
         {:keys [scale] :as path-params} @(re-frame/subscribe [:path-params])
         query-params                    @(re-frame/subscribe [:query-params])]
@@ -98,7 +98,9 @@
             :as    m} music-theory/scales]
        ^{:key (str "scale-selection-" id scale')}
        [:div {:style {:margin-right "10px" :display "inline"}}
-        [:a {:href (rfe/href :scale (assoc path-params :scale scale') query-params)}
+        [:a {:href (rfe/href route-name-k #_:scale
+                             (assoc path-params path-param-k #_:scale scale')
+                             query-params)}
          [:button
           {:disabled (= scale scale')}
           (-> scale' name (str/replace "-" " ") str/capitalize)]]])]))

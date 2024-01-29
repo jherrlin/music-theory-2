@@ -97,6 +97,17 @@
      [:br]
      [common/instrument-selection]
      [:br]
+     [:br]
+     [common/instrument-details instrument]
+     [:br]
+     [:br]
+     [common/key-selection]
+     [:br]
+     [:br]
+     [common/scale-selection :harmonizations :harmonization-scale]
+     [:br]
+     [:br]
+
 
      [common/select-harmonization]
 

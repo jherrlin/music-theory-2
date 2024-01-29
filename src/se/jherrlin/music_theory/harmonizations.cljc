@@ -51,7 +51,7 @@
                                           :idx-fn #(nth % 6)
                                           :idx    7}]}
      :145-dominant-sevens {:id          :145-dominant-sevens
-                           :description "145 Blues"
+                           :description "I-IV-V Blues"
                            :order       2
                            :type        :predefined
                            :chords      [{:chord  :dominant-seven

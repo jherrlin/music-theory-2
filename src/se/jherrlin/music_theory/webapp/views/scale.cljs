@@ -33,7 +33,7 @@
      [common/key-selection]
      [:br]
      [:br]
-     [common/scale-selection]
+     [common/scale-selection :scale :scale]
      [:br]
      [:br]
      [common/settings
