@@ -118,14 +118,14 @@
            (-> family name str/capitalize)])]
        [:tr
         (for [{suffix :chord/suffix
-               :keys [idx chord key-of] :as m} ms]
+               chord :chord/chord-name
+               :keys  [idx key-of] :as m} ms]
           ^{:key (str "harmonization-table-chord" idx suffix)}
           [:th
-           [:a
-            {:href (rfe/href
-                    :chord
-                    (assoc path-params :chord chord :key-of key-of)
-                    query-params)}
+           [:a {:href (rfe/href
+                       :chord
+                       (assoc path-params :chord chord :key-of key-of)
+                       query-params)}
             (str (-> key-of name str/capitalize)
                  suffix)]])]]]]))
 
