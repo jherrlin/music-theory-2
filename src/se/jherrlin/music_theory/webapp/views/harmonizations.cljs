@@ -28,11 +28,12 @@
                 [instrument harmonization scale key-of]}]
             (let [interval-tones (music-theory/interval-tones scale-intervals key-of)]
               (def harmonization-chords harmonization-chords)
+              (def interval-tones interval-tones)
               (->> harmonization-chords
                    (map (fn [{:keys [idx-fn] :as m}]
                           (assoc m :key-of (idx-fn interval-tones))))
                    (map
-                    (fn [harmonization-chord]
+                    (fn [{:keys [key-of] :as harmonization-chord}]
                       (let [chord                              (music-theory/get-chord (get harmonization-chord :chord))
                             {chord-intervals :chord/intervals} chord]
                         (-> chord
@@ -52,30 +53,42 @@
     [:<>
      [:p "T = Tonic (stable), S = Subdominant (leaving), D = Dominant (back home)"]
      [:table
-      [:tr (map (fn [m]
-                  [:th (:idx m)]) ms)]
-      [:tr (map (fn [m] [:th (:symbol m)]) ms)]
+      [:thead
+       [:tr
+        (for [{:keys [idx] :as m} ms]
+          ^{:key (str "harmonization-table-" idx)}
+          [:th idx])]]
+      [:tbody
+       [:tr
+        (for [{:keys [idx symbol] :as m} ms]
+          ^{:key (str "harmonization-table-symbol" idx symbol)}
+          [:th symbol])]
 
-      [:tr (map (fn [{mode   :mode
-                      key-of :key-of
-                      :as    m}]
-                  [:th
-                   [:a {:href (rfe/href :scale
-                                        (assoc path-params :scale mode :key-of key-of)
-                                        query-params)}
-                    (-> mode name str/capitalize)]]) ms)]
-      [:tr (map (fn [m] [:th (-> m :family name str/capitalize)]) ms)]
-      [:tr (map (fn [{key-of :key-of
-                      chord  :chord
-                      suffix :chord/suffix}]
-                  [:th
-                   [:a
-                    {:href (rfe/href
-                            :chord
-                            (assoc path-params :chord chord :key-of key-of)
-                            query-params)}
-                    (str (-> key-of name str/capitalize)
-                         suffix)]]) ms)]]]))
+       [:tr
+        (for [{:keys [idx symbol mode key-of] :as m} ms]
+          ^{:key (str "harmonization-table-link" idx symbol)}
+          [:th
+           [:a {:href (rfe/href :scale
+                                (assoc path-params :scale mode :key-of key-of)
+                                query-params)}
+            (-> mode name str/capitalize)]])]
+       [:tr
+        (for [{:keys [idx family] :as m} ms]
+          ^{:key (str "harmonization-table-name" idx symbol)}
+          [:th
+           (-> family name str/capitalize)])]
+       [:tr
+        (for [{suffix :chord/suffix
+               :keys [idx chord key-of] :as m} ms]
+          ^{:key (str "harmonization-table-chord" idx suffix)}
+          [:th
+           [:a
+            {:href (rfe/href
+                    :chord
+                    (assoc path-params :chord chord :key-of key-of)
+                    query-params)}
+            (str (-> key-of name str/capitalize)
+                 suffix)]])]]]]))
 
 (defn harmonizations-view [deps]
   (let [path-params                            @(re-frame/subscribe [:path-params])
@@ -101,6 +114,10 @@
 
      [:br]
 
+     #_[common/debug-view harmonization-chords]
+
+     [:br]
+
      [common/instrument-view
       harmonization-scale
       instrument
@@ -108,14 +125,15 @@
       query-params
       deps]
 
-     (for [{:keys [id] :as harmonization-chord} harmonization-chords]
-       ^{:key (str "harmonization-chord-" id)}
-       [common/instrument-view
-        harmonization-chord
-        instrument
-        path-params
-        query-params
-        deps])]))
+     [:<>
+      (for [{:keys [id idx] :as harmonization-chord} harmonization-chords]
+        ^{:key (str "harmonization-chord-" id idx)}
+        [common/instrument-view
+         harmonization-chord
+         instrument
+         path-params
+         query-params
+         deps])]]))
 
 
 (defn routes [deps]
