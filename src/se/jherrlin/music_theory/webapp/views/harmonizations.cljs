@@ -7,7 +7,6 @@
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
-   [se.jherrlin.music-theory.utils :as utils]
    [se.jherrlin.music-theory.webapp.views.common :as common]
    [re-frame.db :as db]))
 
@@ -16,28 +15,72 @@
   )
 
 
+
+(defmulti calc-harmonization
+  (fn [{:keys [harmonization scale key-of]}]
+    (get harmonization :type)))
+
+(defmethod calc-harmonization :predefined
+  [{{harmonization-chords :chords}     :harmonization
+    {scale-intervals :scale/intervals} :scale
+    :keys [key-of]}]
+  (let [interval-tones (music-theory/interval-tones scale-intervals key-of)]
+    (->> harmonization-chords
+         (map (fn [{:keys [idx-fn] :as m}]
+                (assoc m :key-of (idx-fn interval-tones))))
+         (map
+          (fn [{:keys [key-of] :as harmonization-chord}]
+            (let [chord
+                  (music-theory/get-chord (get harmonization-chord :chord))
+                  {chord-intervals :chord/intervals} chord]
+              (-> (merge harmonization-chord chord)
+                  (assoc :key-of key-of
+                         :interval-tones (music-theory/interval-tones
+                                          chord-intervals
+                                          key-of)))))))))
+
+(defmethod calc-harmonization :generated
+  [{:keys [key-of harmonization scale]}]
+  (let [scale-indexes        (get scale :scale/indexes)
+        scale-intervals      (get scale :scale/intervals)
+        chord-fn             (get harmonization :function)
+        scale-interval-tones (music-theory/scale-interval-tones key-of scale-intervals)
+        scale-index-tones    (music-theory/tones-by-key-and-indexes key-of scale-indexes)
+        found-chords         (map (fn [tone]
+                                    (let [index-tones-in-chord (music-theory/rotate-until
+                                                                #(% tone)
+                                                                scale-index-tones)]
+                                      (-> (music-theory/find-chord
+                                             music-theory/chords
+                                             (chord-fn index-tones-in-chord))
+                                          (assoc :key-of tone))))
+                                  scale-interval-tones)
+        first-is-major? ((-> found-chords first :chord/categories) :major)]
+    (mapv
+     #(assoc %1
+             :idx %2
+             :symbol %3
+             :mode  %4
+             :family %5)
+     found-chords ;; 1
+     (iterate inc 1) ;; 2
+     (if first-is-major? ;; 3
+       ["I" "ii" "iii" "IV" "V" "vi" "vii"]
+       ["i" "ii" "III" "iv" "v" "VI" "VII"])
+     (if first-is-major? ;; 4
+       [:ionian  :dorian  :phrygian :lydian :mixolydian :aeolian :locrian]
+       [:aeolian :locrian :ionian   :dorian :phrygian   :lydian  :mixolydian])
+     (if first-is-major?
+       [:tonic :subdominant :tonic :subdominant :dominant :tonic :dominant]
+       [:tonic :subdominant :tonic :subdominant :dominant :subdominant :dominant]))))
+
 (re-frame/reg-flow
  {:id     ::harmonization-chords
   :inputs {:harmonization (re-frame/flow<- ::events/harmonization)
            :scale         (re-frame/flow<- ::events/harmonization-scale)
            :key-of        [:path-params :key-of]}
-  :output (fn [{{harmonization-chords :chords}     :harmonization
-                {scale-intervals :scale/intervals} :scale
-                :keys [key-of]}]
-            (let [interval-tones (music-theory/interval-tones scale-intervals key-of)]
-              (->> harmonization-chords
-                   (map (fn [{:keys [idx-fn] :as m}]
-                          (assoc m :key-of (idx-fn interval-tones))))
-                   (map
-                    (fn [{:keys [key-of] :as harmonization-chord}]
-                      (let [chord
-                            (music-theory/get-chord (get harmonization-chord :chord))
-                            {chord-intervals :chord/intervals} chord]
-                        (-> (merge harmonization-chord chord)
-                            (assoc :key-of key-of
-                                   :interval-tones (music-theory/interval-tones
-                                                    chord-intervals
-                                                    key-of)))))))))
+  :output (fn [m]
+            (calc-harmonization m))
   :path   [:harmonization-chords]})
 
 (re-frame/reg-sub :harmonization-chords (fn [db [n']] (get db n')))
@@ -104,10 +147,9 @@
      [common/key-selection]
      [:br]
      [:br]
-     [common/scale-selection :harmonizations :harmonization-scale]
+     [common/harmonization-scale-selection]
      [:br]
      [:br]
-
 
      [common/select-harmonization]
 
@@ -118,11 +160,7 @@
        :nr-of-octavs?   (= instrument-type :keyboard)}]
 
      [table]
-
      [:br]
-
-     #_[common/debug-view harmonization-chords]
-
      [:br]
 
      [common/instrument-view

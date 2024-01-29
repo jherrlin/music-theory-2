@@ -3,6 +3,7 @@
    [se.jherrlin.music-theory.instruments :as instruments]
    [se.jherrlin.music-theory.definitions :as definitions]
    [se.jherrlin.music-theory.harmonizations :as harmonizations]
+   [se.jherrlin.music-theory.intervals :as intervals]
    [se.jherrlin.music-theory.utils :as utils]
    [clojure.set :as set]))
 
@@ -25,6 +26,10 @@
 (def chords (definitions/chords))
 (def get-scale definitions/scale)
 (def scales (definitions/scales))
+
+(def scales-for-harmonization
+  (->> scales
+       (filter (comp #{7} count :scale/intervals))))
 
 (comment
   (get-chord :major)
@@ -93,8 +98,27 @@
         (fn [{chord-intervals :chord/intervals}]
           (set/subset? (set chord-intervals) (set scale-intervals))))))
 
-(def tones-by-key-and-intervals utils/tones-by-key-and-intervals)
-
 
 (def get-harmonization harmonizations/harmonization)
 (def harmonizations harmonizations/harmonizations)
+
+(def tones-by-key-and-indexes utils/tones-by-key-and-indexes)
+(def tones-by-key-and-intervals utils/tones-by-key-and-intervals)
+
+(def find-chord utils/find-chord)
+(def sharp-or-flat utils/sharp-or-flat)
+(def rotate-until utils/rotate-until)
+
+(defn scale-interval-tones [key-of scale-intervals]
+  (let [scale-indexes (intervals/functions-to-semitones scale-intervals)
+
+        index-tones (tones-by-key-and-indexes key-of scale-indexes)]
+    (map
+     #(sharp-or-flat %1 %2)
+     index-tones
+     scale-intervals)))
+
+(scale-interval-tones
+ :c
+ ["1" "2" "3" "4" "5" "6" "7"])
+;; => (:c :d :e :f :g :a :b)

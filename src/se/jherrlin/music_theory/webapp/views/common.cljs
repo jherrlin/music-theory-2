@@ -88,18 +88,31 @@
           {:disabled (= chord chord-name)}
           chord-name-str]]])]))
 
-(defn scale-selection [route-name-k path-param-k]
-  (let [current-route-name              @(re-frame/subscribe [:current-route-name])
-        {:keys [scale] :as path-params} @(re-frame/subscribe [:path-params])
+(defn scale-selection []
+  (let [{:keys [scale] :as path-params} @(re-frame/subscribe [:path-params])
         query-params                    @(re-frame/subscribe [:query-params])]
     [:div
      (for [{scale' :scale
-            id     :id
-            :as    m} music-theory/scales]
+            id     :id} music-theory/scales]
        ^{:key (str "scale-selection-" id scale')}
        [:div {:style {:margin-right "10px" :display "inline"}}
-        [:a {:href (rfe/href route-name-k #_:scale
-                             (assoc path-params path-param-k #_:scale scale')
+        [:a {:href (rfe/href :scale
+                             (assoc path-params :scale scale')
+                             query-params)}
+         [:button
+          {:disabled (= scale scale')}
+          (-> scale' name (str/replace "-" " ") str/capitalize)]]])]))
+
+(defn harmonization-scale-selection []
+  (let [{:keys [scale] :as path-params} @(re-frame/subscribe [:path-params])
+        query-params                    @(re-frame/subscribe [:query-params])]
+    [:div
+     (for [{scale' :scale
+            id     :id} music-theory/scales-for-harmonization]
+       ^{:key (str "scale-selection-" id scale')}
+       [:div {:style {:margin-right "10px" :display "inline"}}
+        [:a {:href (rfe/href :harmonizations
+                             (assoc path-params :harmonization-scale scale')
                              query-params)}
          [:button
           {:disabled (= scale scale')}
@@ -248,7 +261,8 @@
 (defmethod harmonizations-chord-details [:fretboard [:chord]]
   [{suffix :chord/suffix
     intervals :chord/intervals
-    :keys  [symbol idx chord mode family interval-tones] :as definition}
+    chord :chord/chord-name
+    :keys  [symbol idx mode family interval-tones] :as definition}
    instrument
    {:keys [key-of] :as path-params}
    query-params]
@@ -278,13 +292,7 @@
    [:p {:style {:margin-right "2em"}}
             (->> interval-tones
                  (map (comp str/capitalize name))
-                 (str/join ", "))]]
-
-;; idx
-  ;; link to chord
-  ;; link to scale
-  ;; interval and tones
-  )
+                 (str/join ", "))]])
 
 (defmethod harmonizations-chord-details :default
   [definition instrument path-params query-params]

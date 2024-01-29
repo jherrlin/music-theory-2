@@ -726,12 +726,12 @@
  #_[:c :e :g])
 
 (defn find-chord
-  [chord-maps all-tones chord-tones]
-  {:pre [(coll? chord-maps)]}
-  (->> (find-chords chord-maps all-tones chord-tones)
-       (first)))
-
-
+  ([chord-maps chord-tones]
+   (find-chord chord-maps (all-tones) chord-tones))
+  ([chord-maps all-tones chord-tones]
+   {:pre [(coll? chord-maps)]}
+   (->> (find-chords chord-maps all-tones chord-tones)
+        (first))))
 
 (find-chord
  [#:chord{:id           :major,
@@ -742,8 +742,8 @@
           :sufix        "",
           :explanation  "major",
           :display-text "major"}]
- (all-tones)
  [#{:c} #{:e} #{:g}])
+
 
 (defn chord-name
   [chord-maps chord-tones]
