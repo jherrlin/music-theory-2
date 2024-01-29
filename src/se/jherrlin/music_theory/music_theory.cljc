@@ -1,10 +1,12 @@
 (ns se.jherrlin.music-theory.music-theory
   (:require
+   [malli.core :as m]
    [se.jherrlin.music-theory.instruments :as instruments]
    [se.jherrlin.music-theory.definitions :as definitions]
    [se.jherrlin.music-theory.harmonizations :as harmonizations]
    [se.jherrlin.music-theory.intervals :as intervals]
    [se.jherrlin.music-theory.utils :as utils]
+   [clojure.string :as str]
    [clojure.set :as set]))
 
 
@@ -122,3 +124,37 @@
  :c
  ["1" "2" "3" "4" "5" "6" "7"])
 ;; => (:c :d :e :f :g :a :b)
+
+
+(def Unit
+  [:map
+   [:id                  uuid?]
+   [:instrument          keyword?]
+   [:key-of              keyword?]])
+
+(def valid-unit?   (partial m/validate Unit))
+(def explain-scale (partial m/explain  Unit))
+
+(defn unit-to-str [{:keys [instrument key-of id]}]
+  (str (-> instrument name) "," (-> key-of name) "," id))
+
+(defn str-to-unit [s]
+  (let [[instrument key-of id] (str/split s ",")]
+    {:instrument (keyword instrument)
+     :key-of     (keyword key-of)
+     :id         (uuid id)}))
+
+(let [m {:instrument :guitar
+         :key-of     :c
+         :id         #uuid "c91cddfe-f776-4c0c-8125-4f4c5d074e77"}]
+  (->> m
+       (unit-to-str)
+       #_(str-to-unit)
+       #_(= m)))
+
+(defn str-to-units [s]
+  (->> (str/split s "_")
+       (map str-to-unit)))
+
+(str-to-units
+ "guitar,c,94f5f7a4-d852-431f-90ca-9e99f89bbb9c")

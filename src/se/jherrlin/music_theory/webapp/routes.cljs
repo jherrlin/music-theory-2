@@ -6,7 +6,8 @@
    [se.jherrlin.music-theory.webapp.views.chord :as chord]
    [se.jherrlin.music-theory.webapp.views.scale :as scale]
    [se.jherrlin.music-theory.webapp.views.table :as table]
-   [se.jherrlin.music-theory.webapp.views.harmonizations :as harmonizations]))
+   [se.jherrlin.music-theory.webapp.views.harmonizations :as harmonizations]
+   [se.jherrlin.music-theory.webapp.views.bookmarks :as bookmarks]))
 
 
 (defn routes [{:keys [play-tone] :as deps}]
@@ -16,4 +17,5 @@
    (chord/routes deps)
    (scale/routes deps)
    (table/routes deps)
-   (harmonizations/routes deps)])
+   (harmonizations/routes deps)
+   (bookmarks/routes deps)])

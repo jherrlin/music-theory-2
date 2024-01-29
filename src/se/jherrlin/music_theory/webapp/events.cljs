@@ -32,7 +32,8 @@
                         :debug                 false
                         :surrounding-intervals false
                         :surrounding-tones     false
-                        :show-octave           false}})
+                        :show-octave           false
+                        :bookmarks             ""}})
 
 (def Query
   [:map
@@ -43,11 +44,12 @@
    [:trim-fretboard        {:optional true} boolean?]
    [:surrounding-intervals {:optional true} boolean?]
    [:surrounding-tones     {:optional true} boolean?]
-   [:show-octave           {:optional true} boolean?]])
+   [:show-octave           {:optional true} boolean?]
+   [:bookmarks             {:optional true} any?]])
 
 (def query-keys
   [:nr-of-frets :as-intervals :as-text :nr-of-octavs :trim-fretboard
-   :surrounding-intervals :surrounding-tones :show-octave])
+   :surrounding-intervals :surrounding-tones :show-octave :bookmarks])
 
 (def events-
   [{:n :current-route-name}

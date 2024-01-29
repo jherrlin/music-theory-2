@@ -58,7 +58,7 @@
        {:disabled (= current-route-name :table)}
        "Table"]]
 
-     #_[:a {:style {:margin-right "10px"}
+     [:a {:style {:margin-right "10px"}
             :href  (rfe/href :bookmarks path-params query-params)}
       [:button
        {:disabled (= current-route-name :bookmarks)}
@@ -459,6 +459,29 @@
    [instrument-description instrument-description']
    [instrument-tuning tuning]])
 
+(defmulti definition-info-for-focus
+  (fn [definition instrument path-params query-params]
+    [(get instrument :type) (get definition :type)]))
+
+(defmethod definition-info-for-focus [:fretboard [:chord :pattern]]
+  [{chord-name :fretboard-pattern/belongs-to :as definition}
+   instrument path-params query-params]
+  (let [chord (music-theory/get-chord chord-name)]
+    [:<>
+     [:h1 "[:fretboard [:chord :pattern]]"]
+     [debug-view definition]
+     [debug-view chord]
+     [debug-view instrument]
+     [debug-view path-params]]))
+
+(defmethod definition-info-for-focus :default
+  [definition instrument path-params query-params]
+  [:<>
+   [:h2 "No implementatin for `definition-info-for-focus`"]
+   [debug-view definition]
+   [debug-view instrument]
+   [debug-view path-params]])
+
 (defmulti definition-view-detailed (fn [definition instrument path-params query-params]
                                      (get definition :type)))
 
@@ -466,10 +489,9 @@
   [{suffix      :chord/suffix
     explanation :chord/explanation
     :as         definition}
-   {instrument-description' :description
-    :keys                   [tuning] :as instrument}
+   instrument
    {:keys [key-of] :as path-params}
-   {:keys [as-intervals] :as query-params}]
+   query-params]
   (let [intervals      (get definition :chord/intervals)
         interval-tones (music-theory/interval-tones intervals key-of)]
     [:<>
