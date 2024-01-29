@@ -22,7 +22,7 @@
                         :instrument          :guitar
                         :chord               :major
                         :scale               :major
-                        :harmonization-id    :major-triads
+                        :harmonization-id    :triads
                         :harmonization-scale :major}
    :query-params       {:nr-of-frets           15
                         :nr-of-octavs          2
