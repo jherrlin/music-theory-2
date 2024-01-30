@@ -70,8 +70,7 @@
        "Source code"]]]))
 
 (defn chord-selection []
-  (let [current-route-name              @(re-frame/subscribe [:current-route-name])
-        {:keys [chord] :as path-params} @(re-frame/subscribe [:path-params])
+  (let [{:keys [chord] :as path-params} @(re-frame/subscribe [:path-params])
         query-params                    @(re-frame/subscribe [:query-params])]
     [:div
      (for [{chord-name     :chord/chord-name
@@ -192,8 +191,6 @@
           {:disabled (= instrument id)}
           text]])]))
 
-
-
 (defn instrument-view-fretboard-pattern
   [{:keys [definition
            instrument
@@ -226,6 +223,7 @@
         show-octave           (assoc :show-octave? true)
         surrounding-intervals (assoc :grey-fn :interval)
         surrounding-tones     (assoc :grey-fn :tone-str))]
+     [:br]
      (if bookmark-exists?
        [:button
         {:on-click
@@ -276,6 +274,7 @@
         show-octave           (assoc :show-octave? true)
         surrounding-intervals (assoc :grey-fn :interval)
         surrounding-tones     (assoc :grey-fn :tone-str))]
+     [:br]
      (if bookmark-exists?
        [:button
         {:on-click
@@ -519,6 +518,7 @@
          suffix          :chord/suffix :as chord} (music-theory/get-chord chord-name)]
     [:<>
      [:div {:style {:display "flex"}}
+      [:div (str "Key of: " (-> key-of name str/capitalize))]
       [:div {:style {:margin-left "1em"}}
        (str "Chord: " (-> key-of name str/capitalize) suffix)]
 
@@ -527,6 +527,31 @@
              #(str/join " -> " [%1 (-> %2  name str/capitalize)])
              chord-intervals
              (music-theory/interval-tones chord-intervals key-of))
+            (str/join ", "))]
+
+      [:div {:style {:margin-left "1em"}}
+       [tuning-view tuning]]]]))
+
+(defmethod definition-info-for-focus [:fretboard [:scale :pattern]]
+  [{scale-name :fretboard-pattern/belongs-to
+    :as        definition}
+   {:keys [tuning] :as instrument}
+   {:keys [key-of] :as path-params}
+   query-params]
+  (let [{intervals :scale/intervals
+         scale-names :scale/scale-names
+         :as scale} (music-theory/get-scale scale-name)]
+    [:<>
+     [:div {:style {:display "flex"}}
+      [:div (str "Key of: " (-> key-of name str/capitalize))]
+      [:div {:style {:margin-left "1em"}}
+       (str "Scale: " (->> scale-names (map (comp str/capitalize name)) sort (str/join " / ")))]
+
+      [:div {:style {:margin-left "1em"}}
+       (->> (map
+             #(str/join " -> " [%1 (-> %2  name str/capitalize)])
+             intervals
+             (music-theory/interval-tones intervals key-of))
             (str/join ", "))]
 
       [:div {:style {:margin-left "1em"}}
@@ -541,14 +566,38 @@
    query-params]
   [:<>
    [:div {:style {:display "flex"}}
+    [:div (str "Key of: " (-> key-of name str/capitalize))]
     [:div {:style {:margin-left "1em"}}
      (str "Chord: " (-> key-of name str/capitalize) suffix)]
 
     [:div {:style {:margin-left "1em"}}
      (->> (map
-           #(str/join " -> " [%1 (-> %2  name str/capitalize)])
+           #(str/join "  ->  " [%1 (-> %2  name str/capitalize)])
            chord-intervals
            (music-theory/interval-tones chord-intervals key-of))
+          (str/join ", "))]
+
+    [:div {:style {:margin-left "1em"}}
+     [tuning-view tuning]]]])
+
+(defmethod definition-info-for-focus [:fretboard [:scale]]
+  [{intervals   :scale/intervals
+    scale-names :scale/scale-names
+    :as         definition}
+   {:keys [tuning] :as instrument}
+   {:keys [key-of] :as path-params}
+   query-params]
+  [:<>
+   [:div {:style {:display "flex"}}
+    [:div (str "Key of: " (-> key-of name str/capitalize))]
+    [:div {:style {:margin-left "1em"}}
+     (str "Scale: " (->> scale-names (map (comp str/capitalize name)) sort (str/join " / ")))]
+
+    [:div {:style {:margin-left "1em"}}
+     (->> (map
+           #(str/join " -> " [%1 (-> %2  name str/capitalize)])
+           intervals
+           (music-theory/interval-tones intervals key-of))
           (str/join ", "))]
 
     [:div {:style {:margin-left "1em"}}

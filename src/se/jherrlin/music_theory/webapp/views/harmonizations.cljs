@@ -149,9 +149,9 @@
      [:br]
      [common/harmonization-scale-selection]
      [:br]
-     [:br]
 
      [common/select-harmonization]
+     [:br]
 
      [common/settings
       {:as-text?        (= instrument-type :fretboard)
