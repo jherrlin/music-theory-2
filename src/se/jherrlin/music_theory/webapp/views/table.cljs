@@ -36,6 +36,7 @@
 
 (defn table-component [deps]
   (let [{:keys [key-of] :as path-params} @(re-frame/subscribe [:path-params])
+        query-params                     @(re-frame/subscribe [:query-params])
         _                                (def key-of key-of)
         chords                           (->> music-theory/chords
                                               (map (fn [{intervals :chord/intervals :as m}]
@@ -48,7 +49,67 @@
      [:br]
      [common/key-selection]
 
-     [:div "table"]]))
+     [:<>
+      [:h3 "Chords"]
+      [:table
+       [:thead
+        [:tr
+         [:th "Suffix"]
+         [:th "Intervals"]
+         [:th "Tones"]]]
+       [:tbody
+        (for [{id           :id
+               intervals    :chord/intervals
+               suffix       :chord/suffix
+               chord-name   :chord/chord-name
+               display-text :chord/display-text}
+              music-theory/chords]
+          ^{:key (str "chord-list-" id)}
+          [:tr
+           [:td
+            [:a
+             {:href
+              (rfe/href
+               :chord
+               (assoc path-params :chord chord-name)
+               query-params)}
+             (or display-text suffix)]]
+           [:td
+            (->> intervals
+                 (str/join ", "))]
+           [:td
+            (->> (utils/tones-by-key-and-intervals key-of intervals)
+                 (map (comp str/capitalize name))
+                 (str/join ", "))]])]]]
+
+     [:<>
+      [:h3 "Scales"]
+      [:table
+       [:thead
+        [:tr
+         [:th "Name"]
+         [:th "Intervals"]
+         [:th "Tones"]]]
+       [:tbody
+        (for [{id         :id
+               intervals  :scale/intervals
+               scale-name :scale}
+              music-theory/scales]
+          ^{:key (str "scale-list-" id scale-name)}
+          [:tr
+           [:td
+            [:a
+             {:href
+              (rfe/href
+               :scale
+               (assoc path-params :scale scale-name)
+               query-params)}
+             (-> scale-name name str/capitalize)]]
+           [:td (str/join ", " intervals)]
+           [:td
+            (->> (utils/tones-by-key-and-intervals key-of intervals)
+                 (map (comp str/capitalize name))
+                 (str/join ", "))]])]]]]))
 
 
 (defn routes [deps]
