@@ -28,7 +28,6 @@
                         :nr-of-octavs          2
                         :as-intervals          false
                         :as-text               false
-                        :trim-fretboard        false
                         :debug                 false
                         :surrounding-intervals false
                         :surrounding-tones     false
@@ -41,14 +40,13 @@
    [:nr-of-octavs          {:optional true} int?]
    [:as-intervals          {:optional true} boolean?]
    [:as-text               {:optional true} boolean?]
-   [:trim-fretboard        {:optional true} boolean?]
    [:surrounding-intervals {:optional true} boolean?]
    [:surrounding-tones     {:optional true} boolean?]
    [:show-octave           {:optional true} boolean?]
    [:bookmarks             {:optional true} any?]])
 
 (def query-keys
-  [:nr-of-frets :as-intervals :as-text :nr-of-octavs :trim-fretboard
+  [:nr-of-frets :as-intervals :as-text :nr-of-octavs
    :surrounding-intervals :surrounding-tones :show-octave :bookmarks])
 
 (def events-

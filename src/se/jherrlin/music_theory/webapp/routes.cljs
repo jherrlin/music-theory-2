@@ -12,7 +12,7 @@
 
 (defn routes [{:keys [play-tone] :as deps}]
   (timbre/info "Collecting routes.")
-  [(home/routes)
+  [(home/routes deps)
    (focus/routes deps)
    (chord/routes deps)
    (scale/routes deps)

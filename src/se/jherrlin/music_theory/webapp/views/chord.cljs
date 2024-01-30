@@ -72,6 +72,8 @@
         [:br]
         [:br]])
      [:br]
+     [:br]
+     [:h2 "Scales to this chord:"]
      [common/scales-to-chord path-params query-params chord-intervals]]))
 
 (defn routes [deps]

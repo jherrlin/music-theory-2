@@ -60,6 +60,10 @@
            [:br]
            [:br]])])
 
+     [:br]
+     [:br]
+
+     [:h2 "Chords to this scale:"]
      [common/chords-to-scale path-params query-params scale-intervals]]))
 
 (defn routes [deps]

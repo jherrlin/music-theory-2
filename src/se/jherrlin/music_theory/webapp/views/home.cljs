@@ -1,23 +1,24 @@
 (ns se.jherrlin.music-theory.webapp.views.home
   (:require
    [taoensso.timbre :as timbre]
+   [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.webapp.views.common :as common]))
 
 
-(defn view []
+(defn home-view [deps]
   [:<>
    [common/menu]
    [:br]
    [:h2 "Welcome"]])
 
-(defn routes []
-  ["/"
-   {:name      :home
-    :view      [#'view]
-    :controllers
-    [{:start
-      (fn [_]
-        (timbre/info "Entering route :home"))
-      :stop
-      (fn [_]
-        (timbre/info "Leaving route :home"))}]}])
+(defn routes [deps]
+  (let [route-name :home]
+    ["/"
+     {:name       route-name
+      :view       [home-view deps]
+      :coercion   reitit.coercion.malli/coercion
+      :parameters {:query events/Query}
+      :controllers
+      [{:parameters {:query events/query-keys}
+        :start      (fn [{q :query}]
+                      (events/do-on-url-change route-name {} q))}]}]))
