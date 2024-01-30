@@ -87,14 +87,15 @@
                     query-params)}
          [:button
           {:disabled (= chord chord-name)}
-          chord-name-str]]])]))
+          (-> chord-name-str str/capitalize)]]])]))
 
 (defn scale-selection []
   (let [{:keys [scale] :as path-params} @(re-frame/subscribe [:path-params])
         query-params                    @(re-frame/subscribe [:query-params])]
     [:div
      (for [{scale' :scale
-            id     :id} music-theory/scales]
+            id     :id}
+           music-theory/scales]
        ^{:key (str "scale-selection-" id scale')}
        [:div {:style {:margin-right "10px" :display "inline"}}
         [:a {:href (rfe/href :scale
