@@ -30,15 +30,17 @@
                    :flow-direction "column"
                    :overflow-x     "auto"
                    :white-space    "nowrap"}}
-     [:a {:style {:margin-right "10px"} :href (rfe/href :home)}
+     [:a {:style {:margin-right "10px"}
+          :href (rfe/href :home path-params query-params)}
        [:button
         {:disabled (= current-route-name :home)}
         "Home"]]
+
      [:a {:style {:margin-right "10px"}
           :href  (rfe/href :chord path-params query-params)}
-       [:button
-        {:disabled (= current-route-name :chord)}
-        "Chords"]]
+      [:button
+       {:disabled (= current-route-name :chord)}
+       "Chords"]]
 
      [:a {:style {:margin-right "10px"}
           :href  (rfe/href :scale path-params query-params)}
