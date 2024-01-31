@@ -20,7 +20,9 @@
         definition                              (music-theory/by-id id)
         instrument'                             (music-theory/get-instrument instrument)]
     [:<>
-     [common/definition-view-detailed definition instrument' path-params query-params]
+     [common/menu]
+     [:br]
+     [common/definition-info-for-focus definition instrument' path-params query-params]
      [common/instrument-view definition instrument' path-params query-params deps]]))
 
 (defn routes [deps]

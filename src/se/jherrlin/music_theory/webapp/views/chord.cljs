@@ -8,7 +8,6 @@
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
-   [se.jherrlin.music-theory.utils :as utils]
    [se.jherrlin.music-theory.webapp.views.common :as common]))
 
 
@@ -16,9 +15,7 @@
   (let [{:keys [chord instrument] :as path-params}
         @(re-frame/subscribe [:path-params])
         query-params                            @(re-frame/subscribe [:query-params])
-        fretboard-matrix                        @(re-frame/subscribe [:fretboard-matrix])
-        {:keys           [id]
-         chord-intervals :chord/intervals
+        {chord-intervals :chord/intervals
          :as             chord-definition}      (music-theory/get-chord chord)
         {instrument-type :type :as instrument'} (music-theory/get-instrument instrument)
         chord-patterns                          (music-theory/chord-patterns-belonging-to chord instrument)

@@ -582,7 +582,7 @@
 (defn find-fretboard-pattern
   "Find patterns on the fretboard"
   [all-tones key-of interval-matrix fretboard-matrix]
-  (let [ ;; interval-matrix       (trim-matrix interval-matrix)
+  (let [;; interval-matrix       (trim-matrix interval-matrix)
         interval-matrix-width (-> interval-matrix first count)
         fretboard-count       (-> fretboard-matrix first count)]
     (loop [counter           0

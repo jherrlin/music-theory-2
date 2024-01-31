@@ -155,8 +155,7 @@
            [:button (str/capitalize chord-name-str)]]])])))
 
 (defn key-selection []
-  (let [current-route      @(re-frame/subscribe [:current-route])
-        path-params        @(re-frame/subscribe [:path-params])
+  (let [path-params        @(re-frame/subscribe [:path-params])
         query-params       @(re-frame/subscribe [:query-params])
         current-route-name @(re-frame/subscribe [:current-route-name])
         key-of             @(re-frame/subscribe [:key-of])]
@@ -175,12 +174,28 @@
          {:disabled (= key-of key)}
          title]])]))
 
+(defn bookmark-button [unit]
+  (let [bookmark-exists? @(re-frame/subscribe [:bookmark-exists? unit])]
+    (if bookmark-exists?
+      [:button
+       {:on-click #(re-frame/dispatch [:remove-bookmark unit])}
+       "Remove bookmark"]
+      [:button
+       {:on-click #(re-frame/dispatch [:add-bookmark unit])}
+       "Add bookmark"])))
+
+(defn focus-button [unit]
+  (let [current-route-name @(re-frame/subscribe [:current-route-name])
+        path-params        @(re-frame/subscribe [:path-params])
+        query-params       @(re-frame/subscribe [:query-params])]
+    (when-not (= current-route-name :focus)
+      [:a {:href (rfe/href :focus (merge path-params unit) query-params)}
+       [:button "Focus"]])))
+
 (defn instrument-selection []
-  (let [current-route                        @(re-frame/subscribe [:current-route])
-        {:keys [instrument] :as path-params} @(re-frame/subscribe [:path-params])
+  (let [{:keys [instrument] :as path-params} @(re-frame/subscribe [:path-params])
         query-params                         @(re-frame/subscribe [:query-params])
         current-route-name                   @(re-frame/subscribe [:current-route-name])
-        key-of                               @(re-frame/subscribe [:key-of])
         instruments                          music-theory/instruments]
     [:div {:style {:display        "flow"
                    :flow-direction "column"
@@ -193,30 +208,27 @@
                     current-route-name
                     (assoc path-params :instrument id)
                     query-params)}
-         [:button
-          {:disabled (= instrument id)}
-          text]])]))
+        [:button
+         {:disabled (= instrument id)}
+         text]])]))
 
 (defn instrument-view-fretboard-pattern
   [{:keys [definition
            instrument
            path-params query-params deps
            fretboard-matrix]}]
-  (let [{pattern :fretboard-pattern/pattern
-         id      :id}         definition
+  (let [{id :id}         definition
         {instrument-id :id}   instrument
         {:keys [key-of]}      path-params
-        {:keys [as-intervals trim-fretboard
-                surrounding-intervals surrounding-tones
-                show-octave]} query-params
+        {:keys [trim-fretboard surrounding-intervals surrounding-tones show-octave]}
+        query-params
         {:keys [play-tone]}   deps
         fretboard-matrix'
         (cond->> fretboard-matrix
           trim-fretboard (music-theory/trim-matrix #(every? nil? (map :out %))))
         unit                  {:id         id
                                :key-of     key-of
-                               :instrument instrument-id}
-        bookmark-exists?      @(re-frame/subscribe [:bookmark-exists? unit])]
+                               :instrument instrument-id}]
     [:<>
      [instruments-fretboard/styled-view
       (cond-> {:id             id
@@ -230,17 +242,8 @@
         surrounding-intervals (assoc :grey-fn :interval)
         surrounding-tones     (assoc :grey-fn :tone-str))]
      [:br]
-     (if bookmark-exists?
-       [:button
-        {:on-click
-         #(re-frame/dispatch
-           [:remove-bookmark unit])}
-        "Remove bookmark"]
-       [:button
-        {:on-click
-         #(re-frame/dispatch
-           [:add-bookmark unit])}
-        "Add bookmark"])]))
+     [bookmark-button unit]
+     [focus-button unit]]))
 
 (defn instrument-view-fretboard-chord-and-scale
   [{id :id :as definition}
@@ -266,8 +269,7 @@
                                             #(every? nil? (map :out %))))
         unit              {:id         id
                            :key-of     key-of
-                           :instrument instrument-id}
-        bookmark-exists? @(re-frame/subscribe [:bookmark-exists? unit])]
+                           :instrument instrument-id}]
     [:<>
      [instruments-fretboard/styled-view
       (cond-> {:id            id
@@ -281,17 +283,8 @@
         surrounding-intervals (assoc :grey-fn :interval)
         surrounding-tones     (assoc :grey-fn :tone-str))]
      [:br]
-     (if bookmark-exists?
-       [:button
-        {:on-click
-         #(re-frame/dispatch
-           [:remove-bookmark unit])}
-        "Remove bookmark"]
-       [:button
-        {:on-click
-         #(re-frame/dispatch
-           [:add-bookmark unit])}
-        "Add bookmark"])]))
+     [bookmark-button unit]
+     [focus-button unit]]))
 
 (defmulti harmonizations-chord-details
   (fn [definition instrument path-params query-params]
@@ -325,13 +318,12 @@
 
    [:p {:style {:margin-right "2em"}} (-> family name str/capitalize)]
 
-   [:p {:style {:margin-right "2em"}}
-            (->> intervals (str/join ", "))]
-
-   [:p {:style {:margin-right "2em"}}
-            (->> interval-tones
-                 (map (comp str/capitalize name))
-                 (str/join ", "))]])
+   [:div {:style {:margin-left "1em"}}
+    (->> (map
+          #(str/join " -> " [%1 (-> %2  name str/capitalize)])
+          intervals
+          (music-theory/interval-tones intervals key-of))
+         (str/join ",  "))]])
 
 (defmethod harmonizations-chord-details :default
   [definition instrument path-params query-params]
