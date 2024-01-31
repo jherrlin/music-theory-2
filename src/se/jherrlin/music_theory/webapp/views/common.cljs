@@ -76,7 +76,8 @@
         query-params                    @(re-frame/subscribe [:query-params])]
     [:div
      (for [{chord-name     :chord/chord-name
-            chord-name-str :chord/chord-name-str
+            display-text   :chord/display-text
+            suffix         :chord/suffix
             id             :id
             :as            m} music-theory/chords]
        ^{:key (str "chord-selection-" id)}
@@ -87,7 +88,9 @@
                     query-params)}
          [:button
           {:disabled (= chord chord-name)}
-          (-> chord-name-str str/capitalize)]]])]))
+          (if display-text
+            (-> display-text str/capitalize)
+            (-> suffix str/capitalize))]]])]))
 
 (defn scale-selection []
   (let [{:keys [scale] :as path-params} @(re-frame/subscribe [:path-params])
