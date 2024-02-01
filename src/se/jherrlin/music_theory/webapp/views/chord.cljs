@@ -9,6 +9,76 @@
    [se.jherrlin.music-theory.webapp.views.common :as common]))
 
 
+(def events-
+  [{:n ::chord-unit}
+   {:n ::chord-pattern-units}
+   {:n ::chord-triad-pattern-units}])
+
+(doseq [{:keys [n s e]} events-]
+  (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
+  (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
+
+(defn to-units
+  ([key-of instrument ms]
+   (to-units key-of instrument :id ms))
+  ([key-of instrument id-fn ms]
+   (->> ms
+        (map (fn [m]
+               (let [id (id-fn m)]
+                 (music-theory/unit key-of instrument id)))))))
+
+(re-frame/reg-event-db
+ :add-units-with-fretboard
+ (fn [db [_ units fretboard]]
+   (update db ::fretboards
+           #(reduce
+             (fn [m unit]
+               (-> m
+                   (assoc-in [::fretboards unit :id] unit)
+                   (assoc-in [::fretboards unit :fretboard] fretboard)))
+             %
+             units))))
+
+(re-frame/reg-event-db
+ :add-unit-with-fretboard
+ (fn [db [_ unit fretboard]]
+   (-> db
+       (update ::fretboards assoc-in [::fretboards unit :id] unit)
+       (update ::fretboards assoc-in [::fretboards unit :fretboard] fretboard))))
+
+(re-frame/reg-sub
+ :fretboard-by-unit
+ (fn [db [_ unit]]
+   (get-in db [::fretboards unit :fretboard])))
+
+(defn calc-chord-view [{:keys [chord key-of instrument]} {:keys [nr-of-frets]}]
+  (let [{:keys [id] :as chord'}   (music-theory/get-chord chord)
+        {:keys [tuning]}          (music-theory/get-instrument instrument)
+        chord-unit                (music-theory/unit key-of instrument id)
+        fretboard-matrix          (music-theory/create-fretboard-matrix key-of nr-of-frets tuning)
+        chord-patterns            (music-theory/chord-patterns-belonging-to chord instrument)
+        chord-pattern-units       (to-units key-of instrument chord-patterns)
+        chord-triad-patterns      (music-theory/chord-pattern-triads-belonging-to chord instrument)
+        chord-triad-pattern-units (to-units key-of instrument chord-triad-patterns)]
+    (re-frame/dispatch [:add-unit-with-fretboard chord-unit fretboard-matrix])
+    (re-frame/dispatch [:add-units-with-fretboard chord-pattern-units fretboard-matrix])
+    (re-frame/dispatch [:add-units-with-fretboard chord-triad-pattern-units fretboard-matrix])
+    (re-frame/dispatch [::chord-unit chord-unit])
+    (re-frame/dispatch [::chord-pattern-units chord-pattern-units])
+    (re-frame/dispatch [::chord-triad-pattern-units chord-triad-pattern-units])))
+
+(comment
+
+  (calc-chord-view
+   {:instrument :guitar
+    :key-of :c
+    :chord :major}
+   {:nr-of-frets 15})
+
+  (get @re-frame.db/app-db ::fretboards)
+  )
+
+
 (defn chord-component [deps]
   (let [{:keys [chord instrument] :as path-params}
         @(re-frame/subscribe [:path-params])
@@ -86,4 +156,5 @@
       [{:parameters {:path  [:instrument :key-of :chord]
                      :query events/query-keys}
         :start      (fn [{p :path q :query}]
+                      (calc-chord-view p q)
                       (events/do-on-url-change route-name p q))}]}]))

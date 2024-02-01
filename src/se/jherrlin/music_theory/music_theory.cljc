@@ -140,6 +140,11 @@
 (def valid-unit?   (partial m/validate Unit))
 (def explain-unit  (partial m/explain  Unit))
 
+(defn unit [key-of instrument id]
+  {:id         id
+   :instrument instrument
+   :key-of     key-of})
+
 (defn unit-to-str [{:keys [instrument key-of id]}]
   (str (-> instrument name) "," (-> key-of name) "," id))
 
