@@ -73,6 +73,7 @@
   (tones-starting-at :c)
   )
 
+(def add-intervals-to-fretboard-matrix utils/add-intervals-to-fretboard-matrix)
 (def add-basics-to-fretboard-matrix utils/add-basics-to-fretboard-matrix)
 (def with-all-intervals utils/with-all-intervals)
 (def with-all-tones utils/with-all-tones)
@@ -84,6 +85,10 @@
 (def pattern-with-tones utils/pattern-with-tones)
 
 (interval-tones ["1" "b3" "5"] :c)
+
+(defn create-fretboard-matrix [key-of nr-of-frets tuning]
+  (->> (fretboard-strings tuning nr-of-frets)
+       (add-intervals-to-fretboard-matrix key-of)))
 
 (defn scales-to-chord [scales chord-intervals]
   (->> scales

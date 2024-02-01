@@ -533,7 +533,7 @@
                             (apply max))]
     (->> (partition-by :y (->> m vals (sort-by :y)))
          (mapv (fn [coll]
-                  (vec (sort-by :x coll)))))))
+                 (vec (sort-by :x coll)))))))
 
 (defn fretboard-matrix-to-map [matrix]
   (->> matrix
@@ -941,6 +941,17 @@
   (add-layer
    (partial add-basics tones-and-intervals)
    matrix))
+
+(defn add-intervals-to-fretboard-matrix [key-of fretboard-matrix]
+  (let [tones-matched-with-intervals
+        (mapv
+         vector
+         (->> (tones-starting-at key-of)
+              (map first))
+         ["1" "b2" "2" "b3" "3" "4" "b5" "5" "b6" "6" "b7" "7"])]
+    (add-basics-to-fretboard-matrix
+     fretboard-matrix
+     tones-matched-with-intervals)))
 
 (defn fretboard-str
   [tone-f matrix]

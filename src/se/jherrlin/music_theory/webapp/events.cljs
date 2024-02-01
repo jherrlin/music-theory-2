@@ -118,16 +118,7 @@
   :output (fn [{:keys [instrument nr-of-frets key-of]}]
             (let [{:keys [type tuning]} instrument]
               (when (and (= type :fretboard) instrument nr-of-frets key-of)
-                (let [fretboard (music-theory/fretboard-strings tuning nr-of-frets)
-                      tones-matched-with-intervals
-                      (mapv
-                       vector
-                       (->> (music-theory/tones-starting-at key-of)
-                            (map first))
-                       ["1" "b2" "2" "b3" "3" "4" "b5" "5" "b6" "6" "b7" "7"])]
-                  (music-theory/add-basics-to-fretboard-matrix
-                   fretboard
-                   tones-matched-with-intervals)))))
+                (music-theory/create-fretboard-matrix key-of nr-of-frets tuning))))
   :path [:fretboard-matrix]})
 
 (re-frame/reg-sub

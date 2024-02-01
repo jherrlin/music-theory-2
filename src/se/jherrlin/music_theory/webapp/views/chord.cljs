@@ -2,9 +2,7 @@
   (:require
    [clojure.set :as set]
    [clojure.string :as str]
-   [re-frame.core :as re-frame]
-   [re-frame.alpha :as re-frame-alpha]
-   [reitit.frontend.easy :as rfe]
+   [re-frame.alpha :as re-frame]
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
