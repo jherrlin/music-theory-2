@@ -3,6 +3,9 @@
    [malli.core :as m]))
 
 
+;;;
+;;; IndexTone
+;;;
 (def IndexTone
   "Index tone is a tone without the notion of an interval.
   It's always a set that contains one or two interval tones.
@@ -18,6 +21,10 @@
 (m/validate IndexTone #{:c :d :eb})  ;; => false
 (m/validate IndexTone #{:k})         ;; => false
 
+
+;;;
+;;; IndexTones
+;;;
 (def IndexTones
   "Index tones are a vector with index tones.
 
@@ -36,6 +43,32 @@
 (valid-index-tone?  #{:d# :eb})
 (valid-index-tones? [#{:d# :eb}])
 
+
+;;;
+;;; IndexTonesSet
+;;;
+(def IndexTonesSet
+  "Index tones are a vector with index tones.
+
+  Example: `#{#{:c} #{:eb :d#}}`"
+  [:set
+   {:min 1}
+   IndexTone])
+
+(m/validate IndexTonesSet #{#{:c} #{:eb :d#}})  ;; => true
+(m/validate IndexTonesSet #{})                  ;; => false
+(m/validate IndexTonesSet #{#{:k}})             ;; => false
+
+(def valid-index-tones-set?  (partial m/validate IndexTonesSet))
+
+(valid-index-tones-set?  #{#{:d# :eb} #{:c}}) ;; => true
+(valid-index-tones-set?  #{#{:d# :eb} :c})    ;; => false
+
+
+
+;;;
+;;; IntervalTone
+;;;
 (def IntervalTone
   "Interval tone is a tone within the context of an interval.
   As an index tone can have two tones, the interval helps distinguish them.
@@ -48,6 +81,9 @@
 (m/validate IntervalTone :k)  ;; => false
 (m/validate IntervalTone nil) ;; => false
 
+;;;
+;;; IntervalTones
+;;;
 (def IntervalTones
   "Interval tones are a vector of interval tones.
 
@@ -67,6 +103,33 @@
 (valid-interval-tone?  :c)
 (valid-interval-tones? [:c])
 
+
+;;;
+;;; IntervalTonesSet
+;;;
+(def IntervalTonesSet
+  "Interval tones are a vector of interval tones.
+
+  Example: `#{:c :e :g}`"
+  [:set
+   {:min 1}
+   IntervalTone])
+
+(m/validate IntervalTonesSet #{:c :e :g :eb})  ;; => true
+(m/validate IntervalTonesSet #{:c :e :BAD})    ;; => false
+(m/validate IntervalTonesSet #{:c})            ;; => true
+(m/validate IntervalTonesSet #{})              ;; => false
+
+(def valid-interval-tones-set? (partial m/validate IntervalTonesSet))
+
+(valid-interval-tones-set?  #{:c :e :g :eb})  ;; => true
+(valid-interval-tones-set?  #{:c :e :BAD})    ;; => false
+(valid-interval-tones-set?  #{:c})            ;; => true
+(valid-interval-tones-set?  #{})              ;; => false
+
+;;;
+;;; ToneData
+;;;
 (def ToneData
   [:map
    [:index-tone    IndexTone]
