@@ -1,6 +1,9 @@
 #+TITLE: Music theory
 
+* Todos
 
+  - [ ] Find chord
+    [[file:src/se/jherrlin/music_theory/music_theory.cljc::226][functions]]
 
 * Develop
 
