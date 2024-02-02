@@ -208,6 +208,21 @@
           query-params
           deps]])]]))
 
+(defn gather-data-for-route
+  [{:keys [instrument key-of harmonization-id harmonization-scale] :as path-params}
+   {:keys [nr-of-frets] :as query-params}]
+  (let [scale         (music-theory/get-scale harmonization-scale)
+        harmonization (music-theory/get-harmonization harmonization-id)]
+
+    (calc-harmonization-scale path-params query-params)
+
+    (calc-harmonization-chords
+     {:harmonization harmonization
+      :scale         scale
+      :key-of        key-of
+      :instrument    instrument
+      :nr-of-frets   nr-of-frets})))
+
 (defn routes [deps]
   (let [route-name :harmonizations]
     ["/harmonizations/:instrument/:key-of/:harmonization-scale/:harmonization-id"
@@ -224,27 +239,5 @@
       [{:parameters {:path  [:instrument :key-of :harmonization-id :harmonization-scale]
                      :query events/query-keys}
         :start      (fn [{p :path q :query}]
-                      (def p p)
-                      (def q q)
-                      (let [{:keys [instrument key-of harmonization-id harmonization-scale]}
-                            p
-                            {:keys [nr-of-frets]}
-                            q
-                            scale
-                            (music-theory/get-scale harmonization-scale)
-                            harmonization
-                            (music-theory/get-harmonization harmonization-id)]
-                        (def harmonization harmonization)
-                        (def scale scale)
-                        (def key-of key-of)
-                        (def instrument instrument)
-                        (calc-harmonization-chords
-                         {:harmonization harmonization
-                          :scale         scale
-                          :key-of        key-of
-                          :instrument    instrument
-                          :nr-of-frets   nr-of-frets})
-
-                        (calc-harmonization-scale p q))
-
+                      (gather-data-for-route p q)
                       (events/do-on-url-change route-name p q))}]}]))
