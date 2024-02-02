@@ -75,17 +75,11 @@
          ^{:key (str "bookmark-definition-" (music-theory/entity-to-str entity))}
          [:<>
           [common/definition-info-for-focus
-           definition instrument path-params query-params]
+           entity definition instrument path-params query-params]
           [:br]
           [common/instrument-view entity path-params query-params deps]
           [:br]
           [:br]]))]))
-
-(defn fretboard-instrument? [instrument-kw]
-  {:pre [(keyword? instrument-kw)]}
-  (->> (music-theory/get-instrument instrument-kw)
-       :type
-       (= :fretboard)))
 
 (defn prepair-fretboard-entities [s nr-of-frets]
   (let [fretboard-entities (->> s
@@ -104,13 +98,11 @@
       :coercion   reitit.coercion.malli/coercion
       :parameters {:query events/Query}
       :controllers
-      [{:parameters {:path  [:instrument :key-of :chord]
-                     :query events/query-keys}
-        :start      (fn [{p :path q :query}]
+      [{:parameters {:query events/query-keys}
+        :start      (fn [{q :query}]
                       (let [bookmarks   (get q :bookmarks)
                             nr-of-frets (get q :nr-of-frets)]
                         (when (seq bookmarks)
                           (prepair-fretboard-entities bookmarks nr-of-frets))
-                        (def p p)
                         (def q q))
-                      (events/do-on-url-change route-name p q))}]}]))
+                      (events/do-on-url-change route-name {} q))}]}]))

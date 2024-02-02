@@ -15,35 +15,61 @@
   )
 
 
+(def events-
+  [{:n ::harmonization-scale}
+   {:n ::harmonization-chords}])
 
-(defmulti calc-harmonization
+(doseq [{:keys [n s e]} events-]
+  (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
+  (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
+
+(defn calc-harmonization-scale [{:keys [harmonization-scale key-of instrument]} {:keys [nr-of-frets]}]
+  (let [{scale-names :scale/scale-names
+         :keys       [id] :as scale'} (music-theory/get-scale harmonization-scale)
+        instrument-tuning             (music-theory/get-instrument-tuning instrument)
+        scale-entity                  (music-theory/entity key-of instrument id)
+        fretboard-matrix              (music-theory/create-fretboard-matrix key-of nr-of-frets instrument-tuning)]
+    (re-frame/dispatch [:add-entity-with-fretboard scale-entity fretboard-matrix])
+    (re-frame/dispatch [::harmonization-scale scale-entity])))
+
+(defmulti calc-harmonization-chords
   (fn [{:keys [harmonization scale key-of]}]
     (get harmonization :type)))
 
-(defmethod calc-harmonization :predefined
+(defmethod calc-harmonization-chords :predefined
   [{{harmonization-chords :chords}     :harmonization
     {scale-intervals :scale/intervals} :scale
-    :keys [key-of]}]
-  (let [interval-tones (music-theory/interval-tones scale-intervals key-of)]
-    (->> harmonization-chords
-         (map (fn [{:keys [idx-fn] :as m}]
-                (assoc m :key-of (idx-fn interval-tones))))
-         (map
-          (fn [{:keys [key-of] :as harmonization-chord}]
-            (let [chord
-                  (music-theory/get-chord (get harmonization-chord :chord))
-                  {chord-intervals :chord/intervals} chord]
-              (-> (merge harmonization-chord chord)
-                  (assoc :key-of key-of
-                         :interval-tones (music-theory/interval-tones
-                                          chord-intervals
-                                          key-of)))))))))
+    :keys                              [key-of instrument nr-of-frets]}]
+  (let [instrument-tuning    (music-theory/get-instrument-tuning instrument)
+        interval-tones       (music-theory/interval-tones scale-intervals key-of)
+        harmonization-chords (->> harmonization-chords
+                                  (map (fn [{:keys [idx-fn] :as m}]
+                                         (assoc m :key-of (idx-fn interval-tones))))
+                                  (map
+                                   (fn [{:keys [key-of] :as harmonization-chord}]
+                                     (let [chord
+                                           (music-theory/get-chord (get harmonization-chord :chord))
+                                           {chord-intervals :chord/intervals} chord]
+                                       (-> (merge harmonization-chord chord)
+                                           (assoc :key-of key-of
+                                                  :instrument instrument
+                                                  :interval-tones (music-theory/interval-tones
+                                                                   chord-intervals
+                                                                   key-of)))))))]
+    ;; Create fretboard matrixes
+    (doseq [chord harmonization-chords]
+      (let [entity           (music-theory/select-entity-keys chord)
+            fretboard-matrix (music-theory/create-fretboard-matrix key-of nr-of-frets instrument-tuning)]
+        (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix])))
 
-(defmethod calc-harmonization :generated
-  [{:keys [key-of harmonization scale]}]
+    (re-frame/dispatch [::harmonization-chords harmonization-chords])))
+
+(defmethod calc-harmonization-chords :generated
+  [{:keys [key-of harmonization scale instrument nr-of-frets]}]
   (let [scale-indexes        (get scale :scale/indexes)
         scale-intervals      (get scale :scale/intervals)
         chord-fn             (get harmonization :function)
+        instrument-tuning    (music-theory/get-instrument-tuning instrument)
         scale-interval-tones (music-theory/scale-interval-tones key-of scale-intervals)
         scale-index-tones    (music-theory/tones-by-key-and-indexes key-of scale-indexes)
         found-chords         (map (fn [tone]
@@ -51,42 +77,40 @@
                                                                 #(% tone)
                                                                 scale-index-tones)]
                                       (-> (music-theory/find-chord
-                                             music-theory/chords
-                                             (chord-fn index-tones-in-chord))
-                                          (assoc :key-of tone))))
+                                           music-theory/chords
+                                           (chord-fn index-tones-in-chord))
+                                          (assoc :key-of tone
+                                                 :instrument instrument))))
                                   scale-interval-tones)
-        first-is-major? ((-> found-chords first :chord/categories) :major)]
-    (mapv
-     #(assoc %1
-             :idx %2
-             :symbol %3
-             :mode  %4
-             :family %5)
-     found-chords ;; 1
-     (iterate inc 1) ;; 2
-     (if first-is-major? ;; 3
-       ["I" "ii" "iii" "IV" "V" "vi" "vii"]
-       ["i" "ii" "III" "iv" "v" "VI" "VII"])
-     (if first-is-major? ;; 4
-       [:ionian  :dorian  :phrygian :lydian :mixolydian :aeolian :locrian]
-       [:aeolian :locrian :ionian   :dorian :phrygian   :lydian  :mixolydian])
-     (if first-is-major?
-       [:tonic :subdominant :tonic :subdominant :dominant :tonic :dominant]
-       [:tonic :subdominant :tonic :subdominant :dominant :subdominant :dominant]))))
+        first-is-major?      ((-> found-chords first :chord/categories) :major)
+        harmonization-chords (mapv
+                              #(assoc %1
+                                      :idx %2
+                                      :symbol %3
+                                      :mode  %4
+                                      :family %5)
+                              found-chords        ;; 1
+                              (iterate inc 1)     ;; 2
+                              (if first-is-major? ;; 3
+                                ["I" "ii" "iii" "IV" "V" "vi" "vii"]
+                                ["i" "ii" "III" "iv" "v" "VI" "VII"])
+                              (if first-is-major? ;; 4
+                                [:ionian  :dorian  :phrygian :lydian :mixolydian :aeolian :locrian]
+                                [:aeolian :locrian :ionian   :dorian :phrygian   :lydian  :mixolydian])
+                              (if first-is-major?
+                                [:tonic :subdominant :tonic :subdominant :dominant :tonic :dominant]
+                                [:tonic :subdominant :tonic :subdominant :dominant :subdominant :dominant]))]
 
-(re-frame/reg-flow
- {:id     ::harmonization-chords
-  :inputs {:harmonization (re-frame/flow<- ::events/harmonization)
-           :scale         (re-frame/flow<- ::events/harmonization-scale)
-           :key-of        [:path-params :key-of]}
-  :output (fn [m]
-            (calc-harmonization m))
-  :path   [:harmonization-chords]})
+    ;; Create fretboard matrixes
+    (doseq [chord harmonization-chords]
+      (let [entity           (music-theory/select-entity-keys chord)
+            fretboard-matrix (music-theory/create-fretboard-matrix key-of nr-of-frets instrument-tuning)]
+        (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix])))
 
-(re-frame/reg-sub :harmonization-chords (fn [db [n']] (get db n')))
+    (re-frame/dispatch [::harmonization-chords harmonization-chords])))
 
 (defn table []
-  (let [ms           @(re-frame/subscribe [:harmonization-chords])
+  (let [ms           @(re-frame/subscribe [::harmonization-chords])
         path-params  @(re-frame/subscribe [:path-params])
         query-params @(re-frame/subscribe [:query-params])]
     [:<>
@@ -132,8 +156,8 @@
 (defn harmonizations-view [deps]
   (let [path-params                            @(re-frame/subscribe [:path-params])
         query-params                           @(re-frame/subscribe [:query-params])
-        harmonization-chords                   @(re-frame/subscribe [:harmonization-chords])
-        harmonization-scale                    @(re-frame/subscribe [:harmonization-scale])
+        harmonization-chords                   @(re-frame/subscribe [::harmonization-chords])
+        harmonization-scale                    @(re-frame/subscribe [::harmonization-scale])
         {instrument-type :type :as instrument} @(re-frame/subscribe [:instrument])]
     [:<>
      [common/menu]
@@ -165,7 +189,6 @@
 
      [common/instrument-view
       harmonization-scale
-      instrument
       path-params
       query-params
       deps]
@@ -180,12 +203,10 @@
           (assoc path-params :key-of key-of)
           query-params]
          [common/instrument-view
-          harmonization-chord
-          instrument
+          (music-theory/select-entity-keys harmonization-chord)
           (assoc path-params :key-of key-of)
           query-params
           deps]])]]))
-
 
 (defn routes [deps]
   (let [route-name :harmonizations]
@@ -203,4 +224,27 @@
       [{:parameters {:path  [:instrument :key-of :harmonization-id :harmonization-scale]
                      :query events/query-keys}
         :start      (fn [{p :path q :query}]
+                      (def p p)
+                      (def q q)
+                      (let [{:keys [instrument key-of harmonization-id harmonization-scale]}
+                            p
+                            {:keys [nr-of-frets]}
+                            q
+                            scale
+                            (music-theory/get-scale harmonization-scale)
+                            harmonization
+                            (music-theory/get-harmonization harmonization-id)]
+                        (def harmonization harmonization)
+                        (def scale scale)
+                        (def key-of key-of)
+                        (def instrument instrument)
+                        (calc-harmonization-chords
+                         {:harmonization harmonization
+                          :scale         scale
+                          :key-of        key-of
+                          :instrument    instrument
+                          :nr-of-frets   nr-of-frets})
+
+                        (calc-harmonization-scale p q))
+
                       (events/do-on-url-change route-name p q))}]}]))

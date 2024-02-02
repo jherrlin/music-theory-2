@@ -246,8 +246,9 @@
 (defn instrument-view-fretboard-chord-and-scale
   [{id            :id
     instrument-id :instrument
+    key-of        :key-of
     :as           entity}
-   {:keys [key-of] :as path-params}
+   path-params
    {:keys
     [as-intervals trim-fretboard surrounding-intervals surrounding-tones
      show-octave]
@@ -265,12 +266,9 @@
                               fretboard-matrix))
         fretboard-matrix' (cond->> fretboard
                             trim-fretboard (music-theory/trim-matrix
-                                            #(every? nil? (map :out %))))
-        entity              {:id         id
-                             :key-of     key-of
-                             :instrument instrument-id}]
+                                            #(every? nil? (map :out %))))]
     [:<>
-     [debug-view entity]
+     #_[debug-view entity]
      [instruments-fretboard/styled-view
       (cond-> {:id            id
                :on-click       (fn [{:keys [tone-str octave]}]
@@ -511,14 +509,15 @@
 
 
 (defmulti definition-info-for-focus
-  (fn [definition instrument path-params query-params]
+  (fn [entity definition instrument path-params query-params]
     [(get instrument :type) (get definition :type)]))
 
 (defmethod definition-info-for-focus [:fretboard [:chord :pattern]]
-  [{chord-name :fretboard-pattern/belongs-to
+  [{:keys [key-of] :as entity}
+   {chord-name :fretboard-pattern/belongs-to
     :as        definition}
    {:keys [tuning] :as instrument}
-   {:keys [key-of] :as path-params}
+   path-params
    query-params]
   (let [{chord-intervals :chord/intervals
          suffix          :chord/suffix :as chord} (music-theory/get-chord chord-name)]
@@ -539,10 +538,11 @@
        [tuning-view tuning]]]]))
 
 (defmethod definition-info-for-focus [:fretboard [:scale :pattern]]
-  [{scale-name :fretboard-pattern/belongs-to
+  [{:keys [key-of] :as entity}
+   {scale-name :fretboard-pattern/belongs-to
     :as        definition}
    {:keys [tuning] :as instrument}
-   {:keys [key-of] :as path-params}
+   path-params
    query-params]
   (let [{intervals :scale/intervals
          scale-names :scale/scale-names
@@ -564,11 +564,12 @@
        [tuning-view tuning]]]]))
 
 (defmethod definition-info-for-focus [:fretboard [:chord]]
-  [{chord-intervals :chord/intervals
+  [{:keys [key-of] :as entity}
+   {chord-intervals :chord/intervals
     suffix          :chord/suffix
     :as             definition}
    {:keys [tuning] :as instrument}
-   {:keys [key-of] :as path-params}
+   path-params
    query-params]
   [:<>
    [:div {:style {:display "flex"}}
@@ -587,11 +588,12 @@
      [tuning-view tuning]]]])
 
 (defmethod definition-info-for-focus [:fretboard [:scale]]
-  [{intervals   :scale/intervals
+  [{:keys [key-of] :as entity}
+   {intervals   :scale/intervals
     scale-names :scale/scale-names
     :as         definition}
    {:keys [tuning] :as instrument}
-   {:keys [key-of] :as path-params}
+   path-params
    query-params]
   [:<>
    [:div {:style {:display "flex"}}
@@ -610,7 +612,7 @@
      [tuning-view tuning]]]])
 
 (defmethod definition-info-for-focus :default
-  [definition instrument path-params query-params]
+  [entity definition instrument path-params query-params]
   [:<>
    [:h2 "No implementatin for `definition-info-for-focus`"]
    [debug-view definition]

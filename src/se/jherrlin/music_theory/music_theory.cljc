@@ -19,9 +19,12 @@
   )
 
 (def get-instrument instruments/instrument)
+(defn get-instrument-tuning [instrument]
+  (get (get-instrument instrument) :tuning))
 
 (comment
   (get-instrument :five-string-banjo)
+  (get-instrument-tuning :five-string-banjo)
   )
 
 (def by-id definitions/by-id)
@@ -140,6 +143,7 @@
 (def entity-to-str models.entity/entity-to-str)
 (def str-to-entities models.entity/str-to-entities)
 (def fretboard-entity? models.entity/fretboard-entity?)
+(def select-entity-keys models.entity/select-entity-keys)
 
 
 ;; (def Unit

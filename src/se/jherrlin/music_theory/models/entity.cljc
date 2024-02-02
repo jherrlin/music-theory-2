@@ -45,6 +45,9 @@
    :instrument instrument
    :key-of     key-of})
 
+(defn select-entity-keys [m]
+  (select-keys m [:id :instrument :key-of]))
+
 (defn definitions-to-entities
   ([key-of instrument definitions]
    (definitions-to-entities key-of instrument :id definitions))
