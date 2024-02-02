@@ -174,22 +174,22 @@
          {:disabled (= key-of key)}
          title]])]))
 
-(defn bookmark-button [unit]
-  (let [bookmark-exists? @(re-frame/subscribe [:bookmark-exists? unit])]
+(defn bookmark-button [entity]
+  (let [bookmark-exists? @(re-frame/subscribe [:bookmark-exists? entity])]
     (if bookmark-exists?
       [:button
-       {:on-click #(re-frame/dispatch [:remove-bookmark unit])}
+       {:on-click #(re-frame/dispatch [:remove-bookmark entity])}
        "Remove bookmark"]
       [:button
-       {:on-click #(re-frame/dispatch [:add-bookmark unit])}
+       {:on-click #(re-frame/dispatch [:add-bookmark entity])}
        "Add bookmark"])))
 
-(defn focus-button [unit]
+(defn focus-button [entity]
   (let [current-route-name @(re-frame/subscribe [:current-route-name])
         path-params        @(re-frame/subscribe [:path-params])
         query-params       @(re-frame/subscribe [:query-params])]
     (when-not (= current-route-name :focus)
-      [:a {:href (rfe/href :focus (merge path-params unit) query-params)}
+      [:a {:href (rfe/href :focus (merge path-params entity) query-params)}
        [:button "Focus"]])))
 
 (defn instrument-selection []
@@ -213,22 +213,20 @@
          text]])]))
 
 (defn instrument-view-fretboard-pattern
-  [{:keys [definition
+  [{:keys [entity
+           definition
            instrument
-           path-params query-params deps
+           path-params
+           query-params
+           deps
            fretboard-matrix]}]
-  (let [{id :id}         definition
-        {instrument-id :id}   instrument
-        {:keys [key-of]}      path-params
+  (let [{id :id}            definition
         {:keys [trim-fretboard surrounding-intervals surrounding-tones show-octave]}
         query-params
-        {:keys [play-tone]}   deps
+        {:keys [play-tone]} deps
         fretboard-matrix'
         (cond->> fretboard-matrix
-          trim-fretboard (music-theory/trim-matrix #(every? nil? (map :out %))))
-        unit                  {:id         id
-                               :key-of     key-of
-                               :instrument instrument-id}]
+          trim-fretboard (music-theory/trim-matrix #(every? nil? (map :out %))))]
     [:<>
      [instruments-fretboard/styled-view
       (cond-> {:id             id
@@ -242,12 +240,13 @@
         surrounding-intervals (assoc :grey-fn :interval)
         surrounding-tones     (assoc :grey-fn :tone-str))]
      [:br]
-     [bookmark-button unit]
-     [focus-button unit]]))
+     [bookmark-button entity]
+     [focus-button entity]]))
 
 (defn instrument-view-fretboard-chord-and-scale
-  [{id :id :as definition}
-   {instrument-id :id :as instrument}
+  [{id            :id
+    instrument-id :instrument
+    :as           entity}
    {:keys [key-of] :as path-params}
    {:keys
     [as-intervals trim-fretboard surrounding-intervals surrounding-tones
@@ -255,7 +254,7 @@
     :as query-params}
    intervals
    {:keys [play-tone] :as deps}]
-  (let [fretboard-matrix  @(re-frame/subscribe [:fretboard-matrix])
+  (let [fretboard-matrix  @(re-frame/subscribe [:fretboard-by-entity entity])
         interval-tones    (music-theory/interval-tones intervals key-of)
         fretboard         (if as-intervals
                             (music-theory/with-all-intervals
@@ -267,10 +266,11 @@
         fretboard-matrix' (cond->> fretboard
                             trim-fretboard (music-theory/trim-matrix
                                             #(every? nil? (map :out %))))
-        unit              {:id         id
-                           :key-of     key-of
-                           :instrument instrument-id}]
+        entity              {:id         id
+                             :key-of     key-of
+                             :instrument instrument-id}]
     [:<>
+     [debug-view entity]
      [instruments-fretboard/styled-view
       (cond-> {:id            id
                :on-click       (fn [{:keys [tone-str octave]}]
@@ -283,8 +283,8 @@
         surrounding-intervals (assoc :grey-fn :interval)
         surrounding-tones     (assoc :grey-fn :tone-str))]
      [:br]
-     [bookmark-button unit]
-     [focus-button unit]]))
+     [bookmark-button entity]
+     [focus-button entity]]))
 
 (defmulti harmonizations-chord-details
   (fn [definition instrument path-params query-params]
@@ -330,22 +330,26 @@
   [:h1 "not implemented"])
 
 (defmulti instrument-view
-  (fn [definition instrument path-params query-params deps]
-    [(get instrument :type) (get definition :type)]))
+  (fn [{:keys [id instrument key-of] :as entity} path-params query-params deps]
+    (let [instrument' (music-theory/get-instrument instrument)
+          definition  (music-theory/by-id id)]
+      [(get instrument' :type) (get definition :type)])))
 
 (defmethod instrument-view [:fretboard [:chord]]
-  [definition instrument path-params query-params deps]
-  (let [intervals (get definition :chord/intervals)]
+  [{:keys [id instrument key-of] :as entity} path-params query-params deps]
+  (let [definition  (music-theory/by-id id)
+        intervals   (get definition :chord/intervals)]
     [instrument-view-fretboard-chord-and-scale
-     definition instrument path-params query-params intervals deps]))
+     entity path-params query-params intervals deps]))
 
 (defmethod instrument-view [:fretboard [:chord :pattern]]
-  [{pattern :fretboard-pattern/pattern :as definition}
-   instrument
-   {:keys [key-of] :as path-params}
+  [{:keys [id instrument key-of] :as entity}
+   path-params
    {:keys [as-intervals] :as query-params}
    {:keys [play-tone] :as deps}]
-  (let [fretboard-matrix @(re-frame/subscribe [:fretboard-matrix])
+  (let [{pattern :fretboard-pattern/pattern :as definition}
+        (music-theory/by-id id)
+        fretboard-matrix  @(re-frame/subscribe [:fretboard-by-entity entity])
         matrix           ((if as-intervals
                             music-theory/pattern-with-intervals
                             music-theory/pattern-with-tones)
@@ -354,7 +358,8 @@
                           fretboard-matrix)]
     [:<>
      [instrument-view-fretboard-pattern
-      {:definition       definition
+      {:entity           entity
+       :definition       definition
        :instrument       instrument
        :path-params      path-params
        :query-params     query-params
@@ -370,18 +375,20 @@
       "Play"]]))
 
 (defmethod instrument-view [:fretboard [:scale]]
-  [definition instrument path-params query-params deps]
-  (let [intervals (get definition :scale/intervals)]
+  [{:keys [id instrument key-of] :as entity} path-params query-params deps]
+  (let [definition (music-theory/by-id id)
+        intervals  (get definition :scale/intervals)]
     [instrument-view-fretboard-chord-and-scale
-     definition instrument path-params query-params intervals deps]))
+     entity path-params query-params intervals deps]))
 
 (defmethod instrument-view [:fretboard [:scale :pattern]]
-  [{pattern :fretboard-pattern/pattern :as definition}
-   instrument
-   {:keys [key-of] :as path-params}
+  [{:keys [id instrument key-of] :as entity}
+   path-params
    {:keys [as-intervals trim-fretboard] :as query-params}
    {:keys [play-tone] :as deps}]
-  (let [fretboard-matrix @(re-frame/subscribe [:fretboard-matrix])
+  (let [{pattern :fretboard-pattern/pattern :as definition}
+        (music-theory/by-id id)
+        fretboard-matrix @(re-frame/subscribe [:fretboard-by-entity entity])
         matrix           ((if as-intervals
                             music-theory/pattern-with-intervals
                             music-theory/pattern-with-tones)
@@ -395,7 +402,8 @@
                           pattern
                           fretboard-matrix)]
     [instrument-view-fretboard-pattern
-     {:definition       definition
+     {:entity           entity
+      :definition       definition
       :instrument       instrument
       :path-params      path-params
       :query-params     query-params
@@ -403,10 +411,10 @@
       :fretboard-matrix fretboard'}]))
 
 (defmethod instrument-view :default
-  [definition instrument path-params query-params deps]
+  [entity path-params query-params deps]
   [:div
    [:h2 "Not implemented"]
-   [debug-view definition]])
+   [debug-view entity]])
 
 (defn intervals-to-tones [intervals tones]
   [:pre {:style {:overflow-x "auto"}}

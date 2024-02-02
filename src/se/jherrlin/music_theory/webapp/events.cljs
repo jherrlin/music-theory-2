@@ -76,6 +76,30 @@
   (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
   (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
 
+(re-frame/reg-event-db
+ :add-entities-with-fretboard
+ (fn [db [_ entities fretboard]]
+   (update db ::fretboards
+           #(reduce
+             (fn [m entity]
+               (-> m
+                   (assoc-in [entity :id] entity)
+                   (assoc-in [entity :fretboard] fretboard)))
+             %
+             entities))))
+
+(re-frame/reg-event-db
+ :add-entity-with-fretboard
+ (fn [db [_ entity fretboard]]
+   (-> db
+       (update ::fretboards assoc-in [entity :id] entity)
+       (update ::fretboards assoc-in [entity :fretboard] fretboard))))
+
+(re-frame/reg-sub
+ :fretboard-by-entity
+ (fn [db [_ entity]]
+   (get-in db [::fretboards entity :fretboard])))
+
 (re-frame/reg-flow
  {:id     ::instrument
   :inputs {:i [:path-params :instrument]}

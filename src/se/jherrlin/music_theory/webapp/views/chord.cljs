@@ -10,66 +10,33 @@
 
 
 (def events-
-  [{:n ::chord-unit}
-   {:n ::chord-pattern-units}
-   {:n ::chord-triad-pattern-units}])
+  [{:n ::chord-entity}
+   {:n ::chord-pattern-entities}
+   {:n ::chord-triad-pattern-entities}])
 
 (doseq [{:keys [n s e]} events-]
   (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
   (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
 
-(defn to-units
-  ([key-of instrument ms]
-   (to-units key-of instrument :id ms))
-  ([key-of instrument id-fn ms]
-   (->> ms
-        (map (fn [m]
-               (let [id (id-fn m)]
-                 (music-theory/unit key-of instrument id)))))))
-
-(re-frame/reg-event-db
- :add-units-with-fretboard
- (fn [db [_ units fretboard]]
-   (update db ::fretboards
-           #(reduce
-             (fn [m unit]
-               (-> m
-                   (assoc-in [::fretboards unit :id] unit)
-                   (assoc-in [::fretboards unit :fretboard] fretboard)))
-             %
-             units))))
-
-(re-frame/reg-event-db
- :add-unit-with-fretboard
- (fn [db [_ unit fretboard]]
-   (-> db
-       (update ::fretboards assoc-in [::fretboards unit :id] unit)
-       (update ::fretboards assoc-in [::fretboards unit :fretboard] fretboard))))
-
-(re-frame/reg-sub
- :fretboard-by-unit
- (fn [db [_ unit]]
-   (get-in db [::fretboards unit :fretboard])))
-
-(defn calc-chord-view [{:keys [chord key-of instrument]} {:keys [nr-of-frets]}]
-  (let [{:keys [id] :as chord'}   (music-theory/get-chord chord)
-        {:keys [tuning]}          (music-theory/get-instrument instrument)
-        chord-unit                (music-theory/unit key-of instrument id)
-        fretboard-matrix          (music-theory/create-fretboard-matrix key-of nr-of-frets tuning)
-        chord-patterns            (music-theory/chord-patterns-belonging-to chord instrument)
-        chord-pattern-units       (to-units key-of instrument chord-patterns)
-        chord-triad-patterns      (music-theory/chord-pattern-triads-belonging-to chord instrument)
-        chord-triad-pattern-units (to-units key-of instrument chord-triad-patterns)]
-    (re-frame/dispatch [:add-unit-with-fretboard chord-unit fretboard-matrix])
-    (re-frame/dispatch [:add-units-with-fretboard chord-pattern-units fretboard-matrix])
-    (re-frame/dispatch [:add-units-with-fretboard chord-triad-pattern-units fretboard-matrix])
-    (re-frame/dispatch [::chord-unit chord-unit])
-    (re-frame/dispatch [::chord-pattern-units chord-pattern-units])
-    (re-frame/dispatch [::chord-triad-pattern-units chord-triad-pattern-units])))
+(defn gather-view-data [{:keys [chord key-of instrument]} {:keys [nr-of-frets]}]
+  (let [{:keys [id] :as chord'}      (music-theory/get-chord chord)
+        {:keys [tuning]}             (music-theory/get-instrument instrument)
+        chord-entity                 (music-theory/entity key-of instrument id)
+        fretboard-matrix             (music-theory/create-fretboard-matrix key-of nr-of-frets tuning)
+        chord-patterns               (music-theory/chord-patterns-belonging-to chord instrument)
+        chord-pattern-entities       (music-theory/definitions-to-entities key-of instrument chord-patterns)
+        chord-triad-patterns         (music-theory/chord-pattern-triads-belonging-to chord instrument)
+        chord-triad-pattern-entities (music-theory/definitions-to-entities key-of instrument chord-triad-patterns)]
+    (re-frame/dispatch [:add-entity-with-fretboard chord-entity fretboard-matrix])
+    (re-frame/dispatch [:add-entities-with-fretboard chord-pattern-entities fretboard-matrix])
+    (re-frame/dispatch [:add-entities-with-fretboard chord-triad-pattern-entities fretboard-matrix])
+    (re-frame/dispatch [::chord-entity chord-entity])
+    (re-frame/dispatch [::chord-pattern-entities chord-pattern-entities])
+    (re-frame/dispatch [::chord-triad-pattern-entities chord-triad-pattern-entities])))
 
 (comment
 
-  (calc-chord-view
+  (gather-view-data
    {:instrument :guitar
     :key-of :c
     :chord :major}
@@ -86,8 +53,9 @@
         {chord-intervals :chord/intervals
          :as             chord-definition}      (music-theory/get-chord chord)
         {instrument-type :type :as instrument'} (music-theory/get-instrument instrument)
-        chord-patterns                          (music-theory/chord-patterns-belonging-to chord instrument)
-        chord-triad-patterns                    (music-theory/chord-pattern-triads-belonging-to chord instrument)]
+        chord-entity                              @(re-frame/subscribe [::chord-entity])
+        chord-patterns                          @(re-frame/subscribe [::chord-pattern-entities])
+        chord-triad-patterns                    @(re-frame/subscribe [::chord-triad-pattern-entities])]
     [:<>
      [common/menu]
      [:br]
@@ -113,27 +81,27 @@
      [:br]
      [:br]
      [common/instrument-view
-      chord-definition instrument' path-params query-params deps]
+      chord-entity path-params query-params deps]
 
      (when (seq chord-patterns)
        [:h2 "Chord patterns"])
 
-     (for [{:keys [id] :as pattern-definitions} chord-patterns]
+     (for [{:keys [id] :as entity} chord-patterns]
        ^{:key (str "chord-patterns-" id)}
        [:<>
         [common/instrument-view
-         pattern-definitions instrument' path-params query-params deps]
+         entity path-params query-params deps]
         [:br]
         [:br]])
 
      (when (seq chord-triad-patterns)
        [:h2 "Triads"])
 
-     (for [{:keys [id] :as pattern-definitions} chord-triad-patterns]
+     (for [{:keys [id] :as entity} chord-triad-patterns]
        ^{:key (str "chord-triad-patterns-" id)}
        [:<>
         [common/instrument-view
-         pattern-definitions instrument' path-params query-params deps]
+         entity path-params query-params deps]
         [:br]
         [:br]])
      [:br]
@@ -156,5 +124,5 @@
       [{:parameters {:path  [:instrument :key-of :chord]
                      :query events/query-keys}
         :start      (fn [{p :path q :query}]
-                      (calc-chord-view p q)
+                      (gather-view-data p q)
                       (events/do-on-url-change route-name p q))}]}]))

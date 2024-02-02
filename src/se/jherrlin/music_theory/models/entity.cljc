@@ -3,76 +3,83 @@
   It has a key, a specific instrument and an id."
   (:require
    [malli.core :as m]
-   [clojure.string :as str]))
+   [clojure.string :as str]
+   [se.jherrlin.music-theory.models.tone :as tone]
+   [se.jherrlin.music-theory.instruments :as instruments]))
+
+
 
 (def Entity
   [:map
-   [:instrument-type :keyword]
-   [:tuning          :keyword]
-   [:key-of          :keyword]
-   [:id              uuid?]])
+   [:instrument  (into
+                  [:enum]
+                  (->> instruments/definitions
+                       vals
+                       (map :id)
+                       set
+                       vec))]
+   [:key-of      tone/IntervalTone]
+   [:id          uuid?]])
 
 (def Entities
   [:vector
    {:min 1}
    Entity])
 
-(def valid-entity?   (partial m/validate Entity))
-(def valid-entities? (partial m/validate Entities))
+(def EntitiesSet
+  [:set
+   {:min 1}
+   Entity])
 
+(def valid-entity?       (partial m/validate Entity))
+(def valid-entities?     (partial m/validate Entities))
+(def valid-entities-set? (partial m/validate EntitiesSet))
 
-(defn entity-to-string
-  [{:keys [instrument-type tuning key-of id] :as entity}]
-  {:pre [(valid-entity? entity)]}
-  (let [instrument-type' (name instrument-type)
-        tuning'          (name tuning)
-        key-of'          (name key-of)
-        id'              (str id)]
-    (str/join "," [instrument-type' tuning' key-of' id'])))
+(valid-entity?
+ {:instrument :guitar,
+  :key-of     :c,
+  :id         #uuid "39af7096-b5c6-45e9-b743-6791b217a3df"})
 
-(defn entities-to-string [es]
-  (when (seq es)
-    (->> es
-         (map entity-to-string)
-         (str/join "|"))))
+(defn entity [key-of instrument id]
+  {:id         id
+   :instrument instrument
+   :key-of     key-of})
 
-(comment
-  (entity-to-string
-   {:instrument-type :fretboard
-    :tuning          :mandolin
-    :key-of          :c
-    :id              #uuid "b5b5e1a8-eed8-4398-8f65-725d050aeb57"})
+(defn definitions-to-entities
+  ([key-of instrument definitions]
+   (definitions-to-entities key-of instrument :id definitions))
+  ([key-of instrument id-fn definitions]
+   {:pre [(keyword? instrument)]}
+   (->> definitions
+        (map (fn [m]
+               (let [id (id-fn m)]
+                 (entity key-of instrument id)))))))
 
-  (entities-to-string
-   [{:instrument-type :fretboard
-     :tuning          :mandolin
-     :key-of          :c
-     :id              #uuid "b5b5e1a8-eed8-4398-8f65-725d050aeb57"}
-    {:instrument-type :fretboard
-     :tuning          :mandolin
-     :key-of          :c
-     :id              #uuid "b5b5e1a8-eed8-4398-8f65-725d050aeb57"}])
-  )
+(defn entity-to-str [{:keys [instrument key-of id]}]
+  (str (-> instrument name) "," (-> key-of name) "," id))
 
-(defn string-to-entity [s]
-  (let [[instrument-type tuning key-of id] (str/split s #",")
-        entity
-        {:instrument-type (keyword instrument-type)
-         :tuning          (keyword tuning)
-         :key-of          (keyword key-of)
-         :id              (parse-uuid id)}]
-    (if (valid-entity? entity)
-      entity
-      (throw
-       (ex-info "String is not a valid Entity." entity)))))
+(defn str-to-entity [s]
+  (let [[instrument key-of id] (str/split s ",")]
+    {:instrument (keyword instrument)
+     :key-of     (keyword key-of)
+     :id         (uuid id)}))
 
-(defn string-to-entities [s]
-  (->> (str/split s #"\|")
-       (map string-to-entity)))
+(defn str-to-entities [s]
+  (->> (str/split s "_")
+       (map str-to-entity)))
 
-(comment
-  (string-to-entity
-   "fretboard,mandolin,c,b5b5e1a8-eed8-4398-8f65-725d050aeb57")
-  (string-to-entities
-   "fretboard,mandolin,c,b5b5e1a8-eed8-4398-8f65-725d050aeb57|fretboard,mandolin,c,b5b5e1a8-eed8-4398-8f65-725d050aeb57")
-  )
+(let [m {:instrument :guitar
+         :key-of     :c
+         :id         #uuid "c91cddfe-f776-4c0c-8125-4f4c5d074e77"}]
+  (->> m
+       (entity-to-str)
+       (str-to-entity)
+       (= m)))
+
+(str-to-entities
+ "guitar,c,94f5f7a4-d852-431f-90ca-9e99f89bbb9c")
+
+(defn fretboard-entity? [{:keys [instrument] :as m}]
+  {:pre [(valid-entity? m)]}
+  (= (get (instruments/instrument :guitar #_instrument) :type)
+     :fretboard))
