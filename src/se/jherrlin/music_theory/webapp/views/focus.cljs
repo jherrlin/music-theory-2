@@ -19,7 +19,7 @@
         fretboard-matrix                               @(re-frame/subscribe [:fretboard-matrix])
         definition                                     (music-theory/by-id id)
         instrument'                                    (music-theory/get-instrument instrument)
-        entity                                           (music-theory/entity key-of instrument id)]
+        entity                                         (music-theory/entity key-of instrument id)]
     [:<>
      [common/menu]
      [:br]

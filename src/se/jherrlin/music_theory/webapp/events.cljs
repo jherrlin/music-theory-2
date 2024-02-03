@@ -43,10 +43,11 @@
    [:surrounding-intervals {:optional true} boolean?]
    [:surrounding-tones     {:optional true} boolean?]
    [:show-octave           {:optional true} boolean?]
+   [:debug                 {:optional true} boolean?]
    [:bookmarks             {:optional true} any?]])
 
 (def query-keys
-  [:nr-of-frets :as-intervals :as-text :nr-of-octavs
+  [:nr-of-frets :as-intervals :as-text :nr-of-octavs :debug
    :surrounding-intervals :surrounding-tones :show-octave :bookmarks])
 
 (def events-
@@ -99,6 +100,13 @@
  :fretboard-by-entity
  (fn [db [_ entity]]
    (get-in db [::fretboards entity :fretboard])))
+
+(comment
+  (let [entity {:id #uuid "1aaa72af-7c36-4b87-8e22-b1b4a719ed1b",
+                :instrument :guitar,
+                :key-of :g}]
+    (get-in @re-frame.db/app-db [::fretboards entity :fretboard]))
+  )
 
 (re-frame/reg-flow
  {:id     ::instrument

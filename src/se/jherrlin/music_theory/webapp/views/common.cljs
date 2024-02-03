@@ -220,13 +220,17 @@
            deps
            fretboard-matrix]}]
   (let [{id :id}            definition
-        {:keys [trim-fretboard surrounding-intervals surrounding-tones show-octave]}
+        {:keys [trim-fretboard surrounding-intervals surrounding-tones show-octave
+                debug]}
         query-params
         {:keys [play-tone]} deps
         fretboard-matrix'
         (cond->> fretboard-matrix
           trim-fretboard (music-theory/trim-matrix #(every? nil? (map :out %))))]
+    (def fretboard-matrix' fretboard-matrix')
     [:<>
+     (when debug
+       [debug-view entity])
      [instruments-fretboard/styled-view
       (cond-> {:id             id
                :on-click       (fn [{:keys [tone-str octave]} fretboard-matrix]
@@ -250,7 +254,7 @@
    path-params
    {:keys
     [as-intervals trim-fretboard surrounding-intervals surrounding-tones
-     show-octave]
+     show-octave debug]
     :as query-params}
    intervals
    {:keys [play-tone] :as deps}]
@@ -267,7 +271,8 @@
                             trim-fretboard (music-theory/trim-matrix
                                             #(every? nil? (map :out %))))]
     [:<>
-     #_[debug-view entity]
+     (when debug
+       [debug-view entity])
      [instruments-fretboard/styled-view
       (cond-> {:id            id
                :on-click       (fn [{:keys [tone-str octave]} fretboard-matrix]
@@ -346,7 +351,7 @@
    {:keys [play-tone] :as deps}]
   (let [{pattern :fretboard-pattern/pattern :as definition}
         (music-theory/by-id id)
-        fretboard-matrix  @(re-frame/subscribe [:fretboard-by-entity entity])
+        fretboard-matrix @(re-frame/subscribe [:fretboard-by-entity entity])
         matrix           ((if as-intervals
                             music-theory/pattern-with-intervals
                             music-theory/pattern-with-tones)
