@@ -1,41 +1,46 @@
 (ns se.jherrlin.music-theory.webapp.views.bookmarks
   (:require
-   [clojure.set :as set]
    [clojure.string :as str]
    [re-frame.alpha :as re-frame]
-   [reitit.frontend.easy :as rfe]
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
-   [se.jherrlin.music-theory.utils :as utils]
    [se.jherrlin.music-theory.webapp.views.common :as common]))
 
-(re-frame/reg-event-db
+(re-frame/reg-event-fx
  :add-bookmark
- (fn [db [_ bookmark]]
+ (fn [{:keys [db]} [_ bookmark]]
    {:pre [(music-theory/valid-entity? bookmark)]}
-   (let [bookmarks    (get-in db [:query-params :bookmarks])
-         bookmark-str (music-theory/entity-to-str bookmark)]
-     (assoc-in db [:query-params :bookmarks]
-               (if-not (seq bookmarks)
-                 bookmark-str
-                 (str bookmarks "_" bookmark-str))))))
+   (let [current-route-name     (get db :current-route-name)
+         path-params            (get db :path-params)
+         query-params           (get db :query-params)
+         existing-bookmarks-str (get-in db [:query-params :bookmarks])
+         new-bookmark-str       (music-theory/entity-to-str bookmark)
+         new-bookmarks-str      (if-not (seq existing-bookmarks-str)
+                                  new-bookmark-str
+                                  (str existing-bookmarks-str "_" new-bookmark-str))
+         new-query-params       (assoc query-params :bookmarks new-bookmarks-str)]
+     {:push-state [current-route-name path-params new-query-params]})))
 
 (comment
   (get-in @re-frame.db/app-db [:query-params])
   )
 
-(re-frame/reg-event-db
+(re-frame/reg-event-fx
  :remove-bookmark
- (fn [db [_ bookmark]]
+ (fn [{:keys [db]} [_ bookmark]]
    {:pre [(music-theory/valid-entity? bookmark)]}
-   (let [bookmarks (get-in db [:query-params :bookmarks])
-         bookmark-str (music-theory/entity-to-str bookmark)
-         new-bookmarks (-> bookmarks
-                           (str/replace bookmark-str "")
-                           (str/replace #"_$" "")
-                           (str/replace #"^_" ""))]
-     (assoc-in db [:query-params :bookmarks] new-bookmarks))))
+   (let [current-route-name     (get db :current-route-name)
+         path-params            (get db :path-params)
+         query-params           (get db :query-params)
+         existing-bookmarks-str (get-in db [:query-params :bookmarks])
+         new-bookmark-str       (music-theory/entity-to-str bookmark)
+         new-bookmarks-str      (-> existing-bookmarks-str
+                                    (str/replace new-bookmark-str "")
+                                    (str/replace #"_$" "")
+                                    (str/replace #"^_" ""))
+         new-query-params       (assoc query-params :bookmarks new-bookmarks-str)]
+     {:push-state [current-route-name path-params new-query-params]})))
 
 (re-frame/reg-sub
  :bookmark-exists?
