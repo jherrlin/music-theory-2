@@ -23,23 +23,26 @@
   (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
   (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
 
-(defn calc-harmonization-scale [{:keys [harmonization-scale key-of instrument]} {:keys [nr-of-frets]}]
+(defn calc-harmonization-scale [{:keys [harmonization-scale key-of instrument]} {:keys [nr-of-frets] :as query-params}]
   (let [{scale-names :scale/scale-names
          :keys       [id] :as scale'} (music-theory/get-scale harmonization-scale)
         instrument-tuning             (music-theory/get-instrument-tuning instrument)
-        scale-entity                  (music-theory/entity key-of instrument id)
-        fretboard-matrix              (music-theory/create-fretboard-matrix key-of nr-of-frets instrument-tuning)]
-    (re-frame/dispatch [:add-entity-with-fretboard scale-entity fretboard-matrix])
+        scale-entity                  (music-theory/entity key-of instrument id)]
+    (let [entity scale-entity
+          fretboard-matrix (common/prepair-instrument-data-for-entity entity {} query-params)]
+      (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix]))
+
     (re-frame/dispatch [::harmonization-scale scale-entity])))
 
 (defmulti calc-harmonization-chords
-  (fn [{:keys [harmonization scale key-of]}]
+  (fn [{:keys [harmonization scale key-of]} query-params]
     (get harmonization :type)))
 
 (defmethod calc-harmonization-chords :predefined
   [{{harmonization-chords :chords}     :harmonization
     {scale-intervals :scale/intervals} :scale
-    :keys                              [key-of instrument nr-of-frets]}]
+    :keys                              [key-of instrument nr-of-frets]}
+   query-params]
   (let [instrument-tuning    (music-theory/get-instrument-tuning instrument)
         interval-tones       (music-theory/interval-tones scale-intervals key-of)
         harmonization-chords (->> harmonization-chords
@@ -59,13 +62,13 @@
     ;; Create fretboard matrixes
     (doseq [chord harmonization-chords]
       (let [entity           (music-theory/select-entity-keys chord)
-            fretboard-matrix (music-theory/create-fretboard-matrix key-of nr-of-frets instrument-tuning)]
+            fretboard-matrix (common/prepair-instrument-data-for-entity entity {} query-params)]
         (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix])))
 
     (re-frame/dispatch [::harmonization-chords harmonization-chords])))
 
 (defmethod calc-harmonization-chords :generated
-  [{:keys [key-of harmonization scale instrument nr-of-frets]}]
+  [{:keys [key-of harmonization scale instrument nr-of-frets]} query-params]
   (let [scale-indexes        (get scale :scale/indexes)
         scale-intervals      (get scale :scale/intervals)
         chord-fn             (get harmonization :function)
@@ -101,10 +104,9 @@
                                 [:tonic :subdominant :tonic :subdominant :dominant :tonic :dominant]
                                 [:tonic :subdominant :tonic :subdominant :dominant :subdominant :dominant]))]
 
-    ;; Create fretboard matrixes
     (doseq [chord harmonization-chords]
       (let [entity           (music-theory/select-entity-keys chord)
-            fretboard-matrix (music-theory/create-fretboard-matrix key-of nr-of-frets instrument-tuning)]
+            fretboard-matrix (common/prepair-instrument-data-for-entity entity {} query-params)]
         (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix])))
 
     (re-frame/dispatch [::harmonization-chords harmonization-chords])))
@@ -221,7 +223,8 @@
       :scale         scale
       :key-of        key-of
       :instrument    instrument
-      :nr-of-frets   nr-of-frets})))
+      :nr-of-frets   nr-of-frets}
+     query-params)))
 
 (defn routes [deps]
   (let [route-name :harmonizations]

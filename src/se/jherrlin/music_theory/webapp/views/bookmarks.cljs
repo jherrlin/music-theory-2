@@ -86,14 +86,10 @@
           [:br]
           [:br]]))]))
 
-(defn prepair-fretboard-entities [s nr-of-frets]
-  (let [fretboard-entities (->> s
-                                (music-theory/str-to-entities)
-                                (filter music-theory/fretboard-entity?))]
-    (doseq [{:keys [id key-of instrument] :as fretboard-entity} fretboard-entities]
-      (let [{:keys [tuning]} (music-theory/get-instrument instrument)
-            fretboard-matrix (music-theory/create-fretboard-matrix key-of nr-of-frets tuning)]
-        (re-frame/dispatch [:add-entity-with-fretboard fretboard-entity fretboard-matrix])))))
+(defn prepair-fretboard-entities [s query-params]
+  (doseq [entity (music-theory/str-to-entities s)]
+    (let [fretboard-matrix (common/prepair-instrument-data-for-entity entity {} query-params)]
+      (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix]))))
 
 (defn routes [deps]
   (let [route-name :bookmarks]
@@ -108,6 +104,5 @@
                       (let [bookmarks   (get q :bookmarks)
                             nr-of-frets (get q :nr-of-frets)]
                         (when (seq bookmarks)
-                          (prepair-fretboard-entities bookmarks nr-of-frets))
-                        (def q q))
+                          (prepair-fretboard-entities bookmarks q)))
                       (events/do-on-url-change route-name {} q))}]}]))
