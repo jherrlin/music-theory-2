@@ -176,10 +176,11 @@
     [2]
     [3]])"
   [f matrix]
-  (->> (apply concat matrix)
-       (map f)
-       (partition (-> matrix first count))
-       (mapv #(mapv identity %))))
+  (let [matrix-width (-> matrix first count)]
+    (->> (apply concat matrix)
+         (map f)
+         (partition matrix-width)
+         (mapv #(mapv identity %)))))
 
 (map-matrix
  inc
@@ -301,10 +302,11 @@
    (->> string-tunes
         (reverse)
         (mapv
-         (fn [y m]
+         (fn [y string-tuning]
            (mapv
-            #(assoc % :y y)
-            (fretboard-string all-tones m number-of-frets)))
+            (fn [{:keys [x] :as m}]
+              (assoc m :y y :xy (+ (* 100 y) x)))
+            (fretboard-string all-tones string-tuning number-of-frets)))
          (iterate inc 0)))))
 
 (fretboard-strings
@@ -323,6 +325,7 @@
    :octave      2
    :start-index 5}]
  13)
+
 
 (defn sharp-or-flat
   "Select tone from interval.
@@ -818,8 +821,9 @@
 
 (defn add-layer [f fretboard-matrix]
   (map-matrix
-   (fn [{:keys [blank?] :as m}]
-     (if blank? m (f m)))
+   (fn [{:keys [blank?] :as fret}]
+     ;; skip blank frets, for example on the banjo
+     (if blank? fret (f fret)))
    fretboard-matrix))
 
 (defn add-pattern
@@ -841,6 +845,16 @@
   (if-let [tone' (first (set/intersection (set chord-tones) tone))]
     (assoc m :out (-> tone' name str/capitalize))
     m))
+
+;; :circle-text
+;; :circle-color
+;; :show-octave?
+;; :string-thickness
+;; :fret-color
+;; :background-color
+(defn add-styling
+  [{:keys [blank? x y tone match? interval out] :as m}]
+  m)
 
 (defn add-root
   [root-tone {:keys [x y tone pattern-match? interval out] :as m}]
