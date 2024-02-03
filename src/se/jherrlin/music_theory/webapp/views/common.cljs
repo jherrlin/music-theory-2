@@ -229,9 +229,9 @@
     [:<>
      [instruments-fretboard/styled-view
       (cond-> {:id             id
-               :on-click       (fn [{:keys [tone-str octave]}]
+               :on-click       (fn [{:keys [tone-str octave]} fretboard-matrix]
                                  (play-tone (str tone-str octave)))
-               :matrix         fretboard-matrix'
+               :fretboard-matrix  fretboard-matrix'
                :dark-orange-fn (fn [{:keys [root?] :as m}]
                                  (and root? (get m :pattern-found-tone)))
                :orange-fn      :out}
@@ -270,9 +270,9 @@
      #_[debug-view entity]
      [instruments-fretboard/styled-view
       (cond-> {:id            id
-               :on-click       (fn [{:keys [tone-str octave]}]
+               :on-click       (fn [{:keys [tone-str octave]} fretboard-matrix]
                                  (play-tone (str tone-str octave)))
-               :matrix         fretboard-matrix'
+               :fretboard-matrix         fretboard-matrix'
                :dark-orange-fn (fn [{:keys [root?] :as m}]
                                  (and root? (get m :out)))
                :orange-fn      :out}
