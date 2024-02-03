@@ -12,28 +12,28 @@
                            :description "Seventh"
                            :type        :generated
                            :function    seventh-fn}
-     :145-dominant-sevens {:id          :145-dominant-sevens
-                           :description "I-IV-V Blues"
-                           :order       1
-                           :type        :predefined
-                           :chords      [{:chord  :dominant-seven
-                                          :symbol "I"
-                                          :mode   :ionian
-                                          :family :tonic
-                                          :idx-fn #(nth % 0)
-                                          :idx    1}
-                                         {:chord  :dominant-seven
-                                          :symbol "IV"
-                                          :mode   :lydian
-                                          :family :subdominant
-                                          :idx-fn #(nth % 3)
-                                          :idx    4}
-                                         {:chord  :dominant-seven
-                                          :symbol "V"
-                                          :mode   :mixolydian
-                                          :family :dominant
-                                          :idx-fn #(nth % 4)
-                                          :idx    5}]}
+     :I7-IV7-V7-Blues {:id          :I7-IV7-V7-Blues
+                       :description "I7-IV7-V7 Blues"
+                       :order       1
+                       :type        :predefined
+                       :chords      [{:chord  :dominant-seven
+                                      :symbol "I7"
+                                      :mode   :ionian
+                                      :family :tonic
+                                      :idx-fn #(nth % 0)
+                                      :idx    1}
+                                     {:chord  :dominant-seven
+                                      :symbol "IV7"
+                                      :mode   :lydian
+                                      :family :subdominant
+                                      :idx-fn #(nth % 3)
+                                      :idx    4}
+                                     {:chord  :dominant-seven
+                                      :symbol "V7"
+                                      :mode   :mixolydian
+                                      :family :dominant
+                                      :idx-fn #(nth % 4)
+                                      :idx    5}]}
 
      :i-ii-III-iv-v7-VI-VII {:id          :i-ii-III-iv-v7-VI-VII
                              :description "i-ii°-III-iv-v7-VI-VII"

@@ -2,10 +2,11 @@
 
 * Todos
 
-  - [ ] Move unit into entity
-
   - [ ] Find chord
-    [[file:src/se/jherrlin/music_theory/music_theory.cljc::226][functions]]
+    [[file:src/se/jherrlin/music_theory/music_theory.cljc::250][functions]]
+
+  - [ ] Find scale
+    [[file:src/se/jherrlin/music_theory/music_theory.cljc::250][functions]]
 
 * Develop
 
