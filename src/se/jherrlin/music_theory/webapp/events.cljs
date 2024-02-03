@@ -102,9 +102,9 @@
    (get-in db [::fretboards entity :fretboard])))
 
 (comment
-  (let [entity {:id #uuid "1aaa72af-7c36-4b87-8e22-b1b4a719ed1b",
+  (let [entity {:id #uuid "1cd72972-ca33-4962-871c-1551b7ea5244",
                 :instrument :guitar,
-                :key-of :g}]
+                :key-of :c}]
     (get-in @re-frame.db/app-db [::fretboards entity :fretboard]))
   )
 

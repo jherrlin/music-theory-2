@@ -223,11 +223,7 @@
         {:keys [trim-fretboard surrounding-intervals surrounding-tones show-octave
                 debug]}
         query-params
-        {:keys [play-tone]} deps
-        fretboard-matrix'
-        (cond->> fretboard-matrix
-          trim-fretboard (music-theory/trim-matrix #(every? nil? (map :out %))))]
-    (def fretboard-matrix' fretboard-matrix')
+        {:keys [play-tone]} deps]
     [:<>
      (when debug
        [debug-view entity])
@@ -235,7 +231,7 @@
       (cond-> {:id             id
                :on-click       (fn [{:keys [tone-str octave]} fretboard-matrix]
                                  (play-tone (str tone-str octave)))
-               :fretboard-matrix  fretboard-matrix'
+               :fretboard-matrix  fretboard-matrix
                :dark-orange-fn (fn [{:keys [root?] :as m}]
                                  (and root? (get m :pattern-found-tone)))
                :orange-fn      :out}
@@ -258,18 +254,7 @@
     :as query-params}
    intervals
    {:keys [play-tone] :as deps}]
-  (let [fretboard-matrix  @(re-frame/subscribe [:fretboard-by-entity entity])
-        interval-tones    (music-theory/interval-tones intervals key-of)
-        fretboard         (if as-intervals
-                            (music-theory/with-all-intervals
-                              (mapv vector interval-tones intervals)
-                              fretboard-matrix)
-                            (music-theory/with-all-tones
-                              interval-tones
-                              fretboard-matrix))
-        fretboard-matrix' (cond->> fretboard
-                            trim-fretboard (music-theory/trim-matrix
-                                            #(every? nil? (map :out %))))]
+  (let [fretboard-matrix  @(re-frame/subscribe [:fretboard-by-entity entity])]
     [:<>
      (when debug
        [debug-view entity])
@@ -277,7 +262,7 @@
       (cond-> {:id            id
                :on-click       (fn [{:keys [tone-str octave]} fretboard-matrix]
                                  (play-tone (str tone-str octave)))
-               :fretboard-matrix         fretboard-matrix'
+               :fretboard-matrix         fretboard-matrix
                :dark-orange-fn (fn [{:keys [root?] :as m}]
                                  (and root? (get m :out)))
                :orange-fn      :out}
@@ -349,15 +334,8 @@
    path-params
    {:keys [as-intervals] :as query-params}
    {:keys [play-tone] :as deps}]
-  (let [{pattern :fretboard-pattern/pattern :as definition}
-        (music-theory/by-id id)
-        fretboard-matrix @(re-frame/subscribe [:fretboard-by-entity entity])
-        matrix           ((if as-intervals
-                            music-theory/pattern-with-intervals
-                            music-theory/pattern-with-tones)
-                          key-of
-                          pattern
-                          fretboard-matrix)]
+  (let [definition (music-theory/by-id id)
+        fretboard-matrix @(re-frame/subscribe [:fretboard-by-entity entity])]
     [:<>
      [instrument-view-fretboard-pattern
       {:entity           entity
@@ -366,10 +344,10 @@
        :path-params      path-params
        :query-params     query-params
        :deps             deps
-       :fretboard-matrix matrix}]
+       :fretboard-matrix fretboard-matrix}]
      [:button
       {:on-click (fn [_]
-                   (doseq [{:keys [octave pattern-found-tone]} (->> matrix
+                   (doseq [{:keys [octave pattern-found-tone]} (->> fretboard-matrix
                                                                     (apply concat)
                                                                     (filter :match?)
                                                                     (sort-by :y #(compare %2 %1)))]
@@ -388,21 +366,8 @@
    path-params
    {:keys [as-intervals trim-fretboard] :as query-params}
    {:keys [play-tone] :as deps}]
-  (let [{pattern :fretboard-pattern/pattern :as definition}
-        (music-theory/by-id id)
-        fretboard-matrix @(re-frame/subscribe [:fretboard-by-entity entity])
-        matrix           ((if as-intervals
-                            music-theory/pattern-with-intervals
-                            music-theory/pattern-with-tones)
-                          key-of
-                          pattern
-                          fretboard-matrix)
-        fretboard'       ((if as-intervals
-                            music-theory/pattern-with-intervals
-                            music-theory/pattern-with-tones)
-                          key-of
-                          pattern
-                          fretboard-matrix)]
+  (let [definition (music-theory/by-id id)
+        fretboard-matrix @(re-frame/subscribe [:fretboard-by-entity entity])]
     [instrument-view-fretboard-pattern
      {:entity           entity
       :definition       definition
@@ -410,7 +375,7 @@
       :path-params      path-params
       :query-params     query-params
       :deps             deps
-      :fretboard-matrix fretboard'}]))
+      :fretboard-matrix fretboard-matrix}]))
 
 (defmethod instrument-view :default
   [entity path-params query-params deps]
@@ -802,3 +767,97 @@
                   :max       4
                   :min       1
                   :type      "number" :id "nr-of-octavs-input" :name "nr-of-octavs-input"}]])]]))
+
+(defmulti prepair-instrument-data-for-entity
+  (fn [{:keys [id instrument key-of] :as entity} path-params query-params]
+    (let [instrument' (music-theory/get-instrument instrument)
+          definition  (music-theory/by-id id)]
+      [(get instrument' :type) (get definition :type)])))
+
+(defmethod prepair-instrument-data-for-entity [:fretboard [:chord]]
+  [{:keys [id instrument key-of] :as entity}
+   path-params
+   {:keys [nr-of-frets trim-fretboard as-intervals] :as query-params}]
+  (let [definition               (music-theory/by-id id)
+        intervals                (get definition :chord/intervals)
+        interval-tones           (music-theory/interval-tones intervals key-of)
+        instrument-tuning        (music-theory/get-instrument-tuning instrument)]
+    (cond->> (music-theory/create-fretboard-matrix key-of nr-of-frets instrument-tuning)
+      as-intervals       (music-theory/with-all-intervals interval-tones intervals)
+      (not as-intervals) (music-theory/with-all-tones interval-tones)
+      trim-fretboard     (music-theory/trim-matrix #(every? nil? (map :out %))))))
+
+(comment
+  (prepair-instrument-data-for-entity
+   {:id #uuid "1cd72972-ca33-4962-871c-1551b7ea5244",
+   :instrument :guitar,
+   :key-of :g}
+   {}
+   {:nr-of-frets 15})
+  )
+
+
+(defmethod prepair-instrument-data-for-entity [:fretboard [:chord :pattern]]
+  [{:keys [id instrument key-of] :as entity}
+   path-params
+   {:keys [nr-of-frets trim-fretboard as-intervals] :as query-params}]
+  (let [{pattern :fretboard-pattern/pattern :as definition}
+        (music-theory/by-id id)
+        instrument-tuning        (music-theory/get-instrument-tuning instrument)]
+    (cond->> (music-theory/create-fretboard-matrix key-of nr-of-frets instrument-tuning)
+      as-intervals       (music-theory/pattern-with-intervals key-of pattern)
+      (not as-intervals) (music-theory/pattern-with-tones key-of pattern)
+      trim-fretboard     (music-theory/trim-matrix #(every? nil? (map :out %))))))
+(comment
+  (prepair-instrument-data-for-entity
+   {:id #uuid "94f5f7a4-d852-431f-90ca-9e99f89bbb9c",
+    :instrument :guitar,
+    :key-of :c}
+   {}
+   {:nr-of-frets 15})
+  )
+
+(defmethod prepair-instrument-data-for-entity [:fretboard [:scale]]
+  [{:keys [id instrument key-of] :as entity}
+   path-params
+   {:keys [nr-of-frets trim-fretboard as-intervals] :as query-params}]
+  (let [definition               (music-theory/by-id id)
+        intervals                (get definition :scale/intervals)
+        interval-tones           (music-theory/interval-tones intervals key-of)
+        instrument-tuning        (music-theory/get-instrument-tuning instrument)]
+    (cond->> (music-theory/create-fretboard-matrix key-of nr-of-frets instrument-tuning)
+      as-intervals       (music-theory/with-all-intervals interval-tones intervals)
+      (not as-intervals) (music-theory/with-all-tones interval-tones)
+      trim-fretboard     (music-theory/trim-matrix #(every? nil? (map :out %))))))
+(comment
+  (prepair-instrument-data-for-entity
+   {:id #uuid "39af7096-b5c6-45e9-b743-6791b217a3df",
+    :instrument :guitar,
+    :key-of :c}
+   {}
+   {:nr-of-frets 15
+    :as-intervals true
+    })
+  )
+
+
+(defmethod prepair-instrument-data-for-entity [:fretboard [:scale :pattern]]
+  [{:keys [id instrument key-of] :as entity}
+   path-params
+   {:keys [nr-of-frets trim-fretboard as-intervals] :as query-params}]
+  (let [{pattern :fretboard-pattern/pattern :as definition}
+        (music-theory/by-id id)
+        instrument-tuning (music-theory/get-instrument-tuning instrument)]
+    (cond->> (music-theory/create-fretboard-matrix key-of nr-of-frets instrument-tuning)
+      as-intervals       (music-theory/pattern-with-intervals key-of pattern)
+      (not as-intervals) (music-theory/pattern-with-tones key-of pattern)
+      trim-fretboard     (music-theory/trim-matrix #(every? nil? (map :out %))))))
+(comment
+  (prepair-instrument-data-for-entity
+   {:id #uuid "55189945-37fa-4071-9170-b0b068a23174",
+    :instrument :guitar,
+    :key-of :c}
+   {}
+   {:nr-of-frets 15
+    :as-intervals true})
+  )

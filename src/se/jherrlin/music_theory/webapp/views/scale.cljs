@@ -19,18 +19,22 @@
   (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
   (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
 
-(defn gather-view-data [{:keys [scale key-of instrument]} {:keys [nr-of-frets]}]
+(defn gather-view-data [{:keys [scale key-of instrument]} {:keys [nr-of-frets] :as query-params}]
   (let [{scale-names :scale/scale-names
          :keys       [id] :as scale'} (music-theory/get-scale scale)
         {:keys [tuning]}              (music-theory/get-instrument instrument)
         scale-entity                  (music-theory/entity key-of instrument id)
-        fretboard-matrix              (music-theory/create-fretboard-matrix key-of nr-of-frets tuning)
-        scale-patterns                (music-theory/scale-patterns-for-scale-and-instrument
-                                       scale-names
-                                       instrument)
-        scale-pattern-entities        (music-theory/definitions-to-entities key-of instrument scale-patterns)]
-    (re-frame/dispatch [:add-entity-with-fretboard scale-entity fretboard-matrix])
-    (re-frame/dispatch [:add-entities-with-fretboard scale-pattern-entities fretboard-matrix])
+        scale-pattern-entities        (->> (music-theory/scale-patterns-for-scale-and-instrument scale-names instrument)
+                                           (music-theory/definitions-to-entities key-of instrument))]
+
+    (let [entity scale-entity
+          fretboard-matrix (common/prepair-instrument-data-for-entity entity {} query-params)]
+      (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix]))
+
+    (doseq [entity scale-pattern-entities]
+      (let [fretboard-matrix (common/prepair-instrument-data-for-entity entity {} query-params)]
+        (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix])))
+
     (re-frame/dispatch [::scale-entity scale-entity])
     (re-frame/dispatch [::scale-pattern-entities scale-pattern-entities])))
 

@@ -80,7 +80,6 @@
 
 (def add-intervals-to-fretboard-matrix utils/add-intervals-to-fretboard-matrix)
 (def add-basics-to-fretboard-matrix utils/add-basics-to-fretboard-matrix)
-(def with-all-intervals utils/with-all-intervals)
 (def with-all-tones utils/with-all-tones)
 (def interval-tones utils/interval-tones)
 (defn intervals->tones [interval-tones intervals]
@@ -88,6 +87,10 @@
 (def trim-matrix utils/trim-matrix)
 (def pattern-with-intervals utils/pattern-with-intervals)
 (def pattern-with-tones utils/pattern-with-tones)
+(defn with-all-intervals [interval-tones intervals fretboard-matrix]
+  (utils/with-all-intervals
+    (intervals->tones interval-tones intervals)
+    fretboard-matrix))
 
 (interval-tones ["1" "b3" "5"] :c)
 

@@ -18,18 +18,27 @@
   (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
   (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
 
-(defn gather-view-data [{:keys [chord key-of instrument]} {:keys [nr-of-frets]}]
+
+
+(defn gather-view-data [{:keys [chord key-of instrument]} {:keys [nr-of-frets] :as query-params}]
   (let [{:keys [id] :as chord'}      (music-theory/get-chord chord)
-        {:keys [tuning]}             (music-theory/get-instrument instrument)
         chord-entity                 (music-theory/entity key-of instrument id)
-        fretboard-matrix             (music-theory/create-fretboard-matrix key-of nr-of-frets tuning)
-        chord-patterns               (music-theory/chord-patterns-belonging-to chord instrument)
-        chord-pattern-entities       (music-theory/definitions-to-entities key-of instrument chord-patterns)
-        chord-triad-patterns         (music-theory/chord-pattern-triads-belonging-to chord instrument)
-        chord-triad-pattern-entities (music-theory/definitions-to-entities key-of instrument chord-triad-patterns)]
-    (re-frame/dispatch [:add-entity-with-fretboard chord-entity fretboard-matrix])
-    (re-frame/dispatch [:add-entities-with-fretboard chord-pattern-entities fretboard-matrix])
-    (re-frame/dispatch [:add-entities-with-fretboard chord-triad-pattern-entities fretboard-matrix])
+        chord-pattern-entities       (->> (music-theory/chord-patterns-belonging-to chord instrument)
+                                          (music-theory/definitions-to-entities key-of instrument))
+        chord-triad-pattern-entities (->> (music-theory/chord-pattern-triads-belonging-to chord instrument)
+                                          (music-theory/definitions-to-entities key-of instrument))]
+
+    (let [fretboard-matrix (common/prepair-instrument-data-for-entity chord-entity {} query-params)]
+      (re-frame/dispatch [:add-entity-with-fretboard chord-entity fretboard-matrix]))
+
+    (doseq [entity chord-pattern-entities]
+      (let [fretboard-matrix (common/prepair-instrument-data-for-entity entity {} query-params)]
+        (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix])))
+
+    (doseq [entity chord-triad-pattern-entities]
+      (let [fretboard-matrix (common/prepair-instrument-data-for-entity entity {} query-params)]
+        (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix])))
+
     (re-frame/dispatch [::chord-entity chord-entity])
     (re-frame/dispatch [::chord-pattern-entities chord-pattern-entities])
     (re-frame/dispatch [::chord-triad-pattern-entities chord-triad-pattern-entities])))
