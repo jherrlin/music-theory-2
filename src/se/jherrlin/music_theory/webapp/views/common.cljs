@@ -127,7 +127,6 @@
   (let [scales-to-chord (music-theory/scales-to-chord music-theory/scales chord-intervals)]
     (when (seq scales-to-chord)
       [:<>
-       [:h3 "Scales to chord"]
        (for [{scale :scale/scale-names
               id    :id}
              scales-to-chord]
