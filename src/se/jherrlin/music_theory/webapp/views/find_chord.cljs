@@ -89,7 +89,7 @@
              {:href
               (rfe/href
                :chord
-               (assoc path-params :chord chord-name)
+               (assoc path-params :chord chord-name :key-of key-of)
                query-params)}
              (or display-text suffix)]]
            [:td
