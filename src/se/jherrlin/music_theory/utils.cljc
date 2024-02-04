@@ -829,21 +829,17 @@
 (defn add-pattern
   [{:keys [x y tone match? interval out] :as m}]
   (if match?
-    (assoc m :out (-> (sharp-or-flat tone interval) name str/capitalize))
+    (assoc m :out
+           (-> (sharp-or-flat tone interval) name str/capitalize)
+           :match? true)
     m))
-
-(defn add-sharps
-  [{:keys [x y tone pattern-match? interval out] :as m}]
-  (assoc m :out (-> tone (sharp-or-flat "#") name str/capitalize)))
-
-(defn add-flats
-  [{:keys [x y tone pattern-match? interval out] :as m}]
-  (assoc m :out (-> tone (sharp-or-flat "b") name str/capitalize)))
 
 (defn add-chord-tones
   [chord-tones {:keys [x y tone pattern-match? interval out] :as m}]
   (if-let [tone' (first (set/intersection (set chord-tones) tone))]
-    (assoc m :out (-> tone' name str/capitalize))
+    (assoc m
+           :out (-> tone' name str/capitalize)
+           :match? true)
     m))
 
 ;; :circle-text
@@ -852,12 +848,16 @@
 ;; :string-thickness
 ;; :fret-color
 ;; :background-color
+
 (defn add-styling
-  [{:keys [blank? x y tone match? interval out] :as m}]
-  m)
+  [{:keys [blank? x y tone match? interval out root?] :as m}
+   {:keys [show-octave surrounding-intervals surrounding-tones]
+    :as query-params}]
+  (cond-> m
+    (and root? match?) (assoc :style/circle-color "#ff7600")))
 
 (defn add-root
-  [root-tone {:keys [x y tone pattern-match? interval out] :as m}]
+  [root-tone {:keys [tone out] :as m}]
   {:pre [(set? tone)]}
   (if (or (= out "1")
           (tone root-tone))
@@ -951,21 +951,22 @@
      (add-layer
       (partial add-root nil)))
 
-(defn add-basics-to-fretboard-matrix [matrix tones-and-intervals]
-  (add-layer
-   (partial add-basics tones-and-intervals)
-   matrix))
+(defn add-basics-to-fretboard-matrix' [tones-and-intervals matrix]
+  (add-layer (partial add-basics tones-and-intervals) matrix))
 
-(defn add-intervals-to-fretboard-matrix [key-of fretboard-matrix]
+(def add-styling-to-fretboard-matrix
+  (partial add-layer add-styling))
+
+(defn add-basics-to-fretboard-matrix [key-of fretboard-matrix]
   (let [tones-matched-with-intervals
         (mapv
          vector
          (->> (tones-starting-at key-of)
               (map first))
          ["1" "b2" "2" "b3" "3" "4" "b5" "5" "b6" "6" "b7" "7"])]
-    (add-basics-to-fretboard-matrix
-     fretboard-matrix
-     tones-matched-with-intervals)))
+    (add-basics-to-fretboard-matrix'
+     tones-matched-with-intervals
+     fretboard-matrix)))
 
 (defn fretboard-str
   [tone-f matrix]
@@ -1207,53 +1208,9 @@
      (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
      (println))
 
-(defn with-all-sharps
-  [fretboard-matrix]
-  (->> fretboard-matrix
-       (add-layer add-sharps)))
 
-(->> (with-all-sharps
-       (fretboard-strings
-        (all-tones)
-        [{:tone   :e
-          :octave 2}
-         {:tone   :a
-          :octave 2}
-         {:tone   :d
-          :octave 3}
-         {:tone   :g
-          :octave 3}
-         {:tone   :b
-          :octave 3}
-         {:tone   :e
-          :octave 2}]
-        12))
-     (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
-     (println))
 
-(defn with-all-flats
-  [fretboard-matrix]
-  (->> fretboard-matrix
-       (add-layer add-flats)))
 
-(->> (with-all-flats
-       (fretboard-strings
-        (all-tones)
-        [{:tone   :e
-          :octave 2}
-         {:tone   :a
-          :octave 2}
-         {:tone   :d
-          :octave 3}
-         {:tone   :g
-          :octave 3}
-         {:tone   :b
-          :octave 3}
-         {:tone   :e
-          :octave 2}]
-        12))
-     (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
-     (println))
 
 ;; Harmonization
 

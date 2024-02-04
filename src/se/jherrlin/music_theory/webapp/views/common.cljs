@@ -226,7 +226,9 @@
         {:keys [play-tone]} deps]
     [:<>
      (when debug
-       [debug-view entity])
+       [:<>
+        [debug-view entity]
+        [debug-view fretboard-matrix]])
      [instruments-fretboard/styled-view
       (cond-> {:id             id
                :on-click       (fn [{:keys [tone-str octave]} fretboard-matrix]
@@ -257,7 +259,8 @@
   (let [fretboard-matrix  @(re-frame/subscribe [:fretboard-by-entity entity])]
     [:<>
      (when debug
-       [debug-view entity])
+       [debug-view entity]
+       [debug-view fretboard-matrix])
      [instruments-fretboard/styled-view
       (cond-> {:id            id
                :on-click       (fn [{:keys [tone-str octave]} fretboard-matrix]

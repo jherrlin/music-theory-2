@@ -18,16 +18,27 @@
     {:x 1, :tone #{:c}, :y 4}
     {:x 2, :tone #{:db :c#}, :y 4}]]"
   (:require
-   [malli.core :as m]))
+   [malli.core :as m]
+   [se.jherrlin.music-theory.models.tone :as models.tone]))
 
 
 (def FretboardMatrix
   [:vector
    [:+
     [:map
-     [:x int?]
-     [:y int?]
-     [:tone [:set keyword?]]]]])
+     [:x                                       int?]
+     [:y                                       int?]
+     [:xy                                      int?]
+     [:octave                 {:optional true} int?]
+     [:tone                   {:optional true} models.tone/IndexTone]
+     [:root?                  {:optional true} boolean?]
+     [:interval               {:optional true} string?]
+     [:tone-str               {:optional true} string?]
+
+     [:match?                 {:optional true} boolean?]
+     [:pattern-found-tone     {:optional true} string?]
+     [:pattern-found-interval {:optional true} string?]
+     [:out                    {:optional true} string?]]]])
 
 (def validate-fretboard-matrix?  (partial m/validate FretboardMatrix))
 (def explain-fretboard-matrix    (partial m/explain  FretboardMatrix))

@@ -101,11 +101,27 @@
  (fn [db [_ entity]]
    (get-in db [::fretboards entity :fretboard])))
 
+(re-frame/reg-event-db
+ :add-query-params-with-fretboard
+ (fn [db [_ entity query-params]]
+   (-> db
+       (update ::fretboards assoc-in [entity :id] entity)
+       (update ::fretboards assoc-in [entity :query-params] query-params))))
+
+(re-frame/reg-sub
+ :query-params-for-entity
+ (fn [db [_ entity]]
+   (get-in db [::fretboards entity :query-params])))
+
+
+
+
 (comment
   (let [entity {:id #uuid "1cd72972-ca33-4962-871c-1551b7ea5244",
                 :instrument :guitar,
                 :key-of :c}]
     (get-in @re-frame.db/app-db [::fretboards entity :fretboard]))
+
   )
 
 (re-frame/reg-flow
@@ -141,21 +157,6 @@
   :path   [:harmonization-scale]})
 
 (re-frame/reg-sub :harmonization-scale (fn [db [n']] (get db n')))
-
-(re-frame/reg-flow
- {:id     ::fretboard-matrix
-  :inputs {:instrument  (re-frame/flow<- ::instrument)
-           :nr-of-frets [:query-params :nr-of-frets]
-           :key-of      [:path-params :key-of]}
-  :output (fn [{:keys [instrument nr-of-frets key-of]}]
-            (let [{:keys [type tuning]} instrument]
-              (when (and (= type :fretboard) instrument nr-of-frets key-of)
-                (music-theory/create-fretboard-matrix key-of nr-of-frets tuning))))
-  :path [:fretboard-matrix]})
-
-(re-frame/reg-sub
- :fretboard-matrix
- (fn [db [n']] (get db n')))
 
 (re-frame/reg-event-db
  :navigated
