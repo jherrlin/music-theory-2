@@ -36,14 +36,10 @@
                            [:instrument      keyword?]
                            [:key-of          keyword?]
                            [:id              uuid?]]
-                   :query [:map
-                           [:nr-of-frets  {:optional true} int?]
-                           [:nr-of-octavs {:optional true} int?]
-                           [:as-intervals {:optional true} boolean?]
-                           [:as-text      {:optional true} boolean?]]}
+                   :query events/Query}
       :controllers
       [{:parameters {:path  [:instrument :key-of :id]
-                     :query [:nr-of-frets :as-intervals :as-text :nr-of-octavs]}
+                     :query events/query-keys}
         :start      (fn [{p :path q :query}]
                       (let [entity p
                             fretboard-matrix (common/prepair-instrument-data-for-entity entity {} q)]

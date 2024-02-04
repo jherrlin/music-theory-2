@@ -113,15 +113,16 @@
                                   grey-fn'        "grey")
               :on-click         (fn [_] (on-click fret fretboard-matrix))
               :circle-text      (cond
-                                  orange-fn' orange-fn'
-                                  grey-fn'   grey-fn'
-                                  :else      nil)
+                                  dark-orange-fn' dark-orange-fn'
+                                  orange-fn'      orange-fn'
+                                  grey-fn'        grey-fn'
+                                  :else           nil)
               :background-color (if (left-is-blank? x y fretboard-matrix)
                                   "white"
                                   "#000000d6")
               :fret-color       (cond
                                   (left-is-blank? x y fretboard-matrix) "white"
-                                  (= x 0)                     "linear-gradient(black, black, black)"
-                                  (= x max-x)                 "linear-gradient(#000000d6, #000000d6, #000000d6)"
+                                  (= x 0)                               "linear-gradient(black, black, black)"
+                                  (= x max-x)                           "linear-gradient(#000000d6, #000000d6, #000000d6)"
                                   :else
                                   "linear-gradient(to right, #FFFFFF , #706e68)")}]))])]))

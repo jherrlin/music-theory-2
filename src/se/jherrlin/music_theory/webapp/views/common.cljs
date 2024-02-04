@@ -32,9 +32,9 @@
                    :white-space    "nowrap"}}
      [:a {:style {:margin-right "10px"}
           :href (rfe/href :home path-params query-params)}
-       [:button
-        {:disabled (= current-route-name :home)}
-        "Home"]]
+      [:button
+       {:disabled (= current-route-name :home)}
+       "Home"]]
 
      [:a {:style {:margin-right "10px"}
           :href  (rfe/href :chord path-params query-params)}
@@ -44,15 +44,15 @@
 
      [:a {:style {:margin-right "10px"}
           :href  (rfe/href :scale path-params query-params)}
-       [:button
-        {:disabled (= current-route-name :scale)}
-        "Scales"]]
+      [:button
+       {:disabled (= current-route-name :scale)}
+       "Scales"]]
 
      [:a {:style {:margin-right "10px"}
-            :href  (rfe/href :harmonizations path-params query-params)}
-       [:button
-        {:disabled (= current-route-name :harmonizations)}
-        "Harmonizations"]]
+          :href  (rfe/href :harmonizations path-params query-params)}
+      [:button
+       {:disabled (= current-route-name :harmonizations)}
+       "Harmonizations"]]
 
      [:a {:style {:margin-right "10px"}
           :href  (rfe/href :table path-params query-params)}
@@ -61,10 +61,18 @@
        "Table"]]
 
      [:a {:style {:margin-right "10px"}
-            :href  (rfe/href :bookmarks path-params query-params)}
+          :href  (rfe/href :bookmarks path-params query-params)}
       [:button
        {:disabled (= current-route-name :bookmarks)}
        "Bookmarks"]]
+
+     (let [route-name :find-chord]
+       [:a {:style {:margin-right "10px"}
+            :href  (rfe/href route-name path-params query-params)}
+        [:button
+         {:disabled (= current-route-name route-name)}
+         "Find chord"]])
+
      [:a {:style  {:margin-right "10px"}
           :href   "https://github.com/jherrlin/music-theory-2"
           :target "_blank"}
@@ -661,18 +669,19 @@
 
 (defn settings
   [{:keys [as-text? as-intervals? nr-of-frets? nr-of-octavs? trim-fretboard?
-           surrounding-intervals? surrounding-tones? octave?]
+           surrounding-intervals? surrounding-tones? octave? show-tones?]
     ;; If the menu option should be shown or not
     :or   {as-intervals?          true
            surrounding-intervals? true
            surrounding-tones?     true
-           octave?                true}
+           octave?                true
+           show-tones?            false}
     :as   m}]
   (let [current-route-name @(re-frame/subscribe [:current-route-name])
         path-params        @(re-frame/subscribe [:path-params])
         {:keys
          [trim-fretboard nr-of-frets as-text nr-of-octavs as-intervals nr-of-octavs
-          surrounding-intervals surrounding-tones show-octave]
+          surrounding-intervals surrounding-tones show-octave show-tones]
          :as query-params}
         @(re-frame/subscribe [:query-params])]
     [:div
@@ -699,6 +708,19 @@
                   :disabled true
                   :type     "checkbox" :id "trim-fretboard-checkbox" :name "trim-fretboard-checkbox"}]
          [:label {:for "trim-fretboard-checkbox"} "Trim fretboard?"]])
+
+      (when show-tones?
+        (let [id        "show-tones-checkbox"
+              label     "Show tones?"
+              key       :show-tones
+              old-value show-tones
+              new-value (not show-tones)]
+          [:div {:style {:margin-left "1rem"}}
+           [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params
+                                                          (assoc query-params key new-value)]])
+                    :checked  old-value
+                    :type     "checkbox" :id id :name id}]
+           [:label {:for id} label]]))
 
       (when surrounding-intervals?
         (let [id        "surrounding-intervals-checkbox"

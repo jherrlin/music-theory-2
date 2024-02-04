@@ -32,6 +32,7 @@
                         :surrounding-intervals false
                         :surrounding-tones     false
                         :show-octave           false
+                        :show-tones            false
                         :bookmarks             ""}})
 
 (def Query
@@ -43,11 +44,12 @@
    [:surrounding-intervals {:optional true} boolean?]
    [:surrounding-tones     {:optional true} boolean?]
    [:show-octave           {:optional true} boolean?]
+   [:show-tones            {:optional true} boolean?]
    [:debug                 {:optional true} boolean?]
    [:bookmarks             {:optional true} any?]])
 
 (def query-keys
-  [:nr-of-frets :as-intervals :as-text :nr-of-octavs :debug
+  [:nr-of-frets :as-intervals :as-text :nr-of-octavs :debug :show-tones
    :surrounding-intervals :surrounding-tones :show-octave :bookmarks])
 
 (def events-

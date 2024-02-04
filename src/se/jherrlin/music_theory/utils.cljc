@@ -188,6 +188,16 @@
   [2]
   [3]])
 
+(defn update-matrix [x y f matrix]
+  (update-in matrix [y x] f))
+
+(update-matrix
+ 0 0
+ inc
+ [[1]
+  [2]
+  [3]])
+
 (defn add-qualified-ns
   "Add ns to keys in map `m`."
   [m ns']

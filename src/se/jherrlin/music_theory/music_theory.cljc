@@ -84,6 +84,7 @@
 (defn intervals->tones [interval-tones intervals]
   (mapv vector interval-tones intervals))
 (def trim-matrix utils/trim-matrix)
+(def update-matrix utils/update-matrix)
 (def pattern-with-intervals utils/pattern-with-intervals)
 (def pattern-with-tones utils/pattern-with-tones)
 (defn with-all-intervals [interval-tones intervals fretboard-matrix]
@@ -91,11 +92,16 @@
     (intervals->tones interval-tones intervals)
     fretboard-matrix))
 
+
+
 (interval-tones ["1" "b3" "5"] :c)
 
-(defn create-fretboard-matrix [key-of nr-of-frets tuning]
-  (->> (fretboard-strings tuning nr-of-frets)
-       (add-intervals-to-fretboard-matrix key-of)))
+(defn create-fretboard-matrix
+  ([nr-of-frets tuning]
+   (fretboard-strings tuning nr-of-frets))
+  ([key-of nr-of-frets tuning]
+   (->> (fretboard-strings tuning nr-of-frets)
+        (add-intervals-to-fretboard-matrix key-of))))
 
 (defn scales-to-chord [scales chord-intervals]
   (->> scales
@@ -250,6 +256,8 @@
   (match-tones-with-coll generated-chords #{#{:c} #{:e} #{:g}})
   (match-tones-with-coll generated-chords #{:c :e :g})
   (match-tones-with-chords #{#{:c} #{:e} #{:g}})
+
+  (match-tones-with-chords #{#{:c} #{:g} #{:e}})
 
   (match-tones-with-coll generated-scales #{#{:c} #{:e} #{:g}})
   (match-tones-with-coll generated-scales #{:e :g :c :b :d :f :a})
