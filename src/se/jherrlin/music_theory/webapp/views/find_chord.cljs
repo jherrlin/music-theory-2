@@ -158,7 +158,9 @@
 
 (defn setup-view-data
   [{:keys [instrument] :as path-params}
-   {:keys [nr-of-frets] :as query-params}]
+   {:keys [nr-of-frets]
+    :or {nr-of-frets 15}
+    :as query-params}]
   (let [tuning (music-theory/get-instrument-tuning instrument)
         fretboard-matrix (music-theory/create-fretboard-matrix nr-of-frets tuning)]
     (re-frame/dispatch [::fretboard-matrix fretboard-matrix])))
@@ -170,7 +172,7 @@
       :view       [find-chord-view deps]
       :coercion   reitit.coercion.malli/coercion
       :parameters {:path  [:map
-                           [:instrument      keyword?]]
+                           [:instrument keyword?]]
                    :query events/Query}
       :controllers
       [{:parameters {:path  [:instrument]

@@ -240,6 +240,7 @@
                          :intersections intersections
                          :intersections-count (+ (count intersections)
                                                  (cond
+                                                   (= index-tones-set tones-to-search) tones-to-search-count
                                                    (> tones-to-search-count ts-count) (- ts-count tones-to-search-count)
                                                    (< tones-to-search-count ts-count) (- tones-to-search-count ts-count)
                                                    :else 0))))))
