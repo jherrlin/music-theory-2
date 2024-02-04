@@ -1,4 +1,4 @@
-(ns se.jherrlin.music-theory.webapp.views.find-chord
+(ns se.jherrlin.music-theory.webapp.views.find-scale
   (:require
    [clojure.set :as set]
    [clojure.string :as str]
@@ -11,6 +11,7 @@
    [se.jherrlin.music-theory.utils :as utils]
    [se.jherrlin.music-theory.webapp.views.instruments.fretboard :as instruments-fretboard]
    [se.jherrlin.music-theory.webapp.views.common :as common]))
+
 
 (def events-
   [{:n ::fretboard-matrix
@@ -40,13 +41,13 @@
         (set))))
 
 (re-frame/reg-sub
- ::matching-chords
+ ::matching-scales
  (fn [db [_]]
    (let [xs (some->> (get db ::select-tone)
                      (map :tone)
                      (set))]
      (when (seq xs)
-       (->> (music-theory/match-tones-with-chords xs)
+       (->> (music-theory/match-tones-with-scales xs)
             (sort-by :intersections-count #(compare %2 %1)))))))
 
 (re-frame/reg-event-db
@@ -58,40 +59,40 @@
                                    (fn [{:keys [match?] :as fret}]
                                      (assoc fret :match? (not match?)))
                                    fretboard)))))
+
 (defn table []
   (let [path-params     @(re-frame/subscribe [:path-params])
         query-params    @(re-frame/subscribe [:query-params])
-        matching-chords @(re-frame/subscribe [::matching-chords])]
-    (when matching-chords
+        matching-scales @(re-frame/subscribe [::matching-scales])]
+    (when matching-scales
       [:table
        [:thead
         [:tr
          [:th "Key of"]
-         [:th "Suffix"]
+         [:th "Scale"]
          [:th "Intervals"]
          [:th "Tones"]
          [:th "Score"]]]
        [:tbody
-        (for [{id           :id
-               intervals    :chord/intervals
-               suffix       :chord/suffix
-               chord-name   :chord/chord-name
-               display-text :chord/display-text
-               key-of       :key-of
-               intersections :intersections
+        (for [{id                  :id
+               intervals           :scale/intervals
+               scale-names         :scale/scale-names
+               scale               :scale
+               key-of              :key-of
+               intersections       :intersections
                intersections-count :intersections-count}
-              matching-chords]
-          ^{:key (str "chord-list-" id intersections-count intersections key-of)}
+              matching-scales]
+          ^{:key (str "scale-list-" id intersections-count intersections key-of)}
           [:tr
            [:td (-> key-of name str/capitalize)]
            [:td
             [:a
              {:href
               (rfe/href
-               :chord
-               (assoc path-params :chord chord-name :key-of key-of)
+               :scale
+               (assoc path-params :scale scale :key-of key-of)
                query-params)}
-             (or display-text suffix)]]
+             (common/scale-names scale-names)]]
            [:td
             (->> intervals
                  (str/join ", "))]
@@ -101,7 +102,7 @@
                  (str/join ", "))]
            [:td intersections-count]])]])))
 
-(defn find-chord-view [{:keys [play-tone] :as deps}]
+(defn find-scale-view [{:keys [play-tone] :as deps}]
   (let [{:keys [instrument] :as path-params}    @(re-frame/subscribe [:path-params])
         {:keys [surrounding-intervals surrounding-tones show-octave debug show-tones]}
         @(re-frame/subscribe [:query-params])
@@ -165,10 +166,10 @@
     (re-frame/dispatch [::fretboard-matrix fretboard-matrix])))
 
 (defn routes [deps]
-  (let [route-name :find-chord]
-    ["/find-chord/:instrument/"
+  (let [route-name :find-scale]
+    ["/find-scale/:instrument/"
      {:name       route-name
-      :view       [find-chord-view deps]
+      :view       [find-scale-view deps]
       :coercion   reitit.coercion.malli/coercion
       :parameters {:path  [:map
                            [:instrument keyword?]]

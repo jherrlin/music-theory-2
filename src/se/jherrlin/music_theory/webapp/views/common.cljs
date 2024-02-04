@@ -73,6 +73,13 @@
          {:disabled (= current-route-name route-name)}
          "Find chord"]])
 
+     (let [route-name :find-scale]
+       [:a {:style {:margin-right "10px"}
+            :href  (rfe/href route-name path-params query-params)}
+        [:button
+         {:disabled (= current-route-name route-name)}
+         "Find scale"]])
+
      [:a {:style  {:margin-right "10px"}
           :href   "https://github.com/jherrlin/music-theory-2"
           :target "_blank"}
