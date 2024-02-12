@@ -44,7 +44,7 @@
     :keys                              [key-of instrument nr-of-frets]}
    query-params]
   (let [instrument-tuning    (music-theory/get-instrument-tuning instrument)
-        interval-tones       (music-theory/interval-tones scale-intervals key-of)
+        interval-tones       (music-theory/interval-tones key-of scale-intervals)
         harmonization-chords (->> harmonization-chords
                                   (map (fn [{:keys [idx-fn] :as m}]
                                          (assoc m :key-of (idx-fn interval-tones))))
@@ -57,8 +57,8 @@
                                            (assoc :key-of key-of
                                                   :instrument instrument
                                                   :interval-tones (music-theory/interval-tones
-                                                                   chord-intervals
-                                                                   key-of)))))))]
+                                                                   key-of
+                                                                   chord-intervals)))))))]
     ;; Create fretboard matrixes
     (doseq [chord harmonization-chords]
       (let [entity           (music-theory/select-entity-keys chord)
@@ -73,7 +73,7 @@
         scale-intervals      (get scale :scale/intervals)
         chord-fn             (get harmonization :function)
         instrument-tuning    (music-theory/get-instrument-tuning instrument)
-        scale-interval-tones (music-theory/scale-interval-tones key-of scale-intervals)
+        scale-interval-tones (music-theory/interval-tones key-of scale-intervals)
         scale-index-tones    (music-theory/tones-by-key-and-indexes key-of scale-indexes)
         found-chords         (map (fn [tone]
                                     (let [index-tones-in-chord (music-theory/rotate-until

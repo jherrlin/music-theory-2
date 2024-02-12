@@ -6,7 +6,6 @@
    [se.jherrlin.music-theory.harmonizations :as harmonizations]
    [se.jherrlin.music-theory.intervals :as intervals]
    [se.jherrlin.utils :as basic-utils]
-   [clojure.string :as str]
    [se.jherrlin.music-theory.general :as general]
    [se.jherrlin.music-theory.fretboard :as fretboard]
    [clojure.set :as set]
@@ -80,7 +79,7 @@
   (tones-starting-at :c)
   )
 
-(def add-intervals-to-fretboard-matrix fretboard/add-basics-to-fretboard-matrix)
+
 (def with-all-tones fretboard/with-all-tones)
 (def interval-tones general/interval-tones)
 (defn intervals->tones [interval-tones intervals]
@@ -94,41 +93,11 @@
     (intervals->tones interval-tones intervals)
     fretboard-matrix))
 
+(def create-fretboard-matrix fretboard/create-fretboard-matrix)
 
+(def scales-to-chord general/scales-to-chord)
+(def chords-to-scale general/chords-to-scale)
 
-(interval-tones ["1" "b3" "5"] :c)
-
-(defn create-fretboard-matrix
-  ([nr-of-frets tuning]
-   (fretboard/fretboard-strings tuning nr-of-frets))
-  ([key-of nr-of-frets tuning]
-   (->> (fretboard-strings tuning nr-of-frets)
-        (add-intervals-to-fretboard-matrix key-of))))
-
-(create-fretboard-matrix
- :c
- 15
- [{:tone :e, :octave 2, :start-index 0}
- {:tone :a, :octave 2, :start-index 0}
- {:tone :d, :octave 3, :start-index 0}
- {:tone :g, :octave 3, :start-index 0}
- {:tone :b, :octave 3, :start-index 0}
- {:tone :e, :octave 4, :start-index 0}])
-
-(defn scales-to-chord [scales chord-intervals]
-  (->> scales
-       (map (juxt :scale/scale-names identity))
-       (into {})
-       (vals)
-       (filter
-        (fn [{scale-intervals :scale/intervals}]
-          (set/subset? (set chord-intervals) (set scale-intervals))))))
-
-(defn chords-to-scale [chords scale-intervals]
-  (->> chords
-       (filter
-        (fn [{chord-intervals :chord/intervals}]
-          (set/subset? (set chord-intervals) (set scale-intervals))))))
 
 (def all-tones (general/all-tones))
 (def get-harmonization harmonizations/harmonization)
@@ -140,21 +109,6 @@
 (def find-chord general/find-chord)
 (def sharp-or-flat general/sharp-or-flat)
 (def rotate-until basic-utils/rotate-until)
-
-(defn scale-interval-tones [key-of scale-intervals]
-  (let [scale-indexes (intervals/functions-to-semitones scale-intervals)
-
-        index-tones (tones-by-key-and-indexes key-of scale-indexes)]
-    (map
-     #(sharp-or-flat %1 %2)
-     index-tones
-     scale-intervals)))
-
-(scale-interval-tones
- :c
- ["1" "2" "3" "4" "5" "6" "7"])
-;; => (:c :d :e :f :g :a :b)
-
 
 (def entity models.entity/entity)
 (def definitions-to-entities models.entity/definitions-to-entities)

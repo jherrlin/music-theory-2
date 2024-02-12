@@ -327,7 +327,7 @@
     (->> (map
           #(str/join " -> " [%1 (-> %2  name str/capitalize)])
           intervals
-          (music-theory/interval-tones intervals key-of))
+          (music-theory/interval-tones key-of intervals))
          (str/join ",  "))]])
 
 (defmethod harmonizations-chord-details :default
@@ -518,7 +518,7 @@
        (->> (map
              #(str/join " -> " [%1 (-> %2  name str/capitalize)])
              chord-intervals
-             (music-theory/interval-tones chord-intervals key-of))
+             (music-theory/interval-tones key-of chord-intervals))
             (str/join ", "))]
 
       [:div {:style {:margin-left "1em"}}
@@ -544,7 +544,7 @@
        (->> (map
              #(str/join " -> " [%1 (-> %2  name str/capitalize)])
              intervals
-             (music-theory/interval-tones intervals key-of))
+             (music-theory/interval-tones key-of intervals))
             (str/join ", "))]
 
       [:div {:style {:margin-left "1em"}}
@@ -568,7 +568,7 @@
      (->> (map
            #(str/join "  ->  " [%1 (-> %2  name str/capitalize)])
            chord-intervals
-           (music-theory/interval-tones chord-intervals key-of))
+           (music-theory/interval-tones key-of chord-intervals))
           (str/join ", "))]
 
     [:div {:style {:margin-left "1em"}}
@@ -592,7 +592,7 @@
      (->> (map
            #(str/join " -> " [%1 (-> %2  name str/capitalize)])
            intervals
-           (music-theory/interval-tones intervals key-of))
+           (music-theory/interval-tones key-of intervals))
           (str/join ", "))]
 
     [:div {:style {:margin-left "1em"}}
@@ -617,7 +617,7 @@
    {:keys [key-of] :as path-params}
    query-params]
   (let [intervals      (get definition :chord/intervals)
-        interval-tones (music-theory/interval-tones intervals key-of)]
+        interval-tones (music-theory/interval-tones key-of intervals)]
     [:<>
      [chord-name key-of suffix explanation]
      [intervals-to-tones intervals interval-tones]
@@ -638,7 +638,7 @@
     :keys                   [tuning] :as instrument}
    {:keys [key-of] :as path-params}
    query-params]
-  (let [interval-tones (music-theory/interval-tones intervals key-of)]
+  (let [interval-tones (music-theory/interval-tones key-of intervals)]
     [:<>
      [:h1 (str "Scale: " (scale-names scale-names'))]
      [:br]
@@ -812,7 +812,7 @@
    {:keys [nr-of-frets trim-fretboard as-intervals] :as query-params}]
   (let [definition               (music-theory/by-id id)
         intervals                (get definition :chord/intervals)
-        interval-tones           (music-theory/interval-tones intervals key-of)
+        interval-tones           (music-theory/interval-tones key-of intervals)
         instrument-tuning        (music-theory/get-instrument-tuning instrument)]
     (cond->> (music-theory/create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (music-theory/with-all-intervals interval-tones intervals)
@@ -855,7 +855,7 @@
    {:keys [nr-of-frets trim-fretboard as-intervals] :as query-params}]
   (let [definition               (music-theory/by-id id)
         intervals                (get definition :scale/intervals)
-        interval-tones           (music-theory/interval-tones intervals key-of)
+        interval-tones           (music-theory/interval-tones key-of intervals)
         instrument-tuning        (music-theory/get-instrument-tuning instrument)]
     (cond->> (music-theory/create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (music-theory/with-all-intervals interval-tones intervals)

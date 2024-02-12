@@ -204,26 +204,26 @@
 
 (defn index-tones
   "Index tones from indexes and key-of"
-  ([indexes key-of]
-   (index-tones (all-tones) indexes key-of))
-  ([all-tones indexes key-of]
-   {:pre  [(m/validate models.tone/Indexes indexes)
+  ([key-of indexes]
+   (index-tones (all-tones) key-of indexes))
+  ([all-tones key-of indexes]
+   {:pre  [(models.tone/valid-indexes? indexes)
            (models.tone/valid-interval-or-index-tone? key-of)]
-    :post [(m/validate models.tone/IndexTones %)]}
+    :post [models.tone/valid-index-tones?]}
    (let [tones (tones-starting-at all-tones key-of)]
      (tones-by-indexes tones indexes))))
 
-(index-tones [0 1 2] :c)
+(index-tones :c [0 1 2])
 ;; => [#{:c} #{:db :c#} #{:d}]
 
-(index-tones [0 1 2] #{:c})
+(index-tones #{:c} [0 1 2])
 ;; => [#{:c} #{:db :c#} #{:d}]
 
 (defn interval-tones
   "Interval tones from intervals and key-of"
-  ([intervals key-of]
-   (interval-tones (all-tones) intervals key-of))
-  ([all-tones intervals key-of]
+  ([key-of intervals]
+   (interval-tones (all-tones) key-of intervals))
+  ([all-tones key-of intervals]
    {:pre  [(m/validate models.tone/Intervals intervals)
            (models.tone/valid-interval-or-index-tone? key-of)]
     :post [(m/validate models.tone/IntervalTones %)]}
@@ -231,10 +231,10 @@
     (tones-starting-at all-tones key-of)
     intervals)))
 
-(interval-tones ["1" "b3" "5"] :c)
+(interval-tones :c ["1" "b3" "5"])
 ;; => [:c :eb :g]
 
-(interval-tones ["1" "b3" "5"] #{:c})
+(interval-tones #{:c} ["1" "b3" "5"])
 ;; => [:c :eb :g]
 
 (defn tones-data-from-indexes-and-intervals
@@ -415,3 +415,19 @@
           :display-text "minor"}]
  #_[:c :e :g]
  [:c :eb :g])
+
+
+(defn scales-to-chord [scales chord-intervals]
+  (->> scales
+       (map (juxt :scale/scale-names identity))
+       (into {})
+       (vals)
+       (filter
+        (fn [{scale-intervals :scale/intervals}]
+          (set/subset? (set chord-intervals) (set scale-intervals))))))
+
+(defn chords-to-scale [chords scale-intervals]
+  (->> chords
+       (filter
+        (fn [{chord-intervals :chord/intervals}]
+          (set/subset? (set chord-intervals) (set scale-intervals))))))

@@ -185,6 +185,8 @@
 
 (m/validate Indexes [0 3 7])
 
+(def valid-indexes? (partial m/validate Indexes))
+
 (def Intervals
   "[\"1\" \"3\" \"5\"]"
   [:vector string?])

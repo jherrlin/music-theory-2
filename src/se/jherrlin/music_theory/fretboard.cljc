@@ -652,3 +652,29 @@
      (utils/trim-matrix #(every? nil? (map :out %)))
      (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
      (println))
+
+(defn create-fretboard-matrix
+  ([nr-of-frets tuning]
+   (fretboard-strings tuning nr-of-frets))
+  ([key-of nr-of-frets tuning]
+   (->> (fretboard-strings tuning nr-of-frets)
+        (add-basics-to-fretboard-matrix key-of))))
+
+(create-fretboard-matrix
+ :c
+ 15
+ [{:tone :e, :octave 2, :start-index 0}
+  {:tone :a, :octave 2, :start-index 0}
+  {:tone :d, :octave 3, :start-index 0}
+  {:tone :g, :octave 3, :start-index 0}
+  {:tone :b, :octave 3, :start-index 0}
+  {:tone :e, :octave 4, :start-index 0}])
+
+(create-fretboard-matrix
+ 15
+ [{:tone :e, :octave 2, :start-index 0}
+  {:tone :a, :octave 2, :start-index 0}
+  {:tone :d, :octave 3, :start-index 0}
+  {:tone :g, :octave 3, :start-index 0}
+  {:tone :b, :octave 3, :start-index 0}
+  {:tone :e, :octave 4, :start-index 0}])
