@@ -1,6 +1,5 @@
 (ns se.jherrlin.music-theory.definitions
   (:require
-   [se.jherrlin.music-theory.utils :as utils]
    [se.jherrlin.music-theory.models.chord :as models-chord]
    [se.jherrlin.music-theory.models.scale :as models-scale]
    [se.jherrlin.music-theory.models.fretboard-pattern :as models-fretboard-pattern]

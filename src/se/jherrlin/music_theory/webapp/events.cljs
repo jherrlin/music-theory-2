@@ -8,8 +8,7 @@
    [reitit.frontend.easy :as rfe]
    [clojure.string :as str]
    [clojure.set :as set]
-   [se.jherrlin.music-theory.music-theory :as music-theory]
-   [se.jherrlin.music-theory.utils :as utils]))
+   [se.jherrlin.music-theory.music-theory :as music-theory]))
 
 
 (defn merge' [db [k m]]

@@ -105,6 +105,31 @@
 
 
 ;;;
+;;; IntervalToneOrIndexTone
+;;;
+(def IntervalToneOrIndexTone
+  [:or
+   IntervalTone
+   IndexTone])
+
+(m/validate IntervalToneOrIndexTone :c)      ;; => true
+(m/validate IntervalToneOrIndexTone #{:c})   ;; => true
+(m/validate IntervalToneOrIndexTone :hehe)   ;; => false
+(m/validate IntervalToneOrIndexTone "")      ;; => false
+(m/validate IntervalToneOrIndexTone nil)     ;; => false
+
+
+(def valid-interval-or-index-tone?  (partial m/validate IntervalToneOrIndexTone))
+
+(valid-interval-or-index-tone? :c)        ;; => true
+(valid-interval-or-index-tone? #{:c})     ;; => true
+(valid-interval-or-index-tone? :hehe)     ;; => false
+(valid-interval-or-index-tone? "")        ;; => false
+(valid-interval-or-index-tone? nil)       ;; => false
+
+
+
+;;;
 ;;; IntervalTonesSet
 ;;;
 (def IntervalTonesSet

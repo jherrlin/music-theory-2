@@ -1,14 +1,11 @@
 (ns se.jherrlin.music-theory.webapp.views.table
   (:require
-   [clojure.set :as set]
    [clojure.string :as str]
    [re-frame.core :as re-frame]
-   [re-frame.alpha :as re-frame-alpha]
    [reitit.frontend.easy :as rfe]
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
-   [se.jherrlin.music-theory.utils :as utils]
    [se.jherrlin.music-theory.webapp.views.common :as common]))
 
 
@@ -37,7 +34,6 @@
 (defn table-component [deps]
   (let [{:keys [key-of] :as path-params} @(re-frame/subscribe [:path-params])
         query-params                     @(re-frame/subscribe [:query-params])
-        _                                (def key-of key-of)
         chords                           (->> music-theory/chords
                                               (map (fn [{intervals :chord/intervals :as m}]
                                                      (assoc m :tones (music-theory/tones-by-key-and-intervals key-of intervals)))))
@@ -78,7 +74,7 @@
             (->> intervals
                  (str/join ", "))]
            [:td
-            (->> (utils/tones-by-key-and-intervals key-of intervals)
+            (->> (music-theory/tones-by-key-and-intervals key-of intervals)
                  (map (comp str/capitalize name))
                  (str/join ", "))]])]]]
 
@@ -107,7 +103,7 @@
              (-> scale-name name str/capitalize)]]
            [:td (str/join ", " intervals)]
            [:td
-            (->> (utils/tones-by-key-and-intervals key-of intervals)
+            (->> (music-theory/tones-by-key-and-intervals key-of intervals)
                  (map (comp str/capitalize name))
                  (str/join ", "))]])]]]]))
 

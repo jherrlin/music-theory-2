@@ -1,14 +1,11 @@
 (ns se.jherrlin.music-theory.webapp.views.find-scale
   (:require
-   [clojure.set :as set]
    [clojure.string :as str]
    [re-frame.core :as re-frame]
-   [re-frame.alpha :as re-frame-alpha]
    [reitit.frontend.easy :as rfe]
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
-   [se.jherrlin.music-theory.utils :as utils]
    [se.jherrlin.music-theory.webapp.views.instruments.fretboard :as instruments-fretboard]
    [se.jherrlin.music-theory.webapp.views.common :as common]))
 
@@ -97,7 +94,7 @@
             (->> intervals
                  (str/join ", "))]
            [:td
-            (->> (utils/tones-by-key-and-intervals key-of intervals)
+            (->> (music-theory/tones-by-key-and-intervals key-of intervals)
                  (map (comp str/capitalize name))
                  (str/join ", "))]
            [:td intersections-count]])]])))

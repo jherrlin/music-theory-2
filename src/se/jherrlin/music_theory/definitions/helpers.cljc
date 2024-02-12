@@ -4,9 +4,8 @@
    #?(:cljs [goog.string :as gstring])
    [clojure.set :as set]
    [clojure.string :as str]
-   [malli.core :as m]
    [se.jherrlin.music-theory.intervals :as intervals]
-   [se.jherrlin.music-theory.utils :as utils]
+   [se.jherrlin.music-theory.fretboard :as fretboard]
    [se.jherrlin.utils :as basic-utils]
    [se.jherrlin.music-theory.models.chord :as models.chord]
    [se.jherrlin.music-theory.models.fretboard-pattern :as models.fretboard-pattern]
@@ -78,7 +77,7 @@
 (defn define-scale-pattern
   [id belongs-to tuning meta-data pattern]
   (let [pattern'   (->> pattern
-                        (utils/intevals-string->intervals-matrix)
+                        (fretboard/intevals-string->intervals-matrix)
                         (basic-utils/trim-matrix))
         meta-data  (qualify-keywords meta-data "fretboard-pattern")
         ;; On what strings are the pattern defined. Mainly used for triads.
@@ -114,7 +113,7 @@
 (defn define-chord-pattern
   [id belongs-to tuning meta-data pattern]
   (let [pattern'    (->> pattern
-                         (utils/intevals-string->intervals-matrix)
+                         (fretboard/intevals-string->intervals-matrix)
                          (basic-utils/trim-matrix))
         meta-data   (qualify-keywords meta-data "fretboard-pattern")
         nr-of-tones (->> pattern'

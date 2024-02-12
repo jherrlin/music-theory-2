@@ -8,7 +8,6 @@
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
-   [se.jherrlin.music-theory.utils :as utils]
    [se.jherrlin.music-theory.webapp.views.common :as common]))
 
 (def events-

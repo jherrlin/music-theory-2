@@ -1,7 +1,7 @@
 (ns se.jherrlin.utils
-  (:require
-   #?(:cljs [goog.string.format])
-   #?(:cljs [goog.string :as gstring])))
+  #?(:cljs (:require
+            [goog.string.format]
+            [goog.string :as gstring])))
 
 (defn vec-remove
   "Remove `idx` in `coll`."

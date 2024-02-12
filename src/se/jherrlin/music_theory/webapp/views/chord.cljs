@@ -1,7 +1,5 @@
 (ns se.jherrlin.music-theory.webapp.views.chord
   (:require
-   [clojure.set :as set]
-   [clojure.string :as str]
    [re-frame.alpha :as re-frame]
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.webapp.events :as events]

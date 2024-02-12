@@ -5,9 +5,10 @@
    [se.jherrlin.music-theory.definitions :as definitions]
    [se.jherrlin.music-theory.harmonizations :as harmonizations]
    [se.jherrlin.music-theory.intervals :as intervals]
-   [se.jherrlin.music-theory.utils :as utils]
    [se.jherrlin.utils :as basic-utils]
    [clojure.string :as str]
+   [se.jherrlin.music-theory.general :as general]
+   [se.jherrlin.music-theory.fretboard :as fretboard]
    [clojure.set :as set]
    [se.jherrlin.music-theory.models.tone :as models.tone]
    [se.jherrlin.music-theory.models.entity :as models.entity]))
@@ -61,7 +62,7 @@
   (by-id #uuid "1cd72972-ca33-4962-871c-1551b7ea5244")
   )
 
-(def fretboard-strings utils/fretboard-strings)
+(def fretboard-strings fretboard/fretboard-strings)
 
 (comment
   (fretboard-strings
@@ -73,23 +74,23 @@
    10)
   )
 
-(def tones-starting-at utils/tones-starting-at)
+(def tones-starting-at general/tones-starting-at)
 
 (comment
   (tones-starting-at :c)
   )
 
-(def add-intervals-to-fretboard-matrix utils/add-basics-to-fretboard-matrix)
-(def with-all-tones utils/with-all-tones)
-(def interval-tones utils/interval-tones)
+(def add-intervals-to-fretboard-matrix fretboard/add-basics-to-fretboard-matrix)
+(def with-all-tones fretboard/with-all-tones)
+(def interval-tones general/interval-tones)
 (defn intervals->tones [interval-tones intervals]
   (mapv vector interval-tones intervals))
 (def trim-matrix basic-utils/trim-matrix)
 (def update-matrix basic-utils/update-matrix)
-(def pattern-with-intervals utils/pattern-with-intervals)
-(def pattern-with-tones utils/pattern-with-tones)
+(def pattern-with-intervals fretboard/pattern-with-intervals)
+(def pattern-with-tones fretboard/pattern-with-tones)
 (defn with-all-intervals [interval-tones intervals fretboard-matrix]
-  (utils/with-all-intervals
+  (fretboard/with-all-intervals
     (intervals->tones interval-tones intervals)
     fretboard-matrix))
 
@@ -99,10 +100,20 @@
 
 (defn create-fretboard-matrix
   ([nr-of-frets tuning]
-   (fretboard-strings tuning nr-of-frets))
+   (fretboard/fretboard-strings tuning nr-of-frets))
   ([key-of nr-of-frets tuning]
    (->> (fretboard-strings tuning nr-of-frets)
         (add-intervals-to-fretboard-matrix key-of))))
+
+(create-fretboard-matrix
+ :c
+ 15
+ [{:tone :e, :octave 2, :start-index 0}
+ {:tone :a, :octave 2, :start-index 0}
+ {:tone :d, :octave 3, :start-index 0}
+ {:tone :g, :octave 3, :start-index 0}
+ {:tone :b, :octave 3, :start-index 0}
+ {:tone :e, :octave 4, :start-index 0}])
 
 (defn scales-to-chord [scales chord-intervals]
   (->> scales
@@ -119,15 +130,15 @@
         (fn [{chord-intervals :chord/intervals}]
           (set/subset? (set chord-intervals) (set scale-intervals))))))
 
-(def all-tones (utils/all-tones))
+(def all-tones (general/all-tones))
 (def get-harmonization harmonizations/harmonization)
 (def harmonizations harmonizations/harmonizations)
 
-(def tones-by-key-and-indexes utils/tones-by-key-and-indexes)
-(def tones-by-key-and-intervals utils/tones-by-key-and-intervals)
+(def tones-by-key-and-indexes general/tones-by-key-and-indexes)
+(def tones-by-key-and-intervals general/tones-by-key-and-intervals)
 
-(def find-chord utils/find-chord)
-(def sharp-or-flat utils/sharp-or-flat)
+(def find-chord general/find-chord)
+(def sharp-or-flat general/sharp-or-flat)
 (def rotate-until basic-utils/rotate-until)
 
 (defn scale-interval-tones [key-of scale-intervals]

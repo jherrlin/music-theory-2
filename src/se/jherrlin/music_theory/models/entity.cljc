@@ -65,7 +65,8 @@
   (let [[instrument key-of id] (str/split s ",")]
     {:instrument (keyword instrument)
      :key-of     (keyword key-of)
-     :id         (uuid id)}))
+     :id         #?(:cljs (uuid id)
+                    :clj  (parse-uuid id))}))
 
 (defn str-to-entities [s]
   (->> (str/split s "_")
