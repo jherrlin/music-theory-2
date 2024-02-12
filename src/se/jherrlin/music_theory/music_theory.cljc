@@ -6,6 +6,7 @@
    [se.jherrlin.music-theory.harmonizations :as harmonizations]
    [se.jherrlin.music-theory.intervals :as intervals]
    [se.jherrlin.music-theory.utils :as utils]
+   [se.jherrlin.utils :as basic-utils]
    [clojure.string :as str]
    [clojure.set :as set]
    [se.jherrlin.music-theory.models.tone :as models.tone]
@@ -83,8 +84,8 @@
 (def interval-tones utils/interval-tones)
 (defn intervals->tones [interval-tones intervals]
   (mapv vector interval-tones intervals))
-(def trim-matrix utils/trim-matrix)
-(def update-matrix utils/update-matrix)
+(def trim-matrix basic-utils/trim-matrix)
+(def update-matrix basic-utils/update-matrix)
 (def pattern-with-intervals utils/pattern-with-intervals)
 (def pattern-with-tones utils/pattern-with-tones)
 (defn with-all-intervals [interval-tones intervals fretboard-matrix]
@@ -127,7 +128,7 @@
 
 (def find-chord utils/find-chord)
 (def sharp-or-flat utils/sharp-or-flat)
-(def rotate-until utils/rotate-until)
+(def rotate-until basic-utils/rotate-until)
 
 (defn scale-interval-tones [key-of scale-intervals]
   (let [scale-indexes (intervals/functions-to-semitones scale-intervals)

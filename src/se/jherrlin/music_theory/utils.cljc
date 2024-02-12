@@ -14,208 +14,8 @@
    [se.jherrlin.music-theory.models.chord :as models.chord]
    [se.jherrlin.music-theory.models.fretboard-pattern :as models.fretboard-pattern]
    [se.jherrlin.music-theory.models.scale :as models.scale]
-   [se.jherrlin.music-theory.models.tone :as models.tone]))
-
-
-
-(defn vec-remove
-  "Remove `idx` in `coll`."
-  [idx coll]
-  (into (subvec coll 0 idx) (subvec coll (inc idx))))
-
-(defn list-insert
-  "Insert `element` on `index` on `lst`.
-
- (list-insert
-  0
-  3
-  [1 2 3 4])"
-  [element index lst]
-  (let [[l r] (split-at index lst)]
-    (concat l [element] r)))
-
-(list-insert
- 0
- 3
- [1 2 3 4])
-
-#?(:cljs
-   (defn fformat
-     "Formats a string using goog.string.format.
-   e.g: (format \"Cost: %.2f\" 10.0234)"
-     [fmt & args]
-     (apply gstring/format fmt args))
-   :clj (def fformat format))
-
-(fformat "%5d" 3)
-(fformat "Hello there, %s" "bob")
-
-(defn rotate-until
-  "Rotate collection `xs` util `pred`.
-
-  (rotate-until
-   #(% :f#)
-   [#{:c} #{:db :c#} #{:d} #{:d# :eb} #{:e} #{:f} #{:gb :f#} #{:g}])"
-  [pred xs]
-  {:pre [(fn? pred) (coll? xs)]}
-  (let [xs-count (count xs)]
-    (->> (cycle xs)
-         (drop-while #(not (pred %)))
-         (take xs-count)
-         (vec))))
-
-(rotate-until
- #(% :f#)
- [#{:c} #{:db :c#} #{:d} #{:d# :eb} #{:e} #{:f} #{:gb :f#} #{:g} #{:g# :ab} #{:a} #{:bb :a#} #{:b}])
-
-(defn take-indexes
-  "Take indexes from a collection.
-
-  (take-indexes
-   [#{:c} #{:db :c#} #{:d} #{:d# :eb} #{:e} #{:f}]
-   [0 3 5])"
-  [coll indexes]
-  (mapv
-   (fn [index]
-     (nth coll index))
-   indexes))
-
-(take-indexes
- [#{:c} #{:db :c#} #{:d} #{:d# :eb} #{:e} #{:f}]
- [0 3 5])
-
-(defn rotate-matrix
-  "Rotate matrix.
-  In:  `[[1 2 3] [3 4 5] [6 7 8]]`
-  Out: `[[1 3 6] [2 4 7] [3 5 8]]`
-
-  (rotate-matrix
-   [[\"3\" nil nil]
-    [nil \"1\" nil]
-    [\"5\" nil nil]
-    [nil nil nil]
-    [nil nil nil]
-    [nil nil nil]])"
-  [matrix]
-  (if-not (seq matrix)
-    matrix
-    (->> matrix
-         (apply mapv vector)
-         (mapv identity))))
-
-(rotate-matrix
- [["3" nil nil]
-  [nil "1" nil]
-  ["5" nil nil]
-  [nil nil nil]
-  [nil nil nil]
-  [nil nil nil]])
-
-(defn trim-matrix
-  "Trim a matrix left and right by `pred`.
-
-  Will remove the columns and rows that have `nil` values.
-
- (trim-matrix
-  [[\"3\" nil nil]
-   [nil \"1\" nil]
-   [\"5\" nil nil]
-   [nil nil nil]
-   [nil nil nil]
-   [nil nil nil]])"
-  ([fretboard-matrix]
-   (trim-matrix (partial every? nil?) fretboard-matrix))
-  ([pred fretboard-matrix]
-   (if (empty? fretboard-matrix)
-     fretboard-matrix
-     (let [rotated (rotate-matrix fretboard-matrix)
-           first?  (->> rotated first pred)
-           last?   (->> rotated last pred)]
-       (cond
-         (and first? last?)
-         (->> rotated
-              (drop 1)
-              (drop-last 1)
-              (rotate-matrix)
-              (trim-matrix pred))
-         (and first? (not last?))
-         (->> rotated
-              (drop 1)
-              (rotate-matrix)
-              (trim-matrix pred))
-         (and (not first?) last?)
-         (->> rotated
-              (drop-last 1)
-              (rotate-matrix)
-              (trim-matrix pred))
-         :else fretboard-matrix)))))
-
-(trim-matrix
- [["3" nil nil]
-  [nil "1" nil]
-  ["5" nil nil]
-  [nil nil nil]
-  [nil nil nil]
-  [nil nil nil]])
-
-(trim-matrix
- [[nil "1" nil nil]
-  [nil "5" nil nil]
-  [nil "b3" nil nil]
-  [nil nil nil "1"]
-  [nil nil nil "5"]
-  [nil "1" nil nil]])
-
-(defn map-matrix
-  "Flatten matrix into one dim list and run `f` on each item. The convert it back
-  into a matrix.
-
-  (map-matrix
-   inc
-   [[1]
-    [2]
-    [3]])"
-  [f matrix]
-  (let [matrix-width (-> matrix first count)]
-    (->> (apply concat matrix)
-         (map f)
-         (partition matrix-width)
-         (mapv #(mapv identity %)))))
-
-(map-matrix
- inc
- [[1]
-  [2]
-  [3]])
-
-(defn update-matrix [x y f matrix]
-  (update-in matrix [y x] f))
-
-(update-matrix
- 0 0
- inc
- [[1]
-  [2]
-  [3]])
-
-(defn add-qualified-ns
-  "Add ns to keys in map `m`."
-  [m ns']
-  (reduce-kv
-   (fn [m k v]
-     (let [new-k (keyword (str (name ns') "/" (name k)))]
-       (assoc m new-k v)))
-   {}
-   m))
-
-(add-qualified-ns
- {:instrument :guitar,
-  :key-of     :c,
-  :id         #uuid "1cd72972-ca33-4962-871c-1551b7ea5244"}
- :instrument)
-
-
-
+   [se.jherrlin.music-theory.models.tone :as models.tone]
+   [se.jherrlin.utils :as utils]))
 
 
 (defn all-tones
@@ -240,7 +40,7 @@
    (tones-starting-at (all-tones) x))
   ([all-tones x]
    {:pre [(models.tone/valid-index-tones? all-tones)]}
-   (rotate-until
+   (utils/rotate-until
     #(if (models.tone/valid-index-tone? x)
        (= % x)
        (% x))
@@ -391,7 +191,7 @@
    {:pre  [(models.tone/valid-index-tones? all-tones)
            (m/validate models.tone/Indexes indexes)]
     :post [(models.tone/valid-index-tones? %)]}
-   (take-indexes all-tones indexes)))
+   (utils/take-indexes all-tones indexes)))
 
 (tones-by-indexes
  (all-tones)
@@ -886,7 +686,7 @@
 
 
 (defn add-layer [f fretboard-matrix]
-  (map-matrix
+  (utils/map-matrix
    (fn [{:keys [blank?] :as fret}]
      ;; skip blank frets, for example on the banjo
      (if blank? fret (f fret)))
@@ -1038,7 +838,7 @@
   [tone-f matrix]
   (let [add-table-stuff
         (fn [row]
-          (str "|" (apply str (interpose "|" (map #(fformat " %-3s" %) row))) "|"))
+          (str "|" (apply str (interpose "|" (map #(utils/fformat " %-3s" %) row))) "|"))
         rows
         (->> matrix
              (map
@@ -1048,8 +848,8 @@
              (map add-table-stuff))
         row-length (-> rows first count)]
     (->> rows
-         (list-insert (add-table-stuff (->> matrix first (map (comp str :x)))) 0)
-         (list-insert (str "|" (apply str (take (- row-length 2) (repeat "-"))) "|") 1)
+         (utils/list-insert (add-table-stuff (->> matrix first (map (comp str :x)))) 0)
+         (utils/list-insert (str "|" (apply str (take (- row-length 2) (repeat "-"))) "|") 1)
          (str/join "\n"))))
 
 (->> (fretboard-strings
@@ -1178,7 +978,7 @@
         {:tone   :e
          :octave 2}]
        10))
-     (trim-matrix #(every? nil? (map :out %)))
+     (utils/trim-matrix #(every? nil? (map :out %)))
      (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
      (println))
 
@@ -1214,7 +1014,7 @@
        [nil nil "5"]
        ["1" nil nil]
        ["5" nil nil]])
-     (trim-matrix #(every? nil? (map :out %)))
+     (utils/trim-matrix #(every? nil? (map :out %)))
      ;; (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
      ;; (println)
      )
@@ -1270,7 +1070,7 @@
          {:tone   :e
           :octave 2}]
         12))
-     (trim-matrix #(every? nil? (map :out %)))
+     (utils/trim-matrix #(every? nil? (map :out %)))
      (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
      (println))
 
@@ -1369,15 +1169,15 @@
   (str
    "  T = Tonic (stable), S = Subdominant (leaving), D = Dominant (back home)"
    "\n\n"
-   (->> xs (map (comp #(fformat "  %-10s" %) str :harmonization/index)) (str/join) (str/trim))
+   (->> xs (map (comp #(utils/fformat "  %-10s" %) str :harmonization/index)) (str/join) (str/trim))
    "\n"
-   (->> xs (map (comp #(fformat "  %-10s" %) str :harmonization/position)) (str/join) (str/trim))
+   (->> xs (map (comp #(utils/fformat "  %-10s" %) str :harmonization/position)) (str/join) (str/trim))
    "\n"
-   (->> xs (map (comp #(fformat "  %-10s" %) str :harmonization/mode-str)) (str/join) (str/trim))
+   (->> xs (map (comp #(utils/fformat "  %-10s" %) str :harmonization/mode-str)) (str/join) (str/trim))
    "\n"
-   (->> xs (map (comp #(fformat "  %-10s" %) str :harmonization/family-str)) (str/join) (str/trim))
+   (->> xs (map (comp #(utils/fformat "  %-10s" %) str :harmonization/family-str)) (str/join) (str/trim))
    "\n"
-   (->> xs (map (comp #(fformat "  %-10s" %) str :chord-name)) (str/join) (str/trim))))
+   (->> xs (map (comp #(utils/fformat "  %-10s" %) str :chord-name)) (str/join) (str/trim))))
 
 (comment
   (->> (gen-harmonization
@@ -1394,7 +1194,7 @@
 (let [tones     [:d :f# :a]
       tones-set (set tones)]
   (->> (all-tones)
-       (rotate-until #(% :d#))
+       (utils/rotate-until #(% :d#))
        (map (fn [tone]
               (cond-> {:tone tone}
                 (seq (set/intersection tones-set tone))

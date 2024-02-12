@@ -5,6 +5,7 @@
    [re-frame.core :as re-frame]
    [re-frame.alpha :as re-frame-alpha]
    [reitit.frontend.easy :as rfe]
+   [se.jherrlin.utils :as basic-utils]
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
@@ -405,7 +406,7 @@
   [:pre {:style {:overflow-x "auto"}}
    (->> (map
          (fn [interval index]
-           (str (utils/fformat "%8s" interval) " -> " (-> index name str/capitalize)))
+           (str (basic-utils/fformat "%8s" interval) " -> " (-> index name str/capitalize)))
          intervals
          tones)
         (str/join "\n")

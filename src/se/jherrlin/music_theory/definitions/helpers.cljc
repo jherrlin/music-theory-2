@@ -7,6 +7,7 @@
    [malli.core :as m]
    [se.jherrlin.music-theory.intervals :as intervals]
    [se.jherrlin.music-theory.utils :as utils]
+   [se.jherrlin.utils :as basic-utils]
    [se.jherrlin.music-theory.models.chord :as models.chord]
    [se.jherrlin.music-theory.models.fretboard-pattern :as models.fretboard-pattern]
    [se.jherrlin.music-theory.models.scale :as models.scale]
@@ -78,7 +79,7 @@
   [id belongs-to tuning meta-data pattern]
   (let [pattern'   (->> pattern
                         (utils/intevals-string->intervals-matrix)
-                        (utils/trim-matrix))
+                        (basic-utils/trim-matrix))
         meta-data  (qualify-keywords meta-data "fretboard-pattern")
         ;; On what strings are the pattern defined. Mainly used for triads.
         on-strings (->> pattern'
@@ -114,7 +115,7 @@
   [id belongs-to tuning meta-data pattern]
   (let [pattern'    (->> pattern
                          (utils/intevals-string->intervals-matrix)
-                         (utils/trim-matrix))
+                         (basic-utils/trim-matrix))
         meta-data   (qualify-keywords meta-data "fretboard-pattern")
         nr-of-tones (->> pattern'
                          (apply concat)
