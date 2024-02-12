@@ -19,7 +19,7 @@
 
 
 (defn vec-remove
-  "remove elem in coll"
+  "Remove `idx` in `coll`."
   [idx coll]
   (into (subvec coll 0 idx) (subvec coll (inc idx))))
 
@@ -315,7 +315,7 @@
          (fn [y string-tuning]
            (mapv
             (fn [{:keys [x] :as m}]
-              (assoc m :y y :xy (+ (* 100 y) x)))
+              (assoc m :y y :yx (+ (* 100 y) x)))
             (fretboard-string all-tones string-tuning number-of-frets)))
          (iterate inc 0)))))
 
@@ -360,24 +360,13 @@
  #{:db :c#}
  "b3")
 
-(defn tones-data-from-indexes-and-intervals
-  [all-tones indexes intervals]
-  (mapv
-   (fn [index interval]
-     (merge
-      (get intervals/intervals-map-by-function interval)
-      (let [index-tone (nth all-tones index)]
-        {:index-tone    index-tone
-         :interval-tone (sharp-or-flat (nth all-tones index) interval)
-         :interval      interval
-         :index         index})))
-   indexes
-   intervals))
+(sharp-or-flat
+ #{:db :c#}
+ "3")
 
-(tones-data-from-indexes-and-intervals
- (all-tones)
- [0 3 7]
- ["1" "b3" "5"])
+(sharp-or-flat
+ #{:db}
+ "3")
 
 (defn tones-on-indexes-with-intervals
   ([indexes intervals]
@@ -390,9 +379,9 @@
     intervals)))
 
 (tones-on-indexes-with-intervals
- (all-tones)
  [0 3 7]
  ["1" "b3" "5"])
+;; => [:c :eb :g]
 
 (defn tones-by-indexes
   "Tones by indexes"
@@ -407,6 +396,7 @@
 (tones-by-indexes
  (all-tones)
  [0 4 7])
+;; => [#{:c} #{:e} #{:g}]
 
 
 (defn tones-by-key-and-indexes
@@ -426,14 +416,12 @@
 (tones-by-key-and-indexes
  :d
  [0 2 4 5 7 9 11])
-
-(tones-by-key-and-indexes
- :d
- [0 2 4 5 7 9 11])
+;; => [#{:d} #{:e} #{:gb :f#} #{:g} #{:a} #{:b} #{:db :c#}]
 
 (tones-by-key-and-indexes
  #{:c}
  [0 4 7])
+;; => [#{:c} #{:e} #{:g}]
 
 (defn tones-by-intervals
   "Get tones from intervals
@@ -454,9 +442,11 @@
 (tones-by-intervals
  (all-tones)
  ["1" "3" "5"])
+;; => [:c :e :g]
 
 (tones-by-intervals
- ["1" "3" "5"])
+ ["1" "b3" "5"])
+;; => [:c :eb :g]
 
 (defn tones-by-key-and-intervals
   "
@@ -477,8 +467,13 @@
 
 (tones-by-key-and-intervals
  :c
- #_["1" "b3" "5"]
+ ["1" "b3" "5"])
+;; => [:c :eb :g]
+
+(tones-by-key-and-intervals
+ :c
  ["1" "2" "3" "4" "5" "6" "7"])
+;; => [:c :d :e :f :g :a :b]
 
 (defn intervals-to-indexes
   "Indexes from intervals
@@ -494,6 +489,63 @@
                (get-in intervals/intervals-map-by-function [interval :semitones])))))
 
 (intervals-to-indexes ["1" "b3" "5"])
+;; => [0 3 7]
+
+(defn index-tones
+  "Index tones from indexes and key-of"
+  ([indexes key-of]
+   (index-tones (all-tones) indexes key-of))
+  ([all-tones indexes key-of]
+   {:pre  [(m/validate models.tone/Indexes indexes)
+           #_(m/validate models.tone/IntervalTone key-of)]
+    :post [(m/validate models.tone/IndexTones %)]}
+   (let [tones (tones-starting-at all-tones key-of)]
+     (tones-by-indexes tones indexes))))
+
+(index-tones [0 1 2] :c)
+;; => [#{:c} #{:db :c#} #{:d}]
+
+(index-tones [0 1 2] #{:c})
+;; => [#{:c} #{:db :c#} #{:d}]
+
+(defn interval-tones
+  "Interval tones from intervals and key-of"
+  ([intervals key-of]
+   (interval-tones (all-tones) intervals key-of))
+  ([all-tones intervals key-of]
+   {:pre  [(m/validate models.tone/Intervals intervals)
+           #_(m/validate models.tone/IntervalTone key-of)]
+    :post [(m/validate models.tone/IntervalTones %)]}
+   (tones-by-intervals
+    (tones-starting-at all-tones key-of)
+    intervals)))
+
+(interval-tones ["1" "b3" "5"] :c)
+;; => [:c :eb :g]
+
+(interval-tones ["1" "b3" "5"] #{:c})
+;; => [:c :eb :g]
+
+(defn tones-data-from-indexes-and-intervals
+  ([indexes intervals]
+   (tones-data-from-indexes-and-intervals (all-tones) indexes intervals))
+  ([all-tones indexes intervals]
+   (mapv
+    (fn [index interval]
+      (merge
+       (get intervals/intervals-map-by-function interval)
+       (let [index-tone (nth all-tones index)]
+         {:index-tone    index-tone
+          :interval-tone (sharp-or-flat (nth all-tones index) interval)
+          :interval      interval
+          :index         index})))
+    indexes
+    intervals)))
+
+(tones-data-from-indexes-and-intervals
+ (all-tones)
+ [0 3 7]
+ ["1" "b3" "5"])
 
 (defn tones-data-from-key-of-and-intervals
   "
@@ -517,8 +569,33 @@
 (tones-data-from-key-of-and-intervals
  (all-tones)
  :c
- ["1" "b3" "5"]
- #_["1" "3" "5"])
+ ["1" "b3" "5"])
+;; =>
+#_[{:semitones     0,
+  :function      "1",
+  :name/en       "Root",
+  :name/sv       "Root",
+  :index-tone    #{:c},
+  :interval-tone :c,
+  :interval      "1",
+  :index         0}
+ {:index-tone    #{:d# :eb},
+  :interval-tone :eb,
+  :text/en       "Blue note",
+  :index         3,
+  :name/en       "Minor third",
+  :function      "b3",
+  :name/sv       "Moll-ters",
+  :semitones     3,
+  :interval      "b3"}
+ {:semitones     7,
+  :function      "5",
+  :name/en       "Perfect fifth",
+  :name/sv       "Kvint",
+  :index-tone    #{:g},
+  :interval-tone :g,
+  :interval      "5",
+  :index         7}]
 
 (defn intevals-string->intervals-matrix
   [interval]
@@ -539,17 +616,22 @@
    -   -   -
    -   -   -")
 
-(defn fretboard-map-to-matrix [m]
-  (let [fretboard-with (->> m
-                            vals
-                            (map :x)
-                            (apply max))]
-    (->> (partition-by :y (->> m vals (sort-by :y)))
-         (mapv (fn [coll]
-                 (vec (sort-by :x coll)))))))
+(defn fretboard-map-to-matrix
+  "A fretboard `fretboard-map` can be represented as a hashmap,
+  transform that into a matrix."
+  [fretboard-map]
+  (->> fretboard-map
+       vals
+       (sort-by :y)
+       (partition-by :y)
+       (mapv (fn [coll]
+               (vec (sort-by :x coll))))))
 
-(defn fretboard-matrix-to-map [matrix]
-  (->> matrix
+(defn fretboard-matrix-to-map
+  "A fretboard `fretboard-matrix` can be represented as a matrix,
+  transform that into a hashmap."
+  [fretboard-matrix]
+  (->> fretboard-matrix
        (apply concat)
        (reduce (fn [acc {:keys [x y] :as m}]
                  (assoc acc [x y] m))
@@ -802,32 +884,6 @@
    @v4.se.jherrlin.music-theory.definitions/chords
    [0 2 4 5 7 9 11]))
 
-(defn index-tones
-  "Index tones from indexes and key-of"
-  ([indexes key-of]
-   (index-tones (all-tones) indexes key-of))
-  ([all-tones indexes key-of]
-   {:pre  [(m/validate models.tone/Indexes indexes)
-           (m/validate models.tone/IntervalTone key-of)]
-    :post [(m/validate models.tone/IndexTones %)]}
-   (let [tones (tones-starting-at all-tones key-of)]
-     (tones-by-indexes tones indexes))))
-
-(index-tones [0 1 2] :c)
-
-(defn interval-tones
-  "Interval tones from intervals and key-of"
-  ([intervals key-of]
-   (interval-tones (all-tones) intervals key-of))
-  ([all-tones intervals key-of]
-   {:pre  [(m/validate models.tone/Intervals intervals)
-           (m/validate models.tone/IntervalTone key-of)]
-    :post [(m/validate models.tone/IntervalTones %)]}
-   (tones-by-intervals
-    (tones-starting-at all-tones key-of)
-    intervals)))
-
-(interval-tones ["1" "b3" "5"] :c)
 
 (defn add-layer [f fretboard-matrix]
   (map-matrix
