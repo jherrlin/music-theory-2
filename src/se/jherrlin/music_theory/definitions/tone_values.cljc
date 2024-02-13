@@ -1,4 +1,11 @@
-(ns se.jherrlin.music-theory.definitions.tone-values)
+(ns se.jherrlin.music-theory.definitions.tone-values
+  (:require
+   [clojure.set :as set]
+   [clojure.string :as str]
+   [malli.core :as m]
+   [se.jherrlin.music-theory.intervals :as intervals]
+   [se.jherrlin.music-theory.models.tone :as models.tone]
+   [se.jherrlin.utils :as utils]))
 
 
 (comment
@@ -15,7 +22,7 @@
                           #{:bb :a#}
                           #{:b}]
              nr-of-tones (count tones)]
-         (loop [[current-tone & rest] (apply concat (take (* nr-of-tones 7) (repeat tones)))
+         (loop [[current-tone & rest] (take (* nr-of-tones 15) (cycle tones))
                 value-coounter        0
                 octave-counter        0
                 acc                   {}]
@@ -390,7 +397,8 @@
    [#{:bb :a#} 2] 34,
    [#{:b} 3] 47})
 
-(defn get-tone-value [tone octave]
+(defn get-tone-value
+  [tone octave]
   (get tone-values [tone octave]))
 
 (get-tone-value :b 2) ;; => 35

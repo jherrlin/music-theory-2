@@ -10,7 +10,8 @@
    [se.jherrlin.music-theory.general :as general]
    [se.jherrlin.music-theory.intervals :as intervals]
    [se.jherrlin.music-theory.models.tone :as models.tone]
-   [se.jherrlin.utils :as utils]))
+   [se.jherrlin.utils :as utils]
+   [se.jherrlin.music-theory.definitions.tone-values :as tone-values]))
 
 
 (defn fretboard-string
@@ -80,6 +81,7 @@
               (assoc m :y y :yx (+ (* 100 y) x)))
             (fretboard-string all-tones string-tuning number-of-frets)))
          (iterate inc 0)))))
+
 
 (fretboard-strings
  (general/all-tones)
@@ -678,3 +680,24 @@
   {:tone :g, :octave 3, :start-index 0}
   {:tone :b, :octave 3, :start-index 0}
   {:tone :e, :octave 4, :start-index 0}])
+
+(defn compare-two-frets-
+  "Used mainly for sorting frets from low to high pitch."
+  [{o1 :octave t1 :tone}
+   {o2 :octave t2 :tone}]
+  (tone-values/compare-tones [t1 o1] [t2 o2]))
+
+(compare-two-frets-
+ {:x 5, :tone #{:e}, :octave 2}
+ {:x 6, :tone #{:f}, :octave 2})
+
+
+(defn sort-frets
+  "Sort frets by pitch."
+  [coll]
+  (sort-by compare-two-frets- coll))
+
+(sort-frets
+ [{:tone #{:e}, :octave 4}
+  {:tone #{:g# :ab}, :octave 4}
+  {:tone #{:c}, :octave 0}])
