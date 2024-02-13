@@ -110,6 +110,11 @@
   [instrument']
   (get definitions instrument'))
 
+(defn get-instrument-type
+  "Get instrument `k` type."
+  [k]
+  (get-in definitions [k :type]))
+
 (defn instruments
   "Get `instruments'` map."
   []
@@ -117,13 +122,13 @@
        (vals)
        (sort-by :order)))
 
-(defn tuning
+(defn get-tuning
   "Get tuning and text from `instrument'`."
   [instrument']
   (-> (instrument instrument')
       :tuning))
 
-(defn description
+(defn get-description
   "Get description and text from `instrument'`."
   [instrument']
   (-> (instrument instrument')

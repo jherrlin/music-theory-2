@@ -32,7 +32,7 @@
   (chord :diminished-seventh)
   )
 
-(defn scale
+(defn get-scale
   [k]
   (get-in @definitions [:scales k]))
 

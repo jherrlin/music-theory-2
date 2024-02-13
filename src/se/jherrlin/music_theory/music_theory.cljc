@@ -32,7 +32,7 @@
 
 (def get-chord definitions/chord)
 (def chords (definitions/chords))
-(def get-scale definitions/scale)
+(def get-scale definitions/get-scale)
 (def scales (definitions/scales))
 
 (def scales-for-harmonization
@@ -100,7 +100,7 @@
 
 
 (def all-tones (general/all-tones))
-(def get-harmonization harmonizations/harmonization)
+(def get-harmonization harmonizations/get-harmonization)
 (def harmonizations harmonizations/harmonizations)
 
 (def tones-by-key-and-indexes general/tones-by-key-and-indexes)

@@ -697,7 +697,7 @@
   [coll]
   (sort-by compare-two-frets- coll))
 
-(sort-frets
+#_(sort-frets
  [{:tone #{:e}, :octave 4}
   {:tone #{:g# :ab}, :octave 4}
   {:tone #{:c}, :octave 0}])

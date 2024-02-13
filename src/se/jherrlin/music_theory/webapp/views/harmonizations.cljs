@@ -23,7 +23,9 @@
   (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
   (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
 
-(defn calc-harmonization-scale [{:keys [harmonization-scale key-of instrument]} {:keys [nr-of-frets] :as query-params}]
+(defn calc-harmonization-scale
+  [{:keys [harmonization-scale key-of instrument]}
+   {:keys [nr-of-frets] :as query-params}]
   (let [{scale-names :scale/scale-names
          :keys       [id] :as scale'} (music-theory/get-scale harmonization-scale)
         instrument-tuning             (music-theory/get-instrument-tuning instrument)
@@ -215,6 +217,13 @@
    {:keys [nr-of-frets] :as query-params}]
   (let [scale         (music-theory/get-scale harmonization-scale)
         harmonization (music-theory/get-harmonization harmonization-id)]
+    (def instrument instrument)
+    (def key-of key-of)
+    (def harmonization-id harmonization-id)
+    (def harmonization-scale harmonization-scale)
+    (def nr-of-frets nr-of-frets)
+    (def scale scale)
+    (def harmonization harmonization)
 
     (calc-harmonization-scale path-params query-params)
 

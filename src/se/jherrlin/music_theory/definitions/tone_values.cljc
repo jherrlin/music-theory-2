@@ -401,9 +401,9 @@
   [tone octave]
   (get tone-values [tone octave]))
 
-(get-tone-value :b 2) ;; => 35
-(get-tone-value :c 3) ;; => 36
-(get-tone-value #{:c} 3)
+(get-tone-value :b 2)    ;; => 35
+(get-tone-value :c 3)    ;; => 36
+(get-tone-value #{:c} 3) ;; => 36
 
 (defn compare-tones [[t1 o1] [t2 o2]]
   (- (get-tone-value t1 o1)
@@ -412,7 +412,7 @@
 (compare-tones [:b 2] [:c 3])
 (compare-tones [#{:c} 3] [#{:e} 3])
 
-(let [tones [[#{:c} 3] [#{:e} 3] [#{:g} 3] [#{:c} 4] [#{:e} 4]]]
+#_(let [tones [[#{:c} 3] [#{:e} 3] [#{:g} 3] [#{:c} 4] [#{:e} 4]]]
   (=
    tones
    (vec (sort-by compare-tones tones))))

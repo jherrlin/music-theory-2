@@ -72,16 +72,16 @@
   (->> (str/split s "_")
        (map str-to-entity)))
 
-(let [m {:instrument :guitar
-         :key-of     :c
-         :id         #uuid "c91cddfe-f776-4c0c-8125-4f4c5d074e77"}]
-  (->> m
-       (entity-to-str)
-       (str-to-entity)
-       (= m)))
+;; (let [m {:instrument :guitar
+;;          :key-of     :c
+;;          :id         #uuid "c91cddfe-f776-4c0c-8125-4f4c5d074e77"}]
+;;   (->> m
+;;        (entity-to-str)
+;;        (str-to-entity)
+;;        (= m)))
 
-(str-to-entities
- "guitar,c,94f5f7a4-d852-431f-90ca-9e99f89bbb9c")
+;; (str-to-entities
+;;  "guitar,c,94f5f7a4-d852-431f-90ca-9e99f89bbb9c")
 
 (defn fretboard-entity? [{:keys [instrument] :as m}]
   {:pre [(valid-entity? m)]}

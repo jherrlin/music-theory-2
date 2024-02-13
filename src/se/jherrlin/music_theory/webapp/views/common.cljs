@@ -124,19 +124,19 @@
           (-> scale' name (str/replace "-" " ") str/capitalize)]]])]))
 
 (defn harmonization-scale-selection []
-  (let [{:keys [scale] :as path-params} @(re-frame/subscribe [:path-params])
+  (let [{:keys [harmonization-scale] :as path-params} @(re-frame/subscribe [:path-params])
         query-params                    @(re-frame/subscribe [:query-params])]
     [:div
-     (for [{scale' :scale
+     (for [{scale  :scale
             id     :id} music-theory/scales-for-harmonization]
-       ^{:key (str "scale-selection-" id scale')}
+       ^{:key (str "scale-selection-" id scale)}
        [:div {:style {:margin-right "10px" :display "inline"}}
         [:a {:href (rfe/href :harmonizations
-                             (assoc path-params :harmonization-scale scale')
+                             (assoc path-params :harmonization-scale scale)
                              query-params)}
          [:button
-          {:disabled (= scale scale')}
-          (-> scale' name (str/replace "-" " ") str/capitalize)]]])]))
+          {:disabled (= harmonization-scale scale)}
+          (-> scale name (str/replace "-" " ") str/capitalize)]]])]))
 
 (defn scales-to-chord [path-params query-params chord-intervals]
   (let [scales-to-chord (music-theory/scales-to-chord music-theory/scales chord-intervals)]
