@@ -2,8 +2,7 @@
 
 
 (def definitions
-  {
-   ;; :piano             {:id          :piano
+  {;; :piano             {:id          :piano
    ;;                     :text        "Piano"
    ;;                     :description "Standard guitar tuning"
    ;;                     :type        :keyboard
@@ -103,6 +102,26 @@
                                       :start-index 0}
                                      {:tone        :a
                                       :octave      3
+                                      :start-index 0}]}
+   :pers-banjo-tuning {:id          :pers-banjo-tuning
+                       :text        "Pers banjo tuning"
+                       :description "Pers banjo tuning"
+                       :type        :fretboard
+                       :order       7
+                       :tuning      [{:tone        :a
+                                      :octave      4
+                                      :start-index 3}
+                                     {:tone        :d
+                                      :octave      3
+                                      :start-index 0}
+                                     {:tone        :a
+                                      :octave      3
+                                      :start-index 0}
+                                     {:tone        :d
+                                      :octave      3
+                                      :start-index 0}
+                                     {:tone        :e
+                                      :octave      4
                                       :start-index 0}]}})
 
 (defn instrument
