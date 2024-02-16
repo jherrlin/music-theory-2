@@ -79,6 +79,18 @@
  #{:db}
  "3")
 
+(defn sharp [index-tone]
+  {:pre [(models.tone/valid-index-tone? index-tone)]}
+  (sharp-or-flat index-tone "b"))
+
+(sharp #{:db :c#})    ;; => :db
+
+(defn flat [index-tone]
+  {:pre [(models.tone/valid-index-tone? index-tone)]}
+  (sharp-or-flat index-tone "#"))
+
+(flat #{:db :c#})     ;; => :c#
+
 (defn tones-on-indexes-with-intervals
   ([indexes intervals]
    (tones-on-indexes-with-intervals (all-tones) indexes intervals))
