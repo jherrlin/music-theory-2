@@ -103,6 +103,9 @@
 (defn by-id [id]
   (get-in @definitions [:ids id]))
 
+(defn definition-type [id]
+  (get (by-id id) :type))
+
 (defn- define-chord
   "Interpret the chord and add it to the chord state."
   [id chord-name {:keys [suffix] :as meta-data} chord-str]

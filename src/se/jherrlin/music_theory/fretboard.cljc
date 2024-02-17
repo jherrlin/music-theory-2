@@ -114,7 +114,7 @@
                     (mapv second))))))
 
 (intevals-string->intervals-matrix
- "   3   -   -
+  "   3   -   -
    -   bb1   -
    5   -   -
    -   -   -
@@ -683,9 +683,10 @@
 
 (defn compare-two-frets-
   "Used mainly for sorting frets from low to high pitch."
-  [{o1 :octave t1 :tone}
-   {o2 :octave t2 :tone}]
-  (tone-values/compare-tones [t1 o1] [t2 o2]))
+  ([x]
+   (tone-values/compare-tones x))
+  ([x1 x2]
+   (tone-values/compare-tones x1 x2)))
 
 (compare-two-frets-
  {:x 5, :tone #{:e}, :octave 2}
@@ -697,7 +698,8 @@
   [coll]
   (sort-by compare-two-frets- coll))
 
-#_(sort-frets
- [{:tone #{:e}, :octave 4}
+(sort-frets
+ [{:tone #{:b}, :octave 0}
+  {:tone #{:e}, :octave 4}
   {:tone #{:g# :ab}, :octave 4}
   {:tone #{:c}, :octave 0}])

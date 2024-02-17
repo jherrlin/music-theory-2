@@ -13,6 +13,9 @@
    [se.jherrlin.music-theory.models.entity :as models.entity]))
 
 
+;;
+;; Instruments
+;;
 (def instruments (instruments/instruments))
 
 (comment
@@ -20,6 +23,7 @@
   )
 
 (def get-instrument instruments/instrument)
+(def get-instrument-type instruments/get-instrument-type)
 (defn get-instrument-tuning [instrument]
   (get (get-instrument instrument) :tuning))
 
