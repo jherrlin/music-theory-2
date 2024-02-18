@@ -35,7 +35,7 @@
 ;; Definitions
 ;;
 
-(def get-definition definitions/by-id)
+(def get-definition definitions/get-definition)
 (def get-definition-type definitions/definition-type)
 (def get-chord definitions/chord)
 (def chords (definitions/chords))
@@ -113,9 +113,8 @@
 (def create-fretboard-matrix fretboard/create-fretboard-matrix)
 (defn with-all-intervals [interval-tones intervals fretboard-matrix]
   (let [intervals->tones (mapv vector interval-tones intervals)]
-    (fretboard/with-all-intervals
-      (intervals->tones interval-tones intervals)
-      fretboard-matrix)))
+    (fretboard/with-all-intervals intervals->tones fretboard-matrix))
+  )
 
 (comment
   (fretboard-strings
@@ -133,3 +132,93 @@
 ;;
 (def get-harmonization harmonizations/get-harmonization)
 (def harmonizations harmonizations/harmonizations)
+
+
+
+
+
+
+
+
+
+(defmulti prepair-instrument-data-for-entity-RENAME-LATER
+  "Generate a datastructure for the instrument from a entity."
+  (fn [{:keys [id instrument key-of] :as entity} opts]
+    (let [instrument-type (get-instrument-type instrument)
+          definition-type (get-definition-type id)]
+      [instrument-type definition-type])))
+
+(defmethod prepair-instrument-data-for-entity-RENAME-LATER [:fretboard [:chord]]
+  [{:keys [id instrument key-of] :as entity}
+   {:keys [nr-of-frets trim-fretboard as-intervals] :as opts}]
+  (let [intervals                (get-definition id :chord/intervals)
+        interval-tones           (interval-tones key-of intervals)
+        instrument-tuning        (get-instrument-tuning instrument)]
+    (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
+      as-intervals       (with-all-intervals interval-tones intervals)
+      (not as-intervals) (with-all-tones interval-tones)
+      trim-fretboard     (trim-matrix #(every? nil? (map :out %))))))
+
+(comment
+  (prepair-instrument-data-for-entity-RENAME-LATER
+   {:id         #uuid "1cd72972-ca33-4962-871c-1551b7ea5244",
+    :instrument :guitar,
+    :key-of     :g}
+   {:nr-of-frets 15})
+  )
+
+
+(defmethod prepair-instrument-data-for-entity-RENAME-LATER [:fretboard [:chord :pattern]]
+  [{:keys [id instrument key-of] :as entity}
+   {:keys [nr-of-frets trim-fretboard as-intervals] :as opts}]
+  (let [pattern           (get-definition id :fretboard-pattern/pattern)
+        instrument-tuning (get-instrument-tuning instrument)]
+    (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
+      as-intervals       (pattern-with-intervals key-of pattern)
+      (not as-intervals) (pattern-with-tones key-of pattern)
+      trim-fretboard     (trim-matrix #(every? nil? (map :out %))))))
+(comment
+  (prepair-instrument-data-for-entity-RENAME-LATER
+   {:id         #uuid "94f5f7a4-d852-431f-90ca-9e99f89bbb9c",
+    :instrument :guitar,
+    :key-of     :c}
+   {:nr-of-frets 15})
+  )
+
+(defmethod prepair-instrument-data-for-entity-RENAME-LATER [:fretboard [:scale]]
+  [{:keys [id instrument key-of] :as entity}
+   {:keys [nr-of-frets trim-fretboard as-intervals] :as opts}]
+  (let [intervals         (get-definition id :scale/intervals)
+        interval-tones    (interval-tones key-of intervals)
+        instrument-tuning (get-instrument-tuning instrument)]
+    (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
+      as-intervals       (with-all-intervals interval-tones intervals)
+      (not as-intervals) (with-all-tones interval-tones)
+      trim-fretboard     (trim-matrix #(every? nil? (map :out %))))))
+(comment
+  (prepair-instrument-data-for-entity-RENAME-LATER
+   {:id         #uuid "39af7096-b5c6-45e9-b743-6791b217a3df",
+    :instrument :guitar,
+    :key-of     :c}
+   {:nr-of-frets  15
+    :as-intervals true})
+  )
+
+
+(defmethod prepair-instrument-data-for-entity-RENAME-LATER [:fretboard [:scale :pattern]]
+  [{:keys [id instrument key-of] :as entity}
+   {:keys [nr-of-frets trim-fretboard as-intervals] :as opts}]
+  (let [pattern           (get-definition id :fretboard-pattern/pattern)
+        instrument-tuning (get-instrument-tuning instrument)]
+    (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
+      as-intervals       (pattern-with-intervals key-of pattern)
+      (not as-intervals) (pattern-with-tones key-of pattern)
+      trim-fretboard     (trim-matrix #(every? nil? (map :out %))))))
+(comment
+  (prepair-instrument-data-for-entity-RENAME-LATER
+   {:id         #uuid "55189945-37fa-4071-9170-b0b068a23174",
+    :instrument :guitar,
+    :key-of     :c}
+   {:nr-of-frets  15
+    :as-intervals true})
+  )

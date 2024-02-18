@@ -104,11 +104,14 @@
 (defn ids []
   (get @definitions :ids))
 
-(defn by-id [id]
-  (get-in @definitions [:ids id]))
+(defn get-definition
+  ([id]
+   (get-in @definitions [:ids id]))
+  ([id k]
+   (get-in @definitions [:ids id k])))
 
 (defn definition-type [id]
-  (get (by-id id) :type))
+  (get (get-definition id) :type))
 
 (defn- define-chord
   "Interpret the chord and add it to the chord state."
