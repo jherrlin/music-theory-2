@@ -150,15 +150,16 @@
 
 (defmethod prepair-instrument-data-for-entity-RENAME-LATER [:fretboard [:chord]]
   [{:keys [id instrument key-of] :as entity}
-   {:keys [nr-of-frets trim-fretboard as-intervals] :as opts}]
-  (let [intervals                (get-definition id :chord/intervals)
-        interval-tones           (interval-tones key-of intervals)
-        instrument-tuning        (get-instrument-tuning instrument)]
+   {trim-fretboard? :trim-fretboard
+    :keys           [nr-of-frets as-intervals]
+    :as             opts}]
+  (let [intervals         (get-definition id :chord/intervals)
+        interval-tones    (interval-tones key-of intervals)
+        instrument-tuning (get-instrument-tuning instrument)]
     (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (with-all-intervals interval-tones intervals)
       (not as-intervals) (with-all-tones interval-tones)
-      trim-fretboard     (trim-matrix #(every? nil? (map :out %))))))
-
+      trim-fretboard?    (trim-matrix #(every? nil? (map :out %))))))
 (comment
   (prepair-instrument-data-for-entity-RENAME-LATER
    {:id         #uuid "1cd72972-ca33-4962-871c-1551b7ea5244",
@@ -170,13 +171,15 @@
 
 (defmethod prepair-instrument-data-for-entity-RENAME-LATER [:fretboard [:chord :pattern]]
   [{:keys [id instrument key-of] :as entity}
-   {:keys [nr-of-frets trim-fretboard as-intervals] :as opts}]
+   {trim-fretboard? :trim-fretboard
+    :keys           [nr-of-frets as-intervals]
+    :as             opts}]
   (let [pattern           (get-definition id :fretboard-pattern/pattern)
         instrument-tuning (get-instrument-tuning instrument)]
     (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (pattern-with-intervals key-of pattern)
       (not as-intervals) (pattern-with-tones key-of pattern)
-      trim-fretboard     (trim-matrix #(every? nil? (map :out %))))))
+      trim-fretboard?    (trim-matrix #(every? nil? (map :out %))))))
 (comment
   (prepair-instrument-data-for-entity-RENAME-LATER
    {:id         #uuid "94f5f7a4-d852-431f-90ca-9e99f89bbb9c",
@@ -187,14 +190,16 @@
 
 (defmethod prepair-instrument-data-for-entity-RENAME-LATER [:fretboard [:scale]]
   [{:keys [id instrument key-of] :as entity}
-   {:keys [nr-of-frets trim-fretboard as-intervals] :as opts}]
+   {trim-fretboard? :trim-fretboard
+    :keys           [nr-of-frets as-intervals]
+    :as             opts}]
   (let [intervals         (get-definition id :scale/intervals)
         interval-tones    (interval-tones key-of intervals)
         instrument-tuning (get-instrument-tuning instrument)]
     (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (with-all-intervals interval-tones intervals)
       (not as-intervals) (with-all-tones interval-tones)
-      trim-fretboard     (trim-matrix #(every? nil? (map :out %))))))
+      trim-fretboard?    (trim-matrix #(every? nil? (map :out %))))))
 (comment
   (prepair-instrument-data-for-entity-RENAME-LATER
    {:id         #uuid "39af7096-b5c6-45e9-b743-6791b217a3df",
@@ -207,13 +212,15 @@
 
 (defmethod prepair-instrument-data-for-entity-RENAME-LATER [:fretboard [:scale :pattern]]
   [{:keys [id instrument key-of] :as entity}
-   {:keys [nr-of-frets trim-fretboard as-intervals] :as opts}]
+   {trim-fretboard? :trim-fretboard
+    :keys           [nr-of-frets as-intervals]
+    :as             opts}]
   (let [pattern           (get-definition id :fretboard-pattern/pattern)
         instrument-tuning (get-instrument-tuning instrument)]
     (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (pattern-with-intervals key-of pattern)
       (not as-intervals) (pattern-with-tones key-of pattern)
-      trim-fretboard     (trim-matrix #(every? nil? (map :out %))))))
+      trim-fretboard?    (trim-matrix #(every? nil? (map :out %))))))
 (comment
   (prepair-instrument-data-for-entity-RENAME-LATER
    {:id         #uuid "55189945-37fa-4071-9170-b0b068a23174",
