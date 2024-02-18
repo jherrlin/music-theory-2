@@ -337,12 +337,12 @@
 (defmulti instrument-view
   (fn [{:keys [id instrument key-of] :as entity} path-params query-params deps]
     (let [instrument' (music-theory/get-instrument instrument)
-          definition  (music-theory/by-id id)]
+          definition  (music-theory/get-definition id)]
       [(get instrument' :type) (get definition :type)])))
 
 (defmethod instrument-view [:fretboard [:chord]]
   [{:keys [id instrument key-of] :as entity} path-params query-params deps]
-  (let [definition  (music-theory/by-id id)
+  (let [definition  (music-theory/get-definition id)
         intervals   (get definition :chord/intervals)]
     [instrument-view-fretboard-chord-and-scale
      entity path-params query-params intervals deps]))
@@ -352,7 +352,7 @@
    path-params
    {:keys [as-intervals] :as query-params}
    {:keys [play-tone] :as deps}]
-  (let [definition (music-theory/by-id id)
+  (let [definition (music-theory/get-definition id)
         fretboard-matrix @(re-frame/subscribe [:fretboard-by-entity entity])]
     [:<>
      [instrument-view-fretboard-pattern
@@ -374,7 +374,7 @@
 
 (defmethod instrument-view [:fretboard [:scale]]
   [{:keys [id instrument key-of] :as entity} path-params query-params deps]
-  (let [definition (music-theory/by-id id)
+  (let [definition (music-theory/get-definition id)
         intervals  (get definition :scale/intervals)]
     [instrument-view-fretboard-chord-and-scale
      entity path-params query-params intervals deps]))
@@ -384,7 +384,7 @@
    path-params
    {:keys [as-intervals trim-fretboard] :as query-params}
    {:keys [play-tone] :as deps}]
-  (let [definition (music-theory/by-id id)
+  (let [definition (music-theory/get-definition id)
         fretboard-matrix @(re-frame/subscribe [:fretboard-by-entity entity])]
     [instrument-view-fretboard-pattern
      {:entity           entity
@@ -800,17 +800,19 @@
                   :min       1
                   :type      "number" :id "nr-of-octavs-input" :name "nr-of-octavs-input"}]])]]))
 
+;; TODO: Move this to a Cljc ns
+;; ^:deprecated
 (defmulti prepair-instrument-data-for-entity
   (fn [{:keys [id instrument key-of] :as entity} path-params query-params]
-    (let [instrument' (music-theory/get-instrument instrument)
-          definition  (music-theory/by-id id)]
-      [(get instrument' :type) (get definition :type)])))
+    (let [instrument-type (music-theory/get-instrument-type instrument)
+          definition      (music-theory/get-definition id)]
+      [instrument-type (get definition :type)])))
 
 (defmethod prepair-instrument-data-for-entity [:fretboard [:chord]]
   [{:keys [id instrument key-of] :as entity}
    path-params
    {:keys [nr-of-frets trim-fretboard as-intervals] :as query-params}]
-  (let [definition               (music-theory/by-id id)
+  (let [definition               (music-theory/get-definition id)
         intervals                (get definition :chord/intervals)
         interval-tones           (music-theory/interval-tones key-of intervals)
         instrument-tuning        (music-theory/get-instrument-tuning instrument)]
@@ -834,7 +836,7 @@
    path-params
    {:keys [nr-of-frets trim-fretboard as-intervals] :as query-params}]
   (let [{pattern :fretboard-pattern/pattern :as definition}
-        (music-theory/by-id id)
+        (music-theory/get-definition id)
         instrument-tuning        (music-theory/get-instrument-tuning instrument)]
     (cond->> (music-theory/create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (music-theory/pattern-with-intervals key-of pattern)
@@ -853,7 +855,7 @@
   [{:keys [id instrument key-of] :as entity}
    path-params
    {:keys [nr-of-frets trim-fretboard as-intervals] :as query-params}]
-  (let [definition               (music-theory/by-id id)
+  (let [definition               (music-theory/get-definition id)
         intervals                (get definition :scale/intervals)
         interval-tones           (music-theory/interval-tones key-of intervals)
         instrument-tuning        (music-theory/get-instrument-tuning instrument)]
@@ -878,7 +880,7 @@
    path-params
    {:keys [nr-of-frets trim-fretboard as-intervals] :as query-params}]
   (let [{pattern :fretboard-pattern/pattern :as definition}
-        (music-theory/by-id id)
+        (music-theory/get-definition id)
         instrument-tuning (music-theory/get-instrument-tuning instrument)]
     (cond->> (music-theory/create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (music-theory/pattern-with-intervals key-of pattern)

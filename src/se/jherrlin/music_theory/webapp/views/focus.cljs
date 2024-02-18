@@ -2,8 +2,7 @@
   (:require
    [clojure.set :as set]
    [clojure.string :as str]
-   [re-frame.core :as re-frame]
-   [re-frame.alpha :as re-frame-alpha]
+   [re-frame.alpha :as re-frame]
    [reitit.frontend.easy :as rfe]
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.webapp.events :as events]
@@ -16,7 +15,7 @@
   (let [{:keys [id instrument key-of] :as path-params} @(re-frame/subscribe [:path-params])
         query-params                                   @(re-frame/subscribe [:query-params])
         fretboard-matrix                               @(re-frame/subscribe [:fretboard-matrix])
-        definition                                     (music-theory/by-id id)
+        definition                                     (music-theory/get-definition id)
         instrument'                                    (music-theory/get-instrument instrument)
         entity                                         (music-theory/entity key-of instrument id)]
     [:<>

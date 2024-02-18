@@ -443,3 +443,44 @@
        (filter
         (fn [{chord-intervals :chord/intervals}]
           (set/subset? (set chord-intervals) (set scale-intervals))))))
+
+
+(defn generate [coll intervals-key index-key]
+  (for [key-of        (apply concat (all-tones))
+        {intervals intervals-key
+         indexes   index-key
+         :as       m} coll]
+    (let [interval-tones (tones-by-key-and-intervals key-of intervals)
+          index-tones    (tones-by-key-and-indexes   key-of indexes)]
+      (assoc m
+             :interval-tones interval-tones
+             :interval-tones-set (set interval-tones)
+             :index-tones  index-tones
+             :index-tones-set (set index-tones)
+             :key-of key-of))))
+
+(def index-or-interval-tones-set?
+  (partial m/validate [:or
+                       models.tone/IndexTonesSet
+                       models.tone/IntervalTonesSet]))
+
+(defn match-tones-with-coll
+  [coll tones-to-search]
+  {:pre [(index-or-interval-tones-set? tones-to-search)]}
+  (let [tones-to-search-count (count tones-to-search)]
+    (->> coll
+         (map (fn [{:keys [interval-tones-set index-tones-set] :as m}]
+                (let [ts (if (models.tone/valid-index-tones-set? tones-to-search)
+                           index-tones-set interval-tones-set)
+                      ts-count (count ts)
+                      intersections (set/intersection ts tones-to-search)]
+                  (assoc m
+                         :intersections intersections
+                         :intersections-count (+ (count intersections)
+                                                 (cond
+                                                   (= index-tones-set tones-to-search) tones-to-search-count
+                                                   (> tones-to-search-count ts-count) (- ts-count tones-to-search-count)
+                                                   (< tones-to-search-count ts-count) (- tones-to-search-count ts-count)
+                                                   :else 0))))))
+         (sort-by :intersections-count #(compare %2 %1))
+         (take 10))))

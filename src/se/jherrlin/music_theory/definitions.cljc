@@ -42,6 +42,10 @@
        (vals)
        (sort-by :scale/order)))
 
+(defn scales-for-harmonization []
+  (->> (scales)
+       (filter (comp #{7} count :scale/intervals))))
+
 (defn chord-patterns []
   (->> (get @definitions :chord-patterns)
        (sort-by :fretboard-pattern/order)))

@@ -75,7 +75,7 @@
      [common/menu]
      [:br]
      (for [{:keys [instrument key-of id] :as entity} bookmarks]
-       (let [definition (music-theory/by-id id)
+       (let [definition (music-theory/get-definition id)
              instrument (music-theory/get-instrument instrument)]
          ^{:key (str "bookmark-definition-" (music-theory/entity-to-str entity))}
          [:<>

@@ -141,7 +141,7 @@
        (vals)
        (sort-by :order)))
 
-(defn get-tuning
+(defn get-instrument-tuning
   "Get tuning and text from `instrument'`."
   [instrument']
   (-> (instrument instrument')

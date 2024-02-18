@@ -655,6 +655,7 @@
      (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
      (println))
 
+
 (defn create-fretboard-matrix
   ([nr-of-frets tuning]
    (fretboard-strings tuning nr-of-frets))

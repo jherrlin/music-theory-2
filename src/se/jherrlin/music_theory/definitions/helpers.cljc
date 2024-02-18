@@ -1,7 +1,5 @@
 (ns se.jherrlin.music-theory.definitions.helpers
   (:require
-   #?(:cljs [goog.string.format])
-   #?(:cljs [goog.string :as gstring])
    [clojure.set :as set]
    [clojure.string :as str]
    [se.jherrlin.music-theory.intervals :as intervals]
@@ -9,8 +7,7 @@
    [se.jherrlin.utils :as basic-utils]
    [se.jherrlin.music-theory.models.chord :as models.chord]
    [se.jherrlin.music-theory.models.fretboard-pattern :as models.fretboard-pattern]
-   [se.jherrlin.music-theory.models.scale :as models.scale]
-   [se.jherrlin.music-theory.models.tone :as models.tone]))
+   [se.jherrlin.music-theory.models.scale :as models.scale]))
 
 
 (defn qualify-keywords [m n]
