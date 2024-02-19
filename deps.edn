@@ -6,7 +6,7 @@
            metosin/reitit       {:mvn/version "0.6.0"}
            nrepl/nrepl          {:mvn/version "1.1.0"}
            re-frame/re-frame    {:mvn/version "1.4.3"}
-           thheller/shadow-cljs {:mvn/version "2.27.3"}
+           thheller/shadow-cljs {:mvn/version "2.27.4"}
            integrant/integrant  {:mvn/version "0.8.1"}}
  :aliases {:outdated {:extra-deps {olical/depot {:mvn/version "2.0.1"}}
                       :main-opts  ["-m" "depot.outdated.main"]}}}
