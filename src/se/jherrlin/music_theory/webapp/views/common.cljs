@@ -22,60 +22,60 @@
       (cljs.pprint/pprint x))]))
 
 (defn menu []
-  (let [current-route-name @(re-frame/subscribe [:current-route-name])
-        path-params        @(re-frame/subscribe [:path-params])
-        query-params       @(re-frame/subscribe [:changed-query-params])
-        key-of             @(re-frame/subscribe [:key-of])]
+  (let [current-route-name   @(re-frame/subscribe [:current-route-name])
+        path-params          @(re-frame/subscribe [:path-params])
+        changed-query-params @(re-frame/subscribe [:changed-query-params])
+        key-of               @(re-frame/subscribe [:key-of])]
     [:div {:style {:display        "flow"
                    :flow-direction "column"
                    :overflow-x     "auto"
                    :white-space    "nowrap"}}
      [:a {:style {:margin-right "10px"}
-          :href (rfe/href :home path-params query-params)}
+          :href  (rfe/href :home path-params changed-query-params)}
       [:button
        {:disabled (= current-route-name :home)}
        "Home"]]
 
      [:a {:style {:margin-right "10px"}
-          :href  (rfe/href :chord path-params query-params)}
+          :href  (rfe/href :chord path-params changed-query-params)}
       [:button
        {:disabled (= current-route-name :chord)}
        "Chords"]]
 
      [:a {:style {:margin-right "10px"}
-          :href  (rfe/href :scale path-params query-params)}
+          :href  (rfe/href :scale path-params changed-query-params)}
       [:button
        {:disabled (= current-route-name :scale)}
        "Scales"]]
 
      [:a {:style {:margin-right "10px"}
-          :href  (rfe/href :harmonizations path-params query-params)}
+          :href  (rfe/href :harmonizations path-params changed-query-params)}
       [:button
        {:disabled (= current-route-name :harmonizations)}
        "Harmonizations"]]
 
      [:a {:style {:margin-right "10px"}
-          :href  (rfe/href :table path-params query-params)}
+          :href  (rfe/href :table path-params changed-query-params)}
       [:button
        {:disabled (= current-route-name :table)}
        "Table"]]
 
      [:a {:style {:margin-right "10px"}
-          :href  (rfe/href :bookmarks path-params query-params)}
+          :href  (rfe/href :bookmarks path-params changed-query-params)}
       [:button
        {:disabled (= current-route-name :bookmarks)}
        "Bookmarks"]]
 
      (let [route-name :find-chord]
        [:a {:style {:margin-right "10px"}
-            :href  (rfe/href route-name path-params query-params)}
+            :href  (rfe/href route-name path-params changed-query-params)}
         [:button
          {:disabled (= current-route-name route-name)}
          "Find chord"]])
 
      (let [route-name :find-scale]
        [:a {:style {:margin-right "10px"}
-            :href  (rfe/href route-name path-params query-params)}
+            :href  (rfe/href route-name path-params changed-query-params)}
         [:button
          {:disabled (= current-route-name route-name)}
          "Find scale"]])
