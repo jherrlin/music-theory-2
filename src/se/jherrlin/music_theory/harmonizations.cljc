@@ -114,6 +114,7 @@
 
 (defn get-harmonization [k] (get harmonizations' k))
 (defn get-harmonization-type [k] (get-in harmonizations' [k :type]))
+(defn get-harmonization-chords [k] (get-in harmonizations' [k :chords]))
 
 (def harmonizations
   (->> harmonizations'

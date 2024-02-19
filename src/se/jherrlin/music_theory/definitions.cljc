@@ -36,6 +36,10 @@
   [k]
   (get-in @definitions [:scales k]))
 
+(defn get-scale-intervals
+  [k]
+  (get-in @definitions [:scales k :scale/intervals]))
+
 (defn scales
   []
   (->> (get @definitions :scales)

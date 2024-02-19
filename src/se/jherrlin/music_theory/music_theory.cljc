@@ -11,6 +11,10 @@
    [se.jherrlin.music-theory.models.tone :as models.tone]
    [se.jherrlin.music-theory.models.entity :as models.entity]))
 
+(comment
+  (remove-ns 'se.jherrlin.music-theory.music-theory)
+  )
+
 ;;
 ;; Basic utils
 ;;
@@ -40,6 +44,7 @@
 (def get-chord definitions/chord)
 (def chords (definitions/chords))
 (def get-scale definitions/get-scale)
+(def get-scale-intervals definitions/get-scale-intervals)
 (def scales (definitions/scales))
 (def scales-for-harmonization (definitions/scales-for-harmonization))
 (def chord-patterns-belonging-to definitions/chord-patterns-belonging-to)
@@ -131,16 +136,102 @@
 ;; Harmonizations
 ;;
 (def get-harmonization harmonizations/get-harmonization)
+(def get-harmonization-type harmonizations/get-harmonization-type)
+(def get-harmonization-chords harmonizations/get-harmonization-chords)
 (def harmonizations harmonizations/harmonizations)
 
 
 
 
 
+(defmulti calc-harmonization-chords
+  (fn [{:keys [harmonization-id]}]
+    (get-harmonization-type harmonization-id)))
+
+(defmethod calc-harmonization-chords :predefined
+  [{:keys [harmonization-id harmonization-scale instrument key-of]}]
+  (let [harmonization-chords (get-harmonization-chords harmonization-id)
+        scale-intervals      (get-scale-intervals harmonization-scale)
+        interval-tones'      (interval-tones key-of scale-intervals)
+        harmonization-chords (->> harmonization-chords
+                                  (map (fn [{:keys [idx-fn] :as m}]
+                                         (assoc m :key-of (idx-fn interval-tones'))))
+                                  (mapv
+                                   (fn [{:keys [key-of] :as harmonization-chord}]
+                                     (let [chord
+                                           (get-chord (get harmonization-chord :chord))
+                                           {chord-intervals :chord/intervals} chord]
+                                       (-> (merge harmonization-chord chord)
+                                           (assoc :key-of key-of
+                                                  :instrument instrument
+                                                  :interval-tones (interval-tones
+                                                                   key-of
+                                                                   chord-intervals))
+                                           (dissoc :idx-fn))))))]
+    harmonization-chords))
+
+(comment
+  (calc-harmonization-chords
+   {:instrument          :guitar,
+    :key-of              :e,
+    :harmonization-id    :I7-IV7-V7-Blues,
+    :harmonization-scale :major})
+  )
+
+(defmethod calc-harmonization-chords :generated
+  [{:keys [harmonization-id harmonization-scale instrument key-of]}]
+  (let [scale                (get-scale harmonization-scale)
+        harmonization        (get-harmonization harmonization-id)
+        scale-indexes        (get scale :scale/indexes)
+        scale-intervals      (get scale :scale/intervals)
+        chord-fn             (get harmonization :function)
+        scale-interval-tones (interval-tones key-of scale-intervals)
+        scale-index-tones    (tones-by-key-and-indexes key-of scale-indexes)
+        found-chords         (map (fn [tone]
+                                    (let [index-tones-in-chord (rotate-until
+                                                                #(% tone)
+                                                                scale-index-tones)]
+                                      (-> (find-chord
+                                           chords
+                                           (chord-fn index-tones-in-chord))
+                                          (assoc :key-of tone
+                                                 :instrument instrument))))
+                                  scale-interval-tones)
+        first-is-major?      ((-> found-chords first :chord/categories) :major)
+        harmonization-chords (mapv
+                              #(assoc %1
+                                      :idx %2
+                                      :symbol %3
+                                      :mode  %4
+                                      :family %5)
+                              found-chords        ;; 1
+                              (iterate inc 1)     ;; 2
+                              (if first-is-major? ;; 3
+                                ["I" "ii" "iii" "IV" "V" "vi" "vii"]
+                                ["i" "ii" "III" "iv" "v" "VI" "VII"])
+                              (if first-is-major? ;; 4
+                                [:ionian  :dorian  :phrygian :lydian :mixolydian :aeolian :locrian]
+                                [:aeolian :locrian :ionian   :dorian :phrygian   :lydian  :mixolydian])
+                              (if first-is-major?
+                                [:tonic :subdominant :tonic :subdominant :dominant :tonic :dominant]
+                                [:tonic :subdominant :tonic :subdominant :dominant :subdominant :dominant]))]
+    harmonization-chords))
+
+(comment
+
+  (calc-harmonization-chords
+   {:instrument          :mandolin,
+    :key-of              :c,
+    :harmonization-id    :triads,
+    :harmonization-scale :major})
+
+  )
 
 
 
-
+;;
+;; Instrument data structure
+;;
 (defmulti instrument-data-structure
   "Generate a datastructure for the instrument from a entity."
   (fn [{:keys [id instrument key-of] :as entity} opts]

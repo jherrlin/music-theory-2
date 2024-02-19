@@ -28,7 +28,6 @@
    {:keys [nr-of-frets] :as query-params}]
   (let [{scale-names :scale/scale-names
          :keys       [id] :as scale'} (music-theory/get-scale harmonization-scale)
-        instrument-tuning             (music-theory/get-instrument-tuning instrument)
         scale-entity                  (music-theory/entity key-of instrument id)]
     (let [entity scale-entity
           fretboard-matrix (common/prepair-instrument-data-for-entity entity {} query-params)]
@@ -45,8 +44,7 @@
     {scale-intervals :scale/intervals} :scale
     :keys                              [key-of instrument nr-of-frets]}
    query-params]
-  (let [instrument-tuning    (music-theory/get-instrument-tuning instrument)
-        interval-tones       (music-theory/interval-tones key-of scale-intervals)
+  (let [interval-tones       (music-theory/interval-tones key-of scale-intervals)
         harmonization-chords (->> harmonization-chords
                                   (map (fn [{:keys [idx-fn] :as m}]
                                          (assoc m :key-of (idx-fn interval-tones))))
@@ -74,7 +72,6 @@
   (let [scale-indexes        (get scale :scale/indexes)
         scale-intervals      (get scale :scale/intervals)
         chord-fn             (get harmonization :function)
-        instrument-tuning    (music-theory/get-instrument-tuning instrument)
         scale-interval-tones (music-theory/interval-tones key-of scale-intervals)
         scale-index-tones    (music-theory/tones-by-key-and-indexes key-of scale-indexes)
         found-chords         (map (fn [tone]
@@ -251,5 +248,7 @@
       [{:parameters {:path  [:instrument :key-of :harmonization-id :harmonization-scale]
                      :query events/query-keys}
         :start      (fn [{p :path q :query}]
+                      (def p p)
+                      (def q q)
                       (gather-data-for-route p q)
                       (events/do-on-url-change route-name p q))}]}]))
