@@ -24,7 +24,7 @@
 (defn menu []
   (let [current-route-name @(re-frame/subscribe [:current-route-name])
         path-params        @(re-frame/subscribe [:path-params])
-        query-params       @(re-frame/subscribe [:query-params])
+        query-params       @(re-frame/subscribe [:changed-query-params])
         key-of             @(re-frame/subscribe [:key-of])]
     [:div {:style {:display        "flow"
                    :flow-direction "column"

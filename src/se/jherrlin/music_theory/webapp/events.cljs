@@ -8,11 +8,14 @@
    [reitit.frontend.easy :as rfe]
    [clojure.string :as str]
    [clojure.set :as set]
+   [clojure.data :refer [diff]]
    [se.jherrlin.music-theory.music-theory :as music-theory]))
 
 
 (defn merge' [db [k m]]
   (assoc db k (merge (get db k) m)))
+
+(def query-params :query-params)
 
 (def init-db
   {:current-route      nil
@@ -23,7 +26,7 @@
                         :scale               :major
                         :harmonization-id    :triads
                         :harmonization-scale :major}
-   :query-params       {:nr-of-frets           15
+   query-params        {:nr-of-frets           15
                         :nr-of-octavs          2
                         :as-intervals          false
                         :as-text               false
@@ -33,6 +36,7 @@
                         :show-octave           false
                         :show-tones            false
                         :bookmarks             ""}})
+
 
 (def Query
   [:map
@@ -96,6 +100,18 @@
    (-> db
        (update ::fretboards assoc-in [entity :id] entity)
        (update ::fretboards assoc-in [entity :fretboard] fretboard))))
+
+(re-frame/reg-sub
+ :changed-query-params
+ (fn [db _]
+   (-> (diff
+        (query-params db)
+        (query-params init-db))
+       (first))))
+
+(comment
+  @(re-frame/subscribe [:changed-query-params])
+  )
 
 (re-frame/reg-sub
  :fretboard-by-entity

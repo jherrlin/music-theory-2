@@ -8,16 +8,16 @@
 
 
 (def events-
-  [{:n ::chord-entity}
-   {:n ::chord-pattern-entities}
-   {:n ::chord-triad-pattern-entities}])
+  [{:n ::entity}
+   {:n ::pattern-entities}
+   {:n ::triad-pattern-entities}])
 
 (doseq [{:keys [n s e]} events-]
   (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
   (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
 
 
-
+;; Rewrite this as a re-frame/dispatch
 (defn gather-view-data [{:keys [chord key-of instrument]} {:keys [nr-of-frets] :as query-params}]
   (let [{:keys [id] :as chord'}      (music-theory/get-chord chord)
         entity                       (music-theory/entity key-of instrument id)
@@ -37,20 +37,47 @@
       (let [fretboard-matrix (common/prepair-instrument-data-for-entity entity {} query-params)]
         (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix])))
 
-    (re-frame/dispatch [::chord-entity entity])
-    (re-frame/dispatch [::chord-pattern-entities chord-pattern-entities])
-    (re-frame/dispatch [::chord-triad-pattern-entities chord-triad-pattern-entities])))
+    (re-frame/dispatch [::entity entity])
+    (re-frame/dispatch [::pattern-entities chord-pattern-entities])
+    (re-frame/dispatch [::triad-pattern-entities chord-triad-pattern-entities])))
+
+(def gather-data-for-view-
+  (fn [{:keys [db]} [_ {:keys [chord key-of instrument]}]]
+    (let [query-params           (events/query-params db)
+          {:keys [id]}           (music-theory/get-chord chord)
+          entity                 (music-theory/entity key-of instrument id)
+          pattern-entities       (->> (music-theory/chord-patterns-belonging-to chord instrument)
+                                      (music-theory/definitions-to-entities key-of instrument))
+          triad-pattern-entities (->> (music-theory/chord-pattern-triads-belonging-to chord instrument)
+                                      (music-theory/definitions-to-entities key-of instrument))]
+      {:db (assoc
+            db
+            ::entity entity
+            ::pattern-entities pattern-entities
+            ::triad-pattern-entities triad-pattern-entities)
+       :fx (->> (concat
+                 [entity]
+                 pattern-entities
+                 triad-pattern-entities)
+                (mapv (fn [entity]
+                        (let [instrument-ds (music-theory/prepair-instrument-data-for-entity-RENAME-LATER
+                                             entity query-params)]
+                          [:dispatch [:add-entity-with-fretboard entity instrument-ds]]))))})))
+
+(re-frame/reg-event-fx ::gather-data-for-view gather-data-for-view-)
 
 (comment
 
-  (gather-view-data
-   {:instrument :guitar
-    :key-of :c
-    :chord :major}
-   {:nr-of-frets 15})
+  (gather-data-for-view-
+   {:db
+    {:query-params
+     {:nr-of-frets 15}}}
+   [nil
+    {:chord      :major
+     :key-of     :c
+     :instrument :guitar}])
 
-  (get @re-frame.db/app-db ::fretboards)
-  )
+  (get @re-frame.db/app-db ::fretboards))
 
 
 (defn chord-component [deps]
@@ -60,9 +87,9 @@
         {chord-intervals :chord/intervals
          :as             chord-definition}      (music-theory/get-chord chord)
         {instrument-type :type :as instrument'} (music-theory/get-instrument instrument)
-        chord-entity                            @(re-frame/subscribe [::chord-entity])
-        chord-patterns                          @(re-frame/subscribe [::chord-pattern-entities])
-        chord-triad-patterns                    @(re-frame/subscribe [::chord-triad-pattern-entities])]
+        chord-entity                            @(re-frame/subscribe [::entity])
+        chord-patterns                          @(re-frame/subscribe [::pattern-entities])
+        chord-triad-patterns                    @(re-frame/subscribe [::triad-pattern-entities])]
     [:<>
      [common/menu]
      [:br]
@@ -131,5 +158,5 @@
       [{:parameters {:path  [:instrument :key-of :chord]
                      :query events/query-keys}
         :start      (fn [{p :path q :query}]
-                      (gather-view-data p q)
-                      (events/do-on-url-change route-name p q))}]}]))
+                      (events/do-on-url-change route-name p q)
+                      (re-frame/dispatch [::gather-data-for-view p]))}]}]))
