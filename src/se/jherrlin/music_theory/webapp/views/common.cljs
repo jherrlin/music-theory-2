@@ -88,19 +88,20 @@
 
 (defn chord-selection []
   (let [{:keys [chord] :as path-params} @(re-frame/subscribe [:path-params])
-        query-params                    @(re-frame/subscribe [:query-params])]
+        query-params                    @(re-frame/subscribe [:query-params])
+        changed-query-params            @(re-frame/subscribe [:changed-query-params])]
     [:div
-     (for [{chord-name     :chord/chord-name
-            display-text   :chord/display-text
-            suffix         :chord/suffix
-            id             :id
-            :as            m} music-theory/chords]
+     (for [{chord-name   :chord/chord-name
+            display-text :chord/display-text
+            suffix       :chord/suffix
+            id           :id
+            :as          m} music-theory/chords]
        ^{:key (str "chord-selection-" id)}
        [:div {:style {:margin-right "10px" :display "inline"}}
         [:a {:href (rfe/href
                     :chord
                     (assoc path-params :chord chord-name)
-                    query-params)}
+                    changed-query-params)}
          [:button
           {:disabled (= chord chord-name)}
           (if display-text
@@ -109,7 +110,8 @@
 
 (defn scale-selection []
   (let [{:keys [scale] :as path-params} @(re-frame/subscribe [:path-params])
-        query-params                    @(re-frame/subscribe [:query-params])]
+        query-params                    @(re-frame/subscribe [:query-params])
+        changed-query-params            @(re-frame/subscribe [:changed-query-params])]
     [:div
      (for [{scale' :scale
             id     :id}
@@ -118,14 +120,15 @@
        [:div {:style {:margin-right "10px" :display "inline"}}
         [:a {:href (rfe/href :scale
                              (assoc path-params :scale scale')
-                             query-params)}
+                             changed-query-params)}
          [:button
           {:disabled (= scale scale')}
           (-> scale' name (str/replace "-" " ") str/capitalize)]]])]))
 
 (defn harmonization-scale-selection []
   (let [{:keys [harmonization-scale] :as path-params} @(re-frame/subscribe [:path-params])
-        query-params                    @(re-frame/subscribe [:query-params])]
+        query-params                    @(re-frame/subscribe [:query-params])
+        changed-query-params            @(re-frame/subscribe [:changed-query-params])]
     [:div
      (for [{scale  :scale
             id     :id} music-theory/scales-for-harmonization]
@@ -133,13 +136,14 @@
        [:div {:style {:margin-right "10px" :display "inline"}}
         [:a {:href (rfe/href :harmonizations
                              (assoc path-params :harmonization-scale scale)
-                             query-params)}
+                             changed-query-params)}
          [:button
           {:disabled (= harmonization-scale scale)}
           (-> scale name (str/replace "-" " ") str/capitalize)]]])]))
 
 (defn scales-to-chord [path-params query-params chord-intervals]
-  (let [scales-to-chord (music-theory/scales-to-chord music-theory/scales chord-intervals)]
+  (let [scales-to-chord      (music-theory/scales-to-chord music-theory/scales chord-intervals)
+        changed-query-params @(re-frame/subscribe [:changed-query-params])]
     (when (seq scales-to-chord)
       [:<>
        (for [{scale :scale/scale-names
@@ -148,14 +152,15 @@
          ^{:key id}
          [:div {:style {:margin-right "10px" :display "inline"}}
           [:a {:href
-               (rfe/href :scale (assoc path-params :scale (-> scale first)) query-params)}
+               (rfe/href :scale (assoc path-params :scale (-> scale first)) changed-query-params)}
            [:button
             (->> scale
                  (map (comp str/capitalize #(str/replace % "-" "") name))
                  (str/join " / "))]]])])))
 
 (defn chords-to-scale [path-params query-params scale-intervals]
-  (let [cts (music-theory/chords-to-scale music-theory/chords scale-intervals)]
+  (let [cts                  (music-theory/chords-to-scale music-theory/chords scale-intervals)
+        changed-query-params @(re-frame/subscribe [:changed-query-params])]
     (when (seq cts)
       [:<>
        (for [{:keys          [id]
@@ -165,14 +170,15 @@
          ^{:key (str "chords-to-scale-" id)}
          [:div {:style {:margin-right "10px" :display "inline"}}
           [:a {:href
-               (rfe/href :scale (assoc path-params :chord chord-name) query-params)}
+               (rfe/href :scale (assoc path-params :chord chord-name) changed-query-params)}
            [:button (str/capitalize chord-name-str)]]])])))
 
 (defn key-selection []
-  (let [path-params        @(re-frame/subscribe [:path-params])
-        query-params       @(re-frame/subscribe [:query-params])
-        current-route-name @(re-frame/subscribe [:current-route-name])
-        key-of             @(re-frame/subscribe [:key-of])]
+  (let [path-params          @(re-frame/subscribe [:path-params])
+        query-params         @(re-frame/subscribe [:query-params])
+        changed-query-params @(re-frame/subscribe [:changed-query-params])
+        current-route-name   @(re-frame/subscribe [:current-route-name])
+        key-of               @(re-frame/subscribe [:key-of])]
     [:div {:style {:display        "flow"
                    :flow-direction "column"
                    :overflow-x     "auto"
@@ -183,7 +189,7 @@
                               :title (-> x name str/capitalize)})))]
        ^{:key title}
        [:a {:style {:margin-right "10px"}
-            :href  (rfe/href current-route-name (assoc path-params :key-of key) query-params)}
+            :href  (rfe/href current-route-name (assoc path-params :key-of key) changed-query-params)}
         [:button
          {:disabled (= key-of key)}
          title]])]))
@@ -199,16 +205,18 @@
        "Add bookmark"])))
 
 (defn focus-button [entity]
-  (let [current-route-name @(re-frame/subscribe [:current-route-name])
-        path-params        @(re-frame/subscribe [:path-params])
-        query-params       @(re-frame/subscribe [:query-params])]
+  (let [current-route-name   @(re-frame/subscribe [:current-route-name])
+        path-params          @(re-frame/subscribe [:path-params])
+        query-params         @(re-frame/subscribe [:query-params])
+        changed-query-params @(re-frame/subscribe [:changed-query-params])]
     (when-not (= current-route-name :focus)
-      [:a {:href (rfe/href :focus (merge path-params entity) query-params)}
+      [:a {:href (rfe/href :focus (merge path-params entity) changed-query-params)}
        [:button "Focus"]])))
 
 (defn instrument-selection []
   (let [{:keys [instrument] :as path-params} @(re-frame/subscribe [:path-params])
         query-params                         @(re-frame/subscribe [:query-params])
+        changed-query-params                 @(re-frame/subscribe [:changed-query-params])
         current-route-name                   @(re-frame/subscribe [:current-route-name])
         instruments                          music-theory/instruments]
     [:div {:style {:display        "flow"
@@ -221,7 +229,7 @@
             :href  (rfe/href
                     current-route-name
                     (assoc path-params :instrument id)
-                    query-params)}
+                    changed-query-params)}
         [:button
          {:disabled (= instrument id)}
          text]])]))
