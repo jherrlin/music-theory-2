@@ -1,41 +1,53 @@
 (ns se.jherrlin.music-theory.webapp.views.scale
   (:require
-   [clojure.set :as set]
-   [clojure.string :as str]
-   [re-frame.core :as re-frame]
-   [re-frame.alpha :as re-frame-alpha]
-   [reitit.frontend.easy :as rfe]
+   [re-frame.alpha :as re-frame]
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
    [se.jherrlin.music-theory.webapp.views.common :as common]))
 
 (def events-
-  [{:n ::scale-entity}
-   {:n ::scale-pattern-entities}])
+  [{:n ::entity}
+   {:n ::pattern-entities}])
 
 (doseq [{:keys [n s e]} events-]
   (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
   (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
 
-(defn gather-view-data [{:keys [scale key-of instrument]} {:keys [nr-of-frets] :as query-params}]
-  (let [{scale-names :scale/scale-names
-         :keys       [id] :as scale'} (music-theory/get-scale scale)
-        {:keys [tuning]}              (music-theory/get-instrument instrument)
-        scale-entity                  (music-theory/entity key-of instrument id)
-        scale-pattern-entities        (->> (music-theory/scale-patterns-for-scale-and-instrument scale-names instrument)
-                                           (music-theory/definitions-to-entities key-of instrument))]
+(def gather-data-for-view-
+  (fn [{:keys [db]} [_ {:keys [scale key-of instrument]}]]
+    (let [query-params       (events/query-params db)
+          {scale-names :scale/scale-names
+           :keys       [id]} (music-theory/get-scale scale)
+          entity             (music-theory/entity key-of instrument id)
+          pattern-entities   (->> (music-theory/scale-patterns-for-scale-and-instrument scale-names instrument)
+                                  (music-theory/definitions-to-entities key-of instrument))]
+      {:db (assoc
+            db
+            ::entity entity
+            ::pattern-entities pattern-entities)
+       :fx (->> (concat
+                 [entity]
+                 pattern-entities)
+                (mapv (fn [entity]
+                        (let [instrument-ds (music-theory/prepair-instrument-data-for-entity-RENAME-LATER
+                                             entity query-params)]
+                          [:dispatch [:add-entity-with-fretboard entity instrument-ds]]))))})))
 
-    (let [entity scale-entity
-          fretboard-matrix (common/prepair-instrument-data-for-entity entity {} query-params)]
-      (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix]))
+(re-frame/reg-event-fx ::gather-data-for-view gather-data-for-view-)
 
-    (doseq [entity scale-pattern-entities]
-      (let [fretboard-matrix (common/prepair-instrument-data-for-entity entity {} query-params)]
-        (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix])))
+(comment
 
-    (re-frame/dispatch [::scale-entity scale-entity])
-    (re-frame/dispatch [::scale-pattern-entities scale-pattern-entities])))
+  (gather-data-for-view-
+   {:db
+    {:query-params
+     {:nr-of-frets 15}}}
+   [nil
+    {:scale      :major
+     :key-of     :c
+     :instrument :guitar}])
+
+  (get @re-frame.db/app-db ::fretboards))
 
 (defn scale-component [deps]
   (let [{:keys [id scale instrument] :as path-params} @(re-frame/subscribe [:path-params])
@@ -45,8 +57,8 @@
          scale-names     :scale/scale-names
          :as             scale'}                      (music-theory/get-scale scale)
         scale-patterns                                (music-theory/scale-patterns-for-scale-and-instrument scale-names instrument)
-        scale-entity                                  @(re-frame/subscribe [::scale-entity])
-        scale-pattern-entities                        @(re-frame/subscribe [::scale-pattern-entities])]
+        scale-entity                                  @(re-frame/subscribe [::entity])
+        scale-pattern-entities                        @(re-frame/subscribe [::pattern-entities])]
     [:<>
      [common/menu]
      [:br]
@@ -105,5 +117,5 @@
       [{:parameters {:path  [:instrument :key-of :scale]
                      :query events/query-keys}
         :start      (fn [{p :path q :query}]
-                      (gather-view-data p q)
-                      (events/do-on-url-change route-name p q))}]}]))
+                      (events/do-on-url-change route-name p q)
+                      (re-frame/dispatch [::gather-data-for-view p]))}]}]))
