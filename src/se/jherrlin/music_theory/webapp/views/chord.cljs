@@ -20,14 +20,14 @@
 
 (defn gather-view-data [{:keys [chord key-of instrument]} {:keys [nr-of-frets] :as query-params}]
   (let [{:keys [id] :as chord'}      (music-theory/get-chord chord)
-        chord-entity                 (music-theory/entity key-of instrument id)
+        entity                       (music-theory/entity key-of instrument id)
         chord-pattern-entities       (->> (music-theory/chord-patterns-belonging-to chord instrument)
                                           (music-theory/definitions-to-entities key-of instrument))
         chord-triad-pattern-entities (->> (music-theory/chord-pattern-triads-belonging-to chord instrument)
                                           (music-theory/definitions-to-entities key-of instrument))]
 
-    (let [fretboard-matrix (common/prepair-instrument-data-for-entity chord-entity {} query-params)]
-      (re-frame/dispatch [:add-entity-with-fretboard chord-entity fretboard-matrix]))
+    (let [fretboard-matrix (common/prepair-instrument-data-for-entity entity {} query-params)]
+      (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix]))
 
     (doseq [entity chord-pattern-entities]
       (let [fretboard-matrix (common/prepair-instrument-data-for-entity entity {} query-params)]
@@ -37,7 +37,7 @@
       (let [fretboard-matrix (common/prepair-instrument-data-for-entity entity {} query-params)]
         (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix])))
 
-    (re-frame/dispatch [::chord-entity chord-entity])
+    (re-frame/dispatch [::chord-entity entity])
     (re-frame/dispatch [::chord-pattern-entities chord-pattern-entities])
     (re-frame/dispatch [::chord-triad-pattern-entities chord-triad-pattern-entities])))
 
@@ -60,7 +60,7 @@
         {chord-intervals :chord/intervals
          :as             chord-definition}      (music-theory/get-chord chord)
         {instrument-type :type :as instrument'} (music-theory/get-instrument instrument)
-        chord-entity                              @(re-frame/subscribe [::chord-entity])
+        chord-entity                            @(re-frame/subscribe [::chord-entity])
         chord-patterns                          @(re-frame/subscribe [::chord-pattern-entities])
         chord-triad-patterns                    @(re-frame/subscribe [::chord-triad-pattern-entities])]
     [:<>
