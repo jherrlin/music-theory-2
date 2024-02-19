@@ -30,7 +30,7 @@
                  [entity]
                  pattern-entities)
                 (mapv (fn [entity]
-                        (let [instrument-ds (music-theory/prepair-instrument-data-for-entity-RENAME-LATER
+                        (let [instrument-ds (music-theory/instrument-data-structure
                                              entity query-params)]
                           [:dispatch [:add-entity-with-fretboard entity instrument-ds]]))))})))
 
