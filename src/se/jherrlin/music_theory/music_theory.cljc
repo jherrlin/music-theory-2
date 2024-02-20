@@ -118,6 +118,7 @@
 (def pattern-with-intervals fretboard/pattern-with-intervals)
 (def pattern-with-tones fretboard/pattern-with-tones)
 (def create-fretboard-matrix fretboard/create-fretboard-matrix)
+(def merge-fretboards-matrixes fretboard/merge-fretboards-matrixes)
 (defn with-all-intervals [interval-tones intervals fretboard-matrix]
   (let [intervals->tones (mapv vector interval-tones intervals)]
     (fretboard/with-all-intervals intervals->tones fretboard-matrix))

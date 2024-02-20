@@ -87,7 +87,7 @@
  (fn [db [_ entity fretboard]]
    (-> db
        (update ::fretboards assoc-in [entity :id] entity)
-       (update ::fretboards assoc-in [entity :fretboard] fretboard))))
+       (update ::fretboards assoc-in [entity :instrument-data-structure] fretboard))))
 
 (re-frame/reg-sub
  :changed-query-params
@@ -104,7 +104,7 @@
 (re-frame/reg-sub
  :fretboard-by-entity
  (fn [db [_ entity]]
-   (get-in db [::fretboards entity :fretboard])))
+   (get-in db [::fretboards entity :instrument-data-structure])))
 
 (re-frame/reg-event-db
  :add-query-params-with-fretboard
@@ -125,7 +125,7 @@
   (let [entity {:id #uuid "1cd72972-ca33-4962-871c-1551b7ea5244",
                 :instrument :guitar,
                 :key-of :c}]
-    (get-in @re-frame.db/app-db [::fretboards entity :fretboard]))
+    (get-in @re-frame.db/app-db [::fretboards entity :instrument-data-structure]))
 
   )
 

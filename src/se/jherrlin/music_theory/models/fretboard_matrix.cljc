@@ -21,26 +21,32 @@
    [malli.core :as m]
    [se.jherrlin.music-theory.models.tone :as models.tone]))
 
+(def Fret
+  [:map
+   [:x                                       int?]
+   [:y                                       int?]
+   [:yx                                      int?]
+   [:octave                 {:optional true} int?]
+   [:tone                   {:optional true} models.tone/IndexTone]
+   [:root?                  {:optional true} boolean?]
+   [:interval               {:optional true} string?]
+   [:tone-str               {:optional true} string?]
+   [:sharp                  {:optional true} string?]
+   [:flat                   {:optional true} string?]
+
+   [:match?                 {:optional true} boolean?]
+   [:pattern-found-tone     {:optional true} string?]
+   [:pattern-found-interval {:optional true} string?]
+   [:out                    {:optional true} string?]])
+
+(def Frets
+  [:sequential
+   {:min 1}
+   Fret])
 
 (def FretboardMatrix
   [:vector
-   [:+
-    [:map
-     [:x                                       int?]
-     [:y                                       int?]
-     [:yx                                      int?]
-     [:octave                 {:optional true} int?]
-     [:tone                   {:optional true} models.tone/IndexTone]
-     [:root?                  {:optional true} boolean?]
-     [:interval               {:optional true} string?]
-     [:tone-str               {:optional true} string?]
-     [:sharp                  {:optional true} string?]
-     [:flat                   {:optional true} string?]
-
-     [:match?                 {:optional true} boolean?]
-     [:pattern-found-tone     {:optional true} string?]
-     [:pattern-found-interval {:optional true} string?]
-     [:out                    {:optional true} string?]]]])
+   [:+ Fret]])
 
 (def validate-fretboard-matrix?  (partial m/validate FretboardMatrix))
 (def explain-fretboard-matrix    (partial m/explain  FretboardMatrix))

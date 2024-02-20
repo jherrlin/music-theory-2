@@ -279,19 +279,19 @@
     :as query-params}
    intervals
    {:keys [play-tone] :as deps}]
-  (let [fretboard-matrix  @(re-frame/subscribe [:fretboard-by-entity entity])]
+  (let [fretboard-matrix @(re-frame/subscribe [:fretboard-by-entity entity])]
     [:<>
      (when debug
        [debug-view entity]
        [debug-view fretboard-matrix])
      [instruments-fretboard/styled-view
-      (cond-> {:id            id
-               :on-click       (fn [{:keys [tone-str octave]} fretboard-matrix]
-                                 (play-tone (str tone-str octave)))
-               :fretboard-matrix         fretboard-matrix
-               :dark-orange-fn (fn [{:keys [root?] :as m}]
-                                 (and root? (get m :out)))
-               :orange-fn      :out}
+      (cond-> {:id                id
+               :on-click          (fn [{:keys [tone-str octave]} fretboard-matrix]
+                                    (play-tone (str tone-str octave)))
+               :fretboard-matrix  fretboard-matrix
+               :dark-orange-fn    (fn [{:keys [root?] :as m}]
+                                    (and root? (get m :out)))
+               :orange-fn         :out}
         show-octave           (assoc :show-octave? true)
         surrounding-intervals (assoc :grey-fn :interval)
         surrounding-tones     (assoc :grey-fn :tone-str))]

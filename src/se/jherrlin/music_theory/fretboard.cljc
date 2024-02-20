@@ -11,7 +11,8 @@
    [se.jherrlin.music-theory.intervals :as intervals]
    [se.jherrlin.music-theory.models.tone :as models.tone]
    [se.jherrlin.utils :as utils]
-   [se.jherrlin.music-theory.definitions.tone-values :as tone-values]))
+   [se.jherrlin.music-theory.definitions.tone-values :as tone-values]
+   [se.jherrlin.music-theory.models.fretboard-matrix :as models.fretboard-matrix]))
 
 
 (defn fretboard-string
@@ -121,16 +122,22 @@
    -   -   -
    -   -   -")
 
+(defn frets-to-matrix
+  [frets]
+  {:pre [(utils/validate models.fretboard-matrix/Frets frets)]}
+  (->> frets
+       (sort-by :y)
+       (partition-by :y)
+       (mapv (fn [coll]
+               (vec (sort-by :x coll))))))
+
 (defn fretboard-map-to-matrix
   "A fretboard `fretboard-map` can be represented as a hashmap,
   transform that into a matrix."
   [fretboard-map]
   (->> fretboard-map
        vals
-       (sort-by :y)
-       (partition-by :y)
-       (mapv (fn [coll]
-               (vec (sort-by :x coll))))))
+       frets-to-matrix))
 
 (defn fretboard-matrix-to-map
   "A fretboard `fretboard-matrix` can be represented as a matrix,
@@ -142,6 +149,14 @@
                  (assoc acc [x y] m))
                {})))
 
+(defn merge-fretboards-matrixes [& fretboards-matrixes]
+  (->> (apply
+        map
+        (fn [& fretboard-matrixes]
+          (apply merge fretboard-matrixes))
+        (mapv (partial apply concat) fretboards-matrixes))
+       frets-to-matrix))
+
 (comment
   (let [fretboard [[{:x 0, :tone #{:e}, :octave 2, :y 0}
                     {:x 1, :tone #{:f}, :octave 2, :y 0}
@@ -152,27 +167,7 @@
                     {:x 1, :tone #{:c}, :octave 4, :y 1}
                     {:x 2, :tone #{:db :c#}, :octave 4, :y 1}
                     {:x 3, :tone #{:d}, :octave 4, :y 1}
-                    {:x 4, :tone #{:d# :eb}, :octave 4, :y 1}]
-                   [{:x 0, :tone #{:g}, :octave 3, :y 2}
-                    {:x 1, :tone #{:g# :ab}, :octave 3, :y 2}
-                    {:x 2, :tone #{:a}, :octave 3, :y 2}
-                    {:x 3, :tone #{:bb :a#}, :octave 3, :y 2}
-                    {:x 4, :tone #{:b}, :octave 3, :y 2}]
-                   [{:x 0, :tone #{:d}, :octave 3, :y 3}
-                    {:x 1, :tone #{:d# :eb}, :octave 3, :y 3}
-                    {:x 2, :tone #{:e}, :octave 3, :y 3}
-                    {:x 3, :tone #{:f}, :octave 3, :y 3}
-                    {:x 4, :tone #{:gb :f#}, :octave 3, :y 3}]
-                   [{:x 0, :tone #{:a}, :octave 2, :y 4}
-                    {:x 1, :tone #{:bb :a#}, :octave 2, :y 4}
-                    {:x 2, :tone #{:b}, :octave 2, :y 4}
-                    {:x 3, :tone #{:c}, :octave 3, :y 4}
-                    {:x 4, :tone #{:db :c#}, :octave 3, :y 4}]
-                   [{:x 0, :tone #{:e}, :octave 2, :y 5}
-                    {:x 1, :tone #{:f}, :octave 2, :y 5}
-                    {:x 2, :tone #{:gb :f#}, :octave 2, :y 5}
-                    {:x 3, :tone #{:g}, :octave 2, :y 5}
-                    {:x 4, :tone #{:g# :ab}, :octave 2, :y 5}]]]
+                    {:x 4, :tone #{:d# :eb}, :octave 4, :y 1}]]]
     (=
      fretboard
      (->> (fretboard-matrix-to-map fretboard)

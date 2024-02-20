@@ -8,29 +8,57 @@
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
    [se.jherrlin.music-theory.webapp.views.common :as common]
+   [se.jherrlin.music-theory.webapp.views.instruments.fretboard :as instruments-fretboard]
    [re-frame.db :as db]))
 
 (comment
-  @re-frame.db/app-db
+  (get-in @re-frame.db/app-db [:se.jherrlin.music-theory.webapp.events/fretboards])
+
+  (hash
+   {:id         #uuid "39af7096-b5c6-45e9-b743-6791b217a3df",
+    :instrument :mandolin,
+    :key-of     :c})
+
+  (let [entity {:id         #uuid "39af7096-b5c6-45e9-b743-6791b217a3df",
+                :instrument :mandolin,
+                :key-of     :c}]
+    (get-in @re-frame.db/app-db [:se.jherrlin.music-theory.webapp.events/fretboards entity :fretboard]))
+
+  (let [entity {:id         #uuid "eebf1ac1-b3c5-46f1-87ac-f8d24823b730",
+                :instrument :mandolin,
+                :key-of     :c}]
+    (get-in @re-frame.db/app-db [:se.jherrlin.music-theory.webapp.events/fretboards entity :fretboard]))
   )
 
 
 (def events-
   [{:n ::harmonization-scale}
-   {:n ::harmonization-chords}])
+   {:n ::harmonization-chords}
+   {:n ::derp}])
 
 (doseq [{:keys [n s e]} events-]
   (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
   (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
 
+(comment
+  (get @re-frame.db/app-db ::derp)
+  )
+
+
 (def gather-data-for-view-
   (fn [{:keys [db]} [_ {:keys [instrument key-of harmonization-id harmonization-scale] :as m}]]
-    (let [query-params                  (events/query-params db)
-          {:keys [id]}                  (music-theory/get-scale harmonization-scale)
-          scale-entity                  (music-theory/entity key-of instrument id)
-          harmonization-chords          (music-theory/calc-harmonization-chords m)]
+    (let [query-params          (events/query-params db)
+          {:keys [id]}          (music-theory/get-scale harmonization-scale)
+          scale-entity          (music-theory/entity key-of instrument id)
+          harmonization-chords  (music-theory/calc-harmonization-chords m)
+          harmonization-chords' (->> harmonization-chords
+                                     (map music-theory/select-entity-keys)
+                                     (mapv (fn [entity]
+                                             (music-theory/instrument-data-structure entity query-params)))
+                                     (apply music-theory/merge-fretboards-matrixes))]
       {:db (assoc
             db
+            ::derp harmonization-chords'
             ::harmonization-scale scale-entity
             ::harmonization-chords harmonization-chords)
        :fx (->> (concat
@@ -103,12 +131,17 @@
             (str (-> key-of name str/capitalize)
                  suffix)]])]]]]))
 
-(defn harmonizations-view [deps]
+(defn harmonizations-view [{:keys [play-tone] :as deps}]
   (let [path-params                            @(re-frame/subscribe [:path-params])
-        query-params                           @(re-frame/subscribe [:query-params])
+        {:keys
+         [as-intervals trim-fretboard surrounding-intervals surrounding-tones
+          show-octave debug]
+         :as query-params}                     @(re-frame/subscribe [:query-params])
         harmonization-chords                   @(re-frame/subscribe [::harmonization-chords])
         harmonization-scale                    @(re-frame/subscribe [::harmonization-scale])
-        {instrument-type :type :as instrument} @(re-frame/subscribe [:instrument])]
+        {instrument-type :type :as instrument} @(re-frame/subscribe [:instrument])
+        derp-matrix                    @(re-frame/subscribe [::derp])
+        ]
     [:<>
      [common/menu]
      [:br]
@@ -136,6 +169,18 @@
      [table]
      [:br]
      [:br]
+
+     #_[instruments-fretboard/styled-view
+      (cond-> {:id                "derp-it"
+               :on-click          (fn [{:keys [tone-str octave]} fretboard-matrix]
+                                    (play-tone (str tone-str octave)))
+               :fretboard-matrix  derp-matrix
+               :dark-orange-fn    (fn [{:keys [root?] :as m}]
+                                    (and root? (get m :out)))
+               :orange-fn         :out}
+        show-octave           (assoc :show-octave? true)
+        surrounding-intervals (assoc :grey-fn :interval)
+        surrounding-tones     (assoc :grey-fn :tone-str))]
 
      [common/instrument-view
       harmonization-scale
