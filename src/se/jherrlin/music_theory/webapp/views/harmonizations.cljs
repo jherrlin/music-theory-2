@@ -31,7 +31,7 @@
         scale-entity                  (music-theory/entity key-of instrument id)]
     (let [entity scale-entity
           fretboard-matrix (music-theory/instrument-data-structure entity query-params)]
-      (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix]))
+      (re-frame/dispatch [:add-entity-instrument-data-structure entity fretboard-matrix]))
 
     (re-frame/dispatch [::harmonization-scale scale-entity])))
 
@@ -63,7 +63,7 @@
     (doseq [chord harmonization-chords]
       (let [entity           (music-theory/select-entity-keys chord)
             fretboard-matrix (music-theory/instrument-data-structure entity query-params)]
-        (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix])))
+        (re-frame/dispatch [:add-entity-instrument-data-structure entity fretboard-matrix])))
 
     (re-frame/dispatch [::harmonization-chords harmonization-chords])))
 
@@ -106,7 +106,7 @@
     (doseq [chord harmonization-chords]
       (let [entity           (music-theory/select-entity-keys chord)
             fretboard-matrix (music-theory/instrument-data-structure entity query-params)]
-        (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix])))
+        (re-frame/dispatch [:add-entity-instrument-data-structure entity fretboard-matrix])))
 
     (re-frame/dispatch [::harmonization-chords harmonization-chords])))
 

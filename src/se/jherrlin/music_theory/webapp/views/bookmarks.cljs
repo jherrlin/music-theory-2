@@ -89,7 +89,7 @@
 (defn prepair-fretboard-entities [s query-params]
   (doseq [entity (music-theory/str-to-entities s)]
     (let [fretboard-matrix (music-theory/instrument-data-structure entity query-params)]
-      (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix]))))
+      (re-frame/dispatch [:add-entity-instrument-data-structure entity fretboard-matrix]))))
 
 (defn routes [deps]
   (let [route-name :bookmarks]

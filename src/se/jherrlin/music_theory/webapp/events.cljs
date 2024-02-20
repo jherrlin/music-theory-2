@@ -83,19 +83,7 @@
   (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
 
 (re-frame/reg-event-db
- :add-entities-with-fretboard
- (fn [db [_ entities fretboard]]
-   (update db ::fretboards
-           #(reduce
-             (fn [m entity]
-               (-> m
-                   (assoc-in [entity :id] entity)
-                   (assoc-in [entity :fretboard] fretboard)))
-             %
-             entities))))
-
-(re-frame/reg-event-db
- :add-entity-with-fretboard
+ :add-entity-instrument-data-structure
  (fn [db [_ entity fretboard]]
    (-> db
        (update ::fretboards assoc-in [entity :id] entity)

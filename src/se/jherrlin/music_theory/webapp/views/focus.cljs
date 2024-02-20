@@ -41,5 +41,5 @@
         :start      (fn [{p :path q :query}]
                       (let [entity p
                             fretboard-matrix (music-theory/instrument-data-structure entity q)]
-                        (re-frame/dispatch [:add-entity-with-fretboard entity fretboard-matrix]))
+                        (re-frame/dispatch [:add-entity-instrument-data-structure entity fretboard-matrix]))
                       (events/do-on-url-change route-name p q))}]}]))

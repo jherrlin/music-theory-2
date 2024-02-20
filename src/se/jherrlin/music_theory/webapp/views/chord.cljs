@@ -37,7 +37,7 @@
                 (mapv (fn [entity]
                         (let [instrument-ds (music-theory/instrument-data-structure
                                              entity query-params)]
-                          [:dispatch [:add-entity-with-fretboard entity instrument-ds]]))))})))
+                          [:dispatch [:add-entity-instrument-data-structure entity instrument-ds]]))))})))
 
 (re-frame/reg-event-fx ::gather-data-for-view gather-data-for-view-)
 
