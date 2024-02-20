@@ -28,12 +28,14 @@
     [:map
      [:x                                       int?]
      [:y                                       int?]
-     [:xy                                      int?]
+     [:yx                                      int?]
      [:octave                 {:optional true} int?]
      [:tone                   {:optional true} models.tone/IndexTone]
      [:root?                  {:optional true} boolean?]
      [:interval               {:optional true} string?]
      [:tone-str               {:optional true} string?]
+     [:sharp                  {:optional true} string?]
+     [:flat                   {:optional true} string?]
 
      [:match?                 {:optional true} boolean?]
      [:pattern-found-tone     {:optional true} string?]

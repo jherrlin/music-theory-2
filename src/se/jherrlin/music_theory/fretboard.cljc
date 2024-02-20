@@ -330,10 +330,10 @@
   "Show as intervals.
 
   Example:
-  chord-tones-and-intervals: `[[:c \"1\"] [:d \"2\"] [:e \"3\"] [:f \"4\"] [:g \"5\"] [:a \"6\"] [:b \"7\"]]`"
-  [chord-tones-and-intervals {:keys [x y tone pattern-match? interval out] :as m}]
+  tones->intervals: `[[:c \"1\"] [:d \"2\"] [:e \"3\"] [:f \"4\"] [:g \"5\"] [:a \"6\"] [:b \"7\"]]`"
+  [tones->intervals {:keys [x y tone pattern-match? interval] :as m}]
   {:pre [(set? tone)]}
-  (if-let [i (->> chord-tones-and-intervals
+  (if-let [i (->> tones->intervals
                   (filter (fn [[tone' interval']]
                             (tone tone')))
                   (first)
