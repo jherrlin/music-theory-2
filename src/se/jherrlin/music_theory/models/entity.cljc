@@ -5,8 +5,8 @@
    [malli.core :as m]
    [clojure.string :as str]
    [se.jherrlin.music-theory.models.tone :as tone]
-   [se.jherrlin.music-theory.instruments :as instruments]))
-
+   [se.jherrlin.music-theory.instruments :as instruments]
+   [se.jherrlin.utils :as utils]))
 
 
 (def Entity
@@ -41,12 +41,16 @@
   :id         #uuid "39af7096-b5c6-45e9-b743-6791b217a3df"})
 
 (defn entity [key-of instrument id]
-  {:id         id
-   :instrument instrument
-   :key-of     key-of})
+  (utils/validate
+   Entity
+   {:id         id
+    :instrument instrument
+    :key-of     key-of}))
 
 (defn select-entity-keys [m]
-  (select-keys m [:id :instrument :key-of]))
+  (utils/validate
+   Entity
+   (select-keys m [:id :instrument :key-of])))
 
 (defn definitions-to-entities
   ([key-of instrument definitions]
@@ -65,25 +69,24 @@
   (let [[instrument key-of id] (str/split s ",")]
     {:instrument (keyword instrument)
      :key-of     (keyword key-of)
-     :id         #?(:cljs (uuid id)
-                    :clj  (parse-uuid id))}))
+     :id         (parse-uuid id)}))
 
 (defn str-to-entities [s]
   (->> (str/split s "_")
        (map str-to-entity)))
 
-;; (let [m {:instrument :guitar
-;;          :key-of     :c
-;;          :id         #uuid "c91cddfe-f776-4c0c-8125-4f4c5d074e77"}]
-;;   (->> m
-;;        (entity-to-str)
-;;        (str-to-entity)
-;;        (= m)))
+(let [m {:instrument :guitar
+         :key-of     :c
+         :id         #uuid "c91cddfe-f776-4c0c-8125-4f4c5d074e77"}]
+  (->> m
+       (entity-to-str)
+       (str-to-entity)
+       (= m)))
 
-;; (str-to-entities
-;;  "guitar,c,94f5f7a4-d852-431f-90ca-9e99f89bbb9c")
+(str-to-entities
+ "guitar,c,94f5f7a4-d852-431f-90ca-9e99f89bbb9c")
 
 (defn fretboard-entity? [{:keys [instrument] :as m}]
   {:pre [(valid-entity? m)]}
-  (= (get (instruments/instrument :guitar #_instrument) :type)
+  (= (instruments/get-instrument-type instrument)
      :fretboard))
