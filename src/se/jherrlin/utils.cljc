@@ -1,7 +1,19 @@
 (ns se.jherrlin.utils
-  #?(:cljs (:require
-            [goog.string.format]
-            [goog.string :as gstring])))
+  (:require
+   #?(:cljs [goog.string.format])
+   #?(:cljs [goog.string :as gstring])
+   [malli.core :as m]))
+
+(defn validate [model data]
+  (if (m/validate model data)
+    data
+    (let [out {:model       model
+               :data        data
+               :explanation (m/explain model data)}]
+      (println "Data doesn't validate against model!")
+      (println out)
+      (throw
+       (ex-info "Data doesn't validate against model!" out)))))
 
 (defn vec-remove
   "Remove `idx` in `coll`."

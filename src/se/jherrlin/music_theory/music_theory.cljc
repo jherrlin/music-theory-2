@@ -9,7 +9,9 @@
    [se.jherrlin.music-theory.general :as general]
    [se.jherrlin.music-theory.fretboard :as fretboard]
    [se.jherrlin.music-theory.models.tone :as models.tone]
-   [se.jherrlin.music-theory.models.entity :as models.entity]))
+   [se.jherrlin.music-theory.models.entity :as models.entity]
+   [se.jherrlin.music-theory.models.harmonization :as models.harmonization]
+   [se.jherrlin.music-theory.models.fretboard-matrix :as models.fretboard-matrix]))
 
 (comment
   (remove-ns 'se.jherrlin.music-theory.music-theory)
@@ -168,7 +170,9 @@
                                                                    key-of
                                                                    chord-intervals))
                                            (dissoc :idx-fn))))))]
-    harmonization-chords))
+    (basic-utils/validate
+     models.harmonization/HarmonizationChords
+     harmonization-chords)))
 
 (comment
   (calc-harmonization-chords
@@ -215,7 +219,9 @@
                               (if first-is-major?
                                 [:tonic :subdominant :tonic :subdominant :dominant :tonic :dominant]
                                 [:tonic :subdominant :tonic :subdominant :dominant :subdominant :dominant]))]
-    harmonization-chords))
+    (basic-utils/validate
+     models.harmonization/HarmonizationChords
+     harmonization-chords)))
 
 (comment
 
@@ -250,7 +256,8 @@
     (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (with-all-intervals interval-tones intervals)
       (not as-intervals) (with-all-tones interval-tones)
-      trim-fretboard?    (trim-matrix #(every? nil? (map :out %))))))
+      trim-fretboard?    (trim-matrix #(every? nil? (map :out %)))
+      :always            (basic-utils/validate models.fretboard-matrix/FretboardMatrix))))
 (comment
   (instrument-data-structure
    {:id         #uuid "1cd72972-ca33-4962-871c-1551b7ea5244",
@@ -270,7 +277,8 @@
     (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (pattern-with-intervals key-of pattern)
       (not as-intervals) (pattern-with-tones key-of pattern)
-      trim-fretboard?    (trim-matrix #(every? nil? (map :out %))))))
+      trim-fretboard?    (trim-matrix #(every? nil? (map :out %)))
+      :always            (basic-utils/validate models.fretboard-matrix/FretboardMatrix))))
 (comment
   (instrument-data-structure
    {:id         #uuid "94f5f7a4-d852-431f-90ca-9e99f89bbb9c",
@@ -290,7 +298,8 @@
     (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (with-all-intervals interval-tones intervals)
       (not as-intervals) (with-all-tones interval-tones)
-      trim-fretboard?    (trim-matrix #(every? nil? (map :out %))))))
+      trim-fretboard?    (trim-matrix #(every? nil? (map :out %)))
+      :always            (basic-utils/validate models.fretboard-matrix/FretboardMatrix))))
 (comment
   (instrument-data-structure
    {:id         #uuid "39af7096-b5c6-45e9-b743-6791b217a3df",
@@ -311,7 +320,8 @@
     (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (pattern-with-intervals key-of pattern)
       (not as-intervals) (pattern-with-tones key-of pattern)
-      trim-fretboard?    (trim-matrix #(every? nil? (map :out %))))))
+      trim-fretboard?    (trim-matrix #(every? nil? (map :out %)))
+      :always            (basic-utils/validate models.fretboard-matrix/FretboardMatrix))))
 (comment
   (instrument-data-structure
    {:id         #uuid "55189945-37fa-4071-9170-b0b068a23174",

@@ -23,92 +23,41 @@
   (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
   (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
 
-(defn calc-harmonization-scale
-  [{:keys [harmonization-scale key-of instrument]}
-   {:keys [nr-of-frets] :as query-params}]
-  (let [{scale-names :scale/scale-names
-         :keys       [id] :as scale'} (music-theory/get-scale harmonization-scale)
-        scale-entity                  (music-theory/entity key-of instrument id)]
-    (let [entity scale-entity
-          fretboard-matrix (music-theory/instrument-data-structure entity query-params)]
-      (re-frame/dispatch [:add-entity-instrument-data-structure entity fretboard-matrix]))
+(def gather-data-for-view-
+  (fn [{:keys [db]} [_ {:keys [instrument key-of harmonization-id harmonization-scale] :as m}]]
+    (let [query-params                  (events/query-params db)
+          {:keys [id]}                  (music-theory/get-scale harmonization-scale)
+          scale-entity                  (music-theory/entity key-of instrument id)
+          harmonization-chords          (music-theory/calc-harmonization-chords m)]
+      {:db (assoc
+            db
+            ::harmonization-scale scale-entity
+            ::harmonization-chords harmonization-chords)
+       :fx (->> (concat
+                 [scale-entity]
+                 harmonization-chords)
+                (map music-theory/select-entity-keys)
+                (mapv (fn [entity]
+                        (let [instrument-ds (music-theory/instrument-data-structure
+                                             entity query-params)]
+                          [:dispatch [:add-entity-instrument-data-structure entity instrument-ds]]))))})))
 
-    (re-frame/dispatch [::harmonization-scale scale-entity])))
+(re-frame/reg-event-fx ::gather-data-for-view gather-data-for-view-)
 
-(defmulti calc-harmonization-chords
-  (fn [{:keys [harmonization scale key-of]} query-params]
-    (get harmonization :type)))
+(comment
 
-(defmethod calc-harmonization-chords :predefined
-  [{{harmonization-chords :chords}     :harmonization
-    {scale-intervals :scale/intervals} :scale
-    :keys                              [key-of instrument nr-of-frets]}
-   query-params]
-  (let [interval-tones       (music-theory/interval-tones key-of scale-intervals)
-        harmonization-chords (->> harmonization-chords
-                                  (map (fn [{:keys [idx-fn] :as m}]
-                                         (assoc m :key-of (idx-fn interval-tones))))
-                                  (map
-                                   (fn [{:keys [key-of] :as harmonization-chord}]
-                                     (let [chord
-                                           (music-theory/get-chord (get harmonization-chord :chord))
-                                           {chord-intervals :chord/intervals} chord]
-                                       (-> (merge harmonization-chord chord)
-                                           (assoc :key-of key-of
-                                                  :instrument instrument
-                                                  :interval-tones (music-theory/interval-tones
-                                                                   key-of
-                                                                   chord-intervals)))))))]
-    ;; Create fretboard matrixes
-    (doseq [chord harmonization-chords]
-      (let [entity           (music-theory/select-entity-keys chord)
-            fretboard-matrix (music-theory/instrument-data-structure entity query-params)]
-        (re-frame/dispatch [:add-entity-instrument-data-structure entity fretboard-matrix])))
+  (gather-data-for-view-
+   {:db
+    {:query-params
+     {:nr-of-frets 15}}}
+   [nil
+    {:chord      :major
+     :key-of     :c
+     :instrument :guitar}])
 
-    (re-frame/dispatch [::harmonization-chords harmonization-chords])))
+  (get @re-frame.db/app-db ::fretboards))
 
-(defmethod calc-harmonization-chords :generated
-  [{:keys [key-of harmonization scale instrument nr-of-frets]} query-params]
-  (let [scale-indexes        (get scale :scale/indexes)
-        scale-intervals      (get scale :scale/intervals)
-        chord-fn             (get harmonization :function)
-        scale-interval-tones (music-theory/interval-tones key-of scale-intervals)
-        scale-index-tones    (music-theory/tones-by-key-and-indexes key-of scale-indexes)
-        found-chords         (map (fn [tone]
-                                    (let [index-tones-in-chord (music-theory/rotate-until
-                                                                #(% tone)
-                                                                scale-index-tones)]
-                                      (-> (music-theory/find-chord
-                                           music-theory/chords
-                                           (chord-fn index-tones-in-chord))
-                                          (assoc :key-of tone
-                                                 :instrument instrument))))
-                                  scale-interval-tones)
-        first-is-major?      ((-> found-chords first :chord/categories) :major)
-        harmonization-chords (mapv
-                              #(assoc %1
-                                      :idx %2
-                                      :symbol %3
-                                      :mode  %4
-                                      :family %5)
-                              found-chords        ;; 1
-                              (iterate inc 1)     ;; 2
-                              (if first-is-major? ;; 3
-                                ["I" "ii" "iii" "IV" "V" "vi" "vii"]
-                                ["i" "ii" "III" "iv" "v" "VI" "VII"])
-                              (if first-is-major? ;; 4
-                                [:ionian  :dorian  :phrygian :lydian :mixolydian :aeolian :locrian]
-                                [:aeolian :locrian :ionian   :dorian :phrygian   :lydian  :mixolydian])
-                              (if first-is-major?
-                                [:tonic :subdominant :tonic :subdominant :dominant :tonic :dominant]
-                                [:tonic :subdominant :tonic :subdominant :dominant :subdominant :dominant]))]
 
-    (doseq [chord harmonization-chords]
-      (let [entity           (music-theory/select-entity-keys chord)
-            fretboard-matrix (music-theory/instrument-data-structure entity query-params)]
-        (re-frame/dispatch [:add-entity-instrument-data-structure entity fretboard-matrix])))
-
-    (re-frame/dispatch [::harmonization-chords harmonization-chords])))
 
 (defn table []
   (let [ms           @(re-frame/subscribe [::harmonization-chords])
@@ -209,29 +158,6 @@
           query-params
           deps]])]]))
 
-(defn gather-data-for-route
-  [{:keys [instrument key-of harmonization-id harmonization-scale] :as path-params}
-   {:keys [nr-of-frets] :as query-params}]
-  (let [scale         (music-theory/get-scale harmonization-scale)
-        harmonization (music-theory/get-harmonization harmonization-id)]
-    (def instrument instrument)
-    (def key-of key-of)
-    (def harmonization-id harmonization-id)
-    (def harmonization-scale harmonization-scale)
-    (def nr-of-frets nr-of-frets)
-    (def scale scale)
-    (def harmonization harmonization)
-
-    (calc-harmonization-scale path-params query-params)
-
-    (calc-harmonization-chords
-     {:harmonization harmonization
-      :scale         scale
-      :key-of        key-of
-      :instrument    instrument
-      :nr-of-frets   nr-of-frets}
-     query-params)))
-
 (defn routes [deps]
   (let [route-name :harmonizations]
     ["/harmonizations/:instrument/:key-of/:harmonization-scale/:harmonization-id"
@@ -248,7 +174,5 @@
       [{:parameters {:path  [:instrument :key-of :harmonization-id :harmonization-scale]
                      :query events/query-keys}
         :start      (fn [{p :path q :query}]
-                      (def p p)
-                      (def q q)
-                      (gather-data-for-route p q)
-                      (events/do-on-url-change route-name p q))}]}]))
+                      (events/do-on-url-change route-name p q)
+                      (re-frame/dispatch [::gather-data-for-view p]))}]}]))
