@@ -16,9 +16,9 @@ jobs:
       - checkout
       - run: make install
       - run: make release-frontend
-      - run: mv -f resources/public/js/main.js main.js.bak
-      - run: mv -f resources/public/index.html index.html.bak
-      - run: mv -f resources/public/favicon.ico favicon.ico.bak
+      - run: mv -f ./resources/public/js/main.*.js ./
+      - run: mv -f ./resources/public/index.html ./index.html.bak
+      - run: mv -f ./resources/public/favicon.ico ./favicon.ico.bak
       - run:
           name: Commit to GitHub
           command: |
@@ -27,8 +27,9 @@ jobs:
             git fetch --all
             rm -f package-lock.json
             git checkout gh-pages
+            rm -rf *.js
             mkdir -p js
-            mv -f main.js.bak js/main.js
+            mv -f main.*.js ./js/
             mv -f index.html.bak index.html
             mv -f favicon.ico.bak favicon.ico
             git add js/main.js index.html favicon.ico
