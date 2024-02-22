@@ -7,8 +7,5 @@
    :asset-path        "/js"
    :output-dir        "resources/public/js"
    :devtools          {:preloads [devtools.preload]}
-   :module-hash-names false
-
-   :modules           {:main {:init-fn se.jherrlin.music-theory.webapp.system/init}}
-   ;:modules           {:main {:init-fn se.jherrlin.music-theory.webapp.views.derp/init}}
-   }}}
+   :module-hash-names true
+   :modules           {:main {:init-fn se.jherrlin.music-theory.webapp.system/init}}}}}

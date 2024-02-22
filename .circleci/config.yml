@@ -14,9 +14,8 @@ jobs:
           fingerprints:
             - "SHA256:AKBnW00688qMrbkk/zHqrO7lkN5KK5PqiMvz8mcnKcM"
       - checkout
-      - run: sudo npm install -g shadow-cljs
-      - run: npm install
-      - run: shadow-cljs release frontend
+      - run: make install
+      - run: make release-frontend
       - run: mv -f resources/public/js/main.js main.js.bak
       - run: mv -f resources/public/index.html index.html.bak
       - run: mv -f resources/public/favicon.ico favicon.ico.bak

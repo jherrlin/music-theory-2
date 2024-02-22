@@ -5,10 +5,10 @@ VERSION = 2
 
 
 release-frontend:
-	shadow-cljs release frontend
+	npx shadow-cljs release frontend && ./update-index-html-with-hash.sh
 
 compile-frontend:
-	shadow-cljs compile frontend
+	npx shadow-cljs compile frontend
 
 clean:
 	rm -rf ./node_modules ./.cpcache ./.shadow-cljs ./target ./.lsp ./classes
