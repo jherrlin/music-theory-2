@@ -12,7 +12,7 @@
    [se.jherrlin.music-theory.webapp.views.find-scale :as find-scale]))
 
 
-(defn routes [{:keys [play-tone] :as deps}]
+(defn ^:dev/after-load routes [deps]
   (timbre/info "Collecting routes.")
   [(home/routes deps)
    (focus/routes deps)

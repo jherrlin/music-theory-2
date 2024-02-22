@@ -3,7 +3,7 @@
    [re-frame.core :as re-frame]))
 
 
-(defn root-component [{:keys [play-tone] :as m}]
+(defn ^:dev/after-load root-component [{:keys [play-tone] :as m}]
   (let [current-route @(re-frame/subscribe [:current-route])]
     [:<>
      (when current-route
