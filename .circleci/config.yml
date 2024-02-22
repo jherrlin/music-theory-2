@@ -32,7 +32,7 @@ jobs:
             mv -f main.*.js ./js/
             mv -f index.html.bak index.html
             mv -f favicon.ico.bak favicon.ico
-            git add js/main.js index.html favicon.ico
+            git add js index.html favicon.ico
             git commit --allow-empty -am "Latest build"
             git push -f origin gh-pages
 
