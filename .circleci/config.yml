@@ -27,7 +27,7 @@ jobs:
             git fetch --all
             rm -f package-lock.json
             git checkout gh-pages
-            rm -rf *.js
+            rm -rf ./js
             mkdir -p js
             mv -f main.*.js ./js/
             mv -f index.html.bak index.html
