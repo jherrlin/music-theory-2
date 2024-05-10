@@ -2382,6 +2382,16 @@
    -   -   -   -   -   1
    -   -   -   -   -   -")
 
+(define-scale-pattern #uuid "9ba24b3e-f0fb-407c-aee0-1bdadd5e5548"
+  {:belongs-to :major
+   :tuning     :mandolin
+   :order      10
+   :text       "Whiskey part B"}
+  "5   -   6   -   7   1   -   2   -   3   4
+   1   -   -   -   3   -   -   -   -   -   -
+   -   -   -   -   -   -   -   -   -   -   -
+   -   -   -   -   -   -   -   -   -   -   -")
+
 (define-scale-pattern #uuid "3926946b-8017-47e6-a3d9-5a94710aa0d0"
   {:belongs-to :minor
    :tuning     :mandolin
