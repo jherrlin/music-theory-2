@@ -36,7 +36,7 @@ tailwind-watch:
 	npx tailwindcss -i ./src/css/tailwind.css -o ./resources/public/css/tailwind.css --watch
 
 babel-compile-shadcn-components:
-	npx babel shadcn-components --out-dir ./src/shadcn-components --extensions .jsx --presets=@babel/preset-react --watch
+	npx babel custom_node_modules/shadcn --extensions .jsx --presets=@babel/preset-react --out-file custom_node_modules/shadcn/index.js --watch
 
 test:
 	clj -X:test

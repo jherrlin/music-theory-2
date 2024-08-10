@@ -1,7 +1,9 @@
-    {
-        "compilerOptions": {
-          "paths": {
-          "@/*": ["./*"]
-          }
+{
+    "compilerOptions": {
+        "exclude": ["node_modules"],
+        "include": ["custom_node_modules/**/*"],
+        "paths": {
+            "shadcn/*": ["./custom_node_modules/shadcn/*"]
         }
-      }
+    }
+}

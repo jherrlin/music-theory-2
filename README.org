@@ -19,3 +19,19 @@ https://app.circleci.com/pipelines/github/jherrlin/music-theory-2
   #+BEGIN_SRC shell
     clojure -A:test:runner
   #+END_SRC
+
+
+#+BEGIN_SRC shell :results output code
+  npx shadcn-ui@latest init
+
+  resources/public/css/tailwind.css
+  shadcn/components
+  shadcn/lib/utils
+
+  npx shadcn-ui@latest add button
+  npx shadcn-ui@latest add navigation-menu
+#+END_SRC
+
+
+
+npx babel shadcn-components --out-dir ./src/shadcn-components --extensions .js,.jsx --presets=@babel/preset-react --watch
