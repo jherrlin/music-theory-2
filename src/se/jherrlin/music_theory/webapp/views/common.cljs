@@ -7,6 +7,7 @@
    [reitit.frontend.easy :as rfe]
    [se.jherrlin.utils :as basic-utils]
    [reitit.coercion.malli]
+
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
    [se.jherrlin.music-theory.webapp.views.instruments.fretboard :as instruments-fretboard]
@@ -26,11 +27,8 @@
         path-params          @(re-frame/subscribe [:path-params])
         changed-query-params @(re-frame/subscribe [:changed-query-params])
         key-of               @(re-frame/subscribe [:key-of])]
-    [:div {:style {:display        "flow"
-                   :flow-direction "column"
-                   :overflow-x     "auto"
-                   :white-space    "nowrap"}}
-     [:a {:style {:margin-right "10px"}
+    [:div {:class "container"}
+     [:a {:class "bg-gray-500 p-1 rounded-sm mx-2 text-white"
           :href  (rfe/href :home path-params changed-query-params)}
       [:button
        {:disabled (= current-route-name :home)}
