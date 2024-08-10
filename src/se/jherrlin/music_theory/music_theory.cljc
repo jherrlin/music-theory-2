@@ -121,7 +121,8 @@
 (def merge-fretboards-matrixes fretboard/merge-fretboards-matrixes)
 (defn with-all-intervals [interval-tones intervals fretboard-matrix]
   (let [intervals->tones (mapv vector interval-tones intervals)]
-    (fretboard/with-all-intervals intervals->tones fretboard-matrix)))
+    (fretboard/with-all-intervals intervals->tones fretboard-matrix))
+  )
 
 (comment
   (fretboard-strings

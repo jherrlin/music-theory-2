@@ -5,7 +5,7 @@
    [re-frame.db]
    [reitit.frontend.controllers :as rfc]
    [reitit.frontend.easy :as rfe]
-   [reitit.coercion.schema :as rsc]
+[reitit.coercion.schema :as rsc]
    [reitit.frontend :as rf]
    [taoensso.timbre :as timbre]))
 
@@ -32,7 +32,6 @@
 (re-frame/reg-event-db
  ::navigated
  (fn [db [_ new-match]]
-   (js/console.log "::navigated")
    (let [old-match   (:current-route db)
          controllers (rfc/apply-controllers (:controllers old-match) new-match)]
      (assoc db :current-route (assoc new-match :controllers controllers)))))

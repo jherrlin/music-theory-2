@@ -83,9 +83,9 @@
      :key-of     :c
      :instrument :guitar}])
 
-  (get @re-frame.db/app-db ::fretboards)
+  (get @re-frame.db/app-db ::fretboards))
 
-  ,)
+
 
 (defn table []
   (let [ms           @(re-frame/subscribe [::harmonization-chords])
@@ -170,8 +170,7 @@
      [:br]
      [:br]
 
-     [:p "Tones combined from the chords."]
-     [instruments-fretboard/styled-view
+     #_[instruments-fretboard/styled-view
       (cond-> {:id                "derp-it"
                :on-click          (fn [{:keys [tone-str octave]} fretboard-matrix]
                                     (play-tone (str tone-str octave)))
@@ -183,7 +182,6 @@
         surrounding-intervals (assoc :grey-fn :interval)
         surrounding-tones     (assoc :grey-fn :tone-str))]
 
-     [:p "Tones from the selected scale."]
      [common/instrument-view
       harmonization-scale
       path-params

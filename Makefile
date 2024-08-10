@@ -26,6 +26,3 @@ format:
 
 diagnostics:
 	clojure-lsp diagnostics
-
-tailwind-watch:
-	npx tailwindcss -i ./src/css/tailwind.css -o ./resources/public/css/tailwind.css --watch
