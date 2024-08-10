@@ -2,14 +2,25 @@
   (:require
    [taoensso.timbre :as timbre]
    [se.jherrlin.music-theory.webapp.events :as events]
-   [se.jherrlin.music-theory.webapp.views.common :as common]))
+   [se.jherrlin.music-theory.webapp.views.common :as common]
+   ["@shadcn/ui/button.js" :refer [Button]]))
+
+
+
 
 
 (defn home-view [deps]
   [:<>
    [common/menu]
    [:br]
-   [:h2 "Welcome"]])
+   [:> Button {:variant "outline"} "Button"]
+   ;;[button :label "hejsn"]
+   [:div {:class "bg-green-100"}
+    [:h2 "Welcome"]]])
+
+
+
+
 
 (defn routes [deps]
   (let [route-name :home]

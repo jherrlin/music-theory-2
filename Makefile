@@ -32,6 +32,12 @@ diagnostics:
 circle-ci-test:
 	clojure -X:test
 
+tailwind-watch:
+	npx tailwindcss -i ./src/css/tailwind.css -o ./resources/public/css/tailwind.css --watch
+
+babel-compile-shadcn-components:
+	npx babel shadcn-components --out-dir ./src/shadcn-components --extensions .jsx --presets=@babel/preset-react --watch
+
 test:
 	clj -X:test
 

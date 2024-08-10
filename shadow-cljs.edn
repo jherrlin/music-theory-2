@@ -1,9 +1,10 @@
 {:deps     true
  :http     {:port 8081}
- :dev-http {8080 "resources/public"}
+ :dev-http {8888 "resources/public"}
  :builds
  {:frontend
   {:target            :browser
+   :js-options        {:js-package-dirs ["node_modules" "shadcn"]}
    :asset-path        "/js"
    :output-dir        "resources/public/js"
    :devtools          {:preloads [devtools.preload]}

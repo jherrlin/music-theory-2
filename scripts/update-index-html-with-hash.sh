@@ -10,4 +10,4 @@ echo $FILENAME_WITH_DATE_AND_TIME
 
 mv "./resources/public/js/${ORIGINAL_FILE}" "./resources/public/js/${FILENAME_WITH_DATE_AND_TIME}"
 
-ls ./resources/public/js | grep -E "main\..*\.js$" | awk '{ print "<script src=\"js/" $1 "\"></script>" }' | xargs -I"{}" -d '\n' sed -i -e '10s@.*@{}@g' ./resources/public/index.html
+ls ./resources/public/js | grep -E "main\..*\.js$" | awk '{ print "<script src=\"js/" $1 "\"></script>" }' | xargs -I"{}" -d '\n' sed -i -e '11s@.*@{}@g' ./resources/public/index.html
