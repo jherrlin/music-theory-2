@@ -2387,10 +2387,10 @@
    :tuning     :mandolin
    :order      10
    :text       "Whiskey part B"}
-  "5   -   6   -   7   1   -   2   -   3   4
-   1   -   -   -   3   -   -   -   -   -   -
-   -   -   -   -   -   -   -   -   -   -   -
-   -   -   -   -   -   -   -   -   -   -   -")
+  "5   -   6   -   7   1   -   2   -   3   4   -
+   1   -   -   -   3   4   -   5   -   6   -   7
+   -   -   -   -   -   -   -   -   -   -   -   -
+   -   -   -   -   -   -   -   -   -   -   -   -")
 
 (define-scale-pattern #uuid "3926946b-8017-47e6-a3d9-5a94710aa0d0"
   {:belongs-to :minor
@@ -2490,3 +2490,36 @@
 ;; ---------------
 ;; Scales patterns end
 ;; ---------------
+
+;; Licks
+(define-scale-pattern #uuid "aa663f6a-87ab-4e0a-9012-e17c50fe0844"
+  {:belongs-to :major
+   :tuning     :mandolin
+   :url        "https://youtu.be/GmNGaFEkMms?t=248"
+   :order      10
+   :text       "Alan Bibey Lick #1. 20 Mandolin licks by David Benedict"}
+  "b3   3   4  b5   5   -   6   -   -   1
+    -   6   -   -   1   -   -   -   3   -
+    -   -   -   -   -   -   -   -   -   -
+    -   -   -   -   -   -   -   -   -   -")
+
+(define-scale-pattern #uuid "ce10126d-513d-47e0-8152-42c8839eee61"
+  {:belongs-to :major
+   :tuning     :mandolin
+   :url        "https://youtu.be/GmNGaFEkMms?t=446"
+   :order      11
+   :text       "John Reischman Lick #1. 20 Mandolin licks by David Benedict. I play it in D."}
+  "-   -   -   -   -   -   -   -   -   -
+   5   -   6   -   7   1   -   2   -   3
+   -   -   -   -   3   4  b5   5   -   -
+   -   -   -   -   -   -   -   -   -   -")
+
+(define-scale-pattern #uuid "197e6ab5-5ecc-468d-85bb-56b5eaada9e3"
+  {:belongs-to :major
+   :tuning     :mandolin
+   :order      12
+   :text       "Tombstone junction but in D"}
+  " -   -   -   -   -
+   b7   -   1   -   -
+   b3   3   4   -   5
+    -   -   -   -   1")
