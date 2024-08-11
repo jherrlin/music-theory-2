@@ -25,19 +25,11 @@ make dev
     clojure -A:test:runner
   #+END_SRC
 
-
-#+BEGIN_SRC shell :results output code
-  npx shadcn-ui@latest init
-
-  resources/public/css/tailwind.css
-  shadcn/components
-  shadcn/lib/utils
-
-  npx shadcn-ui@latest add --path npm-packages/shadcn button
-  npx shadcn-ui@latest add navigation-menu
-#+END_SRC
-
 * Shadcn components
+
+  #+BEGIN_SRC shell :results output code
+    npx shadcn-ui@latest init
+  #+END_SRC
 
   #+BEGIN_SRC shell :results output code
     npx shadcn-ui@latest add --path npm-packages/shadcn button
@@ -46,7 +38,3 @@ make dev
     npx shadcn-ui@latest add --path npm-packages/shadcn menubar
     npx shadcn-ui@latest add --path npm-packages/shadcn navigation-menu
   #+END_SRC
-
-  #+RESULTS:
-  #+begin_src shell
-  #+end_src
