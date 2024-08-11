@@ -3,33 +3,15 @@
    [taoensso.timbre :as timbre]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.webapp.views.common :as common]
-   [reagent.core :as r]
-   #_["shadcn" :refer [
-                     Button
-                     ;; Label
-                     Alert
-                     AlertTitle
-                     AlertDescription
-                     ;; NavigationMenu,
-                     ;; NavigationMenuContent,
-                     ;; NavigationMenuIndicator,
-                     ;; NavigationMenuItem,
-                     ;; NavigationMenuLink,
-                     ;; NavigationMenuList,
-                     ;; NavigationMenuTrigger,
-                     ;; NavigationMenuViewport
-                     ;; Accordion,
-                     ;; AccordionContent,
-                     ;; AccordionItem,
-                     ;; AccordionTrigger
-                     ]]
-   ["shadcn" :as shadcn]
-   ))
+   ["shadcn/button" :refer [Button]]
+   ["shadcn/alert" :refer [Alert AlertTitle AlertDescription]]
+   ["shadcn/label" :refer [Label]]))
 
-(js/console.log "shadcn" shadcn)
-(js/console.log "Alert" shadcn/Alert)
-(js/console.log "Button" shadcn/Button)
-(js/console.log "Label" shadcn/Label)
+
+(js/console.log "Label" Label)
+(js/console.log "Button" Button)
+(js/console.log "Alert" Alert)
+
 ;; (js/console.log "Accordion" Accordion)
 
 
@@ -38,26 +20,13 @@
   [:<>
    [common/menu]
    [:br]
-   [:> shadcn/Alert
-    [:> shadcn/AlertTitle "Hej"]
-    [:> shadcn/AlertDescription "Hopp"]
-    ]
-   [:> shadcn/Label {:htmlFor "email"} "derp@derp.se"]
-   [:> shadcn/Button {:variant "outline"
+   [:> Alert
+    [:> AlertTitle "Hej"]
+    [:> AlertDescription "Hopp"]]
+   [:> Label {:htmlFor "email"} "derp@derp.se"]
+   [:> Button {:variant "outline"
                       :on-click (fn [_]
                                   (js/console.log "In here"))} "Button"]
-   #_[:> Accordion {:type "single" :collapsible true}
-      [:> AccordionItem {:value "item-1"}
-       [:> AccordionTrigger "Hej"]
-       [:> AccordionContent
-        [:div "Hejsan"]]]]
-   #_[:> NavigationMenu
-      [:> NavigationMenuList
-       [:> NavigationMenuItem
-        [:> NavigationMenuTrigger "Item one"]
-        [:> NavigationMenuContent
-         [:div "hejsan"]]]]]
-   ;;[button :label "hejsn"]
    [:div {:class "bg-green-100"}
     [:h2 "Welcome"]]])
 

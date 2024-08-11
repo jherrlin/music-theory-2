@@ -4,7 +4,7 @@
  :builds
  {:frontend
   {:target            :browser
-   :js-options        {:js-package-dirs ["custom_node_modules" "node_modules"]}
+   :js-options        {:js-package-dirs ["npm-packages" "node_modules"]}
    :asset-path        "/js"
    :output-dir        "resources/public/js"
    :devtools          {:preloads [devtools.preload]}

@@ -28,10 +28,18 @@ https://app.circleci.com/pipelines/github/jherrlin/music-theory-2
   shadcn/components
   shadcn/lib/utils
 
-  npx shadcn-ui@latest add button
+  npx shadcn-ui@latest add --path npm-packages/shadcn button
   npx shadcn-ui@latest add navigation-menu
 #+END_SRC
 
+* Shadcn components
 
+  #+BEGIN_SRC shell :results output code
+    npx shadcn-ui@latest add --path npm-packages/shadcn button
+    npx shadcn-ui@latest add --path npm-packages/shadcn label
+    npx shadcn-ui@latest add --path npm-packages/shadcn alert
+  #+END_SRC
 
-npx babel shadcn-components --out-dir ./src/shadcn-components --extensions .js,.jsx --presets=@babel/preset-react --watch
+  #+RESULTS:
+  #+begin_src shell
+  #+end_src
