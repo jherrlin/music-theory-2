@@ -1,5 +1,7 @@
 {
     "dependencies": {
+        "@radix-ui/react-accordion": "^1.2.0",
+        "@radix-ui/react-label": "^2.1.0",
         "@radix-ui/react-navigation-menu": "^1.2.0",
         "@radix-ui/react-slot": "^1.1.0",
         "class-variance-authority": "^0.7.0",
@@ -14,7 +16,11 @@
     "devDependencies": {
         "@babel/cli": "^7.24.8",
         "@babel/core": "^7.25.2",
+        "@babel/plugin-transform-duplicate-keys": "^7.24.7",
+        "@babel/plugin-transform-duplicate-named-capturing-groups-regex": "^7.25.0",
+        "@babel/plugin-transform-object-assign": "^7.24.7",
         "@babel/preset-react": "^7.24.7",
+        "babel-plugin-explicit-exports-references": "^1.0.2",
         "shadow-cljs": "^2.16.12",
         "tailwindcss": "^3.4.9"
     }
