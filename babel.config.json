@@ -1,34 +1,8 @@
 {
     "plugins": [
-        // ["@babel/plugin-transform-duplicate-named-capturing-groups-regex"],
-        // ["@babel/plugin-transform-duplicate-keys"],
-        // ["@babel/plugin-transform-object-assign"],
-        [
-            "@babel/plugin-transform-react-jsx",
-            {
-                // "throwIfNamespace": false, // defaults to true
-                // "runtime": "automatic", // defaults to classic
-                // "importSource": "custom-jsx-library" // defaults to react
-            },
-        ]
-        // ,
-        // [
-        //     "explicit-exports-references",
-        //     {
-        //         "transformAssignExpr": true
-        //     }
-        // ]
+        ["@babel/plugin-transform-react-jsx"]
     ],
     "presets": [
-        [
-            "@babel/preset-react",
-            {
-                // "pragma": "dom", // default pragma is React.createElement (only in classic runtime)
-                // "pragmaFrag": "DomFrag", // default is React.Fragment (only in classic runtime)
-                // "throwIfNamespace": false, // defaults to true
-                "runtime": "classic" // defaults to classic
-                // "importSource": "custom-jsx-library" // defaults to react (only in automatic runtime)
-            }
-        ]
+        ["@babel/preset-react"]
     ]
 }

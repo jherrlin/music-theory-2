@@ -5,6 +5,8 @@ SERVICE_NAME = music-theory
 release-frontend: shadow-cljs-release update-index-html-with-hash
 
 
+dev:
+	npm run dev
 
 shadow-cljs-release:
 	npx shadow-cljs release frontend

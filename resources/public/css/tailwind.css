@@ -1815,6 +1815,10 @@ body {
   background-color: hsl(var(--input));
 }
 
+.data-\[state\\\\x3dopen\]\:bg-accent\/50[data-state\\x3dopen] {
+  background-color: hsl(var(--accent) / 0.5);
+}
+
 .data-\[state\\x3dopen\]\:text-accent-foreground[data-state\x3dopen] {
   color: hsl(var(--accent-foreground));
 }
@@ -1844,6 +1848,36 @@ body {
 }
 
 .data-\[state\\x3dvisible\]\:animate-in[data-state\x3dvisible] {
+  animation-name: enter;
+  animation-duration: 150ms;
+  --tw-enter-opacity: initial;
+  --tw-enter-scale: initial;
+  --tw-enter-rotate: initial;
+  --tw-enter-translate-x: initial;
+  --tw-enter-translate-y: initial;
+}
+
+.data-\[motion\^\\\\x3dfrom-\]\:animate-in[data-motion\\x3dfrom-] {
+  animation-name: enter;
+  animation-duration: 150ms;
+  --tw-enter-opacity: initial;
+  --tw-enter-scale: initial;
+  --tw-enter-rotate: initial;
+  --tw-enter-translate-x: initial;
+  --tw-enter-translate-y: initial;
+}
+
+.data-\[state\\\\x3dopen\]\:animate-in[data-state\\x3dopen] {
+  animation-name: enter;
+  animation-duration: 150ms;
+  --tw-enter-opacity: initial;
+  --tw-enter-scale: initial;
+  --tw-enter-rotate: initial;
+  --tw-enter-translate-x: initial;
+  --tw-enter-translate-y: initial;
+}
+
+.data-\[state\\\\x3dvisible\]\:animate-in[data-state\\x3dvisible] {
   animation-name: enter;
   animation-duration: 150ms;
   --tw-enter-opacity: initial;
@@ -1883,6 +1917,36 @@ body {
   --tw-exit-translate-y: initial;
 }
 
+.data-\[motion\^\\\\x3dto-\]\:animate-out[data-motion\\x3dto-] {
+  animation-name: exit;
+  animation-duration: 150ms;
+  --tw-exit-opacity: initial;
+  --tw-exit-scale: initial;
+  --tw-exit-rotate: initial;
+  --tw-exit-translate-x: initial;
+  --tw-exit-translate-y: initial;
+}
+
+.data-\[state\\\\x3dclosed\]\:animate-out[data-state\\x3dclosed] {
+  animation-name: exit;
+  animation-duration: 150ms;
+  --tw-exit-opacity: initial;
+  --tw-exit-scale: initial;
+  --tw-exit-rotate: initial;
+  --tw-exit-translate-x: initial;
+  --tw-exit-translate-y: initial;
+}
+
+.data-\[state\\\\x3dhidden\]\:animate-out[data-state\\x3dhidden] {
+  animation-name: exit;
+  animation-duration: 150ms;
+  --tw-exit-opacity: initial;
+  --tw-exit-scale: initial;
+  --tw-exit-rotate: initial;
+  --tw-exit-translate-x: initial;
+  --tw-exit-translate-y: initial;
+}
+
 .data-\[motion\^\\x3dfrom-\]\:fade-in[data-motion\x3dfrom-] {
   --tw-enter-opacity: 0;
 }
@@ -1907,6 +1971,22 @@ body {
   --tw-enter-opacity: 0;
 }
 
+.data-\[motion\^\\\\x3dfrom-\]\:fade-in[data-motion\\x3dfrom-] {
+  --tw-enter-opacity: 0;
+}
+
+.data-\[motion\^\\\\x3dto-\]\:fade-out[data-motion\\x3dto-] {
+  --tw-exit-opacity: 0;
+}
+
+.data-\[state\\\\x3dhidden\]\:fade-out[data-state\\x3dhidden] {
+  --tw-exit-opacity: 0;
+}
+
+.data-\[state\\\\x3dvisible\]\:fade-in[data-state\\x3dvisible] {
+  --tw-enter-opacity: 0;
+}
+
 .data-\[state\\x3dclosed\]\:zoom-out-95[data-state\x3dclosed] {
   --tw-exit-scale: .95;
 }
@@ -1917,6 +1997,14 @@ body {
 
 .data-\[state\\x3dopen\]\:zoom-in-95[data-state\x3dopen] {
   --tw-enter-scale: .95;
+}
+
+.data-\[state\\\\x3dclosed\]\:zoom-out-95[data-state\\x3dclosed] {
+  --tw-exit-scale: .95;
+}
+
+.data-\[state\\\\x3dopen\]\:zoom-in-90[data-state\\x3dopen] {
+  --tw-enter-scale: .9;
 }
 
 .data-\[motion\\x3dfrom-end\]\:slide-in-from-right-52[data-motion\x3dfrom-end] {
@@ -1951,7 +2039,28 @@ body {
   --tw-enter-translate-y: 0.5rem;
 }
 
+.data-\[motion\\\\x3dfrom-end\]\:slide-in-from-right-52[data-motion\\x3dfrom-end] {
+  --tw-enter-translate-x: 13rem;
+}
+
+.data-\[motion\\\\x3dfrom-start\]\:slide-in-from-left-52[data-motion\\x3dfrom-start] {
+  --tw-enter-translate-x: -13rem;
+}
+
+.data-\[motion\\\\x3dto-end\]\:slide-out-to-right-52[data-motion\\x3dto-end] {
+  --tw-exit-translate-x: 13rem;
+}
+
+.data-\[motion\\\\x3dto-start\]\:slide-out-to-left-52[data-motion\\x3dto-start] {
+  --tw-exit-translate-x: -13rem;
+}
+
 .group[data-state\x3dopen] .group-data-\[state\\x3dopen\]\:rotate-180 {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.group[data-state\\x3dopen] .group-data-\[state\\\\x3dopen\]\:rotate-180 {
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }

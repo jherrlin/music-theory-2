@@ -2,6 +2,11 @@
 
 https://app.circleci.com/pipelines/github/jherrlin/music-theory-2
 
+#+BEGIN_SRC shell :results output code
+make dev
+#+END_SRC
+
+
 * Todos
 
   - [ ] Find chord
@@ -38,6 +43,8 @@ https://app.circleci.com/pipelines/github/jherrlin/music-theory-2
     npx shadcn-ui@latest add --path npm-packages/shadcn button
     npx shadcn-ui@latest add --path npm-packages/shadcn label
     npx shadcn-ui@latest add --path npm-packages/shadcn alert
+    npx shadcn-ui@latest add --path npm-packages/shadcn menubar
+    npx shadcn-ui@latest add --path npm-packages/shadcn navigation-menu
   #+END_SRC
 
   #+RESULTS:

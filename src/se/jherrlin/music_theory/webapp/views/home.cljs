@@ -5,7 +5,10 @@
    [se.jherrlin.music-theory.webapp.views.common :as common]
    ["shadcn/button" :refer [Button]]
    ["shadcn/alert" :refer [Alert AlertTitle AlertDescription]]
-   ["shadcn/label" :refer [Label]]))
+   ["shadcn/label" :refer [Label]]
+   ["shadcn/navigation-menu" :refer [NavigationMenu NavigationMenuList NavigationMenuItem
+                                     NavigationMenuTrigger NavigationMenuContent NavigationMenuLink]]))
+
 
 
 (js/console.log "Label" Label)
@@ -20,6 +23,12 @@
   [:<>
    [common/menu]
    [:br]
+   [:> NavigationMenu
+ [:> NavigationMenuList
+  [:> NavigationMenuItem
+   [:> NavigationMenuTrigger "Item one"]
+   [:> NavigationMenuContent
+    [:> NavigationMenuLink "Link"]]]]]
    [:> Alert
     [:> AlertTitle "Hej"]
     [:> AlertDescription "Hopp"]]
