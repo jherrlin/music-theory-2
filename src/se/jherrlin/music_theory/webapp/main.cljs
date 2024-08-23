@@ -1,6 +1,7 @@
 (ns se.jherrlin.music-theory.webapp.main
   (:require
    [taoensso.timbre :as timbre]
+   [se.jherrlin.music-theory.music-theory]
    [reagent.dom.client :as rdc]
    [re-frame.alpha :as rf]
    [zprint.core :as zp]

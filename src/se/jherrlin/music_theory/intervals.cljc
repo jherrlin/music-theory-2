@@ -141,6 +141,15 @@
        (map (juxt :function identity))
        (into {})))
 
+(defn interval->index [interval]
+  {:pre [(string? interval)] :post [(number? %)]}
+  (get-in intervals-map-by-function [interval :semitones]))
+
+(comment
+  (interval->index "1")
+  (interval->index "b3")
+  )
+
 (defn functions-to-semitones [functions]
   (->> functions
        (mapv #(get-in intervals-map-by-function [% :semitones]))))

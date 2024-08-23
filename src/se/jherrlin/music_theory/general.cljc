@@ -158,9 +158,9 @@
    {:pre  [(m/validate models.tone/Intervals intervals)]
     :post [(m/validate models.tone/IntervalTones %)]}
    (->> intervals
-        (mapv (fn [interval-function]
-                (let [interval-index (get-in intervals/intervals-map-by-function [interval-function :semitones])]
-                  (sharp-or-flat (nth all-tones interval-index) interval-function)))))))
+        (mapv (fn [interval]
+                (let [index (intervals/interval->index interval)]
+                  (sharp-or-flat (nth all-tones index) interval)))))))
 
 (tones-by-intervals
  (all-tones)
@@ -208,8 +208,7 @@
   {:pre  [(m/validate models.tone/Intervals intervals)]
    :post [(m/validate models.tone/Indexes %)]}
   (->> intervals
-       (mapv (fn [interval]
-               (get-in intervals/intervals-map-by-function [interval :semitones])))))
+       (mapv intervals/interval->index)))
 
 (intervals-to-indexes ["1" "b3" "5"])
 ;; => [0 3 7]
