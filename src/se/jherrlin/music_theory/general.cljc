@@ -22,7 +22,9 @@
   {:post [(models.tone/valid-index-tones? %)]}
   [#{:c} #{:db :c#} #{:d} #{:d# :eb} #{:e} #{:f} #{:gb :f#} #{:g} #{:g# :ab} #{:a} #{:bb :a#} #{:b}])
 
-(all-tones)
+(comment
+  (all-tones)
+  )
 
 (defn tones-starting-at
   "`x` - can be both a index tone and a interval tone.
@@ -42,11 +44,12 @@
        (% x))
     all-tones)))
 
-(tones-starting-at (all-tones) :c)
-(tones-starting-at :c)
-(tones-starting-at (all-tones) #{:c})
-(tones-starting-at (all-tones) :d#)
-
+(comment
+  (tones-starting-at (all-tones) :c)
+  (tones-starting-at :c)
+  (tones-starting-at (all-tones) #{:c})
+  (tones-starting-at (all-tones) :d#)
+  )
 
 (defn sharp-or-flat
   "Select tone from interval.
@@ -63,33 +66,40 @@
         :else                        (filter (comp #(str/includes? % "#") name) index-tone))
       (first)))
 
-(sharp-or-flat
- #{:db :c#}
- "#3")
+(comment
+  (sharp-or-flat
+   #{:db :c#}
+   "#3")
 
-(sharp-or-flat
- #{:db :c#}
- "b3")
+  (sharp-or-flat
+   #{:db :c#}
+   "b3")
 
-(sharp-or-flat
- #{:db :c#}
- "3")
+  (sharp-or-flat
+   #{:db :c#}
+   "3")
 
-(sharp-or-flat
- #{:db}
- "3")
+  (sharp-or-flat
+   #{:db}
+   "3")
+  )
+
 
 (defn sharp [index-tone]
   {:pre [(models.tone/valid-index-tone? index-tone)]}
   (sharp-or-flat index-tone "b"))
 
-(sharp #{:db :c#})    ;; => :db
+(comment
+  (sharp #{:db :c#}) ;; => :db
+  (sharp #{:db})     ;; => :db
+  (sharp #{:c#})     ;; => :c#
+  )
 
 (defn flat [index-tone]
   {:pre [(models.tone/valid-index-tone? index-tone)]}
   (sharp-or-flat index-tone "#"))
 
-(flat #{:db :c#})     ;; => :c#
+(flat #{:db :c#})
 
 (defn tones-on-indexes-with-intervals
   ([indexes intervals]

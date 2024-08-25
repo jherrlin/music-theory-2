@@ -14,6 +14,9 @@ shadow-cljs-release:
 shadow-cljs-compile:
 	npx shadow-cljs compile frontend
 
+test:
+	clj -X:test
+
 clean:
 	rm -rf ./node_modules ./.cpcache ./.shadow-cljs ./target ./.lsp ./classes
 
