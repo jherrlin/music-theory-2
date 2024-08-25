@@ -236,8 +236,14 @@
   (->> intervals
        (mapv intervals/interval->index)))
 
-(intervals-to-indexes ["1" "b3" "5"])
-;; => [0 3 7]
+(comment
+  (intervals-to-indexes ["1" "b3" "5"])
+  ;; => [0 3 7]
+
+  (intervals-to-indexes ["1" "3" "5"])
+  ;; => [0 4 7]
+  )
+
 
 (defn index-tones
   "Index tones from indexes and key-of"
@@ -250,11 +256,13 @@
    (let [tones (tones-starting-at all-tones key-of)]
      (tones-by-indexes tones indexes))))
 
-(index-tones :c [0 1 2])
-;; => [#{:c} #{:db :c#} #{:d}]
+(comment
+  (index-tones :c [0 1 2])
+  ;; => [#{:c} #{:db :c#} #{:d}]
 
-(index-tones #{:c} [0 1 2])
-;; => [#{:c} #{:db :c#} #{:d}]
+  (index-tones #{:c} [0 1 2])
+  ;; => [#{:c} #{:db :c#} #{:d}]
+  )
 
 (defn interval-tones
   "Interval tones from intervals and key-of"
@@ -268,11 +276,13 @@
     (tones-starting-at all-tones key-of)
     intervals)))
 
-(interval-tones :c ["1" "b3" "5"])
-;; => [:c :eb :g]
+(comment
+  (interval-tones :c ["1" "b3" "5"])
+  ;; => [:c :eb :g]
 
-(interval-tones #{:c} ["1" "b3" "5"])
-;; => [:c :eb :g]
+  (interval-tones #{:c} ["1" "b3" "5"])
+  ;; => [:c :eb :g]
+  )
 
 (defn tones-data-from-indexes-and-intervals
   ([indexes intervals]
@@ -290,10 +300,15 @@
     indexes
     intervals)))
 
-(tones-data-from-indexes-and-intervals
- (all-tones)
- [0 3 7]
- ["1" "b3" "5"])
+(comment
+  (tones-data-from-indexes-and-intervals
+   (all-tones)
+   [0 3 7]
+   ["1" "b3" "5"])
+  [{:semitones 0, :function "1", :name/en "Root", :name/sv "Root", :index-tone #{:c}, :interval-tone :c, :interval "1", :index 0}
+   {:index-tone #{:d# :eb}, :interval-tone :eb, :text/en "Blue note", :index 3, :name/en "Minor third", :function "b3", :name/sv "Moll-ters", :semitones 3, :interval "b3"}
+   {:semitones 7, :function "5", :name/en "Perfect fifth", :name/sv "Kvint", :index-tone #{:g}, :interval-tone :g, :interval "5", :index 7}] nil)
+
 
 (defn tones-data-from-key-of-and-intervals
   "
@@ -314,36 +329,17 @@
       indexes
       intervals))))
 
-(tones-data-from-key-of-and-intervals
- (all-tones)
- :c
- ["1" "b3" "5"])
-;; =>
-#_[{:semitones     0,
-  :function      "1",
-  :name/en       "Root",
-  :name/sv       "Root",
-  :index-tone    #{:c},
-  :interval-tone :c,
-  :interval      "1",
-  :index         0}
- {:index-tone    #{:d# :eb},
-  :interval-tone :eb,
-  :text/en       "Blue note",
-  :index         3,
-  :name/en       "Minor third",
-  :function      "b3",
-  :name/sv       "Moll-ters",
-  :semitones     3,
-  :interval      "b3"}
- {:semitones     7,
-  :function      "5",
-  :name/en       "Perfect fifth",
-  :name/sv       "Kvint",
-  :index-tone    #{:g},
-  :interval-tone :g,
-  :interval      "5",
-  :index         7}]
+(comment
+  (tones-data-from-key-of-and-intervals
+   (all-tones)
+   :c
+   ["1" "b3" "5"])
+  ;; =>
+  [{:semitones 0, :function "1", :name/en "Root", :name/sv "Root", :index-tone #{:c}, :interval-tone :c, :interval "1", :index 0}
+   {:index-tone #{:d# :eb}, :interval-tone :eb, :text/en "Blue note", :index 3, :name/en "Minor third", :function "b3", :name/sv "Moll-ters", :semitones 3, :interval "b3"}
+   {:semitones 7, :function "5", :name/en "Perfect fifth", :name/sv "Kvint", :index-tone #{:g}, :interval-tone :g, :interval "5", :index 7}]
+  )
+
 
 
 (defn match-chord-with-scales

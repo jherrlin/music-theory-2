@@ -163,3 +163,67 @@
      :c
      ["1" "2" "3" "4" "5" "6" "7"])
     [:c :d :e :f :g :a :b])))
+
+(deftest intervals-to-indexes
+  (is
+   (=
+    (general/intervals-to-indexes ["1" "b3" "5"])
+    [0 3 7]))
+
+  (is
+   (=
+    (general/intervals-to-indexes ["1" "3" "5"])
+    [0 4 7])))
+
+(deftest index-tones
+  (is
+   (=
+    (general/index-tones :c [0 1 2])
+    [#{:c} #{:db :c#} #{:d}]))
+
+  (is
+   (=
+    (general/index-tones #{:c} [0 1 2])
+    [#{:c} #{:db :c#} #{:d}])))
+
+(deftest interval-tones
+  (is
+   (=
+    (general/interval-tones (general/all-tones) :c ["1" "b3" "5"])
+    [:c :eb :g]))
+
+  (is
+   (=
+    (general/interval-tones #{:c} ["1" "b3" "5"])
+    [:c :eb :g])))
+
+(deftest tones-data-from-indexes-and-intervals
+  (is
+   (=
+    (general/tones-data-from-indexes-and-intervals
+     (general/all-tones)
+     [0 3 7]
+     ["1" "b3" "5"])
+    [{:semitones 0, :function "1", :name/en "Root", :name/sv "Root", :index-tone #{:c}, :interval-tone :c, :interval "1", :index 0}
+     {:index-tone #{:d# :eb}, :interval-tone :eb, :text/en "Blue note", :index 3, :name/en "Minor third", :function "b3", :name/sv "Moll-ters", :semitones 3, :interval "b3"}
+     {:semitones 7, :function "5", :name/en "Perfect fifth", :name/sv "Kvint", :index-tone #{:g}, :interval-tone :g, :interval "5", :index 7}])))
+
+(deftest tones-data-from-key-of-and-intervals
+  (is
+   (=
+    (general/tones-data-from-key-of-and-intervals
+     (general/all-tones)
+     :c
+     ["1" "b3" "5"])
+    [{:semitones 0, :function "1", :name/en "Root", :name/sv "Root", :index-tone #{:c}, :interval-tone :c, :interval "1", :index 0}
+     {:index-tone #{:d# :eb}, :interval-tone :eb, :text/en "Blue note", :index 3, :name/en "Minor third", :function "b3", :name/sv "Moll-ters", :semitones 3, :interval "b3"}
+     {:semitones 7, :function "5", :name/en "Perfect fifth", :name/sv "Kvint", :index-tone #{:g}, :interval-tone :g, :interval "5", :index 7}]))
+
+  (is
+   (=
+    (general/tones-data-from-key-of-and-intervals
+     :c
+     ["1" "3" "5"])
+    [{:semitones 0, :function "1", :name/en "Root", :name/sv "Root", :index-tone #{:c}, :interval-tone :c, :interval "1", :index 0}
+     {:semitones 4, :function "3", :name/en "Major third", :name/sv "Dur-ters", :index-tone #{:e}, :interval-tone :e, :interval "3", :index 4}
+     {:semitones 7, :function "5", :name/en "Perfect fifth", :name/sv "Kvint", :index-tone #{:g}, :interval-tone :g, :interval "5", :index 7}])))
