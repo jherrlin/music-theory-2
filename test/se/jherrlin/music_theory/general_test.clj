@@ -227,3 +227,61 @@
     [{:semitones 0, :function "1", :name/en "Root", :name/sv "Root", :index-tone #{:c}, :interval-tone :c, :interval "1", :index 0}
      {:semitones 4, :function "3", :name/en "Major third", :name/sv "Dur-ters", :index-tone #{:e}, :interval-tone :e, :interval "3", :index 4}
      {:semitones 7, :function "5", :name/en "Perfect fifth", :name/sv "Kvint", :index-tone #{:g}, :interval-tone :g, :interval "5", :index 7}])))
+
+
+(deftest match-chord-with-scales
+  (is
+   (=
+    (general/match-chord-with-scales
+     [#:scale{:id        :ionian,
+              :intervals ["1" "2" "3" "4" "5" "6" "7"],
+              :indexes   [0 2 4 5 7 9 11],
+              :title     "ionian"}]
+     [0 4 7])
+    [#:scale{:id :ionian, :intervals ["1" "2" "3" "4" "5" "6" "7"], :indexes [0 2 4 5 7 9 11], :title "ionian"}])))
+
+(deftest find-chords
+  (is
+   (=
+    (general/find-chords
+     (general/all-tones)
+     [#:chord{:id           :major,
+              :intervals    ["1" "3" "5"],
+              :indexes      [0 4 7],
+              :title        "major",
+              :order        1,
+              :sufix        "",
+              :explanation  "major",
+              :display-text "major"}
+      #:chord{:id           :minor,
+              :intervals    ["1" "b3" "5"],
+              :indexes      [0 3 7],
+              :title        "minor",
+              :order        2,
+              :sufix        "m",
+              :explanation  "minor",
+              :display-text "minor"}]
+     [#{:c} #{:e} #{:g}])
+    [#:chord{:id :major, :intervals ["1" "3" "5"], :indexes [0 4 7], :title "major", :order 1, :sufix "", :explanation "major", :display-text "major"}]))
+
+  (is
+   (=
+    (general/find-chords
+     [#:chord{:id           :major,
+              :intervals    ["1" "3" "5"],
+              :indexes      [0 4 7],
+              :title        "major",
+              :order        1,
+              :sufix        "",
+              :explanation  "major",
+              :display-text "major"}
+      #:chord{:id           :minor,
+              :intervals    ["1" "b3" "5"],
+              :indexes      [0 3 7],
+              :title        "minor",
+              :order        2,
+              :sufix        "m",
+              :explanation  "minor",
+              :display-text "minor"}]
+     [:c :eb :g])
+    [#:chord{:id :minor, :intervals ["1" "b3" "5"], :indexes [0 3 7], :title "minor", :order 2, :sufix "m", :explanation "minor", :display-text "minor"}])))

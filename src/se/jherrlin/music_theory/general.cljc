@@ -38,11 +38,11 @@
   ([all-tones x]
    {:pre [(models.tone/valid-index-tones? all-tones)
           (models.tone/valid-interval-or-index-tone? x)]}
-   (utils/rotate-until
-    #(if (models.tone/valid-index-tone? x)
-       (= % x)
-       (% x))
-    all-tones)))
+   (->> all-tones
+        (utils/rotate-until
+         #(if (models.tone/valid-index-tone? x)
+            (= % x)
+            (% x))))))
 
 (comment
   (tones-starting-at (all-tones) :c)
@@ -352,62 +352,85 @@
   (->> scales-maps
        (filter (fn [scale]
                  (let [scale-indexes (get scale :scale/indexes)]
-                   (set/subset? (set chord-indexes) (set scale-indexes)))))))
+                   (set/subset? (set chord-indexes) (set scale-indexes)))))
+       (into [])))
 
-(match-chord-with-scales
- [#:scale{:id        :ionian,
-          :intervals ["1" "2" "3" "4" "5" "6" "7"],
-          :indexes   [0 2 4 5 7 9 11],
-          :title     "ionian",
-          :order     4}]
- [0 4 7])
+(comment
+  (match-chord-with-scales
+   [#:scale{:id        :ionian,
+            :intervals ["1" "2" "3" "4" "5" "6" "7"],
+            :indexes   [0 2 4 5 7 9 11],
+            :title     "ionian"}]
+   [0 4 7])
+  ;; =>
+  [#:scale{:id :ionian, :intervals ["1" "2" "3" "4" "5" "6" "7"], :indexes [0 2 4 5 7 9 11], :title "ionian"}]
+  )
+
 
 (defn find-chords
-  [chord-maps all-tones chord-tones]
-  {:pre [(seq chord-maps)]}
-  (let [[root-tone & _] chord-tones
-        tones           (tones-starting-at all-tones root-tone)]
-    (->> chord-maps
-         (filter (fn [{:chord/keys [indexes]}]
-                   (let [chord-to-serch (tones-by-indexes tones indexes)
-                         chord-to-match chord-tones]
-                     (and (= (count chord-to-serch) (count chord-to-match))
-                          (->> (map (fn [a b]
-                                      (if (set? b)
-                                        (= a b)
-                                        (boolean (a b))))
-                                    chord-to-serch
-                                    chord-to-match)
-                               (every? true?)))))))))
+  "Find chords from interval or index tones."
+  ([chord-maps chord-tones]
+   (find-chords (all-tones) chord-maps chord-tones))
+  ([all-tones chord-maps chord-tones]
+   {:pre [(seq chord-maps)]}
+   (let [[root-tone & _] chord-tones
+         tones           (tones-starting-at all-tones root-tone)]
+     (->> chord-maps
+          (filter (fn [{:chord/keys [indexes]}]
+                    (let [chord-to-serch (tones-by-indexes tones indexes)
+                          chord-to-match chord-tones]
+                      (and (= (count chord-to-serch) (count chord-to-match))
+                           (->> (map (fn [a b]
+                                       (if (set? b)
+                                         (= a b)
+                                         (boolean (a b))))
+                                     chord-to-serch
+                                     chord-to-match)
+                                (every? true?))))))
+          (into [])))))
 
-(find-chords
- [#:chord{:id           :major,
-          :intervals    ["1" "3" "5"],
-          :indexes      [0 4 7],
-          :title        "major",
-          :order        1,
-          :sufix        "",
-          :explanation  "major",
-          :display-text "major"}
-  #:chord{:id           :minor,
-          :intervals    ["1" "b3" "5"],
-          :indexes      [0 3 7],
-          :title        "minor",
-          :order        2,
-          :sufix        "m",
-          :explanation  "minor",
-          :display-text "minor"}]
- (all-tones)
- [#{:c} #{:e} #{:g}]
- #_[#{:c} #{:d# :eb} #{:g}]
- #_[:c :e :g])
+(comment
+  (find-chords
+   (all-tones)
+   [#:chord{:id           :major,
+            :intervals    ["1" "3" "5"],
+            :indexes      [0 4 7],
+            :title        "major",
+            :order        1,
+            :sufix        "",
+            :explanation  "major",
+            :display-text "major"}
+    #:chord{:id           :minor,
+            :intervals    ["1" "b3" "5"],
+            :indexes      [0 3 7],
+            :title        "minor",
+            :order        2,
+            :sufix        "m",
+            :explanation  "minor",
+            :display-text "minor"}]
+
+   [#{:c} #{:e} #{:g}]
+   #_[#{:c} #{:d# :eb} #{:g}]
+   #_[:c :e :g])
+  ;; =>
+  [#:chord{:id           :major,
+           :intervals    ["1" "3" "5"],
+           :indexes      [0 4 7],
+           :title        "major",
+           :order        1,
+           :sufix        "",
+           :explanation  "major",
+           :display-text "major"}]
+  )
+
+
 
 (defn find-chord
   ([chord-maps chord-tones]
-   (find-chord chord-maps (all-tones) chord-tones))
-  ([chord-maps all-tones chord-tones]
+   (find-chord (all-tones) chord-maps chord-tones))
+  ([all-tones chord-maps chord-tones]
    {:pre [(coll? chord-maps)]}
-   (->> (find-chords chord-maps all-tones chord-tones)
+   (->> (find-chords all-tones chord-maps chord-tones)
         (first))))
 
 (find-chord
@@ -426,7 +449,7 @@
   [chord-maps chord-tones]
   {:pre [(coll? chord-maps)]}
   (let [root-tone             (first chord-tones)
-        {:chord/keys [sufix]} (find-chord chord-maps (all-tones) chord-tones)]
+        {:chord/keys [sufix]} (find-chord (all-tones) chord-maps chord-tones)]
     (str (-> root-tone name str/lower-case str/capitalize) sufix)))
 
 (chord-name
