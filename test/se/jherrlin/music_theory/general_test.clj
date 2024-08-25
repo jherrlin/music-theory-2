@@ -285,3 +285,110 @@
               :display-text "minor"}]
      [:c :eb :g])
     [#:chord{:id :minor, :intervals ["1" "b3" "5"], :indexes [0 3 7], :title "minor", :order 2, :sufix "m", :explanation "minor", :display-text "minor"}])))
+
+(deftest find-chords
+  (is
+   (=
+    (general/find-chords
+     (general/all-tones)
+     [#:chord{:id           :major,
+              :intervals    ["1" "3" "5"],
+              :indexes      [0 4 7],
+              :title        "major",
+              :order        1,
+              :sufix        "",
+              :explanation  "major",
+              :display-text "major"}
+      #:chord{:id           :minor,
+              :intervals    ["1" "b3" "5"],
+              :indexes      [0 3 7],
+              :title        "minor",
+              :order        2,
+              :sufix        "m",
+              :explanation  "minor",
+              :display-text "minor"}]
+
+     [#{:c} #{:e} #{:g}])
+    [#:chord{:id           :major,
+             :intervals    ["1" "3" "5"],
+             :indexes      [0 4 7],
+             :title        "major",
+             :order        1,
+             :sufix        "",
+             :explanation  "major",
+             :display-text "major"}]))
+
+  (is
+   (=
+    (general/find-chords
+     (general/all-tones)
+     [#:chord{:id           :major,
+              :intervals    ["1" "3" "5"],
+              :indexes      [0 4 7],
+              :title        "major",
+              :order        1,
+              :sufix        "",
+              :explanation  "major",
+              :display-text "major"}
+      #:chord{:id           :minor,
+              :intervals    ["1" "b3" "5"],
+              :indexes      [0 3 7],
+              :title        "minor",
+              :order        2,
+              :sufix        "m",
+              :explanation  "minor",
+              :display-text "minor"}]
+     [:c :eb :g])
+    [#:chord{:id           :minor,
+             :intervals    ["1" "b3" "5"],
+             :indexes      [0 3 7],
+             :title        "minor",
+             :order        2,
+             :sufix        "m",
+             :explanation  "minor",
+             :display-text "minor"}])))
+
+(deftest chord-name
+  (is
+   (=
+    (general/chord-name
+     [#:chord{:id           :major,
+              :intervals    ["1" "3" "5"],
+              :indexes      [0 4 7],
+              :title        "major",
+              :order        1,
+              :sufix        "",
+              :explanation  "major",
+              :display-text "major"}
+      #:chord{:id           :minor,
+              :intervals    ["1" "b3" "5"],
+              :indexes      [0 3 7],
+              :title        "minor",
+              :order        2,
+              :sufix        "m",
+              :explanation  "minor",
+              :display-text "minor"}]
+     [:c :eb :g])
+    "Cm"))
+
+  (is
+   (=
+    (general/chord-name
+     [#:chord{:id           :major,
+              :intervals    ["1" "3" "5"],
+              :indexes      [0 4 7],
+              :title        "major",
+              :order        1,
+              :sufix        "",
+              :explanation  "major",
+              :display-text "major"}
+      #:chord{:id           :minor,
+              :intervals    ["1" "b3" "5"],
+              :indexes      [0 3 7],
+              :title        "minor",
+              :order        2,
+              :sufix        "m",
+              :explanation  "minor",
+              :display-text "minor"}]
+     [:c :e :g])
+    "C")))

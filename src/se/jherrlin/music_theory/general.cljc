@@ -433,16 +433,19 @@
    (->> (find-chords all-tones chord-maps chord-tones)
         (first))))
 
-(find-chord
- [#:chord{:id           :major,
-          :intervals    ["1" "3" "5"],
-          :indexes      [0 4 7],
-          :title        "major",
-          :order        1,
-          :sufix        "",
-          :explanation  "major",
-          :display-text "major"}]
- [#{:c} #{:e} #{:g}])
+(comment
+  (find-chord
+   [#:chord{:id           :major,
+            :intervals    ["1" "3" "5"],
+            :indexes      [0 4 7],
+            :title        "major",
+            :order        1,
+            :sufix        "",
+            :explanation  "major",
+            :display-text "major"}]
+   [#{:c} #{:e} #{:g}])
+  )
+
 
 
 (defn chord-name
