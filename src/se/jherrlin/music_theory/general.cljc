@@ -455,26 +455,26 @@
         {:chord/keys [sufix]} (find-chord (all-tones) chord-maps chord-tones)]
     (str (-> root-tone name str/lower-case str/capitalize) sufix)))
 
-(chord-name
- [#:chord{:id           :major,
-          :intervals    ["1" "3" "5"],
-          :indexes      [0 4 7],
-          :title        "major",
-          :order        1,
-          :sufix        "",
-          :explanation  "major",
-          :display-text "major"}
-  #:chord{:id           :minor,
-          :intervals    ["1" "b3" "5"],
-          :indexes      [0 3 7],
-          :title        "minor",
-          :order        2,
-          :sufix        "m",
-          :explanation  "minor",
-          :display-text "minor"}]
- #_[:c :e :g]
- [:c :eb :g])
-
+(comment
+  (chord-name
+   [#:chord{:id           :major,
+            :intervals    ["1" "3" "5"],
+            :indexes      [0 4 7],
+            :title        "major",
+            :order        1,
+            :sufix        "",
+            :explanation  "major",
+            :display-text "major"}
+    #:chord{:id           :minor,
+            :intervals    ["1" "b3" "5"],
+            :indexes      [0 3 7],
+            :title        "minor",
+            :order        2,
+            :sufix        "m",
+            :explanation  "minor",
+            :display-text "minor"}]
+   #_[:c :e :g]
+   [:c :eb :g]))
 
 (defn scales-to-chord [scales chord-intervals]
   (->> scales
@@ -483,7 +483,39 @@
        (vals)
        (filter
         (fn [{scale-intervals :scale/intervals}]
-          (set/subset? (set chord-intervals) (set scale-intervals))))))
+          (set/subset? (set chord-intervals) (set scale-intervals))))
+       (into [])))
+
+(comment
+  (scales-to-chord
+   [{:id                #uuid "39af7096-b5c6-45e9-b743-6791b217a3df",
+     :type              [:scale],
+     :scale/scale-names #{:ionian :major},
+     :scale/intervals   ["1" "2" "3" "4" "5" "6" "7"],
+     :scale/indexes     [0 2 4 5 7 9 11],
+     :scale/categories  #{:major},
+     :scale/order       1,
+     :scale             :ionian}
+    {:id                #uuid "d091b747-63b9-4db2-9daa-6e9974852080",
+     :type              [:scale],
+     :scale/scale-names #{:natural-minor :minor :aeolian},
+     :scale/intervals   ["1" "2" "b3" "4" "5" "b6" "b7"],
+     :scale/indexes     [0 2 3 5 7 8 10],
+     :scale/categories  #{:minor},
+     :scale/order       2,
+     :scale             :minor}]
+   ["1" "3" "5"])
+  ;; =>
+  [{:id                #uuid "39af7096-b5c6-45e9-b743-6791b217a3df",
+    :type              [:scale],
+    :scale/scale-names #{:ionian :major},
+    :scale/intervals   ["1" "2" "3" "4" "5" "6" "7"],
+    :scale/indexes     [0 2 4 5 7 9 11],
+    :scale/categories  #{:major},
+    :scale/order       1,
+    :scale             :ionian}]
+  )
+
 
 (defn chords-to-scale [chords scale-intervals]
   (->> chords

@@ -392,3 +392,64 @@
               :display-text "minor"}]
      [:c :e :g])
     "C")))
+
+
+
+(deftest scales-to-chord
+  (is
+   (=
+    (general/scales-to-chord
+     [{:id                #uuid "39af7096-b5c6-45e9-b743-6791b217a3df",
+       :type              [:scale],
+       :scale/scale-names #{:ionian :major},
+       :scale/intervals   ["1" "2" "3" "4" "5" "6" "7"],
+       :scale/indexes     [0 2 4 5 7 9 11],
+       :scale/categories  #{:major},
+       :scale/order       1,
+       :scale             :ionian}
+      {:id                #uuid "d091b747-63b9-4db2-9daa-6e9974852080",
+       :type              [:scale],
+       :scale/scale-names #{:natural-minor :minor :aeolian},
+       :scale/intervals   ["1" "2" "b3" "4" "5" "b6" "b7"],
+       :scale/indexes     [0 2 3 5 7 8 10],
+       :scale/categories  #{:minor},
+       :scale/order       2,
+       :scale             :minor}]
+     ["1" "3" "5"])
+    [{:id                #uuid "39af7096-b5c6-45e9-b743-6791b217a3df",
+      :type              [:scale],
+      :scale/scale-names #{:ionian :major},
+      :scale/intervals   ["1" "2" "3" "4" "5" "6" "7"],
+      :scale/indexes     [0 2 4 5 7 9 11],
+      :scale/categories  #{:major},
+      :scale/order       1,
+      :scale             :ionian}]))
+
+  (is
+   (=
+    (general/scales-to-chord
+     [{:id                #uuid "39af7096-b5c6-45e9-b743-6791b217a3df",
+       :type              [:scale],
+       :scale/scale-names #{:ionian :major},
+       :scale/intervals   ["1" "2" "3" "4" "5" "6" "7"],
+       :scale/indexes     [0 2 4 5 7 9 11],
+       :scale/categories  #{:major},
+       :scale/order       1,
+       :scale             :ionian}
+      {:id                #uuid "d091b747-63b9-4db2-9daa-6e9974852080",
+       :type              [:scale],
+       :scale/scale-names #{:natural-minor :minor :aeolian},
+       :scale/intervals   ["1" "2" "b3" "4" "5" "b6" "b7"],
+       :scale/indexes     [0 2 3 5 7 8 10],
+       :scale/categories  #{:minor},
+       :scale/order       2,
+       :scale             :minor}]
+     ["1" "b3" "5"])
+    [{:id                #uuid "d091b747-63b9-4db2-9daa-6e9974852080",
+      :type              [:scale],
+      :scale/scale-names #{:natural-minor :minor :aeolian},
+      :scale/intervals   ["1" "2" "b3" "4" "5" "b6" "b7"],
+      :scale/indexes     [0 2 3 5 7 8 10],
+      :scale/categories  #{:minor},
+      :scale/order       2,
+      :scale             :minor}])))
