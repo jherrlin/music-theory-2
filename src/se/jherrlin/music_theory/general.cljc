@@ -521,8 +521,50 @@
   (->> chords
        (filter
         (fn [{chord-intervals :chord/intervals}]
-          (set/subset? (set chord-intervals) (set scale-intervals))))))
+          (set/subset? (set chord-intervals) (set scale-intervals))))
+       (into [])))
 
+(comment
+  (chords-to-scale
+   [{:chord/intervals      ["1" "3" "5"],
+     :chord/chord-name-str "major",
+     :chord/chord-name     :major,
+     :chord/order          1,
+     :type                 [:chord],
+     :chord/categories     #{:major},
+     :chord/display-text   "major",
+     :id                   #uuid "1cd72972-ca33-4962-871c-1551b7ea5244",
+     :chord/intervals-str  "1, 3, 5",
+     :chord/explanation    "major",
+     :chord/suffix         "",
+     :chord/indexes        [0 4 7]}
+    {:chord/intervals      ["1" "b3" "5"],
+     :chord/chord-name-str "minor",
+     :chord/chord-name     :minor,
+     :chord/order          2,
+     :type                 [:chord],
+     :chord/categories     #{:minor},
+     :chord/display-text   "minor",
+     :id                   #uuid "f9426eb8-5046-474a-b4c9-62383e5b0345",
+     :chord/intervals-str  "1, b3, 5",
+     :chord/explanation    "minor",
+     :chord/suffix         "m",
+     :chord/indexes        [0 3 7]}]
+   ["1" "2" "b3" "4" "5" "b6" "b7"])
+  ;; =>
+  [{:chord/intervals      ["1" "b3" "5"],
+    :chord/chord-name-str "minor",
+    :chord/chord-name     :minor,
+    :chord/order          2,
+    :type                 [:chord],
+    :chord/categories     #{:minor},
+    :chord/display-text   "minor",
+    :id                   #uuid "f9426eb8-5046-474a-b4c9-62383e5b0345",
+    :chord/intervals-str  "1, b3, 5",
+    :chord/explanation    "minor",
+    :chord/suffix         "m",
+    :chord/indexes        [0 3 7]}]
+  )
 
 (defn generate [coll intervals-key index-key]
   (for [key-of        (apply concat (all-tones))
