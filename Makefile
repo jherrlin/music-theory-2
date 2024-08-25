@@ -17,6 +17,9 @@ shadow-cljs-compile:
 circle-ci-test:
 	clojure -X:test
 
+test:
+	clj -X:test
+
 clean:
 	rm -rf ./node_modules ./.cpcache ./.shadow-cljs ./target ./.lsp ./classes
 

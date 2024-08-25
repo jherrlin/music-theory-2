@@ -86,3 +86,80 @@
    (=
     (general/flat #{:db :c#})
     :c#)))
+
+
+(deftest tones-on-indexes-with-intervals
+  (is
+   (=
+    (general/tones-on-indexes-with-intervals
+     [0 3 7]
+     ["1" "b3" "5"])
+    [:c :eb :g]))
+
+  (is
+   (=
+    (general/tones-on-indexes-with-intervals
+     [0 4 7]
+     ["1" "3" "5"])
+    [:c :e :g])))
+
+(deftest tones-by-indexes
+  (is
+   (=
+    (general/tones-by-indexes
+     (general/all-tones)
+     [0 4 7])
+    [#{:c} #{:e} #{:g}]))
+
+  (is
+   (=
+    (general/tones-by-indexes
+     (general/all-tones)
+     [0 3 7])
+    [#{:c} #{:d# :eb} #{:g}])))
+
+(deftest tones-by-key-and-indexes
+  (is
+   (=
+    (general/tones-by-key-and-indexes
+     (general/all-tones)
+     :d
+     [0 2 4 5 7 9 11])
+    [#{:d} #{:e} #{:gb :f#} #{:g} #{:a} #{:b} #{:db :c#}]))
+
+  (is
+   (=
+    (general/tones-by-key-and-indexes
+     #{:c}
+     [0 4 7])
+    [#{:c} #{:e} #{:g}])))
+
+(deftest tones-by-intervals
+  (is
+   (=
+    (general/tones-by-intervals
+     (general/all-tones)
+     ["1" "3" "5"])
+    [:c :e :g]))
+
+  (is
+   (=
+    (general/tones-by-intervals
+     ["1" "b3" "5"])
+    [:c :eb :g])))
+
+(deftest tones-by-key-and-intervals
+  (is
+   (=
+    (general/tones-by-key-and-intervals
+     (general/all-tones)
+     :c
+     ["1" "b3" "5"])
+    [:c :eb :g]))
+
+  (is
+   (=
+    (general/tones-by-key-and-intervals
+     :c
+     ["1" "2" "3" "4" "5" "6" "7"])
+    [:c :d :e :f :g :a :b])))

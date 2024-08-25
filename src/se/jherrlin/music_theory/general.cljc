@@ -114,9 +114,12 @@
     indexes
     intervals)))
 
-(tones-on-indexes-with-intervals
- [0 3 7]
- ["1" "b3" "5"])
+(comment
+  (tones-on-indexes-with-intervals
+   [0 3 7]
+   ["1" "b3" "5"])
+  )
+
 ;; => [:c :eb :g]
 
 (defn tones-by-indexes
@@ -129,10 +132,12 @@
     :post [(models.tone/valid-index-tones? %)]}
    (utils/take-indexes all-tones indexes)))
 
-(tones-by-indexes
- (all-tones)
- [0 4 7])
-;; => [#{:c} #{:e} #{:g}]
+(comment
+  (tones-by-indexes
+   (all-tones)
+   [0 4 7])
+  ;; => [#{:c} #{:e} #{:g}]
+  )
 
 
 (defn tones-by-key-and-indexes
@@ -149,15 +154,18 @@
    (let [all-tones' (tones-starting-at all-tones key-of)]
      (tones-by-indexes all-tones' indexes))))
 
-(tones-by-key-and-indexes
- :d
- [0 2 4 5 7 9 11])
-;; => [#{:d} #{:e} #{:gb :f#} #{:g} #{:a} #{:b} #{:db :c#}]
+(comment
+  (tones-by-key-and-indexes
+   :d
+   [0 2 4 5 7 9 11])
+  ;; => [#{:d} #{:e} #{:gb :f#} #{:g} #{:a} #{:b} #{:db :c#}]
 
-(tones-by-key-and-indexes
- #{:c}
- [0 4 7])
-;; => [#{:c} #{:e} #{:g}]
+  (tones-by-key-and-indexes
+   #{:c}
+   [0 4 7])
+  ;; => [#{:c} #{:e} #{:g}]
+  )
+
 
 (defn tones-by-intervals
   "Get tones from intervals
@@ -175,14 +183,16 @@
                 (let [index (intervals/interval->index interval)]
                   (sharp-or-flat (nth all-tones index) interval)))))))
 
-(tones-by-intervals
- (all-tones)
- ["1" "3" "5"])
-;; => [:c :e :g]
+(comment
+  (tones-by-intervals
+   (all-tones)
+   ["1" "3" "5"])
+  ;; => [:c :e :g]
 
-(tones-by-intervals
- ["1" "b3" "5"])
-;; => [:c :eb :g]
+  (tones-by-intervals
+   ["1" "b3" "5"])
+  ;; => [:c :eb :g]
+  )
 
 (defn tones-by-key-and-intervals
   "
@@ -201,15 +211,18 @@
     (tones-starting-at all-tones key-of)
     intervals)))
 
-(tones-by-key-and-intervals
- :c
- ["1" "b3" "5"])
-;; => [:c :eb :g]
+(comment
+  (tones-by-key-and-intervals
+   :c
+   ["1" "b3" "5"])
+  ;; => [:c :eb :g]
 
-(tones-by-key-and-intervals
- :c
- ["1" "2" "3" "4" "5" "6" "7"])
-;; => [:c :d :e :f :g :a :b]
+  (tones-by-key-and-intervals
+   :c
+   ["1" "2" "3" "4" "5" "6" "7"])
+  ;; => [:c :d :e :f :g :a :b]
+  )
+
 
 (defn intervals-to-indexes
   "Indexes from intervals
