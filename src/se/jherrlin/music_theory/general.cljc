@@ -99,7 +99,10 @@
   {:pre [(models.tone/valid-index-tone? index-tone)]}
   (sharp-or-flat index-tone "#"))
 
-(flat #{:db :c#})
+(comment
+  (flat #{:db :c#}) ;; => :c#
+  )
+
 
 (defn tones-on-indexes-with-intervals
   ([indexes intervals]
