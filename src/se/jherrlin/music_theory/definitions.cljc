@@ -2233,6 +2233,33 @@
 ;; ---------------
 ;; Scales patterns
 ;; ---------------
+(define-scale-pattern #uuid "895f4f5d-947a-4645-8af6-2a02fa75f0e1"
+  {:belongs-to :pentatonic-major
+   :tuning     :mandolin
+   :order      1}
+  "5   -   6   -   -   1
+   1   -   2   -   3   -
+   -   -   -   -   -   -
+   -   -   -   -   -   -")
+
+(define-scale-pattern #uuid "ad111254-d2a1-46ff-a8ae-40f3f52e2ed5"
+  {:belongs-to :pentatonic-major
+   :tuning     :mandolin
+   :order      2}
+  "-   -   -   -   -   -
+   6   -   -   1   -   -
+   2   -   3   -   -   5
+   -   -   -   -   -   1")
+
+(define-scale-pattern #uuid "51068b44-d374-49a0-baa8-07d69a6a7597"
+  {:belongs-to :pentatonic-major
+   :tuning     :mandolin
+   :order      3}
+  "-   -   -   -   -   -
+   -   1   -   -   -   -
+   3   -   -   5   -   6
+   -   -   -   1   -   2")
+
 (define-scale-pattern #uuid "4bdb1907-9f82-43cc-99a8-3ba4d7802ade"
   {:belongs-to :pentatonic-blues
    :tuning     :mandolin
