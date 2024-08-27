@@ -387,6 +387,18 @@
     [instrument-view-fretboard-chord-and-scale
      entity path-params query-params intervals deps]))
 
+(defn sort-fretboard-nr
+  "Fretboards with patterns closer to head stock should go first.
+  Returns a number."
+  [fretboard-matrix]
+  (let [matches       (->> fretboard-matrix
+                           (apply concat)
+                           (filter :match?))
+        nr-of-matches (count matches)
+        sum-of-xs     (->> matches (map :x) (reduce +))]
+    (when (< 0 nr-of-matches)
+      (/ sum-of-xs nr-of-matches))))
+
 (defmethod instrument-view [:fretboard [:scale :pattern]]
   [{:keys [id instrument key-of] :as entity}
    path-params
@@ -394,14 +406,16 @@
    {:keys [play-tone] :as deps}]
   (let [definition (music-theory/get-definition id)
         fretboard-matrix @(re-frame/subscribe [:fretboard-by-entity entity])]
-    [instrument-view-fretboard-pattern
-     {:entity           entity
-      :definition       definition
-      :instrument       instrument
-      :path-params      path-params
-      :query-params     query-params
-      :deps             deps
-      :fretboard-matrix fretboard-matrix}]))
+    [:<>
+     [:p (sort-fretboard-nr fretboard-matrix)]  ;; Use this for sorting
+     [instrument-view-fretboard-pattern
+      {:entity           entity
+       :definition       definition
+       :instrument       instrument
+       :path-params      path-params
+       :query-params     query-params
+       :deps             deps
+       :fretboard-matrix fretboard-matrix}]]))
 
 (defmethod instrument-view :default
   [entity path-params query-params deps]
