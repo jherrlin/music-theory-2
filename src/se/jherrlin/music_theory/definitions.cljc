@@ -2235,8 +2235,7 @@
 ;; ---------------
 (define-scale-pattern #uuid "895f4f5d-947a-4645-8af6-2a02fa75f0e1"
   {:belongs-to :pentatonic-major
-   :tuning     :mandolin
-   :order      1}
+   :tuning     :mandolin}
   "5   -   6   -   -   1
    1   -   2   -   3   -
    -   -   -   -   -   -
@@ -2244,8 +2243,7 @@
 
 (define-scale-pattern #uuid "4a5a1484-0fe6-4e7e-bd72-288cdb61e369"
   {:belongs-to :pentatonic-major
-   :tuning     :mandolin
-   :order      1}
+   :tuning     :mandolin}
   "-   -   -   -   -   -
    5   -   6   -   -   1
    1   -   2   -   3   -
@@ -2253,8 +2251,7 @@
 
 (define-scale-pattern #uuid "19acc7ba-5145-4b8b-a936-e9c603347d8e"
   {:belongs-to :pentatonic-major
-   :tuning     :mandolin
-   :order      1}
+   :tuning     :mandolin}
   "-   -   -   -   -   -
    -   -   -   -   -   -
    5   -   6   -   -   1
@@ -2262,8 +2259,7 @@
 
 (define-scale-pattern #uuid "ad111254-d2a1-46ff-a8ae-40f3f52e2ed5"
   {:belongs-to :pentatonic-major
-   :tuning     :mandolin
-   :order      2}
+   :tuning     :mandolin}
   "-   -   -   -   -   -
    6   -   -   1   -   -
    2   -   3   -   -   5
@@ -2271,8 +2267,7 @@
 
 (define-scale-pattern #uuid "51068b44-d374-49a0-baa8-07d69a6a7597"
   {:belongs-to :pentatonic-major
-   :tuning     :mandolin
-   :order      3}
+   :tuning     :mandolin}
   "-   -   -   -   -   -
    -   1   -   -   -   -
    3   -   -   5   -   6
@@ -2280,11 +2275,58 @@
 
 (define-scale-pattern #uuid "72c25a90-86bb-40cd-874c-71c153e157b5"
   {:belongs-to :pentatonic-major
-   :tuning     :mandolin
-   :order      3}
+   :tuning     :mandolin}
   "-   1   -   -   -   -
    3   -   -   5   -   6
    -   -   -   1   -   2
+   -   -   -   -   -   -")
+
+(define-scale-pattern #uuid "5c4d2258-c71b-4cee-8e33-86769891677f"
+  {:belongs-to :pentatonic-major
+   :tuning     :mandolin}
+  "-   -   -   -   -   -
+   -   -   -   -   -   -
+   -   1   -   2   -   3
+   3   -   -   5   -   6")
+
+(define-scale-pattern #uuid "40763c46-3657-47da-be85-340d0ca354d6"
+  {:belongs-to :pentatonic-major
+   :tuning     :mandolin}
+  "-   -   -   -   -   -
+   -   1   -   2   -   3
+   3   -   -   5   -   6
+   -   -   -   -   -   -")
+
+(define-scale-pattern #uuid "6df97b1a-2a94-4f1e-8b3d-cba461494ea3"
+  {:belongs-to :pentatonic-major
+   :tuning     :mandolin}
+  "-   1   -   2   -   3
+   3   -   -   5   -   6
+   -   -   -   -   -   -
+   -   -   -   -   -   -")
+
+(define-scale-pattern #uuid "0d6c5af6-e606-4118-b16e-b9cb3f7f28e7"
+  {:belongs-to :pentatonic-major
+   :tuning     :mandolin}
+  "-   -   -   -   -   -
+   -   -   -   -   -   -
+   2   -   3   -   -   5
+   5   -   6   -   -   1")
+
+(define-scale-pattern #uuid "0f1a1dbe-d5eb-48cd-9532-4968b5704c1d"
+  {:belongs-to :pentatonic-major
+   :tuning     :mandolin}
+  "-   -   -   -   -   -
+   2   -   3   -   -   5
+   5   -   6   -   -   1
+   -   -   -   -   -   -")
+
+(define-scale-pattern #uuid "3f01ecb7-5a7e-4b53-813d-7c7339575b87"
+  {:belongs-to :pentatonic-major
+   :tuning     :mandolin}
+  "2   -   3   -   -   5
+   5   -   6   -   -   1
+   -   -   -   -   -   -
    -   -   -   -   -   -")
 
 (define-scale-pattern #uuid "4bdb1907-9f82-43cc-99a8-3ba4d7802ade"
