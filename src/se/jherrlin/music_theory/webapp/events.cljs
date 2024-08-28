@@ -106,6 +106,15 @@
  (fn [db [_ entity]]
    (get-in db [::fretboards entity :instrument-data-structure])))
 
+(re-frame/reg-sub
+ :fretboards
+ (fn [db [_]]
+   (get db ::fretboards)))
+
+(comment
+  (get @re-frame.db/app-db ::fretboards)
+  )
+
 (re-frame/reg-event-db
  :add-query-params-with-fretboard
  (fn [db [_ entity query-params]]

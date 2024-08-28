@@ -58,7 +58,22 @@
          :as             scale'}                      (music-theory/get-scale scale)
         scale-patterns                                (music-theory/scale-patterns-for-scale-and-instrument scale-names instrument)
         scale-entity                                  @(re-frame/subscribe [::entity])
-        scale-pattern-entities                        @(re-frame/subscribe [::pattern-entities])]
+        scale-pattern-entities                        @(re-frame/subscribe [::pattern-entities])
+        fretboards                                    @(re-frame/subscribe [:fretboards])
+
+        ;; Sort patterns so that the ones closest to the intrument head will be
+        ;; shown first. Remove fretboards where pattern is not shown.
+        entities                                      (->> scale-pattern-entities
+                                                           (map (fn [{:keys [id] :as entity}]
+                                                                  (let [{intervals :fretboard-pattern/intervals}  (music-theory/get-definition id)
+                                                                        {:keys [instrument-data-structure] :as m} (get fretboards entity)]
+                                                                    (assoc m :sort-score (common/sort-fretboard-nr
+                                                                                          (count intervals)
+                                                                                          instrument-data-structure)))))
+                                                           (filter :sort-score)
+                                                           (sort-by :sort-score)
+                                                           (map :id))]
+
     [:<>
      [common/menu]
      [:br]
@@ -89,7 +104,7 @@
      (when (seq scale-patterns)
        [:<>
         [:h2 "Scale patterns"]
-        (for [{:keys [id] :as entity} scale-pattern-entities]
+        (for [{:keys [id] :as entity} entities]
           ^{:key (str "scale-patterns-" id)}
           [:<>
            [common/instrument-view entity path-params query-params deps]

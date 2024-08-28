@@ -344,9 +344,10 @@
 
 (defmulti instrument-view
   (fn [{:keys [id instrument key-of] :as entity} path-params query-params deps]
-    (let [instrument' (music-theory/get-instrument instrument)
-          definition  (music-theory/get-definition id)]
-      [(get instrument' :type) (get definition :type)])))
+    (let [instrument'     (music-theory/get-instrument instrument)
+          definition      (music-theory/get-definition id)
+          instrument-type (get instrument' :type)]
+      [instrument-type (get definition :type)])))
 
 (defmethod instrument-view [:fretboard [:chord]]
   [{:keys [id instrument key-of] :as entity} path-params query-params deps]
@@ -410,7 +411,7 @@
     (def fretboard-matrix fretboard-matrix)
     (def definition definition)
     [:<>
-     [:p (sort-fretboard-nr ;; Use this for sorting
+     #_[:p (sort-fretboard-nr ;; Use this for sorting
           (-> definition :fretboard-pattern/intervals count)
           fretboard-matrix)]
      [instrument-view-fretboard-pattern
