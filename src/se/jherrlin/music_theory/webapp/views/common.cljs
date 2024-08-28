@@ -390,10 +390,11 @@
 (defn sort-fretboard-nr
   "Fretboards with patterns closer to head stock should go first.
   Returns a number."
-  [fretboard-matrix]
+  [intervals-count fretboard-matrix]
   (let [matches       (->> fretboard-matrix
                            (apply concat)
-                           (filter :match?))
+                           (filter :match?)
+                           (take intervals-count))
         nr-of-matches (count matches)
         sum-of-xs     (->> matches (map :x) (reduce +))]
     (when (< 0 nr-of-matches)
@@ -406,8 +407,12 @@
    {:keys [play-tone] :as deps}]
   (let [definition (music-theory/get-definition id)
         fretboard-matrix @(re-frame/subscribe [:fretboard-by-entity entity])]
+    (def fretboard-matrix fretboard-matrix)
+    (def definition definition)
     [:<>
-     [:p (sort-fretboard-nr fretboard-matrix)]  ;; Use this for sorting
+     [:p (sort-fretboard-nr ;; Use this for sorting
+          (-> definition :fretboard-pattern/intervals count)
+          fretboard-matrix)]
      [instrument-view-fretboard-pattern
       {:entity           entity
        :definition       definition
