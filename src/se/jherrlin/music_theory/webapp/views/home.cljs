@@ -2,46 +2,14 @@
   (:require
    [taoensso.timbre :as timbre]
    [se.jherrlin.music-theory.webapp.events :as events]
-   [se.jherrlin.music-theory.webapp.views.common :as common]
-   ["shadcn/button" :refer [Button]]
-   ["shadcn/alert" :refer [Alert AlertTitle AlertDescription]]
-   ["shadcn/label" :refer [Label]]
-   ["shadcn/navigation-menu" :refer [NavigationMenu NavigationMenuList NavigationMenuItem
-                                     NavigationMenuTrigger NavigationMenuContent NavigationMenuLink]]))
-
-
-
-(js/console.log "Label" Label)
-(js/console.log "Button" Button)
-(js/console.log "Alert" Alert)
-
-;; (js/console.log "Accordion" Accordion)
-
+   [se.jherrlin.music-theory.webapp.views.common :as common]))
 
 
 (defn home-view [deps]
   [:<>
    [common/menu]
    [:br]
-   [:> NavigationMenu
- [:> NavigationMenuList
-  [:> NavigationMenuItem
-   [:> NavigationMenuTrigger "Item one"]
-   [:> NavigationMenuContent
-    [:> NavigationMenuLink "Link"]]]]]
-   [:> Alert
-    [:> AlertTitle "Hej"]
-    [:> AlertDescription "Hopp"]]
-   [:> Label {:htmlFor "email"} "derp@derp.se"]
-   [:> Button {:variant "outline"
-                      :on-click (fn [_]
-                                  (js/console.log "In here"))} "Button"]
-   [:div {:class "bg-green-100"}
-    [:h2 "Welcome"]]])
-
-
-
-
+   [:h2 "Welcome"]])
 
 (defn routes [deps]
   (let [route-name :home]

@@ -13,7 +13,9 @@
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
    [se.jherrlin.music-theory.webapp.views.instruments.fretboard :as instruments-fretboard]
-   [se.jherrlin.music-theory.harmonizations :as harmonizations]))
+   [se.jherrlin.music-theory.harmonizations :as harmonizations]
+   ["shadcn/menubar" :refer [Menubar MenubarContent MenubarItem MenubarMenu MenubarSeparator
+                             MenubarShortcut MenubarTrigger]]))
 
 
 (defn debug-view
@@ -89,6 +91,21 @@
           :target "_blank"}
       [:button
        "Source code"]]]))
+
+(defn menu-NEW []
+  (let [current-route-name   @(re-frame/subscribe [:current-route-name])
+        path-params          @(re-frame/subscribe [:path-params])
+        changed-query-params @(re-frame/subscribe [:changed-query-params])
+        key-of               @(re-frame/subscribe [:key-of])]
+    [:div {:style {:class "flex h-9 items-center space-x-1 rounded-md border bg-background p-1 shadow-sm"}}
+     [:> Menubar
+      [:> MenubarMenu
+       [:> MenubarTrigger {:on-click #(js/console.log "derp")} "Table"]
+       [:> MenubarContent
+        [:> MenubarItem "Table"]
+        [:> MenubarItem "Derp"]
+        [:> MenubarItem "Derp"]]
+       [:> MenubarTrigger {:on-click #(js/console.log "derp")} "Table2"]]]]))
 
 (defn chord-selection []
   (let [{:keys [chord] :as path-params} @(re-frame/subscribe [:path-params])

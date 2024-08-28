@@ -150,7 +150,7 @@
        [:> PaginationLink "G"]]
       [:> PaginationItem
        [:> PaginationLink "G#"]]
-      [:> PaginationItem
+      #_[:> PaginationItem
        [:> PaginationNext {:title ""}]]]]]])
 
 (rf/reg-event-db

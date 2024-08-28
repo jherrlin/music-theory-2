@@ -11,4 +11,7 @@
    :compiler-options  {:warnings-as-errors false
                        :warnings           {:fn-deprecated false}}
    :module-hash-names true
-   :modules           {:main {:init-fn se.jherrlin.music-theory.webapp.main/run}}}}}
+   :modules           {:main {:init-fn
+                              se.jherrlin.music-theory.webapp.system/init
+                              ;; se.jherrlin.music-theory.webapp.main/run
+                              }}}}}

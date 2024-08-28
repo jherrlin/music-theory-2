@@ -26,7 +26,8 @@
     (enable-console-print!)
     (println "dev mode")))
 
-(def system-config
+(defn ^:dev/after-load system-config
+  []
   {:webapp/tonejs       nil
    :webapp/music-theory nil
    :webapp/dom          {:root-component root-component
@@ -41,4 +42,4 @@
   (timbre/info "Starting webapp.")
   (re-frame/clear-subscription-cache!)
   (re-frame/dispatch-sync [:initialize-db])
-  (ig/init system-config))
+  (ig/init (system-config)))

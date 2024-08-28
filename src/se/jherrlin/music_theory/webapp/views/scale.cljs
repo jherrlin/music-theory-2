@@ -474,7 +474,7 @@ Returns a seq or maps:
         scale-entity                                  @(re-frame/subscribe [::entity])
         sorted-patterns                               (<sub [::sorted-patterns])]
     [:<>
-     [common/menu]
+     [common/menu-NEW]
      [:br]
      [common/instrument-selection]
      [:br]
