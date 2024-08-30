@@ -9,7 +9,8 @@
    [clojure.string :as str]
    [clojure.set :as set]
    [clojure.data :refer [diff]]
-   [se.jherrlin.music-theory.music-theory :as music-theory]))
+   [se.jherrlin.music-theory.music-theory :as music-theory]
+   [se.jherrlin.music-theory.webapp.utils :refer [<sub >evt]]))
 
 
 (defn merge' [db [k m]]
@@ -171,13 +172,6 @@
   :path   [:harmonization-scale]})
 
 (re-frame/reg-sub :harmonization-scale (fn [db [n']] (get db n')))
-
-(re-frame/reg-event-db
- :navigated
- (fn [db [_ new-match]]
-   (let [old-match   (:current-route db)
-         controllers (rfc/apply-controllers (:controllers old-match) new-match)]
-     (assoc db :current-route (assoc new-match :controllers controllers)))))
 
 (re-frame/reg-event-db
  :initialize-db
