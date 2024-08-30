@@ -3,15 +3,16 @@
    [se.jherrlin.music-theory.models.chord :as models-chord]
    [se.jherrlin.music-theory.models.scale :as models-scale]
    [se.jherrlin.music-theory.models.fretboard-pattern :as models-fretboard-pattern]
-   [se.jherrlin.music-theory.definitions.helpers :as helpers]))
+   [se.jherrlin.music-theory.definitions.helpers :as helpers]
+   [se.jherrlin.music-theory.definitions.generated-scale-patterns :as generated-scale-patterns]))
 
 
 (def definitions
   (atom {:chords         {}
          :chord-patterns {}
          :scales         {}
-         :scale-patterns {}
-         :ids            {}}))
+         :scale-patterns generated-scale-patterns/generated-scale-patterns
+         :ids            generated-scale-patterns/generated-scale-patterns}))
 
 (comment
   (get @definitions :chords)
@@ -147,10 +148,13 @@
 (defn- define-scale-pattern
   "Interpret the scale pattern and add it to the scale pattern state."
   [id {:keys [belongs-to tuning] :as meta-data} pattern]
+  ;; No-op
   (let [pattern (helpers/define-scale-pattern id belongs-to tuning meta-data pattern)]
-    (do
-      (swap! definitions assoc-in [:scale-patterns id] pattern)
-      (swap! definitions assoc-in [:ids id] pattern))))
+    (if (= tuning :mandolin)
+      nil ;; We have generated patterns for mandolin
+      (do
+        (swap! definitions assoc-in [:scale-patterns id] pattern)
+        (swap! definitions assoc-in [:ids id] pattern)))))
 
 
 ;; ---------------

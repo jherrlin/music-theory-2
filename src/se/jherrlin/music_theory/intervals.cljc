@@ -142,5 +142,10 @@
   (->> functions
        (mapv #(get-in intervals-map-by-function [% :semitones]))))
 
+(defn ->index [interva]
+  (get-in intervals-map-by-function [interva :semitones]))
+
 (comment
-  intervals-map-by-function)
+  intervals-map-by-function
+  (->index "3")
+  )

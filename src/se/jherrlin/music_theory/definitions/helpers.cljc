@@ -71,6 +71,25 @@
        scale
        (throw (ex-info "Scale is not valid" (models.scale/explain-scale scale))))))
 
+(defn on-strings [pattern-matrix]
+  (->> pattern-matrix
+       (map-indexed vector)
+       (vec)
+       (filter (fn [[string-idx intervals-on-string]]
+                 (some seq intervals-on-string)))
+       (map (fn [[string-idx _]] string-idx))
+       (vec)))
+
+(defn inversion?
+  [pattern-matrix]
+  (->> pattern-matrix
+       (reverse)
+       (apply concat)
+       (remove nil?)
+       (first)
+       (= "1")
+       (not)))
+
 (defn define-scale-pattern
   [id belongs-to tuning meta-data pattern-str]
   (let [pattern-matrix (->> pattern-str
@@ -82,31 +101,21 @@
                             (keep identity)
                             (into []))
         meta-data      (qualify-keywords meta-data "fretboard-pattern")
+        indexes        (mapv intervals/->index intervals)
         ;; On what strings are the pattern defined. Mainly used for triads.
-        on-strings     (->> pattern-matrix
-                            (map-indexed vector)
-                            (vec)
-                            (filter (fn [[string-idx intervals-on-string]]
-                                      (some seq intervals-on-string)))
-                            (map (fn [[string-idx _]] string-idx))
-                            (vec))
-        inversion?     (->> pattern-matrix
-                            (reverse)
-                            (apply concat)
-                            (remove nil?)
-                            (first)
-                            (= "1")
-                            (not))
+        on-strings'    (on-strings pattern-matrix)
+        inversion?'    (inversion? pattern-matrix)
         pattern*       (merge
                         {:id                           id
                          :type                         [:scale :pattern]
+                         :fretboard-pattern/indexes    indexes
                          :fretboard-pattern/belongs-to belongs-to
                          :fretboard-pattern/intervals  intervals
                          :fretboard-pattern/tuning     tuning
                          :fretboard-pattern/pattern    pattern-matrix
                          :fretboard-pattern/str        pattern-str
-                         :fretboard-pattern/inversion? inversion?
-                         :fretboard-pattern/on-strings on-strings
+                         :fretboard-pattern/inversion? inversion?'
+                         :fretboard-pattern/on-strings on-strings'
                          :fretboard-pattern/order      1000}
                         meta-data)]
     (if (models.fretboard-pattern/validate-fretboard-pattern? pattern*)
