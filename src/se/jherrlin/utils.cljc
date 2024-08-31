@@ -47,6 +47,15 @@
 (fformat "%5d" 3)
 (fformat "Hello there, %s" "bob")
 
+
+(defn fretboard-matrix->x+y-map
+  [fretboard-matrix]
+  (->> fretboard-matrix
+       (apply concat)
+       (map (fn [{:keys [x y] :as m}]
+              [[x y] m]))
+       (into {})))
+
 (defn rotate-until
   "Rotate collection `xs` util `pred`.
 
