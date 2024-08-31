@@ -3,11 +3,12 @@
 
   Namespace only used for REPL dev."
   (:require [clojure.string :as str]
+            [clojure.pprint :as pprint]
             [se.jherrlin.utils :refer [trim-matrix map-matrix]]
             [se.jherrlin.music-theory.definitions :as definitions]
             [se.jherrlin.music-theory.fretboard :as fretboard]
             [se.jherrlin.music-theory.instruments :as instruments]
-            ))
+            [se.jherrlin.music-theory.definitions.helpers :as definitions.helpers]))
 
 (comment
   (remove-ns 'se.jherrlin.music-theory.find-scale-patterns)
@@ -70,7 +71,7 @@
     (some->> fretboard-matrix-with-intervals
              (->found-matched-in-map x-min x-max intervals-to-find)
              (->pattern-matrix nr-of-strings nr-of-frets x-min x-max)
-             #_(trim-matrix)
+             (trim-matrix)
              #_(->pattern-str))))
 
 (find-scale-patterns
@@ -207,7 +208,20 @@
 
 
 
-(defn take-matrix [n matrix]
+(defn take-matrix
+  "Take `n` number of rows in matrix.
+
+
+  (take-matrix
+   2
+   [[1 2 3 4]
+    [1 2 3 4]
+    [1 2 3 4]])
+  ;; =>
+  [[1 2]
+   [1 2]
+   [1 2]]"
+  [n matrix]
   (->> matrix
        (mapv (partial take n))
        (mapv (partial mapv identity))))
@@ -224,7 +238,19 @@
    [1 2]]
   )
 
-(defn drop-matrix [n matrix]
+(defn drop-matrix
+  "Drop `n` number of rows in matrix.
+
+  (drop-matrix
+   1
+   [[1 2 3 4]
+    [1 2 3 4]
+    [1 2 3 4]])
+  ;; =>
+  [[2 3 4]
+   [2 3 4]
+   [2 3 4]]"
+  [n matrix]
   (->> matrix
        (mapv (partial drop n))
        (mapv (partial mapv identity))))
@@ -238,8 +264,8 @@
   ;; =>
   [[2 3 4]
    [2 3 4]
-   [2 3 4]]
-  )
+   [2 3 4]])
+
 
 (defn fretboard-matrix-portions
   [n fretboard-matrix-in]
@@ -251,21 +277,30 @@
        (drop-matrix 1 fretboard-matrix)
        (conj acc (take-matrix n fretboard-matrix))))))
 
-
-(->> (definitions/scales)
-                                                  (filter (comp #{:pentatonic-major} :scale))
-                                                  first)
-
-(let [intervals ["1" "2" "3" "5" "6"]
+(let [instrument :mandolin
       fretboard-matrix-with-intervals
       (fretboard/create-fretboard-matrix
        :d
        18
-       (-> (instruments/instrument :mandolin)
+       (-> (instruments/instrument instrument)
            (get :tuning)))]
 
-  (->> (fretboard-matrix-portions 7 fretboard-matrix-with-intervals)
-       (map (fn [fretboard-matrix]
-              {:fretboard-matrix fretboard-matrix
-               :pattern (find-scale-patterns intervals fretboard-matrix)}
-              (find-scale-patterns intervals fretboard-matrix)))))
+  (->> (for [{scale-name      :scale
+              scale-intervals :scale/intervals
+              :as             scale} (definitions/scales)
+             intervals               (rotate-intervals scale-intervals)
+             fretboard-matrix        (fretboard-matrix-portions 7 fretboard-matrix-with-intervals)]
+         (let [pattern (find-scale-patterns intervals fretboard-matrix)]
+           {:id                            (random-uuid)
+            :fretboard-pattern/tuning      instrument
+            :fretboard-pattern/on-strings  (definitions.helpers/on-strings pattern)
+            :fretboard-pattern/belongs-to  scale-name
+            :fretboard-pattern/intervals   (first intervals)
+            :fretboard-pattern/pattern-str (->pattern-str pattern)
+            :fretboard-pattern/inversion?  (definitions.helpers/inversion? pattern)
+            :fretboard-pattern/pattern     pattern}))
+       (mapv (juxt :id identity))
+       (into {})
+       (clojure.pprint/pprint)
+       (with-out-str)
+       (spit "src/se/jherrlin/music_theory/definitions/generated_scale_patterns.edn")))
