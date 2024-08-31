@@ -108,6 +108,64 @@
   [nil nil nil]
   [nil nil nil]])
 
+(defn take-matrix
+  "Take `n` number of rows in matrix.
+
+
+  (take-matrix
+   2
+   [[1 2 3 4]
+    [1 2 3 4]
+    [1 2 3 4]])
+  ;; =>
+  [[1 2]
+   [1 2]
+   [1 2]]"
+  [n matrix]
+  (->> matrix
+       (mapv (partial take n))
+       (mapv (partial mapv identity))))
+
+(comment
+  (take-matrix
+   2
+   [[1 2 3 4]
+    [1 2 3 4]
+    [1 2 3 4]])
+  ;; =>
+  [[1 2]
+   [1 2]
+   [1 2]]
+  )
+
+(defn drop-matrix
+  "Drop `n` number of rows in matrix.
+
+  (drop-matrix
+   1
+   [[1 2 3 4]
+    [1 2 3 4]
+    [1 2 3 4]])
+  ;; =>
+  [[2 3 4]
+   [2 3 4]
+   [2 3 4]]"
+  [n matrix]
+  (->> matrix
+       (mapv (partial drop n))
+       (mapv (partial mapv identity))))
+
+(comment
+  (drop-matrix
+   1
+   [[1 2 3 4]
+    [1 2 3 4]
+    [1 2 3 4]])
+  ;; =>
+  [[2 3 4]
+   [2 3 4]
+   [2 3 4]])
+
 (defn trim-matrix
   "Trim a matrix left and right by `pred`.
 

@@ -4,7 +4,7 @@
   Namespace only used for REPL dev."
   (:require [clojure.string :as str]
             [clojure.pprint :as pprint]
-            [se.jherrlin.utils :refer [trim-matrix map-matrix]]
+            [se.jherrlin.utils :refer [trim-matrix map-matrix take-matrix drop-matrix]]
             [se.jherrlin.music-theory.definitions :as definitions]
             [se.jherrlin.music-theory.fretboard :as fretboard]
             [se.jherrlin.music-theory.instruments :as instruments]
@@ -204,67 +204,6 @@
          (str/join "\n\n####\n\n")
          print))
   )
-
-
-
-
-(defn take-matrix
-  "Take `n` number of rows in matrix.
-
-
-  (take-matrix
-   2
-   [[1 2 3 4]
-    [1 2 3 4]
-    [1 2 3 4]])
-  ;; =>
-  [[1 2]
-   [1 2]
-   [1 2]]"
-  [n matrix]
-  (->> matrix
-       (mapv (partial take n))
-       (mapv (partial mapv identity))))
-
-(comment
-  (take-matrix
-   2
-   [[1 2 3 4]
-    [1 2 3 4]
-    [1 2 3 4]])
-  ;; =>
-  [[1 2]
-   [1 2]
-   [1 2]]
-  )
-
-(defn drop-matrix
-  "Drop `n` number of rows in matrix.
-
-  (drop-matrix
-   1
-   [[1 2 3 4]
-    [1 2 3 4]
-    [1 2 3 4]])
-  ;; =>
-  [[2 3 4]
-   [2 3 4]
-   [2 3 4]]"
-  [n matrix]
-  (->> matrix
-       (mapv (partial drop n))
-       (mapv (partial mapv identity))))
-
-(comment
-  (drop-matrix
-   1
-   [[1 2 3 4]
-    [1 2 3 4]
-    [1 2 3 4]])
-  ;; =>
-  [[2 3 4]
-   [2 3 4]
-   [2 3 4]])
 
 
 (defn fretboard-matrix-portions
