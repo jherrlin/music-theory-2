@@ -1,11 +1,13 @@
 (ns se.jherrlin.music-theory.webapp.views.bookmarks
   (:require
    [clojure.string :as str]
+   [clojure.data :refer [diff]]
    [re-frame.alpha :as re-frame]
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
-   [se.jherrlin.music-theory.webapp.views.common :as common]))
+   [se.jherrlin.music-theory.webapp.views.common :as common]
+   [se.jherrlin.music-theory.models.entity :as entity]))
 
 (re-frame/reg-event-fx
  :add-bookmark
@@ -20,7 +22,12 @@
                                   new-bookmark-str
                                   (str existing-bookmarks-str "_" new-bookmark-str))
          new-query-params       (assoc query-params :bookmarks new-bookmarks-str)]
-     {:push-state [current-route-name path-params new-query-params]})))
+     {:push-state [current-route-name
+                   path-params
+                   (-> (diff
+                        new-query-params
+                        (events/default-query-params))
+                       (first))]})))
 
 (comment
   (get-in @re-frame.db/app-db [:query-params])
@@ -30,9 +37,10 @@
  :remove-bookmark
  (fn [{:keys [db]} [_ bookmark]]
    {:pre [(music-theory/valid-entity? bookmark)]}
-   (let [current-route-name     (get db :current-route-name)
-         path-params            (get db :path-params)
-         query-params           (get db :query-params)
+   (let [current-route-name (get db :current-route-name)
+         path-params        (get db :path-params)
+         query-params       (get db :query-params)
+
          existing-bookmarks-str (get-in db [:query-params :bookmarks])
          new-bookmark-str       (music-theory/entity-to-str bookmark)
          new-bookmarks-str      (-> existing-bookmarks-str
@@ -40,7 +48,12 @@
                                     (str/replace #"_$" "")
                                     (str/replace #"^_" ""))
          new-query-params       (assoc query-params :bookmarks new-bookmarks-str)]
-     {:push-state [current-route-name path-params new-query-params]})))
+     {:push-state [current-route-name
+                   path-params
+                   (-> (diff
+                        new-query-params
+                        (events/default-query-params))
+                       (first))]})))
 
 (re-frame/reg-sub
  :bookmark-exists?
@@ -86,10 +99,15 @@
           [:br]
           [:br]]))]))
 
-(defn prepair-fretboard-entities [s query-params]
-  (doseq [entity (music-theory/str-to-entities s)]
-    (let [fretboard-matrix (music-theory/instrument-data-structure entity query-params)]
-      (re-frame/dispatch [:add-entity-instrument-data-structure entity fretboard-matrix]))))
+(re-frame/reg-event-fx
+ ::start
+ (fn [{:keys [db]} [_event-id bookmarks-str]]
+   (let [query-params     (events/query-params db)]
+     {:fx (->> bookmarks-str
+               music-theory/str-to-entities
+               (mapv (fn [entity]
+                      (let [fretboard-matrix (music-theory/instrument-data-structure entity query-params)]
+                        [:dispatch [:add-entity-instrument-data-structure entity fretboard-matrix]]))))})))
 
 (defn routes [deps]
   (let [route-name :bookmarks]
@@ -101,8 +119,7 @@
       :controllers
       [{:parameters {:query events/query-keys}
         :start      (fn [{q :query}]
-                      (let [bookmarks   (get q :bookmarks)
-                            nr-of-frets (get q :nr-of-frets)]
-                        (when (seq bookmarks)
-                          (prepair-fretboard-entities bookmarks q)))
-                      (events/do-on-url-change route-name {} q))}]}]))
+                      (let [bookmarks-str (get q :bookmarks)]
+                        (events/do-on-url-change route-name {} q)
+                        (when (seq bookmarks-str)
+                          (re-frame/dispatch [::start bookmarks-str]))))}]}]))
