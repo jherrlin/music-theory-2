@@ -1,11 +1,13 @@
 (ns se.jherrlin.music-theory.webapp.components.reitit
   (:require
    [integrant.core :as ig]
+   [clojure.data :refer [diff]]
+   [se.jherrlin.music-theory.webapp.events :as events]
    [re-frame.core :as re-frame]
    [re-frame.db]
    [reitit.frontend.controllers :as rfc]
    [reitit.frontend.easy :as rfe]
-[reitit.coercion.schema :as rsc]
+   [reitit.coercion.schema :as rsc]
    [reitit.frontend :as rf]
    [taoensso.timbre :as timbre]))
 
@@ -21,13 +23,29 @@
 
 (re-frame/reg-event-fx
  :push-state
- (fn [_ [_ & route]]
-   {:push-state route}))
+ (fn [_ [_ [route-name path-params query-params :as route]]]
+   (let [qp (-> (diff
+                 query-params
+                 (events/default-query-params))
+                (first))]
+     {:dispatch [:query-params query-params]
+      :push-state
+      [route-name
+       path-params
+       qp]})))
 
 (re-frame/reg-event-fx
  :href
- (fn [_ [_ route]]
-   {:push-state route}))
+ (fn [_ [_ [route-name path-params query-params :as route]]]
+   (let [qp (-> (diff
+                 query-params
+                 (events/default-query-params))
+                (first))]
+     {:dispatch [:query-params query-params]
+      :push-state
+      [route-name
+       path-params
+       qp]})))
 
 (re-frame/reg-event-db
  ::navigated

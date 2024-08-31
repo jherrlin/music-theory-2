@@ -38,6 +38,8 @@
                         :show-tones            false
                         :bookmarks             ""}})
 
+(defn default-query-params []
+  (get init-db query-params))
 
 (def Query
   [:map
