@@ -23,28 +23,54 @@
        (into {})))
 
 (defn ->found-matched-in-map
-  [min-x max-x intervals fretboard-matrix-with-intervals]
-  (let [intervals-to-find intervals
-        fretboard-map     (fretboard-matrix->map fretboard-matrix-with-intervals)
-        nr-of-strings     (-> fretboard-matrix-with-intervals count)]
-    (loop [[interval & rst-intervals :as all-intervals] intervals-to-find
+  [min-x max-x intervals-to-find fretboard-matrix-with-intervals]
+  (let [fretboard-map   (fretboard-matrix->map fretboard-matrix-with-intervals)
+        nr-of-strings   (-> fretboard-matrix-with-intervals count)
+        intervals-count (count intervals-to-find)]
+    (loop [matches-counter                              0
+           [interval & rst-intervals :as all-intervals] intervals-to-find
            x                                            min-x
            y                                            (dec nr-of-strings)
            matches                                      {}]
-      (if (or (nil? interval)
-              (and (= x max-x)
-                   (= y 0)))
-        (when (= (-> matches keys count) (-> intervals-to-find count))
-          matches)
-        (let [{looking-at-interval :interval :as fret} (get fretboard-map [x y])]
-          (recur
-           (if (= looking-at-interval interval)
-             rst-intervals all-intervals)
-           (if (= x max-x) min-x (inc x))
-           (if (= x max-x) (dec y) y)
-           (if (not= looking-at-interval interval)
-             matches
-             (assoc matches [x y] fret))))))))
+      (let [last-interval? (and interval (not rst-intervals))
+            x-end?         (= x max-x)
+            end?           (and x-end?
+                                (= y 0))]
+        (if end?
+          (->> matches
+               vals
+               (filter (comp #{intervals-count} count))
+               (mapv #(mapv identity %)))
+          (let [{looking-at-interval :interval
+                 fret-x              :x
+                 fret-y              :y
+                 :as                 fret} (get fretboard-map [x y])
+                intervals-matches?         (= looking-at-interval interval)
+                last-interval-match?       (and intervals-matches? last-interval?)]
+            (recur
+             (cond-> matches-counter
+               last-interval-match? inc)
+
+             (cond
+               last-interval-match?
+               intervals-to-find
+
+               intervals-matches?
+               rst-intervals
+
+               :else
+               all-intervals)
+
+             (cond
+               last-interval-match? x
+               (= x max-x)          min-x
+               :else                (inc x))
+
+             (cond-> y
+               (= x max-x) dec)
+
+             (cond-> matches
+               intervals-matches? (update matches-counter conj [fret-x fret-y])))))))))
 
 (defn ->pattern-matrix
   [nr-of-strings nr-of-frets x-min x-max matched-map]

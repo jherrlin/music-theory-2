@@ -26,3 +26,9 @@ format:
 
 diagnostics:
 	clojure-lsp diagnostics
+
+circle-ci-test:
+	clojure -X:test
+
+test:
+	clj -X:test

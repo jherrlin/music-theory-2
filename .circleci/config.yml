@@ -15,6 +15,7 @@ jobs:
             - "SHA256:AKBnW00688qMrbkk/zHqrO7lkN5KK5PqiMvz8mcnKcM"
       - checkout
       - run: make install
+      - run: make test
       - run: make release-frontend
       - run: mv -f ./resources/public/js/main.*.js ./
       - run: mv -f ./resources/public/index.html ./index.html.bak
