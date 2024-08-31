@@ -292,18 +292,16 @@
              fretboard-matrix        (fretboard-matrix-portions 7 fretboard-matrix-with-intervals)]
          (let [pattern     (find-scale-patterns intervals fretboard-matrix)
                pattern-str (->pattern-str pattern)]
-           {:type                          [:scale :pattern]
-            :fretboard-pattern/tuning      instrument
-            :fretboard-pattern/on-strings  (definitions.helpers/on-strings pattern)
-            :fretboard-pattern/belongs-to  scale-name
-            :fretboard-pattern/intervals   intervals
-            :fretboard-pattern/str         pattern-str
-            :fretboard-pattern/pattern-str pattern-str
-            :fretboard-pattern/inversion?  (definitions.helpers/inversion? pattern)
-            :fretboard-pattern/pattern     pattern}))
-       (mapv (juxt :fretboard-pattern/pattern-str identity))
-       (into {})
-       (vals)
+           {:type                           [:scale :pattern]
+            :fretboard-pattern/tuning       instrument
+            :fretboard-pattern/on-strings   (definitions.helpers/on-strings pattern)
+            :fretboard-pattern/belongs-to   scale-name
+            :fretboard-pattern/intervals    intervals
+            :fretboard-pattern/pattern-hash (hash pattern)
+            :fretboard-pattern/str          pattern-str
+            :fretboard-pattern/pattern-str  pattern-str
+            :fretboard-pattern/inversion?   (definitions.helpers/inversion? pattern)
+            :fretboard-pattern/pattern      pattern}))
        (set)
        (mapv #(assoc % :id (random-uuid)))
        (mapv (juxt :id identity))
