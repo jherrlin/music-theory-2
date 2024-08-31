@@ -11,10 +11,14 @@
    [se.jherrlin.music-theory.webapp.views.common :as common]))
 
 
+(doseq [{:keys [n s e]}
+        [{:n ::entity}]]
+  (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
+  (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
+
 (defn focus-view [{:keys [play-tone] :as deps}]
   (let [{:keys [id instrument key-of] :as path-params} @(re-frame/subscribe [:path-params])
         query-params                                   @(re-frame/subscribe [:query-params])
-        fretboard-matrix                               @(re-frame/subscribe [:fretboard-matrix])
         definition                                     (music-theory/get-definition id)
         instrument'                                    (music-theory/get-instrument instrument)
         entity                                         (music-theory/entity key-of instrument id)]
@@ -23,6 +27,14 @@
      [:br]
      [common/definition-info-for-focus definition instrument' path-params query-params]
      [common/instrument-view entity path-params query-params deps]]))
+
+(re-frame/reg-event-fx
+ ::start
+ (fn [{:keys [db]} [_event-id entity]]
+   (let [query-params     (events/query-params db)
+         fretboard-matrix (music-theory/instrument-data-structure entity query-params)]
+     {:fx [[:dispatch [::entity entity]]
+           [:dispatch [:add-entity-instrument-data-structure entity fretboard-matrix]]]})))
 
 (defn routes [deps]
   (let [route-name :focus]
@@ -39,7 +51,5 @@
       [{:parameters {:path  [:instrument :key-of :id]
                      :query events/query-keys}
         :start      (fn [{p :path q :query}]
-                      (let [entity p
-                            fretboard-matrix (music-theory/instrument-data-structure entity q)]
-                        (re-frame/dispatch [:add-entity-instrument-data-structure entity fretboard-matrix]))
-                      (events/do-on-url-change route-name p q))}]}]))
+                      (events/do-on-url-change route-name p q)
+                      (re-frame/dispatch [::start p]))}]}]))
