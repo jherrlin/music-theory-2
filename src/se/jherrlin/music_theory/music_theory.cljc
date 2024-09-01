@@ -33,6 +33,7 @@
 (def valid-entity? models.entity/valid-entity?)
 (def valid-entities? models.entity/valid-entities?)
 (def entity-to-str models.entity/entity-to-str)
+(def entities-to-str models.entity/entities-to-str)
 (def str-to-entities models.entity/str-to-entities)
 (def fretboard-entity? models.entity/fretboard-entity?)
 (def select-entity-keys models.entity/select-entity-keys)

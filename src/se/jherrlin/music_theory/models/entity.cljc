@@ -71,6 +71,12 @@
      :key-of     (keyword key-of)
      :id         (parse-uuid id)}))
 
+(defn entities-to-str
+  [entities]
+  (->> entities
+       (map entity-to-str)
+       (str/join "_")))
+
 (defn str-to-entities [s]
   (->> (str/split s "_")
        (map str-to-entity)))

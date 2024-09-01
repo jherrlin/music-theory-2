@@ -1,13 +1,16 @@
 (ns se.jherrlin.music-theory.webapp.views.bookmarks
   (:require
    [clojure.string :as str]
+   [se.jherrlin.music-theory.webapp.utils :refer [<sub >evt]]
    [clojure.data :refer [diff]]
    [re-frame.alpha :as re-frame]
    [reitit.coercion.malli]
+   [se.jherrlin.utils :as utils]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
    [se.jherrlin.music-theory.webapp.views.common :as common]
-   [se.jherrlin.music-theory.models.entity :as entity]))
+   [se.jherrlin.music-theory.models.entity :as entity]
+   [re-frame.db :as db]))
 
 (re-frame/reg-event-fx
  :add-bookmark
@@ -80,6 +83,46 @@
 
 (re-frame/reg-sub :bookmarks (fn [db [n']] (get db n')))
 
+(defn move-bookmark [db f entity]
+  (let [current-route-name  (get db :current-route-name)
+        path-params         (get db :path-params)
+        query-params        (get db :query-params)
+        bookmarks           (get db :bookmarks)
+        entity-idx          (->> bookmarks
+                                 (map-indexed vector)
+                                 (filter (comp #{entity} second))
+                                 ffirst)
+        new-bookmarks-order (->> bookmarks
+                                 (vec)
+                                 (utils/vec-remove entity-idx)
+                                 (utils/list-insert entity (f entity-idx)))
+        new-bookmarks-str   (-> new-bookmarks-order
+                                music-theory/entities-to-str
+                                (str/replace #"_$" "")
+                                (str/replace #"^_" ""))
+        new-query-params    (assoc query-params :bookmarks new-bookmarks-str)]
+    {:push-state [current-route-name
+                  path-params
+                  (-> (diff
+                       new-query-params
+                       (events/default-query-params))
+                      (first))]}))
+
+(re-frame/reg-event-fx
+ ::move-bookmark-down
+ (fn [{:keys [db]} [_event-id entity]]
+   (move-bookmark db inc entity)))
+
+(re-frame/reg-event-fx
+ ::move-bookmark-up
+ (fn [{:keys [db]} [_event-id entity]]
+   (move-bookmark db dec entity)))
+
+(re-frame/reg-event-fx
+ ::move-bookmark-top
+ (fn [{:keys [db]} [_event-id entity]]
+   (move-bookmark db (constantly 0) entity)))
+
 (defn bookmarks-component [deps]
   (let [path-params  @(re-frame/subscribe [:path-params])
         query-params @(re-frame/subscribe [:query-params])
@@ -95,6 +138,10 @@
           [common/definition-info-for-focus
            entity definition instrument path-params query-params]
           [:br]
+          "Move: "
+          [:button {:on-click #(>evt [::move-bookmark-top entity])} "Top"]
+          [:button {:on-click #(>evt [::move-bookmark-up entity])} "Up"]
+          [:button {:on-click #(>evt [::move-bookmark-down entity])} "Down"]
           [common/instrument-view entity path-params query-params deps]
           [:br]
           [:br]]))]))
