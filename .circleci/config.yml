@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - checkout
-      - run: make test
+      - run: make circle-ci-test
 
   build-and-commit:
     docker:
