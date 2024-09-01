@@ -1,5 +1,18 @@
 version: 2
 jobs:
+  test:
+    docker:
+      # specify the version you desire here
+      - image: cimg/clojure:1.11.1-browsers
+
+    environment:
+      JVM_OPTS: -Xmx3200m
+      TZ: "Europe/Stockholm"
+
+    steps:
+      - checkout
+      - run: make test
+
   build-and-commit:
     docker:
       # specify the version you desire here
@@ -15,7 +28,6 @@ jobs:
             - "SHA256:AKBnW00688qMrbkk/zHqrO7lkN5KK5PqiMvz8mcnKcM"
       - checkout
       - run: make install
-      - run: make circle-ci-test
       - run: make release-frontend
       - run: mv -f ./resources/public/js/main.*.js ./
       - run: mv -f ./resources/public/index.html ./index.html.bak
@@ -41,6 +53,7 @@ workflows:
   version: 2
   build-deploy:
     jobs:
+      - test
       - build-and-commit:
           filters:
             branches:
