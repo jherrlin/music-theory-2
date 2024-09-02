@@ -209,7 +209,7 @@
         path-params          @(re-frame/subscribe [:path-params])
         query-params         @(re-frame/subscribe [:query-params])
         changed-query-params @(re-frame/subscribe [:changed-query-params])]
-    (when-not (= current-route-name :focus)
+    #_(when-not (= current-route-name :focus)
       [:a {:href (rfe/href :focus (merge path-params entity) changed-query-params)}
        [:button "Focus"]])))
 
