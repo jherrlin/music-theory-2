@@ -66,7 +66,7 @@
   (str (-> instrument name) "," (-> key-of name) "," id))
 
 (defn str-to-entity [s]
-  (let [[instrument key-of id] (str/split s ",")]
+  (let [[instrument key-of id] (str/split s #",")]
     {:instrument (keyword instrument)
      :key-of     (keyword key-of)
      :id         (parse-uuid id)}))
@@ -75,19 +75,11 @@
   [entities]
   (->> entities
        (map entity-to-str)
-       (str/join "_")))
+       (str/join #"_")))
 
 (defn str-to-entities [s]
-  (->> (str/split s "_")
-       (map str-to-entity)))
-
-(let [m {:instrument :guitar
-         :key-of     :c
-         :id         #uuid "c91cddfe-f776-4c0c-8125-4f4c5d074e77"}]
-  (->> m
-       (entity-to-str)
-       (str-to-entity)
-       (= m)))
+  (->> (str/split s #"_")
+       (mapv str-to-entity)))
 
 (str-to-entities
  "guitar,c,94f5f7a4-d852-431f-90ca-9e99f89bbb9c")
