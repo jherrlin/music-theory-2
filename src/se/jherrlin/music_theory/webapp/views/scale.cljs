@@ -2,6 +2,8 @@
   (:require
    [re-frame.alpha :as re-frame]
    [reitit.coercion.malli]
+   [clojure.string :as str]
+   [se.jherrlin.music-theory.webapp.utils :refer [<sub >evt]]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
    [se.jherrlin.music-theory.webapp.views.common :as common]))
@@ -52,6 +54,7 @@
 (defn scale-component [deps]
   (let [{:keys [id scale instrument] :as path-params} @(re-frame/subscribe [:path-params])
         query-params                                  @(re-frame/subscribe [:query-params])
+        scale-patterns-starts-on                      (<sub [:scale-patterns-starts-on])
         {instrument-type :type :as instrument'}       (music-theory/get-instrument instrument)
         {scale-intervals :scale/intervals
          scale-names     :scale/scale-names
@@ -65,8 +68,12 @@
         ;; shown first. Remove fretboards where pattern is not shown.
         entities                                      (->> scale-pattern-entities
                                                            (map (fn [{:keys [id] :as entity}]
-                                                                  (let [{intervals :fretboard-pattern/intervals}  (music-theory/get-definition id)
-                                                                        {:keys [instrument-data-structure] :as m} (get fretboards entity)]
+                                                                  (merge (music-theory/get-definition id) entity)))
+                                                           (filter (fn [{intervals :fretboard-pattern/intervals}]
+                                                                     ((set scale-patterns-starts-on)
+                                                                      (first intervals))))
+                                                           (map (fn [{intervals :fretboard-pattern/intervals :as entity}]
+                                                                  (let [{:keys [instrument-data-structure] :as m} (get fretboards (select-keys entity [:id :instrument :key-of]))]
                                                                     (assoc m :sort-score (common/sort-fretboard-nr
                                                                                           (count intervals)
                                                                                           instrument-data-structure)))))
@@ -94,6 +101,9 @@
        :trim-fretboard? (= instrument-type :fretboard)
        :nr-of-octavs?   (= instrument-type :keyboard)}]
      [:br]
+
+     #_[:p (str/join "," scale-intervals)]
+
      [common/definition-view-detailed
       scale' instrument' path-params query-params]
      [:br]

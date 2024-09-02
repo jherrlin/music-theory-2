@@ -1,6 +1,7 @@
 (ns se.jherrlin.music-theory.webapp.events
   (:require
    [reagent.dom :as rd]
+   [se.jherrlin.music-theory.webapp.utils :refer [<sub >evt]]
    [re-frame.alpha :as re-frame]
    [reitit.coercion.spec :as rss]
    [reitit.frontend :as rf]
@@ -27,16 +28,17 @@
                         :scale               :major
                         :harmonization-id    :triads
                         :harmonization-scale :major}
-   query-params        {:nr-of-frets           15
-                        :nr-of-octavs          2
-                        :as-intervals          false
-                        :as-text               false
-                        :debug                 false
-                        :surrounding-intervals false
-                        :surrounding-tones     false
-                        :show-octave           false
-                        :show-tones            false
-                        :bookmarks             ""}})
+   query-params        {:nr-of-frets              15
+                        :nr-of-octavs             2
+                        :as-intervals             false
+                        :as-text                  false
+                        :debug                    false
+                        :surrounding-intervals    false
+                        :surrounding-tones        false
+                        :show-octave              false
+                        :show-tones               false
+                        :scale-patterns-starts-on "1,3,5"
+                        :bookmarks                ""}})
 
 (defn default-query-params []
   (get init-db query-params))
@@ -52,11 +54,10 @@
    [:show-octave           {:optional true} boolean?]
    [:show-tones            {:optional true} boolean?]
    [:debug                 {:optional true} boolean?]
-   [:bookmarks             {:optional true} any?]])
+   [:bookmarks             {:optional true} any?]
+   [:scale-patterns-starts-on {:optional true} any?]])
 
-(def query-keys
-  [:nr-of-frets :as-intervals :as-text :nr-of-octavs :debug :show-tones
-   :surrounding-intervals :surrounding-tones :show-octave :bookmarks])
+(def query-keys (->> Query rest (mapv first)))
 
 (def events-
   [{:n :current-route-name}
@@ -85,6 +86,8 @@
   (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
   (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
 
+
+
 (re-frame/reg-event-db
  :add-entity-instrument-data-structure
  (fn [db [_ entity fretboard]]
@@ -100,8 +103,17 @@
         (query-params init-db))
        (first))))
 
+(re-frame/reg-sub
+ :scale-patterns-starts-on
+ (fn [db _]
+   (let [query-params                 (get db :query-params)
+         scale-patterns-starts-on-str (get query-params :scale-patterns-starts-on)]
+     (when (seq scale-patterns-starts-on-str)
+       (str/split scale-patterns-starts-on-str #",")))))
+
 (comment
   @(re-frame/subscribe [:changed-query-params])
+  (<sub [:scale-patterns-starts-on])
   )
 
 (re-frame/reg-sub
