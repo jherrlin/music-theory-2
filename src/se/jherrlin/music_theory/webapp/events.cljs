@@ -11,11 +11,17 @@
    [clojure.set :as set]
    [clojure.data :refer [diff]]
    [se.jherrlin.music-theory.music-theory :as music-theory]
-   [se.jherrlin.music-theory.webapp.utils :refer [<sub >evt]]))
+   [se.jherrlin.music-theory.webapp.utils :refer [<sub >evt]]
+   [re-frame.db :as db]))
 
 
 (defn merge' [db [k m]]
   (assoc db k (merge (get db k) m)))
+
+(def app-db-path ::events)
+
+(defn path [x]
+  (-> [app-db-path x] flatten vec))
 
 (def query-params :query-params)
 
@@ -154,18 +160,70 @@
   )
 
 (re-frame/reg-flow
- {:id     ::instrument
-  :inputs {:i [:path-params :instrument]}
-  :output (fn [{:keys [i]}] (music-theory/get-instrument i))
-  :path   [:instrument]})
+ {:id     ::key-of
+  :inputs {:key-of [:path-params :key-of]}
+  :output :key-of
+  :path   (path ::key-of)})
+
+(re-frame/reg-flow
+ (let [inputs {:instrument-id (re-frame/flow<- ::instrument)}
+       id     ::instrument-id]
+   {:id          id
+    :live-inputs inputs
+    :live?       :instrument-id
+    :inputs      inputs
+    :output      (comp :id :instrument-id)
+    :path        (path id)}))
+
+(re-frame/reg-flow
+ (let [inputs {:scale (re-frame/flow<- ::scale)}]
+   {:id          ::scale-id
+    :live-inputs inputs
+    :inputs      inputs
+    :live?       :scale
+    :output      (comp :id :scale)
+    :path        (path ::scale-id)}))
+
+(re-frame/reg-flow
+ (let [inputs {:scale (re-frame/flow<- ::scale)}]
+   {:id          ::scale-names
+    :live-inputs inputs
+    :inputs      inputs
+    :live?       :scale
+    :output      (comp :scale/scale-names :scale)
+    :path        (path :scale/scale-names)}))
+
+(comment
+  (get-in @re-frame.db/app-db (path ::scale-id))
+  @(re-frame/subscribe [:flow {:id ::scale-id}])
+  )
+
+
+;;(re-frame/reg-sub ::ttl-max :-> (comp ::ttl-max app-db-path-))
+
+;;
+;; Old ones, not using `path` fn
+;;
+
+(re-frame/reg-flow
+ (let [inputs {:instrument-id [:path-params :instrument]}]
+   {:id          ::instrument
+    :live-inputs inputs
+    :live?       :instrument-id
+    :inputs      inputs
+    :output      (comp music-theory/get-instrument :instrument-id)
+    :path        [:instrument]}))
 
 (re-frame/reg-sub :instrument (fn [db [n']] (get db n')))
 
 (re-frame/reg-flow
- {:id     ::scale
-  :inputs {:s [:path-params :scale]}
-  :output (fn [{:keys [s]}] (music-theory/get-scale s))
-  :path   [:scale]})
+ (let [inputs {:s [:path-params :scale]}]
+   {:id     ::scale
+    :inputs inputs
+    :live-inputs inputs
+    :live? :s
+    :output (comp music-theory/get-scale :s)
+    :path   [:scale]}))
 
 (re-frame/reg-flow
  {:id     ::chord

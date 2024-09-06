@@ -6,11 +6,20 @@
    [se.jherrlin.music-theory.webapp.utils :refer [<sub >evt]]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
-   [se.jherrlin.music-theory.webapp.views.common :as common]))
+   [se.jherrlin.music-theory.webapp.views.common :as common]
+   [re-frame.db :as db]
+   [se.jherrlin.music-theory.models.entity :as entity]
+   [se.jherrlin.music-theory.instruments :as instruments]
+   [se.jherrlin.music-theory.webapp.views.scale-calcs :as scale-calcs]))
 
 (def events-
   [{:n ::entity}
    {:n ::pattern-entities}])
+
+(def app-db-path ::scale)
+
+(defn path [x]
+  (-> [app-db-path x] flatten vec))
 
 (doseq [{:keys [n s e]} events-]
   (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
@@ -38,18 +47,46 @@
 
 (re-frame/reg-event-fx ::gather-data-for-view gather-data-for-view-)
 
+(re-frame/reg-flow
+ (let [inputs {:scale-id      (re-frame/flow<- ::events/scale-id)
+               :instrument-id (re-frame/flow<- ::events/instrument-id)
+               :key-of        (re-frame/flow<- ::events/key-of)}]
+   {:id          ::scale-entity
+    :live-inputs inputs
+    :inputs      inputs
+    :live?       (fn [{:keys [key-of instrument-id scale-id]}]
+                   (and key-of instrument-id scale-id))
+    :output      (fn [{:keys [key-of instrument-id scale-id]}]
+                   (music-theory/entity key-of instrument-id scale-id))
+    :path        (path ::scale-entity)}))
+
+(re-frame/reg-sub ::scale-entity :-> #(get-in % (path ::scale-entity)))
+
 (comment
+  @(re-frame/subscribe [:flow {:id ::scale-entity}])
+  (get @re-frame.db/app-db app-db-path)
+  )
 
-  (gather-data-for-view-
-   {:db
-    {:query-params
-     {:nr-of-frets 15}}}
-   [nil
-    {:scale      :major
-     :key-of     :c
-     :instrument :guitar}])
+(re-frame/reg-flow
+ (let [inputs {:scale-names   (re-frame/flow<- ::events/scale-names)
+               :instrument-id (re-frame/flow<- ::events/instrument-id)
+               :key-of        (re-frame/flow<- ::events/key-of)}]
+   {:doc         "A seq of unsorted scale pattern entities"
+    :id          ::pattern-entities
+    :live-inputs inputs
+    :inputs      inputs
+    :live?       (fn [{:keys [scale-names instrument-id key-of]}]
+                   (and scale-names instrument-id key-of))
+    :output      (fn [{:keys [key-of instrument-id scale-names]}]
+                   (scale-calcs/scale-pattern-entities key-of instrument-id scale-names))
+    :path        (path ::pattern-entities)}))
 
-  (get @re-frame.db/app-db ::fretboards))
+(re-frame/reg-sub ::pattern-entities :-> #(get-in % (path ::pattern-entities)))
+
+(comment
+  @(re-frame/subscribe [:flow {:id ::pattern-entities}])
+  (get @re-frame.db/app-db app-db-path)
+  )
 
 (defn scale-component [deps]
   (let [{:keys [id scale instrument] :as path-params} @(re-frame/subscribe [:path-params])
