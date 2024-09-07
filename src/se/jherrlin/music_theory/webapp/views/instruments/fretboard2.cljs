@@ -24,6 +24,17 @@
                    :left-is-blank?
                    :fretboard-size])
 
+(def root-note-color "#ff7600")
+(def note-color "#ffa500") ;; orange
+(def highlight-color "green")
+
+(def colors
+  {:root-note-color root-note-color
+   :color/root-note root-note-color
+   :note-color      note-color
+   :color/note      note-color
+   :color/highlight highlight-color})
+
 (defn fret-component
   [{:as   m
     :keys [background-color
@@ -38,7 +49,7 @@
            x-min?
            left-is-blank?
            fretboard-size]
-    :or   {circle-color   "orange"
+    :or   {circle-color   note-color
            fretboard-size 1}}]
   (let [y                (/ y 10)
         fret-color       (cond
@@ -80,7 +91,9 @@
                         :justify-content  :center
                         :height           (str (* fretboard-size 2) "rem")
                         :width            (str (* fretboard-size 2) "rem")
-                        :background-color circle-color
+                        :background-color (if (keyword? circle-color)
+                                            (get colors circle-color)
+                                            circle-color)
                         :border-radius    "50%"
                         :z-index          0}}
           [:<>

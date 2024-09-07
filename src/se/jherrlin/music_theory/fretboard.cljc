@@ -160,6 +160,254 @@
          (conj acc [:dispatch-later {:ms counter :dispatch [:tonejs/play-tone t]}])
          (+ counter inc-with))))))
 
+(defn fretboard-matrix->tonejs-dispatches-2
+  "Returns a seq of dispatches the can be feed into re-frames `:fx`"
+  [entity fretboard-matrix]
+  (let [tones-to-play (->> fretboard-matrix
+                           filter-matches
+                           (mapv (fn [{:keys [x y octave tone-str]}]
+                                   {:x x :y y :octave octave :tone tone-str})))
+        inc-with      500]
+    (loop [[{:keys [x y] :as t} & tones] (concat (rest tones-to-play) (rest (reverse tones-to-play)))
+           acc                           [[:dispatch [:tonejs/play-tone (first tones-to-play)]]
+                                          [:dispatch [:se.jherrlin.music-theory.webapp.views.scale/highlight
+                                                      {:entity     entity
+                                                       :x          (-> tones-to-play first :x)
+                                                       :y          (-> tones-to-play first :y)
+                                                       :highlight? true}]]
+                                          [:dispatch-later {:ms inc-with
+                                                            :dispatch
+                                                            [:se.jherrlin.music-theory.webapp.views.scale/highlight
+                                                             {:entity     entity
+                                                              :x          (-> tones-to-play first :x)
+                                                              :y          (-> tones-to-play first :y)
+                                                              :highlight? false}]}]]
+           counter                       inc-with]
+      (if (nil? t)
+        acc
+        (recur
+         tones
+         (-> acc
+             (conj [:dispatch-later {:ms counter :dispatch [:tonejs/play-tone t]}])
+             (conj [:dispatch-later {:ms counter
+                                     :dispatch
+                                     [:se.jherrlin.music-theory.webapp.views.scale/highlight
+                                      {:entity     entity
+                                       :x          x
+                                       :y          y
+                                       :highlight? true}]}])
+             (conj [:dispatch-later {:ms (+ counter inc-with)
+                                     :dispatch
+                                     [:se.jherrlin.music-theory.webapp.views.scale/highlight
+                                      {:entity     entity
+                                       :x          x
+                                       :y          y
+                                       :highlight? false}]}]))
+         (+ counter inc-with))))))
+
+(fretboard-matrix->tonejs-dispatches-2
+ {:id         #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
+  :instrument :mandolin,
+  :key-of     :d}
+ [[{:x 0, :tone #{:e}, :octave 5, :y 0, :yx 0, :interval "2", :tone-str "E"}
+   {:x 1, :tone #{:f}, :octave 5, :y 0, :yx 1, :interval "b3", :tone-str "F"}
+   {:y        0,
+    :octave   5,
+    :tone-str "Gb",
+    :yx       2,
+    :tone     #{:gb :f#},
+    :flat     "Gb",
+    :sharp    "F#",
+    :x        2,
+    :interval "3"}
+   {:x 3, :tone #{:g}, :octave 5, :y 0, :yx 3, :interval "4", :tone-str "G"}
+   {:y 0,
+    :octave 5,
+    :tone-str "Ab",
+    :yx 4,
+    :tone #{:g# :ab},
+    :flat "Ab",
+    :sharp "G#",
+    :x 4,
+    :interval "b5"}
+   {:x 5, :tone #{:a}, :octave 5, :y 0, :yx 5, :interval "5", :tone-str "A"}
+   {:y 0,
+    :octave 5,
+    :tone-str "Bb",
+    :yx 6,
+    :tone #{:bb :a#},
+    :flat "Bb",
+    :sharp "A#",
+    :x 6,
+    :interval "b6"}]
+  [{:y 1,
+    :octave 4,
+    :pattern-found-tone "A",
+    :tone-str "A",
+    :yx 100,
+    :pattern-found-interval "5",
+    :tone #{:a},
+    :out "5",
+    :x 0,
+    :interval "5",
+    :match? true}
+   {:y 1,
+    :octave 4,
+    :tone-str "Bb",
+    :yx 101,
+    :tone #{:bb :a#},
+    :flat "Bb",
+    :sharp "A#",
+    :x 1,
+    :interval "b6"}
+   {:y 1,
+    :octave 4,
+    :pattern-found-tone "B",
+    :tone-str "B",
+    :yx 102,
+    :pattern-found-interval "6",
+    :tone #{:b},
+    :out "6",
+    :x 2,
+    :interval "6",
+    :match? true}
+   {:x 3,
+    :tone #{:c},
+    :octave 5,
+    :y 1,
+    :yx 103,
+    :interval "b7",
+    :tone-str "C"}
+   {:y 1,
+    :octave 5,
+    :tone-str "Db",
+    :yx 104,
+    :tone #{:db :c#},
+    :flat "Db",
+    :sharp "C#",
+    :x 4,
+    :interval "7"}
+   {:y 1,
+    :octave 5,
+    :root? true,
+    :pattern-found-tone "D",
+    :tone-str "D",
+    :yx 105,
+    :pattern-found-interval "1",
+    :tone #{:d},
+    :out "1",
+    :x 5,
+    :interval "1",
+    :match? true}
+   {:y 1,
+    :octave 5,
+    :tone-str "Eb",
+    :yx 106,
+    :tone #{:d# :eb},
+    :flat "Eb",
+    :sharp "D#",
+    :x 6,
+    :interval "b2"}]
+  [{:y 2,
+    :octave 4,
+    :root? true,
+    :pattern-found-tone "D",
+    :tone-str "D",
+    :yx 200,
+    :pattern-found-interval "1",
+    :tone #{:d},
+    :out "1",
+    :x 0,
+    :interval "1",
+    :match? true}
+   {:y 2,
+    :octave 4,
+    :tone-str "Eb",
+    :yx 201,
+    :tone #{:d# :eb},
+    :flat "Eb",
+    :sharp "D#",
+    :x 1,
+    :interval "b2"}
+   {:y 2,
+    :octave 4,
+    :pattern-found-tone "E",
+    :tone-str "E",
+    :yx 202,
+    :pattern-found-interval "2",
+    :tone #{:e},
+    :out "2",
+    :x 2,
+    :interval "2",
+    :match? true}
+   {:x 3,
+    :tone #{:f},
+    :octave 4,
+    :y 2,
+    :yx 203,
+    :interval "b3",
+    :tone-str "F"}
+   {:y 2,
+    :octave 4,
+    :pattern-found-tone "F#",
+    :tone-str "Gb",
+    :yx 204,
+    :pattern-found-interval "3",
+    :tone #{:gb :f#},
+    :out "3",
+    :flat "Gb",
+    :sharp "F#",
+    :x 4,
+    :interval "3",
+    :match? true}
+   {:x 5, :tone #{:g}, :octave 4, :y 2, :yx 205, :interval "4", :tone-str "G"}
+   {:y 2,
+    :octave 4,
+    :tone-str "Ab",
+    :yx 206,
+    :tone #{:g# :ab},
+    :flat "Ab",
+    :sharp "G#",
+    :x 6,
+    :interval "b5"}]
+  [{:x 0, :tone #{:g}, :octave 3, :y 3, :yx 300, :interval "4", :tone-str "G"}
+   {:y 3,
+    :octave 3,
+    :tone-str "Ab",
+    :yx 301,
+    :tone #{:g# :ab},
+    :flat "Ab",
+    :sharp "G#",
+    :x 1,
+    :interval "b5"}
+   {:x 2, :tone #{:a}, :octave 3, :y 3, :yx 302, :interval "5", :tone-str "A"}
+   {:y 3,
+    :octave 3,
+    :tone-str "Bb",
+    :yx 303,
+    :tone #{:bb :a#},
+    :flat "Bb",
+    :sharp "A#",
+    :x 3,
+    :interval "b6"}
+   {:x 4, :tone #{:b}, :octave 3, :y 3, :yx 304, :interval "6", :tone-str "B"}
+   {:x 5,
+    :tone #{:c},
+    :octave 4,
+    :y 3,
+    :yx 305,
+    :interval "b7",
+    :tone-str "C"}
+   {:y 3,
+    :octave 4,
+    :tone-str "Db",
+    :yx 306,
+    :tone #{:db :c#},
+    :flat "Db",
+    :sharp "C#",
+    :x 6,
+    :interval "7"}]])
+
 ;; TODO: test
 (defn merge-fretboards-matrixes [& fretboards-matrixes]
   (->> (apply
@@ -721,3 +969,37 @@
   {:tone #{:e}, :octave 4}
   {:tone #{:g# :ab}, :octave 4}
   {:tone #{:c}, :octave 0}])
+
+;;
+;; fretboard2 helpers
+;;
+
+(def root-note-color "#ff7600")
+(def note-color "#ffa500") ;; orange
+
+(defn center-text
+  [pred f]
+  (fn [m]
+    (cond-> m
+      (pred m) (assoc :center-text (f m)))))
+
+(defn circle-color
+  [pred color]
+  (fn [m]
+    (cond-> m
+      (pred m) (assoc :circle-color color))))
+
+(defn down-right-text
+  [pred f]
+  (fn [m]
+    (cond-> m
+      (pred m) (assoc :down-right-text (f m)))))
+
+(defn matches?
+  "True if `fretboard-matrix` has matches"
+  [fretboard-matrix]
+  (->> fretboard-matrix
+       (apply concat)
+       (filter :match?)
+       (seq)
+       (boolean)))

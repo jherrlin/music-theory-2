@@ -123,10 +123,20 @@
 (def merge-fretboards-matrixes fretboard/merge-fretboards-matrixes)
 (def filter-matches fretboard/filter-matches)
 (def fretboard-matrix->tonejs-dispatches fretboard/fretboard-matrix->tonejs-dispatches)
+(def fretboard-matrix->tonejs-dispatches-2 fretboard/fretboard-matrix->tonejs-dispatches-2)
+(def fretboard-has-matches? fretboard/matches?)
 (defn with-all-intervals [interval-tones intervals fretboard-matrix]
   (let [intervals->tones (mapv vector interval-tones intervals)]
     (fretboard/with-all-intervals intervals->tones fretboard-matrix))
   )
+
+;; fretboard2
+(def root-note-color fretboard/root-note-color)
+(def note-color fretboard/note-color)
+(def center-text fretboard/center-text)
+(def circle-color fretboard/circle-color)
+(def down-right-text fretboard/down-right-text)
+
 
 (comment
   (fretboard-strings

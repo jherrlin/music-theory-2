@@ -10,6 +10,7 @@
    [re-frame.db :as db]
    [se.jherrlin.music-theory.models.entity :as entity]
    [se.jherrlin.music-theory.instruments :as instruments]
+   [se.jherrlin.music-theory.webapp.views.instruments.fretboard2 :as fretboard2]
    [se.jherrlin.music-theory.webapp.views.scale-calcs :as scale-calcs]))
 
 (def events-
@@ -94,7 +95,7 @@
 (re-frame/reg-flow
  (let [inputs {:pattern-entities (re-frame/flow<- ::pattern-entities)
                :query-params     [:query-params]}]
-   {:id  ::patterns
+   {:id  ::entity+definition+instrument-ds+qp
     :doc "A map of resolved scale patterns.
 Returns a map: entity+[:entity, :definition, :instrument-data-structure]"
     :live-inputs inputs
@@ -108,10 +109,12 @@ Returns a map: entity+[:entity, :definition, :instrument-data-structure]"
                                      (music-theory/get-definition id)
                                      instrument-data-structure
                                      (music-theory/instrument-data-structure entity query-params)]
-                                 {:entity                    entity
-                                  :definition                definition
-                                  :instrument-data-structure instrument-data-structure
-                                  :query-params              query-params})))
+                                 (when (music-theory/fretboard-has-matches? instrument-data-structure)
+                                   {:entity                    entity
+                                    :definition                definition
+                                    :instrument-data-structure instrument-data-structure
+                                    :query-params              query-params}))))
+                        (keep identity)
                         ;; Remove duplicates
                         (map (fn [{:keys [definition] :as m}]
                                [(or (:fretboard-pattern/pattern-hash definition)
@@ -122,17 +125,40 @@ Returns a map: entity+[:entity, :definition, :instrument-data-structure]"
                         ;; ;; Remove duplicates end
                         (map (juxt :entity identity))
                         (into {})))
-    :path        (path ::patterns)}))
+    :path        (path ::entity+definition+instrument-ds+qp)}))
 
-(re-frame/reg-sub ::patterns :-> #(get-in % (path ::patterns)))
+(re-frame/reg-sub ::entity+definition+instrument-ds+qp :-> #(get-in % (path ::entity+definition+instrument-ds+qp)))
 
 (comment
-  @(re-frame/subscribe [:flow {:id ::patterns}])
-  (get @re-frame.db/app-db app-db-path)
+  @(re-frame/subscribe [:flow {:id ::entity+definition+instrument-ds+qp}])
+  (get-in @re-frame.db/app-db (path ::entity+definition+instrument-ds+qp))
   )
 
+(re-frame/reg-event-db
+ ::highlight
+ (fn [db [_event-id {:keys [entity x y highlight?]
+                     :or   {highlight? true}}]]
+   (update-in db
+              (conj
+               (path ::entity+definition+instrument-ds+qp)
+               entity
+               :instrument-data-structure
+               y x)
+              assoc :highlight? highlight?)))
+
+(comment
+  (>evt [::highlight {:entity {:id         #uuid "5fb96ff2-e549-46ea-9346-6c5249bfcce4",
+                               :instrument :mandolin,
+                               :key-of     :d}
+                      :x 0
+                      :y 1}])
+  )
+
+
+
+
 (re-frame/reg-flow
- (let [inputs {:patterns (re-frame/flow<- ::patterns)}]
+ (let [inputs {:patterns (re-frame/flow<- ::entity+definition+instrument-ds+qp)}]
    {:id          ::sorted-patterns
     :doc         "Sort patterns into a seq."
     :live-inputs inputs
@@ -160,7 +186,7 @@ Returns a map: entity+[:entity, :definition, :instrument-data-structure]"
   )
 
 (re-frame/reg-flow
- (let [inputs {:patterns        (re-frame/flow<- ::patterns)
+ (let [inputs {:patterns        (re-frame/flow<- ::entity+definition+instrument-ds+qp)
                :sorted-patterns (re-frame/flow<- ::sorted-patterns)}]
    {:id          ::patterns->view
     :doc         "Patterns ready for view.
@@ -184,9 +210,224 @@ Returns a seq or maps:
   )
 
 
+(re-frame/reg-flow
+ (let [inputs {:e+d+i-ds+qp (re-frame/flow<- ::entity+definition+instrument-ds+qp)}]
+   {:id          ::fretboard2-map
+    :doc         "Fretboard2 matrix"
+    :inputs      inputs
+    :live-inputs inputs
+    :live?       :e+d+i-ds+qp
+    :output      (fn [{:keys [e+d+i-ds+qp]}]
+                   (->> e+d+i-ds+qp
+                        vals
+                        (map (fn [m]
+                               (let [instrument-data-structure (:instrument-data-structure m)
+                                     entity                    (:entity m)]
+                                 [entity
+                                  (->> instrument-data-structure
+                                       (music-theory/map-matrix
+                                        (comp
+                                         #(select-keys % fretboard2/keys-to-have)
+                                         (music-theory/circle-color :highlight? :color/highlight)
+                                         (music-theory/circle-color :root? :color/root-note)
+                                         (music-theory/circle-color :match? :color/note)
+                                         (music-theory/center-text :match? :tone-str))))])))
+                        (into {})))
+    :path (path ::fretboard2-map)}))
+
+(re-frame/reg-sub  ::fretboard2-map :-> #(get-in % (path ::fretboard2-map)))
+
+(comment
+  @(re-frame/subscribe [:flow {:id ::fretboard2-map}])
+  (get @re-frame.db/app-db app-db-path)
+  )
+
+
+
+(re-frame/reg-flow
+ (let [inputs {:fretboard2-map  (re-frame/flow<- ::fretboard2-map)
+               :sorted-patterns (re-frame/flow<- ::sorted-patterns)}]
+   {:id          ::fretboard2->view
+    :doc         "fretboard2 patterns ready for view."
+    :inputs      inputs
+    :live-inputs inputs
+    :live?       (fn [{:keys [fretboard2-map sorted-patterns]}]
+                   (and fretboard2-map sorted-patterns))
+    :output      (fn [{:keys [fretboard2-map sorted-patterns]}]
+                   (->> sorted-patterns
+                        (mapv (fn [{:keys [entity _sort-score]}]
+                                {:entity            entity
+                                 :fretboard2-matrix (get fretboard2-map entity)}))))
+    :path        (path ::fretboard2->view)}))
+
+(re-frame/reg-sub ::fretboard2->view :-> #(get-in % (path ::fretboard2->view)))
+
+(comment
+  @(re-frame/subscribe [:flow {:id ::fretboard2->view}])
+  (get-in @re-frame.db/app-db (path ::fretboard2->view))
+  )
+
+(re-frame/reg-event-fx
+ ::play-tones
+ (fn [_ [_event-id entity fretboard-matrix]]
+   {:fx (music-theory/fretboard-matrix->tonejs-dispatches-2 entity fretboard-matrix)}))
+
+(re-frame/reg-event-fx
+ ::play-tones-2
+ (fn [_ [_event-id fxs]]
+   {:fx fxs}))
+
+(comment
+  (>evt [::play-tones-2
+         [[:dispatch [:tonejs/play-tone {:x 0, :y 2, :octave 4, :tone "D"}]]
+   [:dispatch
+    [:se.jherrlin.music-theory.webapp.views.scale/highlight
+     {:entity
+      {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
+       :instrument :mandolin,
+       :key-of :d},
+      :x 0,
+      :y 2,
+      :highlight? true}]]
+   [:dispatch-later
+    {:ms 500,
+     :dispatch
+     [:se.jherrlin.music-theory.webapp.views.scale/highlight
+      {:entity
+       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
+        :instrument :mandolin,
+        :key-of :d},
+       :x 0,
+       :y 2,
+       :highlight? false}]}]
+   [:dispatch-later
+    {:ms 500, :dispatch [:tonejs/play-tone {:x 2, :y 2, :octave 4, :tone "E"}]}]
+   [:dispatch-later
+    {:ms 500,
+     :dispatch
+     [:se.jherrlin.music-theory.webapp.views.scale/highlight
+      {:entity
+       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
+        :instrument :mandolin,
+        :key-of :d},
+       :x 2,
+       :y 2,
+       :highlight? true}]}]
+   [:dispatch-later
+    {:ms 1000,
+     :dispatch
+     [:se.jherrlin.music-theory.webapp.views.scale/highlight
+      {:entity
+       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
+        :instrument :mandolin,
+        :key-of :d},
+       :x 2,
+       :y 2,
+       :highlight? false}]}]
+   [:dispatch-later
+    {:ms 1000,
+     :dispatch [:tonejs/play-tone {:x 4, :y 2, :octave 4, :tone "Gb"}]}]
+   [:dispatch-later
+    {:ms 1000,
+     :dispatch
+     [:se.jherrlin.music-theory.webapp.views.scale/highlight
+      {:entity
+       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
+        :instrument :mandolin,
+        :key-of :d},
+       :x 4,
+       :y 2,
+       :highlight? true}]}]
+   [:dispatch-later
+    {:ms 1500,
+     :dispatch
+     [:se.jherrlin.music-theory.webapp.views.scale/highlight
+      {:entity
+       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
+        :instrument :mandolin,
+        :key-of :d},
+       :x 4,
+       :y 2,
+       :highlight? false}]}]
+   [:dispatch-later
+    {:ms 1500, :dispatch [:tonejs/play-tone {:x 0, :y 1, :octave 4, :tone "A"}]}]
+   [:dispatch-later
+    {:ms 1500,
+     :dispatch
+     [:se.jherrlin.music-theory.webapp.views.scale/highlight
+      {:entity
+       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
+        :instrument :mandolin,
+        :key-of :d},
+       :x 0,
+       :y 1,
+       :highlight? true}]}]
+   [:dispatch-later
+    {:ms 2000,
+     :dispatch
+     [:se.jherrlin.music-theory.webapp.views.scale/highlight
+      {:entity
+       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
+        :instrument :mandolin,
+        :key-of :d},
+       :x 0,
+       :y 1,
+       :highlight? false}]}]
+   [:dispatch-later
+    {:ms 2000, :dispatch [:tonejs/play-tone {:x 2, :y 1, :octave 4, :tone "B"}]}]
+   [:dispatch-later
+    {:ms 2000,
+     :dispatch
+     [:se.jherrlin.music-theory.webapp.views.scale/highlight
+      {:entity
+       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
+        :instrument :mandolin,
+        :key-of :d},
+       :x 2,
+       :y 1,
+       :highlight? true}]}]
+   [:dispatch-later
+    {:ms 2500,
+     :dispatch
+     [:se.jherrlin.music-theory.webapp.views.scale/highlight
+      {:entity
+       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
+        :instrument :mandolin,
+        :key-of :d},
+       :x 2,
+       :y 1,
+       :highlight? false}]}]
+   [:dispatch-later
+    {:ms 2500, :dispatch [:tonejs/play-tone {:x 5, :y 1, :octave 5, :tone "D"}]}]
+   [:dispatch-later
+    {:ms 2500,
+     :dispatch
+     [:se.jherrlin.music-theory.webapp.views.scale/highlight
+      {:entity
+       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
+        :instrument :mandolin,
+        :key-of :d},
+       :x 5,
+       :y 1,
+       :highlight? true}]}]
+   [:dispatch-later
+    {:ms 3000,
+     :dispatch
+     [:se.jherrlin.music-theory.webapp.views.scale/highlight
+      {:entity
+       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
+        :instrument :mandolin,
+        :key-of :d},
+       :x 5,
+       :y 1,
+       :highlight? false}]}]]
+         ])
+  )
+
 (defn scale-component [deps]
   (let [{:keys [id scale instrument] :as path-params} @(re-frame/subscribe [:path-params])
         query-params                                  @(re-frame/subscribe [:query-params])
+        debug?                                        (:debug query-params)
         scale-patterns-starts-on                      (<sub [:scale-patterns-starts-on])
         {instrument-type :type :as instrument'}       (music-theory/get-instrument instrument)
         {scale-intervals :scale/intervals
@@ -199,24 +440,26 @@ Returns a seq or maps:
 
         ;; Sort patterns so that the ones closest to the intrument head will be
         ;; shown first. Remove fretboards where pattern is not shown.
-        entities                                      (->> scale-pattern-entities
-                                                           (map (fn [{:keys [id] :as entity}]
-                                                                  (merge (music-theory/get-definition id) entity)))
-                                                           (map (fn [{id :id pattern-hash :fretboard-pattern/pattern-hash :as definition}]
-                                                                  [(or pattern-hash id) definition]))
-                                                           (into {})
-                                                           (vals)
-                                                           (filter (fn [{intervals :fretboard-pattern/intervals}]
-                                                                     ((set scale-patterns-starts-on)
-                                                                      (first intervals))))
-                                                           (map (fn [{intervals :fretboard-pattern/intervals :as entity}]
-                                                                  (let [{:keys [instrument-data-structure] :as m} (get fretboards (select-keys entity [:id :instrument :key-of]))]
-                                                                    (assoc m :sort-score (common/sort-fretboard-nr
-                                                                                          (count intervals)
-                                                                                          instrument-data-structure)))))
-                                                           (filter :sort-score)
-                                                           (sort-by :sort-score)
-                                                           (map :id))]
+        entities            (->> scale-pattern-entities
+                                 (map (fn [{:keys [id] :as entity}]
+                                        (merge (music-theory/get-definition id) entity)))
+                                 (map (fn [{id :id pattern-hash :fretboard-pattern/pattern-hash :as definition}]
+                                        [(or pattern-hash id) definition]))
+                                 (into {})
+                                 (vals)
+                                 (filter (fn [{intervals :fretboard-pattern/intervals}]
+                                           ((set scale-patterns-starts-on)
+                                            (first intervals))))
+                                 (map (fn [{intervals :fretboard-pattern/intervals :as entity}]
+                                        (let [{:keys [instrument-data-structure] :as m} (get fretboards (select-keys entity [:id :instrument :key-of]))]
+                                          (assoc m :sort-score (common/sort-fretboard-nr
+                                                                (count intervals)
+                                                                instrument-data-structure)))))
+                                 (filter :sort-score)
+                                 (sort-by :sort-score)
+                                 (map :id))
+        fretboard2-matrixes @(re-frame/subscribe [:flow {:id ::fretboard2->view}])
+        entities++          @(re-frame/subscribe [:flow {:id ::entity+definition+instrument-ds+qp}])]
 
     [:<>
      [common/menu]
@@ -248,15 +491,30 @@ Returns a seq or maps:
      [common/instrument-view
       scale-entity path-params query-params deps]
 
-     (when (seq scale-patterns)
-       [:<>
-        [:h2 "Scale patterns"]
-        (for [{:keys [id] :as entity} entities]
-          ^{:key (str "scale-patterns-" id)}
-          [:<>
-           [common/instrument-view entity path-params query-params deps]
-           [:br]
-           [:br]])])
+     (if-not debug?
+       (when (seq scale-patterns)
+         [:<>
+          [:h2 "Scale patterns"]
+          (for [{:keys [id] :as entity} entities]
+            ^{:key (str "scale-patterns-" id)}
+            [:<>
+             [common/instrument-view entity path-params query-params deps]
+             [:br]
+             [:br]])])
+       (when (seq fretboard2-matrixes)
+         [:<>
+          [:h2 "Scale patterns"]
+          (for [{:keys [entity fretboard2-matrix]} fretboard2-matrixes]
+            (let [fretboard-matrix (get-in entities++ [entity :instrument-data-structure])]
+              ^{:key (hash entity)}
+              [:<>
+               [fretboard2/styled-view {:id               (:id entity)
+                                        :fretboard-matrix fretboard2-matrix
+                                        :fretboard-size   1}]
+               [:button {:on-click #(>evt [::play-tones entity fretboard-matrix])}
+                "Play"]
+               [:br]
+               [:br]]))]))
 
      [:br]
      [:br]
