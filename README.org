@@ -1,5 +1,7 @@
 #+TITLE: Music theory
 
+https://app.circleci.com/pipelines/github/jherrlin/music-theory-2
+
 * Todos
 
   - [ ] Find chord
