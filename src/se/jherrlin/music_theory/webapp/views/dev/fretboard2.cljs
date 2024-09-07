@@ -218,9 +218,19 @@
      :interval "b7",
      :tone-str "C"}]])
 
-(music-theory/filter-matches fretboard-matrix)
+(re-frame/reg-event-fx
+ ::play-tones
+ (fn [_ [_event-id fretboard-matrix]]
+   {:fx (music-theory/fretboard-matrix->tonejs-dispatches fretboard-matrix)}))
 
+(comment
+  (re-frame/dispatch [::play-tones fretboard-matrix])
+  )
 
+(comment
+  (music-theory/fretboard-matrix->tonejs-dispatches fretboard-matrix)
+
+  )
 
 (defn ^:dev/after-load view [deps]
   (let [fretboard-size (<sub [::fretboard-size])]

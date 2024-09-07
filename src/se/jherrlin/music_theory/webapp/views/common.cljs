@@ -7,6 +7,7 @@
    [reitit.frontend.easy :as rfe]
    [se.jherrlin.utils :as basic-utils]
    [reitit.coercion.malli]
+   [se.jherrlin.music-theory.webapp.utils :refer [<sub >evt]]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
    [se.jherrlin.music-theory.webapp.views.instruments.fretboard :as instruments-fretboard]
@@ -234,6 +235,11 @@
          {:disabled (= instrument id)}
          text]])]))
 
+(re-frame/reg-event-fx
+ ::play-tones
+ (fn [_ [_event-id fretboard-matrix]]
+   {:fx (music-theory/fretboard-matrix->tonejs-dispatches fretboard-matrix)}))
+
 (defn instrument-view-fretboard-pattern
   [{:keys [entity
            definition
@@ -265,7 +271,10 @@
         surrounding-tones     (assoc :grey-fn :tone-str))]
      [:br]
      [bookmark-button entity]
-     [focus-button entity]]))
+     [focus-button entity]
+     [:button
+      {:on-click #(>evt [::play-tones fretboard-matrix])}
+      "Play"]]))
 
 (defn instrument-view-fretboard-chord-and-scale
   [{id            :id

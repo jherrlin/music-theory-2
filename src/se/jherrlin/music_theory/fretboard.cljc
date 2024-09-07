@@ -142,6 +142,24 @@
        (filter :match?)
        (vec)))
 
+(defn fretboard-matrix->tonejs-dispatches
+  "Returns a seq of dispatches the can be feed into re-frames `:fx`"
+  [fretboard-matrix]
+  (let [tones-to-play (->> fretboard-matrix
+                           filter-matches
+                           (mapv (fn [{:keys [x y octave tone-str]}]
+                                   {:x x :y y :octave octave :tone tone-str})))
+        inc-with      500]
+    (loop [[t & tones] (rest tones-to-play)
+           acc         [[:dispatch [:tonejs/play-tone (first tones-to-play)]]]
+           counter     inc-with]
+      (if (nil? t)
+        acc
+        (recur
+         tones
+         (conj acc [:dispatch-later {:ms counter :dispatch [:tonejs/play-tone t]}])
+         (+ counter inc-with))))))
+
 ;; TODO: test
 (defn merge-fretboards-matrixes [& fretboards-matrixes]
   (->> (apply

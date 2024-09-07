@@ -16,13 +16,18 @@
     (.triggerAttackRelease synth tone lenght)))
 
 (rf-alpha/reg-fx
- :tonejs/play-tone
+ :tonejs/play-tone!
  play-tone)
+
+(rf-alpha/reg-event-fx
+ :tonejs/play-tone
+ (fn [_ [_ tone]]
+   {:tonejs/play-tone! tone}))
 
 (rf-alpha/reg-event-fx
  ::play
  (fn [_ _]
-   {:tonejs/play-tone {:tone "A" :octave "4"}}
+   {:tonejs/play-tone! {:tone "A" :octave "4"}}
    ))
 
 (comment
