@@ -147,3 +147,132 @@
      inc
      [[1] [2] [3]])
     [[2] [2] [3]])))
+
+(deftest map-xyz
+  (is
+   (=
+    (utils/map-xyz
+     (fn [x y z]
+       (cond-> x
+         (nil? y) (assoc :last? true)))
+     [{:x 0, :y 0}
+      {:x 1, :y 0}
+      {:x 2, :y 0}
+      {:x 3, :y 0}])
+    [{:x 0, :y 0}
+     {:x 1, :y 0}
+     {:x 2, :y 0}
+     {:x 3, :y 0, :last? true}])))
+
+(deftest map-xyz-matrix
+  (is
+   (=
+    (utils/map-xyz-matrix
+     (fn [x y z]
+       (cond-> x
+         (nil? y) (assoc :last? true)))
+     [[{:x 0, :y 0}
+       {:x 1, :y 0}
+       {:x 2, :y 0}
+       {:x 3, :y 0}]
+      [{:x 0, :y 1}
+       {:x 1, :y 1}
+       {:x 2, :y 1}
+       {:x 3, :y 1}]
+      [{:x 0, :y 2}
+       {:x 1, :y 2}
+       {:x 2, :y 2}
+       {:x 3, :y 2}]])
+    [[{:x 0, :y 0} {:x 1, :y 0} {:x 2, :y 0} {:x 3, :y 0, :last? true}]
+     [{:x 0, :y 1} {:x 1, :y 1} {:x 2, :y 1} {:x 3, :y 1, :last? true}]
+     [{:x 0, :y 2} {:x 1, :y 2} {:x 2, :y 2} {:x 3, :y 2, :last? true}]])))
+
+(deftest add-x-min
+  (is
+   (=
+    (utils/add-x-min
+     [[{:x 0, :y 0}
+       {:x 1, :y 0}]
+      [{:x 0, :y 1}
+       {:x 1, :y 1}]
+      [{:x 0, :y 3}
+       {:x 1, :y 3}]])
+    [[{:x 0, :y 0, :x-min? true} {:x 1, :y 0}]
+     [{:x 0, :y 1, :x-min? true} {:x 1, :y 1}]
+     [{:x 0, :y 3, :x-min? true} {:x 1, :y 3}]])))
+
+(deftest add-x-max
+  (is
+   (=
+    (utils/add-x-max
+     [[{:x 0, :y 0}
+       {:x 1, :y 0}]
+      [{:x 0, :y 1}
+       {:x 1, :y 1}]
+      [{:x 0, :y 3}
+       {:x 1, :y 3}]])
+    [[{:x 0, :y 0} {:x 1, :y 0, :x-max? true}]
+     [{:x 0, :y 1} {:x 1, :y 1, :x-max? true}]
+     [{:x 0, :y 3} {:x 1, :y 3, :x-max? true}]])))
+
+(deftest add-y-min
+  (is
+   (=
+    (utils/add-y-min
+     [[{:x 0, :y 0}
+       {:x 1, :y 0}
+       {:x 2, :y 0}]
+      [{:x 0, :y 1}
+       {:x 1, :y 1}
+       {:x 2, :y 1}]
+      [{:x 0, :y 2}
+       {:x 1, :y 2}
+       {:x 2, :y 2}]])
+    [[{:x 0, :y 0, :y-min? true}
+      {:x 1, :y 0, :y-min? true}
+      {:x 2, :y 0, :y-min? true}]
+     [{:x 0, :y 1} {:x 1, :y 1} {:x 2, :y 1}]
+     [{:x 0, :y 2} {:x 1, :y 2} {:x 2, :y 2}]])))
+
+(deftest add-y-max
+  (is
+   (=
+    (utils/add-y-max
+     [[{:x 0, :y 0}
+       {:x 1, :y 0}
+       {:x 2, :y 0}]
+      [{:x 0, :y 1}
+       {:x 1, :y 1}
+       {:x 2, :y 1}]
+      [{:x 0, :y 2}
+       {:x 1, :y 2}
+       {:x 2, :y 2}]])
+    [[{:x 0, :y 0} {:x 1, :y 0} {:x 2, :y 0}]
+     [{:x 0, :y 1} {:x 1, :y 1} {:x 2, :y 1}]
+     [{:x 0, :y 2, :y-max? true}
+      {:x 1, :y 2, :y-max? true}
+      {:x 2, :y 2, :y-max? true}]])))
+
+
+(deftest add-min-and-max
+  (is
+   (=
+    (utils/add-min-and-max
+     [[{:x 0, :y 0}
+       {:x 1, :y 0}
+       {:x 2, :y 0}]
+      [{:x 0, :y 1}
+       {:x 1, :y 1}
+       {:x 2, :y 1}]
+      [{:x 0, :y 2}
+       {:x 1, :y 2}
+       {:x 2, :y 2}]])
+    [[{:x 0, :y 0, :x-min? true, :y-min? true}
+      {:x 1, :y 0, :y-min? true}
+      {:x 2, :y 0, :x-max? true, :y-min? true}]
+     [{:x 0, :y 1, :x-min? true}
+      {:x 1, :y 1}
+      {:x 2, :y 1, :x-max? true}]
+     [{:x 0, :y 2, :x-min? true, :y-max? true}
+      {:x 1, :y 2, :y-max? true}
+      {:x 2, :y 2, :x-max? true, :y-max? true}]])))

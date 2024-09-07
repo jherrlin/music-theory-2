@@ -208,6 +208,185 @@
   (update-in matrix [y x] f))
 
 
+(defn map-xyz
+  "Loop over `coll` and take the first three elements and provide them to `f`.
+
+  (map-xyz
+   (fn [x y z]
+     (cond-> x
+       (nil? y) (assoc :last? true)))
+  [{:x 0, :y 0}
+   {:x 1, :y 0}
+   {:x 2, :y 0}
+   {:x 3, :y 0}])
+  =>
+  [{:x 0, :y 0}
+   {:x 1, :y 0}
+   {:x 2, :y 0}
+   {:x 3, :y 0, :last? true}]"
+  [f coll]
+  (loop [[x y z :as row] coll
+         acc             []]
+    (if (nil? x)
+      (vec acc)
+      (recur
+       (rest row)
+       (conj acc (f x y z))))))
+
+(defn map-xyz-matrix
+  "Map over each row in matrix and run `map-xyz` with `f`.
+
+  (map-xyz-matrix
+   (fn [x y z]
+     (cond-> x
+       (nil? y) (assoc :last? true)))
+   [[{:x 0, :y 0}
+     {:x 1, :y 0}
+     {:x 2, :y 0}
+     {:x 3, :y 0}]
+    [{:x 0, :y 1}
+     {:x 1, :y 1}
+     {:x 2, :y 1}
+     {:x 3, :y 1}]
+    [{:x 0, :y 2}
+     {:x 1, :y 2}
+     {:x 2, :y 2}
+     {:x 3, :y 2}]])
+  =>
+  [[{:x 0, :y 0} {:x 1, :y 0} {:x 2, :y 0} {:x 3, :y 0, :last? true}]
+   [{:x 0, :y 1} {:x 1, :y 1} {:x 2, :y 1} {:x 3, :y 1, :last? true}]
+   [{:x 0, :y 2} {:x 1, :y 2} {:x 2, :y 2} {:x 3, :y 2, :last? true}]]"
+  [f matrix]
+  (mapv (partial map-xyz f) matrix))
+
+(defn add-x-min
+  "Add `x-min?` `true` to min x.
+
+  Each row needs to have the same lenght!
+
+  (add-x-min
+   [[{:x 0, :y 0}
+     {:x 1, :y 0}]
+    [{:x 0, :y 1}
+     {:x 1, :y 1}]
+    [{:x 0, :y 3}
+     {:x 1, :y 3}]])
+  =>
+  [[{:x 0, :y 0, :x-min? true} {:x 1, :y 0}]
+   [{:x 0, :y 1, :x-min? true} {:x 1, :y 1}]
+   [{:x 0, :y 3, :x-min? true} {:x 1, :y 3}]]"
+  [matrix]
+  (let [x-min (->> matrix first (map :x) (apply min))]
+    (->> matrix
+         (map-matrix (fn [{:keys [x] :as m}]
+                       (cond-> m
+                         (#{x} x-min) (assoc :x-min? true)))))))
+
+(defn add-x-max
+  "Add `x-max?` `true` to max x.
+
+  Each row needs to have the same lenght!
+
+  (add-x-max
+   [[{:x 0, :y 0}
+     {:x 1, :y 0}]
+    [{:x 0, :y 1}
+     {:x 1, :y 1}]
+    [{:x 0, :y 3}
+     {:x 1, :y 3}]])
+  =>
+  [[{:x 0, :y 0} {:x 1, :y 0, :x-max? true}]
+   [{:x 0, :y 1} {:x 1, :y 1, :x-max? true}]
+   [{:x 0, :y 3} {:x 1, :y 3, :x-max? true}]]"
+  [matrix]
+  (let [x-max (->> matrix first (map :x) (apply max))]
+    (->> matrix
+         (map-matrix (fn [{:keys [x] :as m}]
+                       (cond-> m
+                         (#{x} x-max) (assoc :x-max? true)))))))
+
+(defn add-y-min
+  "Add `y-min?` `true`.
+
+  (add-y-min
+   [[{:x 0, :y 0}
+     {:x 1, :y 0}
+     {:x 2, :y 0}]
+    [{:x 0, :y 1}
+     {:x 1, :y 1}
+     {:x 2, :y 1}]
+    [{:x 0, :y 2}
+     {:x 1, :y 2}
+     {:x 2, :y 2}]])
+  =>
+  [[{:x 0, :y 0, :y-min? true}
+    {:x 1, :y 0, :y-min? true}
+    {:x 2, :y 0, :y-min? true}]
+   [{:x 0, :y 1} {:x 1, :y 1} {:x 2, :y 1}]
+   [{:x 0, :y 2} {:x 1, :y 2} {:x 2, :y 2}]]"
+  [matrix]
+  (let [y-min (->> matrix (map (comp :y first)) (apply min))]
+    (->> matrix
+         (map-matrix (fn [{:keys [y] :as m}]
+                       (cond-> m
+                         (#{y} y-min) (assoc :y-min? true)))))))
+
+(defn add-y-max
+  "Add `y-max?` `true`.
+
+  (add-y-max
+   [[{:x 0, :y 0}
+     {:x 1, :y 0}
+     {:x 2, :y 0}]
+    [{:x 0, :y 1}
+     {:x 1, :y 1}
+     {:x 2, :y 1}]
+    [{:x 0, :y 2}
+     {:x 1, :y 2}
+     {:x 2, :y 2}]])
+  =>
+  [[{:x 0, :y 0} {:x 1, :y 0} {:x 2, :y 0}]
+   [{:x 0, :y 1} {:x 1, :y 1} {:x 2, :y 1}]
+   [{:x 0, :y 2, :y-max? true}
+    {:x 1, :y 2, :y-max? true}
+    {:x 2, :y 2, :y-max? true}]]"
+  [matrix]
+  (let [y-max (->> matrix (map (comp :y first)) (apply max))]
+    (->> matrix
+         (map-matrix (fn [{:keys [y] :as m}]
+                       (cond-> m
+                         (#{y} y-max) (assoc :y-max? true)))))))
+
+(defn add-min-and-max
+  "Add `min-x?`, `max-x?`, `min-y?` and `max-y?`
+
+  (add-min-and-max
+   [[{:x 0, :y 0}
+     {:x 1, :y 0}
+     {:x 2, :y 0}]
+    [{:x 0, :y 1}
+     {:x 1, :y 1}
+     {:x 2, :y 1}]
+    [{:x 0, :y 2}
+     {:x 1, :y 2}
+     {:x 2, :y 2}]])
+  =>
+  [[{:x 0, :y 0, :x-min? true, :y-min? true}
+    {:x 1, :y 0, :y-min? true}
+    {:x 2, :y 0, :x-max? true, :y-min? true}]
+   [{:x 0, :y 1, :x-min? true}
+    {:x 1, :y 1}
+    {:x 2, :y 1, :x-max? true}]
+   [{:x 0, :y 2, :x-min? true, :y-max? true}
+    {:x 1, :y 2, :y-max? true}
+    {:x 2, :y 2, :x-max? true, :y-max? true}]]"
+  [matrix]
+  (->> matrix
+       add-x-min
+       add-x-max
+       add-y-min
+       add-y-max))
+
 (defn add-qualified-ns
   "Add ns to keys in map `m`."
   [m ns']
