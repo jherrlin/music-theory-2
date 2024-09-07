@@ -22,6 +22,7 @@
            x-max?
            x-min?
            left-is-blank?]
+    :or {circle-color "orange"}
     :as   m}]
   (let [y                (/ y 10)
         fret-color       (cond
@@ -33,7 +34,6 @@
                            "white"
                            "#000000d6")
         string-color     "linear-gradient(#737270 , #b9bab3, #737270)"
-        circle-color     (or circle-color "orange")
         string-height    (str (+ 0.2 y) "rem")
         fret-width       3.9
         fret-height      2.7]
@@ -78,16 +78,6 @@
                       :z-index          50
                       :width            "0.5rem"
                       :height           "100%"}}])]))
-
-(defn left-is-blank? [x y matrix]
-  (let [xy-map (->> matrix
-                    (apply concat)
-                    (map (fn [{:keys [x y] :as m}]
-                           [[x y] m]))
-                    (into {}))
-        fret (get-in xy-map [[(dec x) y]])]
-    (or (get fret :blank?)
-        (nil? fret))))
 
 (defn styled-view [{:keys [fretboard-matrix id]}]
   [:div {:style {:overflow-x "auto"}}
