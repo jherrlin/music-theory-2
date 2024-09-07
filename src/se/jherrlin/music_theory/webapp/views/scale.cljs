@@ -71,8 +71,8 @@
  (let [inputs {:scale-names   (re-frame/flow<- ::events/scale-names)
                :instrument-id (re-frame/flow<- ::events/instrument-id)
                :key-of        (re-frame/flow<- ::events/key-of)}]
-   {:doc         "A seq of unsorted scale pattern entities"
-    :id          ::pattern-entities
+   {:id          ::pattern-entities
+    :doc         "A seq of unsorted scale pattern entities"
     :live-inputs inputs
     :inputs      inputs
     :live?       (fn [{:keys [scale-names instrument-id key-of]}]
@@ -86,6 +86,45 @@
 (comment
   @(re-frame/subscribe [:flow {:id ::pattern-entities}])
   (get @re-frame.db/app-db app-db-path)
+  )
+
+
+#_(re-frame/reg-flow
+ ;; TODO: extract the sorting part into a new flow.
+ (let [inputs {:unsorted-pattern-entities (re-frame/flow<- ::pattern-entities)
+               :query-params              [:query-params]}]
+   {:id          ::resolve-and-sort-entities
+    :doc         "A seq of sorted and resolved scale pattern entities.
+
+Returns a map: entity+[:entity, :definition, :instrument-data-structure]"
+    :live-inputs inputs
+    :inputs      inputs
+    :live?       (fn [{:keys [unsorted-pattern-entities query-params]}]
+                   (and unsorted-pattern-entities query-params))
+    :output      (fn [{:keys [unsorted-pattern-entities query-params]}]
+                   (->> unsorted-pattern-entities
+                        (map (fn [{:keys [id] :as entity}]
+                               (let [{intervals :fretboard-pattern/intervals :as definition}
+                                     (music-theory/get-definition id)
+                                     instrument-data-structure
+                                     (music-theory/instrument-data-structure entity query-params)
+                                     nr-of-intervals (count intervals)
+                                     sort-score
+                                     (common/sort-fretboard-nr nr-of-intervals instrument-data-structure)]
+                                 {:entity                    entity
+                                  :definition                definition
+                                  :instrument-data-structure instrument-data-structure
+                                  :sort-score                sort-score})))
+                        (filter :sort-score)
+                        (sort-by :sort-score)
+                        (map (juxt :entity identity))
+                        (into {})))
+    :path        (path ::resolve-and-sort-entities)}))
+
+#_(re-frame/reg-sub ::resolve-and-sort-entities :-> #(get-in % (path ::resolve-and-sort-entities)))
+
+(comment
+  (<sub [::resolve-and-sort-entities])
   )
 
 (defn scale-component [deps]
@@ -140,6 +179,8 @@
      [:br]
 
      #_[:p (str/join "," scale-intervals)]
+
+
 
      [common/definition-view-detailed
       scale' instrument' path-params query-params]
