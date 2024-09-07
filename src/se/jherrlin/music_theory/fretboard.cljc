@@ -132,6 +132,7 @@
                  (assoc acc [x y] m))
                {})))
 
+;; TODO: test
 (defn merge-fretboards-matrixes [& fretboards-matrixes]
   (->> (apply
         map

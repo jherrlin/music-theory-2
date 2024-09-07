@@ -154,3 +154,26 @@
      [nil nil nil]
      [nil nil nil]
      [nil nil nil]])))
+
+(deftest fretboard-matrix-to-map_and_fretboard-map-to-matrix
+  (is
+   (let [fretboard-matrix
+         (fretboard/fretboard-strings
+          (general/all-tones)
+          [{:tone        :g
+            :octave      3
+            :start-index 0}
+           {:tone        :d
+            :octave      4
+            :start-index 0}
+           {:tone        :a
+            :octave      4
+            :start-index 0}
+           {:tone        :e
+            :octave      5
+            :start-index 0}]
+          6)]
+     (->> fretboard-matrix
+          fretboard/fretboard-matrix-to-map
+          fretboard/fretboard-map-to-matrix
+          (= fretboard-matrix)))))

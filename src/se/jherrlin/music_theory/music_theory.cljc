@@ -23,6 +23,7 @@
 (def trim-matrix basic-utils/trim-matrix)
 (def update-matrix basic-utils/update-matrix)
 (def rotate-until basic-utils/rotate-until)
+(def map-matrix basic-utils/map-matrix)
 
 
 ;;
