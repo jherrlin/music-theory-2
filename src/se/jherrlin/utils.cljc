@@ -23,13 +23,15 @@
 (defn list-insert
   "Insert `element` on `index` on `lst`.
 
- (list-insert
-  0
-  3
-  [1 2 3 4])"
+  (list-insert
+   0
+   3
+   [1 2 3 4])
+  =>
+  [1 2 3 0 4]"
   [element index lst]
   (let [[l r] (split-at index lst)]
-    (concat l [element] r)))
+    (vec (concat l [element] r))))
 
 #?(:cljs
    (defn fformat

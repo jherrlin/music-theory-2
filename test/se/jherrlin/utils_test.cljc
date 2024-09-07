@@ -39,7 +39,7 @@
      0
      3
      [1 2 3 4])
-    '(1 2 3 0 4))))
+    [1 2 3 0 4])))
 
 (deftest rotate-until
   (is
@@ -252,7 +252,6 @@
      [{:x 0, :y 2, :y-max? true}
       {:x 1, :y 2, :y-max? true}
       {:x 2, :y 2, :y-max? true}]])))
-
 
 (deftest add-min-and-max
   (is

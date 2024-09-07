@@ -57,11 +57,6 @@
             o
             (conj new-vec (assoc fret :octave o)))))))))
 
-(fretboard-string
- (general/all-tones)
- {:tone :e, :octave 2, :start-index 5}
- 12)
-
 (defn fretboard-strings
   "Generate fretboard matrix.
 
@@ -83,27 +78,23 @@
             (fretboard-string all-tones string-tuning number-of-frets)))
          (iterate inc 0)))))
 
-
-(fretboard-strings
- (general/all-tones)
- [{:tone        :e
-   :octave      2}
-  {:tone        :a
-   :octave      2}
-  {:tone        :d
-   :octave      3}
-  {:tone        :g
-   :octave      3}
-  {:tone        :b
-   :octave      3}
-  {:tone        :e
-   :octave      2
-   :start-index 5}]
- 13)
-
-
-
 (defn intevals-string->intervals-matrix
+  "Read a string into interval matrix.
+
+  (intevals-string->intervals-matrix
+   \"   3   -   -
+   -   bb1   -
+   5   -   -
+   -   -   -
+   -   -   -
+   -   -   -\")
+  =>
+  [[\"3\" nil nil]
+   [nil \"bb1\" nil]
+   [\"5\" nil nil]
+   [nil nil nil]
+   [nil nil nil]
+   [nil nil nil]]"
   [interval]
   (->> interval
        (str/trim)
@@ -113,14 +104,6 @@
                     str/trim
                     (re-seq #"(b{0,2}#{0,2}\d{1,2})|-")
                     (mapv second))))))
-
-(intevals-string->intervals-matrix
-  "   3   -   -
-   -   bb1   -
-   5   -   -
-   -   -   -
-   -   -   -
-   -   -   -")
 
 (defn frets-to-matrix
   [frets]
@@ -448,6 +431,16 @@
       (partial add-intervals [[:e "1"] [:b "b3"] [:g "5"]]))
      (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
      (println))
+
+(str
+ "| 0  | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 10 | 11 |\n"
+ "|-----------------------------------------------------------|\n"
+ "| 1  |    |    | 5  |    |    |    | b3 |    |    |    |    |\n"
+ "| b3 |    |    |    |    | 1  |    |    | 5  |    |    |    |\n"
+ "| 5  |    |    |    | b3 |    |    |    |    | 1  |    |    |\n"
+ "|    |    | 1  |    |    | 5  |    |    |    | b3 |    |    |\n"
+ "|    |    | b3 |    |    |    |    | 1  |    |    | 5  |    |\n"
+ "| 1  |    |    | 5  |    |    |    | b3 |    |    |    |    |")
 
 (->> (find-fretboard-pattern
       (general/all-tones)
