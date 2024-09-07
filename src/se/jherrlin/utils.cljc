@@ -31,11 +31,6 @@
   (let [[l r] (split-at index lst)]
     (concat l [element] r)))
 
-(list-insert
- 0
- 3
- [1 2 3 4])
-
 #?(:cljs
    (defn fformat
      "Formats a string using goog.string.format.
@@ -70,10 +65,6 @@
          (take xs-count)
          (vec))))
 
-(rotate-until
- #(% :f#)
- [#{:c} #{:db :c#} #{:d} #{:d# :eb} #{:e} #{:f} #{:gb :f#} #{:g} #{:g# :ab} #{:a} #{:bb :a#} #{:b}])
-
 (defn take-indexes
   "Take indexes from a collection.
 
@@ -85,10 +76,6 @@
    (fn [index]
      (nth coll index))
    indexes))
-
-(take-indexes
- [#{:c} #{:db :c#} #{:d} #{:d# :eb} #{:e} #{:f}]
- [0 3 5])
 
 (defn rotate-matrix
   "Rotate matrix.
@@ -109,14 +96,6 @@
          (apply mapv vector)
          (mapv identity))))
 
-(rotate-matrix
- [["3" nil nil]
-  [nil "1" nil]
-  ["5" nil nil]
-  [nil nil nil]
-  [nil nil nil]
-  [nil nil nil]])
-
 (defn take-matrix
   "Take `n` number of rows in matrix.
 
@@ -135,18 +114,6 @@
        (mapv (partial take n))
        (mapv (partial mapv identity))))
 
-(comment
-  (take-matrix
-   2
-   [[1 2 3 4]
-    [1 2 3 4]
-    [1 2 3 4]])
-  ;; =>
-  [[1 2]
-   [1 2]
-   [1 2]]
-  )
-
 (defn drop-matrix
   "Drop `n` number of rows in matrix.
 
@@ -164,17 +131,6 @@
        (mapv (partial drop n))
        (mapv (partial mapv identity))))
 
-(comment
-  (drop-matrix
-   1
-   [[1 2 3 4]
-    [1 2 3 4]
-    [1 2 3 4]])
-  ;; =>
-  [[2 3 4]
-   [2 3 4]
-   [2 3 4]])
-
 (defn trim-matrix
   "Trim a matrix left and right by `pred`.
 
@@ -186,7 +142,14 @@
    [\"5\" nil nil]
    [nil nil nil]
    [nil nil nil]
-   [nil nil nil]])"
+   [nil nil nil]])
+  =>
+  [[\"3\" nil]
+   [nil \"1\"]
+   [\"5\" nil]
+   [nil nil]
+   [nil nil]
+   [nil nil]]"
   ([fretboard-matrix]
    (trim-matrix (partial every? nil?) fretboard-matrix))
   ([pred fretboard-matrix]
@@ -214,22 +177,6 @@
               (trim-matrix pred))
          :else fretboard-matrix)))))
 
-(trim-matrix
- [["3" nil nil]
-  [nil "1" nil]
-  ["5" nil nil]
-  [nil nil nil]
-  [nil nil nil]
-  [nil nil nil]])
-
-(trim-matrix
- [[nil "1" nil nil]
-  [nil "5" nil nil]
-  [nil "b3" nil nil]
-  [nil nil nil "1"]
-  [nil nil nil "5"]
-  [nil "1" nil nil]])
-
 (defn map-matrix
   "Flatten matrix into one dim list and run `f` on each item. The convert it back
   into a matrix.
@@ -238,7 +185,9 @@
    inc
    [[1]
     [2]
-    [3]])"
+    [3]])
+  =>
+  [[2] [3] [4]]"
   [f matrix]
   (let [matrix-width (-> matrix first count)]
     (->> (apply concat matrix)
@@ -246,21 +195,18 @@
          (partition matrix-width)
          (mapv #(mapv identity %)))))
 
-(map-matrix
- inc
- [[1]
-  [2]
-  [3]])
+(defn update-matrix
+  "Run `f` on `x`, `y` in `matrix`.
 
-(defn update-matrix [x y f matrix]
+  (update-matrix
+   0 0
+   inc
+   [[1] [2] [3]])
+  =>
+  [[2] [2] [3]]"
+  [x y f matrix]
   (update-in matrix [y x] f))
 
-(update-matrix
- 0 0
- inc
- [[1]
-  [2]
-  [3]])
 
 (defn add-qualified-ns
   "Add ns to keys in map `m`."
