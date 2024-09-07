@@ -132,6 +132,16 @@
                  (assoc acc [x y] m))
                {})))
 
+(defn filter-matches
+  "Filter out `match?` into seq."
+  [fretboard-matrix]
+  (->> fretboard-matrix
+       (mapv reverse)
+       (apply concat)
+       (reverse)
+       (filter :match?)
+       (vec)))
+
 ;; TODO: test
 (defn merge-fretboards-matrixes [& fretboards-matrixes]
   (->> (apply
