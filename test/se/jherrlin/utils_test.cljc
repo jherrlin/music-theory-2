@@ -275,3 +275,38 @@
      [{:x 0, :y 2, :x-min? true, :y-max? true}
       {:x 1, :y 2, :y-max? true}
       {:x 2, :y 2, :x-max? true, :y-max? true}]])))
+
+(deftest filter-matches
+  (is
+   (=
+    (utils/filter-matches
+     [[{:x 0, :y 0, :tone #{:e}}
+       {:x 1, :y 0, :tone #{:f}}
+       {:x 2, :y 0, :tone #{:gb :f#}}
+       {:x 3, :y 0, :tone #{:g}}
+       {:x 4, :y 0, :tone #{:g# :ab}}
+       {:x 5, :y 0, :tone #{:a}}]
+      [{:x 0, :y 1, :match? true, :tone #{:a}}
+       {:x 1, :y 1, :tone #{:bb :a#}}
+       {:x 2, :y 1, :match? true, :tone #{:b}}
+       {:x 3, :y 1, :tone #{:c}}
+       {:x 4, :y 1, :tone #{:db :c#}}
+       {:x 5, :y 1, :match? true, :tone #{:d}}]
+      [{:x 0, :y 2, :match? true, :tone #{:d}}
+       {:x 1, :y 2, :tone #{:d# :eb}}
+       {:x 2, :y 2, :match? true, :tone #{:e}}
+       {:x 3, :y 2, :tone #{:f}}
+       {:x 4, :y 2, :match? true, :tone #{:gb :f#}}
+       {:x 5, :y 2, :tone #{:g}}]
+      [{:x 0, :y 3, :tone #{:g}}
+       {:x 1, :y 3, :tone #{:g# :ab}}
+       {:x 2, :y 3, :tone #{:a}}
+       {:x 3, :y 3, :tone #{:bb :a#}}
+       {:x 4, :y 3, :tone #{:b}}
+       {:x 5, :y 3, :tone #{:c}}]])
+    [{:x 0, :y 2, :match? true, :tone #{:d}}
+     {:x 2, :y 2, :match? true, :tone #{:e}}
+     {:x 4, :y 2, :match? true, :tone #{:gb :f#}}
+     {:x 0, :y 1, :match? true, :tone #{:a}}
+     {:x 2, :y 1, :match? true, :tone #{:b}}
+     {:x 5, :y 1, :match? true, :tone #{:d}}])))

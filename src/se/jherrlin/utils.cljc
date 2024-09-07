@@ -209,7 +209,6 @@
   [x y f matrix]
   (update-in matrix [y x] f))
 
-
 (defn map-xyz
   "Loop over `coll` and take the first three elements and provide them to `f`.
 
@@ -388,6 +387,16 @@
        add-x-max
        add-y-min
        add-y-max))
+
+(defn filter-matches
+  "Filter out `match?` into seq."
+  [fretboard-matrix]
+  (->> fretboard-matrix
+       (mapv reverse)
+       (apply concat)
+       (reverse)
+       (filter :match?)
+       (vec)))
 
 (defn add-qualified-ns
   "Add ns to keys in map `m`."
