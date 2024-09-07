@@ -18,6 +18,7 @@
 (defn ^:dev/after-load view [deps]
   [fretboard2/styled-view
    {:id "deokedk"
+    :size 0.73
     :fretboard-matrix
     [[{:x              0, :y 0
        :x-min          true
@@ -31,7 +32,9 @@
        :down-right-text "2"}
       {:x 2, :y 0}
       {:x 3, :y 0}
-      {:x 4, :y 0}
+      {:x 4,
+       :y 0
+       :background-color "purple"}
       {:x 5, :y 0}]
      [{:x 0, :y 1}
       {:x 1, :y 1}
@@ -39,7 +42,9 @@
       {:x            3,
        :y            1
        :center-text "G"
-       :circle-color "white"}
+       :circle-color "white"
+       :on-click (fn [{:keys [x y center-text]}]
+                   (js/console.log x y center-text))}
       {:x 4, :y 1}
       {:x 5, :y 1}]
      [{:x 0, :y 2}
@@ -47,7 +52,9 @@
       {:x 2, :y 2}
       {:x 3, :y 2}
       {:x 4, :y 2}
-      {:x 5, :y 2}]
+      {:x 5,
+       :y 2
+       :x-max? true}]
      [{:x      0,
        :y      3
        :blank? true}
