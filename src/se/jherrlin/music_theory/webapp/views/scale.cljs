@@ -112,6 +112,14 @@ Returns a map: entity+[:entity, :definition, :instrument-data-structure]"
                                   :definition                definition
                                   :instrument-data-structure instrument-data-structure
                                   :query-params              query-params})))
+                        ;; Remove duplicates
+                        (map (fn [{:keys [definition] :as m}]
+                               [(or (:fretboard-pattern/pattern-hash definition)
+                                    (:id definition))
+                                m]))
+                        (into {})
+                        (vals)
+                        ;; ;; Remove duplicates end
                         (map (juxt :entity identity))
                         (into {})))
     :path        (path ::patterns)}))
@@ -194,6 +202,10 @@ Returns a seq or maps:
         entities                                      (->> scale-pattern-entities
                                                            (map (fn [{:keys [id] :as entity}]
                                                                   (merge (music-theory/get-definition id) entity)))
+                                                           (map (fn [{id :id pattern-hash :fretboard-pattern/pattern-hash :as definition}]
+                                                                  [(or pattern-hash id) definition]))
+                                                           (into {})
+                                                           (vals)
                                                            (filter (fn [{intervals :fretboard-pattern/intervals}]
                                                                      ((set scale-patterns-starts-on)
                                                                       (first intervals))))
@@ -228,8 +240,6 @@ Returns a seq or maps:
      [:br]
 
      #_[:p (str/join "," scale-intervals)]
-
-
 
      [common/definition-view-detailed
       scale' instrument' path-params query-params]
