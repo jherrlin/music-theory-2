@@ -11,21 +11,35 @@
      ""
      n)])
 
+(def keys-to-have [:background-color
+                   :circle-color
+                   :center-text
+                   :down-right-text
+                   :blank?
+                   :y
+                   :x
+                   :on-click
+                   :x-max?
+                   :x-min?
+                   :left-is-blank?
+                   :fretboard-size])
+
 (defn fret-component
-  [{:keys [background-color
+  [{:as   m
+    :keys [background-color
            circle-color
            center-text
            down-right-text
            blank?
            y
+           x
            on-click
            x-max?
            x-min?
            left-is-blank?
            fretboard-size]
     :or   {circle-color   "orange"
-           fretboard-size 1}
-    :as   m}]
+           fretboard-size 1}}]
   (let [y                (/ y 10)
         fret-color       (cond
                            x-max? "linear-gradient(black, black, black)"

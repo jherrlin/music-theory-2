@@ -91,43 +91,90 @@
   )
 
 
-#_(re-frame/reg-flow
- ;; TODO: extract the sorting part into a new flow.
- (let [inputs {:unsorted-pattern-entities (re-frame/flow<- ::pattern-entities)
-               :query-params              [:query-params]}]
-   {:id          ::resolve-and-sort-entities
-    :doc         "A seq of sorted and resolved scale pattern entities.
-
+(re-frame/reg-flow
+ (let [inputs {:pattern-entities (re-frame/flow<- ::pattern-entities)
+               :query-params     [:query-params]}]
+   {:id  ::patterns
+    :doc "A map of resolved scale patterns.
 Returns a map: entity+[:entity, :definition, :instrument-data-structure]"
     :live-inputs inputs
     :inputs      inputs
-    :live?       (fn [{:keys [unsorted-pattern-entities query-params]}]
-                   (and unsorted-pattern-entities query-params))
-    :output      (fn [{:keys [unsorted-pattern-entities query-params]}]
-                   (->> unsorted-pattern-entities
+    :live?       (fn [{:keys [pattern-entities query-params]}]
+                   (and pattern-entities query-params))
+    :output      (fn [{:keys [pattern-entities query-params]}]
+                   (->> pattern-entities
                         (map (fn [{:keys [id] :as entity}]
-                               (let [{intervals :fretboard-pattern/intervals :as definition}
+                               (let [definition
                                      (music-theory/get-definition id)
                                      instrument-data-structure
-                                     (music-theory/instrument-data-structure entity query-params)
-                                     nr-of-intervals (count intervals)
-                                     sort-score
-                                     (common/sort-fretboard-nr nr-of-intervals instrument-data-structure)]
+                                     (music-theory/instrument-data-structure entity query-params)]
                                  {:entity                    entity
                                   :definition                definition
                                   :instrument-data-structure instrument-data-structure
-                                  :sort-score                sort-score})))
-                        (filter :sort-score)
-                        (sort-by :sort-score)
+                                  :query-params              query-params})))
                         (map (juxt :entity identity))
                         (into {})))
-    :path        (path ::resolve-and-sort-entities)}))
+    :path        (path ::patterns)}))
 
-#_(re-frame/reg-sub ::resolve-and-sort-entities :-> #(get-in % (path ::resolve-and-sort-entities)))
+(re-frame/reg-sub ::patterns :-> #(get-in % (path ::patterns)))
 
 (comment
-  (<sub [::resolve-and-sort-entities])
+  @(re-frame/subscribe [:flow {:id ::patterns}])
+  (get @re-frame.db/app-db app-db-path)
   )
+
+(re-frame/reg-flow
+ (let [inputs {:patterns (re-frame/flow<- ::patterns)}]
+   {:id          ::sorted-patterns
+    :doc         "Sort patterns into a seq."
+    :live-inputs inputs
+    :inputs      inputs
+    :live?       :patterns
+    :output      (fn [{:keys [patterns]}]
+                   (->> patterns
+                        vals
+                        (map (fn [{:keys [entity definition instrument-data-structure] :as m}]
+                               (let [{intervals :fretboard-pattern/intervals} definition
+                                     nr-of-intervals                          (count intervals)
+                                     sort-score
+                                     (common/sort-fretboard-nr nr-of-intervals instrument-data-structure)]
+                                 {:entity     entity
+                                  :sort-score sort-score})))
+                        (filter :sort-score)
+                        (sort-by :sort-score)))
+    :path        (path ::sorted-patterns)}))
+
+(re-frame/reg-sub  ::sorted-patterns :-> #(get-in % (path ::sorted-patterns)))
+
+(comment
+  @(re-frame/subscribe [:flow {:id ::sorted-patterns}])
+  (get @re-frame.db/app-db app-db-path)
+  )
+
+(re-frame/reg-flow
+ (let [inputs {:patterns        (re-frame/flow<- ::patterns)
+               :sorted-patterns (re-frame/flow<- ::sorted-patterns)}]
+   {:id          ::patterns->view
+    :doc         "Patterns ready for view.
+Returns a seq or maps:
+[:entity, :definition, :instrument-data-structure, :query-params]"
+    :inputs      inputs
+    :live-inputs inputs
+    :live?       (fn [{:keys [patterns sorted-patterns]}]
+                   (and patterns sorted-patterns))
+    :output      (fn [{:keys [patterns sorted-patterns]}]
+                   (->> sorted-patterns
+                        (mapv (fn [{:keys [entity _sort-score]}]
+                                (get patterns entity)))))
+    :path        (path ::patterns->view)}))
+
+(re-frame/reg-sub  ::patterns->view :-> #(get-in % (path ::patterns->view)))
+
+(comment
+  @(re-frame/subscribe [:flow {:id ::patterns->view}])
+  (get @re-frame.db/app-db app-db-path)
+  )
+
 
 (defn scale-component [deps]
   (let [{:keys [id scale instrument] :as path-params} @(re-frame/subscribe [:path-params])
