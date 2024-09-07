@@ -4,7 +4,8 @@
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.music-theory :as music-theory]
    [se.jherrlin.music-theory.webapp.utils :refer [<sub >evt]]
-   [se.jherrlin.music-theory.webapp.views.instruments.fretboard2 :as fretboard2]))
+   [se.jherrlin.music-theory.webapp.views.instruments.fretboard2 :as fretboard2]
+   [se.jherrlin.music-theory.fretboard :as fretboard]))
 
 
 (def app-db-path ::fretboard2)
@@ -216,6 +217,10 @@
      :yx 305,
      :interval "b7",
      :tone-str "C"}]])
+
+(music-theory/filter-matches fretboard-matrix)
+
+
 
 (defn ^:dev/after-load view [deps]
   (let [fretboard-size (<sub [::fretboard-size])]

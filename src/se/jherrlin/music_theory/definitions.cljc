@@ -4,15 +4,18 @@
    [se.jherrlin.music-theory.models.scale :as models-scale]
    [se.jherrlin.music-theory.models.fretboard-pattern :as models-fretboard-pattern]
    [se.jherrlin.music-theory.definitions.helpers :as helpers]
-   [se.jherrlin.music-theory.definitions.generated-scale-patterns :as generated-scale-patterns]))
+   [se.jherrlin.music-theory.definitions.generated-scale-patterns :as generated-scale-patterns]
+   [se.jherrlin.music-theory.definitions.generated-scale-patterns-mandolin-aeae :as generated-scale-patterns-mandolin-aeae]))
 
 
 (def definitions
-  (atom {:chords         {}
-         :chord-patterns {}
-         :scales         {}
-         :scale-patterns generated-scale-patterns/generated-scale-patterns
-         :ids            generated-scale-patterns/generated-scale-patterns}))
+  (let [generated-scale-patterns (merge generated-scale-patterns/generated-scale-patterns
+                                        generated-scale-patterns-mandolin-aeae/generated-scale-patterns)]
+    (atom {:chords         {}
+           :chord-patterns {}
+           :scales         {}
+           :scale-patterns generated-scale-patterns
+           :ids            generated-scale-patterns})))
 
 (comment
   (get @definitions :chords)

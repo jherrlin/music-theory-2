@@ -208,7 +208,7 @@
        (conj acc (take-matrix n fretboard-matrix))))))
 
 (defn generate-mandolin-scale-patterns []
-  (let [instrument :mandolin
+  (let [instrument :mandolin-aeae
         fretboard-matrix-with-intervals
         (fretboard/create-fretboard-matrix
          :d
@@ -250,11 +250,11 @@
                (clojure.pprint/pprint)
                (with-out-str))]
     (->> (str
-          "(ns se.jherrlin.music-theory.definitions.generated-scale-patterns)
+          "(ns se.jherrlin.music-theory.definitions.generated-scale-patterns-mandolin-aeae)
 \n\n
 (def generated-scale-patterns\n\n"
           s
           "\n)\n")
-         (spit "src/se/jherrlin/music_theory/definitions/generated_scale_patterns.cljc")))
+         (spit "src/se/jherrlin/music_theory/definitions/generated_scale_patterns_mandolin_aeae.cljc")))
 
   )
