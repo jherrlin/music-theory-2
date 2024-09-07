@@ -16,14 +16,16 @@
   [{:n ::entity}
    {:n ::pattern-entities}])
 
+(doseq [{:keys [n s e]} events-]
+  (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
+  (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
+
 (def app-db-path ::scale)
 
 (defn path [x]
   (-> [app-db-path x] flatten vec))
 
-(doseq [{:keys [n s e]} events-]
-  (re-frame/reg-sub n (or s (fn [db [n']] (get db n'))))
-  (re-frame/reg-event-db n (or e (fn [db [_ e]] (assoc db n e)))))
+
 
 (def gather-data-for-view-
   (fn [{:keys [db]} [_ {:keys [scale key-of instrument]}]]

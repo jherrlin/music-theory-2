@@ -1,10 +1,10 @@
 (ns se.jherrlin.music-theory.webapp.views.instruments.fretboard2)
 
 
-(defn fret-number [size n]
-  [:div {:style {:width           (str (* size 3.9) "rem")
-                 :min-width       (str (* size 3.9) "rem")
-                 :height          (str (* size 2) "rem")
+(defn fret-number [fretboard-size n]
+  [:div {:style {:width           (str (* fretboard-size 3.9) "rem")
+                 :min-width       (str (* fretboard-size 3.9) "rem")
+                 :height          (str (* fretboard-size 2) "rem")
                  :display         "flex"
                  :justify-content :center}}
    (if (= n 0)
@@ -22,9 +22,9 @@
            x-max?
            x-min?
            left-is-blank?
-           size]
-    :or   {circle-color "orange"
-           size         1}
+           fretboard-size]
+    :or   {circle-color   "orange"
+           fretboard-size 1}
     :as   m}]
   (let [y                (/ y 10)
         fret-color       (cond
@@ -37,9 +37,9 @@
                            left-is-blank?   "white"
                            :else            "#000000d6")
         string-color     "linear-gradient(#737270 , #b9bab3, #737270)"
-        string-height    (str (* size (+ 0.2 y)) "rem")
-        fret-width       (* size 3.9)
-        fret-height      (* size 2.7)]
+        string-height    (str (* fretboard-size (+ 0.2 y)) "rem")
+        fret-width       (* fretboard-size 3.9)
+        fret-height      (* fretboard-size 2.7)]
     [:div (cond-> {:style    {:width          (str fret-width "rem")
                               :height         (str fret-height "rem")
                               :display        "flex"
@@ -64,35 +64,35 @@
          [:div {:style {:display          "flex"
                         :align-items      :center
                         :justify-content  :center
-                        :height           (str (* size 2) "rem")
-                        :width            (str (* size 2) "rem")
+                        :height           (str (* fretboard-size 2) "rem")
+                        :width            (str (* fretboard-size 2) "rem")
                         :background-color circle-color
                         :border-radius    "50%"
                         :z-index          0}}
           [:<>
            center-text
            (when down-right-text
-             [:div {:style {:font-size  "small"
-                            :margin-top (str (* size 0.5) "rem")}}
+             [:div {:style {:font-fretboard-size "small"
+                            :margin-top          (str (* fretboard-size 0.5) "rem")}}
               down-right-text])]])]]
 
      [:div {:style {:background-image (if blank?
                                         "white"
                                         fret-color)
                     :z-index          50
-                    :width            (str (* size 0.5) "rem")
+                    :width            (str (* fretboard-size 0.5) "rem")
                     :height           "100%"}}]]))
 
-(defn styled-view [{:keys [fretboard-matrix id size]
-                    :or {size 1}}]
+(defn styled-view [{:keys [fretboard-matrix id fretboard-size]
+                    :or   {fretboard-size 1}}]
   [:div {:style {:overflow-x "auto"}}
    [:div {:style {:display "flex"}}
     (for [{:keys [x]} (-> fretboard-matrix first)]
       ^{:key (str "fretboard-fret-nr-" x id)}
-      [fret-number size x])]
+      [fret-number fretboard-size x])]
    (for [fretboard-string fretboard-matrix]
      ^{:key (str fretboard-string id)}
      [:div {:style {:display "flex"}}
       (for [{:keys [x y] :as fret} fretboard-string]
         ^{:key (str "fret-" x y id)}
-        [fret-component (assoc fret :size size)])])])
+        [fret-component (assoc fret :fretboard-size fretboard-size)])])])
