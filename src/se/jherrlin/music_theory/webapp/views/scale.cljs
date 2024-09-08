@@ -209,6 +209,13 @@ Returns a seq or maps:
   (get @re-frame.db/app-db app-db-path)
   )
 
+(defn play-tone [{:keys [tone-str octave]}]
+  (fn [_]
+    (>evt [:tonejs/play-tone {:tone tone-str :octave octave}])))
+
+(defn add-play-tone
+  [m]
+  (assoc m :on-click (play-tone m)))
 
 (re-frame/reg-flow
  (let [inputs {:e+d+i-ds+qp (re-frame/flow<- ::entity+definition+instrument-ds+qp)}]
@@ -221,23 +228,56 @@ Returns a seq or maps:
                    (->> e+d+i-ds+qp
                         vals
                         (map (fn [m]
-                               (let [instrument-data-structure (:instrument-data-structure m)
-                                     entity                    (:entity m)]
+                               (let [instrument-data-structure   (:instrument-data-structure m)
+                                     entity                      (:entity m)
+                                     {:keys [as-intervals
+                                             as-text
+                                             bookmarks
+                                             debug
+                                             nr-of-frets
+                                             nr-of-octavs
+                                             scale-patterns-starts-on
+                                             show-octave
+                                             surrounding-intervals
+                                             surrounding-tones]} (:query-params m)]
                                  [entity
                                   (->> instrument-data-structure
                                        (music-theory/map-matrix
                                         (comp
                                          #(select-keys % fretboard2/keys-to-have)
+                                         add-play-tone
                                          (music-theory/circle-color :highlight? :color/highlight)
-                                         (music-theory/circle-color :root? :color/root-note)
+                                         (music-theory/circle-color
+                                          (fn [{:keys [root? match?]}]
+                                            (and root? match?))
+                                          :color/root-note)
                                          (music-theory/circle-color :match? :color/note)
-                                         (music-theory/center-text :match? :tone-str)
-                                         (partial music-theory/left-is-blank? instrument-data-structure)
-                                         )))])))
+                                         (music-theory/circle-color (comp not :match?) :color/grey)
+                                         (if show-octave
+                                           (music-theory/down-right-text (comp not :match?) :octave)
+                                           identity)
+                                         (if surrounding-intervals
+                                           (comp
+                                            (music-theory/center-text (comp not :match?) :interval)
+                                            (music-theory/circle-color (comp not :match?) :color/grey))
+                                           identity)
+                                         (if surrounding-tones
+                                           (comp
+                                            (music-theory/circle-color (comp not :match?) :color/grey)
+                                            (music-theory/center-text (comp not :match?) :tone-str))
+                                           identity)
+                                         (if as-intervals
+                                           (music-theory/center-text :match? :interval)
+                                           (music-theory/center-text :match? :tone-str))
+                                         (partial music-theory/left-is-blank? instrument-data-structure))))])))
                         (into {})))
-    :path (path ::fretboard2-map)}))
+    :path        (path ::fretboard2-map)}))
 
 (re-frame/reg-sub  ::fretboard2-map :-> #(get-in % (path ::fretboard2-map)))
+
+
+
+
 
 (comment
   @(re-frame/subscribe [:flow {:id ::fretboard2-map}])

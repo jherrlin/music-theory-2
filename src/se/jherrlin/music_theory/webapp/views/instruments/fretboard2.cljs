@@ -27,13 +27,16 @@
 (def root-note-color "#ff7600")
 (def note-color "#ffa500") ;; orange
 (def highlight-color "green")
+(def grey "#808080")
 
 (def colors
   {:root-note-color root-note-color
    :color/root-note root-note-color
    :note-color      note-color
    :color/note      note-color
-   :color/highlight highlight-color})
+   :color/highlight highlight-color
+   :color/grey      grey})
+
 
 (defn fret-component
   [{:as   m

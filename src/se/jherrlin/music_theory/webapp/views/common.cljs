@@ -254,7 +254,7 @@
         query-params
         {:keys [play-tone]} deps]
     [:<>
-     (when debug
+     #_(when debug
        [:<>
         [debug-view entity]
         [debug-view fretboard-matrix]])
@@ -290,7 +290,7 @@
    {:keys [play-tone] :as deps}]
   (let [fretboard-matrix @(re-frame/subscribe [:fretboard-by-entity entity])]
     [:<>
-     (when debug
+     #_(when debug
        [debug-view entity]
        [debug-view fretboard-matrix])
      [instruments-fretboard/styled-view
