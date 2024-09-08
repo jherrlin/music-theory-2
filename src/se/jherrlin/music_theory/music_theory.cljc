@@ -24,6 +24,7 @@
 (def update-matrix basic-utils/update-matrix)
 (def rotate-until basic-utils/rotate-until)
 (def map-matrix basic-utils/map-matrix)
+(def map-xyz-matrix basic-utils/map-xyz-matrix)
 
 
 ;;
@@ -125,6 +126,8 @@
 (def fretboard-matrix->tonejs-dispatches fretboard/fretboard-matrix->tonejs-dispatches)
 (def fretboard-matrix->tonejs-dispatches-2 fretboard/fretboard-matrix->tonejs-dispatches-2)
 (def fretboard-has-matches? fretboard/matches?)
+(def left-is-blank? fretboard/left-is-blank?)
+(def first-fret? fretboard/first-fret?)
 (defn with-all-intervals [interval-tones intervals fretboard-matrix]
   (let [intervals->tones (mapv vector interval-tones intervals)]
     (fretboard/with-all-intervals intervals->tones fretboard-matrix))

@@ -520,7 +520,6 @@
     :octave 2}]
   3))
 
-
 (defn add-layer [f fretboard-matrix]
   (utils/map-matrix
    (fn [{:keys [blank?] :as fret}]
@@ -1003,3 +1002,22 @@
        (filter :match?)
        (seq)
        (boolean)))
+
+(defn first-fret?
+  "First fret?"
+  [fretboard-matrix {:keys [x y]}]
+  (let [xy-map (->> fretboard-matrix
+                    (apply concat)
+                    (map (fn [{:keys [x y] :as m}]
+                           [[x y] m]))
+                    (into {}))
+        fret (get-in xy-map [[(dec x) y]])]
+    (or (get fret :blank?)
+        (nil? fret))))
+
+(defn left-is-blank?
+  "Is fret to the left blank?"
+  [fretboard-matrix {:keys [x y] :as m}]
+  (let [f? (first-fret? fretboard-matrix m)]
+    (cond-> m
+      f? (assoc :left-is-blank? true))))

@@ -1,4 +1,5 @@
-(ns se.jherrlin.music-theory.webapp.views.instruments.fretboard)
+(ns se.jherrlin.music-theory.webapp.views.instruments.fretboard
+  (:require [se.jherrlin.music-theory.music-theory :as music-theory]))
 
 
 (defn fret-number [n]
@@ -65,16 +66,6 @@
                       :width            "0.5rem"
                       :height           "100%"}}])]))
 
-(defn left-is-blank? [x y matrix]
-  (let [xy-map (->> matrix
-                    (apply concat)
-                    (map (fn [{:keys [x y] :as m}]
-                           [[x y] m]))
-                    (into {}))
-        fret (get-in xy-map [[(dec x) y]])]
-    (or (get fret :blank?)
-        (nil? fret))))
-
 (defn styled-view [{:keys [id
                            fretboard-matrix
                            on-click
@@ -100,7 +91,8 @@
         (for [{:keys [x y tone out root? blank? octave] :as fret} fretboard-string]
           (let [orange-fn'      (orange-fn fret)
                 dark-orange-fn' (dark-orange-fn fret)
-                grey-fn'        (grey-fn fret)]
+                grey-fn'        (grey-fn fret)
+                left-is-blank?  (music-theory/first-fret? fretboard-matrix fret)]
             ^{:key (str "fret-" x y id)}
             [fret-component
              {:show-octave?     show-octave?
@@ -117,12 +109,12 @@
                                   orange-fn'      orange-fn'
                                   grey-fn'        grey-fn'
                                   :else           nil)
-              :background-color (if (left-is-blank? x y fretboard-matrix)
+              :background-color (if left-is-blank?
                                   "white"
                                   "#000000d6")
               :fret-color       (cond
-                                  (left-is-blank? x y fretboard-matrix) "white"
-                                  (= x 0)                               "linear-gradient(black, black, black)"
-                                  (= x max-x)                           "linear-gradient(#000000d6, #000000d6, #000000d6)"
+                                  left-is-blank? "white"
+                                  (= x 0)        "linear-gradient(black, black, black)"
+                                  (= x max-x)    "linear-gradient(#000000d6, #000000d6, #000000d6)"
                                   :else
                                   "linear-gradient(to right, #FFFFFF , #706e68)")}]))])]))

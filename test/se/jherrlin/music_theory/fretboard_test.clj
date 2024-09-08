@@ -430,3 +430,50 @@
       {:ms 2000, :dispatch [:tonejs/play-tone {:x 2, :y 1, :octave 4, :tone "B"}]}]
      [:dispatch-later
       {:ms 2500, :dispatch [:tonejs/play-tone {:x 5, :y 1, :octave 5, :tone "D"}]}]])))
+
+(deftest first-fret?
+  (is
+   (=
+    (let [fretboard-matrix [[{:x 0, :y 0}
+                             {:x 1, :y 0}
+                             {:x 2, :y 0}
+                             {:x 3, :y 0}
+                             {:x 4, :y 0}
+                             {:x 5, :y 0}
+                             {:x 6, :y 0}]
+                            [{:x 0, :y 1}
+                             {:x 1, :y 1}
+                             {:x 2, :y 1}
+                             {:x 3, :y 1}
+                             {:x 4, :y 1}
+                             {:x 5, :y 1}
+                             {:x 6, :y 1}]
+                            [{:x 0, :y 2}
+                             {:x 1, :y 2}
+                             {:x 2, :y 2}
+                             {:x 3, :y 2}
+                             {:x 4, :y 2}
+                             {:x 5, :y 2}
+                             {:x 6, :y 2}]
+                            [{:x 0, :y 3}
+                             {:x 1, :y 3}
+                             {:x 2, :y 3}
+                             {:x 3, :y 3}
+                             {:x 4, :y 3}
+                             {:x 5, :y 3}
+                             {:x 6, :y 3}]
+                            [{:x 0, :y 4, :blank? true}
+                             {:x 1, :y 4, :blank? true}
+                             {:x 2, :y 4, :blank? true}
+                             {:x 3, :y 4, :blank? true}
+                             {:x 4, :y 4, :blank? true}
+                             {:x 5, :y 4}
+                             {:x 6, :y 4}]]]
+      (->> fretboard-matrix
+           (utils/map-matrix
+            (partial fretboard/first-fret? fretboard-matrix))))
+    [[true false false false false false false]
+     [true false false false false false false]
+     [true false false false false false false]
+     [true false false false false false false]
+     [true true true true true true false]])))

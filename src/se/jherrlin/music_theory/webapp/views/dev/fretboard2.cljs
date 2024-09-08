@@ -218,34 +218,8 @@
      :interval "b7",
      :tone-str "C"}]])
 
-(re-frame/reg-event-fx
- ::play-tones
- (fn [_ [_event-id fretboard-matrix]]
-   {:fx (music-theory/fretboard-matrix->tonejs-dispatches fretboard-matrix)}))
-
-(comment
-  (re-frame/dispatch [::play-tones fretboard-matrix])
-  )
-
-(comment
-  (music-theory/fretboard-matrix->tonejs-dispatches fretboard-matrix)
-
-  )
-
-(defn ^:dev/after-load view [deps]
-  (let [fretboard-size (<sub [::fretboard-size])]
-    [:<>
-     [:button
-      {:on-click #(>evt [::inc-fretboard-size])}
-      "inc"]
-     [:button
-      {:on-click #(>evt [::dec-fretboard-size])}
-      "dec"]
-     [fretboard2/styled-view
-      {:id "deokedk"
-       :fretboard-size fretboard-size
-       :fretboard-matrix
-       #_[[{:x              0, :y 0
+(def f2
+  [[{:x              0, :y 0
             :x-min          true
             :fret-color     "white"
             :circle-color   "green"
@@ -294,14 +268,44 @@
             :circle-color "green"
             :center-text  "B"}
            {:x 4, :y 3}
-           {:x 5, :y 3}]]
+           {:x 5, :y 3}]])
+
+(re-frame/reg-event-fx
+ ::play-tones
+ (fn [_ [_event-id fretboard-matrix]]
+   {:fx (music-theory/fretboard-matrix->tonejs-dispatches fretboard-matrix)}))
+
+(comment
+  (re-frame/dispatch [::play-tones fretboard-matrix])
+  )
+
+(comment
+  (music-theory/fretboard-matrix->tonejs-dispatches fretboard-matrix)
+
+  )
+
+(defn ^:dev/after-load view [deps]
+  (let [fretboard-size (<sub [::fretboard-size])]
+    [:<>
+     [:button
+      {:on-click #(>evt [::inc-fretboard-size])}
+      "inc"]
+     [:button
+      {:on-click #(>evt [::dec-fretboard-size])}
+      "dec"]
+     [fretboard2/styled-view
+      {:id "deokedk"
+       :fretboard-size fretboard-size
+       :fretboard-matrix
+       #_f2
        (->> fretboard-matrix
             (music-theory/map-matrix
              (comp
               #(select-keys % fretboard2/keys-to-have)
               (partial center-text :match? :tone-str)
               (partial root-circle-color :root?)
-              (partial octave-in-down-right-text :match?))))}]]))
+              (partial octave-in-down-right-text :match?)
+              (partial music-theory/left-is-blank? fretboard-matrix))))}]]))
 
 (defn ^:dev/after-load routes [deps]
   (let [route-name :fretboard2]

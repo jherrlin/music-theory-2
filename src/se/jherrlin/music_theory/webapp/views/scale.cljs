@@ -231,7 +231,9 @@ Returns a seq or maps:
                                          (music-theory/circle-color :highlight? :color/highlight)
                                          (music-theory/circle-color :root? :color/root-note)
                                          (music-theory/circle-color :match? :color/note)
-                                         (music-theory/center-text :match? :tone-str))))])))
+                                         (music-theory/center-text :match? :tone-str)
+                                         (partial music-theory/left-is-blank? instrument-data-structure)
+                                         )))])))
                         (into {})))
     :path (path ::fretboard2-map)}))
 
@@ -276,153 +278,6 @@ Returns a seq or maps:
  ::play-tones-2
  (fn [_ [_event-id fxs]]
    {:fx fxs}))
-
-(comment
-  (>evt [::play-tones-2
-         [[:dispatch [:tonejs/play-tone {:x 0, :y 2, :octave 4, :tone "D"}]]
-   [:dispatch
-    [:se.jherrlin.music-theory.webapp.views.scale/highlight
-     {:entity
-      {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
-       :instrument :mandolin,
-       :key-of :d},
-      :x 0,
-      :y 2,
-      :highlight? true}]]
-   [:dispatch-later
-    {:ms 500,
-     :dispatch
-     [:se.jherrlin.music-theory.webapp.views.scale/highlight
-      {:entity
-       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
-        :instrument :mandolin,
-        :key-of :d},
-       :x 0,
-       :y 2,
-       :highlight? false}]}]
-   [:dispatch-later
-    {:ms 500, :dispatch [:tonejs/play-tone {:x 2, :y 2, :octave 4, :tone "E"}]}]
-   [:dispatch-later
-    {:ms 500,
-     :dispatch
-     [:se.jherrlin.music-theory.webapp.views.scale/highlight
-      {:entity
-       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
-        :instrument :mandolin,
-        :key-of :d},
-       :x 2,
-       :y 2,
-       :highlight? true}]}]
-   [:dispatch-later
-    {:ms 1000,
-     :dispatch
-     [:se.jherrlin.music-theory.webapp.views.scale/highlight
-      {:entity
-       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
-        :instrument :mandolin,
-        :key-of :d},
-       :x 2,
-       :y 2,
-       :highlight? false}]}]
-   [:dispatch-later
-    {:ms 1000,
-     :dispatch [:tonejs/play-tone {:x 4, :y 2, :octave 4, :tone "Gb"}]}]
-   [:dispatch-later
-    {:ms 1000,
-     :dispatch
-     [:se.jherrlin.music-theory.webapp.views.scale/highlight
-      {:entity
-       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
-        :instrument :mandolin,
-        :key-of :d},
-       :x 4,
-       :y 2,
-       :highlight? true}]}]
-   [:dispatch-later
-    {:ms 1500,
-     :dispatch
-     [:se.jherrlin.music-theory.webapp.views.scale/highlight
-      {:entity
-       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
-        :instrument :mandolin,
-        :key-of :d},
-       :x 4,
-       :y 2,
-       :highlight? false}]}]
-   [:dispatch-later
-    {:ms 1500, :dispatch [:tonejs/play-tone {:x 0, :y 1, :octave 4, :tone "A"}]}]
-   [:dispatch-later
-    {:ms 1500,
-     :dispatch
-     [:se.jherrlin.music-theory.webapp.views.scale/highlight
-      {:entity
-       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
-        :instrument :mandolin,
-        :key-of :d},
-       :x 0,
-       :y 1,
-       :highlight? true}]}]
-   [:dispatch-later
-    {:ms 2000,
-     :dispatch
-     [:se.jherrlin.music-theory.webapp.views.scale/highlight
-      {:entity
-       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
-        :instrument :mandolin,
-        :key-of :d},
-       :x 0,
-       :y 1,
-       :highlight? false}]}]
-   [:dispatch-later
-    {:ms 2000, :dispatch [:tonejs/play-tone {:x 2, :y 1, :octave 4, :tone "B"}]}]
-   [:dispatch-later
-    {:ms 2000,
-     :dispatch
-     [:se.jherrlin.music-theory.webapp.views.scale/highlight
-      {:entity
-       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
-        :instrument :mandolin,
-        :key-of :d},
-       :x 2,
-       :y 1,
-       :highlight? true}]}]
-   [:dispatch-later
-    {:ms 2500,
-     :dispatch
-     [:se.jherrlin.music-theory.webapp.views.scale/highlight
-      {:entity
-       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
-        :instrument :mandolin,
-        :key-of :d},
-       :x 2,
-       :y 1,
-       :highlight? false}]}]
-   [:dispatch-later
-    {:ms 2500, :dispatch [:tonejs/play-tone {:x 5, :y 1, :octave 5, :tone "D"}]}]
-   [:dispatch-later
-    {:ms 2500,
-     :dispatch
-     [:se.jherrlin.music-theory.webapp.views.scale/highlight
-      {:entity
-       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
-        :instrument :mandolin,
-        :key-of :d},
-       :x 5,
-       :y 1,
-       :highlight? true}]}]
-   [:dispatch-later
-    {:ms 3000,
-     :dispatch
-     [:se.jherrlin.music-theory.webapp.views.scale/highlight
-      {:entity
-       {:id #uuid "9b716148-3c19-42a4-9583-07c8c1671b66",
-        :instrument :mandolin,
-        :key-of :d},
-       :x 5,
-       :y 1,
-       :highlight? false}]}]]
-         ])
-  )
 
 (defn scale-component [deps]
   (let [{:keys [id scale instrument] :as path-params} @(re-frame/subscribe [:path-params])
@@ -492,6 +347,7 @@ Returns a seq or maps:
       scale-entity path-params query-params deps]
 
      (if-not debug?
+       ;; Old way of doing it
        (when (seq scale-patterns)
          [:<>
           [:h2 "Scale patterns"]
@@ -501,6 +357,8 @@ Returns a seq or maps:
              [common/instrument-view entity path-params query-params deps]
              [:br]
              [:br]])])
+
+       ;; New way of doing it
        (when (seq fretboard2-matrixes)
          [:<>
           [:h2 "Scale patterns"]
