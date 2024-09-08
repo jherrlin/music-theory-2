@@ -11,19 +11,6 @@
      ""
      n)])
 
-(def keys-to-have [:background-color
-                   :circle-color
-                   :center-text
-                   :down-right-text
-                   :blank?
-                   :y
-                   :x
-                   :on-click
-                   :x-max?
-                   :x-min?
-                   :left-is-blank?
-                   :fretboard-size])
-
 (def root-note-color "#ff7600")
 (def note-color "#ffa500") ;; orange
 (def highlight-color "green")

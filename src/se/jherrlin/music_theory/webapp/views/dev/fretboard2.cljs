@@ -301,7 +301,7 @@
        (->> fretboard-matrix
             (music-theory/map-matrix
              (comp
-              #(select-keys % fretboard2/keys-to-have)
+              #(select-keys % music-theory/fretboard2-keys)
               (partial center-text :match? :tone-str)
               (partial root-circle-color :root?)
               (partial octave-in-down-right-text :match?)

@@ -1021,3 +1021,52 @@
   (let [f? (first-fret? fretboard-matrix m)]
     (cond-> m
       f? (assoc :left-is-blank? true))))
+
+(def fretboard2-keys
+  [:background-color
+   :circle-color
+   :center-text
+   :down-right-text
+   :blank?
+   :y
+   :x
+   :on-click
+   :x-max?
+   :x-min?
+   :left-is-blank?
+   :fretboard-size])
+
+(defn fretboard-matrix->fretboard2
+  [{:keys [as-intervals
+           show-octave
+           surrounding-intervals
+           surrounding-tones]}
+   frets-to-matrix]
+  (->> frets-to-matrix
+       (utils/map-matrix
+        (comp
+         #(select-keys % fretboard2-keys)
+         (circle-color :highlight? :color/highlight)
+         (circle-color
+          (fn [{:keys [root? match?]}]
+            (and root? match?))
+          :color/root-note)
+         (circle-color :match? :color/note)
+         (circle-color (comp not :match?) :color/grey)
+         (if show-octave
+           (down-right-text (comp not :match?) :octave)
+           identity)
+         (if surrounding-intervals
+           (comp
+            (center-text (comp not :match?) :interval)
+            (circle-color (comp not :match?) :color/grey))
+           identity)
+         (if surrounding-tones
+           (comp
+            (circle-color (comp not :match?) :color/grey)
+            (center-text (comp not :match?) :tone-str))
+           identity)
+         (if as-intervals
+           (center-text :match? :interval)
+           (center-text :match? :tone-str))
+         (partial left-is-blank? frets-to-matrix)))))

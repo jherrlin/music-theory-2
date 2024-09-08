@@ -228,50 +228,17 @@ Returns a seq or maps:
                    (->> e+d+i-ds+qp
                         vals
                         (map (fn [m]
-                               (let [instrument-data-structure   (:instrument-data-structure m)
-                                     entity                      (:entity m)
-                                     {:keys [as-intervals
-                                             as-text
-                                             bookmarks
-                                             debug
-                                             nr-of-frets
-                                             nr-of-octavs
-                                             scale-patterns-starts-on
-                                             show-octave
-                                             surrounding-intervals
-                                             surrounding-tones]} (:query-params m)]
+                               (let [instrument-data-structure (:instrument-data-structure m)
+                                     entity                    (:entity m)
+                                     query-params              (:query-params m)]
                                  [entity
-                                  (->> instrument-data-structure
-                                       (music-theory/map-matrix
-                                        (comp
-                                         #(select-keys % fretboard2/keys-to-have)
-                                         add-play-tone
-                                         (music-theory/circle-color :highlight? :color/highlight)
-                                         (music-theory/circle-color
-                                          (fn [{:keys [root? match?]}]
-                                            (and root? match?))
-                                          :color/root-note)
-                                         (music-theory/circle-color :match? :color/note)
-                                         (music-theory/circle-color (comp not :match?) :color/grey)
-                                         (if show-octave
-                                           (music-theory/down-right-text (comp not :match?) :octave)
-                                           identity)
-                                         (if surrounding-intervals
-                                           (comp
-                                            (music-theory/center-text (comp not :match?) :interval)
-                                            (music-theory/circle-color (comp not :match?) :color/grey))
-                                           identity)
-                                         (if surrounding-tones
-                                           (comp
-                                            (music-theory/circle-color (comp not :match?) :color/grey)
-                                            (music-theory/center-text (comp not :match?) :tone-str))
-                                           identity)
-                                         (if as-intervals
-                                           (music-theory/center-text :match? :interval)
-                                           (music-theory/center-text :match? :tone-str))
-                                         (partial music-theory/left-is-blank? instrument-data-structure))))])))
+                                  (->> (music-theory/fretboard-matrix->fretboard2
+                                        query-params
+                                        instrument-data-structure)
+                                       (music-theory/map-matrix add-play-tone))])))
+
                         (into {})))
-    :path        (path ::fretboard2-map)}))
+    :path (path ::fretboard2-map)}))
 
 (re-frame/reg-sub  ::fretboard2-map :-> #(get-in % (path ::fretboard2-map)))
 

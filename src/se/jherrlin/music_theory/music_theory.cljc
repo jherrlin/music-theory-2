@@ -127,6 +127,8 @@
 (def fretboard-matrix->tonejs-dispatches-2 fretboard/fretboard-matrix->tonejs-dispatches-2)
 (def fretboard-has-matches? fretboard/matches?)
 (def left-is-blank? fretboard/left-is-blank?)
+(def fretboard2-keys fretboard/fretboard2-keys)
+(def fretboard-matrix->fretboard2 fretboard/fretboard-matrix->fretboard2)
 (def first-fret? fretboard/first-fret?)
 (defn with-all-intervals [interval-tones intervals fretboard-matrix]
   (let [intervals->tones (mapv vector interval-tones intervals)]
