@@ -178,7 +178,7 @@ Returns a map: entity+[:entity, :definition, :instrument-data-structure]"
                         (sort-by :sort-score)))
     :path        (path ::sorted-patterns)}))
 
-(re-frame/reg-sub  ::sorted-patterns :-> #(get-in % (path ::sorted-patterns)))
+(re-frame/reg-sub ::sorted-patterns :-> #(get-in % (path ::sorted-patterns)))
 
 (comment
   @(re-frame/subscribe [:flow {:id ::sorted-patterns}])
@@ -243,9 +243,6 @@ Returns a seq or maps:
 (re-frame/reg-sub  ::fretboard2-map :-> #(get-in % (path ::fretboard2-map)))
 
 
-
-
-
 (comment
   @(re-frame/subscribe [:flow {:id ::fretboard2-map}])
   (get @re-frame.db/app-db app-db-path)
@@ -265,8 +262,10 @@ Returns a seq or maps:
     :output      (fn [{:keys [fretboard2-map sorted-patterns]}]
                    (->> sorted-patterns
                         (mapv (fn [{:keys [entity _sort-score]}]
-                                {:entity            entity
-                                 :fretboard2-matrix (get fretboard2-map entity)}))))
+                                [entity
+                                 {:entity            entity
+                                  :fretboard2-matrix (get fretboard2-map entity)}]))
+                        (into {})))
     :path        (path ::fretboard2->view)}))
 
 (re-frame/reg-sub ::fretboard2->view :-> #(get-in % (path ::fretboard2->view)))
@@ -285,6 +284,35 @@ Returns a seq or maps:
  ::play-tones-2
  (fn [_ [_event-id fxs]]
    {:fx fxs}))
+
+
+
+
+
+(re-frame/reg-sub
+ ::fretboard2-matrix
+ (fn [db [_event-id entity]]
+   (let [p (conj (path ::fretboard2->view) entity :fretboard2-matrix)
+         fretboard2 (get-in db p)]
+     fretboard2)))
+
+(re-frame/reg-sub
+ ::fretboard-matrix
+ (fn [db [_event-id entity]]
+   (let [p (conj (path ::entity+definition+instrument-ds+qp) entity :instrument-data-structure)
+         fretboard-matrix (get-in db p)]
+     fretboard-matrix)))
+
+(defn scale-pattern-view
+  [entity]
+  (let [fretboard2-matrix (<sub [::fretboard2-matrix entity])
+        fretboard-matrix  (<sub [::fretboard-matrix entity])]
+    [:<>
+     [fretboard2/styled-view {:id               (:id entity)
+                              :fretboard-matrix fretboard2-matrix
+                              :fretboard-size   1}]
+     [:button {:on-click #(>evt [::play-tones entity fretboard-matrix])}
+      "Play"]]))
 
 (defn scale-component [deps]
   (let [{:keys [id scale instrument] :as path-params} @(re-frame/subscribe [:path-params])
@@ -321,8 +349,8 @@ Returns a seq or maps:
                                  (sort-by :sort-score)
                                  (map :id))
         fretboard2-matrixes @(re-frame/subscribe [:flow {:id ::fretboard2->view}])
-        entities++          @(re-frame/subscribe [:flow {:id ::entity+definition+instrument-ds+qp}])]
-
+        entities++          @(re-frame/subscribe [:flow {:id ::entity+definition+instrument-ds+qp}])
+        sorted-patterns     (<sub [::sorted-patterns])]
     [:<>
      [common/menu]
      [:br]
@@ -366,20 +394,29 @@ Returns a seq or maps:
              [:br]])])
 
        ;; New way of doing it
-       (when (seq fretboard2-matrixes)
+       #_(when (seq fretboard2-matrixes)
+           [:<>
+            [:h2 "Scale patterns"]
+            (for [{:keys [entity fretboard2-matrix]} fretboard2-matrixes]
+              (let [fretboard-matrix (get-in entities++ [entity :instrument-data-structure])]
+                ^{:key (hash entity)}
+                [:<>
+                 [fretboard2/styled-view {:id               (:id entity)
+                                          :fretboard-matrix fretboard2-matrix
+                                          :fretboard-size   1}]
+                 [:button {:on-click #(>evt [::play-tones entity fretboard-matrix])}
+                  "Play"]
+                 [:br]
+                 [:br]]))])
+       (when (seq sorted-patterns)
          [:<>
           [:h2 "Scale patterns"]
-          (for [{:keys [entity fretboard2-matrix]} fretboard2-matrixes]
-            (let [fretboard-matrix (get-in entities++ [entity :instrument-data-structure])]
-              ^{:key (hash entity)}
-              [:<>
-               [fretboard2/styled-view {:id               (:id entity)
-                                        :fretboard-matrix fretboard2-matrix
-                                        :fretboard-size   1}]
-               [:button {:on-click #(>evt [::play-tones entity fretboard-matrix])}
-                "Play"]
-               [:br]
-               [:br]]))]))
+          (for [{:keys [entity]} sorted-patterns]
+            ^{:key (hash entity)}
+            [:<>
+             [scale-pattern-view entity]
+             [:br]
+             [:br]])]))
 
      [:br]
      [:br]
