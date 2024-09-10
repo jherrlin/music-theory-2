@@ -210,9 +210,9 @@ Returns a seq or maps:
   (get @re-frame.db/app-db app-db-path)
   )
 
-(defn play-tone [{:keys [tone-str octave]}]
+(defn play-tone [{:keys [interval-tone octave] :as m}]
   (fn [_]
-    (>evt [:tonejs/play-tone {:tone tone-str :octave octave}])))
+    (>evt [:tonejs/play-tone {:tone interval-tone :octave octave}])))
 
 (defn add-play-tone
   [m]

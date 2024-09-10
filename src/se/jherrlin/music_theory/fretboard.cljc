@@ -595,6 +595,8 @@
     (cond-> m
       :always            (assoc :interval i)
       :always            (assoc :tone-str (-> tone (general/sharp-or-flat "b") name str/capitalize))
+      :always            (assoc :interval-tone (-> tone (general/sharp-or-flat "b") name str/capitalize))
+      :always            (assoc :index-tone tone)
       (= 2 (count tone)) (assoc :sharp (-> tone (general/sharp-or-flat "#") name str/capitalize))
       (= 2 (count tone)) (assoc :flat (-> tone (general/sharp-or-flat "b") name str/capitalize))
       (= "1" i)          (assoc :root? true))
@@ -1038,7 +1040,9 @@
    :x-max?
    :x-min?
    :left-is-blank?
-   :fretboard-size])
+   :fretboard-size
+   :interval-tone
+   :octave])
 
 (defn fretboard-matrix->fretboard2
   [{:keys [as-intervals

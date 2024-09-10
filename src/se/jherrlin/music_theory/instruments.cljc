@@ -49,7 +49,7 @@
                                       :octave      5
                                       :start-index 0}]}
    :mandolin-aeae     {:id          :mandolin-aeae
-                       :text        "Mandolin-AEAE"
+                       :text        "Mandolin (AEAE)"
                        :description "Mandolin AEAE tuning"
                        :type        :fretboard
                        :order       4
