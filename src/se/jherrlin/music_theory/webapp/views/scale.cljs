@@ -8,10 +8,11 @@
    [se.jherrlin.music-theory.music-theory :as music-theory]
    [se.jherrlin.music-theory.webapp.views.common :as common]
    [re-frame.db :as db]
-   [se.jherrlin.music-theory.models.entity :as entity]
+   [se.jherrlin.music-theory.models.entity :as models.entity]
    [se.jherrlin.music-theory.instruments :as instruments]
    [se.jherrlin.music-theory.webapp.views.instruments.fretboard2 :as fretboard2]
-   [se.jherrlin.music-theory.webapp.views.scale-calcs :as scale-calcs]))
+   [se.jherrlin.music-theory.webapp.views.scale-calcs :as scale-calcs]
+   [se.jherrlin.music-theory.webapp.components.tonejs :as tonejs]))
 
 (def events-
   [{:n ::entity}
@@ -303,15 +304,66 @@ Returns a seq or maps:
          fretboard-matrix (get-in db p)]
      fretboard-matrix)))
 
+(def bpm 80)
+(def min-in-milli 60000)
+
+(def to-play
+  (atom []))
+
+(defn play-and-highlight [elm wait-for {:keys [circle-dom-id tone octave x y]}]
+  (let [current-background-color (-> elm
+                                     (.-style)
+                                     (.-backgroundColor))]
+    (tonejs/play-tone {:tone tone :octave octave})
+    (-> elm
+        (.-style)
+        (.-backgroundColor)
+        (set! "green"))
+    (js/setTimeout (fn []
+                     (-> js/document
+                         (.getElementById circle-dom-id)
+                         (.-style)
+                         (.-backgroundColor)
+                         (set! (str current-background-color))))
+                   wait-for)))
+
+(defonce interval-id
+    (js/setInterval (fn []
+                      (when-let [{:keys [circle-dom-id] :as f} (first @to-play)]
+                        (when-let [elm (-> js/document
+                                           (.getElementById circle-dom-id))]
+                          (play-and-highlight
+                           elm
+                           (/ min-in-milli bpm)
+                           f)
+                          (swap! to-play rest)))) (/ min-in-milli bpm)))
+(comment
+  (js/clearInterval interval-id)
+  )
+
 (defn scale-pattern-view
   [entity]
   (let [fretboard2-matrix (<sub [::fretboard2-matrix entity])
         fretboard-matrix  (<sub [::fretboard-matrix entity])]
     [:<>
+     #_[:div (:id entity)]
      [fretboard2/styled-view {:id               (:id entity)
                               :fretboard-matrix fretboard2-matrix
+                              :entity-str       (models.entity/entity-to-str entity)
                               :fretboard-size   1}]
-     [:button {:on-click #(>evt [::play-tones entity fretboard-matrix])}
+     [:button {:on-click ;#(>evt [::play-tones entity fretboard-matrix])
+               (fn [_] (reset! to-play
+                               (let [derps (->> fretboard-matrix
+                                                (music-theory/filter-matches)
+                                                (map (fn [{:keys [x y tone-str] :as m}]
+                                                       (assoc m
+                                                              :tone tone-str
+                                                              :circle-dom-id
+                                                              (music-theory/circle-dom-id
+                                                               (music-theory/entity-to-str entity)
+                                                               x y))))
+                                                (mapv #(select-keys % [:x :y :tone :octave :circle-dom-id])))]
+                                 (concat derps (rest (reverse derps))))))}
       "Play"]]))
 
 (defn scale-component [deps]

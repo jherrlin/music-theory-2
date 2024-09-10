@@ -130,6 +130,7 @@
 (def fretboard2-keys fretboard/fretboard2-keys)
 (def fretboard-matrix->fretboard2 fretboard/fretboard-matrix->fretboard2)
 (def first-fret? fretboard/first-fret?)
+(def circle-dom-id fretboard/circle-dom-id)
 (defn with-all-intervals [interval-tones intervals fretboard-matrix]
   (let [intervals->tones (mapv vector interval-tones intervals)]
     (fretboard/with-all-intervals intervals->tones fretboard-matrix))

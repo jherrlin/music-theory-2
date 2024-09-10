@@ -1022,6 +1022,10 @@
     (cond-> m
       f? (assoc :left-is-blank? true))))
 
+(defn circle-dom-id
+  [entity-str x y]
+  (str entity-str "-" x "-" y "-circle"))
+
 (def fretboard2-keys
   [:background-color
    :circle-color

@@ -1,4 +1,7 @@
-(ns se.jherrlin.music-theory.webapp.views.instruments.fretboard2)
+(ns se.jherrlin.music-theory.webapp.views.instruments.fretboard2
+  (:require
+    [se.jherrlin.music-theory.models.entity :as entity]
+    [se.jherrlin.music-theory.music-theory :as music-theory]))
 
 
 (defn fret-number [fretboard-size n]
@@ -38,10 +41,11 @@
            x-max?
            x-min?
            left-is-blank?
-           fretboard-size]
+           fretboard-size
+           entity-str]
     :or   {circle-color   note-color
            fretboard-size 1}}]
-  (let [y                (/ y 10)
+  (let [string-hight     (/ y 10)
         fret-color       (cond
                            x-max? "linear-gradient(black, black, black)"
                            x-min? "linear-gradient(#000000d6, #000000d6, #000000d6)"
@@ -52,7 +56,7 @@
                            left-is-blank?   "white"
                            :else            "#000000d6")
         string-color     "linear-gradient(#737270 , #b9bab3, #737270)"
-        string-height    (str (* fretboard-size (+ 0.2 y)) "rem")
+        string-height    (str (* fretboard-size (+ 0.2 string-hight)) "rem")
         fret-width       (* fretboard-size 3.9)
         fret-height      (* fretboard-size 2.7)]
     [:div (cond-> {:style    {:width          (str fret-width "rem")
@@ -76,7 +80,8 @@
                      :width            (str fret-width "rem")
                      :z-index          100}}
        (when center-text
-         [:div {:style {:display          "flex"
+         [:div {:id    (music-theory/circle-dom-id entity-str x y)
+                :style {:display          "flex"
                         :align-items      :center
                         :justify-content  :center
                         :height           (str (* fretboard-size 2) "rem")
@@ -100,7 +105,12 @@
                     :width            (str (* fretboard-size 0.5) "rem")
                     :height           "100%"}}]]))
 
-(defn styled-view [{:keys [fretboard-matrix id fretboard-size]
+
+
+(defn styled-view [{:keys [fretboard-matrix
+                           id
+                           fretboard-size
+                           entity-str]
                     :or   {fretboard-size 1}}]
   [:div {:style {:overflow-x "auto"}}
    [:div {:style {:display "flex"}}
@@ -112,4 +122,6 @@
      [:div {:style {:display "flex"}}
       (for [{:keys [x y] :as fret} fretboard-string]
         ^{:key (str "fret-" x y id)}
-        [fret-component (assoc fret :fretboard-size fretboard-size)])])])
+        [fret-component (assoc fret
+                               :fretboard-size fretboard-size
+                               :entity-str entity-str)])])])
