@@ -357,12 +357,12 @@ Returns a seq or maps:
   (let [derps (up entity fretboard-matrix)]
     (concat derps (rest (reverse derps)))))
 
-(defn up-and-down-repeat-10 [entity fretboard-matrix]
+(defn up-and-down-repeat [entity fretboard-matrix]
   (let [ud           (up-and-down entity fretboard-matrix)
         last-removed (drop-last 1 ud)
         f            (first ud)]
     (concat
-     (take (* (count last-removed) 10)
+     (take (* (count last-removed) 100)
            (cycle last-removed))
      [f])))
 
@@ -378,14 +378,11 @@ Returns a seq or maps:
      [:br]
      [:div {:style {:display "flex"}}
       [:div {:style {:margin-right "0.5em"}}
-       [:button {:on-click #(reset! to-play (up entity fretboard-matrix))}
-        "Play (up)"]]
-      [:div {:style {:margin-right "0.5em"}}
        [:button {:on-click #(reset! to-play (up-and-down entity fretboard-matrix))}
-        "Play (up and down)"]]
+        "Play - up and down"]]
       [:div {:style {:margin-right "0.5em"}}
-       [:button {:on-click #(reset! to-play (up-and-down-repeat-10 entity fretboard-matrix))}
-        "Play (up and down * 10)"]]
+       [:button {:on-click #(reset! to-play (up-and-down-repeat entity fretboard-matrix))}
+        "Play - up and down, repeat"]]
       [:button {:on-click #(reset! to-play [])}
        "Stop"]]]))
 
