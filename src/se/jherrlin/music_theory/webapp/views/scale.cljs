@@ -307,7 +307,7 @@ Returns a seq or maps:
 (def bpm 80)
 (def min-in-milli 60000)
 
-(def to-play
+(defonce to-play
   (atom []))
 
 (defn play-and-highlight [elm wait-for {:keys [circle-dom-id tone octave x y]}]
@@ -341,30 +341,53 @@ Returns a seq or maps:
   (js/clearInterval interval-id)
   )
 
+(defn up [entity fretboard-matrix]
+  (->> fretboard-matrix
+       (music-theory/filter-matches)
+       (map (fn [{:keys [x y tone-str] :as m}]
+              (assoc m
+                     :tone tone-str
+                     :circle-dom-id
+                     (music-theory/circle-dom-id
+                      (music-theory/entity-to-str entity)
+                      x y))))
+       (mapv #(select-keys % [:x :y :tone :octave :circle-dom-id]))))
+
+(defn up-and-down [entity fretboard-matrix]
+  (let [derps (up entity fretboard-matrix)]
+    (concat derps (rest (reverse derps)))))
+
+(defn up-and-down-repeat-10 [entity fretboard-matrix]
+  (let [ud           (up-and-down entity fretboard-matrix)
+        last-removed (drop-last 1 ud)
+        f            (first ud)]
+    (concat
+     (take (* (count last-removed) 10)
+           (cycle last-removed))
+     [f])))
+
 (defn scale-pattern-view
   [entity]
   (let [fretboard2-matrix (<sub [::fretboard2-matrix entity])
         fretboard-matrix  (<sub [::fretboard-matrix entity])]
     [:<>
-     #_[:div (:id entity)]
      [fretboard2/styled-view {:id               (:id entity)
                               :fretboard-matrix fretboard2-matrix
                               :entity-str       (models.entity/entity-to-str entity)
                               :fretboard-size   1}]
-     [:button {:on-click ;#(>evt [::play-tones entity fretboard-matrix])
-               (fn [_] (reset! to-play
-                               (let [derps (->> fretboard-matrix
-                                                (music-theory/filter-matches)
-                                                (map (fn [{:keys [x y tone-str] :as m}]
-                                                       (assoc m
-                                                              :tone tone-str
-                                                              :circle-dom-id
-                                                              (music-theory/circle-dom-id
-                                                               (music-theory/entity-to-str entity)
-                                                               x y))))
-                                                (mapv #(select-keys % [:x :y :tone :octave :circle-dom-id])))]
-                                 (concat derps (rest (reverse derps))))))}
-      "Play"]]))
+     [:br]
+     [:div {:style {:display "flex"}}
+      [:div {:style {:margin-right "0.5em"}}
+       [:button {:on-click #(reset! to-play (up entity fretboard-matrix))}
+        "Play (up)"]]
+      [:div {:style {:margin-right "0.5em"}}
+       [:button {:on-click #(reset! to-play (up-and-down entity fretboard-matrix))}
+        "Play (up and down)"]]
+      [:div {:style {:margin-right "0.5em"}}
+       [:button {:on-click #(reset! to-play (up-and-down-repeat-10 entity fretboard-matrix))}
+        "Play (up and down * 10)"]]
+      [:button {:on-click #(reset! to-play [])}
+       "Stop"]]]))
 
 (defn scale-component [deps]
   (let [{:keys [id scale instrument] :as path-params} @(re-frame/subscribe [:path-params])
