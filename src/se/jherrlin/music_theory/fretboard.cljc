@@ -1017,12 +1017,25 @@
     (or (get fret :blank?)
         (nil? fret))))
 
+(defn left-is-x-0?
+  "Left fret is x = 0?"
+  [fretboard-matrix {:keys [x y]}]
+  (let [xy-map (->> fretboard-matrix
+                    (apply concat)
+                    (map (fn [{:keys [x y] :as m}]
+                           [[x y] m]))
+                    (into {}))
+        fret (get-in xy-map [[(dec x) y]])]
+    (= 0 (get fret :x))))
+
 (defn left-is-blank?
   "Is fret to the left blank?"
   [fretboard-matrix {:keys [x y] :as m}]
-  (let [f? (first-fret? fretboard-matrix m)]
+  (let [f?  (first-fret? fretboard-matrix m)
+        f2? (left-is-x-0? fretboard-matrix m)]
     (cond-> m
-      f? (assoc :left-is-blank? true))))
+      ;; f2? (assoc :left-is-x-0? true)
+      f?  (assoc :left-is-blank? true))))
 
 (defn circle-dom-id
   [entity-str x y]
@@ -1076,5 +1089,5 @@
            identity)
          (if as-intervals
            (center-text :match? :interval)
-           (center-text :match? :tone-str))
+           (center-text :match? :interval-tone))
          (partial left-is-blank? frets-to-matrix)))))
