@@ -725,7 +725,7 @@
         path-params        @(re-frame/subscribe [:path-params])
         {:keys
          [trim-fretboard nr-of-frets as-text nr-of-octavs as-intervals nr-of-octavs
-          surrounding-intervals surrounding-tones show-octave show-tones]
+          surrounding-intervals surrounding-tones show-octave show-tones bpm]
          :as query-params}
         @(re-frame/subscribe [:query-params])]
     [:div
@@ -738,20 +738,20 @@
          [:label {:for "as-intervals-checkbox"} "Show intervals?"]])
 
       #_(when as-text?
-        [:div {:style {:margin-left "1rem"}}
-         [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :as-text (not as-text))]])
-                  :checked  as-text
-                  :type     "checkbox" :id "as-text-checkbox" :name "as-text-checkbox"}]
-         [:label {:for "as-text-checkbox"} "Fretboard in text?"]])
+          [:div {:style {:margin-left "1rem"}}
+           [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :as-text (not as-text))]])
+                    :checked  as-text
+                    :type     "checkbox" :id "as-text-checkbox" :name "as-text-checkbox"}]
+           [:label {:for "as-text-checkbox"} "Fretboard in text?"]])
 
       ;; TODO: trim fretboard doesnt work correctly.
       #_(when trim-fretboard?
-        [:div {:style {:margin-left "1rem"}}
-         [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :trim-fretboard (not trim-fretboard))]])
-                  :checked  trim-fretboard
-                  :disabled true
-                  :type     "checkbox" :id "trim-fretboard-checkbox" :name "trim-fretboard-checkbox"}]
-         [:label {:for "trim-fretboard-checkbox"} "Trim fretboard?"]])
+          [:div {:style {:margin-left "1rem"}}
+           [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :trim-fretboard (not trim-fretboard))]])
+                    :checked  trim-fretboard
+                    :disabled true
+                    :type     "checkbox" :id "trim-fretboard-checkbox" :name "trim-fretboard-checkbox"}]
+           [:label {:for "trim-fretboard-checkbox"} "Trim fretboard?"]])
 
       (when show-tones?
         (let [id        "show-tones-checkbox"
@@ -835,4 +835,16 @@
                   :value     nr-of-octavs
                   :max       4
                   :min       1
-                  :type      "number" :id "nr-of-octavs-input" :name "nr-of-octavs-input"}]])]]))
+                  :type      "number" :id "nr-of-octavs-input" :name "nr-of-octavs-input"}]])
+
+      (when (= current-route-name :scale)
+        [:div
+         [:label {:for "bpm-input"} "Bpm:"]
+         [:input {:style     {:width "3rem"}
+                  :on-change #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :bpm (-> % .-target .-value))]])
+                  :value     bpm
+                  :max       200
+                  :min       50
+                  :type      "number"
+                  :id        "bpm-input"
+                  :name      "bpm-input"}]])]]))

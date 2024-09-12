@@ -12,7 +12,8 @@
    [se.jherrlin.music-theory.instruments :as instruments]
    [se.jherrlin.music-theory.webapp.views.instruments.fretboard2 :as fretboard2]
    [se.jherrlin.music-theory.webapp.views.scale-calcs :as scale-calcs]
-   [se.jherrlin.music-theory.webapp.components.tonejs :as tonejs]))
+   [se.jherrlin.music-theory.webapp.components.tonejs :as tonejs]
+   [se.jherrlin.music-theory.fretboard :as fretboard]))
 
 (def events-
   [{:n ::entity}
@@ -304,42 +305,6 @@ Returns a seq or maps:
          fretboard-matrix (get-in db p)]
      fretboard-matrix)))
 
-(def bpm 80)
-(def min-in-milli 60000)
-
-(defonce to-play
-  (atom []))
-
-(defn play-and-highlight [elm wait-for {:keys [circle-dom-id tone octave x y]}]
-  (let [current-background-color (-> elm
-                                     (.-style)
-                                     (.-backgroundColor))]
-    (tonejs/play-tone {:tone tone :octave octave})
-    (-> elm
-        (.-style)
-        (.-backgroundColor)
-        (set! "green"))
-    (js/setTimeout (fn []
-                     (-> js/document
-                         (.getElementById circle-dom-id)
-                         (.-style)
-                         (.-backgroundColor)
-                         (set! (str current-background-color))))
-                   wait-for)))
-
-(defonce interval-id
-    (js/setInterval (fn []
-                      (when-let [{:keys [circle-dom-id] :as f} (first @to-play)]
-                        (when-let [elm (-> js/document
-                                           (.getElementById circle-dom-id))]
-                          (play-and-highlight
-                           elm
-                           (/ min-in-milli bpm)
-                           f)
-                          (swap! to-play rest)))) (/ min-in-milli bpm)))
-(comment
-  (js/clearInterval interval-id)
-  )
 
 (defn up [entity fretboard-matrix]
   (->> fretboard-matrix
@@ -366,6 +331,71 @@ Returns a seq or maps:
            (cycle last-removed))
      [f])))
 
+
+(def min-in-milli 60000)
+
+(defonce to-play
+  (atom []))
+
+(defn play-and-highlight [elm bpm {:keys [circle-dom-id tone octave x y]}]
+  (let [current-background-color (-> elm
+                                     (.-style)
+                                     (.-backgroundColor))]
+    (tonejs/play-tone {:tone tone :octave octave})
+    (-> elm
+        (.-style)
+        (.-backgroundColor)
+        (set! "green"))
+    (js/setTimeout (fn []
+                     (-> js/document
+                         (.getElementById circle-dom-id)
+                         (.-style)
+                         (.-backgroundColor)
+                         (set! (str current-background-color))))
+                   bpm)))
+
+(def current-player-ids (atom {}))
+
+(defn play-tone-handler [{:keys [action times bpm fretboard-matrix entity] :as args}]
+  (condp = action
+    :play  (do
+             (play-tone-handler (assoc args :action :stop))
+             (let [ts (condp = times
+                        :up-and-down-repeat (up-and-down-repeat entity fretboard-matrix)
+                        (up-and-down entity fretboard-matrix))
+                   interval-id
+                   (js/setInterval
+                    (fn []
+                      (if-let [{:keys [circle-dom-id] :as f} (first @to-play)]
+                        (when-let [elm (-> js/document
+                                           (.getElementById circle-dom-id))]
+                          (play-and-highlight
+                           elm
+                           (/ min-in-milli bpm)
+                           f)
+                          (swap! to-play rest))
+                        (play-tone-handler (assoc args :action :stop))))
+                    (/ min-in-milli bpm))]
+               (reset! to-play ts)
+               (swap! current-player-ids assoc entity interval-id)))
+    :stop (when-let [id (get @current-player-ids entity)]
+            (js/clearInterval id)
+            (swap! current-player-ids dissoc entity))))
+
+(re-frame/reg-fx
+ ::play-tone-handler
+ play-tone-handler)
+
+
+
+(re-frame/reg-event-fx
+ ::play-tone-new-derp
+ (fn [{:keys [db]} [_event-id {:keys [action times bpm fretboard-matrix entity] :as m}]]
+   (let [bpm-from-qp (get-in db [:query-params :bpm] 80)]
+     #_(cond-> {::play-tone-handler m}
+         (nil? bpm) (assoc :bpm bpm-from-qp))
+     {::play-tone-handler (assoc m :bpm bpm-from-qp)})))
+
 (defn scale-pattern-view
   [entity]
   (let [fretboard2-matrix (<sub [::fretboard2-matrix entity])
@@ -378,12 +408,22 @@ Returns a seq or maps:
      [:br]
      [:div {:style {:display "flex"}}
       [:div {:style {:margin-right "0.5em"}}
-       [:button {:on-click #(reset! to-play (up-and-down entity fretboard-matrix))}
+       [:button
+        {:on-click #(>evt [::play-tone-new-derp {:action :play
+                                                 :times :up-and-down
+                                                 :fretboard-matrix fretboard-matrix
+                                                 :entity entity}])}
         "Play - up and down"]]
       [:div {:style {:margin-right "0.5em"}}
-       [:button {:on-click #(reset! to-play (up-and-down-repeat entity fretboard-matrix))}
+       [:button
+        {:on-click #(>evt [::play-tone-new-derp {:action :play
+                                                 :times :up-and-down-repeat
+                                                 :fretboard-matrix fretboard-matrix
+                                                 :entity entity}])}
         "Play - up and down, repeat"]]
-      [:button {:on-click #(reset! to-play [])}
+      [:button
+       {:on-click #(>evt [::play-tone-new-derp {:action :stop
+                                                :entity entity}])}
        "Stop"]]]))
 
 (defn scale-component [deps]
@@ -453,34 +493,7 @@ Returns a seq or maps:
      [common/instrument-view
       scale-entity path-params query-params deps]
 
-     (if-not debug?
-       ;; Old way of doing it
-       (when (seq scale-patterns)
-         [:<>
-          [:h2 "Scale patterns"]
-          (for [{:keys [id] :as entity} entities]
-            ^{:key (str "scale-patterns-" id)}
-            [:<>
-             [common/instrument-view entity path-params query-params deps]
-             [:br]
-             [:br]])])
-
-       ;; New way of doing it
-       #_(when (seq fretboard2-matrixes)
-           [:<>
-            [:h2 "Scale patterns"]
-            (for [{:keys [entity fretboard2-matrix]} fretboard2-matrixes]
-              (let [fretboard-matrix (get-in entities++ [entity :instrument-data-structure])]
-                ^{:key (hash entity)}
-                [:<>
-                 [fretboard2/styled-view {:id               (:id entity)
-                                          :fretboard-matrix fretboard2-matrix
-                                          :fretboard-size   1}]
-                 [:button {:on-click #(>evt [::play-tones entity fretboard-matrix])}
-                  "Play"]
-                 [:br]
-                 [:br]]))])
-       (when (seq sorted-patterns)
+     (when (seq sorted-patterns)
          [:<>
           [:h2 "Scale patterns"]
           (for [{:keys [entity]} sorted-patterns]
@@ -488,7 +501,7 @@ Returns a seq or maps:
             [:<>
              [scale-pattern-view entity]
              [:br]
-             [:br]])]))
+             [:br]])])
 
      [:br]
      [:br]

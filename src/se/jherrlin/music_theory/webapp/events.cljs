@@ -36,6 +36,7 @@
                         :harmonization-scale :major}
    query-params        {:nr-of-frets              15
                         :nr-of-octavs             2
+                        :bpm                      80
                         :as-intervals             false
                         :as-text                  false
                         :debug                    false
@@ -53,6 +54,7 @@
   [:map
    [:nr-of-frets           {:optional true} int?]
    [:nr-of-octavs          {:optional true} int?]
+   [:bpm                   {:optional true} int?]
    [:as-intervals          {:optional true} boolean?]
    [:as-text               {:optional true} boolean?]
    [:surrounding-intervals {:optional true} boolean?]
