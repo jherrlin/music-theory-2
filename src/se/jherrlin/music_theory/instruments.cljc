@@ -34,6 +34,7 @@
                        :text        "Mandolin"
                        :description "Standard mandolin tuning"
                        :type        :fretboard
+                       :scale-pattern-range 7
                        :order       3
                        :tuned-in    :fifth
                        :tuning      [{:tone        :g

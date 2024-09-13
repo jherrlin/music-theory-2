@@ -75,7 +75,9 @@
       [:div {:style {:display          "flex"
                      :align-items      :center
                      :justify-content  :center
-                     :background-image (if blank? "white" string-color)
+                     :background-image (if blank?
+                                         "white"
+                                         string-color)
                      :height           string-height
                      :width            (str fret-width "rem")
                      :z-index          100}}

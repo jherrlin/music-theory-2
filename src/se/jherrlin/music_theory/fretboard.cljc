@@ -815,20 +815,69 @@
       (general/sharp-or-flat interval)))
 
 (interval-tone-at-interval :g "5")
+;; => :d
+
+(defn interval-between-two-interval-tones
+  [t1 t2]
+  (->> intervals/most-common
+       (filter
+        (fn [common-interval]
+          (= (interval-tone-at-interval t1 common-interval) t2)))
+       first))
+
+(interval-between-two-interval-tones :g :d)
+;; => "5"
+(interval-between-two-interval-tones :b :g)
+;; => "b6"
+
+
+(defn intervals-between-interval-tones
+  [interval-tones]
+  (loop [[x y :as tones] interval-tones
+         acc             []]
+    (if (nil? y)
+      acc
+      (recur
+       (rest tones)
+       (conj acc (interval-between-two-interval-tones x y))))))
+
+(intervals-between-interval-tones
+ [:g :d :a :e])
+;; => ["5" "5" "5"]
+
+(intervals-between-interval-tones
+ [:e :a :d :g :b :e])
+
+
+(defn interval-tones-fifth?
+  "Is there a 5 interval between all the tones?
+
+  (interval-tones-fifth? [:g :d :a :e])
+  =>
+  true"
+  [interval-tones]
+  (loop [[x y :as tones] interval-tones
+         acc             []]
+    (let [fifth? (contains? (index-tone-at-interval x "5") y)]
+      (if (nil? y)
+        (every? true? acc)
+        (recur
+         (rest tones)
+         (conj acc fifth?))))))
+
+(interval-tones-fifth? [:g :d :a :e])
+
+
+
+
+
 
 (defn fretboard-matrix-in-fifth?
   [fretboard-matrix]
-  (let [strings-tuned-in (->> fretboard-matrix
-                              (mapv (comp first :tone second))
-                              (reverse))]
-    (loop [[x y :as strings] strings-tuned-in
-           acc               []]
-      (let [fifth? (contains? (index-tone-at-interval x "5") y)]
-        (if (nil? y)
-          (every? true? acc)
-          (recur
-           (rest strings)
-           (conj acc fifth?)))))))
+  (->> fretboard-matrix
+       (mapv (comp first :tone second))
+       (reverse)
+       (interval-tones-fifth?)))
 
 (fretboard-matrix-in-fifth?
  (fretboard-strings
@@ -849,15 +898,9 @@
 
 (defn instrument-in-fifth?
   [instrument-tuning]
-  (let [strings-tuned-in (mapv :tone instrument-tuning)]
-    (loop [[x y :as strings] strings-tuned-in
-           acc               []]
-      (let [fifth? (contains? (index-tone-at-interval x "5") y)]
-        (if (nil? y)
-          (every? true? acc)
-          (recur
-           (rest strings)
-           (conj acc fifth?)))))))
+  (->> instrument-tuning
+       (mapv :tone)
+       (interval-tones-fifth?)))
 
 (instrument-in-fifth?
  [{:tone        :g
@@ -1136,6 +1179,7 @@
            surrounding-tones]}
    frets-to-matrix]
   (->> frets-to-matrix
+       ;; (utils/trim-matrix #(every? nil? (map :match? %))) Seems to work
        (utils/map-matrix
         (comp
          #(select-keys % fretboard2-keys)

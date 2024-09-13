@@ -133,6 +133,9 @@
     :name/en   "Thirteen"
     :name/sv   "Tretton"}])
 
+(def most-common
+  ["1" "b2" "2" "b3" "3" "4" "b5" "5" "b6" "6" "b7" "7"])
+
 (def intervals-map-by-function
   (->> (intervals)
        (map (juxt :function identity))
