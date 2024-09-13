@@ -93,38 +93,61 @@
   (get @re-frame.db/app-db app-db-path)
   )
 
+(defn select-scale-patterns-starts-on []
+  (let [current-route-name @(re-frame/subscribe [:current-route-name])
+        path-params @(re-frame/subscribe [:path-params])
+        {scale-intervals :scale/intervals}
+        @(re-frame/subscribe [:flow {:id ::events/scale}])
+        scale-patterns-starts-on @(re-frame/subscribe [:scale-patterns-starts-on])]
+    (when (and current-route-name path-params scale-patterns-starts-on scale-intervals)
+      [:div {:style {:display "flex"}}
+       (for [interval scale-intervals]
+         ^{:key (str "select-scale-patterns-starts-on-" interval)}
+         [:div
+          [:label {:for (str "select-scale-patterns-starts-on-" interval)}
+           interval]
+          [:input
+           {:checked  (boolean (scale-patterns-starts-on interval))
+            :id       (str "select-scale-patterns-starts-on-" interval)
+            :name     (str "select-scale-patterns-starts-on-" interval)
+            :on-click (if (scale-patterns-starts-on interval)
+                        #(re-frame/dispatch [:remove-scale-patterns-starts-on interval])
+                        #(re-frame/dispatch [:add-scale-patterns-starts-on interval]))
+            :type     "checkbox"}]])])))
 
 (re-frame/reg-flow
- (let [inputs {:pattern-entities (re-frame/flow<- ::pattern-entities)
-               :query-params     [:query-params]}]
-   {:id  ::entity+definition+instrument-ds+qp
-    :doc "A map of resolved scale patterns.
+ (let [inputs {:pattern-entities         (re-frame/flow<- ::pattern-entities)
+               :query-params             [:query-params]
+               :scale-patterns-starts-on [:scale-patterns-starts-on]}]
+   {:id          ::entity+definition+instrument-ds+qp
+    :doc         "A map of resolved scale patterns.
 Returns a map: entity+[:entity, :definition, :instrument-data-structure]"
     :live-inputs inputs
     :inputs      inputs
     :live?       (fn [{:keys [pattern-entities query-params]}]
                    (and pattern-entities query-params))
-    :output      (fn [{:keys [pattern-entities query-params]}]
+    :output      (fn [{:keys [pattern-entities query-params scale-patterns-starts-on]}]
                    (->> pattern-entities
                         (map (fn [{:keys [id] :as entity}]
                                (let [definition
                                      (music-theory/get-definition id)
                                      instrument-data-structure
                                      (music-theory/instrument-data-structure entity query-params)]
-                                 (when (music-theory/fretboard-has-matches? instrument-data-structure)
+                                 (when (and (music-theory/fretboard-has-matches? instrument-data-structure)
+                                            (scale-patterns-starts-on (:fretboard-pattern/starts-on-interval definition)))
                                    {:entity                    entity
                                     :definition                definition
                                     :instrument-data-structure instrument-data-structure
                                     :query-params              query-params}))))
                         (keep identity)
-                        ;; Remove duplicates
+                          ;; Remove duplicates
                         (map (fn [{:keys [definition] :as m}]
                                [(or (:fretboard-pattern/pattern-hash definition)
                                     (:id definition))
                                 m]))
                         (into {})
                         (vals)
-                        ;; ;; Remove duplicates end
+                          ;; ;; Remove duplicates end
                         (map (juxt :entity identity))
                         (into {})))
     :path        (path ::entity+definition+instrument-ds+qp)}))
@@ -135,6 +158,7 @@ Returns a map: entity+[:entity, :definition, :instrument-data-structure]"
   @(re-frame/subscribe [:flow {:id ::entity+definition+instrument-ds+qp}])
   (get-in @re-frame.db/app-db (path ::entity+definition+instrument-ds+qp))
   )
+
 
 (re-frame/reg-event-db
  ::highlight
@@ -435,34 +459,8 @@ Returns a seq or maps:
         {scale-intervals :scale/intervals
          scale-names     :scale/scale-names
          :as             scale'}                      (music-theory/get-scale scale)
-        scale-patterns                                (music-theory/scale-patterns-for-scale-and-instrument scale-names instrument)
         scale-entity                                  @(re-frame/subscribe [::entity])
-        scale-pattern-entities                        @(re-frame/subscribe [::pattern-entities])
-        fretboards                                    @(re-frame/subscribe [:fretboards])
-
-        ;; Sort patterns so that the ones closest to the intrument head will be
-        ;; shown first. Remove fretboards where pattern is not shown.
-        entities            (->> scale-pattern-entities
-                                 (map (fn [{:keys [id] :as entity}]
-                                        (merge (music-theory/get-definition id) entity)))
-                                 (map (fn [{id :id pattern-hash :fretboard-pattern/pattern-hash :as definition}]
-                                        [(or pattern-hash id) definition]))
-                                 (into {})
-                                 (vals)
-                                 (filter (fn [{intervals :fretboard-pattern/intervals}]
-                                           ((set scale-patterns-starts-on)
-                                            (first intervals))))
-                                 (map (fn [{intervals :fretboard-pattern/intervals :as entity}]
-                                        (let [{:keys [instrument-data-structure] :as m} (get fretboards (select-keys entity [:id :instrument :key-of]))]
-                                          (assoc m :sort-score (common/sort-fretboard-nr
-                                                                (count intervals)
-                                                                instrument-data-structure)))))
-                                 (filter :sort-score)
-                                 (sort-by :sort-score)
-                                 (map :id))
-        fretboard2-matrixes @(re-frame/subscribe [:flow {:id ::fretboard2->view}])
-        entities++          @(re-frame/subscribe [:flow {:id ::entity+definition+instrument-ds+qp}])
-        sorted-patterns     (<sub [::sorted-patterns])]
+        sorted-patterns                               (<sub [::sorted-patterns])]
     [:<>
      [common/menu]
      [:br]
@@ -493,15 +491,18 @@ Returns a seq or maps:
      [common/instrument-view
       scale-entity path-params query-params deps]
 
+     [select-scale-patterns-starts-on]
+
      (when (seq sorted-patterns)
-         [:<>
-          [:h2 "Scale patterns"]
-          (for [{:keys [entity]} sorted-patterns]
-            ^{:key (hash entity)}
-            [:<>
-             [scale-pattern-view entity]
-             [:br]
-             [:br]])])
+       [:<>
+        [:h2 "Scale patterns"]
+
+        (for [{:keys [entity]} sorted-patterns]
+          ^{:key (hash entity)}
+          [:<>
+           [scale-pattern-view entity]
+           [:br]
+           [:br]])])
 
      [:br]
      [:br]

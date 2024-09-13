@@ -28,6 +28,7 @@
 (def init-db
   {:current-route      nil
    :current-route-name :home
+   :scale-patterns-starts-on #{"1"}
    :path-params        {:key-of              :c
                         :instrument          :guitar
                         :chord               :major
@@ -44,11 +45,11 @@
                         :surrounding-tones        false
                         :show-octave              false
                         :show-tones               false
-                        :scale-patterns-starts-on "1,3,5"
                         :bookmarks                ""}})
 
 (defn default-query-params []
   (get init-db query-params))
+
 
 (def Query
   [:map
@@ -62,8 +63,7 @@
    [:show-octave           {:optional true} boolean?]
    [:show-tones            {:optional true} boolean?]
    [:debug                 {:optional true} boolean?]
-   [:bookmarks             {:optional true} any?]
-   [:scale-patterns-starts-on {:optional true} any?]])
+   [:bookmarks             {:optional true} any?]])
 
 (def query-keys (->> Query rest (mapv first)))
 
@@ -259,3 +259,24 @@
   (re-frame/dispatch [:current-route-name new-route-name])
   (re-frame/dispatch [:path-params path-params])
   (re-frame/dispatch [:query-params query-params]))
+
+
+(re-frame/reg-sub
+ :scale-patterns-starts-on
+ (fn [db [_event-id]]
+   (get db :scale-patterns-starts-on)))
+
+(re-frame/reg-event-db
+ :scale-patterns-starts-on
+ (fn [db [_event-id intervals]]
+   (assoc db :scale-patterns-starts-on intervals)))
+
+(re-frame/reg-event-db
+ :remove-scale-patterns-starts-on
+ (fn [db [_event-id interval]]
+   (update db :scale-patterns-starts-on (fnil disj #{}) interval)))
+
+(re-frame/reg-event-db
+ :add-scale-patterns-starts-on
+ (fn [db [_event-id interval]]
+   (update db :scale-patterns-starts-on (fnil conj #{}) interval)))

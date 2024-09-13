@@ -779,7 +779,9 @@
                                                                                       false
                                                                                       surrounding-tones))]])
                     :checked  old-value
-                    :type     "checkbox" :id id :name id}]
+                    :type     "checkbox"
+                    :id id
+                    :name id}]
            [:label {:for id} label]]))
 
       (when surrounding-tones?
