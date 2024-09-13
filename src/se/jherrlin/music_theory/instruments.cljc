@@ -53,7 +53,6 @@
                        :description "Mandolin AEAE tuning"
                        :type        :fretboard
                        :order       4
-                       :tuned-in    :fifth
                        :tuning      [{:tone        :a
                                       :octave      3
                                       :start-index 0}
