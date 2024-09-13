@@ -802,6 +802,78 @@
         fretboard-matrix)
        (add-layer add-pattern-with-intervals)))
 
+
+(defn index-tone-at-interval [root interval]
+  (let [all-tones-rotated (general/tones-starting-at root)
+        index             (intervals/->index interval)]
+    (nth all-tones-rotated index)))
+
+(index-tone-at-interval :g "5")
+
+(defn interval-tone-at-interval [root interval]
+  (-> (index-tone-at-interval root interval)
+      (general/sharp-or-flat interval)))
+
+(interval-tone-at-interval :g "5")
+
+(defn fretboard-matrix-in-fifth?
+  [fretboard-matrix]
+  (let [strings-tuned-in (->> fretboard-matrix
+                              (mapv (comp first :tone second))
+                              (reverse))]
+    (loop [[x y :as strings] strings-tuned-in
+           acc               []]
+      (let [fifth? (contains? (index-tone-at-interval x "5") y)]
+        (if (nil? y)
+          (every? true? acc)
+          (recur
+           (rest strings)
+           (conj acc fifth?)))))))
+
+(fretboard-matrix-in-fifth?
+ (fretboard-strings
+  [{:tone        :g
+    :octave      3
+    :start-index 0}
+   {:tone        :d
+    :octave      4
+    :start-index 0}
+   {:tone        :a
+    :octave      4
+    :start-index 0}
+   {:tone        :e
+    :octave      5
+    :start-index 0}]
+  3))
+
+
+(defn instrument-in-fifth?
+  [instrument-tuning]
+  (let [strings-tuned-in (mapv :tone instrument-tuning)]
+    (loop [[x y :as strings] strings-tuned-in
+           acc               []]
+      (let [fifth? (contains? (index-tone-at-interval x "5") y)]
+        (if (nil? y)
+          (every? true? acc)
+          (recur
+           (rest strings)
+           (conj acc fifth?)))))))
+
+(instrument-in-fifth?
+ [{:tone        :g
+   :octave      3
+   :start-index 0}
+  {:tone        :d
+   :octave      4
+   :start-index 0}
+  {:tone        :a
+   :octave      4
+   :start-index 0}
+  {:tone        :e
+   :octave      5
+   :start-index 0}])
+
+
 (->> (pattern-with-intervals
       :a
       [["5" nil nil]
