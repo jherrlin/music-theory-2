@@ -491,18 +491,17 @@ Returns a seq or maps:
      [common/instrument-view
       scale-entity path-params query-params deps]
 
-     [select-scale-patterns-starts-on]
+     [:div {:style {:display "flow"}}
+      [:h2 "Scale patterns"]
+      [select-scale-patterns-starts-on]]
 
      (when (seq sorted-patterns)
-       [:<>
-        [:h2 "Scale patterns"]
-
-        (for [{:keys [entity]} sorted-patterns]
-          ^{:key (hash entity)}
-          [:<>
-           [scale-pattern-view entity]
-           [:br]
-           [:br]])])
+       (for [{:keys [entity]} sorted-patterns]
+         ^{:key (hash entity)}
+         [:<>
+          [scale-pattern-view entity]
+          [:br]
+          [:br]]))
 
      [:br]
      [:br]
