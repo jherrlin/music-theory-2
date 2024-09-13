@@ -111,6 +111,7 @@
                          :fretboard-pattern/indexes    indexes
                          :fretboard-pattern/belongs-to belongs-to
                          :fretboard-pattern/intervals  intervals
+                         :fretboard-pattern/starts-on-interval (first intervals)
                          :fretboard-pattern/tuning     tuning
                          :fretboard-pattern/pattern    pattern-matrix
                          :fretboard-pattern/str        pattern-str
