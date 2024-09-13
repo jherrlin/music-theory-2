@@ -230,6 +230,7 @@
                           :fretboard-pattern/belongs-to         scale-name
                           :fretboard-pattern/intervals          intervals
                           :fretboard-pattern/starts-on-interval (first intervals)
+                          :fretboard-pattern/generated?         true
                           :fretboard-pattern/pattern-hash       (hash pattern)
                           :fretboard-pattern/pattern-str        pattern-str
                           :fretboard-pattern/inversion?         (definitions.helpers/inversion? pattern)
