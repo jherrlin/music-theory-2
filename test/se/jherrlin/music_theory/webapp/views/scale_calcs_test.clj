@@ -11,411 +11,411 @@
           :mandolin
           #{:ionian :major})
          (sort-by :id))
-    '({:id         #uuid "826e9aea-f2de-4a53-a1dd-9fe1ecce1434",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "828a626b-e112-4e1d-ac16-ee8637bc10aa",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "86346eee-2147-490e-b9fa-6f8a02caa9e0",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "8712cd6f-f949-48be-87ab-dd7b6fb4a8c2",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "873e360a-227d-414c-8682-78320bd17dd1",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "883d1f00-0970-41e0-bc01-6f8dc1ec3176",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "89197b16-211c-4b44-8f61-9846210856c0",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "899bf840-b1b9-4226-8aae-ccd8a4230262",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "8a76ac69-26e6-437c-8c8a-5f9d800e8256",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "8bc4c1b4-ef7d-4930-ba16-c9832abebffc",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "8de8f1b8-6028-4a4a-8012-9b0351894949",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "8eb1c852-017c-4fc7-a90d-b15caf7da751",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "961a021c-3c10-48fe-8d6e-e580697bf953",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "976c12ac-43ae-4979-8a79-ea69c6643ed3",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "98c2a8c0-8e7f-46d3-baab-ed80fbc9a65b",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "9943e506-1aa3-4eaa-a14f-8d5b680096a4",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "99fa6c1b-fe7e-403b-80c8-e92350be214f",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "9cbc8440-4972-4d23-b26d-2c300e8e73a6",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "a505c07b-dd29-47a6-9e4d-c79468f3da2a",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "a542418c-3667-426e-82a6-a4d3886deb2c",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "a97f4133-1097-495a-8019-be7af748ae4d",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "a99a6847-f41a-42c9-a068-8d86a3a6eb74",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id         #uuid "abe53b98-33ab-417c-99ae-b301230cbd26",
-       :instrument :mandolin,
-       :key-of     :c}
-      {:id #uuid "ac04bc83-478f-47a4-be4e-5608beffb277",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "ac4cac1b-4247-4e85-90d6-3c2fd3dffa45",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "aed3e7ce-31da-4e98-b5cc-a396a5b980bf",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "af427ba7-fabc-4d54-b816-379c6a8845a3",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "afdeb3a9-ee24-4fe9-b766-fd088d4b0ec5",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "b1fff55e-0c58-4523-b11e-4a75eef38b70",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "b2681b2a-4685-4aa8-b675-88b03da4b0f3",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "b51d6d59-b2eb-4862-bcbd-dd46a2198873",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "b9f5cfa6-d97a-4164-95b1-440c46daaecf",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "bcd4ecf0-b69e-45c8-84ad-a12cb257a0b0",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "bcf4fcee-938a-4d41-9285-5da029e50859",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "be800b03-36d6-4f5b-a879-d3af632e429a",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "c6dbe3e1-a43b-47c2-a880-4482c15252f8",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "ca72c2c6-d522-4eae-b0bf-d7a60549dd8a",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "cb1b2226-b57a-478c-bb01-bec1aec3201e",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "cc3d4a21-2a2d-46e5-8cea-20caaf13c49e",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "ce13cdd1-1a00-4019-8f4e-ec89855908fe",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "d08d4714-ddf7-41c1-aca4-8057adaec3af",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "d2c6b1cf-f840-4852-9c1a-1d931ebb960a",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "d565356e-7563-45de-960f-7d9bef9e1e9b",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "d886da54-dfd1-4e53-b32e-df64c35b84ed",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "db803aa1-86f4-414c-b2ed-f87b2de0206e",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "de269f68-f54a-4af0-a4a7-6eb43236481c",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "e001436e-8c7a-4125-a1ae-a8847a451d7b",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "e2873eba-8e16-4741-b6f4-2c12200ddf10",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "e3437a0f-c7a1-4abb-9f7b-af0940f20f14",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "e3b5bf11-127f-4cf1-8a18-f72569b8b4a8",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "e41c39f7-3c0d-41f6-91cf-05f5a10f4eec",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "e728c3bf-481e-479f-8335-1bd95faa8fd0",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "eea5155d-5f5f-435b-8201-56e889d40a4a",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "f1445ef5-910a-4278-ab2b-9cfc1cb62202",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "f5eccb6d-d8f9-44d1-a24c-c067398b29cd",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "f77eb757-9140-4c61-bdbd-92ff8f4cf1ce",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "f95326aa-6061-4b11-8dad-0785e1114a73",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "fa26950d-fadf-4a49-a12e-73f3439c978a",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "fb738fa2-5a19-4fcd-8522-379a58890238",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "fbb29ae2-c0d7-44f9-94e9-6923b787e8de",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "fd493ee0-2005-44fc-84b5-add5ac41151a",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "fd8fcd0e-0fe4-4c59-a0ba-d71480d43abe",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "01762a0a-e6db-44cc-acf1-0a5b39a0cbd5",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "01c7efae-191c-4c12-9f7e-ac6aaeec2349",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "03bd6274-eacb-4218-a92a-0309b708934f",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "077881e5-45a8-4525-bcf8-846a79dc163a",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "0ac8982a-079b-42f0-af24-5ab70712ca5c",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "0adb66d6-34b0-487b-8d2a-605543a47cf8",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "0b86630b-d1f0-4f5f-88fb-e5a03d2ec4c2",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "0bc1a952-0a98-444a-bdb6-08a7ba1bda89",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "0d0789a2-3602-49cd-a396-7600a7daae5a",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "0d3d7efc-1237-43ec-8b08-458c7ce08a2f",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "0e615aa7-09ef-402c-9bf5-385983cff6ca",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "12312f5f-2fb7-4b05-bfec-263691804c0a",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "13fefbd0-f08f-487c-a7d6-11ad59113401",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "159d8b3c-8d25-422c-8f56-7a23d9a3a222",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "1aa206c2-778f-4de2-ae96-cb3c691b87a3",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "1cc41d86-9145-4160-a8dd-ef1c0759581b",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "1ce45420-e9b3-437d-8446-01a6ae4aa0d2",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "21bb2a50-fb36-4461-8f70-de908b983147",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "24b126e7-920e-4e2f-90b4-ff31d36d27f3",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "2647ea4a-e4dc-44ed-b383-b638e8e7e8d4",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "28b02aaa-3d31-40ca-851d-5a6f0425a03e",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "2b759637-4591-478b-bed1-f93fe347d011",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "2d2e9036-db68-4881-b6c0-e9ebb04c8eb2",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "2e0d6ebb-ddb7-4ba7-b862-8b73ddcd668f",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "2fbffdf0-90d6-4c03-a30b-73109c2c733f",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "35975438-3375-4d6b-9dad-166f6a8969cf",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "3a4429d7-26bb-4707-9cd9-f38e1387f8b4",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "3a9bc975-2082-4075-b123-0015c5ad0994",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "42ef1698-855c-438a-927d-e0fd6124d91d",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "43f1c99f-3143-42c0-a30a-184d9e66ab68",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "44f2731a-49d9-41d3-ad97-0f8f7479247b",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "4921687c-dc99-4ebd-b9a1-4069721f44c9",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "498cd0f9-6b0a-4bef-83f5-cfa9628930ce",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "4a841026-5e36-490c-b83c-03a183da6db0",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "4e847826-ee33-476a-99aa-f1feebf86a89",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "50b0d3e8-aa16-45fd-a23c-a4cced3bcf7c",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "527faa4e-3b21-4ddc-b52c-0962548b16b3",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "53cdec3d-5af7-406a-9da6-906223a4f6bd",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "53e82214-da90-4fad-8e5e-a69a9a77ac6a",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "5406fad2-8c20-4db9-8a45-9932cd88a36a",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "54d58e70-68a4-4984-8b73-f41f5d871f65",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "5628c601-e16f-4b0c-bc5e-b05f368c5d0f",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "584e8cdd-d171-4009-aff3-8f8cfd0263e9",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "5865c0c5-de11-4319-a139-4488f779c505",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "5a6db315-d2f8-464e-a83a-ab6571cfc873",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "5b978a1d-a861-45c3-90a4-7c7078ca903c",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "5c9ee636-1dd3-4e10-af3c-79b9cd20b422",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "5ebb965e-304d-40a5-869e-b01effca0e70",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "5f21794f-5e56-47f3-8330-59675747b1e9",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "6146e78b-a300-4a8c-8702-fcb8ebbccb31",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "62084d2f-631f-4a0e-a656-4b79ad2371ff",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "621bbb40-aaea-439d-baf6-90f38b640fff",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "62b67ee8-b41d-40eb-a7f8-6b6d413163d3",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "656474e7-fc5f-43ca-afff-c4a49923da6c",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "6803ce3a-4dd9-4988-b6df-3d27368421d2",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "68321a7d-2670-46f7-87ae-f5c8f1c86f17",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "6b27ad33-7ea0-426f-bac8-52b8b2c98e60",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "6b8bad80-6252-46d6-a667-c25d3c313334",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "6b9fd9a8-ae2d-47b4-9f8f-bfa31169b9db",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "6d2ab41b-2e88-446f-9cd0-71043dedfba6",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "6ecd4bf9-2cd4-4a71-b612-b0d5b1ae4481",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "6f7393f4-2fa7-4425-a438-b52ded57336c",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "7343c79f-636b-456b-824e-8d48274e1e29",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "75a93614-7d64-4a9b-8e89-793b594577d2",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "76526382-261b-44e6-bbbe-ffd46e9a0ba2",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "76659a78-8b5b-4dc7-84de-db6cf210305f",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "7683f242-6df9-4994-8c3c-ab76f3ac8b29",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "7699caf1-35df-40ef-b916-959ad787176a",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "76fab7e7-0a91-458e-be07-abd794498b7a",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "76ff1483-2723-4d70-8ff3-84767d5d608d",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "7751ae2d-6b20-411c-8c0e-683a341c0cd8",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "7a8f500e-387c-4a72-814c-719adf8db2b6",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "7c40d6df-704e-46a8-880b-0d9611dcc51d",
-       :instrument :mandolin,
-       :key-of :c}
-      {:id #uuid "7e8d0a66-3a67-4c5d-b8c3-7a2b2d401089",
-       :instrument :mandolin,
-       :key-of :c}))))
+    '({:id         #uuid "811ec70c-f917-442c-a184-526af217440c",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "81dca095-541a-440a-8dc9-de30270dfc12",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "8378024e-620d-4347-ba85-87891e7f586d",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "87e6ca98-5706-4626-9cc1-04267beb67a9",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "884e6e32-8aae-4601-8be9-b2eb944f7cfe",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "8980fd41-c527-4549-883f-f6f86b171e85",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "8b44e640-7228-48c8-ab5e-b483db1076c0",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "8e16f988-431b-4c5d-bf19-b9bb6303c166",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "8e977915-e1e2-438c-8446-b3451825c110",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "91ad088a-79dc-4cea-930f-bcdb9aa620ef",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "9449b2c9-e856-4dd1-98cc-b37a808de545",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "9771f8e1-3d59-425d-9807-62a2ad4923a0",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "979656e5-cde0-49f2-8649-078c884da442",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "9802dac1-0ddb-4155-9560-c911285517af",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "9878c8a1-84e1-48ca-b35a-34b48589015d",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "9a40ec2f-abad-40d1-9f6d-04565b7cc659",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "9d6b8747-23f6-40ff-b92d-57885808dad0",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "9db1ff02-79f4-4f91-ad93-e71cef27c138",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "a0b0062e-b809-4f73-83a9-7e81772e743d",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "a14c5e6f-dec5-4dda-a3eb-e11bae9fd2d1",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "a3321fd6-5cca-440c-a574-66d438fc9495",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "a774f5af-d3f3-4d91-9502-7461266e5627",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "a7c7ae84-6048-4c4a-bd5f-ec193979bd2e",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "a8b99df2-7fb8-441e-9c3a-916f401c7865",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "a93c19b5-bb29-420e-9e11-bfcbd6070fd5",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "aa32f86a-4cfd-4610-8742-4a9790d76d3c",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "ac2982f4-ce36-4b14-8361-9a1c088f6c37",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "aec96ff5-af68-4d14-85e9-eb5c66f3d80f",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "b141312c-882e-4e6e-863a-2616e3c75d17",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "b4867394-a045-419a-8ab8-706ba8e8c9c6",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "b5e6ed63-2cde-4353-ba35-3363ee3b77fd",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "b7cc00bd-2dbf-4034-92c2-ba38653bf345",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "ba0ef14f-a89a-4fbb-9ea1-c14e2e42bdc5",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "bbe3271a-f8db-4e7f-84ea-9c2254ade75f",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "bbfc59cf-53c1-4d50-9d21-161916ec8382",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "bdde0a72-cd89-4e0c-8d56-40f09812e645",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "bf9b840b-5bc6-4eae-a701-c2bee9ab2c7b",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "c25ef3a7-58af-4644-a9c9-6b53d5b8e877",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "c268d48a-6f2d-45d2-8157-9b85ef0f23ed",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "c45ac8d9-a69f-46fa-a518-ae23b1f0dbfa",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "c6154d58-953d-4c5c-bfe4-f4a6b534dca9",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "c9c65b74-ed76-4eea-829a-5fdb07d34cbd",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "cd92d68d-ca9e-45b7-b530-e9a48e70e4dd",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "cfa51275-d382-45c8-806f-1e2e0093bd9a",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "d3e994e9-cf99-4868-820f-e105472a8b66",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "d4dfe214-450c-486b-979f-5afa9a51f592",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "d5487e12-6f5c-4af8-8e9a-4f4df99c3ba2",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "d5efbc0b-8377-4dbe-a6b5-0454d225ae19",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "d62a7660-8fae-4843-b824-fbdffb187e4a",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "d6dd4b0d-3f87-4b70-a1d8-97d23b58432a",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "d7cd3a65-40c9-4237-96c6-223bb399130b",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "d8305325-fc98-42b3-a82e-8aa5b0337e1b",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "d92cccff-e669-4e85-a867-38d250e8983d",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "daef4e4c-bda8-4492-88b7-f3a79e668fbf",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "db4d532d-6b31-4359-a69f-6381bb837e41",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "de1eb0e6-38cf-40e5-8512-7f0236e7bf0f",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "e2c4bf81-b4de-459b-9fdc-e80e7196e53a",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "e4f8de5d-3b3a-4df0-a0fa-140586a24ee9",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "e58b5e5b-b89a-49b8-9c1c-eac98dd107ab",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "e890f709-e10e-4770-bdde-e50d286de888",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "e99e0f40-93df-4524-b1f8-e6c70b12972f",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "e9b15cef-3049-4945-8966-24619cdf6fe6",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "ea2228d5-0c05-4da0-9224-c48c1be01994",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "ea86ea3a-88b0-4b0b-aeaa-a03a529c08d5",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "ecc69d9c-2c2f-48a5-aaf1-5e874d98e56b",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "ee19cdea-aaa4-4a22-94ac-8766de0f812d",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "efb572b2-4f39-4430-a671-6cffc9bc6c0f",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "f1d28e95-464b-4af3-be09-a5e4a846a450",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "f4be8ca2-d194-481a-9db6-a08d6b5396f8",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "f58f600b-8d27-4a92-9482-0f77ddbc79cf",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "f66a28fe-3744-4948-b47b-7a8881a63fd5",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "f746a04a-671b-45c9-8edb-9e04b44e610e",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "f7c3330a-1371-42b2-86bf-61a7650860b8",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "f9ba20f7-45be-44da-971d-82ce4ff135e8",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "fb333ffa-0f62-47a1-b10a-3927c82dd3c3",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "fddb91d2-e9b0-40a4-8380-001ec07832b7",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "ff3fb80a-1d55-4fb7-b6ec-7855c8524362",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "ffe0605a-38de-4148-887b-f27296b69615",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "020a07fc-c865-4efc-a1a0-acd056ca2c29",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "054ce2f7-92a9-4a04-b711-530e3cdd58d8",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "07fad13b-8c21-4235-8556-e539f9363a49",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "09bfc2da-5e92-4842-8803-0995913896c2",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "0e989d46-19d5-419f-9571-b2dabd2245eb",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "121ab152-9c59-4295-867a-8c5e0c0ed506",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "13efd73f-0908-41cb-96cb-863176e605c3",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "14c874e0-7567-4a5f-ab7a-1f5bfdddb1da",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "155d42df-bc8c-4edb-9e1d-36907f468ecd",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "1aa21e75-2b39-4031-abc3-30e58500349c",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "1ab5be94-b980-4660-b6e0-65672107ed86",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "1c696d6f-9ff3-448b-b6a9-c4c5e34656a7",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "1cd77b0a-5474-4f51-adb3-a0bdb754d1db",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "1e3d1db3-1d09-4d1d-9301-337d60393731",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "1f274cd7-e6a3-414a-87f8-8634fcc83b6d",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "2066c30b-b532-40c1-ab7f-fc3a6c9be5a0",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "2405dfc3-5191-45c9-ba6f-2f3d93369f59",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "2440562d-30d7-4dfe-8202-da9d53ef3591",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "25354a4e-5efa-419e-b1d5-deb5761730ee",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "25b46d30-8876-4520-b68d-ea88298522f9",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "2d73a6c5-8fe6-402c-a311-b364079f80ec",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "2e02f556-374f-4a47-a9b1-3d17a3570c72",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "30c85c22-55de-4363-ab8c-c5f3c40438c8",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "34decca4-2db1-44cd-8ddc-bb1448203ed7",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "35c09ffc-02cf-4ee6-a5c0-793ae919ba86",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "3719d067-e777-43f2-a3fc-5d6af44bb797",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "3870d9b1-f932-47e5-ac15-704685d15ef1",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "3993df0a-bf5a-478a-88bb-0eee837b5801",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "39bbd1ac-f657-4fe3-b2e0-484f98aad506",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "3b6c924b-097c-4746-964c-1136d9bdbcd5",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "471ad1a7-dea2-4261-8ae2-a394249a0359",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "49268668-d39a-4558-9b0d-b842057c9cb9",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "49735d6a-6a0d-434c-828f-8eb5955fadfd",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "4c30cbaf-53a0-4d2f-ba53-b19b5e9083d1",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "4c91ecb1-c778-4f22-9d11-98230d8d3caf",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "508f0524-d41c-405a-894d-2283870f6986",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "50ffd6ef-6fbf-4086-99cc-b78b2d08a2fc",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "511ee7f5-b276-4c84-9ca7-7d48d6fe74ed",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "52968ae4-ea4c-42e7-adcb-1855433219b2",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "5331d7d8-4e19-4315-a8f1-c18a56341f77",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "54614b1c-6300-4980-bced-ac53f0cb6b82",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id         #uuid "56c132a3-8ce8-4abc-9fd3-77ac7cd5b5ef",
+      :instrument :mandolin,
+      :key-of     :c}
+     {:id #uuid "573c0640-0ca6-419a-9a4c-e747093d1b5c",
+      :instrument :mandolin,
+      :key-of :c}
+     {:id #uuid "58d69a1e-1819-40f9-8c2a-1212542701b2",
+      :instrument :mandolin,
+      :key-of :c}
+     {:id #uuid "5bf6acaf-5bfb-48d7-bec3-dd9bef5e99b2",
+      :instrument :mandolin,
+      :key-of :c}
+     {:id #uuid "6115d6a3-45f9-4d94-ad9a-f1222741ccc0",
+      :instrument :mandolin,
+      :key-of :c}
+     {:id #uuid "62d1d394-4448-4a9a-9a8a-af05c5770f86",
+      :instrument :mandolin,
+      :key-of :c}
+     {:id #uuid "630ffcaf-e8c7-4487-9b16-db6d5817d025",
+      :instrument :mandolin,
+      :key-of :c}
+     {:id #uuid "673b28ed-b5ce-41bd-b001-d922b3ab84c8",
+      :instrument :mandolin,
+      :key-of :c}
+     {:id #uuid "68d2a58c-c85a-4df7-acd0-12bc068ca091",
+      :instrument :mandolin,
+      :key-of :c}
+     {:id #uuid "68d38ae9-5d1d-4279-841a-5128ffdd9e31",
+      :instrument :mandolin,
+      :key-of :c}
+     {:id #uuid "6bae2685-5881-4c4c-a1b9-2e00cd54b097",
+      :instrument :mandolin,
+      :key-of :c}
+     {:id #uuid "73d323b0-bda2-4f9e-8bbe-b7313d0c7ec2",
+      :instrument :mandolin,
+      :key-of :c}
+     {:id #uuid "73daf65e-5cb0-4c1e-a0b2-f63ff95d7069",
+      :instrument :mandolin,
+      :key-of :c}
+     {:id #uuid "7868e306-dccc-4078-816f-b1b65e5cc6c8",
+      :instrument :mandolin,
+      :key-of :c}
+     {:id #uuid "7989f7ee-0eab-4acb-9805-389e3f31a865",
+      :instrument :mandolin,
+      :key-of :c}
+     {:id #uuid "79b9b30c-a9a7-4ae5-8e8a-f9f83b311a93",
+      :instrument :mandolin,
+      :key-of :c}
+     {:id #uuid "7b95d0bd-6999-4a32-bd10-92172caa3ed4",
+      :instrument :mandolin,
+      :key-of :c}))))
