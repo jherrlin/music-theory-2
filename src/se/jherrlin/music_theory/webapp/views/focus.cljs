@@ -23,9 +23,9 @@
         instrument'                                    (music-theory/get-instrument instrument)
         entity                                         (music-theory/entity key-of instrument id)]
     [:<>
-     [common/menu]
-     [:br]
-     [common/definition-info-for-focus definition instrument' path-params query-params]
+     #_[common/menu]
+     #_[:br]
+     #_[common/definition-info-for-focus definition instrument' path-params query-params]
      [common/instrument-view entity path-params query-params deps]]))
 
 (re-frame/reg-event-fx
