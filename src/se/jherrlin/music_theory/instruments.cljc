@@ -12,6 +12,7 @@
                        :description "Standard guitar tuning"
                        :type        :fretboard
                        :order       2
+                       :scale-pattern-range [4 5]
                        :tuning      [{:tone        :e
                                       :octave      2
                                       :start-index 0}
@@ -34,9 +35,8 @@
                        :text        "Mandolin"
                        :description "Standard mandolin tuning"
                        :type        :fretboard
-                       :scale-pattern-range 7
+                       :scale-pattern-range [6 7]
                        :order       3
-                       :tuned-in    :fifth
                        :tuning      [{:tone        :g
                                       :octave      3
                                       :start-index 0}
@@ -53,6 +53,7 @@
                        :text        "Mandolin (AEAE)"
                        :description "Mandolin AEAE tuning"
                        :type        :fretboard
+                       :scale-pattern-range [6 7]
                        :order       4
                        :tuning      [{:tone        :a
                                       :octave      3
@@ -71,7 +72,7 @@
                        :description "Standard mandola tuning"
                        :type        :fretboard
                        :order       5
-                       :tuned-in    :fifth
+                       :scale-pattern-range [4 6]
                        :tuning      [{:tone        :c
                                       :octave      3
                                       :start-index 0}
@@ -88,6 +89,7 @@
                        :text        "Banjo, 5-string"
                        :description "Standard modern five-string banjo."
                        :type        :fretboard
+                       ;; :scale-pattern-range [4 5]
                        :order       6
                        :tuning      [{:tone        :g
                                       :octave      4
@@ -108,6 +110,7 @@
                        :text        "Mandocello"
                        :description "Standard mandocello tuning"
                        :type        :fretboard
+                       :scale-pattern-range [4 5]
                        :order       7
                        :tuning      [{:tone        :c
                                       :octave      2
@@ -125,6 +128,7 @@
                        :text        "Pers banjo tuning"
                        :description "Pers banjo tuning"
                        :type        :fretboard
+                       ;; :scale-pattern-range [4 5]
                        :order       8
                        :tuning      [{:tone        :a
                                       :octave      4
