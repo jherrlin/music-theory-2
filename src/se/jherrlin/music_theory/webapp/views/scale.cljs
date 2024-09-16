@@ -425,6 +425,7 @@ Returns a seq or maps:
   (let [fretboard2-matrix (<sub [::fretboard2-matrix entity])
         fretboard-matrix  (<sub [::fretboard-matrix entity])]
     [:<>
+     #_[:p (:id entity)]
      [fretboard2/styled-view {:id               (:id entity)
                               :fretboard-matrix fretboard2-matrix
                               :entity-str       (models.entity/entity-to-str entity)

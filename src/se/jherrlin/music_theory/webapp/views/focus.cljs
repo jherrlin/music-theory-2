@@ -22,11 +22,12 @@
         definition                                     (music-theory/get-definition id)
         instrument'                                    (music-theory/get-instrument instrument)
         entity                                         (music-theory/entity key-of instrument id)]
-    [:<>
-     #_[common/menu]
-     #_[:br]
-     #_[common/definition-info-for-focus definition instrument' path-params query-params]
-     [common/instrument-view entity path-params query-params deps]]))
+    (when (and entity instrument' definition query-params)
+      [:<>
+       #_[common/menu]
+       #_[:br]
+       #_[common/definition-info-for-focus definition instrument' path-params query-params]
+       [common/instrument-view entity path-params query-params deps]])))
 
 (re-frame/reg-event-fx
  ::start

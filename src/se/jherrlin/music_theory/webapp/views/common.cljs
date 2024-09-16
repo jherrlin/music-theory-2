@@ -7,6 +7,7 @@
    [reitit.frontend.easy :as rfe]
    [se.jherrlin.utils :as basic-utils]
    [reitit.coercion.malli]
+   [se.jherrlin.music-theory.webapp.views.instrument-render]
    [se.jherrlin.music-theory.webapp.utils :refer [<sub >evt]]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
@@ -350,6 +351,7 @@
 (defmethod harmonizations-chord-details :default
   [definition instrument path-params query-params]
   [:h1 "not implemented"])
+
 
 (defmulti instrument-view
   (fn [{:keys [id instrument key-of] :as entity} path-params query-params deps]
