@@ -747,11 +747,10 @@
            [:label {:for "as-text-checkbox"} "Fretboard in text?"]])
 
       ;; TODO: trim fretboard doesnt work correctly.
-      #_(when trim-fretboard?
+      (when trim-fretboard?
           [:div {:style {:margin-left "1rem"}}
            [:input {:on-click #(re-frame/dispatch [:href [current-route-name path-params (assoc query-params :trim-fretboard (not trim-fretboard))]])
                     :checked  trim-fretboard
-                    :disabled true
                     :type     "checkbox" :id "trim-fretboard-checkbox" :name "trim-fretboard-checkbox"}]
            [:label {:for "trim-fretboard-checkbox"} "Trim fretboard?"]])
 

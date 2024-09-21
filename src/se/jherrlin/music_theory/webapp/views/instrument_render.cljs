@@ -15,8 +15,7 @@
    [se.jherrlin.music-theory.harmonizations :as harmonizations]))
 
 
-(defn basic-data [{:keys [key-of instrument-id definition-id
-                          query-params]}]
+(defn basic-data [{:keys [definition-id instrument-id key-of query-params]}]
   (let [instrument (music-theory/get-instrument instrument-id)
         definition (music-theory/get-definition definition-id)]
     {:definition      definition
@@ -27,13 +26,18 @@
      :entity          (music-theory/entity key-of instrument-id definition-id)
      :query-params    query-params}))
 
+(defn remove-scale-patterns-starts-on [m path entity interval]
+  (update-in m (flatten [path entity :query-params]) (fnil disj #{}) interval))
+
+(defn add-scale-patterns-starts-on
+  [m path entity interval]
+  (update m (flatten [path entity :query-params]) (fnil conj #{}) interval))
 
 
 (defmulti instrument-render-data :instrument-type)
 
 (defmethod instrument-render-data :fretboard
-  [{:keys [definition definition-type entity key-of instrument
-           instrument-type query-params]
+  [{:keys [instrument key-of query-params]
     :as m}]
   (let [nr-of-frets       (:nr-of-frets query-params)
         instrument-tuning (:tuning instrument)]
@@ -49,5 +53,5 @@
       :definition-id #uuid "e99e0f40-93df-4524-b1f8-e6c70b12972f"
       :query-params  (<sub [:query-params])})
      instrument-render-data
-     ->entity
+     ;;->entity
      )

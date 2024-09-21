@@ -277,7 +277,7 @@
     (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (with-all-intervals interval-tones intervals)
       (not as-intervals) (with-all-tones interval-tones)
-      trim-fretboard?    (trim-matrix #(every? nil? (map :out %)))
+      ;; trim-fretboard?    (trim-matrix #(every? nil? (map :out %)))
       :always            (basic-utils/validate models.fretboard-matrix/FretboardMatrix))))
 (comment
   (instrument-data-structure
@@ -298,7 +298,7 @@
     (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (pattern-with-intervals key-of pattern)
       (not as-intervals) (pattern-with-tones key-of pattern)
-      trim-fretboard?    (trim-matrix #(every? nil? (map :out %)))
+      ;; trim-fretboard?    (trim-matrix #(every? nil? (map :out %)))
       :always            (basic-utils/validate models.fretboard-matrix/FretboardMatrix))))
 (comment
   (instrument-data-structure
@@ -319,7 +319,7 @@
     (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (with-all-intervals interval-tones intervals)
       (not as-intervals) (with-all-tones interval-tones)
-      trim-fretboard?    (trim-matrix #(every? nil? (map :out %)))
+      ;; trim-fretboard?    (trim-matrix #(every? nil? (map :out %)))
       :always            (basic-utils/validate models.fretboard-matrix/FretboardMatrix))))
 (comment
   (instrument-data-structure
@@ -341,7 +341,7 @@
     (cond->> (create-fretboard-matrix key-of nr-of-frets instrument-tuning)
       as-intervals       (pattern-with-intervals key-of pattern)
       (not as-intervals) (pattern-with-tones key-of pattern)
-      trim-fretboard?    (trim-matrix #(every? nil? (map :out %)))
+      ;; trim-fretboard?    (trim-matrix #(every? nil? (map :out %)))
       :always            (basic-utils/validate models.fretboard-matrix/FretboardMatrix))))
 (comment
   (instrument-data-structure

@@ -1176,34 +1176,37 @@
   [{:keys [as-intervals
            show-octave
            surrounding-intervals
-           surrounding-tones]}
+           surrounding-tones
+           trim-fretboard]}
    frets-to-matrix]
-  (->> frets-to-matrix
-       ;; (utils/trim-matrix #(every? nil? (map :match? %))) Seems to work
-       (utils/map-matrix
-        (comp
-         #(select-keys % fretboard2-keys)
-         (circle-color :highlight? :color/highlight)
-         (circle-color
-          (fn [{:keys [root? match?]}]
-            (and root? match?))
-          :color/root-note)
-         (circle-color :match? :color/note)
-         (circle-color (comp not :match?) :color/grey)
-         (if show-octave
-           (down-right-text (comp not :match?) :octave)
-           identity)
-         (if surrounding-intervals
-           (comp
-            (center-text (comp not :match?) :interval)
-            (circle-color (comp not :match?) :color/grey))
-           identity)
-         (if surrounding-tones
-           (comp
-            (circle-color (comp not :match?) :color/grey)
-            (center-text (comp not :match?) :tone-str))
-           identity)
-         (if as-intervals
-           (center-text :match? :interval)
-           (center-text :match? :interval-tone))
-         (partial left-is-blank? frets-to-matrix)))))
+  (let [matrix (cond->> frets-to-matrix
+                 trim-fretboard
+                 (utils/trim-matrix #(every? nil? (map :match? %))))]
+    (->> matrix
+         (utils/map-matrix
+          (comp
+           #(select-keys % fretboard2-keys)
+           (circle-color :highlight? :color/highlight)
+           (circle-color
+            (fn [{:keys [root? match?]}]
+              (and root? match?))
+            :color/root-note)
+           (circle-color :match? :color/note)
+           (circle-color (comp not :match?) :color/grey)
+           (if show-octave
+             (down-right-text (comp not :match?) :octave)
+             identity)
+           (if surrounding-intervals
+             (comp
+              (center-text (comp not :match?) :interval)
+              (circle-color (comp not :match?) :color/grey))
+             identity)
+           (if surrounding-tones
+             (comp
+              (circle-color (comp not :match?) :color/grey)
+              (center-text (comp not :match?) :tone-str))
+             identity)
+           (if as-intervals
+             (center-text :match? :interval)
+             (center-text :match? :interval-tone))
+           (partial left-is-blank? frets-to-matrix))))))

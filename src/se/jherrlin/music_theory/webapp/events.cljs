@@ -38,6 +38,7 @@
    query-params        {:nr-of-frets              15
                         :nr-of-octavs             2
                         :bpm                      80
+                        :trim-fretboard           false
                         :as-intervals             false
                         :as-text                  false
                         :debug                    false
@@ -63,6 +64,7 @@
    [:show-octave           {:optional true} boolean?]
    [:show-tones            {:optional true} boolean?]
    [:debug                 {:optional true} boolean?]
+   [:trim-fretboard        {:optional true} boolean?]
    [:bookmarks             {:optional true} any?]])
 
 (def query-keys (->> Query rest (mapv first)))
