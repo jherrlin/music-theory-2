@@ -3,6 +3,7 @@
    [re-frame.alpha :as re-frame]
    [reitit.coercion.malli]
    [clojure.string :as str]
+   [reitit.frontend.easy :as rfe]
    [se.jherrlin.music-theory.webapp.utils :refer [<sub >evt]]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
@@ -422,8 +423,11 @@ Returns a seq or maps:
 
 (defn scale-pattern-view
   [entity]
-  (let [fretboard2-matrix (<sub [::fretboard2-matrix entity])
-        fretboard-matrix  (<sub [::fretboard-matrix entity])]
+  (let [current-route-name   (<sub [:current-route-name])
+        path-params          (<sub [:path-params])
+        changed-query-params (<sub [:changed-query-params])
+        fretboard2-matrix    (<sub [::fretboard2-matrix entity])
+        fretboard-matrix     (<sub [::fretboard-matrix entity])]
     [:<>
      #_[:p (:id entity)]
      [fretboard2/styled-view {:id               (:id entity)
@@ -431,20 +435,27 @@ Returns a seq or maps:
                               :entity-str       (models.entity/entity-to-str entity)
                               :fretboard-size   1}]
      [:br]
+
      [:div {:style {:display "flex"}}
+
+      (when-not (= current-route-name :focus)
+        [:div {:style {:margin-right "0.5em"}}
+         [:a {:href (rfe/href :focus (merge path-params entity) changed-query-params)}
+          [:button "Focus"]]])
+
       [:div {:style {:margin-right "0.5em"}}
        [:button
-        {:on-click #(>evt [::play-tone-new-derp {:action :play
-                                                 :times :up-and-down
+        {:on-click #(>evt [::play-tone-new-derp {:action           :play
+                                                 :times            :up-and-down
                                                  :fretboard-matrix fretboard-matrix
-                                                 :entity entity}])}
+                                                 :entity           entity}])}
         "Play - up and down"]]
       [:div {:style {:margin-right "0.5em"}}
        [:button
-        {:on-click #(>evt [::play-tone-new-derp {:action :play
-                                                 :times :up-and-down-repeat
+        {:on-click #(>evt [::play-tone-new-derp {:action           :play
+                                                 :times            :up-and-down-repeat
                                                  :fretboard-matrix fretboard-matrix
-                                                 :entity entity}])}
+                                                 :entity           entity}])}
         "Play - up and down, repeat"]]
       [:button
        {:on-click #(>evt [::play-tone-new-derp {:action :stop
