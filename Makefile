@@ -5,7 +5,7 @@ VERSION = 2
 
 
 release-frontend:
-	npx shadow-cljs release frontend && ./update-index-html-with-hash.sh
+	npx shadow-cljs release frontend && ./scripts/update-index-html-with-hash.sh
 
 compile-frontend:
 	npx shadow-cljs compile frontend
