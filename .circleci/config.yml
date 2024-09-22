@@ -29,9 +29,7 @@ jobs:
       - checkout
       - run: make install
       - run: make release-frontend
-      - run: mv -f ./resources/public/js/main.*.js ./
-      - run: mv -f ./resources/public/index.html ./index.html.bak
-      - run: mv -f ./resources/public/favicon.ico ./favicon.ico.bak
+      - run: make move-files-for-github-pages
       - run:
           name: Commit to GitHub
           command: |

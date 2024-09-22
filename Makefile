@@ -37,3 +37,6 @@ test:
 
 update-index-html-with-hash:
 	./scripts/update-index-html-with-hash.sh
+
+move-files-for-github-pages:
+	./scripts/move-files-for-github-pages.sh
