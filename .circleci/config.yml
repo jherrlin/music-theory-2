@@ -29,7 +29,6 @@ jobs:
       - checkout
       - run: make install
       - run: make release-frontend
-      - run: make move-files-for-github-pages
       - run:
           name: Commit to GitHub
           command: ./scripts/commit-to-github-pages.sh
