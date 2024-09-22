@@ -1,13 +1,15 @@
 .PHONY: all test clean
 
 SERVICE_NAME = music-theory
-VERSION = 2
+
+release-frontend: shadow-cljs-release update-index-html-with-hash
 
 
-release-frontend:
-	npx shadow-cljs release frontend && ./scripts/update-index-html-with-hash.sh
 
-compile-frontend:
+shadow-cljs-release:
+	npx shadow-cljs release frontend
+
+shadow-cljs-compile:
 	npx shadow-cljs compile frontend
 
 clean:
@@ -32,3 +34,6 @@ circle-ci-test:
 
 test:
 	clj -X:test
+
+update-index-html-with-hash:
+	./scripts/update-index-html-with-hash.sh
