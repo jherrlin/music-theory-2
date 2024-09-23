@@ -15,65 +15,85 @@
   (remove-ns 'se.jherrlin.music-theory.find-scale-patterns)
   )
 
-(defn fretboard-matrix->map
-  [fretboard-matrix]
-  (->> fretboard-matrix
-       (apply concat)
-       (map (fn [{:keys [x y] :as m}]
-              [[x y] m]))
-       (into {})))
+
+(defn fulfilled-matches
+  [intervals-count matches]
+  (->> matches
+       (filter (fn [[k v]]
+                 (= (-> v keys count) intervals-count)))
+       (into {})
+       (vals)
+       (vec)))
+
+(defn nr-of-matches-on-y
+  [matches-counter y matches]
+  (->> (get matches matches-counter)
+       (vals)
+       (filter (comp #{y} :y))
+       count))
+
+(defn throw-loop-exhaust!
+  [m]
+  (throw
+   (ex-info "loop exhaust" m)))
 
 (defn ->found-matched-in-map
-  [min-x max-x intervals-to-find fretboard-matrix-with-intervals]
-  (let [fretboard-map   (fretboard-matrix->map fretboard-matrix-with-intervals)
-        nr-of-strings   (-> fretboard-matrix-with-intervals count)
-        intervals-count (count intervals-to-find)]
-    (loop [matches-counter                              0
-           [interval & rst-intervals :as all-intervals] intervals-to-find
-           x                                            min-x
-           y                                            (dec nr-of-strings)
-           matches                                      {}]
-      (let [last-interval? (and interval (not rst-intervals))
-            x-end?         (= x max-x)
-            end?           (and x-end?
-                                (= y 0))]
-        (if end?
-          (->> matches
-               (filter (fn [[k v]]
-                         (= (-> v keys count) intervals-count)))
-               (into {})
-               (vals)
-               (vec))
-          (let [{looking-at-interval :interval
-                 fret-x              :x
-                 fret-y              :y
-                 :as                 fret} (get fretboard-map [x y])
-                intervals-matches?         (= looking-at-interval interval)
-                last-interval-match?       (and intervals-matches? last-interval?)]
-            (recur
-             (cond-> matches-counter
-               last-interval-match? inc)
+  [{:keys [min-x max-x intervals-to-find fretboard-map nr-of-strings max-matches-per-y]
+    :or   {max-matches-per-y 4}}]
+  (loop [loop-counter                                 0
+         matches-counter                              0
+         [interval & rst-intervals :as all-intervals] intervals-to-find
+         x                                            min-x
+         y                                            (dec nr-of-strings)
+         matches                                      {}]
+    (let [last-interval? (and interval (not rst-intervals))
+          {looking-at-interval :interval fret-x :x fret-y :y :as fret}
+          (get fretboard-map [x y])
 
-             (cond
-               last-interval-match?
-               intervals-to-find
+          end?          (or (nil? fret)
+                            (nil? interval))
+          loop-exhaust? (= loop-counter 300)]
+      (cond
+        loop-exhaust? (throw-loop-exhaust!
+                       {:matches-counter matches-counter
+                        :matches         matches
+                        :x               x
+                        :y               y})
+        end?          matches
+        :else
+        (let [intervals-matches?   (= looking-at-interval interval)
+              last-interval-match? (and intervals-matches? last-interval?)
+              matches'             (cond-> matches
+                                     intervals-matches? (assoc-in [matches-counter [fret-x fret-y]] fret))
+              nr-of-matches-on-y'  (nr-of-matches-on-y matches-counter y matches')
+              matches-counter'     (cond-> matches-counter
+                                     last-interval-match? inc)
+              reset-x?             (or (= x max-x)
+                                       (= max-matches-per-y nr-of-matches-on-y'))
+              dec-y?               (or reset-x? (= max-matches-per-y nr-of-matches-on-y'))]
+          (recur
+           (inc loop-counter)
+           matches-counter'
 
-               intervals-matches?
-               rst-intervals
+           (cond
+             last-interval-match?
+             intervals-to-find
 
-               :else
-               all-intervals)
+             intervals-matches?
+             rst-intervals
 
-             (cond
-               last-interval-match? x
-               (= x max-x)          min-x
-               :else                (inc x))
+             :else
+             all-intervals)
 
-             (cond-> y
-               (= x max-x) dec)
+           (cond
+             last-interval-match? x
+             reset-x?             min-x
+             :else                (inc x))
 
-             (cond-> matches
-               intervals-matches? (assoc-in [matches-counter [fret-x fret-y]] fret)))))))))
+           (cond-> y
+             dec-y? dec)
+
+           matches'))))))
 
 (defn ->pattern-matrix
   [nr-of-strings nr-of-frets x-min x-max x+y-map]
@@ -91,15 +111,21 @@
        (str/join "\n")))
 
 (defn find-scale-patterns
-  [intervals fretboard-matrix-with-intervals]
-  (let [intervals-to-find (conj intervals (first intervals))
-        x-min             (->> fretboard-matrix-with-intervals first first :x)
-        x-max             (->> fretboard-matrix-with-intervals first last :x)
-        nr-of-strings     (-> fretboard-matrix-with-intervals count)
-        nr-of-frets       (-> fretboard-matrix-with-intervals first count)]
-    (some->> fretboard-matrix-with-intervals
-             (->found-matched-in-map x-min x-max intervals-to-find)
-             (mapv (partial ->pattern-matrix nr-of-strings nr-of-frets x-min x-max))
+  [intervals-to-find fretboard-matrix-with-intervals]
+  (let [min-x           (fretboard/min-x fretboard-matrix-with-intervals)
+        max-x           (fretboard/max-x fretboard-matrix-with-intervals)
+        nr-of-strings   (fretboard/nr-of-strings fretboard-matrix-with-intervals)
+        nr-of-frets     (fretboard/nr-of-frets fretboard-matrix-with-intervals)
+        intervals-count (count intervals-to-find)
+        fretboard-map   (fretboard-matrix->x+y-map fretboard-matrix-with-intervals)]
+    (some->> (->found-matched-in-map
+              {:min-x             min-x
+               :max-x             max-x
+               :intervals-to-find intervals-to-find
+               :fretboard-map     fretboard-map
+               :nr-of-strings     nr-of-strings})
+             (fulfilled-matches intervals-count)
+             (mapv (partial ->pattern-matrix nr-of-strings nr-of-frets min-x max-x))
              (mapv trim-matrix))))
 
 (comment
@@ -135,6 +161,10 @@
           {:x 11, :y 3, :interval "3"}]]
         (map-matrix #(select-keys % [:x :y :interval]))))
   )
+
+
+;; (->>
+;;      (map-matrix #(select-keys % [:x :y :interval])))
 
 (defn rotate-intervals
   [intervals-in]
@@ -207,8 +237,18 @@
        (drop-matrix 1 fretboard-matrix)
        (conj acc (take-matrix n fretboard-matrix))))))
 
+(defn different-intervals
+  [intervals]
+  [(conj intervals (first intervals))
+   (-> (concat intervals intervals [(first intervals)])
+       vec)
+   (-> (concat intervals intervals)
+       vec)
+   (-> (concat intervals (drop-last 1 intervals))
+       vec)])
+
 (defn generate-mandolin-scale-patterns []
-  (let [instrument :mandolin-aeae
+  (let [instrument :mandolin
         fretboard-matrix-with-intervals
         (fretboard/create-fretboard-matrix
          :d
@@ -218,10 +258,12 @@
 
     (->> (for [{scale-name      :scale
                 scale-intervals :scale/intervals
-                :as             scale} (definitions/scales)
+                :as             scale} (->> (definitions/scales)
+                                            #_(filter (comp #{:pentatonic-major} :scale)))
                intervals               (rotate-intervals scale-intervals)
-               fretboard-matrix        (fretboard-matrix-portions 7 fretboard-matrix-with-intervals)]
-           (->> (find-scale-patterns intervals fretboard-matrix)
+               fretboard-matrix        (fretboard-matrix-portions 7 fretboard-matrix-with-intervals)
+               intervals' (different-intervals intervals)]
+           (->> (find-scale-patterns intervals' fretboard-matrix)
                 (map (fn [pattern]
                        (let [pattern-str (->pattern-str pattern)]
                          {:type                                 [:scale :pattern]
@@ -251,11 +293,120 @@
                (clojure.pprint/pprint)
                (with-out-str))]
     (->> (str
-          "(ns se.jherrlin.music-theory.definitions.generated-scale-patterns-mandolin-aeae)
+          "(ns se.jherrlin.music-theory.definitions.generated-scale-patterns-mandolin)
 \n\n
 (def generated-scale-patterns\n\n"
           s
           "\n)\n")
-         (spit "src/se/jherrlin/music_theory/definitions/generated_scale_patterns_mandolin_aeae.cljc")))
+         (spit "src/se/jherrlin/music_theory/definitions/generated_scale_patterns_mandolin.cljc")))
 
   )
+
+(and
+ (=
+  (find-scale-patterns
+   ["1" "2" "3" "5" "6"]
+   (->> [[{:x 5, :y 0, :interval "5"}
+          {:x 6, :y 0, :interval "b6"}
+          {:x 7, :y 0, :interval "6"}
+          {:x 8, :y 0, :interval "b7"}
+          {:x 9, :y 0, :interval "7"}
+          {:x 10, :y 0, :interval "1"}
+          {:x 11, :y 0, :interval "b2"}]
+         [{:x 5, :y 1, :interval "1"}
+          {:x 6, :y 1, :interval "b2"}
+          {:x 7, :y 1, :interval "2"}
+          {:x 8, :y 1, :interval "b3"}
+          {:x 9, :y 1, :interval "3"}
+          {:x 10, :y 1, :interval "4"}
+          {:x 11, :y 1, :interval "b5"}]
+         [{:x 5, :y 2, :interval "4"}
+          {:x 6, :y 2, :interval "b5"}
+          {:x 7, :y 2, :interval "5"}
+          {:x 8, :y 2, :interval "b6"}
+          {:x 9, :y 2, :interval "6"}
+          {:x 10, :y 2, :interval "b7"}
+          {:x 11, :y 2, :interval "7"}]
+         [{:x 5, :y 3, :interval "b7"}
+          {:x 6, :y 3, :interval "7"}
+          {:x 7, :y 3, :interval "1"}
+          {:x 8, :y 3, :interval "b2"}
+          {:x 9, :y 3, :interval "2"}
+          {:x 10, :y 3, :interval "b3"}
+          {:x 11, :y 3, :interval "3"}]]
+        (map-matrix #(select-keys % [:x :y :interval]))))
+  [[[nil nil nil nil nil]
+    [nil nil nil nil nil]
+    ["5" nil "6" nil nil]
+    ["1" nil "2" nil "3"]]
+   [["5" nil "6" nil nil]
+    ["1" nil "2" nil "3"]
+    [nil nil nil nil nil]
+    [nil nil nil nil nil]]])
+ (=
+  (find-scale-patterns
+   ["1" "2" "3" "4" "5" "6" "7" "1" "2" "3" "4" "5" "6" "7" "1"]
+   [[{:x 0, :y 0, :interval "6"}
+     {:x 1, :y 0, :interval "b7"}
+     {:x 2, :y 0, :interval "7"}
+     {:x 3, :y 0, :interval "1"}
+     {:x 4, :y 0, :interval "b2"}
+     {:x 5, :y 0, :interval "2"}
+     {:x 6, :y 0, :interval "b3"}
+     {:x 7, :y 0, :interval "3"}
+     {:x 8, :y 0, :interval "4"}
+     {:x 9, :y 0, :interval "b5"}
+     {:x 10, :y 0, :interval "5"}
+     {:x 11, :y 0, :interval "b6"}
+     {:x 12, :y 0, :interval "6"}
+     {:x 13, :y 0, :interval "b7"}
+     {:x 14, :y 0, :interval "7"}]
+    [{:x 0, :y 1, :interval "2"}
+     {:x 1, :y 1, :interval "b3"}
+     {:x 2, :y 1, :interval "3"}
+     {:x 3, :y 1, :interval "4"}
+     {:x 4, :y 1, :interval "b5"}
+     {:x 5, :y 1, :interval "5"}
+     {:x 6, :y 1, :interval "b6"}
+     {:x 7, :y 1, :interval "6"}
+     {:x 8, :y 1, :interval "b7"}
+     {:x 9, :y 1, :interval "7"}
+     {:x 10, :y 1, :interval "1"}
+     {:x 11, :y 1, :interval "b2"}
+     {:x 12, :y 1, :interval "2"}
+     {:x 13, :y 1, :interval "b3"}
+     {:x 14, :y 1, :interval "3"}]
+    [{:x 0, :y 2, :interval "5"}
+     {:x 1, :y 2, :interval "b6"}
+     {:x 2, :y 2, :interval "6"}
+     {:x 3, :y 2, :interval "b7"}
+     {:x 4, :y 2, :interval "7"}
+     {:x 5, :y 2, :interval "1"}
+     {:x 6, :y 2, :interval "b2"}
+     {:x 7, :y 2, :interval "2"}
+     {:x 8, :y 2, :interval "b3"}
+     {:x 9, :y 2, :interval "3"}
+     {:x 10, :y 2, :interval "4"}
+     {:x 11, :y 2, :interval "b5"}
+     {:x 12, :y 2, :interval "5"}
+     {:x 13, :y 2, :interval "b6"}
+     {:x 14, :y 2, :interval "6"}]
+    [{:x 0, :y 3, :interval "1"}
+     {:x 1, :y 3, :interval "b2"}
+     {:x 2, :y 3, :interval "2"}
+     {:x 3, :y 3, :interval "b3"}
+     {:x 4, :y 3, :interval "3"}
+     {:x 5, :y 3, :interval "4"}
+     {:x 6, :y 3, :interval "b5"}
+     {:x 7, :y 3, :interval "5"}
+     {:x 8, :y 3, :interval "b6"}
+     {:x 9, :y 3, :interval "6"}
+     {:x 10, :y 3, :interval "b7"}
+     {:x 11, :y 3, :interval "7"}
+     {:x 12, :y 3, :interval "1"}
+     {:x 13, :y 3, :interval "b2"}
+     {:x 14, :y 3, :interval "2"}]])
+  [[["6" nil "7" "1" nil nil]
+    ["2" nil "3" "4" nil "5"]
+    ["5" nil "6" nil "7" "1"]
+    ["1" nil "2" nil "3" "4"]]]))

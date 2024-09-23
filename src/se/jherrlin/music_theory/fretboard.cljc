@@ -1210,3 +1210,19 @@
              (center-text :match? :interval)
              (center-text :match? :interval-tone))
            (partial left-is-blank? frets-to-matrix))))))
+
+(defn min-x
+  [fretboard-matrix]
+  (-> fretboard-matrix first first :x))
+
+(defn max-x
+  [fretboard-matrix]
+  (-> fretboard-matrix first last :x))
+
+(defn nr-of-strings
+  [fretboard-matrix]
+  (-> fretboard-matrix count))
+
+(defn nr-of-frets
+  [fretboard-matrix]
+  (-> fretboard-matrix first count))

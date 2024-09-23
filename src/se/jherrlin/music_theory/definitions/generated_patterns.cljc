@@ -46,6 +46,17 @@
    [nil nil nil nil]
    ["b6" nil nil "7"]],
   :hash 1344150418},
+ -2024865811
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil nil nil nil]
+   [nil "6" "b7" nil "1"]
+   [nil "4" nil "5" nil]
+   [nil "1" "b2" nil "b3"]
+   [nil "5" nil "6" "b7"]
+   ["b2" nil "b3" nil "4"]],
+  :hash -2024865811},
  -635709590
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -73,6 +84,17 @@
    [nil nil nil nil "b2" nil "b3"]
    [nil nil nil nil nil nil nil]],
   :hash 1263766114},
+ 2068764712
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil nil]
+   [nil nil "4" "b5" nil]
+   [nil "1" "b2" nil "b3"]
+   ["b5" nil "b6" nil "b7"]
+   ["b2" nil "b3" nil "4"]
+   [nil nil "b7" nil "1"]],
+  :hash 2068764712},
  -1189903683
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -100,6 +122,15 @@
    ["1" "b2" nil "b3" nil "4"]
    ["4" nil "5" "b6" nil "b7"]],
   :hash -1159229071},
+ 776850365
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" "b6" nil nil]
+   [nil nil "7" "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" "b6"]
+   [nil "b6" nil nil "7" "1" nil]],
+  :hash 776850365},
  -792618630
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -129,6 +160,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 538398455},
+ 2118836503
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil "7" "1" nil]
+   [nil nil nil "b3" nil "4" nil]
+   ["5" "b6" nil nil "7" "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]],
+  :hash 2118836503},
  -1346716555
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -189,6 +229,17 @@
    [nil nil "b7" nil "1" "b2" nil]
    [nil nil nil nil nil nil nil]],
   :hash -866790864},
+ 306293697
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil "b6" nil nil "7"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil "b3" nil]],
+  :hash 306293697},
  -847769714
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -249,6 +300,15 @@
    ["4" nil "5" nil]
    [nil "b2" nil "b3"]],
   :hash 1096037599},
+ -2048438961
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" nil nil]
+   ["6" nil "7" "1" nil "2"]
+   ["2" nil "3" "4" nil "5"]
+   ["5" nil "6" nil "7" "1"]],
+  :hash -2048438961},
  -736411796
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -258,6 +318,17 @@
    ["b5" nil "b6" nil "b7" nil]
    [nil "1" "b2" nil "b3" "3"]],
   :hash -736411796},
+ 329166530
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" "1" "b2" nil]
+   [nil nil "5" nil "6"]
+   ["b2" nil "b3" nil "4"]
+   [nil "6" nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil nil nil "b2" nil]],
+  :hash 329166530},
  354359908
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -434,6 +505,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1783756457},
+ -596381671
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil nil "5" "b6" nil]
+   [nil "2" "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]],
+  :hash -596381671},
  222138623
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -703,6 +785,17 @@
    [nil nil nil "4" nil]
    [nil nil nil nil nil]],
   :hash -1732239421},
+ -1951534105
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" nil "5"]
+   [nil "1" nil "2"]
+   ["5" nil "6" "b7"]
+   ["2" nil "3" "4"]
+   ["6" "b7" nil "1"]
+   [nil nil nil "5"]],
+  :hash -1951534105},
  -260034526
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -721,6 +814,17 @@
    ["1" "b2" nil nil "3" "4" nil]
    ["4" nil "5" "b6" nil nil "7"]],
   :hash 1144073287},
+ 1983237762
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil nil nil]
+   ["7" "1" nil "2"]
+   ["5" nil "6" nil]
+   ["2" nil "3" "4"]
+   ["6" nil "7" "1"]
+   ["3" "4" nil "5"]],
+  :hash 1983237762},
  1007614657
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -730,6 +834,17 @@
    ["1" nil "2" "b3" nil "4"]
    [nil nil nil nil nil nil]],
   :hash 1007614657},
+ -102100667
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil]
+   [nil "b5" "5" nil "6"]
+   ["b2" nil "b3" "3" nil]
+   [nil "6" "b7" nil "1"]
+   ["b3" "3" nil "b5" "5"]
+   [nil nil nil "b2" nil]],
+  :hash -102100667},
  -1425695298
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -772,6 +887,15 @@
    [nil nil nil nil]
    ["b6" nil "b7" nil]],
   :hash 262068530},
+ -1195394661
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b6" nil "b7" nil "1" nil]
+   ["1" nil "2" nil "3" "4" "b5"]
+   ["4" "b5" nil "b6" nil "b7" nil]
+   [nil nil "1" nil "2" nil "3"]],
+  :hash -1195394661},
  1133381365
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -781,6 +905,17 @@
    ["b7" nil "1" nil "2" nil "3"]
    [nil nil nil nil nil nil nil]],
   :hash 1133381365},
+ -2142488543
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "3" nil nil]
+   [nil nil "7" "1" "b2"]
+   ["4" "b5" nil "b6" nil]
+   ["1" "b2" nil nil "3"]
+   [nil "b6" nil nil "7"]
+   [nil nil "3" "4" "b5"]],
+  :hash -2142488543},
  103806405
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -799,6 +934,15 @@
    ["b2" nil "b3" nil "4" nil "5"]
    [nil "5" nil "6" "b7" nil "1"]],
   :hash 606409386},
+ -361185854
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil "7" nil]
+   [nil nil nil "2" "b3" nil "4"]
+   [nil "5" nil "6" nil "7" "1"]
+   ["7" "1" nil "2" "b3" nil "4"]],
+  :hash -361185854},
  -1606382985
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -837,6 +981,15 @@
    ["4" nil "5" "b6" nil nil "7"]
    [nil nil nil nil "2" "b3" nil]],
   :hash 1059351821},
+ -1758487164
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil nil "b3" nil "4" nil]
+   [nil nil "5" nil nil "b7" nil]
+   ["1" nil nil "b3" nil "4" "b5"]
+   ["4" "b5" "5" nil nil "b7" nil]],
+  :hash -1758487164},
  -1870393247
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -868,6 +1021,17 @@
    [nil "4" nil "5"]
    [nil nil nil nil]],
   :hash 1062160869},
+ -422944280
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil nil nil nil]
+   [nil "b7" nil "1" nil]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" "b3" nil]
+   ["5" nil "6" "b7" nil]
+   ["2" "b3" nil "4" nil]],
+  :hash -422944280},
  891068300
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -939,6 +1103,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -1872967452},
+ 811821221
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil nil]
+   [nil "7" "1" nil "2"]
+   [nil "5" nil "6" nil]
+   [nil "2" "b3" nil "4"]
+   [nil "6" nil "7" "1"]
+   [nil nil "4" nil "5"]],
+  :hash 811821221},
  -546487553
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -950,6 +1125,15 @@
    [nil "1" "b2" nil "b3"]
    [nil nil nil nil nil]],
   :hash -546487553},
+ -1284619544
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil "b3" "3" nil]
+   [nil nil "b5" nil "b6" nil "b7"]
+   [nil "1" "b2" nil "b3" "3" nil]
+   ["3" nil "b5" nil "b6" nil "b7"]],
+  :hash -1284619544},
  -1717974657
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -1032,6 +1216,26 @@
    ["7" "1" "b2" nil nil]
    [nil nil nil nil nil]],
   :hash 224860227},
+ -1084812876
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7" nil "1" nil]
+   ["1" "b2" nil nil "3" "4" nil]
+   ["4" nil "5" "b6" nil "b7" nil]
+   [nil nil "1" "b2" nil nil "3"]],
+  :hash -1084812876},
+ 1999919538
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil nil nil]
+   ["6" "b7" nil "1"]
+   ["4" nil "5" nil]
+   ["1" nil "2" "b3"]
+   ["5" nil "6" "b7"]
+   ["2" "b3" nil "4"]],
+  :hash 1999919538},
  -1001791479
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -1072,6 +1276,15 @@
    [nil "7" "1" "b2" nil]
    [nil nil nil "b6" nil]],
   :hash 1947915324},
+ 209814825
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil nil nil]
+   ["4" nil "5" nil "6" nil "7"]
+   [nil "7" "1" "b2" nil "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]],
+  :hash 209814825},
  716453721
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -1121,6 +1334,26 @@
    [nil nil nil nil "b3" nil "4"]
    [nil nil nil nil nil nil nil]],
   :hash 1009402162},
+ 1886914252
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b6" nil nil "7" nil nil]
+   ["1" "b2" nil nil "3" "4" "b5"]
+   ["4" "b5" nil "b6" nil nil "7"]
+   [nil "7" "1" "b2" nil nil "3"]],
+  :hash 1886914252},
+ 121661645
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil nil nil nil]
+   [nil "6" "b7" nil "1"]
+   ["3" nil "b5" "5" nil]
+   [nil "1" "b2" nil "b3"]
+   ["b5" "5" nil "6" "b7"]
+   ["b2" nil "b3" "3" nil]],
+  :hash 121661645},
  -1669279047
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -1141,6 +1374,26 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 2015189415},
+ 1527487295
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil "b3" nil]
+   [nil nil nil "b7" nil]
+   ["b3" nil "4" "b5" "5"]
+   ["b7" nil "1" nil nil]
+   ["4" "b5" "5" nil nil]
+   [nil nil nil "b3" nil]],
+  :hash 1527487295},
+ -1698953461
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" "b5" nil nil nil]
+   [nil nil "b7" nil "1" nil nil]
+   [nil nil "b3" nil "4" "b5" "5"]
+   ["b5" "5" nil nil "b7" nil "1"]],
+  :hash -1698953461},
  -502619362
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -1288,6 +1541,17 @@
    [nil "b3" nil "4" nil]
    [nil nil nil nil "b2"]],
   :hash -1598015111},
+ 1500087036
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" nil nil nil]
+   [nil nil "5" "b6" nil]
+   [nil "2" "b3" nil "4"]
+   ["b6" nil nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" nil "2"]],
+  :hash 1500087036},
  1301926434
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -1362,6 +1626,26 @@
    ["b6" nil "b7" nil "1" "b2" nil]
    ["b2" nil "b3" nil "4" nil "5"]],
   :hash 582317983},
+ 179632980
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil nil]
+   [nil "b3" nil "4" nil]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" "b3" nil]
+   [nil "b6" nil nil "7"]],
+  :hash 179632980},
+ 1146302730
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" nil nil]
+   ["b6" nil nil "7" "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil "5" "b6" nil nil "7" "1"]],
+  :hash 1146302730},
  -1203585791
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -1447,6 +1731,17 @@
    [nil nil nil nil nil "b6"]
    [nil nil nil nil nil nil]],
   :hash 1209160124},
+ -1192389443
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil "7" nil nil]
+   [nil "4" nil "5" nil]
+   ["1" nil "2" "b3" nil]
+   ["5" nil "6" nil "7"]
+   ["2" "b3" nil "4" nil]
+   [nil nil "7" "1" nil]],
+  :hash -1192389443},
  -1118702045
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -1485,6 +1780,17 @@
    [nil nil nil "b7" nil]
    [nil nil nil nil nil]],
   :hash -1971071767},
+ 1522645897
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil]
+   [nil "b2" nil nil "3"]
+   ["b6" nil nil "7" "1"]
+   [nil "3" "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   [nil nil nil "b6" nil]],
+  :hash 1522645897},
  394556017
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -1512,6 +1818,15 @@
    [nil nil nil nil nil "b3" nil]
    [nil nil nil nil nil nil nil]],
   :hash 495162038},
+ 1098998061
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil nil nil]
+   ["4" nil "5" nil "6" "b7" nil]
+   ["b7" nil "1" nil "2" "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]],
+  :hash 1098998061},
  -1152221089
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -1534,6 +1849,15 @@
    [nil "5" nil "6" nil]
    [nil nil "b3" nil "4"]],
   :hash 948424740},
+ -1803364865
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil "2" nil]
+   [nil nil "3" "4" "b5" nil "b6"]
+   [nil "b7" nil "1" nil "2" nil]
+   ["2" nil "3" "4" "b5" nil "b6"]],
+  :hash -1803364865},
  -1383386618
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -1574,6 +1898,17 @@
    [nil nil nil "5" "b6"]
    [nil nil nil nil nil]],
   :hash 1136042025},
+ -2090089179
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "3" "4" nil]
+   [nil "b7" nil "1" "b2"]
+   ["4" "b5" nil nil "6"]
+   ["1" "b2" nil nil "3"]
+   [nil nil "6" "b7" nil]
+   [nil nil nil "4" "b5"]],
+  :hash -2090089179},
  108446217
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -1706,6 +2041,17 @@
    [nil "4" nil "5"]
    [nil nil nil "2"]],
   :hash -2116377742},
+ 4751216
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil]
+   [nil "1" nil "2" "b3"]
+   ["5" nil "6" nil "7"]
+   ["2" "b3" nil "4" nil]
+   ["6" nil "7" "1" nil]
+   [nil nil nil "5" nil]],
+  :hash 4751216},
  -838487716
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -1766,6 +2112,15 @@
    [nil "b7" nil "1" "b2"]
    [nil nil nil nil nil]],
   :hash 1330611344},
+ -1660162534
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" "3" nil "b5" nil "b6" nil]
+   ["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" "3" nil "b5" nil]
+   [nil nil "b6" nil "b7" nil "1"]],
+  :hash -1660162534},
  1666497089
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -1804,6 +2159,28 @@
    ["4" nil "5" "b6"]
    ["1" "b2" nil "b3"]],
   :hash 1246826228},
+ -909147751
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "3" "4" nil]
+   [nil "b7" nil "1" "b2"]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil nil "3"]
+   ["5" "b6" nil "b7" nil]
+   [nil nil nil "4" nil]],
+  :hash -909147751},
+ -325183820
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil nil "5" "b6" nil]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   [nil nil "1" "b2" nil]],
+  :hash -325183820},
  -1974204515
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -1855,6 +2232,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 2089012825},
+ 1536013203
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" nil nil nil]
+   [nil nil "7" "1" "b2" nil nil]
+   [nil nil "3" "4" nil "5" "b6"]
+   ["5" "b6" nil nil "7" "1" "b2"]],
+  :hash 1536013203},
  1219763629
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -1906,6 +2292,15 @@
    ["b7" nil "1" nil "2"]
    [nil nil nil "b6" nil]],
   :hash 1627801606},
+ 1617034348
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil "b3"]
+   [nil nil "4" "b5" nil "b6"]
+   ["b7" nil "1" "b2" nil "b3"]
+   ["b3" nil "4" "b5" nil "b6"]],
+  :hash 1617034348},
  940399751
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -2000,6 +2395,15 @@
    ["1" "b2" nil "b3" nil "4"]
    [nil nil nil nil nil "b7"]],
   :hash 1346286763},
+ 294114440
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7" nil "1" nil]
+   ["1" nil "2" nil "3" "4" nil]
+   ["4" nil "5" "b6" nil "b7" nil]
+   [nil nil "1" nil "2" nil "3"]],
+  :hash 294114440},
  1731093004
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -2194,6 +2598,15 @@
    ["5" "b6" nil nil "7"]
    [nil nil "3" "4" nil]],
   :hash -508541850},
+ 286728613
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" nil "5" "b6" nil]
+   ["b6" nil "b7" nil "1" nil "2"]
+   [nil "2" nil "3" "4" nil "5"]
+   [nil nil "b6" nil "b7" nil "1"]],
+  :hash 286728613},
  459291291
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -2205,6 +2618,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 459291291},
+ -976720383
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" "b6" nil "b7" nil nil]
+   [nil "1" "b2" nil nil "3" "4"]
+   ["3" "4" nil "5" "b6" nil "b7"]
+   [nil "b7" nil "1" "b2" nil nil]],
+  :hash -976720383},
  898882635
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -2234,6 +2656,17 @@
    ["b5" nil "b6" nil "b7" nil "1"]
    [nil nil nil nil nil "3" nil]],
   :hash -539562495},
+ -498681505
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil nil]
+   [nil "b6" nil nil "7"]
+   [nil "3" "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   [nil "b2" nil nil "3"]],
+  :hash -498681505},
  -748954705
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -2245,6 +2678,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -748954705},
+ -760835541
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b6" nil nil nil]
+   [nil "b3" nil "4" "b5"]
+   ["b7" nil "1" "b2" nil]
+   ["4" "b5" nil "b6" nil]
+   ["1" "b2" nil "b3" nil]
+   [nil "b6" nil "b7" nil]],
+  :hash -760835541},
  -1346311993
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -2283,6 +2727,15 @@
    [nil "4" nil "5" "b6" nil nil]
    [nil nil nil nil nil nil "b3"]],
   :hash -848463398},
+ 659274443
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil nil nil]
+   ["7" "1" "b2" nil "b3" nil "4"]
+   [nil "4" nil "5" nil "6" nil]
+   ["6" nil "7" "1" "b2" nil "b3"]],
+  :hash 659274443},
  475648554
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -2319,6 +2772,15 @@
    ["b5" nil "b6" nil "b7" nil "1"]
    [nil nil nil nil nil "3" "4"]],
   :hash 678522054},
+ 1087656559
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil "2"]
+   ["2" nil "3" "4" nil "5"]
+   ["5" nil "6" "b7" nil "1"]
+   [nil nil "2" nil "3" "4"]],
+  :hash 1087656559},
  -2066930143
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -2364,6 +2826,17 @@
    ["5" nil "6" nil "7" "1"]
    [nil nil "2" nil "3" "4"]],
   :hash -2078559601},
+ 498943122
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil nil nil nil]
+   [nil "4" nil "5" nil]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" "b7" nil]
+   ["2" nil "3" "4" nil]
+   ["6" "b7" nil "1" nil]],
+  :hash 498943122},
  370057713
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -2391,6 +2864,15 @@
    ["b3" nil "4" nil "5" nil "6"]
    [nil nil nil nil "1" "b2" nil]],
   :hash -1706230070},
+ -348500027
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["7" "1" "b2" nil nil "3" nil]
+   ["3" "4" "b5" nil "b6" nil nil]
+   [nil nil "7" "1" "b2" nil nil]
+   [nil nil "3" "4" "b5" nil "b6"]],
+  :hash -348500027},
  166257256
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -2413,6 +2895,24 @@
    [nil "b7" nil "1"]
    [nil nil nil "5"]],
   :hash -1346002219},
+ -2060017962
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil "2" "b3" nil]
+   [nil nil "4" nil "5" nil "6"]
+   [nil "7" "1" nil "2" "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]],
+  :hash -2060017962},
+ -1364868212
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil "4" nil]
+   [nil nil "5" "b6" nil nil "7"]
+   ["1" nil "2" "b3" nil "4" nil]
+   ["4" nil "5" "b6" nil nil "7"]],
+  :hash -1364868212},
  -29013565
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -2433,6 +2933,17 @@
    ["2" "b3" nil "4" nil "5" "b6"]
    [nil "b6" nil "b7" nil "1" nil]],
   :hash -1220040574},
+ -1206854090
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" nil nil nil]
+   [nil "b5" nil "b6" "6"]
+   [nil "2" "b3" nil "4"]
+   ["b6" "6" nil "7" "1"]
+   ["b3" nil "4" "b5" nil]
+   [nil "7" "1" nil "2"]],
+  :hash -1206854090},
  -711842803
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -2569,6 +3080,15 @@
    [nil nil nil nil "b7"]
    [nil nil nil nil nil]],
   :hash 525260360},
+ 1766603165
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" "3" "4" "b5" "5" nil nil]
+   [nil "6" "b7" nil "1" nil "2"]
+   [nil "2" "b3" "3" "4" "b5" "5"]
+   [nil "5" nil "6" "b7" nil "1"]],
+  :hash 1766603165},
  2074099116
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -2598,6 +3118,15 @@
    [nil nil nil nil nil nil]
    [nil nil nil nil nil nil]],
   :hash 2084001807},
+ -112904989
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil "1" "b2"]
+   [nil nil "b3" nil "4" "b5"]
+   ["b6" nil "b7" nil "1" "b2"]
+   ["b2" nil "b3" nil "4" "b5"]],
+  :hash -112904989},
  -1413114771
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -2616,6 +3145,15 @@
    ["5" nil "6" "b7" nil "1" "b2"]
    [nil nil nil "b3" "3" nil "b5"]],
   :hash -1100894567},
+ 1988385670
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "7" "1" nil "2" nil]
+   ["2" "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil nil "7" "1" nil]
+   [nil nil "2" "b3" nil "4" nil]],
+  :hash 1988385670},
  -634492569
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -2698,6 +3236,26 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -1107897777},
+ 1226043521
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil "b5" "5" nil "6"]
+   ["b2" nil "b3" "3" nil]
+   [nil "6" "b7" nil "1"]
+   ["b3" "3" nil "b5" "5"]
+   [nil nil "1" "b2" nil]],
+  :hash 1226043521},
+ 548449279
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b5" nil "b6" nil "b7" nil nil]
+   [nil "1" nil "2" nil "3" "4"]
+   ["3" "4" "b5" nil "b6" nil "b7"]
+   [nil "b7" nil "1" nil "2" nil]],
+  :hash 548449279},
  -2080881998
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -2718,6 +3276,15 @@
    ["4" nil "5" "b6" nil "b7" nil]
    [nil nil nil nil "2" nil "3"]],
   :hash 1967612348},
+ 141296263
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b6" "6" nil "7" nil nil]
+   ["1" nil "2" "b3" nil "4" "b5"]
+   ["4" "b5" nil "b6" "6" nil "7"]
+   [nil "7" "1" nil "2" "b3" nil]],
+  :hash 141296263},
  353850344
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -2771,6 +3338,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1336466606},
+ 1083785597
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil "2" nil nil]
+   [nil "3" "4" "b5" nil "b6" nil]
+   ["b6" nil "b7" nil "1" nil "2"]
+   [nil "2" nil "3" "4" "b5" nil]],
+  :hash 1083785597},
  1409619708
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -2847,6 +3423,17 @@
    [nil "5" "b6" nil nil]
    [nil nil nil nil nil]],
   :hash 1995501272},
+ -1021979443
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil "3" "4" nil]
+   [nil "b7" nil "1" nil]
+   ["4" "b5" nil "b6" nil]
+   ["1" nil "2" nil "3"]
+   [nil "b6" nil "b7" nil]
+   [nil nil nil "4" "b5"]],
+  :hash -1021979443},
  1281893682
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -3016,6 +3603,17 @@
    ["3" "4" nil "5" "b6" nil "b7"]
    [nil "b7" nil "1" "b2" nil nil]],
   :hash -1502180832},
+ 420791652
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil "b2" nil "b3" nil]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" "b5" nil]
+   ["b7" nil "1" "b2" nil]
+   ["4" "b5" nil "b6" nil]],
+  :hash 420791652},
  -1827527118
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -3047,6 +3645,24 @@
    [nil nil "4" nil "5" nil "6"]
    [nil nil nil nil nil nil nil]],
   :hash -416414950},
+ -175993468
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil "3" "4" nil]
+   ["4" "b5" nil "b6" nil nil "7"]
+   [nil "7" "1" "b2" nil nil "3"]
+   [nil nil "4" "b5" nil "b6" nil]],
+  :hash -175993468},
+ 1369435188
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" nil "7" "1" "b2" nil nil]
+   [nil "b3" nil "4" nil "5" nil]
+   ["5" nil "6" nil "7" "1" "b2"]
+   [nil "b2" nil "b3" nil "4" nil]],
+  :hash 1369435188},
  -1753686465
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -3085,6 +3701,15 @@
    [nil nil nil "4" "b5" nil]
    [nil nil nil nil nil nil]],
   :hash 827540373},
+ -1573389644
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil "3" "4" nil nil]
+   ["5" "b6" nil "b7" nil "1"]
+   ["1" nil "2" nil "3" "4"]
+   ["4" nil "5" "b6" nil "b7"]],
+  :hash -1573389644},
  2071798139
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -3114,6 +3739,17 @@
    ["b3" nil "4" nil "5" nil "6"]
    [nil nil nil nil "1" nil "2"]],
   :hash -1863046336},
+ 556590575
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil nil "3" "4" nil]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil nil "3"]
+   ["5" "b6" nil "b7" nil]],
+  :hash 556590575},
  -48520902
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -3185,6 +3821,15 @@
    ["1" "b2" nil nil "3" "4"]
    ["4" "b5" nil nil "6" "b7"]],
   :hash -2112965744},
+ -902500386
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil "1" nil nil]
+   ["b2" nil "b3" "3" nil "b5" nil]
+   ["b5" nil "b6" nil "b7" nil "1"]
+   [nil "1" "b2" nil "b3" "3" nil]],
+  :hash -902500386},
  472207841
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -3194,6 +3839,15 @@
    [nil nil "4" nil "5" nil "6"]
    [nil nil nil nil nil nil nil]],
   :hash 472207841},
+ 429399703
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil nil nil]
+   ["4" "b5" "5" nil "6" "b7" nil]
+   ["b7" nil "1" nil "2" "b3" "3"]
+   ["b3" "3" "4" "b5" "5" nil "6"]],
+  :hash 429399703},
  -1176173108
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -3411,6 +4065,17 @@
    ["4" "b5" nil "b6"]
    [nil nil nil nil]],
   :hash 1164249415},
+ 263188583
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" "b5" nil nil nil]
+   [nil "b2" nil nil "3"]
+   [nil "6" "b7" nil "1"]
+   [nil "3" "4" "b5" nil]
+   ["b7" nil "1" "b2" nil]
+   [nil "b5" nil nil "6"]],
+  :hash 263188583},
  963161017
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -3480,6 +4145,26 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1224145529},
+ 255651825
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil]
+   [nil "4" nil "5" "b6"]
+   ["1" nil "2" nil "3"]
+   ["5" "b6" nil "b7" nil]
+   ["2" nil "3" "4" nil]
+   [nil nil nil "1" nil]],
+  :hash 255651825},
+ 1156616165
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil nil nil]
+   [nil nil "7" "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil nil "7" "1" nil]],
+  :hash 1156616165},
  -387775331
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -3518,6 +4203,15 @@
    ["5" "b6" nil "b7" nil "1"]
    [nil nil nil nil "3" "4"]],
   :hash -1861083961},
+ -709564411
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil "5" nil]
+   [nil nil "6" "b7" nil "1" "b2"]
+   [nil "b3" nil "4" nil "5" nil]
+   ["5" nil "6" "b7" nil "1" "b2"]],
+  :hash -709564411},
  -1878099117
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -3538,6 +4232,17 @@
    ["5" "b6" nil nil "7"]
    [nil nil nil "4" nil]],
   :hash -38112985},
+ 98435775
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" nil nil nil nil]
+   [nil nil "b6" nil nil]
+   [nil nil "3" "4" "b5"]
+   [nil nil "7" "1" "b2"]
+   ["3" "4" "b5" nil "b6"]
+   ["7" "1" "b2" nil nil]],
+  :hash 98435775},
  1351840417
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -3569,6 +4274,17 @@
    ["b7" nil "1" "b2" nil "b3"]
    [nil nil nil nil nil "b6"]],
   :hash 166496965},
+ -1136545782
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil nil nil]
+   [nil nil "b3" nil "4"]
+   ["6" "b7" nil "1" "b2"]
+   [nil "4" nil "5" nil]
+   [nil "1" "b2" nil "b3"]
+   [nil "5" nil "6" "b7"]],
+  :hash -1136545782},
  1376189393
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -3640,6 +4356,24 @@
    [nil nil nil nil "4"]
    [nil nil nil nil nil]],
   :hash -1895488960},
+ -165078541
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil nil nil]
+   [nil "3" "4" "b5" nil nil "6"]
+   [nil "6" "b7" nil "1" "b2" nil]
+   ["b2" nil nil "3" "4" "b5" nil]],
+  :hash -165078541},
+ 185998870
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7" nil "1"]
+   ["1" nil "2" "b3" nil "4"]
+   ["4" nil "5" "b6" nil "b7"]
+   [nil nil "1" nil "2" "b3"]],
+  :hash 185998870},
  1791741131
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -3669,6 +4403,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -996850417},
+ -935887599
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" "b5" nil "b6" nil]
+   [nil nil nil "7" "1" nil "2"]
+   ["b3" nil "4" "b5" nil "b6" "6"]
+   ["b6" "6" nil "7" "1" nil "2"]],
+  :hash -935887599},
  998986750
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -3698,6 +4441,17 @@
    [nil nil nil nil "5" nil]
    [nil nil nil nil nil nil]],
   :hash 120232158},
+ -1071555145
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil nil]
+   [nil "b5" nil "b6" nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil nil "7" "1"]
+   [nil "3" "4" "b5" nil]
+   [nil nil "1" "b2" nil]],
+  :hash -1071555145},
  -504698875
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -3707,6 +4461,17 @@
    ["b7" nil "1" "b2" nil "b3" "3"]
    [nil nil nil nil nil nil "6"]],
   :hash -504698875},
+ 1026120716
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil nil]
+   [nil "b7" nil "1"]
+   ["4" nil "5" nil]
+   ["1" nil nil "b3"]
+   ["5" nil nil "b7"]
+   [nil "b3" nil "4"]],
+  :hash 1026120716},
  -1807662712
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -3727,6 +4492,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -967124262},
+ -2083807405
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" "b5" nil "b6" nil]
+   [nil nil "b7" nil "1" nil "2"]
+   [nil "3" "4" "b5" nil "b6" nil]
+   ["b6" nil "b7" nil "1" nil "2"]],
+  :hash -2083807405},
  128189805
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -3785,6 +4559,15 @@
    [nil "4" nil "5" "b6" nil]
    [nil nil nil nil nil nil]],
   :hash 124274625},
+ 709729876
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil nil]
+   ["3" nil nil "5" nil "6"]
+   ["6" nil nil "1" nil "2"]
+   ["2" nil "3" nil nil "5"]],
+  :hash 709729876},
  1537107309
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -3825,6 +4608,15 @@
    ["1" "b2" nil "b3" "3" nil "b5"]
    [nil nil "5" nil "6" "b7" nil]],
   :hash -1015046115},
+ -2027449161
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil "2"]
+   [nil nil "3" "4" nil "5"]
+   ["6" "b7" nil "1" nil "2"]
+   ["2" nil "3" "4" nil "5"]],
+  :hash -2027449161},
  -1357054757
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -3910,6 +4702,15 @@
    ["b5" nil "b6" "6" nil "7" "1"]
    [nil nil nil nil nil nil nil]],
   :hash 1521719980},
+ 660067874
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil nil "3" nil]
+   ["3" "4" "b5" nil nil "6" "b7"]
+   ["6" "b7" nil "1" "b2" nil nil]
+   [nil nil "3" "4" "b5" nil nil]],
+  :hash 660067874},
  1868016743
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -3995,6 +4796,17 @@
    [nil nil nil "b3" "3" nil]
    [nil nil nil nil nil nil]],
   :hash -666476638},
+ -649781012
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil nil nil]
+   [nil nil "4" nil "5"]
+   [nil "1" "b2" nil "b3"]
+   [nil "5" "b6" nil "b7"]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]],
+  :hash -649781012},
  -1066261427
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -4004,6 +4816,15 @@
    ["b2" nil nil "3" "4" nil "5"]
    [nil nil nil nil nil nil nil]],
   :hash -1066261427},
+ -1828312223
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" nil "b6" nil "b7"]
+   [nil nil "1" "b2" nil "b3"]
+   ["4" "b5" nil "b6" nil "b7"]
+   ["b7" nil "1" "b2" nil "b3"]],
+  :hash -1828312223},
  -732499680
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -4149,6 +4970,17 @@
    ["b3" nil "4" nil "5" nil "6"]
    [nil nil nil nil nil "b2" nil]],
   :hash 406955376},
+ -1659115757
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil "b6" "6" nil "7"]
+   ["b3" nil "4" "b5" nil]
+   [nil "7" "1" nil "2"]
+   ["4" "b5" nil "b6" "6"]
+   ["1" nil "2" "b3" nil]],
+  :hash -1659115757},
  -2011764921
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -4216,6 +5048,15 @@
    [nil nil nil "1"]
    [nil nil nil nil]],
   :hash -616939920},
+ 1620554015
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil "4" nil]
+   [nil nil "5" "b6" nil nil "7"]
+   ["1" "b2" nil "b3" nil "4" nil]
+   ["4" nil "5" "b6" nil nil "7"]],
+  :hash 1620554015},
  1207164878
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -4247,6 +5088,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1870389024},
+ -874631019
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil "b7" nil "1" nil "2"]
+   [nil "2" "b3" nil "4" nil "5"]
+   [nil nil "b6" nil "b7" nil "1"]],
+  :hash -874631019},
  1011863942
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -4276,6 +5126,17 @@
    ["4" nil "5" nil "6" nil "7"]
    [nil nil "1" nil "2" nil "3"]],
   :hash 1000593233},
+ -986700151
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil nil nil]
+   [nil nil "4" "b5" nil]
+   ["7" "1" nil "2" "b3"]
+   ["b5" nil "b6" "6" nil]
+   [nil "2" "b3" nil "4"]
+   ["b6" "6" nil "7" "1"]],
+  :hash -986700151},
  -1864149491
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -4314,6 +5175,15 @@
    ["1" nil nil "b3"]
    ["5" nil nil "b7"]],
   :hash 817073802},
+ -1435308328
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil nil]
+   ["b3" nil "4" "b5" nil "b6"]
+   ["b6" nil "b7" nil "1" "b2"]
+   ["b2" nil "b3" nil "4" "b5"]],
+  :hash -1435308328},
  -1011819848
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -4428,6 +5298,17 @@
    ["2" "b3" nil "4" "b5" nil]
    [nil "b6" "6" nil "7" "1"]],
   :hash -445921271},
+ -182208095
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" nil nil nil]
+   [nil "1" "b2" nil nil]
+   [nil nil "6" "b7" nil]
+   [nil nil "3" "4" "b5"]
+   ["6" "b7" nil "1" "b2"]
+   [nil "4" "b5" nil nil]],
+  :hash -182208095},
  563433198
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -4448,6 +5329,17 @@
    ["b6" nil "b7" nil "1"]
    [nil "3" nil "b5" nil]],
   :hash -59062037},
+ 1640062856
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" "b3" nil nil]
+   [nil "6" nil "7" "1"]
+   [nil "4" nil "5" nil]
+   ["7" "1" nil "2" "b3"]
+   [nil "5" nil "6" nil]
+   [nil nil "b3" nil "4"]],
+  :hash 1640062856},
  1251725781
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -4459,6 +5351,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1251725781},
+ -899495150
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" nil nil "1" nil "2"]
+   [nil nil "3" nil nil "5"]
+   ["6" nil nil "1" nil "2"]
+   ["2" nil "3" nil nil "5"]],
+  :hash -899495150},
  -1633147973
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -4503,6 +5404,24 @@
    ["2" "b3" nil "4" nil]
    [nil nil "7" "1" nil]],
   :hash -341513137},
+ 1991707054
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" "3" "4" "b5" nil nil]
+   ["5" nil "6" "b7" nil "1" nil]
+   ["1" nil "2" "b3" "3" "4" "b5"]
+   [nil "b5" "5" nil "6" "b7" nil]],
+  :hash 1991707054},
+ 933343162
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil "2" "b3" nil]
+   [nil nil "4" "b5" nil "b6" "6"]
+   [nil "7" "1" nil "2" "b3" nil]
+   ["b3" nil "4" "b5" nil "b6" "6"]],
+  :hash 933343162},
  -294842154
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -4530,6 +5449,17 @@
    ["6" "b7" nil "1" nil "2"]
    ["2" "b3" nil "4" nil "5"]],
   :hash 63136909},
+ -125290184
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "3" "4" "b5" nil]
+   [nil "7" "1" "b2" nil]
+   ["b5" nil "b6" nil nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil nil "7" "1"]
+   [nil nil nil "b5" nil]],
+  :hash -125290184},
  344788653
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -4539,6 +5469,37 @@
    [nil nil nil nil "6" nil "7"]
    [nil nil nil nil nil nil nil]],
   :hash 344788653},
+ -491865267
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" nil "7" nil nil]
+   ["1" nil "2" nil "3" "4" nil]
+   ["4" nil "5" nil "6" nil "7"]
+   [nil "7" "1" nil "2" nil "3"]],
+  :hash -491865267},
+ -1528877856
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil]
+   [nil "b2" nil nil "3"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   [nil nil nil "b6" nil]],
+  :hash -1528877856},
+ 1933749041
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil nil]
+   [nil "4" nil "5"]
+   ["1" nil nil "b3"]
+   ["5" nil nil "b7"]
+   [nil "b3" nil "4"]
+   [nil "b7" nil "1"]],
+  :hash 1933749041},
  -1436187623
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -4548,6 +5509,15 @@
    [nil "6" "b7" nil "1" "b2" nil]
    [nil nil nil nil nil nil "5"]],
   :hash -1436187623},
+ 265310249
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b5" nil "b6" "6" nil "7" nil]
+   [nil nil nil "2" "b3" nil "4"]
+   ["b5" nil "b6" "6" nil "7" "1"]
+   ["7" "1" nil "2" "b3" nil "4"]],
+  :hash 265310249},
  1461294893
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -4579,6 +5549,26 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1865088743},
+ -4921107
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" nil nil]
+   [nil nil "b7" nil "1" nil nil]
+   [nil nil "b3" nil "4" nil "5"]
+   [nil "5" nil nil "b7" nil "1"]],
+  :hash -4921107},
+ 1622441590
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil nil nil nil]
+   [nil "7" "1" nil "2"]
+   [nil "5" "b6" nil nil]
+   [nil "2" "b3" nil "4"]
+   ["b6" nil nil "7" "1"]
+   ["b3" nil "4" nil "5"]],
+  :hash 1622441590},
  -1295312796
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -4588,6 +5578,17 @@
    [nil nil nil "4" nil "5"]
    [nil nil nil nil nil nil]],
   :hash -1295312796},
+ -1757859209
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil "3" nil nil]
+   [nil "b7" nil "1" nil]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" "b7" nil]
+   [nil nil "3" "4" nil]],
+  :hash -1757859209},
  -2085525671
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -4597,6 +5598,17 @@
    ["b2" nil nil "3" "4" nil "5"]
    [nil nil "b6" nil "b7" nil "1"]],
   :hash -2085525671},
+ -1668929386
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil nil nil]
+   [nil "5" "b6" nil "b7"]
+   [nil nil "3" "4" nil]
+   [nil "b7" nil "1" "b2"]
+   ["3" "4" nil "5" "b6"]
+   [nil "1" "b2" nil nil]],
+  :hash -1668929386},
  -1481833941
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -4615,6 +5627,15 @@
    [nil nil "5" nil "6" nil]
    [nil nil nil nil nil nil]],
   :hash -895621214},
+ -1153168227
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["7" "1" nil "2" nil nil nil]
+   [nil "4" nil "5" "b6" nil nil]
+   [nil nil "7" "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" "b6"]],
+  :hash -1153168227},
  -920404496
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -4662,6 +5683,17 @@
    ["b2" nil "b3" "3" nil "b5" "5"]
    [nil nil nil nil "b7" nil "1"]],
   :hash -1039751591},
+ -116267226
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil]
+   ["2" "b3" nil "4"]
+   ["b7" nil "1" nil]
+   ["4" nil "5" "b6"]
+   ["1" nil "2" "b3"]
+   [nil "b6" nil "b7"]],
+  :hash -116267226},
  -1668106625
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -4673,6 +5705,26 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1668106625},
+ -1660660242
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" "5" nil "6" nil]
+   [nil nil "b3" "3" nil]
+   ["6" "b7" nil "1" "b2"]
+   ["3" nil "b5" "5" nil]
+   [nil "1" "b2" nil "b3"]
+   [nil nil nil "6" "b7"]],
+  :hash -1660660242},
+ -349140073
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" nil nil]
+   ["b6" nil "b7" nil "1" nil "2"]
+   [nil "2" "b3" nil "4" nil "5"]
+   [nil "5" "b6" nil "b7" nil "1"]],
+  :hash -349140073},
  -192707829
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -4684,6 +5736,15 @@
    [nil nil nil nil]
    [nil nil "6" nil]],
   :hash -192707829},
+ -1232535825
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil "4"]
+   ["4" nil "5" "b6" nil "b7"]
+   ["b7" nil "1" "b2" nil "b3"]
+   [nil nil "4" nil "5" "b6"]],
+  :hash -1232535825},
  1313626709
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -4724,6 +5785,17 @@
    ["b6" nil "b7" nil "1"]
    [nil nil nil "b5" nil]],
   :hash -2049108777},
+ 371820873
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" nil nil]
+   [nil nil "6" "b7" nil]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   [nil nil "2" "b3" nil]],
+  :hash 371820873},
  -1529526490
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -4927,6 +5999,26 @@
    [nil "1" "b2" nil "b3" "3" nil]
    ["3" nil "b5" nil "b6" nil "b7"]],
   :hash 1935637447},
+ 1432981040
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b5" nil "b6" nil nil nil]
+   ["b7" nil "1" "b2" nil "b3" "3"]
+   ["b3" "3" nil "b5" nil "b6" nil]
+   ["b6" nil "b7" nil "1" "b2" nil]],
+  :hash 1432981040},
+ 990638416
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "3" nil nil nil]
+   [nil nil "1" "b2" nil]
+   [nil "5" "b6" nil "b7"]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" nil "5"]],
+  :hash 990638416},
  1023636851
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -5103,6 +6195,26 @@
    ["5" nil nil "b7" nil "1" nil]
    [nil nil nil nil nil nil nil]],
   :hash 674437092},
+ 2098560050
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil "1" "b2"]
+   [nil nil "b3" "3" nil "b5"]
+   ["b6" nil "b7" nil "1" "b2"]
+   ["b2" nil "b3" "3" nil "b5"]],
+  :hash 2098560050},
+ -649153427
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" "3" nil "b5" nil]
+   [nil nil "1" "b2" nil]
+   ["b5" nil "b6" nil "b7"]
+   ["b2" nil "b3" "3" nil]
+   ["b6" nil "b7" nil "1"]
+   [nil nil nil "b5" nil]],
+  :hash -649153427},
  -977943569
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -5161,6 +6273,17 @@
    ["4" nil "5" nil "6" "b7"]
    [nil nil nil nil nil "b3"]],
   :hash 1153358097},
+ -1724707243
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil nil nil]
+   [nil "5" nil "6" "b7"]
+   ["2" "b3" "3" "4" "b5"]
+   ["6" "b7" nil "1" nil]
+   ["3" "4" "b5" "5" nil]
+   [nil "1" nil "2" "b3"]],
+  :hash -1724707243},
  -152608239
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -5208,6 +6331,15 @@
    [nil nil nil nil nil nil]
    [nil "b3" nil "4" "b5" nil]],
   :hash -435937440},
+ -1651805659
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" nil "7" "1" nil nil nil]
+   [nil "b3" nil "4" nil "5" nil]
+   ["5" nil "6" nil "7" "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]],
+  :hash -1651805659},
  -959695310
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -5244,6 +6376,24 @@
    [nil nil "b5" nil nil "6"]
    [nil nil nil nil nil nil]],
   :hash 2093503762},
+ -156931001
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" "3" "4" "b5" nil nil nil]
+   [nil "6" "b7" nil "1" nil "2"]
+   [nil "2" "b3" "3" "4" "b5" "5"]
+   ["b5" "5" nil "6" "b7" nil "1"]],
+  :hash -156931001},
+ -1844131472
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil "5" nil]
+   [nil nil nil nil "7" "1" "b2"]
+   [nil "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil nil "7" "1" "b2"]],
+  :hash -1844131472},
  -1535811404
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -5286,6 +6436,15 @@
    ["b6" nil nil "7" "1" "b2"]
    [nil nil nil nil nil nil]],
   :hash -511509921},
+ -1524750579
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil nil "b7" nil "1"]
+   ["1" nil nil "b3" nil "4"]
+   ["4" nil "5" nil nil "b7"]
+   [nil nil "1" nil nil "b3"]],
+  :hash -1524750579},
  -1336839490
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -5482,6 +6641,15 @@
    ["b5" nil "b6" nil nil "7" "1"]
    [nil nil nil nil nil "3" "4"]],
   :hash 309415962},
+ 914759892
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" "b6" nil nil]
+   [nil nil "7" "1" "b2" nil nil]
+   [nil nil "3" "4" nil "5" "b6"]
+   [nil "b6" nil nil "7" "1" "b2"]],
+  :hash 914759892},
  104375031
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -5529,6 +6697,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -715795020},
+ 675165824
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil "3" "4" nil]
+   [nil nil nil nil "6" "b7" nil]
+   ["1" "b2" nil nil "3" "4" "b5"]
+   ["4" "b5" nil nil "6" "b7" nil]],
+  :hash 675165824},
  387519947
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -5641,6 +6818,17 @@
    ["b6" nil "b7" nil "1" nil "2"]
    [nil nil nil nil nil nil "5"]],
   :hash 489523606},
+ -553808071
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil "b2" nil "b3" nil]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" "b6" nil]],
+  :hash -553808071},
  -476771347
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -5701,6 +6889,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -92523240},
+ 153290593
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil "b5" "5" nil "6"]
+   ["b2" nil "b3" "3" nil]
+   [nil "6" "b7" nil "1"]
+   ["b3" "3" nil "b5" "5"]
+   ["b7" nil "1" "b2" nil]],
+  :hash 153290593},
  1291287402
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -5810,6 +7009,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -963105918},
+ 83383011
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil nil nil]
+   ["5" "b6" nil "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]
+   ["4" nil "5" "b6" nil "b7" nil]],
+  :hash 83383011},
  514546820
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -5850,6 +7058,15 @@
    ["b3" nil "4" nil "5"]
    [nil nil nil nil nil]],
   :hash 734217643},
+ -519357825
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil "b3" nil nil]
+   ["3" nil "b5" "5" nil "6" "b7"]
+   ["6" "b7" nil "1" "b2" nil "b3"]
+   [nil "b3" "3" nil "b5" "5" nil]],
+  :hash -519357825},
  1143977728
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -5953,6 +7170,17 @@
    ["6" nil "7" "1"]
    [nil "4" nil "5"]],
   :hash -1019472764},
+ 710650601
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil nil]
+   [nil nil "5" "b6" nil]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil nil "1" "b2" nil]],
+  :hash 710650601},
  1588783282
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -6092,6 +7320,35 @@
    ["b7" nil "1" nil "2" nil "3"]
    [nil "3" "4" nil "5" "b6" nil]],
   :hash 1437642888},
+ 935917364
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" "5" nil nil "b7"]
+   [nil nil "1" nil nil "b3"]
+   ["4" "b5" "5" nil nil "b7"]
+   ["b7" nil "1" nil nil "b3"]],
+  :hash 935917364},
+ 659133754
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" nil "7" nil nil nil]
+   [nil "2" nil "3" "4" nil "5"]
+   [nil "5" nil "6" nil "7" "1"]
+   ["7" "1" nil "2" nil "3" "4"]],
+  :hash 659133754},
+ -415877414
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil nil nil]
+   [nil "5" "b6" nil "b7"]
+   ["2" "b3" nil "4" nil]
+   [nil "b7" nil "1" nil]
+   [nil "4" nil "5" "b6"]
+   [nil "1" nil "2" "b3"]],
+  :hash -415877414},
  964327342
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -6101,6 +7358,17 @@
    [nil nil nil nil "b2" nil nil]
    [nil nil nil nil nil nil nil]],
   :hash 964327342},
+ -1186995849
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" "b3" "3" nil nil]
+   [nil "b7" nil "1" nil]
+   ["4" "b5" "5" nil "6"]
+   ["1" nil "2" "b3" "3"]
+   ["5" nil "6" "b7" nil]
+   [nil nil "3" "4" "b5"]],
+  :hash -1186995849},
  1694843755
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -6110,6 +7378,15 @@
    ["1" "b2" nil "b3" nil "4" "b5"]
    [nil "b5" nil "b6" nil "b7" nil]],
   :hash 1694843755},
+ -1074608044
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil nil "3" nil]
+   [nil nil nil "5" "b6" nil "b7"]
+   [nil "1" "b2" nil nil "3" "4"]
+   ["3" "4" nil "5" "b6" nil "b7"]],
+  :hash -1074608044},
  -850563947
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -6324,6 +7601,15 @@
    [nil nil nil "1" nil "2"]
    [nil nil nil nil nil nil]],
   :hash -1923204724},
+ 1267142870
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil "7" "1" nil]
+   ["1" "b2" nil "b3" nil "4" nil]
+   ["4" nil "5" "b6" nil nil "7"]
+   [nil nil "1" "b2" nil "b3" nil]],
+  :hash 1267142870},
  2061613962
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -6447,6 +7733,28 @@
    ["6" "b7" nil "1" nil "2" "b3"]
    [nil "b3" "3" "4" "b5" "5" nil]],
   :hash -1480326183},
+ -1367525177
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil "b5" nil nil "6"]
+   ["b2" nil nil "3" "4"]
+   [nil "6" "b7" nil "1"]
+   [nil "3" "4" "b5" nil]
+   [nil nil "1" "b2" nil]],
+  :hash -1367525177},
+ 194672023
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "3" "4" "b5" nil]
+   [nil nil "1" "b2" nil]
+   ["b5" nil nil "6" "b7"]
+   ["b2" nil nil "3" "4"]
+   [nil "6" "b7" nil "1"]
+   [nil nil nil "b5" nil]],
+  :hash 194672023},
  -2004902883
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -6532,6 +7840,17 @@
    ["b5" "5" nil nil "b7" nil "1"]
    [nil nil nil nil nil nil "4"]],
   :hash 631830339},
+ -1450699369
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil "b5" nil nil]
+   [nil "1" "b2" nil "b3"]
+   ["5" nil "6" "b7" nil]
+   [nil "b3" "3" nil "b5"]
+   ["6" "b7" nil "1" "b2"]
+   [nil nil "b5" "5" nil]],
+  :hash -1450699369},
  738595960
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -6552,6 +7871,17 @@
    ["b7" nil "1" nil]
    [nil "b5" "5" nil]],
   :hash 1196000786},
+ 843407528
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil "b6" nil nil]
+   [nil nil "b3" nil "4"]
+   [nil "b7" nil "1" "b2"]
+   [nil "4" "b5" nil "b6"]
+   [nil "1" "b2" nil "b3"]
+   [nil nil "b6" nil "b7"]],
+  :hash 843407528},
  -674481374
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -6583,6 +7913,17 @@
    ["1" nil "2" "b3" nil "4"]
    [nil nil nil nil nil nil]],
   :hash 1407004567},
+ -1122815808
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil "4" "b5" nil]
+   [nil "7" "1" nil "2"]
+   ["b5" nil "b6" "6" nil]
+   [nil "2" "b3" nil "4"]
+   ["b6" "6" nil "7" "1"]
+   [nil nil nil "b5" nil]],
+  :hash -1122815808},
  780227394
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -6646,6 +7987,17 @@
    ["b6" nil "b7" nil "1" "b2" nil]
    [nil nil nil "3" "4" nil "5"]],
   :hash -110978627},
+ -848825957
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" "b7" nil nil]
+   ["3" "4" nil "5"]
+   ["1" nil "2" nil]
+   ["5" nil "6" "b7"]
+   ["2" nil "3" "4"]
+   [nil "b7" nil "1"]],
+  :hash -848825957},
  -1619640904
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -6693,6 +8045,28 @@
    [nil nil nil "6" "b7" nil "1"]
    [nil nil nil nil nil nil nil]],
   :hash 1383157627},
+ 245831635
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b6" nil "b7" nil]
+   [nil "b3" "3" nil "b5"]
+   ["b7" nil "1" "b2" nil]
+   [nil "b5" nil "b6" nil]
+   ["1" "b2" nil "b3" "3"]
+   [nil nil nil "b7" nil]],
+  :hash 245831635},
+ 2117151592
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil nil nil nil]
+   [nil nil "b3" nil "4"]
+   [nil "b7" nil "1" "b2"]
+   [nil "4" "b5" nil "b6"]
+   [nil "1" "b2" nil "b3"]
+   ["b5" nil "b6" nil "b7"]],
+  :hash 2117151592},
  1913988397
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -6798,6 +8172,15 @@
    ["3" nil nil "5"]
    [nil "1" nil "2"]],
   :hash 1881522191},
+ 1739882634
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" nil nil nil]
+   [nil "2" "b3" nil "4" nil "5"]
+   [nil "5" "b6" nil nil "7" "1"]
+   ["7" "1" nil "2" "b3" nil "4"]],
+  :hash 1739882634},
  -377883759
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -6845,6 +8228,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 674527979},
+ -1237037565
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil "6" nil]
+   ["6" nil "7" "1" "b2" nil "b3"]
+   [nil "b3" nil "4" nil "5" nil]
+   [nil nil "6" nil "7" "1" "b2"]],
+  :hash -1237037565},
  -1258022149
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -6883,6 +8275,17 @@
    [nil nil "b7" nil "1"]
    [nil nil nil nil nil]],
   :hash 623546152},
+ -1141695534
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" nil nil nil]
+   [nil "1" "b2" nil nil]
+   ["5" "b6" nil nil "7"]
+   [nil nil "3" "4" nil]
+   [nil nil "7" "1" "b2"]
+   [nil "4" nil "5" "b6"]],
+  :hash -1141695534},
  250045929
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -7158,6 +8561,17 @@
    [nil nil "1" "b2" nil nil "3"]
    [nil nil nil nil nil nil nil]],
   :hash 1281978416},
+ -1107813175
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil "7" nil nil]
+   [nil "4" nil "5" nil]
+   ["1" "b2" nil "b3" nil]
+   ["5" nil "6" nil "7"]
+   [nil "b3" nil "4" nil]
+   [nil nil "7" "1" "b2"]],
+  :hash -1107813175},
  1448967054
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -7196,6 +8610,17 @@
    ["b5" nil "b6" nil nil "7" "1"]
    [nil nil nil nil nil nil "4"]],
   :hash -149092606},
+ 985461695
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil]
+   [nil nil "5" "b6" nil]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   [nil nil nil "b2" nil]],
+  :hash 985461695},
  804378313
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -7216,6 +8641,17 @@
    ["3" "4" nil "5" "b6" nil]
    [nil nil nil nil nil "2"]],
   :hash 89252581},
+ -2134014443
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil "b3" nil "4" nil]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" "b3" nil]
+   ["5" "b6" nil nil "7"]],
+  :hash -2134014443},
  -2063090259
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -7245,6 +8681,15 @@
    [nil "4" "b5" nil "b6" "6" nil]
    [nil nil nil nil nil "2" "b3"]],
   :hash -1708759573},
+ 2088496791
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" "b5" "5" nil "6" nil]
+   [nil nil nil "1" nil "2" "b3"]
+   ["3" "4" "b5" "5" nil "6" "b7"]
+   ["6" "b7" nil "1" nil "2" "b3"]],
+  :hash 2088496791},
  1539364261
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -7354,6 +8799,15 @@
    ["b6" nil "b7" nil "1" "b2" nil]
    [nil nil "b3" nil "4" nil "5"]],
   :hash 429291808},
+ -578545271
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil "1" nil]
+   ["1" nil "2" "b3" "3" "4" "b5"]
+   ["4" "b5" "5" nil "6" "b7" nil]
+   [nil nil "1" nil "2" "b3" "3"]],
+  :hash -578545271},
  1196246188
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -7390,6 +8844,15 @@
    [nil nil "1" nil "2" "b3" "3"]
    [nil nil nil nil nil nil nil]],
   :hash -1865087597},
+ 464322950
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil "2"]
+   [nil nil nil "4" nil "5"]
+   [nil "b7" nil "1" nil "2"]
+   ["2" nil nil "4" nil "5"]],
+  :hash 464322950},
  -2123898171
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -7454,6 +8917,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 2114342158},
+ 530833800
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" nil "3" nil nil nil]
+   [nil "5" nil "6" "b7" nil "1"]
+   [nil "1" nil "2" nil "3" "4"]
+   ["3" "4" nil "5" nil "6" "b7"]],
+  :hash 530833800},
  773240950
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -7472,6 +8944,15 @@
    [nil nil "b7" nil "1" "b2" nil]
    [nil nil nil nil nil nil nil]],
   :hash -851404293},
+ -2020558240
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil nil nil]
+   [nil "b3" nil "4" "b5" "5" nil]
+   ["5" nil nil "b7" nil "1" nil]
+   ["1" nil nil "b3" nil "4" "b5"]],
+  :hash -2020558240},
  969019696
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -7528,6 +9009,17 @@
    [nil nil "6" "b7" nil "1" "b2"]
    [nil nil nil nil nil nil nil]],
   :hash -554673300},
+ 845431034
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" "5" nil "6" nil]
+   [nil "2" "b3" "3" "4"]
+   ["6" "b7" nil "1" nil]
+   ["3" "4" "b5" "5" nil]
+   [nil "1" nil "2" "b3"]
+   [nil nil nil "6" "b7"]],
+  :hash 845431034},
  1307208289
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -7664,6 +9156,15 @@
    ["b7" nil "1" "b2" nil "b3" nil]
    [nil nil nil nil nil nil nil]],
   :hash 293143885},
+ 1496552286
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil "2" nil]
+   [nil nil nil "4" nil "5" nil]
+   ["6" "b7" nil "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" nil]],
+  :hash 1496552286},
  724306672
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -7787,6 +9288,15 @@
    ["b2" nil "b3" "3" nil "b5" nil]
    ["b5" nil "b6" nil "b7" nil "1"]],
   :hash -1428523053},
+ -25326366
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil "b3" "3" nil "b5" nil]
+   ["b5" "5" nil "6" "b7" nil "1"]
+   [nil "1" "b2" nil "b3" "3" nil]
+   [nil nil "b5" "5" nil "6" "b7"]],
+  :hash -25326366},
  -1290653737
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -7818,6 +9328,26 @@
    [nil "7" "1" nil "2"]
    [nil nil nil nil nil]],
   :hash -1460760856},
+ 405797522
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "7" "1" nil nil nil]
+   ["2" "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil nil "7" "1" nil]
+   ["1" nil "2" "b3" nil "4" nil]],
+  :hash 405797522},
+ -1274762323
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil "b2" nil "b3" nil]
+   [nil "6" nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" nil "6"]],
+  :hash -1274762323},
  1429932847
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -7847,6 +9377,17 @@
    [nil nil nil nil nil "b6" nil]
    [nil nil nil nil nil nil nil]],
   :hash -162396027},
+ -140197348
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil nil nil nil]
+   [nil nil "1" "b2" nil]
+   [nil "5" nil "6" "b7"]
+   ["b2" nil "b3" nil "4"]
+   [nil "6" "b7" nil "1"]
+   ["b3" nil "4" nil "5"]],
+  :hash -140197348},
  -1421289319
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -7869,6 +9410,15 @@
    [nil nil "1" "b2" nil]
    [nil nil nil nil nil]],
   :hash -593661217},
+ -1853114974
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil "5" nil "6" "b7" nil "1"]
+   [nil nil "b2" nil "b3" nil "4"]],
+  :hash -1853114974},
  -372067579
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -7878,6 +9428,26 @@
    ["2" nil "3" "4" "b5" nil "b6"]
    [nil nil nil nil nil "1" nil]],
   :hash -372067579},
+ 1812957155
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil nil nil nil]
+   [nil nil "1" "b2" nil]
+   ["b5" "5" nil "6" "b7"]
+   ["b2" nil "b3" "3" nil]
+   [nil "6" "b7" nil "1"]
+   ["b3" "3" nil "b5" "5"]],
+  :hash 1812957155},
+ 2021738354
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil "b3" nil]
+   ["b3" "3" nil "b5" "5" nil "6"]
+   [nil "6" "b7" nil "1" "b2" nil]
+   [nil nil "b3" "3" nil "b5" "5"]],
+  :hash 2021738354},
  -1179409107
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -8060,6 +9630,17 @@
    [nil nil nil nil nil nil]
    [nil nil nil nil nil nil]],
   :hash 1398798492},
+ -92335173
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil nil nil nil]
+   [nil "1" "b2" nil nil]
+   ["5" "b6" nil nil "7"]
+   [nil nil "3" "4" nil]
+   [nil nil "7" "1" "b2"]
+   ["3" "4" nil "5" "b6"]],
+  :hash -92335173},
  464224639
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -8292,6 +9873,17 @@
    ["1" "b2" nil nil "3" "4" nil]
    [nil nil nil nil nil nil nil]],
   :hash -154125986},
+ 1349938499
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" nil nil nil]
+   [nil "1" "b2" nil nil]
+   [nil "b6" nil nil "7"]
+   [nil nil "3" "4" "b5"]
+   [nil nil "7" "1" "b2"]
+   [nil "4" "b5" nil "b6"]],
+  :hash 1349938499},
  2134251735
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -8301,6 +9893,15 @@
    ["3" "4" nil "5" "b6" nil "b7"]
    [nil nil nil nil nil nil nil]],
   :hash 2134251735},
+ -496428734
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil nil nil]
+   ["2" "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" nil]
+   ["1" nil "2" "b3" nil "4" nil]],
+  :hash -496428734},
  -1284860092
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -8323,6 +9924,15 @@
    ["b5" nil "b6" nil "b7"]
    [nil nil nil nil nil]],
   :hash 1155209478},
+ -66701073
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" "b3" nil nil]
+   [nil "4" nil "5" nil "6" "b7"]
+   ["6" "b7" nil "1" nil "2" "b3"]
+   [nil "b3" nil "4" nil "5" nil]],
+  :hash -66701073},
  520682680
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -8352,6 +9962,15 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash -1168733234},
+ 1989408656
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b5" "5" nil "6" nil nil nil]
+   [nil "1" "b2" nil "b3" "3" nil]
+   ["3" nil "b5" "5" nil "6" "b7"]
+   ["6" "b7" nil "1" "b2" nil "b3"]],
+  :hash 1989408656},
  -1701195480
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -8419,6 +10038,17 @@
    ["2" "b3" nil "4" nil "5"]
    [nil "b6" nil nil "7" "1"]],
   :hash -210296224},
+ 685439744
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil "b3" nil "4" "b5"]
+   ["b7" nil "1" nil nil]
+   ["4" "b5" "5" nil nil]
+   ["1" nil nil "b3" nil]
+   ["5" nil nil "b7" nil]],
+  :hash 685439744},
  724992740
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -8528,6 +10158,17 @@
    [nil "1" "b2" nil nil "3" "4"]
    [nil nil nil nil nil nil nil]],
   :hash -317011456},
+ -594873629
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil nil nil nil]
+   [nil nil nil "3" "4"]
+   [nil nil "7" "1" "b2"]
+   ["3" "4" "b5" nil "b6"]
+   ["7" "1" "b2" nil nil]
+   ["b5" nil "b6" nil nil]],
+  :hash -594873629},
  2003240285
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -8615,6 +10256,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 1720213761},
+ 1495241387
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil "b6" nil nil]
+   [nil nil nil "3" "4"]
+   [nil nil "7" "1" "b2"]
+   ["3" "4" "b5" nil "b6"]
+   ["7" "1" "b2" nil nil]
+   [nil nil "b6" nil nil]],
+  :hash 1495241387},
  1820044735
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -8679,6 +10331,15 @@
    ["b2" nil nil "3" "4" "b5" nil]
    [nil nil nil nil nil "7" "1"]],
   :hash -1182624695},
+ 1721561546
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil "3" nil]
+   [nil nil nil "5" nil "6" "b7"]
+   [nil "1" nil "2" nil "3" "4"]
+   ["3" "4" nil "5" nil "6" "b7"]],
+  :hash 1721561546},
  1667502209
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -8928,6 +10589,15 @@
    [nil "4" "b5" nil "b6"]
    [nil "1" nil "2" "b3"]],
   :hash 1344741979},
+ 416108585
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "6" "b7" nil nil nil]
+   ["1" "b2" nil nil "3" "4" "b5"]
+   ["4" "b5" nil nil "6" "b7" nil]
+   ["b7" nil "1" "b2" nil nil "3"]],
+  :hash 416108585},
  1544116240
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -8939,6 +10609,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1544116240},
+ 286210611
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" "1" "b2"]
+   [nil nil nil "3" "4" "b5"]
+   ["b6" nil nil "7" "1" "b2"]
+   ["b2" nil nil "3" "4" "b5"]],
+  :hash 286210611},
  1774781208
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -9048,6 +10727,17 @@
    [nil "7" "1" "b2" nil nil "3"]
    [nil nil nil nil nil "b6" nil]],
   :hash -1770424788},
+ -622421603
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil nil]
+   [nil "3" "4" nil "5"]
+   [nil "1" nil "2" nil]
+   [nil "5" "b6" nil "b7"]
+   [nil "2" nil "3" "4"]
+   [nil nil "b7" nil "1"]],
+  :hash -622421603},
  -962869745
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -9088,6 +10778,26 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1104251436},
+ -775884212
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b5" nil "b6" nil nil "7" nil]
+   ["7" "1" "b2" nil nil "3" "4"]
+   ["3" "4" "b5" nil "b6" nil nil]
+   [nil nil "7" "1" "b2" nil nil]],
+  :hash -775884212},
+ 1690252277
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" nil nil nil nil]
+   [nil "5" "b6" nil nil]
+   ["2" "b3" nil "4" nil]
+   [nil nil "7" "1" nil]
+   [nil "4" nil "5" "b6"]
+   ["7" "1" nil "2" "b3"]],
+  :hash 1690252277},
  159238335
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -9110,6 +10820,17 @@
    [nil nil "7" "1"]
    [nil nil nil nil]],
   :hash -407177227},
+ 475062185
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" nil nil nil]
+   [nil "6" nil nil "1"]
+   ["3" nil nil "5" nil]
+   [nil "1" nil "2" nil]
+   [nil "5" nil "6" nil]
+   [nil "2" nil "3" nil]],
+  :hash 475062185},
  332902953
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -9323,6 +11044,17 @@
    ["b3" nil "4" nil "5" "b6" nil]
    ["b6" nil nil "7" "1" nil "2"]],
   :hash 1150552947},
+ 1701161765
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" "1" "b2" nil]
+   [nil nil "5" "b6" nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil nil "7" "1"]
+   [nil "3" "4" nil "5"]
+   [nil nil nil "b2" nil]],
+  :hash 1701161765},
  -87575373
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -9334,6 +11066,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -87575373},
+ -418952874
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil "6" nil nil]
+   [nil "b3" "3" nil "b5"]
+   ["b7" nil "1" "b2" nil]
+   [nil "b5" "5" nil "6"]
+   ["1" "b2" nil "b3" "3"]
+   [nil nil "6" "b7" nil]],
+  :hash -418952874},
  -1140973312
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -9526,6 +11269,17 @@
    ["b2" nil nil "3" "4" nil "5"]
    [nil nil nil nil nil nil nil]],
   :hash -1209719771},
+ 1855008644
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil]
+   [nil "5" nil "6" "b7"]
+   ["2" "b3" "3" "4" "b5"]
+   ["6" "b7" nil "1" nil]
+   ["3" "4" "b5" "5" nil]
+   [nil nil nil "2" "b3"]],
+  :hash 1855008644},
  1976280274
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -9615,6 +11369,15 @@
    [nil "b6" nil "b7" nil "1"]
    [nil nil nil nil nil nil]],
   :hash -672167276},
+ 1357553615
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil "4" nil]
+   ["4" "b5" nil "b6" "6" nil "7"]
+   [nil "7" "1" nil "2" "b3" nil]
+   [nil nil "4" "b5" nil "b6" "6"]],
+  :hash 1357553615},
  -1052476899
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -9624,6 +11387,17 @@
    [nil nil nil nil "4" "b5" nil]
    [nil nil nil nil nil nil nil]],
   :hash -1052476899},
+ 1878864915
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" "b3" nil nil]
+   [nil nil nil "7" "1"]
+   [nil "4" nil "5" "b6"]
+   ["7" "1" nil "2" "b3"]
+   [nil "5" "b6" nil nil]
+   [nil nil "b3" nil "4"]],
+  :hash 1878864915},
  2051395756
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -9680,6 +11454,15 @@
    [nil "1" nil "2"]
    [nil nil nil "6"]],
   :hash 1100084468},
+ 357557088
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil "1" nil nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil "5" "b6" nil "b7" nil "1"]
+   [nil "1" "b2" nil "b3" nil "4"]],
+  :hash 357557088},
  -381961910
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -9691,6 +11474,15 @@
    [nil nil "2" "b3" nil]
    [nil nil nil nil nil]],
   :hash -381961910},
+ 224843896
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" "b5" "5" nil nil nil]
+   [nil "b7" nil "1" nil nil "b3"]
+   [nil "b3" nil "4" "b5" "5" nil]
+   ["5" nil nil "b7" nil "1" nil]],
+  :hash 224843896},
  1959867375
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -9845,6 +11637,15 @@
    [nil nil nil nil nil nil]
    [nil "b6" nil nil "7" "1"]],
   :hash -888598676},
+ -990807787
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil "b3" "3" nil]
+   ["3" nil "b5" nil "b6" nil "b7"]
+   [nil "b7" nil "1" "b2" nil "b3"]
+   [nil nil "3" nil "b5" nil "b6"]],
+  :hash -990807787},
  1900571178
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -9909,6 +11710,15 @@
    [nil nil nil "b2"]
    [nil nil nil nil]],
   :hash -1846994457},
+ -1045733099
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil "3" "4" nil]
+   [nil nil nil "b6" nil nil "7"]
+   ["1" "b2" nil nil "3" "4" "b5"]
+   ["4" "b5" nil "b6" nil nil "7"]],
+  :hash -1045733099},
  -1144027755
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -9983,6 +11793,17 @@
    ["6" nil "7" "1" "b2" nil]
    [nil nil nil "4" nil "5"]],
   :hash 881698291},
+ -713022133
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil]
+   [nil "b2" nil "b3" nil]
+   [nil "6" nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   [nil nil "5" nil "6"]],
+  :hash -713022133},
  292562358
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -9994,6 +11815,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 292562358},
+ -391459460
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil nil "7" "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil nil "b6" nil nil "7" "1"]],
+  :hash -391459460},
  -553086165
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -10014,6 +11844,17 @@
    ["6" "b7" nil "1" nil]
    [nil nil "b5" "5" nil]],
   :hash -374178921},
+ -2030890122
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil nil nil]
+   [nil "1" "b2" nil "b3"]
+   ["5" "b6" nil nil "7"]
+   [nil "b3" nil "4" nil]
+   [nil nil "7" "1" "b2"]
+   [nil "4" nil "5" "b6"]],
+  :hash -2030890122},
  -1564624836
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -10025,6 +11866,26 @@
    [nil "4" "b5" nil "b6"]
    [nil nil nil nil nil]],
   :hash -1564624836},
+ -315368760
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil "b7"]
+   [nil nil "1" nil "2" "b3"]
+   ["4" nil "5" "b6" nil "b7"]
+   ["b7" nil "1" nil "2" "b3"]],
+  :hash -315368760},
+ -1603953580
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil]
+   [nil nil "5" "b6" nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" nil "5"]
+   [nil nil nil "b2" nil]],
+  :hash -1603953580},
  1485305560
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -10074,6 +11935,17 @@
    [nil nil "b3" "3" nil "b5" "5"]
    [nil nil nil nil nil nil nil]],
   :hash 1579571644},
+ -133851596
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" nil nil]
+   [nil "b6" nil "b7" nil]
+   [nil "3" "4" "b5" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" "b5" nil "b6" nil]
+   [nil nil "2" nil "3"]],
+  :hash -133851596},
  -1643276300
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -10154,6 +12026,15 @@
    [nil nil "3" "4" "b5"]
    [nil nil nil nil nil]],
   :hash 1110618498},
+ 959603511
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil nil nil]
+   ["6" nil "7" "1" "b2" nil "b3"]
+   [nil "b3" nil "4" nil "5" nil]
+   ["5" nil "6" nil "7" "1" "b2"]],
+  :hash 959603511},
  -306337874
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -10265,6 +12146,26 @@
    ["2" nil "3" "4" nil "5"]
    [nil nil nil nil nil nil]],
   :hash 877212726},
+ -1620859839
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil nil]
+   ["b7" nil "1" "b2" nil "b3"]
+   ["b3" nil "4" nil "5" "b6"]
+   ["b6" nil "b7" nil "1" "b2"]],
+  :hash -1620859839},
+ 441177766
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil nil nil]
+   [nil nil "4" nil "5"]
+   ["7" "1" "b2" nil "b3"]
+   [nil "5" "b6" nil nil]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil nil "7" "1"]],
+  :hash 441177766},
  -1239118211
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -10274,6 +12175,15 @@
    [nil nil nil nil nil "1"]
    [nil nil nil nil nil nil]],
   :hash -1239118211},
+ 1816967563
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil "b7"]
+   [nil nil "1" "b2" nil "b3"]
+   ["4" nil "5" "b6" nil "b7"]
+   ["b7" nil "1" "b2" nil "b3"]],
+  :hash 1816967563},
  -591698471
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -10363,6 +12273,15 @@
    ["1" "b2" nil "b3" nil "4"]
    [nil "b5" nil "b6" nil "b7"]],
   :hash -549561282},
+ -2022118911
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" nil nil "4"]
+   [nil nil "5" nil nil "b7"]
+   ["1" nil "2" nil nil "4"]
+   ["4" nil "5" nil nil "b7"]],
+  :hash -2022118911},
  -1089468582
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -10421,6 +12340,17 @@
    [nil nil nil nil nil "b2" nil]
    [nil nil nil nil nil nil nil]],
   :hash 1998055440},
+ 680230899
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4"]
+   [nil "b7" nil "1"]
+   ["4" nil "5" nil]
+   ["1" nil nil "b3"]
+   ["5" nil nil "b7"]
+   [nil nil nil "4"]],
+  :hash 680230899},
  -129115002
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -10682,6 +12612,17 @@
    [nil "1" "b2" nil nil "3" "4"]
    [nil nil nil nil nil nil nil]],
   :hash 71414120},
+ 1712101793
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil nil]
+   [nil nil "1" nil nil]
+   ["b5" "5" nil nil "b7"]
+   [nil nil "b3" nil "4"]
+   [nil nil "b7" nil "1"]
+   [nil nil "4" "b5" "5"]],
+  :hash 1712101793},
  1496412250
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -10738,6 +12679,17 @@
    ["5" "b6" nil nil "7" "1" "b2"]
    [nil nil nil nil nil nil nil]],
   :hash 2021399794},
+ 1632434699
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil]
+   [nil "5" "b6" nil "b7"]
+   ["2" "b3" nil "4" nil]
+   [nil "b7" nil "1" nil]
+   [nil "4" nil "5" "b6"]
+   [nil nil nil "2" "b3"]],
+  :hash 1632434699},
  882516841
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -10747,6 +12699,15 @@
    ["2" "b3" nil "4" nil "5"]
    [nil nil nil nil nil nil]],
   :hash 882516841},
+ -111218114
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil nil nil]
+   ["5" nil "6" nil "7" "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]
+   ["4" nil "5" nil "6" nil "7"]],
+  :hash -111218114},
  -1835795443
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -10836,6 +12797,15 @@
    ["5" nil nil "b7" nil "1"]
    ["1" nil nil "b3" nil "4"]],
   :hash 1266082104},
+ -624710779
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" nil "7" "1" nil nil nil]
+   ["2" "b3" nil "4" "b5" nil "b6"]
+   [nil "b6" "6" nil "7" "1" nil]
+   ["1" nil "2" "b3" nil "4" "b5"]],
+  :hash -624710779},
  1356360413
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -10912,6 +12882,17 @@
    [nil "b3" nil "4" nil "5" nil]
    ["5" nil "6" nil "7" "1" "b2"]],
   :hash -1365828691},
+ -701044476
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil]
+   [nil nil nil "b3" nil]
+   [nil nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil nil]
+   [nil nil "5" nil nil]],
+  :hash -701044476},
  1904715781
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -10930,6 +12911,17 @@
    [nil nil nil nil "b7" nil "1"]
    [nil nil nil nil nil nil nil]],
   :hash -1275985628},
+ 1631637197
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil nil nil nil]
+   [nil nil "b3" nil "4"]
+   [nil "b7" nil "1" nil]
+   [nil "4" "b5" "5" nil]
+   [nil "1" nil nil "b3"]
+   ["b5" "5" nil nil "b7"]],
+  :hash 1631637197},
  296434079
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -10983,6 +12975,17 @@
    [nil nil nil "4"]
    [nil nil nil nil]],
   :hash 406487230},
+ -1118431649
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil nil "2" "b3" nil]
+   [nil "6" "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil "6"]],
+  :hash -1118431649},
  -382047355
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -11012,6 +13015,17 @@
    ["7" "1" nil "2" "b3" nil]
    [nil "4" nil "5" nil "6"]],
   :hash 1716863122},
+ 196821318
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil nil nil nil]
+   [nil "1" "b2" nil "b3"]
+   [nil "b6" nil "b7" nil]
+   [nil "b3" "3" nil "b5"]
+   [nil "b7" nil "1" "b2"]
+   ["3" nil "b5" nil "b6"]],
+  :hash 196821318},
  -1505001914
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -11065,6 +13079,17 @@
    ["2" nil "3" "4" "b5" nil "b6"]
    [nil nil nil "b7" nil "1" nil]],
   :hash -1835100923},
+ 1821718781
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1"]
+   [nil "4" nil "5"]
+   ["1" nil "2" "b3"]
+   ["5" nil "6" "b7"]
+   ["2" "b3" nil "4"]
+   [nil nil nil "1"]],
+  :hash 1821718781},
  1492803209
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -11083,6 +13108,17 @@
    ["1" "b2" nil "b3" "3" nil "b5"]
    [nil "b5" nil "b6" nil "b7" nil]],
   :hash 1198642942},
+ -1423606313
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil nil nil]
+   [nil nil "7" "1" "b2"]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil "b3" nil]
+   ["5" "b6" nil nil "7"]
+   [nil "b3" nil "4" nil]],
+  :hash -1423606313},
  -714321738
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -11092,6 +13128,17 @@
    [nil nil nil nil nil "4"]
    [nil nil nil nil nil nil]],
   :hash -714321738},
+ -1247165403
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil nil]
+   [nil nil "1" "b2" nil]
+   [nil "5" "b6" nil "b7"]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil nil "4" nil "5"]],
+  :hash -1247165403},
  675720256
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -11134,6 +13181,17 @@
    ["2" nil "3"]
    [nil nil nil]],
   :hash -1863977295},
+ 1571765733
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil nil "6" "b7" nil]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" nil "3"]],
+  :hash 1571765733},
  2036294787
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -11145,6 +13203,17 @@
    [nil nil "3" "4"]
    [nil nil nil nil]],
   :hash 2036294787},
+ -865643340
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil "b3" nil nil]
+   [nil nil "b7" nil "1"]
+   ["3" nil "b5" nil "b6"]
+   [nil "1" "b2" nil "b3"]
+   ["b5" nil "b6" nil "b7"]
+   [nil nil "b3" "3" nil]],
+  :hash -865643340},
  912058645
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -11156,6 +13225,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 912058645},
+ 769257175
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" "3" nil "b5" "5"]
+   ["b5" "5" nil "6" "b7" nil "1"]
+   [nil nil "b2" nil "b3" "3" nil]],
+  :hash 769257175},
  -1857244946
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -11165,6 +13243,17 @@
    [nil "4" nil "5" nil "6" nil]
    ["6" "b7" nil "1" nil "2" "b3"]],
   :hash -1857244946},
+ 428850634
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" "b5" "5" nil nil]
+   [nil nil "2" "b3" "3"]
+   [nil "6" "b7" nil "1"]
+   ["b3" "3" "4" "b5" "5"]
+   ["b7" nil "1" nil "2"]
+   [nil nil "5" nil "6"]],
+  :hash 428850634},
  2056652679
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -11205,6 +13294,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -393883962},
+ 903931014
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil "5" nil]
+   [nil nil nil "b7" nil "1" "b2"]
+   [nil "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" "b2"]],
+  :hash 903931014},
  -412437420
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -11234,6 +13332,15 @@
    ["4" "b5" nil "b6" nil "b7" nil]
    [nil nil "1" nil "2" nil "3"]],
   :hash 404566219},
+ -1974535640
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil nil nil]
+   ["4" nil "5" "b6" nil nil "7"]
+   [nil "7" "1" "b2" nil "b3" nil]
+   ["b3" nil "4" nil "5" "b6" nil]],
+  :hash -1974535640},
  -1238782238
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -11245,6 +13352,17 @@
    ["3" "4" "b5"]
    [nil "1" "b2"]],
   :hash -1238782238},
+ -1388067764
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" nil nil nil]
+   [nil "5" "b6" nil nil]
+   [nil nil "3" "4" nil]
+   [nil nil "7" "1" "b2"]
+   ["3" "4" nil "5" "b6"]
+   [nil "1" "b2" nil nil]],
+  :hash -1388067764},
  641822391
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -11327,6 +13445,17 @@
    [nil nil nil nil]
    [nil "b7" nil "1"]],
   :hash 1550718790},
+ 1557327130
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "6" nil nil nil]
+   [nil nil "4" nil "5"]
+   ["7" "1" "b2" nil "b3"]
+   [nil "5" nil "6" nil]
+   ["b2" nil "b3" nil "4"]
+   [nil "6" nil "7" "1"]],
+  :hash 1557327130},
  1543705258
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -11378,6 +13507,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1732335990},
+ 1523780799
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil "3" nil nil "5"]
+   [nil nil "6" nil nil "1"]
+   ["2" nil "3" nil nil "5"]
+   ["5" nil "6" nil nil "1"]],
+  :hash 1523780799},
  581038913
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -11400,6 +13538,17 @@
    ["7" "1" "b2" nil "b3"]
    [nil nil nil nil nil]],
   :hash 860231152},
+ -815234457
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "7" nil nil]
+   [nil "4" nil "5" "b6"]
+   ["1" "b2" nil nil "3"]
+   ["5" "b6" nil nil "7"]
+   [nil nil "3" "4" nil]
+   [nil nil "7" "1" "b2"]],
+  :hash -815234457},
  1762120843
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -11502,6 +13651,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -748108307},
+ 735462870
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil nil nil]
+   ["4" nil "5" "b6" nil nil "7"]
+   [nil "7" "1" nil "2" "b3" nil]
+   ["b3" nil "4" nil "5" "b6" nil]],
+  :hash 735462870},
  46042547
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -11511,6 +13669,17 @@
    [nil nil nil nil nil "2"]
    [nil nil nil nil nil nil]],
   :hash 46042547},
+ 136408238
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" "b2" nil nil]
+   [nil "5" "b6" nil nil]
+   [nil nil "3" "4" nil]
+   [nil nil "7" "1" "b2"]
+   ["3" "4" nil "5" "b6"]
+   [nil nil "b2" nil nil]],
+  :hash 136408238},
  729138985
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -11624,6 +13793,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1502592148},
+ -481913331
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil "7" "1" nil]
+   ["1" "b2" nil nil "3" "4" nil]
+   ["4" nil "5" "b6" nil nil "7"]
+   [nil nil "1" "b2" nil nil "3"]],
+  :hash -481913331},
  1245749140
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -11718,6 +13896,15 @@
    ["7" "1" "b2" nil nil "3" "4"]
    [nil nil nil nil nil nil nil]],
   :hash 1557070548},
+ 1445332403
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "3" "4" "b5" nil nil]
+   [nil nil "6" "b7" nil "1" "b2"]
+   ["1" "b2" nil nil "3" "4" "b5"]
+   [nil "b5" nil nil "6" "b7" nil]],
+  :hash 1445332403},
  -2139694840
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -11798,6 +13985,15 @@
    [nil "5" "b6" nil nil "7" nil]
    ["7" "1" "b2" nil nil "3" "4"]],
   :hash -1795475859},
+ 2034108191
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil nil]
+   ["4" nil "5" "b6" nil "b7"]
+   ["b7" nil "1" nil "2" "b3"]
+   ["b3" nil "4" nil "5" "b6"]],
+  :hash 2034108191},
  -838389611
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -11834,6 +14030,17 @@
    ["4" "b5" "5" nil "6" "b7" nil]
    [nil nil nil nil nil nil "3"]],
   :hash -1030115984},
+ 937126505
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil nil "6" "b7" nil]
+   ["b3" "3" nil "b5" "5"]
+   ["b7" nil "1" "b2" nil]
+   [nil "b5" "5" nil "6"]
+   ["1" "b2" nil "b3" "3"]],
+  :hash 937126505},
  -1215111809
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -11903,6 +14110,17 @@
    ["1" "b2" nil "b3" "3" nil]
    [nil nil nil nil nil nil]],
   :hash -934300911},
+ 1417541641
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil nil]
+   [nil "b6" nil "b7" nil]
+   ["b3" "3" nil "b5" nil]
+   ["b7" nil "1" "b2" nil]
+   [nil "b5" nil "b6" nil]
+   [nil "b2" nil "b3" "3"]],
+  :hash 1417541641},
  2012784391
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -11943,6 +14161,17 @@
    [nil nil nil "b2" nil]
    [nil nil nil nil nil]],
   :hash 1487757600},
+ 1222498610
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil "b7" nil]
+   [nil nil nil "4" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil nil]
+   ["1" nil "2" nil nil]
+   [nil nil nil "b7" nil]],
+  :hash 1222498610},
  -1912870525
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -11952,6 +14181,26 @@
    ["b6" nil "b7" nil "1" "b2"]
    [nil nil nil nil nil "b5"]],
   :hash -1912870525},
+ -1981159416
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" nil "3" nil]
+   [nil "6" nil "7" "1"]
+   ["3" "4" nil "5" nil]
+   ["7" "1" nil "2" nil]
+   [nil "5" nil "6" nil]
+   [nil nil nil "3" "4"]],
+  :hash -1981159416},
+ 1523864371
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil nil nil]
+   ["3" "4" nil "5" "b6" nil "b7"]
+   [nil "b7" nil "1" nil "2" nil]
+   ["2" nil "3" "4" nil "5" "b6"]],
+  :hash 1523864371},
  158690452
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -12021,6 +14270,26 @@
    [nil nil nil nil "7" "1"]
    [nil nil nil nil nil nil]],
   :hash -1125058409},
+ -1958327412
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" nil nil nil]
+   [nil "6" nil "7" "1"]
+   ["3" "4" nil "5" nil]
+   ["7" "1" nil "2" nil]
+   [nil "5" nil "6" nil]
+   [nil "2" nil "3" "4"]],
+  :hash -1958327412},
+ 1393256346
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil nil "b3" nil "4"]
+   [nil nil "5" nil nil "b7"]
+   ["1" nil nil "b3" nil "4"]
+   ["4" nil "5" nil nil "b7"]],
+  :hash 1393256346},
  2121755942
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -12059,6 +14328,17 @@
    ["1" "b2" nil "b3" "3" nil "b5"]
    [nil nil nil nil nil nil nil]],
   :hash -1438778812},
+ 254457947
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil "b6" nil nil "7"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" "b3" nil]],
+  :hash 254457947},
  614570275
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -12068,6 +14348,37 @@
    [nil "b2" nil "b3" "3" nil "b5"]
    [nil nil nil nil nil nil nil]],
   :hash 614570275},
+ 1144035585
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" nil nil nil]
+   [nil nil "5" "b6" nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil nil "7" "1"]
+   [nil "3" "4" nil "5"]
+   [nil "7" "1" "b2" nil]],
+  :hash 1144035585},
+ 1980853167
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" nil "7" "1"]
+   [nil nil "2" nil "3" "4"]
+   ["5" nil "6" nil "7" "1"]
+   ["1" nil "2" nil "3" "4"]],
+  :hash 1980853167},
+ -692204169
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil nil "2" "b3" nil]
+   ["b6" nil nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" "b6" nil]],
+  :hash -692204169},
  -1906994692
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -12108,6 +14419,15 @@
    ["7" "1" nil "2" "b3"]
    [nil nil "b6" nil nil]],
   :hash -1343171292},
+ -1965839148
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil "b3" nil "4" nil nil]
+   [nil "5" "b6" nil nil "7" "1"]
+   ["7" "1" "b2" nil "b3" nil "4"]
+   [nil "4" nil "5" "b6" nil nil]],
+  :hash -1965839148},
  1091725699
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -12119,6 +14439,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1091725699},
+ -1392805946
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil nil]
+   [nil nil "b6" nil "b7"]
+   [nil "b3" "3" nil "b5"]
+   [nil "b7" nil "1" "b2"]
+   ["3" nil "b5" nil "b6"]
+   [nil nil "b2" nil "b3"]],
+  :hash -1392805946},
  579002568
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -12148,6 +14479,17 @@
    ["4" "b5" nil nil "6"]
    [nil "b2" nil nil "3"]],
   :hash -936811330},
+ -373076156
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" "b7" nil nil nil]
+   [nil "4" nil "5" nil]
+   ["1" "b2" nil "b3" nil]
+   ["5" nil "6" "b7" nil]
+   [nil "b3" nil "4" nil]
+   [nil "b7" nil "1" "b2"]],
+  :hash -373076156},
  164210048
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -12159,6 +14501,17 @@
    ["b6" nil "b7" nil "1"]
    [nil nil "4" "b5" nil]],
   :hash 164210048},
+ 268303590
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil nil nil nil]
+   [nil "b7" nil "1" nil]
+   ["4" "b5" "5" nil "6"]
+   ["1" nil "2" "b3" "3"]
+   ["5" nil "6" "b7" nil]
+   ["2" "b3" "3" "4" "b5"]],
+  :hash 268303590},
  2003554991
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -12195,6 +14548,15 @@
    [nil "b3" nil "4" nil "5"]
    ["5" nil nil "b7" nil "1"]],
   :hash -1334986994},
+ 1050224151
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" "b2" nil nil nil]
+   ["b3" nil "4" nil "5" nil "6"]
+   [nil "6" nil "7" "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]],
+  :hash 1050224151},
  -320493354
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -12204,6 +14566,17 @@
    ["6" nil nil "1" nil "2"]
    [nil nil nil nil nil "5"]],
   :hash -320493354},
+ 1337142886
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "6" nil "7" nil]
+   [nil "3" "4" nil "5"]
+   ["7" "1" nil "2" nil]
+   [nil "5" nil "6" nil]
+   [nil "2" nil "3" "4"]
+   [nil nil nil "7" "1"]],
+  :hash 1337142886},
  -1261594107
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -12222,6 +14595,15 @@
    [nil nil "b5" nil "b6" nil "b7"]
    [nil nil nil nil nil nil nil]],
   :hash 1400673893},
+ 1594437577
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil nil nil]
+   ["1" nil "2" "b3" "3" "4" "b5"]
+   ["4" "b5" "5" nil "6" "b7" nil]
+   ["b7" nil "1" nil "2" "b3" "3"]],
+  :hash 1594437577},
  1089548442
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -12278,6 +14660,17 @@
    ["6" "b7" nil "1" nil "2" "b3"]
    [nil nil nil "4" nil "5" nil]],
   :hash 1006001317},
+ -1751282009
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil nil nil]
+   [nil "3" "4" nil "5"]
+   ["7" "1" "b2" nil nil]
+   [nil "5" "b6" nil nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil nil "7" "1"]],
+  :hash -1751282009},
  1783245593
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -12309,6 +14702,15 @@
    ["6" "b7" nil "1" "b2"]
    [nil nil "b5" "5" nil]],
   :hash -1687560521},
+ 1244521535
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil nil "3" "4" nil "5"]
+   [nil "5" "b6" nil "b7" nil "1"]
+   [nil nil "b2" nil nil "3" "4"]],
+  :hash 1244521535},
  -1073091857
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -12347,6 +14749,17 @@
    ["4" nil "5" nil "6" "b7"]
    ["b7" nil "1" "b2" nil "b3"]],
   :hash -260335971},
+ 688468124
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil nil "6" "b7" nil]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" "b3" nil]],
+  :hash 688468124},
  2072833109
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -12376,6 +14789,26 @@
    ["b7" nil "1" nil "2" "b3" nil]
    [nil nil "4" nil "5" nil "6"]],
   :hash -808335481},
+ -863108961
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" nil nil nil]
+   [nil "5" "b6" nil nil]
+   ["2" "b3" nil "4" nil]
+   [nil nil "7" "1" nil]
+   [nil "4" nil "5" "b6"]
+   [nil "1" nil "2" "b3"]],
+  :hash -863108961},
+ 1059676518
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" nil nil]
+   [nil "6" "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil "5" nil "6" "b7" nil "1"]],
+  :hash 1059676518},
  901855393
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -12414,6 +14847,15 @@
    [nil nil nil "5" "b6" nil]
    [nil nil nil nil nil nil]],
   :hash -1840466866},
+ -509723760
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil "1"]
+   ["1" "b2" nil "b3" nil "4"]
+   ["4" nil "5" nil "6" "b7"]
+   [nil nil "1" "b2" nil "b3"]],
+  :hash -509723760},
  1807818676
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -12727,6 +15169,15 @@
    ["b5" "5" nil "6" "b7" nil]
    [nil nil nil nil "b3" "3"]],
   :hash -205164470},
+ -375064180
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" nil nil]
+   [nil "6" nil "7" "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil "5" nil "6" nil "7" "1"]],
+  :hash -375064180},
  -243042550
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -12747,6 +15198,17 @@
    ["5" nil "6"]
    ["2" nil "3"]],
   :hash -479817117},
+ -2124763639
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil]
+   [nil nil "7" "1" "b2"]
+   ["4" nil "5" nil "6"]
+   ["1" "b2" nil "b3" nil]
+   ["5" nil "6" nil "7"]
+   [nil nil nil "4" nil]],
+  :hash -2124763639},
  -1076127021
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -12807,6 +15269,24 @@
    ["6" nil "7" "1" nil "2"]
    [nil nil nil "4" nil "5"]],
   :hash -803209617},
+ 1014583438
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" nil "7" "1"]
+   [nil nil "2" "b3" nil "4"]
+   ["5" nil "6" nil "7" "1"]
+   ["1" nil "2" "b3" nil "4"]],
+  :hash 1014583438},
+ 824391960
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["7" "1" nil "2" nil "3" nil]
+   [nil nil nil "5" nil "6" nil]
+   ["7" "1" nil "2" nil "3" "4"]
+   ["3" "4" nil "5" nil "6" nil]],
+  :hash 824391960},
  -1278771657
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -12940,6 +15420,17 @@
    [nil nil nil nil "b2"]
    [nil nil nil nil nil]],
   :hash 926449378},
+ -1887106646
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" "3" nil nil nil]
+   [nil nil "1" "b2" nil]
+   ["b5" nil "b6" nil "b7"]
+   ["b2" nil "b3" "3" nil]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" nil "b5" nil]],
+  :hash -1887106646},
  -1519573645
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -12969,6 +15460,17 @@
    [nil "1" nil "2" nil "3" "4"]
    [nil nil nil nil "b6" nil "b7"]],
   :hash -1510970553},
+ 703832161
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil nil "2" "b3" nil]
+   [nil "6" nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" nil "6"]],
+  :hash 703832161},
  1190383525
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -12991,6 +15493,15 @@
    [nil nil nil "b3" nil]
    [nil nil nil nil nil]],
   :hash -1453584743},
+ 572285817
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" nil "b6" nil nil]
+   ["b7" nil "1" "b2" nil "b3"]
+   ["b3" nil "4" "b5" nil "b6"]
+   ["b6" nil "b7" nil "1" "b2"]],
+  :hash 572285817},
  -1614683241
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -13020,6 +15531,17 @@
    ["7" "1" nil "2" "b3" nil "4"]
    [nil nil nil "5" nil "6" nil]],
   :hash -312945986},
+ 1016648999
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil nil nil]
+   [nil "5" nil "6" "b7"]
+   [nil "b3" nil "4" nil]
+   ["6" "b7" nil "1" "b2"]
+   [nil "4" nil "5" nil]
+   [nil "1" "b2" nil "b3"]],
+  :hash 1016648999},
  981171208
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -13227,6 +15749,26 @@
    ["4" nil "5" nil "6" nil "7"]
    [nil "7" "1" nil "2" nil "3"]],
   :hash -1239508937},
+ 1457517075
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1"]
+   [nil "4" nil "5"]
+   ["1" nil "2" nil]
+   ["5" nil nil "b7"]
+   ["2" nil nil "4"]
+   [nil nil nil "1"]],
+  :hash 1457517075},
+ 1839721867
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil nil nil]
+   ["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]],
+  :hash 1839721867},
  -313574724
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -13332,6 +15874,17 @@
    [nil nil nil "4" nil "5"]
    [nil nil nil nil nil nil]],
   :hash -1141702509},
+ 1781615504
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil "6" nil nil]
+   [nil "b3" nil "4" nil]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" nil "6"]
+   ["1" "b2" nil "b3" nil]
+   [nil nil "6" nil "7"]],
+  :hash 1781615504},
  1964878643
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -13343,6 +15896,15 @@
    [nil nil nil "1"]
    [nil nil nil nil]],
   :hash 1964878643},
+ -211040777
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" nil "3" nil nil]
+   ["4" nil "5" nil "6" nil "7"]
+   [nil "7" "1" nil "2" nil "3"]
+   [nil "3" "4" nil "5" nil "6"]],
+  :hash -211040777},
  -1460362332
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -13405,6 +15967,17 @@
    ["b7" nil "1" nil "2"]
    [nil nil nil nil "6"]],
   :hash 1016640662},
+ -1371754423
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil nil nil]
+   [nil "1" "b2" nil "b3"]
+   ["5" "b6" nil "b7" nil]
+   [nil "b3" nil "4" nil]
+   [nil "b7" nil "1" "b2"]
+   [nil "4" nil "5" "b6"]],
+  :hash -1371754423},
  -580023738
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -13452,6 +16025,17 @@
    [nil nil nil "b2" nil "b3"]
    [nil nil nil nil nil nil]],
   :hash 288724664},
+ 268425571
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil]
+   [nil nil "b3" nil "4"]
+   ["6" "b7" nil "1" "b2"]
+   [nil "4" nil "5" nil]
+   [nil "1" "b2" nil "b3"]
+   [nil nil nil "6" "b7"]],
+  :hash 268425571},
  -1906464173
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -13483,6 +16067,26 @@
    ["b3" nil "4" nil "5" nil]
    [nil nil nil nil nil nil]],
   :hash -1556196692},
+ 696673794
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" "b5" nil nil nil]
+   [nil nil "2" nil "3"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" "b5" nil]
+   ["b7" nil "1" nil "2"]
+   [nil "b5" nil "b6" nil]],
+  :hash 696673794},
+ 222339747
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil "5" nil]
+   [nil nil nil nil "7" "1" nil]
+   ["2" "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil nil "7" "1" nil]],
+  :hash 222339747},
  603592704
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -13521,6 +16125,17 @@
    [nil "5" "b6" nil "b7" nil "1"]
    [nil nil "b2" nil "b3" nil "4"]],
   :hash -1991674358},
+ 1434988938
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" nil "2" nil]
+   [nil "5" nil "6" nil]
+   ["2" "b3" nil "4" nil]
+   ["6" nil "7" "1" nil]
+   [nil "4" nil "5" nil]
+   [nil nil nil "2" "b3"]],
+  :hash 1434988938},
  1973684883
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -13579,6 +16194,28 @@
    ["b6" nil nil "7" "1" "b2"]
    [nil nil nil nil nil "b5"]],
   :hash 822793800},
+ 1485395737
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil "5"]
+   [nil "1" nil "2"]
+   ["5" nil nil "b7"]
+   ["2" nil nil "4"]
+   [nil "b7" nil "1"]
+   [nil nil nil "5"]],
+  :hash 1485395737},
+ -1143792286
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b6" nil nil nil]
+   [nil nil "3" "4" "b5"]
+   ["b7" nil "1" nil "2"]
+   ["4" "b5" nil "b6" nil]
+   ["1" nil "2" nil "3"]
+   [nil "b6" nil "b7" nil]],
+  :hash -1143792286},
  -1096901209
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -13608,6 +16245,15 @@
    [nil nil "3" nil nil "5"]
    [nil nil nil nil nil nil]],
   :hash 503838701},
+ -704765108
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil nil nil]
+   ["1" nil "2" nil "3" "4" nil]
+   ["4" nil "5" nil "6" "b7" nil]
+   ["b7" nil "1" nil "2" nil "3"]],
+  :hash -704765108},
  850754328
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -13626,6 +16272,15 @@
    [nil nil nil nil "2"]
    [nil nil nil nil nil]],
   :hash -1795233530},
+ 149509876
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil nil nil]
+   ["b7" nil "1" nil "2" "b3" nil]
+   ["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil "b7" nil "1" nil "2"]],
+  :hash 149509876},
  -1696145885
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -13637,6 +16292,26 @@
    ["b6" nil "b7" nil "1"]
    ["b3" nil "4" nil "5"]],
   :hash -1696145885},
+ -328807327
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil nil nil nil]
+   [nil "b7" nil "1" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" nil "3"]
+   ["5" "b6" nil "b7" nil]
+   ["2" nil "3" "4" nil]],
+  :hash -328807327},
+ -708592268
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" nil nil "5" nil nil]
+   ["6" nil nil "1" nil "2"]
+   ["2" nil "3" nil nil "5"]
+   ["5" nil "6" nil nil "1"]],
+  :hash -708592268},
  1839869705
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -13686,6 +16361,17 @@
    ["b3" nil "4" "b5" "5"]
    [nil nil nil nil "1"]],
   :hash 1311408545},
+ 758387574
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil]
+   [nil "5" nil "6" "b7"]
+   ["2" nil "3" "4" nil]
+   ["6" "b7" nil "1" nil]
+   ["3" "4" nil "5" nil]
+   [nil nil nil "2" nil]],
+  :hash 758387574},
  -963985091
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -13697,6 +16383,17 @@
    [nil "b3" nil "4" nil]
    ["6" "b7" nil "1" "b2"]],
   :hash -963985091},
+ 1621746099
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b5" "5" nil nil]
+   [nil "b2" nil "b3" "3"]
+   [nil "6" "b7" nil "1"]
+   ["b3" "3" nil "b5" "5"]
+   ["b7" nil "1" "b2" nil]
+   [nil nil "5" nil "6"]],
+  :hash 1621746099},
  1812414325
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -13706,6 +16403,24 @@
    [nil nil "6" "b7" nil "1" nil]
    ["1" "b2" nil nil "3" "4" "b5"]],
   :hash 1812414325},
+ 440711160
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil "5"]
+   [nil nil "6" "b7" nil "1"]
+   ["2" "b3" nil "4" nil "5"]
+   ["5" nil "6" "b7" nil "1"]],
+  :hash 440711160},
+ 60436940
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" nil "3" nil nil nil]
+   ["b5" nil "b6" nil "b7" nil "1"]
+   [nil "1" nil "2" nil "3" "4"]
+   ["3" "4" "b5" nil "b6" nil "b7"]],
+  :hash 60436940},
  1605450746
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -13717,6 +16432,28 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1605450746},
+ 562209469
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" nil nil nil]
+   [nil nil "b6" "6" nil]
+   ["2" "b3" nil "4" "b5"]
+   ["6" nil "7" "1" nil]
+   [nil "4" "b5" nil "b6"]
+   [nil "1" nil "2" "b3"]],
+  :hash 562209469},
+ -246798872
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil]
+   [nil "2" nil "3" "4"]
+   ["6" "b7" nil "1" nil]
+   ["3" "4" nil "5" nil]
+   [nil "1" nil "2" nil]
+   [nil nil nil "6" "b7"]],
+  :hash -246798872},
  1310483624
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -13797,6 +16534,15 @@
    [nil "5" "b6" nil nil "7" nil]
    ["7" "1" nil "2" "b3" nil "4"]],
   :hash -479088666},
+ -495883167
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" "4" nil nil]
+   ["b5" nil nil "6" "b7" nil "1"]
+   [nil "1" "b2" nil nil "3" "4"]
+   [nil "4" "b5" nil nil "6" "b7"]],
+  :hash -495883167},
  1118753348
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -13808,6 +16554,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 1118753348},
+ 1301843891
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil nil nil]
+   ["1" "b2" nil "b3" "3" nil "b5"]
+   [nil "b5" "5" nil "6" "b7" nil]
+   ["b7" nil "1" "b2" nil "b3" "3"]],
+  :hash 1301843891},
  -1795273129
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -13819,6 +16574,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -1795273129},
+ 159745949
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" "b5" nil nil "6" nil]
+   [nil nil nil "1" "b2" nil nil]
+   ["3" "4" "b5" nil nil "6" "b7"]
+   ["6" "b7" nil "1" "b2" nil nil]],
+  :hash 159745949},
  200991453
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -13922,6 +16686,17 @@
    ["4" nil "5" nil "6" "b7"]
    [nil nil "1" nil "2" "b3"]],
   :hash 1612903652},
+ 1202360731
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" nil nil nil nil]
+   [nil nil "b6" "6" nil]
+   ["2" "b3" nil "4" "b5"]
+   ["6" nil "7" "1" nil]
+   [nil "4" "b5" nil "b6"]
+   ["7" "1" nil "2" "b3"]],
+  :hash 1202360731},
  -360451377
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -13933,6 +16708,17 @@
    [nil nil nil "1"]
    [nil nil nil nil]],
   :hash -360451377},
+ 288990688
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" nil nil nil]
+   [nil "5" "b6" nil nil]
+   [nil "b3" nil "4" nil]
+   [nil nil "7" "1" "b2"]
+   [nil "4" nil "5" "b6"]
+   [nil "1" "b2" nil "b3"]],
+  :hash 288990688},
  -962287029
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -13942,6 +16728,15 @@
    ["1" nil "2" "b3" nil "4"]
    ["4" nil "5" "b6" nil "b7"]],
   :hash -962287029},
+ -979811540
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" "b5" nil nil]
+   [nil "b6" "6" nil "7" "1" nil]
+   ["1" nil "2" "b3" nil "4" "b5"]
+   [nil "b5" nil "b6" "6" nil "7"]],
+  :hash -979811540},
  546237113
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -13996,6 +16791,17 @@
    [nil nil "2" "b3" "3" "4" "b5"]
    [nil nil nil nil nil nil nil]],
   :hash 1822258710},
+ 321886586
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil nil nil nil]
+   [nil nil "1" "b2" nil]
+   [nil "5" "b6" nil "b7"]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]],
+  :hash 321886586},
  1937214292
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -14014,6 +16820,17 @@
    ["b6" nil nil "7" "1" nil "2"]
    [nil "2" "b3" nil "4" nil "5"]],
   :hash 660723225},
+ -1052396889
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil nil nil nil]
+   [nil "6" "b7" nil "1"]
+   ["3" "4" "b5" nil nil]
+   [nil "1" "b2" nil nil]
+   ["b5" nil nil "6" "b7"]
+   ["b2" nil nil "3" "4"]],
+  :hash -1052396889},
  700333892
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -14025,6 +16842,17 @@
    ["1" nil "2" nil "3"]
    ["5" "b6" nil "b7" nil]],
   :hash 700333892},
+ 1121753961
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil nil nil]
+   [nil nil "b6" nil "b7"]
+   ["2" nil "3" "4" "b5"]
+   [nil "b7" nil "1" nil]
+   ["3" "4" "b5" nil "b6"]
+   [nil "1" nil "2" nil]],
+  :hash 1121753961},
  2026340409
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -14128,6 +16956,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 317032460},
+ 107974172
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil "5" nil]
+   ["5" "b6" nil nil "7" "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]
+   [nil nil "5" "b6" nil nil "7"]],
+  :hash 107974172},
  -1863281418
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -14166,6 +17003,17 @@
    ["2" "b3" nil "4" nil "5"]
    [nil nil nil nil nil "1"]],
   :hash -2128096249},
+ 795700882
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" nil "2" nil]
+   [nil nil "b6" "6" nil]
+   ["2" "b3" nil "4" "b5"]
+   ["6" nil "7" "1" nil]
+   [nil "4" "b5" nil "b6"]
+   [nil nil nil "2" "b3"]],
+  :hash 795700882},
  -1990688569
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -14193,6 +17041,17 @@
    [nil nil nil nil nil nil]
    [nil "3" "4" "b5" "5" nil]],
   :hash -599235698},
+ -1639386054
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil]
+   [nil nil "2" "b3" nil]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   [nil nil nil "b6" nil]],
+  :hash -1639386054},
  1085136938
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -14202,6 +17061,26 @@
    [nil nil "7" "1" "b2" nil nil]
    [nil nil nil nil "b5" nil "b6"]],
   :hash 1085136938},
+ 908559791
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil nil nil]
+   [nil "b5" nil "b6" nil "b7" nil]
+   ["b7" nil "1" "b2" nil "b3" "3"]
+   ["b3" "3" nil "b5" nil "b6" nil]],
+  :hash 908559791},
+ -1547374996
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil nil nil nil]
+   [nil "7" "1" nil "2"]
+   [nil "5" nil "6" nil]
+   [nil "2" "b3" nil "4"]
+   [nil "6" nil "7" "1"]
+   ["b3" nil "4" nil "5"]],
+  :hash -1547374996},
  207705737
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -14211,6 +17090,24 @@
    [nil nil "b2" nil nil]
    [nil nil nil nil nil]],
   :hash 207705737},
+ 1889190888
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil "3" nil]
+   [nil nil nil "5" "b6" nil "b7"]
+   [nil "1" nil "2" nil "3" "4"]
+   ["3" "4" nil "5" "b6" nil "b7"]],
+  :hash 1889190888},
+ 1369788799
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "7" "1" nil "2" nil]
+   [nil nil nil "4" nil "5" "b6"]
+   [nil nil "7" "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" "b6"]],
+  :hash 1369788799},
  -758789262
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -14343,6 +17240,17 @@
    [nil nil nil nil "3" "4" nil]
    [nil nil nil nil nil nil nil]],
   :hash 835976167},
+ 1425477545
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" nil nil]
+   [nil "b6" nil nil "7"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   [nil nil "2" "b3" nil]],
+  :hash 1425477545},
  684781086
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -14383,6 +17291,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -345494442},
+ 1082529052
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil "2" nil]
+   ["2" nil "3" "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" nil]
+   [nil nil "2" nil "3" "4" nil]],
+  :hash 1082529052},
  1937475717
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -14439,6 +17356,17 @@
    [nil nil nil nil nil "1" "b2"]
    [nil nil nil nil nil nil nil]],
   :hash -1542339107},
+ 86377612
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "6" nil nil nil]
+   [nil "3" nil "b5" "5"]
+   [nil "1" "b2" nil "b3"]
+   ["b5" "5" nil "6" "b7"]
+   ["b2" nil "b3" "3" nil]
+   [nil "6" "b7" nil "1"]],
+  :hash 86377612},
  150692798
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -14470,6 +17398,15 @@
    [nil nil nil "b3" nil]
    [nil nil nil nil nil]],
   :hash 994253962},
+ -1878371905
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil "b7" nil]
+   ["b7" nil "1" "b2" nil nil "3"]
+   [nil "3" "4" nil "5" "b6" nil]
+   [nil nil "b7" nil "1" "b2" nil]],
+  :hash -1878371905},
  45391082
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -14499,6 +17436,15 @@
    ["b7" nil "1" nil "2" nil "3"]
    [nil nil "4" nil "5" nil "6"]],
   :hash 1059055125},
+ 1765839236
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b5" "5" nil "6" "b7" nil nil]
+   [nil "1" nil "2" "b3" "3" "4"]
+   ["3" "4" "b5" "5" nil "6" "b7"]
+   [nil "b7" nil "1" nil "2" "b3"]],
+  :hash 1765839236},
  6271791
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -14566,6 +17512,17 @@
    [nil "3" "4" "b5" nil "b6" nil]
    [nil nil nil nil nil nil "2"]],
   :hash 8079770},
+ 1437282787
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil nil]
+   [nil "b5" nil "b6" "6"]
+   [nil "2" "b3" nil "4"]
+   ["b6" "6" nil "7" "1"]
+   ["b3" nil "4" "b5" nil]
+   [nil nil "1" nil "2"]],
+  :hash 1437282787},
  1737427532
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -14597,6 +17554,15 @@
    [nil nil "6" "b7"]
    [nil nil nil nil]],
   :hash 1566555880},
+ -1416790471
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" nil nil]
+   ["b6" nil nil "7" "1" nil "2"]
+   [nil "2" "b3" nil "4" nil "5"]
+   [nil "5" "b6" nil nil "7" "1"]],
+  :hash -1416790471},
  1618636895
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -14688,6 +17654,26 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -384714245},
+ -244971666
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil]
+   [nil "2" "b3" nil "4"]
+   ["6" "b7" nil "1" nil]
+   [nil "4" nil "5" nil]
+   [nil "1" nil "2" "b3"]
+   [nil nil nil "6" "b7"]],
+  :hash -244971666},
+ 1187223608
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" nil "7" "1" "b2" nil]
+   [nil nil "b3" nil "4" nil "5"]
+   [nil "6" nil "7" "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]],
+  :hash 1187223608},
  875797866
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -14728,6 +17714,17 @@
    ["7" "1" nil "2" "b3"]
    [nil "4" nil "5" "b6"]],
   :hash -1951588722},
+ -1981362479
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil nil "5" "b6" nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" "b2" nil]],
+  :hash -1981362479},
  -1962108569
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -14790,6 +17787,17 @@
    ["b7" nil "1" nil "2" nil "3"]
    [nil "3" "4" "b5" nil "b6" nil]],
   :hash -1446341010},
+ -1698000294
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil nil nil nil]
+   [nil "6" nil "7" "1"]
+   [nil "4" nil "5" nil]
+   ["7" "1" "b2" nil "b3"]
+   [nil "5" nil "6" nil]
+   ["b2" nil "b3" nil "4"]],
+  :hash -1698000294},
  2066882845
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -14808,6 +17816,17 @@
    [nil nil "2" nil nil "4"]
    [nil nil nil nil nil nil]],
   :hash 977603102},
+ -918217092
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil "3" nil nil]
+   [nil nil "7" "1" nil]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" nil "7"]
+   [nil nil "3" "4" nil]],
+  :hash -918217092},
  871255529
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -14926,6 +17945,15 @@
    ["4" nil "5" "b6" nil "b7" nil]
    [nil nil "1" nil "2" nil "3"]],
   :hash -1677767617},
+ -958901605
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil "4"]
+   [nil nil "5" nil "6" "b7"]
+   ["1" nil "2" "b3" nil "4"]
+   ["4" nil "5" nil "6" "b7"]],
+  :hash -958901605},
  12961184
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -15080,6 +18108,17 @@
    [nil nil nil "2" "b3" nil "4"]
    [nil nil nil nil nil nil nil]],
   :hash 472770197},
+ -65407183
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil "6" nil nil]
+   [nil nil "3" "4" nil]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" nil "3"]
+   [nil nil "6" nil "7"]],
+  :hash -65407183},
  -250638901
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -15089,6 +18128,15 @@
    ["7" "1" "b2" nil nil]
    [nil nil nil nil "b6"]],
   :hash -250638901},
+ 1243771463
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil "b3"]
+   [nil nil "4" nil "5" "b6"]
+   ["b7" nil "1" "b2" nil "b3"]
+   ["b3" nil "4" nil "5" "b6"]],
+  :hash 1243771463},
  -495593917
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -15107,6 +18155,24 @@
    [nil "1" nil "2" "b3" nil "4"]
    [nil nil nil nil nil nil nil]],
   :hash 1607474489},
+ 724086349
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" nil nil "1" nil "2"]
+   ["2" nil "3" nil nil "5"]
+   ["5" nil "6" nil nil "1"]
+   [nil nil "2" nil "3" nil]],
+  :hash 724086349},
+ -489621351
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil "2" "b3" nil]
+   [nil nil "4" nil "5" nil "6"]
+   ["b7" nil "1" nil "2" "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]],
+  :hash -489621351},
  -1877903177
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -15138,6 +18204,17 @@
    [nil "6" "b7" nil "1"]
    [nil nil nil nil "5"]],
   :hash -1888320651},
+ -334158855
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil nil]
+   [nil nil "4" nil "5"]
+   [nil "1" "b2" nil "b3"]
+   [nil "5" "b6" nil "b7"]
+   ["b2" nil "b3" nil "4"]
+   [nil nil "b7" nil "1"]],
+  :hash -334158855},
  -1817301230
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -15345,6 +18422,17 @@
    [nil nil nil nil "7"]
    [nil nil nil nil nil]],
   :hash 376926760},
+ -160979700
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil "b3" nil nil]
+   [nil "6" "b7" nil "1"]
+   [nil "4" nil "5" nil]
+   [nil "1" "b2" nil "b3"]
+   [nil "5" nil "6" "b7"]
+   [nil nil "b3" nil "4"]],
+  :hash -160979700},
  1974949517
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -15365,6 +18453,15 @@
    [nil "1" "b2" nil "b3" "3" nil]
    [nil nil nil nil nil nil nil]],
   :hash -1653568765},
+ -1632397570
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil "6" nil nil]
+   [nil "7" "1" nil "2" "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]
+   [nil "6" nil "7" "1" nil "2"]],
+  :hash -1632397570},
  575733934
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -15432,6 +18529,17 @@
    [nil "b7" nil "1" "b2" nil nil]
    [nil nil "3" "4" nil "5" "b6"]],
   :hash 1687865039},
+ -1704664413
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil nil nil nil]
+   [nil "4" nil "5" nil]
+   ["1" nil "2" "b3" nil]
+   ["5" nil "6" nil "7"]
+   ["2" "b3" nil "4" nil]
+   ["6" nil "7" "1" nil]],
+  :hash -1704664413},
  -550785505
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -15452,6 +18560,28 @@
    [nil nil nil "1" "b2" nil]
    [nil nil nil nil nil nil]],
   :hash -530403090},
+ 748464749
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil nil nil "b7" nil]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil nil]
+   ["4" nil "5" nil nil]
+   ["1" nil nil "b3" nil]],
+  :hash 748464749},
+ -1962741473
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil]
+   [nil "b5" nil nil "6"]
+   ["b2" nil nil "3" "4"]
+   [nil "6" "b7" nil "1"]
+   [nil "3" "4" "b5" nil]
+   [nil nil nil "b2" nil]],
+  :hash -1962741473},
  258515261
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -15479,6 +18609,17 @@
    [nil "b7" nil "1" nil "2" nil]
    [nil nil nil nil nil nil nil]],
   :hash 1078970925},
+ -1678217372
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil nil nil nil]
+   [nil "1" nil "2" nil]
+   ["5" nil "6" nil "7"]
+   ["2" nil "3" "4" nil]
+   ["6" nil "7" "1" nil]
+   ["3" "4" nil "5" nil]],
+  :hash -1678217372},
  -1610752206
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -15526,6 +18667,15 @@
    ["1" nil "2" "b3" nil "4"]
    ["4" nil "5" "b6" nil "b7"]],
   :hash 1415856860},
+ 47456196
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" nil "7" "1" nil "2" nil]
+   [nil nil nil "4" "b5" nil "b6"]
+   ["6" nil "7" "1" nil "2" "b3"]
+   ["2" "b3" nil "4" "b5" nil "b6"]],
+  :hash 47456196},
  -661205816
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -15640,6 +18790,17 @@
    [nil nil nil nil "4" nil "5"]
    [nil nil nil nil nil nil nil]],
   :hash 996731042},
+ 826789477
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" nil "2"]
+   [nil "5" nil "6"]
+   ["2" nil "3" "4"]
+   ["6" nil "7" "1"]
+   ["3" "4" nil "5"]
+   [nil nil nil "2"]],
+  :hash 826789477},
  -1126261122
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -15671,6 +18832,17 @@
    [nil nil nil nil nil "b3"]
    [nil nil nil nil nil nil]],
   :hash -2135865546},
+ -1128915073
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil nil]
+   [nil nil "1" nil nil]
+   [nil "5" nil nil "b7"]
+   [nil nil "b3" nil "4"]
+   [nil nil "b7" nil "1"]
+   [nil nil "4" nil "5"]],
+  :hash -1128915073},
  1488109445
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -15751,6 +18923,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -111567320},
+ 1525310884
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" nil "b6" nil "b7" nil]
+   [nil nil "1" nil "2" nil "3"]
+   ["4" "b5" nil "b6" nil "b7" nil]
+   ["b7" nil "1" nil "2" nil "3"]],
+  :hash 1525310884},
  1220332570
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -15789,6 +18970,17 @@
    ["4" nil "5" nil nil "b7"]
    [nil nil nil nil nil nil]],
   :hash -1376471043},
+ 1108502788
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil]
+   [nil "1" nil "2" "b3"]
+   ["5" "b6" nil nil "7"]
+   ["2" "b3" nil "4" nil]
+   [nil nil "7" "1" nil]
+   [nil nil nil "5" "b6"]],
+  :hash 1108502788},
  1867229940
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -15809,6 +19001,28 @@
    [nil "b7" nil "1" "b2" nil]
    [nil nil nil nil nil nil]],
   :hash 6481547},
+ 881247057
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil nil "3" nil nil]
+   [nil nil "1" nil "2"]
+   [nil nil "5" nil "6"]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" nil nil]],
+  :hash 881247057},
+ 1122126175
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil nil nil nil]
+   [nil "1" nil "2" nil]
+   ["5" "b6" nil "b7" nil]
+   ["2" nil "3" "4" nil]
+   [nil "b7" nil "1" nil]
+   ["3" "4" nil "5" "b6"]],
+  :hash 1122126175},
  964757424
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -15851,6 +19065,17 @@
    [nil "b6" nil "b7" nil]
    [nil nil nil nil "b5"]],
   :hash 1966884971},
+ -2101962769
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil nil]
+   [nil "7" "1" nil "2"]
+   [nil "5" "b6" nil nil]
+   [nil "2" "b3" nil "4"]
+   ["b6" nil nil "7" "1"]
+   [nil nil "4" nil "5"]],
+  :hash -2101962769},
  -1108563455
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -15871,6 +19096,24 @@
    ["1" nil "2" "b3" nil "4" nil]
    ["4" nil "5" "b6" nil nil "7"]],
   :hash 2013604171},
+ 202436531
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" nil "4" "b5" nil]
+   ["b5" nil "b6" nil "b7" nil "1"]
+   [nil nil "b2" nil "b3" nil "4"]],
+  :hash 202436531},
+ -640654797
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil "2"]
+   ["2" "b3" nil "4" nil "5"]
+   ["5" nil "6" "b7" nil "1"]
+   [nil nil "2" "b3" nil "4"]],
+  :hash -640654797},
  -1409760000
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -16006,6 +19249,15 @@
    [nil nil nil nil "6"]
    [nil nil nil nil nil]],
   :hash 1832573275},
+ -10542284
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" nil nil]
+   [nil "6" nil "7" "1" nil "2"]
+   [nil "2" "b3" nil "4" nil "5"]
+   [nil "5" nil "6" nil "7" "1"]],
+  :hash -10542284},
  2090236699
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -16046,6 +19298,28 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1809136985},
+ 1996365012
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil]
+   [nil "4" "b5" nil nil]
+   ["1" "b2" nil nil "3"]
+   [nil nil "6" "b7" nil]
+   [nil nil "3" "4" "b5"]
+   [nil nil nil "1" "b2"]],
+  :hash 1996365012},
+ 151162879
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil]
+   [nil "5" nil nil "b7"]
+   ["2" nil nil "4" nil]
+   [nil "b7" nil "1" nil]
+   [nil "4" nil "5" nil]
+   [nil nil nil "2" nil]],
+  :hash 151162879},
  319526577
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -16066,6 +19340,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -37928016},
+ -187507389
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" nil "b5" "5" nil nil nil]
+   ["6" "b7" nil "1" "b2" nil "b3"]
+   [nil "b3" "3" nil "b5" "5" nil]
+   ["5" nil "6" "b7" nil "1" "b2"]],
+  :hash -187507389},
  -1303892033
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -16086,6 +19369,17 @@
    [nil nil nil]
    [nil "4" "b5"]],
   :hash 982389240},
+ -1032179157
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil nil "2" "b3" nil]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" "b6" nil]],
+  :hash -1032179157},
  -1081019148
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -16137,6 +19431,17 @@
    [nil nil nil "4" "b5"]
    [nil nil nil nil nil]],
   :hash 618493620},
+ -67742316
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "3" "4" nil nil]
+   [nil "7" "1" "b2" nil]
+   [nil "5" "b6" nil nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil nil "7" "1"]
+   [nil nil "4" nil "5"]],
+  :hash -67742316},
  -2099476573
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -16148,6 +19453,17 @@
    ["4" nil "5" nil "6"]
    [nil nil nil nil nil]],
   :hash -2099476573},
+ -1058353749
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" "b3" nil nil]
+   [nil "6" "b7" nil "1"]
+   ["3" "4" "b5" "5" nil]
+   [nil "1" nil "2" "b3"]
+   ["b5" "5" nil "6" "b7"]
+   [nil nil "b3" "3" "4"]],
+  :hash -1058353749},
  1667017962
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -16157,6 +19473,17 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash 1667017962},
+ -1009204874
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil]
+   [nil nil "2" nil "3"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   [nil nil nil "b6" nil]],
+  :hash -1009204874},
  -351127074
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -16175,6 +19502,17 @@
    ["4" nil "5" nil "6" "b7" nil]
    [nil nil nil nil nil nil "3"]],
   :hash 1968246331},
+ -211251390
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil nil nil]
+   [nil "2" nil "3" "4"]
+   ["6" "b7" nil "1" nil]
+   ["3" "4" nil "5" nil]
+   [nil "1" nil "2" nil]
+   [nil "5" nil "6" "b7"]],
+  :hash -211251390},
  1713844908
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -16226,6 +19564,15 @@
    ["5" nil "6" "b7" nil "1" nil]
    [nil nil nil "b3" "3" "4" "b5"]],
   :hash -104995057},
+ -425627197
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil nil "b7" nil "1"]
+   [nil nil nil "b3" nil "4"]
+   ["5" nil nil "b7" nil "1"]
+   ["1" nil nil "b3" nil "4"]],
+  :hash -425627197},
  203128450
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -16360,6 +19707,17 @@
    ["b6" nil "b7" nil "1" nil "2"]
    [nil "2" "b3" nil "4" nil "5"]],
   :hash 2078421150},
+ -1809966761
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil "b3" nil nil]
+   [nil "6" nil "7" "1"]
+   [nil "4" nil "5" nil]
+   ["7" "1" "b2" nil "b3"]
+   [nil "5" nil "6" nil]
+   [nil nil "b3" nil "4"]],
+  :hash -1809966761},
  -849735162
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -16440,6 +19798,17 @@
    [nil nil "4" nil "5" "b6"]
    [nil nil nil nil nil nil]],
   :hash 1995869112},
+ 1519325093
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil]
+   [nil "1" "b2" nil "b3"]
+   ["5" nil "6" nil "7"]
+   [nil "b3" nil "4" nil]
+   ["6" nil "7" "1" "b2"]
+   [nil nil nil "5" nil]],
+  :hash 1519325093},
  1976150906
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -16458,6 +19827,17 @@
    [nil nil nil nil nil "1" nil]
    [nil nil nil nil nil nil nil]],
   :hash -1595697804},
+ -2135594158
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" "b6" nil nil]
+   [nil nil nil "3" "4"]
+   [nil nil "7" "1" "b2"]
+   ["3" "4" nil "5" "b6"]
+   ["7" "1" "b2" nil nil]
+   [nil nil "b6" nil nil]],
+  :hash -2135594158},
  -600464694
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -16520,6 +19900,15 @@
    [nil "3" "4" nil "5"]
    [nil "7" "1" "b2" nil]],
   :hash 1951912118},
+ -1872007421
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil "3" "4" nil "5" nil]
+   [nil nil nil "b7" nil "1" nil]
+   ["2" nil "3" "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" nil]],
+  :hash -1872007421},
  -1759348370
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -16558,6 +19947,17 @@
    [nil nil nil nil nil "b7"]
    [nil nil nil nil nil nil]],
   :hash -1900036095},
+ 1323200612
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil "b3" nil "4" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" "b3" nil]
+   ["5" nil "6" "b7" nil]],
+  :hash 1323200612},
  1550204872
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -16569,6 +19969,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 1550204872},
+ -375588694
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil nil nil "b3" nil]
+   [nil nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil nil]
+   ["4" nil "5" nil nil]],
+  :hash -375588694},
  1266476277
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -16669,6 +20080,26 @@
    [nil nil nil nil nil "6" "b7"]
    [nil nil nil nil nil nil nil]],
   :hash 966803715},
+ 1369206901
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" nil "3" "4" nil]
+   ["4" nil "5" nil "6" nil "7"]
+   [nil "7" "1" nil "2" nil "3"]
+   [nil nil "4" nil "5" nil "6"]],
+  :hash 1369206901},
+ 177103539
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "3" "4" "b5" nil]
+   [nil nil "1" nil "2"]
+   ["b5" nil "b6" nil "b7"]
+   [nil "2" nil "3" "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil nil nil "b5" nil]],
+  :hash 177103539},
  1834660182
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -16749,6 +20180,15 @@
    [nil nil nil nil nil nil]
    ["4" "b5" nil "b6" "6" nil]],
   :hash -1884563034},
+ -722224439
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil "6" nil nil]
+   ["b7" nil "1" "b2" nil "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]
+   [nil "6" "b7" nil "1" "b2" nil]],
+  :hash -722224439},
  -864823516
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -16758,6 +20198,15 @@
    [nil "b5" nil "b6" "6" nil "7"]
    [nil nil nil nil nil nil nil]],
   :hash -864823516},
+ -1295530106
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" "b5" nil "b6" nil nil]
+   [nil "b7" nil "1" nil "2" nil]
+   ["2" nil "3" "4" "b5" nil "b6"]
+   [nil "b6" nil "b7" nil "1" nil]],
+  :hash -1295530106},
  -344380725
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -16787,6 +20236,26 @@
    [nil "b2" nil "b3"]
    [nil nil nil nil]],
   :hash 1374912816},
+ 1243345528
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" "6" nil "7" nil nil nil]
+   [nil "2" "b3" nil "4" "b5" nil]
+   ["b5" nil "b6" "6" nil "7" "1"]
+   ["7" "1" nil "2" "b3" nil "4"]],
+  :hash 1243345528},
+ -1915683151
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil "b3" "3" nil]
+   [nil "6" "b7" nil "1"]
+   ["3" nil "b5" "5" nil]
+   [nil "1" "b2" nil "b3"]
+   ["b5" "5" nil "6" "b7"]
+   [nil nil nil "3" nil]],
+  :hash -1915683151},
  1617152584
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -16798,6 +20267,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1617152584},
+ 158979099
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" "b7" nil "1" nil nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil "5" nil "6" "b7" nil "1"]
+   [nil "1" "b2" nil "b3" nil "4"]],
+  :hash 158979099},
  -1771029700
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -16878,6 +20356,17 @@
    ["7" "1" "b2" nil "b3" nil]
    [nil nil nil nil nil "6"]],
   :hash -1164664441},
+ -315835282
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "6" nil "7" nil]
+   [nil nil "4" nil "5"]
+   ["7" "1" "b2" nil "b3"]
+   [nil "5" nil "6" nil]
+   ["b2" nil "b3" nil "4"]
+   [nil nil nil "7" "1"]],
+  :hash -315835282},
  -398718624
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -16927,6 +20416,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -1732878727},
+ -230087498
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil nil "5" nil "6"]
+   [nil "2" nil "3" "4"]
+   [nil "6" "b7" nil "1"]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" nil "2"]],
+  :hash -230087498},
  1566819350
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -17094,6 +20594,15 @@
    ["1" nil "2" "b3" "3" "4"]
    [nil "b5" "5" nil "6" "b7"]],
   :hash -781911483},
+ 2088869674
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil "b3" nil "4" nil nil]
+   [nil "5" "b6" nil "b7" nil "1"]
+   [nil "1" "b2" nil "b3" nil "4"]
+   [nil "4" nil "5" "b6" nil "b7"]],
+  :hash 2088869674},
  -210696627
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -17121,6 +20630,15 @@
    [nil "6" "b7" nil "1" nil "2"]
    [nil nil "b3" "3" "4" "b5" "5"]],
   :hash 818960422},
+ 1480233166
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "3" "4" nil nil nil]
+   ["5" "b6" nil nil "7" "1" "b2"]
+   ["1" "b2" nil nil "3" "4" nil]
+   ["4" nil "5" "b6" nil nil "7"]],
+  :hash 1480233166},
  -373450253
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -17150,6 +20668,17 @@
    [nil nil nil nil nil nil]
    [nil nil nil nil nil nil]],
   :hash -1417344071},
+ 1613885868
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil "b6" nil "b7" nil]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil nil "3"]],
+  :hash 1613885868},
  382155216
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -17179,6 +20708,24 @@
    ["3" "4" "b5" "5" nil]
    [nil nil nil "2" "b3"]],
   :hash -2010925135},
+ -769651979
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["7" "1" "b2" nil "b3" nil nil]
+   [nil "4" nil "5" "b6" nil nil]
+   [nil nil "7" "1" "b2" nil "b3"]
+   [nil "b3" nil "4" nil "5" "b6"]],
+  :hash -769651979},
+ 1206188862
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7" nil nil nil]
+   ["1" "b2" nil nil "3" "4" nil]
+   ["4" nil "5" "b6" nil "b7" nil]
+   ["b7" nil "1" "b2" nil nil "3"]],
+  :hash 1206188862},
  -604159799
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -17217,6 +20764,15 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash -610032136},
+ 1043561615
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" "4" nil nil]
+   [nil "5" "b6" nil nil "7" "1"]
+   ["7" "1" "b2" nil nil "3" "4"]
+   [nil "4" nil "5" "b6" nil nil]],
+  :hash 1043561615},
  -293167174
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -17280,6 +20836,17 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash -1984433754},
+ 1873639422
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil]
+   [nil nil "2" "b3" nil]
+   ["b6" nil nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" nil "2"]
+   [nil nil nil "b6" nil]],
+  :hash 1873639422},
  -1519382102
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -17322,6 +20889,15 @@
    [nil nil nil nil "1"]
    [nil nil nil nil nil]],
   :hash -748196475},
+ -1142434944
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil "5" nil]
+   [nil nil "6" nil "7" "1" "b2"]
+   [nil "b3" nil "4" nil "5" nil]
+   ["5" nil "6" nil "7" "1" "b2"]],
+  :hash -1142434944},
  1584642295
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -17378,6 +20954,17 @@
    ["4" nil "5" nil nil]
    [nil nil nil nil "2"]],
   :hash 297172010},
+ -165368517
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil "b3" "3" "4" "b5"]
+   ["b7" nil "1" nil "2"]
+   ["4" "b5" "5" nil "6"]
+   ["1" nil "2" "b3" "3"]
+   ["5" nil "6" "b7" nil]],
+  :hash -165368517},
  -1628929710
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -17396,6 +20983,17 @@
    ["5" nil nil "b7" nil "1"]
    [nil nil nil nil nil nil]],
   :hash -536319273},
+ 2112750015
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil nil nil nil]
+   [nil nil "b7" nil "1"]
+   ["3" "4" nil "5" "b6"]
+   [nil "1" "b2" nil nil]
+   [nil "5" "b6" nil "b7"]
+   ["b2" nil nil "3" "4"]],
+  :hash 2112750015},
  -1854694876
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -17434,6 +21032,17 @@
    ["b6" nil "b7" nil "1" nil "2"]
    [nil nil nil nil nil nil nil]],
   :hash -1820378020},
+ 2144525982
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" nil nil nil nil]
+   [nil "5" "b6" nil nil]
+   [nil "b3" nil "4" nil]
+   [nil nil "7" "1" "b2"]
+   [nil "4" nil "5" "b6"]
+   ["7" "1" "b2" nil "b3"]],
+  :hash 2144525982},
  34710125
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -17476,6 +21085,15 @@
    [nil "1" "b2" nil nil]
    [nil nil "b6" nil "b7"]],
   :hash -1539212655},
+ 1273814926
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil "b3" "3" nil]
+   ["3" nil "b5" "5" nil "6" "b7"]
+   ["6" "b7" nil "1" "b2" nil "b3"]
+   [nil nil "3" nil "b5" "5" nil]],
+  :hash 1273814926},
  -203782736
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -17556,6 +21174,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1730684305},
+ -1411284441
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil "b2" nil nil "3"]
+   ["b6" nil nil "7" "1"]
+   [nil "3" "4" "b5" nil]
+   [nil "7" "1" "b2" nil]
+   ["4" "b5" nil "b6" nil]],
+  :hash -1411284441},
  -1274866904
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -17609,6 +21238,17 @@
    [nil "1" nil "2" "b3"]
    [nil nil nil nil nil]],
   :hash 830520267},
+ -2034074652
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil nil nil nil]
+   [nil nil "b7" nil "1"]
+   [nil "4" "b5" nil "b6"]
+   [nil "1" "b2" nil "b3"]
+   ["b5" nil "b6" nil "b7"]
+   ["b2" nil "b3" nil "4"]],
+  :hash -2034074652},
  -1311438466
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -17698,6 +21338,15 @@
    ["2" "b3" nil "4" nil "5" "b6"]
    [nil nil nil "b7" nil "1" nil]],
   :hash -1948232193},
+ -2094255654
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" "1" nil nil]
+   ["b2" nil nil "3" "4" "b5" nil]
+   ["b5" nil "b6" nil nil "7" "1"]
+   [nil "1" "b2" nil nil "3" "4"]],
+  :hash -2094255654},
  -684714841
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -17756,6 +21405,15 @@
    ["b7" nil "1" "b2" nil "b3"]
    [nil nil nil nil nil "b6"]],
   :hash 42136915},
+ 622623602
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" nil nil]
+   [nil "6" "b7" nil "1" nil "2"]
+   [nil "2" "b3" nil "4" nil "5"]
+   [nil "5" nil "6" "b7" nil "1"]],
+  :hash 622623602},
  -1788449105
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -17918,6 +21576,15 @@
    ["b3" "3" "4" "b5" "5"]
    [nil nil nil nil nil]],
   :hash -628990278},
+ 628916009
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil nil nil]
+   [nil "3" "4" nil "5" "b6" nil]
+   ["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil nil "3" "4" nil "5"]],
+  :hash 628916009},
  -142701380
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -17927,6 +21594,15 @@
    [nil nil nil "3" nil "b5"]
    [nil nil nil nil nil nil]],
   :hash -142701380},
+ -409715720
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil "b7" nil]
+   ["b7" nil "1" nil "2" nil nil]
+   [nil nil "4" nil "5" nil nil]
+   [nil nil "b7" nil "1" nil "2"]],
+  :hash -409715720},
  1731914570
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -17958,6 +21634,26 @@
    [nil nil nil nil "6" nil "7"]
    [nil nil nil nil nil nil nil]],
   :hash -990588411},
+ 898767867
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" "b5" "5" nil]
+   ["5" nil nil "b7" nil "1" nil]
+   ["1" nil nil "b3" nil "4" "b5"]
+   [nil nil "5" nil nil "b7" nil]],
+  :hash 898767867},
+ 1110156960
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil nil "3" "4" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" "b7" nil]],
+  :hash 1110156960},
  -73310005
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -18027,6 +21723,17 @@
    [nil nil nil nil "5" nil "6"]
    [nil nil nil nil nil nil nil]],
   :hash 1637867266},
+ 947281376
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" "b3" nil nil nil]
+   [nil nil "7" "1" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" "b3" nil]
+   ["5" "b6" nil nil "7"]
+   [nil "b3" nil "4" nil]],
+  :hash 947281376},
  -1066130442
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -18045,6 +21752,15 @@
    ["b3" nil "4" nil "5" "b6" nil]
    [nil nil nil nil "1" nil "2"]],
   :hash -1680566223},
+ 1391310870
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil "b7"]
+   [nil nil "1" nil nil "b3"]
+   ["4" nil "5" nil nil "b7"]
+   ["b7" nil "1" nil nil "b3"]],
+  :hash 1391310870},
  -48131092
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -18063,6 +21779,26 @@
    ["5" nil "6" "b7" nil "1"]
    [nil nil nil nil nil nil]],
   :hash 759506533},
+ -591819406
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil]
+   [nil "b7" nil "1" nil]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" "b3" nil]
+   ["5" nil "6" "b7" nil]
+   [nil nil nil "4" nil]],
+  :hash -591819406},
+ -1559366249
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil nil nil]
+   ["4" nil "5" nil "6" nil "7"]
+   [nil "7" "1" nil "2" "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]],
+  :hash -1559366249},
  1376120350
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -18101,6 +21837,17 @@
    [nil nil nil nil nil "b3" "3"]
    [nil nil nil nil nil nil nil]],
   :hash 1955829220},
+ -96541674
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil]
+   [nil "1" "b2" nil "b3"]
+   ["5" "b6" nil "b7" nil]
+   [nil "b3" nil "4" nil]
+   [nil "b7" nil "1" "b2"]
+   [nil nil nil "5" "b6"]],
+  :hash -96541674},
  1590849782
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -18230,6 +21977,17 @@
    ["7" "1" nil "2"]
    [nil nil nil nil]],
   :hash -293214060},
+ 264286084
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" "3" "4" nil nil]
+   [nil nil "1" nil "2"]
+   ["b5" "5" nil "6" "b7"]
+   [nil "2" "b3" "3" "4"]
+   [nil "6" "b7" nil "1"]
+   [nil nil "4" "b5" "5"]],
+  :hash 264286084},
  539118499
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -18290,6 +22048,24 @@
    [nil nil nil "1" "b2" nil "b3"]
    [nil nil nil nil nil nil nil]],
   :hash 133653758},
+ 525911540
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil nil "b7" nil nil]
+   ["1" nil "2" nil nil "4"]
+   ["4" nil "5" nil nil "b7"]
+   ["b7" nil "1" nil "2" nil]],
+  :hash 525911540},
+ -1722690670
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" nil "7" "1" nil nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil "5" nil "6" nil "7" "1"]
+   [nil "1" "b2" nil "b3" nil "4"]],
+  :hash -1722690670},
  -911148303
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -18301,6 +22077,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -911148303},
+ -1759994300
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil "2" "b3" nil]
+   ["b3" nil "4" "b5" nil "b6" "6"]
+   ["b6" "6" nil "7" "1" nil "2"]
+   [nil nil "b3" nil "4" "b5" nil]],
+  :hash -1759994300},
  1353253553
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -18368,6 +22153,17 @@
    [nil nil nil "4" nil "5"]
    [nil nil nil nil nil nil]],
   :hash 2022777588},
+ 1074879897
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil]
+   [nil nil "6" nil "7"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   [nil nil nil "b3" nil]],
+  :hash 1074879897},
  1607096477
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -18395,6 +22191,15 @@
    [nil "3" nil "b5" nil "b6" nil]
    [nil nil nil nil nil nil nil]],
   :hash -396871593},
+ 98439474
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil "4" nil]
+   ["4" nil "5" "b6" nil nil "7"]
+   [nil "7" "1" "b2" nil "b3" nil]
+   [nil nil "4" nil "5" "b6" nil]],
+  :hash 98439474},
  -1064431046
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -18404,6 +22209,15 @@
    ["6" "b7" nil "1" "b2" nil "b3"]
    [nil nil nil nil nil nil nil]],
   :hash -1064431046},
+ 15855696
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "6" "b7" nil "1" nil]
+   ["1" "b2" nil nil "3" "4" "b5"]
+   ["4" "b5" nil nil "6" "b7" nil]
+   [nil nil "1" "b2" nil nil "3"]],
+  :hash 15855696},
  -1449295701
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -18564,6 +22378,24 @@
    [nil nil nil nil nil "4"]
    [nil nil nil nil nil nil]],
   :hash 1012071114},
+ 2050396852
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" "b6" nil]
+   [nil nil nil "7" "1" nil "2"]
+   ["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil nil "7" "1" nil "2"]],
+  :hash 2050396852},
+ -1609924238
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil "b3" nil]
+   ["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil "b7" nil "1" "b2" nil]
+   [nil nil "b3" nil "4" nil "5"]],
+  :hash -1609924238},
  -1410074334
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -18586,6 +22418,26 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1795672966},
+ 489342460
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil]
+   ["5" "b6" nil "b7"]
+   ["b3" nil "4" nil]
+   ["b7" nil "1" "b2"]
+   ["4" nil "5" "b6"]
+   ["1" "b2" nil "b3"]],
+  :hash 489342460},
+ -1695422563
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" nil "7" "1" nil "2"]
+   ["2" "b3" nil "4" nil "5"]
+   ["5" nil "6" nil "7" "1"]
+   [nil nil "2" "b3" nil "4"]],
+  :hash -1695422563},
  1967588221
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -18626,6 +22478,17 @@
    ["1" nil "2" "b3" nil "4" "b5"]
    [nil nil nil nil nil nil "7"]],
   :hash 67013850},
+ -741717777
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" nil]
+   [nil nil nil "7" "1"]
+   ["3" "4" "b5" nil "b6"]
+   ["7" "1" "b2" nil nil]
+   ["b5" nil "b6" nil nil]
+   [nil nil nil "3" "4"]],
+  :hash -741717777},
  1430991001
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -18635,6 +22498,37 @@
    [nil "b7" nil "1" nil "2" nil]
    ["2" "b3" nil "4" nil "5" "b6"]],
   :hash 1430991001},
+ -854144706
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil nil]
+   [nil "2" nil "3"]
+   ["6" nil nil "1"]
+   ["3" nil nil "5"]
+   [nil "1" nil "2"]
+   [nil "5" nil "6"]],
+  :hash -854144706},
+ 1901800279
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil "5" nil]
+   ["5" nil "6" nil "7" "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]
+   [nil nil "5" nil "6" nil "7"]],
+  :hash 1901800279},
+ 1801463749
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil "b5" nil "b6" nil]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" "b5" nil]
+   ["b7" nil "1" "b2" nil]],
+  :hash 1801463749},
  696920254
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -18762,6 +22656,15 @@
    [nil nil nil nil nil "b3" "3"]
    [nil nil nil nil nil nil nil]],
   :hash -561442625},
+ 1735831898
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil "2" nil]
+   [nil nil "3" "4" "b5" "5" nil]
+   ["6" "b7" nil "1" nil "2" "b3"]
+   ["2" "b3" "3" "4" "b5" "5" nil]],
+  :hash 1735831898},
  -1460028165
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -18789,6 +22692,15 @@
    ["2" "b3" nil "4" nil "5"]
    [nil nil nil nil "7" "1"]],
   :hash 525833823},
+ 329546748
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" "4" "b5" nil]
+   [nil nil nil "6" "b7" nil "1"]
+   ["b2" nil nil "3" "4" "b5" nil]
+   ["b5" nil nil "6" "b7" nil "1"]],
+  :hash 329546748},
  307332473
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -18836,6 +22748,26 @@
    [nil nil "1" "b2" nil "b3" "3"]
    [nil nil nil nil nil nil nil]],
   :hash -898230763},
+ 1436884019
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil "5" nil]
+   [nil nil nil "b7" nil "1" nil]
+   ["2" "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" nil]],
+  :hash 1436884019},
+ -1331977571
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" "b3" nil nil]
+   [nil "6" nil "7" "1"]
+   [nil "4" "b5" nil "b6"]
+   ["7" "1" nil "2" "b3"]
+   ["b5" nil "b6" "6" nil]
+   [nil nil "b3" nil "4"]],
+  :hash -1331977571},
  -1759892453
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -18934,6 +22866,17 @@
    [nil nil "3" "4" nil "5"]
    [nil nil nil nil nil nil]],
   :hash 414190167},
+ -976848359
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" "b5" nil nil nil]
+   [nil "b2" nil nil "3"]
+   ["b6" nil nil "7" "1"]
+   [nil "3" "4" "b5" nil]
+   [nil "7" "1" "b2" nil]
+   [nil "b5" nil "b6" nil]],
+  :hash -976848359},
  -194910247
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -18963,6 +22906,24 @@
    [nil nil "b5" "5" nil "6" "b7"]
    [nil nil nil nil nil nil nil]],
   :hash 40219569},
+ -736688343
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil nil "4" nil nil]
+   ["5" nil nil "b7" nil "1"]
+   ["1" nil "2" nil nil "4"]
+   ["4" nil "5" nil nil "b7"]],
+  :hash -736688343},
+ 297414688
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" "3" nil "b5" nil nil nil]
+   ["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" "3" nil "b5" nil]
+   ["b5" nil "b6" nil "b7" nil "1"]],
+  :hash 297414688},
  742771267
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -18972,6 +22933,17 @@
    [nil nil nil "b7" nil "1" nil]
    [nil nil nil nil nil nil nil]],
   :hash 742771267},
+ -1035236953
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil]
+   [nil "4" nil "5" "b6"]
+   ["1" nil "2" "b3" nil]
+   ["5" "b6" nil "b7" nil]
+   ["2" "b3" nil "4" nil]
+   [nil nil nil "1" nil]],
+  :hash -1035236953},
  1920069354
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -18981,6 +22953,15 @@
    [nil nil "2" "b3" nil "4"]
    [nil nil nil nil nil nil]],
   :hash 1920069354},
+ -1578374813
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b5" nil "b6" nil "b7" nil nil]
+   [nil "1" "b2" nil "b3" "3" nil]
+   ["3" nil "b5" nil "b6" nil "b7"]
+   [nil "b7" nil "1" "b2" nil "b3"]],
+  :hash -1578374813},
  -618396656
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -19108,6 +23089,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -192850003},
+ 1725977337
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil "3" nil nil]
+   [nil "b7" nil "1" nil]
+   ["4" "b5" nil "b6" nil]
+   ["1" nil "2" nil "3"]
+   [nil "b6" nil "b7" nil]
+   [nil nil "3" "4" "b5"]],
+  :hash 1725977337},
  -905786730
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -19150,6 +23142,24 @@
    ["5" "b6" nil "b7" nil]
    [nil nil nil "4" nil]],
   :hash 1026129320},
+ -448884176
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil nil nil]
+   [nil "7" "1" "b2" nil nil "3"]
+   [nil "3" "4" nil "5" "b6" nil]
+   ["b6" nil nil "7" "1" "b2" nil]],
+  :hash -448884176},
+ -66196769
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil "7" nil]
+   ["7" "1" "b2" nil "b3" nil "4"]
+   [nil "4" nil "5" nil "6" nil]
+   [nil nil "7" "1" "b2" nil "b3"]],
+  :hash -66196769},
  1058177897
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -19208,6 +23218,24 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash -659084734},
+ -1523512178
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil "3" "4" nil "5"]
+   [nil nil "6" "b7" nil "1"]
+   ["2" nil "3" "4" nil "5"]
+   ["5" nil "6" "b7" nil "1"]],
+  :hash -1523512178},
+ 1081247997
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil "5"]
+   [nil nil nil "b7" nil "1"]
+   [nil "b3" nil "4" nil "5"]
+   ["5" nil nil "b7" nil "1"]],
+  :hash 1081247997},
  1851490045
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -19235,6 +23263,15 @@
    ["1" "b2" nil nil "3" "4"]
    ["4" nil "5" "b6" nil "b7"]],
   :hash -1650725414},
+ 1902704341
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" "5" nil "6" "b7" nil]
+   ["b7" nil "1" nil "2" "b3" "3"]
+   ["b3" "3" "4" "b5" "5" nil "6"]
+   [nil nil "b7" nil "1" nil "2"]],
+  :hash 1902704341},
  -306095611
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -19246,6 +23283,15 @@
    ["1" nil "2" "b3" "3"]
    [nil nil "6" "b7" nil]],
   :hash -306095611},
+ 832649834
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil nil nil]
+   ["5" nil "6" nil "7" "1" nil]
+   ["1" nil "2" "b3" nil "4" nil]
+   ["4" nil "5" nil "6" nil "7"]],
+  :hash 832649834},
  -1014692788
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -19279,6 +23325,24 @@
    [nil "4" nil "5" nil]
    [nil "1" "b2" nil "b3"]],
   :hash -1558113946},
+ -1845029090
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "7" "1" nil nil nil]
+   [nil nil "3" "4" nil "5" "b6"]
+   ["5" "b6" nil nil "7" "1" "b2"]
+   ["1" "b2" nil nil "3" "4" nil]],
+  :hash -1845029090},
+ 1156027218
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" "b7" nil "1" "b2" nil]
+   [nil nil "b3" "3" nil "b5" "5"]
+   [nil "6" "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" "3" nil "b5" "5"]],
+  :hash 1156027218},
  -1847011255
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -19379,6 +23443,15 @@
    [nil "b7" nil "1" nil "2" "b3"]
    [nil nil nil nil nil nil nil]],
   :hash -1197102809},
+ 1917458966
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7" nil "1"]
+   [nil nil "2" "b3" nil "4"]
+   ["5" "b6" nil "b7" nil "1"]
+   ["1" nil "2" "b3" nil "4"]],
+  :hash 1917458966},
  -843449114
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -19388,6 +23461,17 @@
    ["7" "1" "b2" nil nil "3"]
    [nil nil nil nil "b6" nil]],
   :hash -843449114},
+ 1353357610
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil nil nil]
+   [nil "b7" nil "1" nil]
+   ["4" "b5" "5" nil nil]
+   ["1" nil nil "b3" nil]
+   ["5" nil nil "b7" nil]
+   [nil "b3" nil "4" "b5"]],
+  :hash 1353357610},
  1160649178
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -19428,6 +23512,15 @@
    ["b7" nil "1" nil "2"]
    ["4" nil "5" nil "6"]],
   :hash -1921528135},
+ -1410230689
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil "b3" "3" nil "b5" nil]
+   [nil nil nil "6" "b7" nil "1"]
+   ["b2" nil "b3" "3" nil "b5" "5"]
+   ["b5" "5" nil "6" "b7" nil "1"]],
+  :hash -1410230689},
  161292767
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -19591,6 +23684,15 @@
    ["5" nil "6" "b7" nil "1" nil]
    [nil nil nil nil nil nil "b5"]],
   :hash -1021140317},
+ 1599598348
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil nil nil]
+   ["6" "b7" nil "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" nil]
+   ["5" nil "6" "b7" nil "1" nil]],
+  :hash 1599598348},
  153503337
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -19709,6 +23811,15 @@
    [nil nil "5" nil "6" nil]
    [nil nil nil nil nil nil]],
   :hash 1849048807},
+ -108897334
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "3" "4" nil "5" nil]
+   ["5" "b6" nil nil "7" "1" "b2"]
+   ["1" "b2" nil nil "3" "4" nil]
+   [nil nil "5" "b6" nil nil "7"]],
+  :hash -108897334},
  1955141923
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -19720,6 +23831,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1955141923},
+ -1428942554
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "6" "b7" nil nil]
+   [nil "3" nil "b5" "5"]
+   [nil "1" "b2" nil "b3"]
+   ["b5" "5" nil "6" "b7"]
+   ["b2" nil "b3" "3" nil]
+   [nil nil "b7" nil "1"]],
+  :hash -1428942554},
  1608921619
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -19749,6 +23871,17 @@
    [nil "1" nil "2" "b3" nil "4"]
    [nil nil nil nil nil nil nil]],
   :hash -1284243980},
+ -1612363112
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" "b7" nil nil nil]
+   [nil nil "b5" "5" nil]
+   ["1" "b2" nil "b3" "3"]
+   ["5" nil "6" "b7" nil]
+   [nil "b3" "3" nil "b5"]
+   [nil "b7" nil "1" "b2"]],
+  :hash -1612363112},
  -1112182906
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -19771,6 +23904,15 @@
    [nil nil "5" nil nil]
    [nil nil nil nil nil]],
   :hash -1488587746},
+ 1333802579
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil nil]
+   ["4" "b5" nil "b6" nil "b7"]
+   ["b7" nil "1" "b2" nil "b3"]
+   ["b3" nil "4" "b5" nil "b6"]],
+  :hash 1333802579},
  -1522422771
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -19800,6 +23942,26 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 215478619},
+ -1943859868
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" "b5" nil "b6" nil]
+   [nil nil "2" "b3" nil]
+   ["b6" "6" nil "7" "1"]
+   ["b3" nil "4" "b5" nil]
+   [nil "7" "1" nil "2"]
+   [nil nil nil "b6" "6"]],
+  :hash -1943859868},
+ -968041660
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" "b5" "5" nil nil nil]
+   ["6" "b7" nil "1" nil "2" "b3"]
+   ["2" "b3" "3" "4" "b5" "5" nil]
+   ["5" nil "6" "b7" nil "1" nil]],
+  :hash -968041660},
  -1134433543
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -19829,6 +23991,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1986388695},
+ -975824818
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "7" nil nil]
+   [nil "4" "b5" nil "b6"]
+   ["1" "b2" nil nil "3"]
+   [nil "b6" nil nil "7"]
+   [nil nil "3" "4" "b5"]
+   [nil nil "7" "1" "b2"]],
+  :hash -975824818},
  -1599269347
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -19880,6 +24053,17 @@
    ["b6" nil "b7" nil "1"]
    [nil "3" "4" nil "5"]],
   :hash 387225857},
+ -1043616388
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil]
+   [nil "5" nil "6" "b7"]
+   ["2" "b3" nil "4" nil]
+   ["6" "b7" nil "1" nil]
+   [nil "4" nil "5" nil]
+   [nil nil nil "2" "b3"]],
+  :hash -1043616388},
  -948914406
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -19889,6 +24073,17 @@
    [nil "b3" nil "4" nil "5" nil]
    ["5" nil "6" "b7" nil "1" "b2"]],
   :hash -948914406},
+ -446807115
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil nil]
+   [nil "7" "1" "b2" nil]
+   [nil "5" nil "6" nil]
+   ["b2" nil "b3" nil "4"]
+   [nil "6" nil "7" "1"]
+   [nil nil "4" nil "5"]],
+  :hash -446807115},
  893612992
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -19989,6 +24184,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1495009875},
+ 1584170740
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil "b3" "3" nil]
+   [nil nil "b5" "5" nil "6" "b7"]
+   [nil "1" "b2" nil "b3" "3" nil]
+   ["3" nil "b5" "5" nil "6" "b7"]],
+  :hash 1584170740},
  1260178832
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -19998,6 +24202,17 @@
    [nil "b2" nil "b3" nil "4" nil]
    [nil nil nil nil nil nil nil]],
   :hash 1260178832},
+ -642280233
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil]
+   [nil nil "b3" nil "4"]
+   ["6" nil "7" "1" "b2"]
+   [nil "4" nil "5" nil]
+   ["7" "1" "b2" nil "b3"]
+   [nil nil nil "6" nil]],
+  :hash -642280233},
  1109934307
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -20047,6 +24262,15 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash -286750197},
+ -1870181898
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" "b3" "3" "4" "b5" nil]
+   [nil nil nil "6" "b7" nil "1"]
+   [nil "2" "b3" "3" "4" "b5" "5"]
+   ["b5" "5" nil "6" "b7" nil "1"]],
+  :hash -1870181898},
  -1634993966
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -20083,6 +24307,28 @@
    [nil nil nil nil nil nil]
    [nil nil nil nil nil nil]],
   :hash -331201502},
+ 1814035516
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" "3" nil nil]
+   [nil "b7" nil "1" "b2"]
+   [nil "b5" nil "b6" nil]
+   ["1" "b2" nil "b3" "3"]
+   [nil "b6" nil "b7" nil]
+   [nil nil "3" nil "b5"]],
+  :hash 1814035516},
+ 1610911506
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil "6" nil nil]
+   [nil nil "3" nil nil]
+   [nil nil "1" nil "2"]
+   [nil nil "5" nil "6"]
+   ["1" nil "2" nil "3"]
+   [nil nil "6" nil nil]],
+  :hash 1610911506},
  -896075233
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -20121,6 +24367,15 @@
    ["b7" nil "1" "b2" nil "b3"]
    [nil nil nil nil nil nil]],
   :hash 1323521192},
+ -1134762656
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" "b3" "3" nil]
+   [nil nil "b5" "5" nil "6" "b7"]
+   [nil "1" nil "2" "b3" "3" "4"]
+   ["3" "4" "b5" "5" nil "6" "b7"]],
+  :hash -1134762656},
  1527286237
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -20130,6 +24385,15 @@
    ["7" "1" nil "2" "b3" nil "4"]
    [nil nil nil nil "b6" nil nil]],
   :hash 1527286237},
+ 1545810012
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil "6" "b7" nil]
+   ["b7" nil "1" "b2" nil "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]
+   [nil nil "b7" nil "1" "b2" nil]],
+  :hash 1545810012},
  -1250377656
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -20159,6 +24423,15 @@
    [nil nil "4" nil "5" nil "6"]
    [nil nil nil nil nil nil nil]],
   :hash 1626586716},
+ -631610410
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b5" nil "b6" nil nil "7" nil]
+   [nil nil "b2" nil nil "3" "4"]
+   ["b5" nil "b6" nil nil "7" "1"]
+   ["7" "1" "b2" nil nil "3" "4"]],
+  :hash -631610410},
  300996104
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -20228,6 +24501,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 689308338},
+ 123445695
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" "b5" nil nil]
+   [nil "1" "b2" nil nil]
+   [nil "b6" nil nil "7"]
+   [nil nil "3" "4" "b5"]
+   [nil nil "7" "1" "b2"]
+   [nil nil "b5" nil "b6"]],
+  :hash 123445695},
  2116608204
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -20237,6 +24521,17 @@
    [nil "6" "b7" nil "1" nil "2"]
    [nil nil nil nil nil "b5" "5"]],
   :hash 2116608204},
+ 2042645306
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "3" nil nil nil]
+   [nil "7" "1" "b2" nil]
+   ["b5" nil "b6" nil nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil nil "7" "1"]
+   [nil "3" "4" "b5" nil]],
+  :hash 2042645306},
  -734479950
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -20395,6 +24690,15 @@
    [nil nil nil nil nil "4" "b5"]
    [nil nil nil nil nil nil nil]],
   :hash 1775610248},
+ 1452976086
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" nil "7" "1" nil "2" nil]
+   ["2" "b3" nil "4" "b5" nil "b6"]
+   [nil "b6" "6" nil "7" "1" nil]
+   [nil nil "2" "b3" nil "4" "b5"]],
+  :hash 1452976086},
  1327606456
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -20440,6 +24744,17 @@
    [nil "b3" nil "4" nil "5"]
    ["5" nil nil "b7" nil "1"]],
   :hash -1444936958},
+ 1474054288
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" nil nil nil]
+   [nil "5" nil "6" nil]
+   [nil "b3" nil "4" nil]
+   ["6" nil "7" "1" "b2"]
+   [nil "4" nil "5" nil]
+   [nil "1" "b2" nil "b3"]],
+  :hash 1474054288},
  1275719952
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -20480,6 +24795,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 85784580},
+ -679434049
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" nil "7" nil nil nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil "5" nil "6" nil "7" "1"]
+   ["7" "1" "b2" nil "b3" nil "4"]],
+  :hash -679434049},
  1700090543
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -20538,6 +24862,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1630311562},
+ -2090478146
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil]
+   ["2" "b3" nil "4"]
+   ["b7" nil "1" nil]
+   ["4" nil "5" "b6"]
+   ["1" nil "2" "b3"]
+   ["5" "b6" nil "b7"]],
+  :hash -2090478146},
  -1485233033
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -20565,6 +24900,24 @@
    [nil nil nil nil "2" "b3" nil]
    [nil nil nil nil nil nil nil]],
   :hash -907362814},
+ 761134252
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" "3" "4" "b5" "5" nil]
+   ["5" nil "6" "b7" nil "1" nil]
+   ["1" nil "2" "b3" "3" "4" "b5"]
+   [nil nil "5" nil "6" "b7" nil]],
+  :hash 761134252},
+ 1108553725
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil "2" "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]
+   [nil "6" "b7" nil "1" nil "2"]
+   [nil nil "b3" nil "4" nil "5"]],
+  :hash 1108553725},
  -360273168
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -20723,6 +25076,26 @@
    [nil nil nil nil]
    [nil nil "b7" nil]],
   :hash -1612208933},
+ 137810552
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" nil "3" "4" nil nil]
+   ["b5" nil "b6" nil "b7" nil "1"]
+   [nil "1" nil "2" nil "3" "4"]
+   [nil "4" "b5" nil "b6" nil "b7"]],
+  :hash 137810552},
+ -1125796349
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil "b6" nil "b7" nil]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" "b3" nil]],
+  :hash -1125796349},
  281044721
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -20792,6 +25165,17 @@
    [nil "5" "b6" nil nil]
    [nil nil nil nil "4"]],
   :hash 1035202096},
+ 1704292558
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil]
+   [nil "b6" "6" nil "7"]
+   ["b3" nil "4" "b5" nil]
+   [nil "7" "1" nil "2"]
+   ["4" "b5" nil "b6" "6"]
+   [nil nil nil "b3" nil]],
+  :hash 1704292558},
  -1764974344
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -20874,6 +25258,17 @@
    ["b2" nil "b3" "3" nil]
    [nil nil nil nil "1"]],
   :hash 865435310},
+ 329626980
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil nil nil]
+   [nil nil "7" "1" "b2"]
+   ["4" nil "5" nil "6"]
+   ["1" "b2" nil "b3" nil]
+   ["5" nil "6" nil "7"]
+   [nil "b3" nil "4" nil]],
+  :hash 329626980},
  -1528218452
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -20883,6 +25278,15 @@
    ["1" nil "2" "b3" nil "4" nil]
    [nil nil nil nil nil nil "7"]],
   :hash -1528218452},
+ -1841171748
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" nil "b5" "5" nil "6" nil]
+   [nil nil nil "1" "b2" nil "b3"]
+   ["3" nil "b5" "5" nil "6" "b7"]
+   ["6" "b7" nil "1" "b2" nil "b3"]],
+  :hash -1841171748},
  1720209916
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -20914,6 +25318,26 @@
    ["b3" nil "4" nil "5" "b6"]
    ["b6" nil nil "7" "1" "b2"]],
   :hash 1800491871},
+ 1726565221
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil "b2" nil nil "3"]
+   [nil "6" "b7" nil "1"]
+   [nil "3" "4" "b5" nil]
+   ["b7" nil "1" "b2" nil]
+   ["4" "b5" nil nil "6"]],
+  :hash 1726565221},
+ 1522772912
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil "5"]
+   ["5" "b6" nil "b7" nil "1"]
+   ["1" nil "2" "b3" nil "4"]
+   [nil nil "5" "b6" nil "b7"]],
+  :hash 1522772912},
  -1261494056
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -20956,6 +25380,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 694381855},
+ -854198353
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil nil "6" nil nil]
+   [nil "3" nil nil "5"]
+   [nil nil "1" nil "2"]
+   [nil nil "5" nil "6"]
+   ["1" nil "2" nil "3"]],
+  :hash -854198353},
  -351038219
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -21016,6 +25451,15 @@
    ["b6" nil "b7" nil "1" "b2" nil]
    [nil nil nil nil nil nil "5"]],
   :hash -1493095568},
+ 1044227758
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" "b2" nil "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]
+   [nil "6" nil "7" "1" "b2" nil]
+   [nil nil "b3" nil "4" nil "5"]],
+  :hash 1044227758},
  210842535
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -21056,6 +25500,17 @@
    ["b7" nil "1" nil "2" nil "3"]
    [nil nil nil nil nil "b6" nil]],
   :hash -905601773},
+ -1180571038
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil nil nil nil]
+   [nil "b7" nil "1" nil]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" "b7" nil]
+   ["2" nil "3" "4" nil]],
+  :hash -1180571038},
  -1276317287
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -21162,6 +25617,15 @@
    [nil nil nil "b7"]
    [nil nil nil nil]],
   :hash 796438104},
+ -1139852978
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil "b3" nil]
+   ["b3" nil "4" "b5" "5" nil nil]
+   [nil nil "b7" nil "1" nil nil]
+   [nil nil "b3" nil "4" "b5" "5"]],
+  :hash -1139852978},
  -1531621692
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -21242,6 +25706,17 @@
    ["5" "b6" nil nil "7"]
    [nil "b3" nil "4" nil]],
   :hash 1334380330},
+ -252044251
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" "6" nil "7" nil]
+   [nil nil "4" "b5" nil]
+   ["7" "1" nil "2" "b3"]
+   ["b5" nil "b6" "6" nil]
+   [nil "2" "b3" nil "4"]
+   [nil nil nil "7" "1"]],
+  :hash -252044251},
  1832441384
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -21293,6 +25768,17 @@
    ["b5" nil "b6" nil "b7" nil "1"]
    [nil nil nil "2" nil "3" "4"]],
   :hash 860864898},
+ 2068445443
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil "b5" "5" nil "6"]
+   [nil "2" "b3" "3" "4"]
+   [nil "6" "b7" nil "1"]
+   ["b3" "3" "4" "b5" "5"]
+   ["b7" nil "1" nil "2"]],
+  :hash 2068445443},
  728097736
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -21469,6 +25955,17 @@
    ["2" "b3" "3" "4" "b5" "5"]
    [nil nil nil nil nil "1"]],
   :hash -1512114961},
+ 1662626310
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" nil nil]
+   [nil "b6" "6" nil "7"]
+   ["b3" nil "4" "b5" nil]
+   [nil "7" "1" nil "2"]
+   ["4" "b5" nil "b6" "6"]
+   [nil nil "2" "b3" nil]],
+  :hash 1662626310},
  -617757282
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -21525,6 +26022,35 @@
    [nil "b2" nil "b3" nil "4" nil]
    [nil nil nil nil nil nil nil]],
   :hash 743148841},
+ -1511393660
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil nil nil nil]
+   [nil nil nil "5" nil]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" nil nil]
+   ["2" nil "3" nil nil]
+   ["6" nil nil "1" nil]],
+  :hash -1511393660},
+ -1429659371
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b5" "5" nil nil "b7" nil nil]
+   [nil "1" nil nil "b3" nil "4"]
+   [nil "4" "b5" "5" nil nil "b7"]
+   [nil "b7" nil "1" nil nil "b3"]],
+  :hash -1429659371},
+ -1696822921
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" "b5" nil nil nil]
+   ["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" nil "4" "b5" nil]
+   ["b5" nil "b6" nil "b7" nil "1"]],
+  :hash -1696822921},
  -1450045798
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -21639,6 +26165,15 @@
    [nil nil nil nil "b3"]
    [nil nil nil nil nil]],
   :hash -96508544},
+ 1952372736
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil "3" "4" nil]
+   [nil nil "5" "b6" nil nil "7"]
+   ["1" "b2" nil nil "3" "4" nil]
+   ["4" nil "5" "b6" nil nil "7"]],
+  :hash 1952372736},
  249432995
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -21684,6 +26219,15 @@
    ["6" nil "7" "1" "b2" nil]
    [nil "b3" nil "4" nil "5"]],
   :hash -915834994},
+ 664417694
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["7" "1" nil "2" "b3" nil nil]
+   [nil "4" nil "5" "b6" nil nil]
+   [nil nil "7" "1" nil "2" "b3"]
+   [nil "b3" nil "4" nil "5" "b6"]],
+  :hash 664417694},
  -1899975989
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -21693,6 +26237,15 @@
    ["2" "b3" nil "4" nil "5" "b6"]
    [nil "b6" nil nil "7" "1" nil]],
   :hash -1899975989},
+ 1996657951
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil "3" nil nil]
+   ["4" "b5" nil nil "6" "b7" nil]
+   ["b7" nil "1" "b2" nil nil "3"]
+   [nil "3" "4" "b5" nil nil "6"]],
+  :hash 1996657951},
  -563860157
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -21704,6 +26257,17 @@
    [nil "1" nil "2"]
    [nil "5" nil "6"]],
   :hash -563860157},
+ 1236218410
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil nil nil]
+   [nil "2" "b3" nil "4"]
+   ["6" "b7" nil "1" nil]
+   [nil "4" nil "5" nil]
+   [nil "1" nil "2" "b3"]
+   [nil "5" nil "6" "b7"]],
+  :hash 1236218410},
  -330048706
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -21840,6 +26404,17 @@
    ["6" "b7" nil "1" nil]
    [nil nil nil nil nil]],
   :hash 1026402567},
+ 716425333
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil nil nil]
+   ["3" "4" nil "5"]
+   ["1" nil "2" nil]
+   ["5" nil "6" "b7"]
+   ["2" nil "3" "4"]
+   ["6" "b7" nil "1"]],
+  :hash 716425333},
  -335403699
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -21887,6 +26462,15 @@
    ["7" "1" "b2" nil nil "3"]
    [nil "4" nil "5" "b6" nil]],
   :hash -185158526},
+ -2123252148
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" "b2" nil nil]
+   [nil "b3" nil "4" nil "5" nil]
+   ["5" nil "6" "b7" nil "1" "b2"]
+   [nil "b2" nil "b3" nil "4" nil]],
+  :hash -2123252148},
  -54703705
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -22090,6 +26674,26 @@
    ["2" nil "3" "4"]
    [nil "b7" nil "1"]],
   :hash -636339189},
+ -1470804066
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b6" "6" nil "7" "1" nil]
+   [nil nil "2" "b3" nil "4" "b5"]
+   [nil "b6" "6" nil "7" "1" nil]
+   ["1" nil "2" "b3" nil "4" "b5"]],
+  :hash -1470804066},
+ -1046317110
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil nil]
+   [nil "b6" nil "b7" nil]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   [nil "b2" nil nil "3"]],
+  :hash -1046317110},
  1749315681
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -22164,6 +26768,17 @@
    [nil "b2" nil "b3" nil "4" "b5"]
    [nil nil nil nil nil nil nil]],
   :hash -1636520845},
+ 436677277
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil nil nil]
+   [nil nil nil "3" "4"]
+   [nil nil "7" "1" "b2"]
+   ["3" "4" nil "5" "b6"]
+   ["7" "1" "b2" nil nil]
+   [nil "5" "b6" nil nil]],
+  :hash 436677277},
  -402872132
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -22322,6 +26937,15 @@
    ["b2" nil nil "3" "4" "b5" nil]
    ["b5" nil nil "6" "b7" nil "1"]],
   :hash 243958719},
+ 2044957019
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil nil "7" "1" nil "2"]
+   [nil "2" "b3" nil "4" nil "5"]
+   [nil nil "b6" nil nil "7" "1"]],
+  :hash 2044957019},
  895878263
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -22494,6 +27118,28 @@
    [nil nil nil nil nil]
    [nil "2" nil nil "4"]],
   :hash 1328011314},
+ 293177191
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil "b5" nil "b6" nil]
+   [nil "2" nil "3" "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" "b5" nil]
+   ["b7" nil "1" nil "2"]],
+  :hash 293177191},
+ 610779310
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil]
+   [nil nil "b5" nil "b6"]
+   ["1" "b2" nil "b3" "3"]
+   [nil "b6" nil "b7" nil]
+   [nil "b3" "3" nil "b5"]
+   [nil nil nil "1" "b2"]],
+  :hash 610779310},
  1047581209
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -22532,6 +27178,17 @@
    ["7" "1" "b2" nil "b3" nil "4"]
    [nil nil nil nil "b6" nil nil]],
   :hash -9938325},
+ 994543526
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "3" "4" nil nil]
+   [nil nil "1" "b2" nil]
+   ["b5" nil nil "6" "b7"]
+   ["b2" nil nil "3" "4"]
+   [nil "6" "b7" nil "1"]
+   [nil nil "4" "b5" nil]],
+  :hash 994543526},
  -295496057
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -22541,6 +27198,17 @@
    [nil nil nil nil nil nil]
    [nil "b6" nil "b7" nil "1"]],
   :hash -295496057},
+ -527849696
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil "b3" nil nil]
+   [nil nil nil "7" "1"]
+   [nil "4" nil "5" "b6"]
+   ["7" "1" "b2" nil "b3"]
+   [nil "5" "b6" nil nil]
+   [nil nil "b3" nil "4"]],
+  :hash -527849696},
  -1583893294
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -22550,6 +27218,15 @@
    ["b7" nil "1" nil "2"]
    [nil nil nil nil "5"]],
   :hash -1583893294},
+ 1117338656
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil "5" "b6" nil "b7" nil "1"]
+   [nil nil "b2" nil "b3" nil "4"]],
+  :hash 1117338656},
  1248671303
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -22561,6 +27238,15 @@
    [nil nil "7" "1" nil]
    [nil "4" nil "5" "b6"]],
   :hash 1248671303},
+ -1940755152
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil "2" nil nil]
+   ["b3" "3" "4" "b5" "5" nil "6"]
+   [nil "6" "b7" nil "1" nil "2"]
+   [nil "2" "b3" "3" "4" "b5" "5"]],
+  :hash -1940755152},
  -1446450015
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -22597,6 +27283,15 @@
    ["4" "b5" nil "b6" nil nil "7"]
    [nil nil nil nil nil nil nil]],
   :hash -1793439141},
+ -1745643042
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil "1" nil]
+   [nil nil "2" "b3" "3" "4" "b5"]
+   ["5" nil "6" "b7" nil "1" nil]
+   ["1" nil "2" "b3" "3" "4" "b5"]],
+  :hash -1745643042},
  -1898015635
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -22657,6 +27352,17 @@
    [nil "4" nil "5" nil]
    [nil nil nil "2" "b3"]],
   :hash -660306721},
+ -1661905484
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" "3" nil nil]
+   [nil "b7" nil "1" "b2"]
+   [nil "b5" "5" nil "6"]
+   ["1" "b2" nil "b3" "3"]
+   ["5" nil "6" "b7" nil]
+   [nil nil "3" nil "b5"]],
+  :hash -1661905484},
  1039723555
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -22666,6 +27372,15 @@
    [nil nil nil nil nil nil]
    ["b7" nil "1" "b2" nil nil]],
   :hash 1039723555},
+ -342979700
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil "2" nil]
+   [nil nil "3" "4" nil "5" "b6"]
+   [nil "b7" nil "1" nil "2" nil]
+   ["2" nil "3" "4" nil "5" "b6"]],
+  :hash -342979700},
  -1858319263
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -22686,6 +27401,15 @@
    [nil nil nil nil nil "2" "b3"]
    [nil nil nil nil nil nil nil]],
   :hash -1418194493},
+ 1056391784
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil "5"]
+   [nil nil "6" nil "7" "1"]
+   ["2" "b3" nil "4" nil "5"]
+   ["5" nil "6" nil "7" "1"]],
+  :hash 1056391784},
  -1634513429
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -22695,6 +27419,17 @@
    ["5" nil "6" nil nil]
    [nil nil nil nil nil]],
   :hash -1634513429},
+ 332134263
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "6" nil nil nil]
+   [nil nil "4" nil "5"]
+   ["7" "1" nil "2" "b3"]
+   [nil "5" nil "6" nil]
+   [nil "2" "b3" nil "4"]
+   [nil "6" nil "7" "1"]],
+  :hash 332134263},
  1230955905
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -22704,6 +27439,15 @@
    ["7" "1" nil "2" "b3" nil]
    [nil nil nil nil nil "6"]],
   :hash 1230955905},
+ 1464864058
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" nil "b6" nil "b7" nil]
+   ["b7" nil "1" nil "2" nil "3"]
+   [nil "3" "4" "b5" nil "b6" nil]
+   [nil nil "b7" nil "1" nil "2"]],
+  :hash 1464864058},
  -831506505
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -22811,6 +27555,15 @@
    ["3" "4" nil "5" nil "6" "b7"]
    [nil nil nil "1" nil "2" nil]],
   :hash 1768971049},
+ -56036897
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil "b7" nil]
+   [nil nil "1" nil "2" nil "3"]
+   ["4" nil "5" "b6" nil "b7" nil]
+   ["b7" nil "1" nil "2" nil "3"]],
+  :hash -56036897},
  1268682920
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -22871,6 +27624,17 @@
    [nil nil "7" "1" nil]
    [nil nil nil nil "b6"]],
   :hash 305582055},
+ -228737627
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil]
+   [nil "4" "b5" "5" nil]
+   ["1" nil nil "b3" nil]
+   ["5" nil nil "b7" nil]
+   [nil "b3" nil "4" "b5"]
+   [nil nil nil "1" nil]],
+  :hash -228737627},
  1322391058
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -22911,6 +27675,24 @@
    [nil nil nil "3" "4" "b5" nil]
    [nil nil nil nil nil nil nil]],
   :hash 2124856569},
+ 2014940768
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil "b7"]
+   ["b7" nil "1" nil nil "b3"]
+   ["b3" nil "4" nil "5" nil]
+   [nil nil "b7" nil "1" nil]],
+  :hash 2014940768},
+ 1435321252
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil nil nil]
+   ["b7" nil "1" "b2" nil nil "3"]
+   [nil "3" "4" nil "5" "b6" nil]
+   ["b6" nil "b7" nil "1" "b2" nil]],
+  :hash 1435321252},
  -1068907180
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -22947,6 +27729,15 @@
    ["b6" nil "b7" nil "1" "b2" nil]
    [nil nil nil nil nil nil "5"]],
   :hash 193661811},
+ -1652265840
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" "5" nil "6" "b7" nil]
+   [nil nil "1" nil "2" "b3" "3"]
+   ["4" "b5" "5" nil "6" "b7" nil]
+   ["b7" nil "1" nil "2" "b3" "3"]],
+  :hash -1652265840},
  -631821917
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -23063,6 +27854,17 @@
    [nil nil nil nil nil "4"]
    [nil nil nil nil nil nil]],
   :hash -195307040},
+ 459361721
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil]
+   [nil nil "2" "b3" nil]
+   [nil "6" nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" nil "2"]
+   [nil nil "5" nil "6"]],
+  :hash 459361721},
  464783807
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -23179,6 +27981,26 @@
    ["3" "4" "b5" nil nil]
    [nil nil "b2" nil nil]],
   :hash 1144775522},
+ -627300779
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil nil nil nil]
+   [nil "4" "b5" "5" nil]
+   ["1" nil "2" "b3" "3"]
+   ["5" nil "6" "b7" nil]
+   ["2" "b3" "3" "4" "b5"]
+   ["6" "b7" nil "1" nil]],
+  :hash -627300779},
+ -291540668
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" "b6"]
+   [nil nil nil "7" "1" "b2"]
+   ["b3" nil "4" nil "5" "b6"]
+   ["b6" nil nil "7" "1" "b2"]],
+  :hash -291540668},
  -241903111
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -23219,6 +28041,15 @@
    [nil nil "1" "b2" nil]
    [nil nil nil nil nil]],
   :hash -258514626},
+ 1419603087
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil "2" nil nil]
+   ["b3" nil "4" nil "5" nil "6"]
+   [nil "6" nil "7" "1" nil "2"]
+   [nil "2" "b3" nil "4" nil "5"]],
+  :hash 1419603087},
  -290975374
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -23264,6 +28095,17 @@
    [nil "b6" nil "b7" nil "1" nil]
    ["1" "b2" nil "b3" nil "4" "b5"]],
   :hash 1949782479},
+ 1304594737
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" nil nil nil]
+   [nil nil "b7" nil "1"]
+   ["3" "4" "b5" nil "b6"]
+   [nil "1" nil "2" nil]
+   ["b5" nil "b6" nil "b7"]
+   [nil "2" nil "3" "4"]],
+  :hash 1304594737},
  1407891139
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -23302,6 +28144,15 @@
    [nil nil nil nil "b6" "6" nil]
    [nil nil nil nil nil nil nil]],
   :hash -681561715},
+ 99095897
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" nil nil nil]
+   [nil "b7" nil "1" "b2" nil nil]
+   [nil nil "3" "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" "b2"]],
+  :hash 99095897},
  1769642247
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -23458,6 +28309,15 @@
    [nil nil nil nil]
    ["b7" nil "1" nil]],
   :hash 793884945},
+ 1088991833
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil nil nil]
+   [nil "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]],
+  :hash 1088991833},
  -1895696243
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -23487,6 +28347,17 @@
    [nil "1" "b2" nil]
    [nil nil nil nil]],
   :hash -1737876451},
+ -1581481972
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil nil nil nil]
+   [nil "4" nil "5" nil]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" nil "7"]
+   ["2" nil "3" "4" nil]
+   ["6" nil "7" "1" nil]],
+  :hash -1581481972},
  352409613
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -23593,6 +28464,15 @@
    ["7" "1" "b2" nil nil "3"]
    ["3" "4" nil "5" "b6" nil]],
   :hash -938822307},
+ -894929813
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" nil "b6" nil nil nil]
+   ["b7" nil "1" nil "2" nil "3"]
+   [nil "3" "4" "b5" nil "b6" nil]
+   ["b6" nil "b7" nil "1" nil "2"]],
+  :hash -894929813},
  115360066
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -23689,6 +28569,37 @@
    ["2" "b3" nil "4" nil "5"]
    [nil nil "6" "b7" nil "1"]],
   :hash -221285644},
+ -1502623163
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil "4"]
+   ["4" "b5" nil "b6" nil "b7"]
+   ["b7" nil "1" "b2" nil "b3"]
+   [nil nil "4" "b5" nil "b6"]],
+  :hash -1502623163},
+ 190015130
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil "b3" nil]
+   [nil nil nil "b7" nil]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil nil]
+   ["4" nil "5" nil nil]
+   [nil nil nil "b3" nil]],
+  :hash 190015130},
+ -558168684
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" "3" nil "b5" nil]
+   [nil nil "1" "b2" nil]
+   ["b5" "5" nil "6" "b7"]
+   ["b2" nil "b3" "3" nil]
+   [nil "6" "b7" nil "1"]
+   [nil nil nil "b5" "5"]],
+  :hash -558168684},
  1737179772
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -23834,6 +28745,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 648773936},
+ 495512105
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil "2" nil nil]
+   [nil "3" "4" nil "5" "b6" nil]
+   ["b6" nil "b7" nil "1" nil "2"]
+   [nil "2" nil "3" "4" nil "5"]],
+  :hash 495512105},
  -1053748627
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -23854,6 +28774,15 @@
    ["1" nil "2" nil "3"]
    [nil nil "6" "b7" nil]],
   :hash -88708067},
+ -511870517
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b6" nil "b7" nil "1" nil]
+   ["1" "b2" nil "b3" nil "4" "b5"]
+   ["4" "b5" nil "b6" nil "b7" nil]
+   [nil nil "1" "b2" nil "b3" nil]],
+  :hash -511870517},
  -1396504422
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -23921,6 +28850,17 @@
    ["6" "b7" nil "1" nil "2" "b3"]
    [nil nil nil "4" nil "5" nil]],
   :hash -81519544},
+ -1874865449
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" "b5" nil nil nil]
+   [nil nil "2" "b3" nil]
+   ["b6" "6" nil "7" "1"]
+   ["b3" nil "4" "b5" nil]
+   [nil "7" "1" nil "2"]
+   [nil "b5" nil "b6" "6"]],
+  :hash -1874865449},
  -743394071
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -23941,6 +28881,17 @@
    [nil nil "b7" nil "1" "b2" nil]
    [nil nil nil nil nil nil nil]],
   :hash -1708300023},
+ 1696926508
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil]
+   [nil "1" nil nil "b3"]
+   ["5" nil nil "b7" nil]
+   [nil "b3" nil "4" nil]
+   [nil "b7" nil "1" nil]
+   [nil nil nil "5" nil]],
+  :hash 1696926508},
  282417671
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -23950,6 +28901,15 @@
    [nil nil "b2" nil nil "3"]
    [nil nil nil nil nil nil]],
   :hash 282417671},
+ -824020728
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil "b3"]
+   [nil nil "4" nil "5" nil]
+   ["b7" nil "1" nil nil "b3"]
+   ["b3" nil "4" nil "5" nil]],
+  :hash -824020728},
  1325487698
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -24044,6 +29004,15 @@
    ["5" nil "6" nil "7" "1"]
    [nil nil nil nil nil "4"]],
   :hash 2028075321},
+ 2021574606
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b5" "5" nil "6" "b7" nil]
+   ["b7" nil "1" "b2" nil "b3" "3"]
+   ["b3" "3" nil "b5" "5" nil "6"]
+   [nil nil "b7" nil "1" "b2" nil]],
+  :hash 2021574606},
  371895691
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -24100,6 +29069,15 @@
    [nil nil nil nil "b7" nil "1"]
    [nil nil nil nil nil nil nil]],
   :hash 438945495},
+ -1361720030
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" "b6" nil nil "7" nil]
+   ["7" "1" "b2" nil nil "3" "4"]
+   ["3" "4" nil "5" "b6" nil nil]
+   [nil nil "7" "1" "b2" nil nil]],
+  :hash -1361720030},
  565621334
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -24216,6 +29194,17 @@
    ["4" nil "5" nil nil "b7"]
    [nil nil nil nil nil "b3"]],
   :hash 552399875},
+ -1909518706
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil nil]
+   [nil nil "1" "b2" nil]
+   ["b5" nil "b6" nil "b7"]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil nil "4" "b5" nil]],
+  :hash -1909518706},
  -1025148392
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -24323,6 +29312,17 @@
    ["3" "4" "b5" nil nil "6" "b7"]
    [nil nil nil nil nil nil nil]],
   :hash 1888680842},
+ 770831060
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" nil nil nil]
+   [nil nil "5" nil "6"]
+   [nil "2" "b3" nil "4"]
+   [nil "6" nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" nil "2"]],
+  :hash 770831060},
  770749674
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -24332,6 +29332,26 @@
    [nil "b6" nil nil "7" "1" nil]
    [nil nil nil nil nil nil nil]],
   :hash 770749674},
+ 1659999617
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "7" nil nil]
+   [nil "4" nil "5" "b6"]
+   ["1" nil "2" "b3" nil]
+   ["5" "b6" nil nil "7"]
+   ["2" "b3" nil "4" nil]
+   [nil nil "7" "1" nil]],
+  :hash 1659999617},
+ 303499289
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil nil]
+   [nil "7" "1" "b2" nil "b3"]
+   ["b3" nil "4" nil "5" "b6"]
+   ["b6" nil nil "7" "1" "b2"]],
+  :hash 303499289},
  -1264715283
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -24350,6 +29370,15 @@
    [nil nil nil nil "4" "b5" nil]
    [nil nil nil nil nil nil nil]],
   :hash 495839659},
+ -2102358349
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]
+   [nil "6" "b7" nil "1" "b2" nil]
+   [nil nil "b3" nil "4" nil "5"]],
+  :hash -2102358349},
  -1949119563
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -24370,6 +29399,28 @@
    [nil "1" nil "2" "b3" nil "4"]
    [nil nil nil nil nil nil nil]],
   :hash 636261176},
+ 1641489403
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b6" "6" nil nil]
+   [nil "b3" nil "4" "b5"]
+   [nil "7" "1" nil "2"]
+   ["4" "b5" nil "b6" "6"]
+   ["1" nil "2" "b3" nil]
+   [nil nil "6" nil "7"]],
+  :hash 1641489403},
+ -2073309310
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil nil "2" nil "3"]
+   [nil "6" "b7" nil "1"]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil "6"]],
+  :hash -2073309310},
  -1156385801
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -24408,6 +29459,26 @@
    ["b7" nil "1" "b2" nil nil "3"]
    [nil nil nil nil nil "b6" nil]],
   :hash 108499557},
+ 1842786453
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil "4" "b5" nil]
+   [nil nil "1" "b2" nil]
+   ["b5" nil "b6" nil "b7"]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil nil nil "b5" nil]],
+  :hash 1842786453},
+ -1788099084
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" nil "3" "4" nil]
+   ["4" "b5" nil "b6" nil "b7" nil]
+   ["b7" nil "1" nil "2" nil "3"]
+   [nil nil "4" "b5" nil "b6" nil]],
+  :hash -1788099084},
  956152143
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -24477,6 +29548,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -527564282},
+ 786796347
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil nil nil "b3" nil]
+   [nil nil "b7" nil "1"]
+   ["b3" nil "4" "b5" "5"]
+   ["b7" nil "1" nil nil]
+   ["4" "b5" "5" nil nil]],
+  :hash 786796347},
  -1312392349
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -24510,6 +29592,17 @@
    [nil "b7" nil "1"]
    [nil nil nil nil]],
   :hash 1697429554},
+ -108285753
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil nil nil]
+   [nil "1" "b2" nil "b3"]
+   ["5" nil "6" nil "7"]
+   [nil "b3" nil "4" nil]
+   ["6" nil "7" "1" "b2"]
+   [nil "4" nil "5" nil]],
+  :hash -108285753},
  1837733889
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -24672,6 +29765,24 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1036336618},
+ -1580047585
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" "b5" nil nil nil]
+   [nil "6" "b7" nil "1" "b2" nil]
+   ["b2" nil nil "3" "4" "b5" nil]
+   ["b5" nil nil "6" "b7" nil "1"]],
+  :hash -1580047585},
+ -888880861
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil "1"]
+   [nil nil "2" "b3" nil "4"]
+   ["5" nil "6" "b7" nil "1"]
+   ["1" nil "2" "b3" nil "4"]],
+  :hash -888880861},
  2038338273
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -24708,6 +29819,28 @@
    ["7" "1" "b2" nil "b3" nil]
    [nil "4" nil "5" nil "6"]],
   :hash -174324827},
+ 1804539705
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil "6" nil nil]
+   [nil "b3" nil "4" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" "b3" nil]
+   [nil nil "6" "b7" nil]],
+  :hash 1804539705},
+ 1518489009
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil nil nil nil]
+   [nil nil "b3" "3" nil]
+   [nil "b7" nil "1" "b2"]
+   ["3" nil "b5" nil "b6"]
+   [nil "1" "b2" nil "b3"]
+   ["b5" nil "b6" nil "b7"]],
+  :hash 1518489009},
  -1544012413
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -24717,6 +29850,37 @@
    [nil nil nil nil nil "b3" nil]
    [nil nil nil nil nil nil nil]],
   :hash -1544012413},
+ 370955571
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil]
+   [nil "4" nil "5" nil]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" "b7" nil]
+   ["2" nil "3" "4" nil]
+   [nil nil nil "1" nil]],
+  :hash 370955571},
+ 447253126
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" nil "6"]
+   ["6" nil "7" "1" nil "2"]
+   ["2" nil "3" "4" nil "5"]
+   [nil nil "6" nil "7" "1"]],
+  :hash 447253126},
+ -291933794
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" nil nil nil]
+   [nil "5" nil "6" nil]
+   ["2" "b3" nil "4" nil]
+   ["6" nil "7" "1" nil]
+   [nil "4" nil "5" nil]
+   [nil "1" nil "2" "b3"]],
+  :hash -291933794},
  -1157657259
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -24726,6 +29890,17 @@
    ["1" "b2" nil "b3" "3" nil "b5"]
    [nil nil nil nil nil "b7" nil]],
   :hash -1157657259},
+ 2144652348
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" nil nil nil]
+   [nil nil "5" nil "6"]
+   ["b2" nil "b3" nil "4"]
+   [nil "6" nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" "b2" nil]],
+  :hash 2144652348},
  729603679
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -24757,6 +29932,26 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1246374635},
+ -2107068266
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b5" nil nil "6" "b7" nil nil]
+   [nil "1" "b2" nil nil "3" "4"]
+   ["3" "4" "b5" nil nil "6" "b7"]
+   [nil "b7" nil "1" "b2" nil nil]],
+  :hash -2107068266},
+ 213406683
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil "2"]
+   [nil "5" nil "6"]
+   ["2" nil "3" nil]
+   ["6" nil nil "1"]
+   ["3" nil nil "5"]
+   [nil nil nil "2"]],
+  :hash 213406683},
  901330386
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -24777,6 +29972,15 @@
    [nil nil nil nil "b7" nil]
    [nil nil nil nil nil nil]],
   :hash -595519298},
+ -214236600
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" "b3" "3" nil nil nil]
+   ["b5" "5" nil "6" "b7" nil "1"]
+   [nil "1" nil "2" "b3" "3" "4"]
+   ["3" "4" "b5" "5" nil "6" "b7"]],
+  :hash -214236600},
  -1240305947
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -24806,6 +30010,17 @@
    ["1" "b2" nil "b3" nil "4" nil]
    [nil nil nil nil nil nil "7"]],
   :hash 509927972},
+ -901927972
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil nil nil]
+   [nil "2" nil "3" "4"]
+   ["6" nil "7" "1" nil]
+   ["3" "4" nil "5" nil]
+   ["7" "1" nil "2" nil]
+   [nil "5" nil "6" nil]],
+  :hash -901927972},
  927378618
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -24900,6 +30115,15 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash 1724921653},
+ -773069089
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b6" nil "b7" nil "1" nil]
+   [nil nil nil "b3" "3" nil "b5"]
+   [nil "b6" nil "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" "3" nil "b5"]],
+  :hash -773069089},
  -524288341
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -24911,6 +30135,15 @@
    [nil nil nil nil]
    [nil nil "6" nil]],
   :hash -524288341},
+ 530430474
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil "2" "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]
+   [nil "6" nil "7" "1" nil "2"]
+   [nil nil "b3" nil "4" nil "5"]],
+  :hash 530430474},
  588607019
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -24938,6 +30171,17 @@
    [nil nil nil nil nil "1" "b2"]
    [nil nil nil nil nil nil nil]],
   :hash -1575263022},
+ 35020746
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "3" nil nil]
+   [nil "b7" nil "1" "b2"]
+   ["4" "b5" nil nil "6"]
+   ["1" "b2" nil nil "3"]
+   [nil nil "6" "b7" nil]
+   [nil nil "3" "4" "b5"]],
+  :hash 35020746},
  -961051637
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -24949,6 +30193,17 @@
    ["b2" nil "b3" nil "4"]
    [nil nil nil "7" "1"]],
   :hash -961051637},
+ -198044486
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil "b6" nil "b7" nil]
+   ["b3" "3" nil "b5" nil]
+   ["b7" nil "1" "b2" nil]
+   [nil "b5" nil "b6" nil]
+   ["1" "b2" nil "b3" "3"]],
+  :hash -198044486},
  1171270284
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -24967,6 +30222,15 @@
    [nil nil nil nil nil "5"]
    [nil nil nil nil nil nil]],
   :hash -1954148826},
+ 1141933299
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil "3" "4" nil "5"]
+   ["5" "b6" nil "b7" nil "1"]
+   ["1" nil "2" nil "3" "4"]
+   [nil nil "5" "b6" nil "b7"]],
+  :hash 1141933299},
  -1535673897
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -25025,6 +30289,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 177401243},
+ -1701719580
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" nil nil nil]
+   [nil "6" nil "7" "1"]
+   [nil "4" "b5" nil "b6"]
+   ["7" "1" nil "2" "b3"]
+   ["b5" nil "b6" "6" nil]
+   [nil "2" "b3" nil "4"]],
+  :hash -1701719580},
  1574693804
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -25176,6 +30451,17 @@
    ["1" nil "2" "b3"]
    [nil nil nil nil]],
   :hash -283403162},
+ 1964744640
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b6" nil nil nil]
+   [nil nil "3" "4" "b5"]
+   [nil "7" "1" "b2" nil]
+   ["4" "b5" nil "b6" nil]
+   ["1" "b2" nil nil "3"]
+   [nil "b6" nil nil "7"]],
+  :hash 1964744640},
  927468150
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -25185,6 +30471,17 @@
    ["1" nil "2" nil "3" "4"]
    [nil nil nil nil nil "b7"]],
   :hash 927468150},
+ -1049050253
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil nil nil]
+   [nil "2" nil "3" "4"]
+   [nil "b7" nil "1" nil]
+   ["3" "4" nil "5" "b6"]
+   [nil "1" nil "2" nil]
+   [nil "5" "b6" nil "b7"]],
+  :hash -1049050253},
  272650750
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -25270,6 +30567,17 @@
    [nil nil nil nil "b3" nil "4"]
    [nil nil nil nil nil nil nil]],
   :hash -1141755848},
+ 1589451821
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil]
+   [nil nil "2" nil "3"]
+   [nil "6" nil "7" "1"]
+   [nil "3" "4" nil "5"]
+   [nil "7" "1" nil "2"]
+   [nil nil "5" nil "6"]],
+  :hash 1589451821},
  247520154
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -25386,6 +30694,17 @@
    ["5" nil "6" nil "7" "1" "b2"]
    [nil nil nil nil nil "4" nil]],
   :hash -1664426880},
+ -771140226
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil]
+   [nil nil "6" nil "7"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" nil "6"]
+   [nil nil nil "b3" nil]],
+  :hash -771140226},
  -1340048811
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -25397,6 +30716,26 @@
    [nil "5" "b6" nil nil]
    [nil "2" "b3" nil "4"]],
   :hash -1340048811},
+ -2034390731
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil "b3" "3" nil "b5"]
+   ["b7" nil "1" "b2" nil]
+   [nil "b5" "5" nil "6"]
+   ["1" "b2" nil "b3" "3"]
+   ["5" nil "6" "b7" nil]],
+  :hash -2034390731},
+ -1211412216
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil "1" nil nil]
+   ["b2" nil nil "3" "4" nil "5"]
+   [nil "5" "b6" nil "b7" nil "1"]
+   [nil "1" "b2" nil nil "3" "4"]],
+  :hash -1211412216},
  -430356518
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -25495,6 +30834,15 @@
    [nil nil nil nil nil "b3" nil]
    [nil nil nil nil nil nil nil]],
   :hash 1352921860},
+ -972563711
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil "b3" "3" nil nil nil]
+   ["b5" "5" nil "6" "b7" nil "1"]
+   [nil "1" "b2" nil "b3" "3" nil]
+   ["3" nil "b5" "5" nil "6" "b7"]],
+  :hash -972563711},
  528328357
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -25553,6 +30901,26 @@
    [nil nil "2" "b3" nil "4"]
    [nil nil nil nil nil nil]],
   :hash 125827398},
+ 1929163632
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" nil "3" "4"]
+   [nil nil "5" nil "6" "b7"]
+   ["1" nil "2" nil "3" "4"]
+   ["4" nil "5" nil "6" "b7"]],
+  :hash 1929163632},
+ 1291048901
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil nil nil nil]
+   [nil nil "1" nil "2"]
+   [nil "5" nil "6" "b7"]
+   [nil "2" "b3" nil "4"]
+   [nil "6" "b7" nil "1"]
+   ["b3" nil "4" nil "5"]],
+  :hash 1291048901},
  1980464027
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -25622,6 +30990,15 @@
    ["b7" nil "1" "b2" nil "b3"]
    ["b3" "3" nil "b5" nil "b6"]],
   :hash 1780323552},
+ -1505180088
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil nil nil]
+   [nil "4" nil "5" "b6" nil "b7"]
+   [nil "b7" nil "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" "b6"]],
+  :hash -1505180088},
  924635449
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -25658,6 +31035,15 @@
    ["5" nil "6" "b7" nil "1"]
    [nil nil "2" nil "3" "4"]],
   :hash 2048479967},
+ 684646009
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil nil "b7" nil "1" nil]
+   ["1" nil nil "b3" nil "4" "b5"]
+   ["4" "b5" "5" nil nil "b7" nil]
+   [nil nil "1" nil nil "b3" nil]],
+  :hash 684646009},
  -469817093
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -25676,6 +31062,17 @@
    [nil nil "4" "b5" nil "b6" "6"]
    [nil nil nil nil nil nil nil]],
   :hash 1978628817},
+ 1017458688
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil nil nil nil]
+   [nil nil "b3" "3" nil]
+   ["6" "b7" nil "1" "b2"]
+   ["3" nil "b5" "5" nil]
+   [nil "1" "b2" nil "b3"]
+   ["b5" "5" nil "6" "b7"]],
+  :hash 1017458688},
  283141318
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -25716,6 +31113,17 @@
    ["3" "4" nil "5" "b6" nil "b7"]
    [nil "b7" nil "1" nil "2" nil]],
   :hash 1424804304},
+ 1524746286
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil]
+   [nil nil "2" "b3" nil]
+   ["b6" nil nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" nil "2"]
+   [nil nil "5" "b6" nil]],
+  :hash 1524746286},
  -1610909599
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -25758,6 +31166,17 @@
    [nil "7" "1" nil "2"]
    ["4" nil "5" "b6" nil]],
   :hash -1056932901},
+ 1818875482
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil nil]
+   [nil "5" nil "6" "b7"]
+   [nil "b3" nil "4" nil]
+   ["6" "b7" nil "1" "b2"]
+   [nil "4" nil "5" nil]
+   [nil nil "b2" nil "b3"]],
+  :hash 1818875482},
  -39688880
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -25865,6 +31284,17 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash 2049558152},
+ -1782637422
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil]
+   [nil "b3" nil "4"]
+   ["b7" nil "1" nil]
+   ["4" nil "5" nil]
+   ["1" nil nil "b3"]
+   ["5" nil nil "b7"]],
+  :hash -1782637422},
  137290743
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -25941,6 +31371,17 @@
    [nil nil nil "5" "b6" nil nil]
    [nil nil nil nil nil nil nil]],
   :hash -809278317},
+ 833015700
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil]
+   [nil "b2" nil "b3" nil]
+   [nil "6" "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   [nil nil "5" nil "6"]],
+  :hash 833015700},
  2113991867
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -25959,6 +31400,17 @@
    [nil nil "b7" nil "1" nil nil]
    [nil nil nil nil "4" nil "5"]],
   :hash 1341867494},
+ -802129149
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil nil nil nil]
+   [nil "1" "b2" nil nil]
+   ["5" "b6" nil "b7" nil]
+   [nil nil "3" "4" nil]
+   [nil "b7" nil "1" "b2"]
+   ["3" "4" nil "5" "b6"]],
+  :hash -802129149},
  1472070383
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -25968,6 +31420,17 @@
    ["b7" nil "1" "b2" nil "b3" "3"]
    [nil "3" nil "b5" nil "b6" nil]],
   :hash 1472070383},
+ -173850547
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" "b5" nil "b6" nil]
+   [nil "b2" nil "b3" nil]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" "b5" nil]
+   ["b7" nil "1" "b2" nil]
+   [nil nil nil "b6" nil]],
+  :hash -173850547},
  -1128150518
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -26039,6 +31502,17 @@
    ["b5" nil "b6" nil nil]
    [nil nil nil nil "4"]],
   :hash -1755320878},
+ 860323292
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil nil nil nil]
+   [nil nil "b7" nil "1"]
+   ["3" nil "b5" nil "b6"]
+   [nil "1" "b2" nil "b3"]
+   ["b5" nil "b6" nil "b7"]
+   ["b2" nil "b3" "3" nil]],
+  :hash 860323292},
  -1457317545
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -26097,6 +31571,17 @@
    ["3" "4" "b5" nil "b6" nil]
    [nil "b7" nil "1" nil "2"]],
   :hash 311992878},
+ 918144603
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil]
+   [nil nil "2" nil "3"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   [nil nil "5" "b6" nil]],
+  :hash 918144603},
  -1266828737
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -26151,6 +31636,17 @@
    ["5" "b6" nil "b7" nil "1" "b2"]
    [nil nil nil nil nil "4" nil]],
   :hash -2117896877},
+ 1372466158
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil]
+   [nil "4" nil "5" "b6"]
+   ["1" "b2" nil "b3" nil]
+   ["5" "b6" nil "b7" nil]
+   [nil "b3" nil "4" nil]
+   [nil nil nil "1" "b2"]],
+  :hash 1372466158},
  -851761230
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -26202,6 +31698,15 @@
    [nil nil nil nil nil "1" nil]
    [nil nil nil nil nil nil nil]],
   :hash 2005018785},
+ -1815736186
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil nil nil]
+   [nil "b3" nil "4" nil "5" nil]
+   ["5" nil "6" "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]],
+  :hash -1815736186},
  -1478319807
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -26229,6 +31734,37 @@
    ["4" nil "5" nil nil "b7"]
    ["b7" nil "1" nil nil "b3"]],
   :hash -1061033323},
+ -223483014
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil nil nil]
+   [nil "1" nil nil "b3"]
+   ["5" nil nil "b7" nil]
+   [nil "b3" nil "4" "b5"]
+   [nil "b7" nil "1" nil]
+   [nil "4" "b5" "5" nil]],
+  :hash -223483014},
+ -944556998
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" "5" nil nil nil]
+   [nil nil "b3" nil "4"]
+   [nil "b7" nil "1" nil]
+   [nil "4" "b5" "5" nil]
+   [nil "1" nil nil "b3"]
+   [nil "5" nil nil "b7"]],
+  :hash -944556998},
+ 1252647357
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" "b5" nil nil nil]
+   ["b6" "6" nil "7" "1" nil "2"]
+   [nil "2" "b3" nil "4" "b5" nil]
+   ["b5" nil "b6" "6" nil "7" "1"]],
+  :hash 1252647357},
  -531044780
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -26251,6 +31787,17 @@
    [nil "1" nil "2" "b3"]
    [nil nil nil nil nil]],
   :hash -1794406817},
+ 1961687783
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil nil]
+   [nil nil "1" nil "2"]
+   [nil "5" nil "6" "b7"]
+   [nil "2" "b3" nil "4"]
+   [nil "6" "b7" nil "1"]
+   [nil nil "4" nil "5"]],
+  :hash 1961687783},
  70848399
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -26280,6 +31827,17 @@
    [nil nil "5" nil "6" nil nil]
    [nil nil "1" nil "2" nil "3"]],
   :hash 992047126},
+ -859293383
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil]
+   [nil "b2" nil "b3" nil]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   [nil nil "5" "b6" nil]],
+  :hash -859293383},
  -1390881167
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -26391,6 +31949,15 @@
    ["1" nil "2" "b3" nil "4" "b5"]
    [nil "b5" nil "b6" "6" nil "7"]],
   :hash -94399062},
+ 266600855
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" nil nil nil]
+   ["b2" nil nil "3" "4" "b5" nil]
+   ["b5" nil "b6" nil nil "7" "1"]
+   ["7" "1" "b2" nil nil "3" "4"]],
+  :hash 266600855},
  -1397574630
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -26451,6 +32018,17 @@
    ["b6" nil nil "7" "1" nil "2"]
    [nil nil nil nil "4" nil "5"]],
   :hash 1450826671},
+ -818921225
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil nil nil]
+   [nil "5" nil nil "b7"]
+   ["2" nil nil "4" nil]
+   [nil "b7" nil "1" nil]
+   [nil "4" nil "5" nil]
+   [nil "1" nil "2" nil]],
+  :hash -818921225},
  448396362
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -26527,6 +32105,15 @@
    ["5" nil nil "b7" nil "1"]
    [nil nil nil nil nil "4"]],
   :hash 11021670},
+ 1710385868
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil nil nil]
+   ["5" nil nil "b7" nil "1" nil]
+   ["1" nil nil "b3" nil "4" "b5"]
+   ["4" "b5" "5" nil nil "b7" nil]],
+  :hash 1710385868},
  -726948952
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -26547,6 +32134,15 @@
    ["b2" nil "b3" "3" nil "b5" nil]
    ["b5" "5" nil "6" "b7" nil "1"]],
   :hash 2118430129},
+ 1568993175
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" "b5" nil nil nil]
+   ["b6" nil "b7" nil "1" nil "2"]
+   [nil "2" nil "3" "4" "b5" nil]
+   ["b5" nil "b6" nil "b7" nil "1"]],
+  :hash 1568993175},
  -885199571
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -26587,6 +32183,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -524692773},
+ -347534830
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["7" "1" "b2" nil nil "3" nil]
+   [nil nil nil "5" "b6" nil nil]
+   ["7" "1" "b2" nil nil "3" "4"]
+   ["3" "4" nil "5" "b6" nil nil]],
+  :hash -347534830},
  -803751753
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -26660,6 +32265,24 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 264652155},
+ -203256874
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" "b6" nil nil]
+   [nil "b7" nil "1" "b2" nil nil]
+   [nil nil "3" "4" nil "5" "b6"]
+   [nil "b6" nil "b7" nil "1" "b2"]],
+  :hash -203256874},
+ -1647095220
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil nil nil]
+   ["3" "4" "b5" "5" nil "6" "b7"]
+   ["6" "b7" nil "1" nil "2" "b3"]
+   ["2" "b3" "3" "4" "b5" "5" nil]],
+  :hash -1647095220},
  -823858774
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -26798,6 +32421,15 @@
    ["1" "b2" nil nil "3" "4"]
    [nil nil nil nil nil nil]],
   :hash -1402792049},
+ 573681219
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil "3" "4"]
+   [nil nil "5" "b6" nil "b7"]
+   ["1" "b2" nil nil "3" "4"]
+   ["4" nil "5" "b6" nil "b7"]],
+  :hash 573681219},
  1084395816
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -26878,6 +32510,17 @@
    [nil nil nil nil "4"]
    [nil nil nil nil nil]],
   :hash -68738834},
+ 2122985443
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil nil "5" nil "6"]
+   [nil "2" "b3" nil "4"]
+   [nil "6" "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]],
+  :hash 2122985443},
  -546214956
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -26900,6 +32543,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 1101621374},
+ -1975617553
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil nil nil]
+   [nil "7" "1" nil "2" "b3" nil]
+   ["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil nil "7" "1" nil "2"]],
+  :hash -1975617553},
  -1277750345
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -26927,6 +32579,26 @@
    [nil nil nil nil nil "1"]
    [nil nil nil nil nil nil]],
   :hash -2008241289},
+ -1056264365
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil nil nil]
+   [nil nil "b3" nil "4"]
+   [nil nil "7" "1" "b2"]
+   [nil "4" nil "5" "b6"]
+   ["7" "1" "b2" nil "b3"]
+   [nil "5" "b6" nil nil]],
+  :hash -1056264365},
+ -86466125
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil "6" nil]
+   [nil nil nil "1" "b2" nil "b3"]
+   [nil "4" nil "5" nil "6" "b7"]
+   ["6" "b7" nil "1" "b2" nil "b3"]],
+  :hash -86466125},
  886084323
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -27003,6 +32675,15 @@
    ["b5" nil "b6" nil "b7" nil "1"]
    [nil nil nil nil nil nil nil]],
   :hash -1002014919},
+ 639983087
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil "3" "4" nil]
+   ["4" nil "5" "b6" nil "b7" nil]
+   ["b7" nil "1" "b2" nil nil "3"]
+   [nil nil "4" nil "5" "b6" nil]],
+  :hash 639983087},
  -1541068073
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -27216,6 +32897,15 @@
    ["b3" nil "4" nil "5"]
    ["b7" nil "1" "b2" nil]],
   :hash 668857893},
+ -1712331937
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7" nil nil]
+   ["1" "b2" nil "b3" nil "4"]
+   ["4" nil "5" "b6" nil "b7"]
+   ["b7" nil "1" "b2" nil "b3"]],
+  :hash -1712331937},
  -138125319
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -27225,6 +32915,17 @@
    [nil "5" "b6" nil nil "7" "1"]
    [nil nil nil nil nil nil nil]],
   :hash -138125319},
+ -1153465552
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil]
+   [nil "4" nil "5" nil]
+   ["1" "b2" nil "b3" nil]
+   ["5" nil "6" "b7" nil]
+   [nil "b3" nil "4" nil]
+   [nil nil nil "1" "b2"]],
+  :hash -1153465552},
  647607271
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -27256,6 +32957,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1218694087},
+ 1107643615
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil nil]
+   [nil nil "3" "4" nil]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil nil "3"]
+   [nil "b6" nil "b7" nil]],
+  :hash 1107643615},
  1079443782
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -27276,6 +32988,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1872733464},
+ -1391530044
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil nil]
+   [nil nil "3" "4" nil]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil nil "3"]
+   [nil "b6" nil nil "7"]],
+  :hash -1391530044},
  1729928254
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -27340,6 +33063,26 @@
    ["7" "1" "b2" nil "b3"]
    [nil "5" "b6" nil nil]],
   :hash 128355234},
+ 2085107568
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" nil nil "6" "b7" nil]
+   [nil nil "1" "b2" nil nil "3"]
+   ["4" "b5" nil nil "6" "b7" nil]
+   ["b7" nil "1" "b2" nil nil "3"]],
+  :hash 2085107568},
+ 1228140881
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil nil nil nil]
+   [nil nil nil "7" "1"]
+   ["3" "4" "b5" nil "b6"]
+   ["7" "1" "b2" nil nil]
+   ["b5" nil "b6" nil nil]
+   ["b2" nil nil "3" "4"]],
+  :hash 1228140881},
  2023126494
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -27512,6 +33255,26 @@
    ["4" nil "5" "b6" nil "b7" nil]
    [nil nil nil nil nil nil "3"]],
   :hash -1531268684},
+ -28359492
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil "4"]
+   [nil nil "5" "b6" nil "b7"]
+   ["1" nil "2" "b3" nil "4"]
+   ["4" nil "5" "b6" nil "b7"]],
+  :hash -28359492},
+ 1557166964
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" "3" "4" "b5" nil]
+   [nil nil "1" nil "2"]
+   ["b5" "5" nil "6" "b7"]
+   [nil "2" "b3" "3" "4"]
+   [nil "6" "b7" nil "1"]
+   [nil nil nil "b5" "5"]],
+  :hash 1557166964},
  338177323
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -27561,6 +33324,15 @@
    ["6" "b7" nil "1" "b2"]
    [nil nil "3" "4" "b5"]],
   :hash -770493833},
+ 1580817620
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil "1" "b2" nil]
+   [nil nil nil "3" "4" nil "5"]
+   ["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil nil "3" "4" nil "5"]],
+  :hash 1580817620},
  589109808
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -27715,6 +33487,17 @@
    ["3" "4" nil "5"]
    [nil nil nil nil]],
   :hash 1678956740},
+ 925932911
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil]
+   [nil "b2" nil nil "3"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   [nil nil "5" "b6" nil]],
+  :hash 925932911},
  1610575874
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -27762,6 +33545,15 @@
    ["6" "b7" nil "1" "b2"]
    [nil nil nil nil nil]],
   :hash 8759878},
+ -1599931356
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil "b3" nil "4" nil nil]
+   [nil "5" nil "6" nil "7" "1"]
+   ["7" "1" "b2" nil "b3" nil "4"]
+   [nil "4" nil "5" nil "6" nil]],
+  :hash -1599931356},
  -476701168
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -27780,6 +33572,15 @@
    ["2" nil "3" "4" nil "5"]
    ["5" "b6" nil "b7" nil "1"]],
   :hash -812181840},
+ -1838917808
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil "2" nil nil]
+   ["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil nil "7" "1" nil "2"]
+   [nil "2" "b3" nil "4" nil "5"]],
+  :hash -1838917808},
  236453232
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -27891,6 +33692,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -1061345563},
+ -1191076914
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil]
+   ["5" nil nil "b7"]
+   ["b3" nil "4" "b5"]
+   ["b7" nil "1" nil]
+   ["4" "b5" "5" nil]
+   ["1" nil nil "b3"]],
+  :hash -1191076914},
  41549046
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -27942,6 +33754,15 @@
    ["b7" nil "1" nil "2"]
    [nil nil "5" "b6" nil]],
   :hash 1812626243},
+ -40854055
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b5" "5" nil "6" "b7" nil]
+   [nil nil "1" "b2" nil "b3" "3"]
+   [nil "b5" "5" nil "6" "b7" nil]
+   ["b7" nil "1" "b2" nil "b3" "3"]],
+  :hash -40854055},
  -1868150167
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -27971,6 +33792,17 @@
    [nil nil nil "4" nil "5" nil]
    [nil nil nil nil nil nil nil]],
   :hash -1150616140},
+ -342766653
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil nil]
+   [nil "3" nil "b5" nil]
+   [nil "1" "b2" nil "b3"]
+   ["b5" nil "b6" nil "b7"]
+   ["b2" nil "b3" "3" nil]
+   [nil nil "b7" nil "1"]],
+  :hash -342766653},
  25401143
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -28145,6 +33977,24 @@
    [nil nil nil nil nil nil]
    [nil nil nil nil nil nil]],
   :hash -1155311327},
+ 645179722
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" nil "3" nil nil nil]
+   [nil "5" "b6" nil "b7" nil "1"]
+   [nil "1" nil "2" nil "3" "4"]
+   ["3" "4" nil "5" "b6" nil "b7"]],
+  :hash 645179722},
+ 914757069
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil "1" nil]
+   [nil nil nil "b3" "3" nil "b5"]
+   ["5" nil "6" "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" "3" nil "b5"]],
+  :hash 914757069},
  2139786039
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -28212,6 +34062,17 @@
    [nil nil nil "b6" nil nil "7"]
    [nil nil nil nil nil nil nil]],
   :hash -150733951},
+ -1370260610
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" nil nil]
+   [nil "5" nil "6"]
+   ["2" nil "3" "4"]
+   ["6" nil "7" "1"]
+   ["3" "4" nil "5"]
+   [nil "1" nil "2"]],
+  :hash -1370260610},
  1944607109
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -28284,6 +34145,15 @@
    [nil nil nil nil nil "b3" "3"]
    [nil nil nil nil nil nil nil]],
   :hash -860996574},
+ -1202127359
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" "b7" nil "1" nil nil]
+   ["b2" nil nil "3" "4" "b5" nil]
+   ["b5" nil nil "6" "b7" nil "1"]
+   [nil "1" "b2" nil nil "3" "4"]],
+  :hash -1202127359},
  1183644288
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -28293,6 +34163,15 @@
    [nil nil nil "4" "b5" nil "b6"]
    [nil nil nil nil nil nil nil]],
   :hash 1183644288},
+ -1146004626
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil nil]
+   ["2" nil "3" "4" nil "5"]
+   ["5" nil "6" "b7" nil "1"]
+   ["1" nil "2" nil "3" "4"]],
+  :hash -1146004626},
  351685707
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -28322,6 +34201,17 @@
    ["b3" nil "4" nil "5" nil "6"]
    [nil nil nil "7" "1" nil "2"]],
   :hash -276364692},
+ 1670797083
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil "b5" nil "b6" nil]
+   ["b2" nil "b3" "3" nil]
+   ["b6" nil "b7" nil "1"]
+   ["b3" "3" nil "b5" nil]
+   [nil nil "1" "b2" nil]],
+  :hash 1670797083},
  -1920712203
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -28333,6 +34223,17 @@
    ["2" "b3" nil "4"]
    [nil nil nil "1"]],
   :hash -1920712203},
+ -1026259260
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "3" "4" nil nil]
+   [nil nil "1" "b2" nil]
+   [nil "5" "b6" nil "b7"]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil nil "4" nil "5"]],
+  :hash -1026259260},
  785853877
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -28342,6 +34243,17 @@
    [nil nil "2" nil "3" "4"]
    [nil nil nil nil nil nil]],
   :hash 785853877},
+ 118226658
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil nil "1" nil]
+   [nil nil nil "5" nil]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" nil nil]
+   ["2" nil "3" nil nil]
+   [nil nil nil "1" nil]],
+  :hash 118226658},
  -293204649
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -28364,6 +34276,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -427974019},
+ 468621773
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil nil nil]
+   [nil "1" nil "2" "b3"]
+   ["5" "b6" nil nil "7"]
+   ["2" "b3" nil "4" nil]
+   [nil nil "7" "1" nil]
+   [nil "4" nil "5" "b6"]],
+  :hash 468621773},
  876059807
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -28422,6 +34345,15 @@
    [nil nil nil "2" nil "3" "4"]
    [nil nil nil nil nil nil nil]],
   :hash -645702767},
+ 1576629636
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7" nil nil nil]
+   ["1" nil "2" nil "3" "4" nil]
+   ["4" nil "5" "b6" nil "b7" nil]
+   ["b7" nil "1" nil "2" nil "3"]],
+  :hash 1576629636},
  1440279737
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -28511,6 +34443,15 @@
    ["b2" nil "b3" "3" nil]
    ["b6" nil "b7" nil "1"]],
   :hash -1438981029},
+ 381322338
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil nil nil]
+   [nil "1" nil "2" "b3" nil "4"]
+   [nil "4" nil "5" nil "6" "b7"]
+   ["6" "b7" nil "1" nil "2" "b3"]],
+  :hash 381322338},
  -1929754939
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -28520,6 +34461,15 @@
    ["b2" nil nil "3" "4" "b5" nil]
    [nil nil nil nil nil nil nil]],
   :hash -1929754939},
+ -611573907
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" nil "3" nil nil]
+   [nil nil "5" nil "6" nil nil]
+   [nil nil "1" nil "2" nil "3"]
+   [nil "3" nil nil "5" nil "6"]],
+  :hash -611573907},
  1546722483
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -28558,6 +34508,15 @@
    [nil "1" "b2" nil nil "3" "4"]
    [nil nil nil nil nil nil nil]],
   :hash 86699021},
+ 894007672
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" nil "7" nil nil]
+   ["1" nil "2" "b3" nil "4" nil]
+   ["4" nil "5" nil "6" nil "7"]
+   [nil "7" "1" nil "2" "b3" nil]],
+  :hash 894007672},
  603247817
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -28594,6 +34553,17 @@
    [nil nil nil nil nil "b3"]
    [nil nil nil nil nil nil]],
   :hash -359811963},
+ 111110751
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil nil]
+   [nil "b3" nil "4" nil]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil "b3" nil]
+   [nil "b6" nil nil "7"]],
+  :hash 111110751},
  878885685
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -28714,6 +34684,17 @@
    [nil nil nil nil nil nil]
    ["7" "1" nil "2" "b3" nil]],
   :hash 1098933317},
+ 1046369755
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil nil "3" "4" nil]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" nil "7"]],
+  :hash 1046369755},
  418566400
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -28747,6 +34728,26 @@
    [nil "5" nil "6"]
    [nil nil nil "3"]],
   :hash 468972677},
+ -1380589266
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil nil nil nil]
+   [nil nil nil "3" "4"]
+   ["6" "b7" nil "1" "b2"]
+   ["3" "4" "b5" nil nil]
+   [nil "1" "b2" nil nil]
+   ["b5" nil nil "6" "b7"]],
+  :hash -1380589266},
+ -2096721919
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" "1" nil nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil "5" "b6" nil nil "7" "1"]
+   [nil "1" "b2" nil "b3" nil "4"]],
+  :hash -2096721919},
  1852320920
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -28832,6 +34833,17 @@
    ["b3" nil "4" nil "5" nil "6"]
    [nil nil "b7" nil "1" nil "2"]],
   :hash -1297890214},
+ 363822852
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil nil nil]
+   [nil nil "b5" nil "b6"]
+   ["1" "b2" nil "b3" "3"]
+   [nil "b6" nil "b7" nil]
+   [nil "b3" "3" nil "b5"]
+   [nil "b7" nil "1" "b2"]],
+  :hash 363822852},
  -1330842180
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -28841,6 +34853,17 @@
    [nil nil nil nil "4" nil "5"]
    [nil nil nil nil nil nil nil]],
   :hash -1330842180},
+ -2071338600
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" nil nil nil]
+   [nil "1" "b2" nil nil]
+   ["5" "b6" nil "b7" nil]
+   [nil nil "3" "4" nil]
+   [nil "b7" nil "1" "b2"]
+   [nil "4" nil "5" "b6"]],
+  :hash -2071338600},
  1048572113
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -28852,6 +34875,17 @@
    [nil nil nil "b5" nil]
    [nil nil nil nil nil]],
   :hash 1048572113},
+ -1646364321
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" "5" nil nil nil]
+   [nil nil "b3" "3" nil]
+   ["6" "b7" nil "1" "b2"]
+   ["3" nil "b5" "5" nil]
+   [nil "1" "b2" nil "b3"]
+   [nil "5" nil "6" "b7"]],
+  :hash -1646364321},
  -119676207
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -28872,6 +34906,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1240688389},
+ 1720601999
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "6" "b7" nil nil]
+   [nil "3" "4" "b5" "5"]
+   [nil "1" nil "2" "b3"]
+   ["b5" "5" nil "6" "b7"]
+   [nil "2" "b3" "3" "4"]
+   [nil nil "b7" nil "1"]],
+  :hash 1720601999},
  323422762
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -28903,6 +34948,26 @@
    [nil nil nil nil "3" "4" "b5"]
    [nil nil nil nil nil nil nil]],
   :hash 1700021871},
+ -495185149
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil nil]
+   [nil nil "6" "b7" nil]
+   ["b3" "3" nil "b5" "5"]
+   ["b7" nil "1" "b2" nil]
+   [nil "b5" "5" nil "6"]
+   [nil "b2" nil "b3" "3"]],
+  :hash -495185149},
+ 2016294337
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil nil nil]
+   ["5" "b6" nil nil "7" "1" nil]
+   ["1" nil "2" "b3" nil "4" nil]
+   ["4" nil "5" "b6" nil nil "7"]],
+  :hash 2016294337},
  615493260
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -28999,6 +35064,15 @@
    ["2" nil "3" "4" "b5" nil "b6"]
    [nil "b6" nil "b7" nil "1" nil]],
   :hash 1577057673},
+ 783001540
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" nil "5" "b6" nil]
+   ["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil nil "3" "4" nil "5"]
+   [nil nil "b6" nil "b7" nil "1"]],
+  :hash 783001540},
  1977425687
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -29028,6 +35102,17 @@
    ["1" "b2" nil "b3" nil]
    [nil nil "6" "b7" nil]],
   :hash 1487089780},
+ -575509397
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil nil nil nil]
+   [nil nil "1" "b2" nil]
+   ["b5" nil "b6" nil "b7"]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" "b5" nil]],
+  :hash -575509397},
  -1911346059
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -29180,6 +35265,17 @@
    [nil nil "6" "b7" nil "1" nil]
    ["1" "b2" nil nil "3" "4" "b5"]],
   :hash 562112024},
+ 958633817
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b6" nil nil nil]
+   [nil "b3" "3" nil "b5"]
+   ["b7" nil "1" "b2" nil]
+   [nil "b5" nil "b6" nil]
+   ["1" "b2" nil "b3" "3"]
+   [nil "b6" nil "b7" nil]],
+  :hash 958633817},
  -946538584
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -29211,6 +35307,15 @@
    [nil nil nil "6" "b7"]
    [nil nil nil nil nil]],
   :hash 241923239},
+ -1654451389
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil "3" nil]
+   ["3" "4" nil "5" nil "6" "b7"]
+   ["6" "b7" nil "1" nil "2" nil]
+   [nil nil "3" "4" nil "5" nil]],
+  :hash -1654451389},
  -1493559250
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -29240,6 +35345,28 @@
    [nil nil nil nil]
    ["6" nil "7" "1"]],
   :hash 2023920106},
+ -732283480
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" "3" nil nil nil]
+   [nil nil "1" nil "2"]
+   ["b5" "5" nil "6" "b7"]
+   [nil "2" "b3" "3" "4"]
+   [nil "6" "b7" nil "1"]
+   [nil "3" "4" "b5" "5"]],
+  :hash -732283480},
+ 1599354777
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil "b5" nil "b6" nil]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" "b5" nil]
+   [nil nil "1" "b2" nil]],
+  :hash 1599354777},
  170114129
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -29316,6 +35443,15 @@
    [nil nil nil nil "b2"]
    [nil nil nil nil nil]],
   :hash -1570105660},
+ 1097864932
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" nil "7" "1" nil]
+   ["1" nil "2" nil "3" "4" nil]
+   ["4" nil "5" nil "6" nil "7"]
+   [nil nil "1" nil "2" nil "3"]],
+  :hash 1097864932},
  728065451
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -29425,6 +35561,17 @@
    [nil "b5" "5" nil "6"]
    [nil nil nil "b3" "3"]],
   :hash 1333683507},
+ -645812185
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil "b6" nil nil]
+   [nil "2" nil "3" "4"]
+   [nil "b7" nil "1" nil]
+   ["3" "4" "b5" nil "b6"]
+   [nil "1" nil "2" nil]
+   [nil nil "b6" nil "b7"]],
+  :hash -645812185},
  1602943572
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -29454,6 +35601,17 @@
    [nil nil nil "3" "4"]
    [nil nil nil nil nil]],
   :hash -375177083},
+ 498018128
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil nil "2" "b3" "3"]
+   [nil "6" "b7" nil "1"]
+   ["b3" "3" "4" "b5" "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" "b5" "5" nil "6"]],
+  :hash 498018128},
  -1101799367
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -29516,6 +35674,24 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 29641850},
+ -1796390084
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" nil "7" "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil "5" nil "6" nil "7" "1"]
+   [nil nil "b2" nil "b3" nil "4"]],
+  :hash -1796390084},
+ 1233525801
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil nil "b3" nil "4"]
+   ["4" nil "5" nil nil "b7"]
+   ["b7" nil "1" nil nil "b3"]
+   [nil nil "4" nil "5" nil]],
+  :hash 1233525801},
  1971850132
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -29556,6 +35732,15 @@
    [nil nil nil "b6"]
    [nil nil nil nil]],
   :hash 1759190135},
+ 1097092307
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" "4" nil nil]
+   [nil "5" "b6" nil "b7" nil "1"]
+   [nil "1" "b2" nil nil "3" "4"]
+   [nil "4" nil "5" "b6" nil "b7"]],
+  :hash 1097092307},
  882874520
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -29670,6 +35855,15 @@
    [nil nil nil nil "7" "1"]
    [nil nil nil nil nil nil]],
   :hash 2075733609},
+ 763787072
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" nil "b6" nil nil nil]
+   [nil "7" "1" "b2" nil nil "3"]
+   [nil "3" "4" "b5" nil "b6" nil]
+   ["b6" nil nil "7" "1" "b2" nil]],
+  :hash 763787072},
  -1080778990
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -29690,6 +35884,17 @@
    [nil nil nil "1"]
    [nil nil nil nil]],
   :hash -423060533},
+ 11704346
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil "3" nil nil]
+   [nil nil nil "1" nil]
+   [nil nil "5" nil "6"]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" nil nil]
+   [nil nil "3" nil nil]],
+  :hash 11704346},
  -1222372370
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -29750,6 +35955,17 @@
    [nil nil nil nil "3"]
    [nil nil nil nil nil]],
   :hash 836741452},
+ -110908351
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" nil nil nil]
+   [nil nil "b6" nil nil]
+   [nil nil "3" "4" "b5"]
+   [nil nil "7" "1" "b2"]
+   ["3" "4" "b5" nil "b6"]
+   [nil "1" "b2" nil nil]],
+  :hash -110908351},
  609789535
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -29799,6 +36015,17 @@
    ["3" nil nil "5"]
    [nil nil nil nil]],
   :hash -1002942951},
+ -1523273343
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil nil nil]
+   [nil "1" nil "2" "b3"]
+   ["5" nil "6" "b7" nil]
+   ["2" "b3" nil "4" nil]
+   ["6" "b7" nil "1" nil]
+   [nil "4" nil "5" nil]],
+  :hash -1523273343},
  52070773
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -29808,6 +36035,17 @@
    ["4" nil "5" "b6" nil "b7"]
    [nil nil nil nil "2" "b3"]],
   :hash 52070773},
+ -141729304
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "3" nil nil nil]
+   [nil nil "1" nil "2"]
+   ["b5" nil "b6" nil "b7"]
+   [nil "2" nil "3" "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" "b5" nil]],
+  :hash -141729304},
  -642476545
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -29819,6 +36057,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -642476545},
+ -1478278939
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil nil nil nil]
+   [nil "2" nil "3" "4"]
+   [nil "b7" nil "1" nil]
+   ["3" "4" "b5" nil "b6"]
+   [nil "1" nil "2" nil]
+   ["b5" nil "b6" nil "b7"]],
+  :hash -1478278939},
  850475537
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -29850,6 +36099,15 @@
    ["3" "4" "b5" "5" nil "6" "b7"]
    [nil nil nil nil nil nil nil]],
   :hash 457482848},
+ 998831049
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil "b3"]
+   [nil nil "4" "b5" "5" nil]
+   ["b7" nil "1" nil nil "b3"]
+   ["b3" nil "4" "b5" "5" nil]],
+  :hash 998831049},
  1600728480
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -29861,6 +36119,37 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1600728480},
+ 1369732757
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil "b5" nil nil]
+   [nil "1" "b2" nil "b3"]
+   [nil "b6" nil "b7" nil]
+   [nil "b3" "3" nil "b5"]
+   [nil "b7" nil "1" "b2"]
+   [nil nil "b5" nil "b6"]],
+  :hash 1369732757},
+ -1175373781
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil nil nil nil]
+   [nil nil "7" "1" nil]
+   ["4" "b5" nil "b6" "6"]
+   ["1" nil "2" "b3" nil]
+   [nil "b6" "6" nil "7"]
+   ["2" "b3" nil "4" "b5"]],
+  :hash -1175373781},
+ 823144923
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil "b7" nil]
+   ["b7" nil "1" nil "2" nil "3"]
+   [nil "3" "4" nil "5" "b6" nil]
+   [nil nil "b7" nil "1" nil "2"]],
+  :hash 823144923},
  -1520090723
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -29939,6 +36228,15 @@
    ["6" nil "7" "1" "b2" nil]
    [nil "b3" nil "4" nil "5"]],
   :hash 843968902},
+ -1870912853
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil "3" nil nil]
+   ["4" "b5" nil "b6" nil nil "7"]
+   [nil "7" "1" "b2" nil nil "3"]
+   [nil "3" "4" "b5" nil "b6" nil]],
+  :hash -1870912853},
  -573232618
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -30019,6 +36317,24 @@
    [nil nil nil nil "3" nil "b5"]
    [nil nil nil nil nil nil nil]],
   :hash 1304492643},
+ 1070480691
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil "1" nil nil]
+   ["b2" nil "b3" nil "4" "b5" nil]
+   ["b5" nil "b6" nil "b7" nil "1"]
+   [nil "1" "b2" nil "b3" nil "4"]],
+  :hash 1070480691},
+ -377725545
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" "3" nil "b5" "5" nil]
+   [nil nil "6" "b7" nil "1" "b2"]
+   [nil "b3" "3" nil "b5" "5" nil]
+   ["5" nil "6" "b7" nil "1" "b2"]],
+  :hash -377725545},
  83679877
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -30075,6 +36391,17 @@
    [nil nil nil "7" "1" "b2"]
    [nil nil nil nil nil nil]],
   :hash 487773578},
+ 1441609892
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil nil "2" nil nil]
+   [nil nil "b7" nil "1"]
+   [nil nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil nil]],
+  :hash 1441609892},
  -2046287583
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -30084,6 +36411,17 @@
    [nil "b5" "5" nil "6" "b7" nil]
    [nil nil nil nil nil "b3" "3"]],
   :hash -2046287583},
+ -1276351598
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil]
+   [nil nil "3" "4" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" nil "3"]
+   [nil nil nil "b7" nil]],
+  :hash -1276351598},
  -1306675047
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -30131,6 +36469,17 @@
    ["2" nil "3" "4" nil "5"]
    [nil nil nil nil nil "1"]],
   :hash 1330332419},
+ -734862583
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil nil]
+   [nil "b6" nil nil "7"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   [nil "b2" nil "b3" nil]],
+  :hash -734862583},
  -1717714405
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -30151,6 +36500,26 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -703527879},
+ 1420740156
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" "b3" nil nil]
+   ["6" "b7" nil "1"]
+   ["4" nil "5" nil]
+   ["1" nil "2" "b3"]
+   ["5" nil "6" "b7"]
+   [nil "b3" nil "4"]],
+  :hash 1420740156},
+ 192844669
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" "3" nil "b5" nil nil]
+   [nil "b6" nil "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" "3" nil "b5"]
+   [nil "b5" nil "b6" nil "b7" nil]],
+  :hash 192844669},
  -2046876223
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -30300,6 +36669,15 @@
    [nil nil nil "4" nil]
    [nil nil nil nil nil]],
   :hash -339587773},
+ 445138990
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" nil nil "1"]
+   [nil nil "2" nil "3" nil]
+   ["5" nil "6" nil nil "1"]
+   ["1" nil "2" nil "3" nil]],
+  :hash 445138990},
  -661069925
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -30327,6 +36705,15 @@
    [nil nil nil nil "5" nil]
    [nil nil nil nil nil nil]],
   :hash 801411128},
+ 1951964422
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b5" nil "b6" "6" nil "7" nil]
+   ["7" "1" nil "2" "b3" nil "4"]
+   [nil "4" "b5" nil "b6" "6" nil]
+   [nil nil "7" "1" nil "2" "b3"]],
+  :hash 1951964422},
  648884694
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -30443,6 +36830,17 @@
    [nil nil "b5" nil "b6" "6" nil]
    [nil nil nil nil nil nil nil]],
   :hash 1002193248},
+ -943487890
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil nil nil]
+   [nil "5" nil "6" "b7"]
+   [nil "b3" "3" nil "b5"]
+   ["6" "b7" nil "1" "b2"]
+   ["3" nil "b5" "5" nil]
+   [nil "1" "b2" nil "b3"]],
+  :hash -943487890},
  1791034739
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -30503,6 +36901,35 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 345263663},
+ -1697974387
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil nil nil]
+   ["3" "4" "b5" nil "b6" nil "b7"]
+   [nil "b7" nil "1" nil "2" nil]
+   ["2" nil "3" "4" "b5" nil "b6"]],
+  :hash -1697974387},
+ 1703101831
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" "1" "b2" nil]
+   [nil nil nil "3" "4" nil "5"]
+   ["b6" nil nil "7" "1" "b2" nil]
+   ["b2" nil nil "3" "4" nil "5"]],
+  :hash 1703101831},
+ 2042469575
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" nil]
+   [nil "3" "4" nil "5"]
+   ["7" "1" "b2" nil nil]
+   [nil "5" "b6" nil nil]
+   ["b2" nil nil "3" "4"]
+   [nil nil nil "7" "1"]],
+  :hash 2042469575},
  -1660135399
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -30556,6 +36983,15 @@
    ["b2" nil "b3" nil "4"]
    ["b6" nil "b7" nil "1"]],
   :hash -1177230857},
+ -537836343
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" "b2" nil nil nil]
+   ["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil nil "7" "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]],
+  :hash -537836343},
  -1615094624
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -30630,6 +37066,17 @@
    ["b7" nil "1" "b2" nil nil "3"]
    [nil "3" "4" nil "5" "b6" nil]],
   :hash -52819221},
+ -1900832362
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil nil]
+   [nil "7" "1" "b2" nil]
+   [nil "5" "b6" nil nil]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil nil "7" "1"]
+   [nil nil "4" nil "5"]],
+  :hash -1900832362},
  667776837
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -30650,6 +37097,28 @@
    ["3" "4" nil "5" nil "6"]
    [nil nil nil nil nil nil]],
   :hash 1610718100},
+ 136834265
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil nil]
+   [nil nil "6" "b7" nil]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" nil "6"]
+   [nil "b2" nil "b3" nil]],
+  :hash 136834265},
+ -628391616
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil nil nil]
+   [nil "1" "b2" nil "b3"]
+   ["5" nil "6" "b7" nil]
+   [nil "b3" nil "4" nil]
+   ["6" "b7" nil "1" "b2"]
+   [nil "4" nil "5" nil]],
+  :hash -628391616},
  347590671
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -30668,6 +37137,35 @@
    [nil nil nil "b7" nil "1"]
    [nil nil nil nil nil nil]],
   :hash -1308727037},
+ -424893468
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7" nil "1"]
+   ["1" "b2" nil "b3" nil "4"]
+   ["4" nil "5" "b6" nil "b7"]
+   [nil nil "1" "b2" nil "b3"]],
+  :hash -424893468},
+ -817479066
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" nil "5" "b6"]
+   [nil nil nil "7" "1" "b2"]
+   [nil "3" "4" nil "5" "b6"]
+   ["b6" nil nil "7" "1" "b2"]],
+  :hash -817479066},
+ 910251799
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil "b5" "5" nil]
+   [nil "1" "b2" nil "b3"]
+   ["5" nil "6" "b7" nil]
+   [nil "b3" "3" nil "b5"]
+   ["6" "b7" nil "1" "b2"]
+   [nil nil nil "5" nil]],
+  :hash 910251799},
  13823194
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -30697,6 +37195,17 @@
    ["b2" nil "b3" "3" nil "b5" nil]
    [nil nil "b6" nil "b7" nil "1"]],
   :hash 1230262133},
+ 804395016
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b5" nil nil nil]
+   [nil "b2" nil "b3" "3"]
+   ["b6" nil "b7" nil "1"]
+   ["b3" "3" nil "b5" nil]
+   ["b7" nil "1" "b2" nil]
+   [nil "b5" nil "b6" nil]],
+  :hash 804395016},
  -650633445
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -30735,6 +37244,15 @@
    [nil nil "b7" nil "1" "b2"]
    [nil nil nil nil nil nil]],
   :hash -194679318},
+ -714686435
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" "b7" nil "1" "b2" nil]
+   [nil nil "b3" nil "4" nil "5"]
+   [nil "6" "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]],
+  :hash -714686435},
  1941317027
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -30869,6 +37387,15 @@
    [nil "1" "b2" nil nil]
    [nil nil nil "6" "b7"]],
   :hash 1612952473},
+ 1178021388
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" nil "5" nil nil]
+   ["b6" nil "b7" nil "1" nil "2"]
+   [nil "2" nil "3" "4" nil "5"]
+   [nil "5" "b6" nil "b7" nil "1"]],
+  :hash 1178021388},
  -1518946992
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -30887,6 +37414,15 @@
    ["1" nil "2" nil "3" "4" "b5"]
    [nil nil nil nil nil "b7" nil]],
   :hash -858973235},
+ 1275027712
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil "4"]
+   [nil nil "5" "b6" nil "b7"]
+   ["1" "b2" nil "b3" nil "4"]
+   ["4" nil "5" "b6" nil "b7"]],
+  :hash 1275027712},
  1568867355
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -30934,6 +37470,17 @@
    ["b2" nil "b3" nil "4"]
    [nil nil nil nil nil]],
   :hash -477566733},
+ 1848780546
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil]
+   [nil nil "b5" "5" nil]
+   ["1" "b2" nil "b3" "3"]
+   ["5" nil "6" "b7" nil]
+   [nil "b3" "3" nil "b5"]
+   [nil nil nil "1" "b2"]],
+  :hash 1848780546},
  -1713076256
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -31014,6 +37561,26 @@
    ["2" "b3" nil "4" "b5"]
    ["6" nil "7" "1" nil]],
   :hash -1980371137},
+ -816675426
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil]
+   [nil nil "2" "b3" nil]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   [nil nil "5" "b6" nil]],
+  :hash -816675426},
+ 1051210895
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil "2" nil nil]
+   ["b3" nil "4" "b5" nil "b6" "6"]
+   ["b6" "6" nil "7" "1" nil "2"]
+   [nil "2" "b3" nil "4" "b5" nil]],
+  :hash 1051210895},
  414988199
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -31045,6 +37612,15 @@
    [nil nil nil nil]
    ["6" "b7" nil "1"]],
   :hash -1646733949},
+ -1472848131
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil nil nil]
+   [nil "b3" "3" nil "b5" "5" nil]
+   ["5" nil "6" "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" "3" nil "b5"]],
+  :hash -1472848131},
  -237958323
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -31152,6 +37728,17 @@
    [nil "4" nil "5" nil "6" nil]
    [nil nil nil nil nil nil nil]],
   :hash 49578577},
+ 669978137
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "3" nil nil nil]
+   [nil "7" "1" "b2" nil]
+   [nil "5" "b6" nil nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil nil "7" "1"]
+   [nil "3" "4" nil "5"]],
+  :hash 669978137},
  -1828538466
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -31188,6 +37775,15 @@
    [nil nil nil nil nil nil]
    ["2" "b3" nil "4" "b5" nil]],
   :hash -689102130},
+ -553182983
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil "3" "4" nil]
+   ["4" nil "5" "b6" nil nil "7"]
+   [nil "7" "1" "b2" nil nil "3"]
+   [nil nil "4" nil "5" "b6" nil]],
+  :hash -553182983},
  -208770324
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -31228,6 +37824,15 @@
    [nil nil nil nil "1"]
    [nil nil nil nil nil]],
   :hash 1339704736},
+ 135452453
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil "2" nil]
+   ["2" "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" nil]
+   [nil nil "2" "b3" nil "4" nil]],
+  :hash 135452453},
  798464617
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -31304,6 +37909,15 @@
    [nil "7" "1" nil "2"]
    ["4" "b5" nil "b6" "6"]],
   :hash 1775965369},
+ 2135934265
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["7" "1" nil "2" nil nil]
+   ["3" "4" nil "5" nil "6"]
+   ["6" nil "7" "1" nil "2"]
+   ["2" nil "3" "4" nil "5"]],
+  :hash 2135934265},
  -111046697
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -31362,6 +37976,15 @@
    [nil nil "b7" nil "1"]
    [nil nil nil nil nil]],
   :hash 1876701022},
+ -248643090
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil nil "b7" nil nil nil]
+   ["1" nil nil "b3" nil "4" "b5"]
+   ["4" "b5" "5" nil nil "b7" nil]
+   ["b7" nil "1" nil nil "b3" nil]],
+  :hash -248643090},
  1613491549
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -31371,6 +37994,24 @@
    ["b7" nil "1" "b2" nil nil "3"]
    [nil nil nil nil nil nil nil]],
   :hash 1613491549},
+ -157898051
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" nil "7" "1" nil nil]
+   ["2" "b3" nil "4" nil "5"]
+   ["5" nil "6" nil "7" "1"]
+   ["1" nil "2" "b3" nil "4"]],
+  :hash -157898051},
+ 629263703
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil "3"]
+   ["3" nil nil "5" nil "6"]
+   ["6" nil nil "1" nil "2"]
+   [nil nil "3" nil nil "5"]],
+  :hash 629263703},
  973840220
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -31411,6 +38052,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1152863731},
+ -552878238
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" nil nil "6" "b7" nil]
+   ["b7" nil "1" "b2" nil nil "3"]
+   [nil "3" "4" "b5" nil nil "6"]
+   [nil nil "b7" nil "1" "b2" nil]],
+  :hash -552878238},
  1204348778
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -31652,6 +38302,17 @@
    ["b6" nil nil "7" "1"]
    [nil nil "4" nil "5"]],
   :hash 741832103},
+ 422894895
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil nil]
+   [nil "b6" nil nil "7"]
+   [nil "3" "4" "b5" nil]
+   [nil "7" "1" "b2" nil]
+   ["4" "b5" nil "b6" nil]
+   [nil "b2" nil nil "3"]],
+  :hash 422894895},
  1499737553
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -31683,6 +38344,15 @@
    ["b2" nil nil "3" "4"]
    [nil nil nil nil nil]],
   :hash -332746342},
+ -1046202876
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil "2" "b3" nil]
+   [nil nil "4" "b5" "5" nil "6"]
+   ["b7" nil "1" nil "2" "b3" "3"]
+   ["b3" "3" "4" "b5" "5" nil "6"]],
+  :hash -1046202876},
  1016851925
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -31730,6 +38400,17 @@
    [nil nil nil nil]
    [nil nil "1" nil]],
   :hash 927427672},
+ 1766931707
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil nil "2" nil "3"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" "b6" nil]],
+  :hash 1766931707},
  1603586551
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -31821,6 +38502,28 @@
    ["1" nil "2" "b3" nil "4" nil]
    [nil nil "5" "b6" nil nil "7"]],
   :hash -1585551897},
+ 1492380254
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil "b6" nil "b7" nil]
+   [nil "3" "4" "b5" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" "b5" nil "b6" nil]
+   ["1" nil "2" nil "3"]],
+  :hash 1492380254},
+ 2069652361
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "6" "b7" nil]
+   [nil nil "3" "4" "b5"]
+   ["b7" nil "1" "b2" nil]
+   ["4" "b5" nil nil "6"]
+   ["1" "b2" nil nil "3"]
+   [nil nil nil "b7" nil]],
+  :hash 2069652361},
  679173403
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -31937,6 +38640,15 @@
    ["3" nil nil "5" nil "6"]
    ["6" nil nil "1" nil "2"]],
   :hash -450014862},
+ 994205633
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" "b5" "5"]
+   [nil nil nil "b7" nil "1"]
+   [nil "b3" nil "4" "b5" "5"]
+   ["5" nil nil "b7" nil "1"]],
+  :hash 994205633},
  1145260569
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -31968,6 +38680,15 @@
    ["7" "1" "b2"]
    [nil "5" "b6"]],
   :hash -338868108},
+ 2069896602
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b6" "6" nil "7" "1" nil]
+   ["1" nil "2" "b3" nil "4" "b5"]
+   ["4" "b5" nil "b6" "6" nil "7"]
+   [nil nil "1" nil "2" "b3" nil]],
+  :hash 2069896602},
  1070383923
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -31988,6 +38709,15 @@
    [nil nil nil nil "b3" nil "4"]
    [nil nil nil nil nil nil nil]],
   :hash -1796763650},
+ 316225243
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" nil "3" nil nil]
+   ["4" nil "5" nil "6" "b7" nil]
+   ["b7" nil "1" nil "2" nil "3"]
+   [nil "3" "4" nil "5" nil "6"]],
+  :hash 316225243},
  -1454745758
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -32008,6 +38738,15 @@
    [nil nil nil "b3" nil "4"]
    [nil nil nil nil nil nil]],
   :hash -361255937},
+ 1811787218
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil "b3" nil nil]
+   ["3" nil "b5" nil "b6" nil "b7"]
+   [nil "b7" nil "1" "b2" nil "b3"]
+   [nil "b3" "3" nil "b5" nil "b6"]],
+  :hash 1811787218},
  996834236
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -32126,6 +38865,26 @@
    [nil nil "2" "b3" nil "4"]
    [nil nil nil nil nil nil]],
   :hash 406572000},
+ 42923366
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" "b7" nil nil]
+   [nil "4" nil "5"]
+   ["1" nil "2" "b3"]
+   ["5" nil "6" "b7"]
+   ["2" "b3" nil "4"]
+   [nil "b7" nil "1"]],
+  :hash 42923366},
+ 751237808
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil "b3" nil "4" "b5" nil]
+   ["b5" nil "b6" nil "b7" nil "1"]
+   [nil "1" "b2" nil "b3" nil "4"]
+   [nil nil "b5" nil "b6" nil "b7"]],
+  :hash 751237808},
  -2015563374
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -32182,6 +38941,15 @@
    [nil nil nil nil nil]
    ["5" "b6" nil nil "7"]],
   :hash 1662214875},
+ 2002471705
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7" nil nil]
+   ["1" nil "2" "b3" nil "4"]
+   ["4" nil "5" "b6" nil "b7"]
+   ["b7" nil "1" nil "2" "b3"]],
+  :hash 2002471705},
  -1898578626
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -32202,6 +38970,15 @@
    [nil nil nil nil "5" nil]
    [nil nil nil nil nil nil]],
   :hash 819964934},
+ -1095330787
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil nil "3" nil]
+   ["3" "4" nil "5" "b6" nil "b7"]
+   [nil "b7" nil "1" "b2" nil nil]
+   [nil nil "3" "4" nil "5" "b6"]],
+  :hash -1095330787},
  1150397745
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -32251,6 +39028,15 @@
    ["3" "4" "b5" nil "b6" nil "b7"]
    [nil nil nil nil nil "2" nil]],
   :hash -1491278091},
+ -526887056
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" "b7" nil "1" "b2"]
+   [nil nil nil "3" "4" "b5"]
+   [nil "6" "b7" nil "1" "b2"]
+   ["b2" nil nil "3" "4" "b5"]],
+  :hash -526887056},
  -658694514
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -32269,6 +39055,17 @@
    ["b6" nil "b7" nil "1" nil "2"]
    [nil nil nil nil "4" nil "5"]],
   :hash 497780766},
+ -1645079724
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil "3" nil nil]
+   [nil "b7" nil "1" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" nil "3"]
+   ["5" "b6" nil "b7" nil]
+   [nil nil "3" "4" nil]],
+  :hash -1645079724},
  -182705600
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -32320,6 +39117,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 28646898},
+ -1049704779
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil]
+   [nil "b5" nil "b6" nil]
+   ["b2" nil "b3" "3" nil]
+   ["b6" nil "b7" nil "1"]
+   ["b3" "3" nil "b5" nil]
+   [nil nil nil "b2" nil]],
+  :hash -1049704779},
  -1665453391
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -32338,6 +39146,17 @@
    ["b7" nil "1" nil "2" nil "3"]
    [nil nil nil nil nil nil nil]],
   :hash 1734028304},
+ -819237669
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7" nil]
+   [nil nil "3" "4" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" nil "3"]
+   [nil nil nil "b7" nil]],
+  :hash -819237669},
  -1601507671
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -32445,6 +39264,26 @@
    [nil nil "b7" nil "1" "b2"]
    [nil nil nil nil nil nil]],
   :hash 1442941635},
+ 570487949
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil]
+   ["5" "b6" nil "b7"]
+   ["b3" nil "4" nil]
+   ["b7" nil "1" "b2"]
+   ["4" nil "5" "b6"]
+   [nil "b2" nil "b3"]],
+  :hash 570487949},
+ 36675903
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil "3" "4" nil "5"]
+   [nil nil "6" nil "7" "1"]
+   ["2" nil "3" "4" nil "5"]
+   ["5" nil "6" nil "7" "1"]],
+  :hash 36675903},
  1460514317
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -32463,6 +39302,17 @@
    ["b3" nil "4" nil "5" "b6"]
    [nil nil nil nil nil nil]],
   :hash -51042211},
+ 81794892
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil nil nil]
+   [nil "3" "4" "b5" nil]
+   ["7" "1" "b2" nil nil]
+   ["b5" nil "b6" nil nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil nil "7" "1"]],
+  :hash 81794892},
  321155722
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -32474,6 +39324,26 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 321155722},
+ -671013434
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil nil "4" nil "5"]
+   [nil nil nil "b7" nil "1"]
+   ["2" nil nil "4" nil "5"]
+   ["5" nil nil "b7" nil "1"]],
+  :hash -671013434},
+ 639241509
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil "b3" nil "4" nil]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" "b3" nil]
+   ["5" nil "6" nil "7"]],
+  :hash 639241509},
  -2144959483
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -32483,6 +39353,15 @@
    [nil nil nil "b3" nil "4" nil]
    [nil nil nil nil nil nil nil]],
   :hash -2144959483},
+ 1423720438
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil nil nil]
+   ["2" "b3" "3" "4" "b5" "5" nil]
+   ["5" nil "6" "b7" nil "1" nil]
+   ["1" nil "2" "b3" "3" "4" "b5"]],
+  :hash 1423720438},
  -648488155
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -32492,6 +39371,17 @@
    [nil nil "7" "1" nil "2" "b3"]
    [nil nil nil nil nil nil nil]],
   :hash -648488155},
+ -321442423
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil "b6" nil "b7" nil]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil "b3" nil]],
+  :hash -321442423},
  1976252182
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -32539,6 +39429,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -1436033891},
+ 1345219350
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil]
+   [nil "b3" "3" nil "b5"]
+   ["b7" nil "1" "b2" nil]
+   [nil "b5" "5" nil "6"]
+   ["1" "b2" nil "b3" "3"]
+   [nil nil nil "b7" nil]],
+  :hash 1345219350},
  1687338964
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -32581,6 +39482,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 1470088741},
+ -746569509
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" "b2" nil nil nil]
+   [nil "3" "4" nil "5" "b6" nil]
+   ["b6" nil nil "7" "1" "b2" nil]
+   ["b2" nil nil "3" "4" nil "5"]],
+  :hash -746569509},
  2110769292
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -32704,6 +39614,15 @@
    [nil nil nil nil "5" "b6"]
    [nil nil nil nil nil nil]],
   :hash 1602502860},
+ -260545157
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil "6" "b7" nil]
+   [nil nil "1" nil "2" nil "3"]
+   ["4" nil "5" nil "6" "b7" nil]
+   ["b7" nil "1" nil "2" nil "3"]],
+  :hash -260545157},
  1224827047
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -32715,6 +39634,15 @@
    [nil nil nil "b2" nil]
    [nil nil nil nil nil]],
   :hash 1224827047},
+ -1438107411
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil "b3"]
+   ["b3" "3" nil "b5" nil "b6"]
+   ["b6" nil "b7" nil "1" "b2"]
+   [nil nil "b3" "3" nil "b5"]],
+  :hash -1438107411},
  311310043
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -32733,6 +39661,17 @@
    ["b6" nil "b7" nil "1" "b2"]
    [nil nil nil nil nil nil]],
   :hash 1944554484},
+ -1382687688
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" nil nil nil nil]
+   [nil "5" nil "6" nil]
+   [nil "b3" nil "4" nil]
+   ["6" nil "7" "1" "b2"]
+   [nil "4" nil "5" nil]
+   ["7" "1" "b2" nil "b3"]],
+  :hash -1382687688},
  -340612316
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -32800,6 +39739,35 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 876630865},
+ -1659092164
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil nil nil]
+   ["b3" nil "4" nil "5" nil "6"]
+   [nil "6" "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]],
+  :hash -1659092164},
+ 1921768977
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil "6" nil nil]
+   [nil nil "3" "4" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" nil "3"]
+   [nil nil "6" "b7" nil]],
+  :hash 1921768977},
+ 1820226027
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" "b2" nil "b3" nil]
+   ["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil nil "7" "1" "b2" nil]
+   [nil nil "b3" nil "4" nil "5"]],
+  :hash 1820226027},
  -800541526
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -32820,6 +39788,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -337096330},
+ -1405294831
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "3" "4" nil nil]
+   [nil nil "1" nil "2"]
+   ["b5" nil "b6" nil "b7"]
+   [nil "2" nil "3" "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil nil "4" "b5" nil]],
+  :hash -1405294831},
  1748857603
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -32842,6 +39821,15 @@
    [nil nil nil nil]
    [nil "4" nil "5"]],
   :hash -1167908001},
+ -1418149175
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil nil]
+   ["4" nil "5" "b6" nil "b7"]
+   ["b7" nil "1" "b2" nil "b3"]
+   ["b3" nil "4" nil "5" "b6"]],
+  :hash -1418149175},
  -1007870014
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -32869,6 +39857,15 @@
    [nil nil nil "b7" nil "1"]
    [nil nil nil nil nil nil]],
   :hash 1418664581},
+ 1811718377
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" "b6" nil nil "7" nil]
+   [nil nil nil "2" "b3" nil "4"]
+   [nil "5" "b6" nil nil "7" "1"]
+   ["7" "1" nil "2" "b3" nil "4"]],
+  :hash 1811718377},
  -1154441684
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -32974,6 +39971,26 @@
    ["4" nil "5" nil "6" nil "7"]
    [nil nil nil "b2" nil "b3" nil]],
   :hash -295120778},
+ 773701746
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" "b2" nil nil]
+   [nil nil "3" "4" "b5" nil nil]
+   [nil nil "6" "b7" nil "1" "b2"]
+   [nil "b2" nil nil "3" "4" "b5"]],
+  :hash 773701746},
+ 376648060
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil nil nil nil]
+   [nil "2" "b3" "3" "4"]
+   ["6" "b7" nil "1" nil]
+   ["3" "4" "b5" "5" nil]
+   [nil "1" nil "2" "b3"]
+   ["b5" "5" nil "6" "b7"]],
+  :hash 376648060},
  -87606276
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -33137,6 +40154,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1643037696},
+ 4593149
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" "6" nil "7" "1" nil nil]
+   [nil "2" "b3" nil "4" "b5" nil]
+   ["b5" nil "b6" "6" nil "7" "1"]
+   [nil "1" nil "2" "b3" nil "4"]],
+  :hash 4593149},
  -491824510
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -33155,6 +40181,26 @@
    ["4" nil "5" nil "6" "b7"]
    [nil nil nil nil "2" "b3"]],
   :hash -346617177},
+ -282551875
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil nil]
+   [nil "3" "4" "b5" nil]
+   [nil "1" nil "2" nil]
+   ["b5" nil "b6" nil "b7"]
+   [nil "2" nil "3" "4"]
+   [nil nil "b7" nil "1"]],
+  :hash -282551875},
+ 2003814149
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7" nil "1"]
+   [nil nil "2" nil "3" "4"]
+   ["5" "b6" nil "b7" nil "1"]
+   ["1" nil "2" nil "3" "4"]],
+  :hash 2003814149},
  -1234864378
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -33175,6 +40221,24 @@
    ["3" "4" "b5" nil "b6"]
    [nil nil nil "1" "b2"]],
   :hash 2115407720},
+ 1701517072
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["7" "1" nil "2" "b3" nil nil]
+   [nil "4" nil "5" nil "6" nil]
+   ["6" nil "7" "1" nil "2" "b3"]
+   [nil "b3" nil "4" nil "5" nil]],
+  :hash 1701517072},
+ -561090178
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b6" nil nil "7" "1" nil]
+   ["1" "b2" nil nil "3" "4" "b5"]
+   ["4" "b5" nil "b6" nil nil "7"]
+   [nil nil "1" "b2" nil nil "3"]],
+  :hash -561090178},
  211951243
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -33264,6 +40328,26 @@
    [nil "b7" nil "1" nil]
    [nil nil nil "5" nil]],
   :hash 1847355569},
+ -882586718
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil "6" nil nil]
+   [nil "7" "1" nil "2" nil "3"]
+   [nil "3" "4" nil "5" nil "6"]
+   [nil "6" nil "7" "1" nil "2"]],
+  :hash -882586718},
+ -550253270
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b6" nil "b7" nil]
+   [nil nil "3" "4" "b5"]
+   ["b7" nil "1" nil "2"]
+   ["4" "b5" nil "b6" nil]
+   ["1" nil "2" nil "3"]
+   [nil nil nil "b7" nil]],
+  :hash -550253270},
  -188753802
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -33293,6 +40377,15 @@
    [nil nil nil "b3" nil "4"]
    [nil nil nil nil nil nil]],
   :hash -2040087835},
+ -69853412
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" "b3" nil "4" nil nil]
+   [nil "5" nil "6" nil "7" "1"]
+   ["7" "1" nil "2" "b3" nil "4"]
+   [nil "4" nil "5" nil "6" nil]],
+  :hash -69853412},
  389479759
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -33313,6 +40406,26 @@
    ["b7" nil "1" nil "2" nil "3"]
    [nil nil nil nil "5" "b6" nil]],
   :hash 262847703},
+ 117906160
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b5" nil "b6" nil "b7" nil]
+   ["b7" nil "1" "b2" nil "b3" "3"]
+   ["b3" "3" nil "b5" nil "b6" nil]
+   [nil nil "b7" nil "1" "b2" nil]],
+  :hash 117906160},
+ 616014918
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil]
+   [nil "b3" "3" "4" "b5"]
+   ["b7" nil "1" nil "2"]
+   ["4" "b5" "5" nil "6"]
+   ["1" nil "2" "b3" "3"]
+   [nil nil nil "b7" nil]],
+  :hash 616014918},
  1160643376
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -33322,6 +40435,17 @@
    [nil nil nil nil "4" nil "5"]
    [nil nil nil nil nil nil nil]],
   :hash 1160643376},
+ 1958768936
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil]
+   [nil nil "2" "b3" nil]
+   [nil "6" "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   [nil nil "5" nil "6"]],
+  :hash 1958768936},
  -1345211275
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -33473,6 +40597,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 870272339},
+ -636162995
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" "b5" nil "b6" nil]
+   ["b6" nil "b7" nil "1" nil "2"]
+   [nil "2" nil "3" "4" "b5" nil]
+   [nil nil "b6" nil "b7" nil "1"]],
+  :hash -636162995},
  427209619
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -33484,6 +40617,28 @@
    ["b5" nil "b6" nil "b7"]
    [nil nil nil nil nil]],
   :hash 427209619},
+ 43334348
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" nil nil nil]
+   [nil "6" nil "7" "1"]
+   [nil "4" nil "5" nil]
+   ["7" "1" nil "2" "b3"]
+   [nil "5" nil "6" nil]
+   [nil "2" "b3" nil "4"]],
+  :hash 43334348},
+ -57506711
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" nil]
+   [nil nil "4" nil "5"]
+   ["7" "1" "b2" nil "b3"]
+   [nil "5" "b6" nil nil]
+   ["b2" nil "b3" nil "4"]
+   [nil nil nil "7" "1"]],
+  :hash -57506711},
  720852612
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -33502,6 +40657,17 @@
    ["7" "1" "b2" nil "b3" nil "4"]
    [nil nil nil nil nil nil nil]],
   :hash -301783129},
+ -109347209
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil nil nil]
+   [nil nil nil "3" "4"]
+   [nil "b7" nil "1" "b2"]
+   ["3" "4" nil "5" "b6"]
+   [nil "1" "b2" nil nil]
+   [nil "5" "b6" nil "b7"]],
+  :hash -109347209},
  -1754565342
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -33513,6 +40679,28 @@
    ["1" "b2" nil nil "3"]
    [nil nil nil "b7" nil]],
   :hash -1754565342},
+ 1861430292
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" nil]
+   [nil "1" "b2" nil nil]
+   ["5" "b6" nil "b7" nil]
+   [nil nil "3" "4" nil]
+   [nil "b7" nil "1" "b2"]
+   [nil nil nil "5" "b6"]],
+  :hash 1861430292},
+ -1382029657
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil nil nil]
+   [nil nil "4" nil "5"]
+   ["7" "1" nil "2" "b3"]
+   [nil "5" "b6" nil nil]
+   [nil "2" "b3" nil "4"]
+   ["b6" nil nil "7" "1"]],
+  :hash -1382029657},
  -1908343395
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -33524,6 +40712,17 @@
    [nil nil "3" "4" nil]
    [nil nil nil nil nil]],
   :hash -1908343395},
+ 1064401239
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" nil nil]
+   [nil nil "6" nil "7"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   [nil nil "2" "b3" nil]],
+  :hash 1064401239},
  1673244047
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -33593,6 +40792,15 @@
    [nil "4" nil "5" nil "6" nil]
    ["6" nil "7" "1" nil "2" "b3"]],
   :hash -292641955},
+ -1391099534
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" "3" nil nil]
+   [nil "b5" "5" nil "6" "b7" nil]
+   ["b7" nil "1" "b2" nil "b3" "3"]
+   [nil "3" nil "b5" "5" nil "6"]],
+  :hash -1391099534},
  -304946477
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -33602,6 +40810,15 @@
    ["1" nil nil "b3" nil "4"]
    ["4" nil "5" nil nil "b7"]],
   :hash -304946477},
+ 731858580
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil "2" nil]
+   [nil nil nil "4" nil "5" "b6"]
+   [nil "b7" nil "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" "b6"]],
+  :hash 731858580},
  1429867710
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -33671,6 +40888,17 @@
    ["2" "b3" nil "4" nil]
    [nil nil nil nil nil]],
   :hash -841889719},
+ -2080241316
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil "b5" "5" nil nil]
+   [nil nil "b3" nil "4"]
+   [nil nil "b7" nil "1"]
+   ["b3" nil "4" "b5" "5"]
+   [nil nil "1" nil nil]],
+  :hash -2080241316},
  -323257370
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -33754,6 +40982,15 @@
    ["b5" nil nil "6" "b7" nil "1"]
    [nil nil "b2" nil nil "3" "4"]],
   :hash -1326055826},
+ -1165857864
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b6" nil "b7" nil "1" nil]
+   [nil nil "2" nil "3" "4" "b5"]
+   [nil "b6" nil "b7" nil "1" nil]
+   ["1" nil "2" nil "3" "4" "b5"]],
+  :hash -1165857864},
  -1009268892
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -33850,6 +41087,35 @@
    [nil nil nil "b6" nil nil "7"]
    [nil nil nil nil nil nil nil]],
   :hash -966587517},
+ -1636144035
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil nil]
+   [nil "7" "1" nil "2"]
+   ["b5" nil "b6" "6" nil]
+   [nil "2" "b3" nil "4"]
+   ["b6" "6" nil "7" "1"]
+   [nil nil "4" "b5" nil]],
+  :hash -1636144035},
+ 963014668
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" "b5" nil "b6" nil nil]
+   ["6" nil "7" "1" nil "2" "b3"]
+   ["2" "b3" nil "4" "b5" nil "b6"]
+   [nil "b6" "6" nil "7" "1" nil]],
+  :hash 963014668},
+ -1796444511
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" "b7" nil "1" "b2" nil]
+   ["b2" nil nil "3" "4" "b5" nil]
+   ["b5" nil nil "6" "b7" nil "1"]
+   [nil nil "b2" nil nil "3" "4"]],
+  :hash -1796444511},
  1843417254
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -34021,6 +41287,17 @@
    ["4" "b5" nil "b6" "6" nil "7"]
    [nil nil "1" nil "2" "b3" nil]],
   :hash -1862906641},
+ 2111336706
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7"]
+   [nil "b3" nil "4"]
+   ["b7" nil "1" "b2"]
+   ["4" nil "5" "b6"]
+   ["1" "b2" nil "b3"]
+   [nil nil nil "b7"]],
+  :hash 2111336706},
  849822567
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -34048,6 +41325,26 @@
    ["b7" nil "1" "b2" nil "b3"]
    ["b3" nil "4" nil "5" "b6"]],
   :hash -1853739661},
+ -17652867
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" "4" nil nil]
+   ["b5" nil "b6" nil nil "7" "1"]
+   ["7" "1" "b2" nil nil "3" "4"]
+   [nil "4" "b5" nil "b6" nil nil]],
+  :hash -17652867},
+ 324722253
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" "b2" nil nil]
+   [nil "5" nil "6" nil]
+   [nil "b3" nil "4" nil]
+   ["6" nil "7" "1" "b2"]
+   [nil "4" nil "5" nil]
+   [nil nil "b2" nil "b3"]],
+  :hash 324722253},
  -1498046032
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -34108,6 +41405,15 @@
    ["b7" nil "1" "b2" nil nil]
    [nil "3" "4" nil "5" "b6"]],
   :hash 1740516402},
+ -1586047437
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil "7" nil]
+   ["7" "1" nil "2" "b3" nil "4"]
+   [nil "4" nil "5" nil "6" nil]
+   [nil nil "7" "1" nil "2" "b3"]],
+  :hash -1586047437},
  -1680893566
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -34117,6 +41423,15 @@
    ["b7" nil "1" "b2" nil "b3" nil]
    [nil nil nil nil "5" nil "6"]],
   :hash -1680893566},
+ -1445183455
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" nil nil "5" nil "6"]
+   ["6" nil nil "1" nil "2"]
+   ["2" nil "3" nil nil "5"]
+   [nil nil "6" nil nil "1"]],
+  :hash -1445183455},
  1661565249
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -34135,6 +41450,17 @@
    ["b7" nil "1" "b2" nil "b3"]
    [nil "3" nil "b5" nil "b6"]],
   :hash 1593836897},
+ 1244669805
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "3" nil nil]
+   [nil nil "7" "1" "b2"]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil nil "3"]
+   ["5" "b6" nil nil "7"]
+   [nil nil "3" "4" nil]],
+  :hash 1244669805},
  -1413813537
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -34153,6 +41479,28 @@
    ["b6" nil nil "7" "1" nil "2"]
    [nil nil "b3" nil "4" nil "5"]],
   :hash 1647282477},
+ -2072859544
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil]
+   [nil "1" "b2" nil "b3"]
+   ["5" "b6" nil nil "7"]
+   [nil "b3" nil "4" nil]
+   [nil nil "7" "1" "b2"]
+   [nil nil nil "5" "b6"]],
+  :hash -2072859544},
+ 1870201636
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil nil nil]
+   [nil nil "4" nil "5"]
+   [nil "1" nil "2" "b3"]
+   [nil "5" "b6" nil "b7"]
+   [nil "2" "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]],
+  :hash 1870201636},
  -1725169377
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -34173,6 +41521,17 @@
    [nil nil nil nil "b5"]
    [nil nil nil nil nil]],
   :hash -2036690496},
+ -182026005
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "3" nil nil nil]
+   [nil nil "1" nil "2"]
+   [nil "5" "b6" nil "b7"]
+   [nil "2" nil "3" "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" nil "5"]],
+  :hash -182026005},
  -374970955
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -34315,6 +41674,17 @@
    ["b7" nil "1" nil nil]
    [nil nil nil nil nil]],
   :hash 430823816},
+ -167994583
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil]
+   [nil "4" "b5" nil "b6"]
+   ["1" "b2" nil "b3" nil]
+   [nil "b6" nil "b7" nil]
+   [nil "b3" nil "4" "b5"]
+   [nil nil nil "1" "b2"]],
+  :hash -167994583},
  869865934
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -34355,6 +41725,15 @@
    ["6" "b7" nil "1" "b2" nil "b3"]
    [nil nil "3" nil "b5" "5" nil]],
   :hash -1257061501},
+ 1855623484
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil "4" nil]
+   [nil nil nil "b6" "6" nil "7"]
+   ["1" nil "2" "b3" nil "4" "b5"]
+   ["4" "b5" nil "b6" "6" nil "7"]],
+  :hash 1855623484},
  840488180
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -34384,6 +41763,15 @@
    [nil "b3" nil "4" nil "5" nil]
    [nil nil nil nil nil nil nil]],
   :hash -348288808},
+ -1931392195
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" nil "3" nil nil]
+   ["4" "b5" nil "b6" nil "b7" nil]
+   ["b7" nil "1" nil "2" nil "3"]
+   [nil "3" "4" "b5" nil "b6" nil]],
+  :hash -1931392195},
  -196452350
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -34473,6 +41861,17 @@
    [nil nil nil nil nil nil]
    [nil "b6" nil nil "7" "1"]],
   :hash 1730987625},
+ 1968481291
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil]
+   [nil "2" nil "3" "4"]
+   ["6" nil "7" "1" nil]
+   ["3" "4" nil "5" nil]
+   ["7" "1" nil "2" nil]
+   [nil nil nil "6" nil]],
+  :hash 1968481291},
  -322165704
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -34542,6 +41941,17 @@
    [nil nil "2" nil "3" "4"]
    [nil nil nil nil nil nil]],
   :hash 767542589},
+ 1722387303
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" "b3" "3" "4" nil]
+   [nil "b7" nil "1" nil]
+   ["4" "b5" "5" nil "6"]
+   ["1" nil "2" "b3" "3"]
+   ["5" nil "6" "b7" nil]
+   [nil nil nil "4" "b5"]],
+  :hash 1722387303},
  -1420776590
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -34624,6 +42034,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1511408086},
+ -715491462
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil "3" nil nil]
+   ["4" nil "5" "b6" nil nil "7"]
+   [nil "7" "1" "b2" nil nil "3"]
+   [nil "3" "4" nil "5" "b6" nil]],
+  :hash -715491462},
  495403087
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -34662,6 +42081,15 @@
    ["b7" nil "1" nil "2" "b3" nil]
    ["b3" "3" "4" "b5" "5" nil "6"]],
   :hash -561223806},
+ 1432567860
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil "3" "4" nil "5" nil]
+   ["5" nil "6" nil "7" "1" nil]
+   ["1" nil "2" nil "3" "4" nil]
+   [nil nil "5" nil "6" nil "7"]],
+  :hash 1432567860},
  1496466845
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -34682,6 +42110,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1447490049},
+ 648109005
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" nil nil]
+   ["6" "b7" nil "1" nil "2"]
+   ["2" nil "3" "4" nil "5"]
+   ["5" nil "6" "b7" nil "1"]],
+  :hash 648109005},
  -1061743405
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -34722,6 +42159,35 @@
    [nil "4" nil "5" "b6"]
    [nil nil nil nil nil]],
   :hash -1943395438},
+ 1654120562
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" nil "b5" nil "b6" nil nil]
+   [nil "b7" nil "1" "b2" nil "b3"]
+   [nil "b3" "3" nil "b5" nil "b6"]
+   [nil "b6" nil "b7" nil "1" "b2"]],
+  :hash 1654120562},
+ 947623363
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil nil]
+   [nil "b3" nil "4" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" "b3" nil]
+   [nil "b6" nil "b7" nil]],
+  :hash 947623363},
+ -1892764861
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" "b2" nil "b3"]
+   [nil nil "4" nil "5" "b6"]
+   [nil "7" "1" "b2" nil "b3"]
+   ["b3" nil "4" nil "5" "b6"]],
+  :hash -1892764861},
  -1607557488
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -34751,6 +42217,15 @@
    ["5" "b6" nil "b7" nil "1" "b2"]
    [nil "b2" nil nil "3" "4" nil]],
   :hash -283791647},
+ -1150779387
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" "4" "b5" nil]
+   [nil nil "b6" nil nil "7" "1"]
+   ["b2" nil nil "3" "4" "b5" nil]
+   ["b5" nil "b6" nil nil "7" "1"]],
+  :hash -1150779387},
  -2123977056
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -34802,6 +42277,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1377160345},
+ 1391658214
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b6" nil "b7" nil nil nil]
+   ["1" "b2" nil "b3" nil "4" "b5"]
+   ["4" "b5" nil "b6" nil "b7" nil]
+   ["b7" nil "1" "b2" nil "b3" nil]],
+  :hash 1391658214},
  1357092232
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -34882,6 +42366,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -938883100},
+ 1465973644
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil nil nil]
+   [nil "2" "b3" nil "4"]
+   ["6" nil "7" "1" nil]
+   [nil "4" nil "5" nil]
+   ["7" "1" nil "2" "b3"]
+   [nil "5" nil "6" nil]],
+  :hash 1465973644},
  127087510
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -34911,6 +42406,17 @@
    [nil "1" nil "2" nil "3" nil]
    ["3" "4" nil "5" "b6" nil "b7"]],
   :hash 693514951},
+ -1049104294
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil "6" nil nil]
+   [nil "b3" "3" "4" "b5"]
+   ["b7" nil "1" nil "2"]
+   ["4" "b5" "5" nil "6"]
+   ["1" nil "2" "b3" "3"]
+   [nil nil "6" "b7" nil]],
+  :hash -1049104294},
  1461012832
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -34938,6 +42444,17 @@
    ["b2" nil "b3" nil "4" nil "5"]
    [nil nil "b6" nil nil "7" "1"]],
   :hash -1170587473},
+ -1519655516
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "6" nil nil]
+   [nil nil "3" "4" "b5"]
+   ["b7" nil "1" "b2" nil]
+   ["4" "b5" nil nil "6"]
+   ["1" "b2" nil nil "3"]
+   [nil nil "6" "b7" nil]],
+  :hash -1519655516},
  -1565716828
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -35076,6 +42593,15 @@
    [nil nil "2" nil "3"]
    [nil nil nil nil nil]],
   :hash -2041575086},
+ 100451484
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil "7" "1" nil]
+   [nil nil nil nil "3" "4" nil]
+   ["5" "b6" nil nil "7" "1" "b2"]
+   ["1" "b2" nil nil "3" "4" nil]],
+  :hash 100451484},
  -1809222393
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -35172,6 +42698,15 @@
    ["b3" nil "4" nil "5"]
    [nil nil "b7" nil "1"]],
   :hash -116343323},
+ -864748298
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" nil "b6" "6" nil nil]
+   [nil "7" "1" nil "2" "b3" nil]
+   ["b3" nil "4" "b5" nil "b6" "6"]
+   [nil "6" nil "7" "1" nil "2"]],
+  :hash -864748298},
  -332459730
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -35219,6 +42754,15 @@
    [nil nil "b6" "6" nil "7" "1"]
    [nil nil nil nil nil nil nil]],
   :hash 249002637},
+ -1446005069
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" nil "3" nil nil nil]
+   [nil "5" nil "6" nil nil "1"]
+   [nil "1" nil "2" nil "3" nil]
+   ["3" nil nil "5" nil "6" nil]],
+  :hash -1446005069},
  -180003391
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -35334,6 +42878,24 @@
    ["4" nil "5" "b6"]
    [nil nil "2" "b3"]],
   :hash -1961322034},
+ 286185674
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" "4" "b5" nil]
+   ["b5" nil nil "6" "b7" nil "1"]
+   [nil "1" "b2" nil nil "3" "4"]
+   [nil nil "b5" nil nil "6" "b7"]],
+  :hash 286185674},
+ 2117945573
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" nil "5" nil nil]
+   ["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil nil "3" "4" nil "5"]
+   [nil "5" "b6" nil "b7" nil "1"]],
+  :hash 2117945573},
  193405576
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -35354,6 +42916,17 @@
    ["7" "1" nil "2" "b3"]
    ["b5" nil "b6" "6" nil]],
   :hash -1184071789},
+ 1688958060
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" nil nil nil nil]
+   [nil "5" "b6" nil nil]
+   [nil nil "3" "4" nil]
+   [nil nil "7" "1" "b2"]
+   ["3" "4" nil "5" "b6"]
+   ["7" "1" "b2" nil nil]],
+  :hash 1688958060},
  1875574755
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -35363,6 +42936,15 @@
    ["7" "1" "b2" nil nil "3"]
    ["3" "4" "b5" nil "b6" nil]],
   :hash 1875574755},
+ -480898000
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil "2" "b3"]
+   [nil nil "4" nil "5" "b6"]
+   [nil "7" "1" nil "2" "b3"]
+   ["b3" nil "4" nil "5" "b6"]],
+  :hash -480898000},
  -1782793468
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -35372,6 +42954,17 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash -1782793468},
+ 1767734806
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil nil]
+   [nil nil "5" nil "6"]
+   ["b2" nil "b3" nil "4"]
+   [nil "6" nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil nil "1" "b2" nil]],
+  :hash 1767734806},
  951582564
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -35390,6 +42983,26 @@
    ["b7" nil "1" nil "2" nil "3"]
    [nil nil nil nil nil "b6" nil]],
   :hash -1209548642},
+ 2118622972
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" nil nil "1" nil nil]
+   ["2" nil "3" nil nil "5"]
+   ["5" nil "6" nil nil "1"]
+   ["1" nil "2" nil "3" nil]],
+  :hash 2118622972},
+ 1529100853
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" nil nil nil]
+   [nil "1" nil "2" "b3"]
+   ["5" nil "6" "b7" nil]
+   ["2" "b3" "3" "4" "b5"]
+   ["6" "b7" nil "1" nil]
+   [nil "4" "b5" "5" nil]],
+  :hash 1529100853},
  781081396
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -35399,6 +43012,15 @@
    ["7" "1" nil "2" "b3" nil "4"]
    [nil nil nil "5" nil "6" nil]],
   :hash 781081396},
+ 654367218
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil nil]
+   ["1" nil "2" "b3" nil "4"]
+   ["4" nil "5" nil "6" "b7"]
+   ["b7" nil "1" nil "2" "b3"]],
+  :hash 654367218},
  -1449537239
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -35439,6 +43061,17 @@
    ["6" "b7" nil "1" "b2" nil "b3"]
    [nil "b3" "3" nil "b5" "5" nil]],
   :hash -102397647},
+ 32654564
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil]
+   [nil "b6" nil nil "7"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   [nil nil nil "b3" nil]],
+  :hash 32654564},
  -1808325654
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -35457,6 +43090,15 @@
    [nil nil nil nil nil "7" "1"]
    [nil nil nil nil nil nil nil]],
   :hash -685037335},
+ 341020531
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil "1" nil]
+   ["1" nil "2" nil "3" "4" nil]
+   ["4" nil "5" nil "6" "b7" nil]
+   [nil nil "1" nil "2" nil "3"]],
+  :hash 341020531},
  1456779798
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -35475,6 +43117,17 @@
    [nil "1" "b2" nil nil "3"]
    [nil nil nil nil nil nil]],
   :hash -2049899281},
+ 950205987
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" "b5" "5" nil nil]
+   [nil nil nil "b3" nil]
+   [nil nil "b7" nil "1"]
+   ["b3" nil "4" "b5" "5"]
+   ["b7" nil "1" nil nil]
+   [nil nil "5" nil nil]],
+  :hash 950205987},
  -1606016627
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -35662,6 +43315,15 @@
    ["1" nil "2" nil nil "4"]
    ["4" nil "5" nil nil "b7"]],
   :hash -1113240387},
+ 836936991
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" nil nil nil]
+   [nil "b7" nil "1" nil "2" nil]
+   ["2" nil "3" "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" nil]],
+  :hash 836936991},
  1255655855
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -35711,6 +43373,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1451467845},
+ 552464463
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil nil nil nil]
+   [nil "b7" nil "1" nil]
+   ["4" "b5" nil "b6" nil]
+   ["1" nil "2" nil "3"]
+   [nil "b6" nil "b7" nil]
+   ["2" nil "3" "4" "b5"]],
+  :hash 552464463},
  -2040076372
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -35831,6 +43504,15 @@
    [nil nil "5" nil "6"]
    [nil nil nil nil nil]],
   :hash -62690000},
+ 1084566440
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil "b3" nil]
+   ["b3" nil "4" nil "5" nil nil]
+   [nil nil "b7" nil "1" nil nil]
+   [nil nil "b3" nil "4" nil "5"]],
+  :hash 1084566440},
  -1558630337
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -35898,6 +43580,17 @@
    [nil nil nil nil nil nil]
    [nil nil nil nil nil nil]],
   :hash -1326877952},
+ 2067732996
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil nil nil]
+   [nil "4" nil "5" "b6"]
+   ["1" "b2" nil "b3" nil]
+   ["5" "b6" nil "b7" nil]
+   [nil "b3" nil "4" nil]
+   [nil "b7" nil "1" "b2"]],
+  :hash 2067732996},
  -739166597
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -35927,6 +43620,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -179348780},
+ -1085207694
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil "b3" nil "4" "b5" nil]
+   [nil nil "b6" nil "b7" nil "1"]
+   ["b2" nil "b3" nil "4" "b5" nil]
+   ["b5" nil "b6" nil "b7" nil "1"]],
+  :hash -1085207694},
  523192150
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -36005,6 +43707,17 @@
    [nil nil nil nil "5" "b6"]
    [nil nil nil nil nil nil]],
   :hash -103852650},
+ -2087431068
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil]
+   [nil "b2" nil "b3" nil]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   [nil nil nil "b6" nil]],
+  :hash -2087431068},
  -1443266442
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -36154,6 +43867,17 @@
    [nil nil nil nil]
    ["4" nil "5" nil]],
   :hash -1097529558},
+ 703913383
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil]
+   [nil nil "6" "b7" nil]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" nil "6"]
+   [nil nil nil "b3" nil]],
+  :hash 703913383},
  -544617935
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -36176,6 +43900,17 @@
    ["b6" nil nil "7" "1"]
    ["b3" nil "4" nil "5"]],
   :hash -749914781},
+ -172564921
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil nil nil]
+   [nil "3" "4" "b5" nil]
+   [nil "1" nil "2" nil]
+   ["b5" nil "b6" nil "b7"]
+   [nil "2" nil "3" "4"]
+   ["b6" nil "b7" nil "1"]],
+  :hash -172564921},
  608760349
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -36256,6 +43991,15 @@
    ["b6" nil "b7" nil "1"]
    [nil nil nil nil nil]],
   :hash 449829229},
+ 609623923
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b5" nil "b6" nil "b7" nil nil]
+   [nil "1" "b2" nil "b3" nil "4"]
+   [nil "4" "b5" nil "b6" nil "b7"]
+   [nil "b7" nil "1" "b2" nil "b3"]],
+  :hash 609623923},
  610982026
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -36360,6 +44104,28 @@
    ["1" nil "2"]
    [nil nil "6"]],
   :hash -199767219},
+ -1989084868
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil nil]
+   [nil nil "6" "b7" nil]
+   [nil "3" "4" "b5" nil]
+   ["b7" nil "1" "b2" nil]
+   ["4" "b5" nil nil "6"]
+   [nil "b2" nil nil "3"]],
+  :hash -1989084868},
+ 220524341
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" nil "3" nil]
+   [nil "6" nil nil "1"]
+   ["3" nil nil "5" nil]
+   [nil "1" nil "2" nil]
+   [nil "5" nil "6" nil]
+   [nil nil nil "3" nil]],
+  :hash 220524341},
  -1843435254
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -36387,6 +44153,17 @@
    ["5" nil "6" "b7" nil "1"]
    [nil nil "2" "b3" nil "4"]],
   :hash 129828051},
+ 822585812
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "6" "b7" nil nil]
+   [nil "3" "4" "b5" nil]
+   [nil "1" "b2" nil nil]
+   ["b5" nil nil "6" "b7"]
+   ["b2" nil nil "3" "4"]
+   [nil nil "b7" nil "1"]],
+  :hash 822585812},
  -252216594
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -36396,6 +44173,17 @@
    ["b7" nil "1" nil nil "b3"]
    [nil nil nil nil "5" nil]],
   :hash -252216594},
+ 1497653856
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil "b5" "5" nil "6"]
+   [nil "2" "b3" "3" "4"]
+   [nil "6" "b7" nil "1"]
+   ["b3" "3" "4" "b5" "5"]
+   [nil nil "1" nil "2"]],
+  :hash 1497653856},
  -807999024
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -36624,6 +44412,15 @@
    [nil nil "b2" nil nil]
    [nil nil nil nil nil]],
   :hash -416476128},
+ -365286478
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil nil]
+   ["5" "b6" nil "b7" nil "1"]
+   ["1" nil "2" "b3" nil "4"]
+   ["4" nil "5" "b6" nil "b7"]],
+  :hash -365286478},
  1514584692
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -36635,6 +44432,24 @@
    [nil nil nil "b7" nil]
    [nil nil nil nil nil]],
   :hash 1514584692},
+ 755196484
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" "b7" nil nil]
+   [nil "1" nil "2" nil "3" "4"]
+   ["3" "4" nil "5" nil "6" "b7"]
+   [nil "b7" nil "1" nil "2" nil]],
+  :hash 755196484},
+ 841180124
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" "b6" nil "b7" nil nil]
+   [nil "1" nil "2" nil "3" "4"]
+   ["3" "4" nil "5" "b6" nil "b7"]
+   [nil "b7" nil "1" nil "2" nil]],
+  :hash 841180124},
  -2065448073
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -36673,6 +44488,17 @@
    ["b2" nil "b3" nil "4" nil "5"]
    [nil "5" "b6" nil "b7" nil "1"]],
   :hash 1393513214},
+ -1423894618
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil nil "5" "b6" nil]
+   [nil "2" nil "3" "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" nil "5"]
+   [nil nil "1" nil "2"]],
+  :hash -1423894618},
  -1622279815
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -36702,6 +44528,26 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1725546202},
+ 309255138
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" "3" nil "b5" nil nil]
+   ["5" nil "6" "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" "3" nil "b5"]
+   [nil "b5" "5" nil "6" "b7" nil]],
+  :hash 309255138},
+ 1559471435
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil nil nil]
+   [nil "b7" nil "1"]
+   ["4" nil "5" nil]
+   ["1" nil "2" nil]
+   ["5" nil nil "b7"]
+   ["2" nil nil "4"]],
+  :hash 1559471435},
  -1628796934
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -36724,6 +44570,15 @@
    ["b7" nil "1" "b2" nil]
    [nil nil nil nil nil]],
   :hash 1249496163},
+ -1371232650
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" "b5" nil nil "6" nil]
+   ["6" "b7" nil "1" "b2" nil nil]
+   [nil nil "3" "4" "b5" nil nil]
+   [nil nil "6" "b7" nil "1" "b2"]],
+  :hash -1371232650},
  -1264448901
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -36744,6 +44599,35 @@
    [nil nil "4" nil "5" nil "6"]
    [nil nil nil nil nil nil nil]],
   :hash -436380273},
+ -1449067838
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil nil nil]
+   [nil "3" "4" nil "5"]
+   [nil "1" nil "2" nil]
+   [nil "5" "b6" nil "b7"]
+   [nil "2" nil "3" "4"]
+   ["b6" nil "b7" nil "1"]],
+  :hash -1449067838},
+ 38424384
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil "3" nil nil]
+   ["4" nil "5" "b6" nil "b7" nil]
+   ["b7" nil "1" "b2" nil nil "3"]
+   [nil "3" "4" nil "5" "b6" nil]],
+  :hash 38424384},
+ 59090928
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "3" "4" nil nil nil]
+   [nil "b6" nil nil "7" "1" "b2"]
+   ["1" "b2" nil nil "3" "4" "b5"]
+   ["4" "b5" nil "b6" nil nil "7"]],
+  :hash 59090928},
  79120733
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -36782,6 +44666,26 @@
    [nil "7" "1" "b2" nil]
    ["4" nil "5" nil "6"]],
   :hash -1859830199},
+ -1503760600
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil]
+   [nil nil "6" "b7" nil]
+   ["b3" "3" "4" "b5" "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" "b5" "5" nil "6"]
+   [nil nil nil "b3" "3"]],
+  :hash -1503760600},
+ 744339683
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "b3" nil "4" nil nil]
+   ["b5" "5" nil nil "b7" nil "1"]
+   [nil "1" nil nil "b3" nil "4"]
+   [nil "4" "b5" "5" nil nil "b7"]],
+  :hash 744339683},
  -997896526
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -36824,6 +44728,15 @@
    [nil "b6" "6" nil "7" "1" nil]
    [nil nil nil nil nil nil nil]],
   :hash 1646842157},
+ -1053501900
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" nil "7" nil nil]
+   ["1" "b2" nil "b3" nil "4" nil]
+   ["4" nil "5" nil "6" nil "7"]
+   [nil "7" "1" "b2" nil "b3" nil]],
+  :hash -1053501900},
  -1839315162
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -36900,6 +44813,15 @@
    [nil "b6" nil "b7" nil]
    [nil nil nil nil nil]],
   :hash -177233610},
+ 1796483671
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil "1" nil nil]
+   [nil "2" "b3" nil "4" nil "5"]
+   [nil "5" "b6" nil "b7" nil "1"]
+   [nil "1" nil "2" "b3" nil "4"]],
+  :hash 1796483671},
  -1332191831
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -37083,6 +45005,17 @@
    ["5" "b6" nil nil "7" "1" "b2"]
    [nil nil nil nil nil nil nil]],
   :hash 2135111339},
+ -1647741603
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil "3" "4" nil]
+   [nil nil "7" "1" nil]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" nil "7"]
+   [nil nil nil "4" nil]],
+  :hash -1647741603},
  1128643544
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -37147,6 +45080,17 @@
    ["b7" nil "1" nil "2"]
    [nil nil nil nil "6"]],
   :hash 282645554},
+ -647530885
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil nil nil nil]
+   [nil nil nil "1" nil]
+   [nil nil "5" nil "6"]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" nil nil]
+   ["2" nil "3" nil nil]],
+  :hash -647530885},
  -1494837786
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -37290,6 +45234,17 @@
    ["1" "b2" nil nil "3" "4"]
    [nil "b5" nil nil "6" "b7"]],
   :hash -1410677419},
+ -1896770219
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil "7" nil nil]
+   [nil "4" "b5" nil "b6"]
+   ["1" nil "2" "b3" nil]
+   [nil "b6" "6" nil "7"]
+   ["2" "b3" nil "4" "b5"]
+   [nil nil "7" "1" nil]],
+  :hash -1896770219},
  425029187
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -37299,6 +45254,15 @@
    ["5" "b6" nil "b7" nil "1"]
    [nil "b2" nil "b3" nil "4"]],
   :hash 425029187},
+ -1790260576
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" "b6" nil nil]
+   [nil "b7" nil "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" "b6"]
+   [nil "b6" nil "b7" nil "1" nil]],
+  :hash -1790260576},
  1695918124
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -37386,6 +45350,46 @@
    ["b5" nil "b6" nil "b7" nil "1"]
    [nil nil nil nil nil nil "4"]],
   :hash 403584547},
+ 2067885424
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil nil "5" nil nil]
+   [nil "2" nil nil "4"]
+   [nil nil "b7" nil "1"]
+   [nil nil "4" nil "5"]
+   [nil nil "1" nil "2"]],
+  :hash 2067885424},
+ -1054822300
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" "b2" nil nil]
+   [nil "b3" "3" nil "b5" "5" nil]
+   ["5" nil "6" "b7" nil "1" "b2"]
+   [nil "b2" nil "b3" "3" nil "b5"]],
+  :hash -1054822300},
+ -2052474102
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil "b7" nil]
+   ["b7" nil "1" nil "2" "b3" nil]
+   ["b3" nil "4" nil "5" "b6" nil]
+   [nil nil "b7" nil "1" nil "2"]],
+  :hash -2052474102},
+ -1186925548
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil "b3" nil nil]
+   [nil nil "b7" nil "1"]
+   [nil "4" "b5" nil "b6"]
+   [nil "1" "b2" nil "b3"]
+   ["b5" nil "b6" nil "b7"]
+   [nil nil "b3" nil "4"]],
+  :hash -1186925548},
  222863236
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -37478,6 +45482,15 @@
    ["3" "4" nil "5" "b6"]
    ["7" "1" "b2" nil nil]],
   :hash 43619053},
+ 1300289591
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" "b3" nil "4" nil nil]
+   [nil "5" "b6" nil nil "7" "1"]
+   ["7" "1" nil "2" "b3" nil "4"]
+   [nil "4" nil "5" "b6" nil nil]],
+  :hash 1300289591},
  -2030317894
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -37574,6 +45587,15 @@
    ["b7" nil "1" nil nil "b3"]
    ["b3" nil "4" nil "5" nil]],
   :hash 268697439},
+ -364333209
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil nil]
+   [nil "b7" nil "1" nil "2"]
+   ["2" nil nil "4" nil "5"]
+   ["5" nil nil "b7" nil "1"]],
+  :hash -364333209},
  -319040736
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -37592,6 +45614,17 @@
    [nil nil nil "6" nil "7" "1"]
    [nil nil nil nil nil nil nil]],
   :hash -569981170},
+ 2059882685
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" nil]
+   [nil "1" nil "2" nil]
+   ["5" "b6" nil "b7" nil]
+   ["2" nil "3" "4" nil]
+   [nil "b7" nil "1" nil]
+   [nil nil nil "5" "b6"]],
+  :hash 2059882685},
  1456783399
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -37601,6 +45634,15 @@
    [nil nil nil "1" nil "2"]
    [nil nil nil nil nil nil]],
   :hash 1456783399},
+ -1923904265
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil "b3"]
+   ["b3" nil "4" "b5" nil "b6"]
+   ["b6" nil "b7" nil "1" "b2"]
+   [nil nil "b3" nil "4" "b5"]],
+  :hash -1923904265},
  23681022
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -37673,6 +45715,15 @@
    ["b2" nil "b3" "3" nil "b5" nil]
    ["b5" "5" nil "6" "b7" nil "1"]],
   :hash -1979051835},
+ -1488762422
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil nil nil]
+   ["6" nil "7" "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" nil]
+   ["5" nil "6" nil "7" "1" nil]],
+  :hash -1488762422},
  -417660182
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -37702,6 +45753,15 @@
    [nil "4" nil "5" nil "6" nil]
    [nil nil nil nil nil nil "b3"]],
   :hash 1012484335},
+ -855086154
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" "3" "4" nil nil nil]
+   ["5" nil "6" "b7" nil "1" nil]
+   ["1" nil "2" "b3" "3" "4" "b5"]
+   ["4" "b5" "5" nil "6" "b7" nil]],
+  :hash -855086154},
  -235982914
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -37711,6 +45771,26 @@
    ["7" "1" "b2" nil nil]
    ["3" "4" "b5" nil "b6"]],
   :hash -235982914},
+ 200966054
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil nil nil]
+   [nil "b5" "5" nil "6" "b7" nil]
+   ["b7" nil "1" "b2" nil "b3" "3"]
+   ["b3" "3" nil "b5" "5" nil "6"]],
+  :hash 200966054},
+ -2067175446
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" nil nil nil]
+   [nil nil nil "7" "1"]
+   [nil "4" nil "5" "b6"]
+   ["7" "1" nil "2" "b3"]
+   [nil "5" "b6" nil nil]
+   [nil "2" "b3" nil "4"]],
+  :hash -2067175446},
  1666737628
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -37742,6 +45822,17 @@
    ["6" "b7" nil "1" nil "2" "b3"]
    [nil "b3" nil "4" nil "5" nil]],
   :hash -1188767580},
+ -2099458595
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" "b3" nil nil nil]
+   [nil "b7" nil "1" nil]
+   ["4" "b5" "5" nil "6"]
+   ["1" nil "2" "b3" "3"]
+   ["5" nil "6" "b7" nil]
+   [nil "b3" "3" "4" "b5"]],
+  :hash -2099458595},
  -1431246021
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -37753,6 +45844,15 @@
    ["b7" nil "1" "b2" nil]
    [nil nil nil nil nil]],
   :hash -1431246021},
+ 1159140174
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil "6" nil nil]
+   ["b7" nil "1" nil "2" nil "3"]
+   [nil "3" "4" nil "5" nil "6"]
+   [nil "6" "b7" nil "1" nil "2"]],
+  :hash 1159140174},
  1098609101
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -37960,6 +46060,26 @@
    ["7" "1" nil "2" "b3" nil]
    [nil "4" nil "5" nil "6"]],
   :hash 453871171},
+ -1016055303
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil nil nil]
+   ["2" nil "3" "4" "b5" nil "b6"]
+   [nil "b6" nil "b7" nil "1" nil]
+   ["1" nil "2" nil "3" "4" "b5"]],
+  :hash -1016055303},
+ -1154804344
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" nil]
+   [nil "6" "b7" nil "1"]
+   ["3" "4" "b5" nil nil]
+   [nil "1" "b2" nil nil]
+   ["b5" nil nil "6" "b7"]
+   [nil nil nil "3" "4"]],
+  :hash -1154804344},
  -1658389440
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -38047,6 +46167,17 @@
    [nil "b7" nil "1" nil "2" nil]
    ["2" "b3" nil "4" nil "5" "b6"]],
   :hash -747476047},
+ 1397709164
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil]
+   [nil "b6" nil "b7" nil]
+   ["b3" "3" nil "b5" nil]
+   ["b7" nil "1" "b2" nil]
+   [nil "b5" nil "b6" nil]
+   [nil nil nil "b3" "3"]],
+  :hash 1397709164},
  982105688
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -38056,6 +46187,15 @@
    [nil nil nil "b6" nil "b7"]
    [nil nil nil nil nil nil]],
   :hash 982105688},
+ -375850316
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil "5" nil]
+   ["5" nil "6" nil "7" "1" nil]
+   ["1" nil "2" "b3" nil "4" nil]
+   [nil nil "5" nil "6" nil "7"]],
+  :hash -375850316},
  -660749716
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -38165,6 +46305,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -1179110973},
+ -2097223398
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil nil nil]
+   [nil "1" nil "2" nil "3" "4"]
+   ["3" "4" nil "5" nil "6" "b7"]
+   ["6" "b7" nil "1" nil "2" nil]],
+  :hash -2097223398},
  -2054427697
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -38183,6 +46332,17 @@
    [nil "4" nil "5" "b6" nil nil]
    [nil nil "7" "1" nil "2" "b3"]],
   :hash 1400103384},
+ -520130381
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "6" nil nil nil]
+   [nil "3" "4" nil "5"]
+   ["7" "1" nil "2" nil]
+   [nil "5" nil "6" nil]
+   [nil "2" nil "3" "4"]
+   [nil "6" nil "7" "1"]],
+  :hash -520130381},
  1087346637
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -38259,6 +46419,17 @@
    ["5" "b6" nil "b7" nil "1"]
    [nil nil nil nil nil nil]],
   :hash -396568570},
+ -442531055
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil "b5" nil "b6" nil]
+   [nil "2" nil "3" "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" "b5" nil]
+   [nil nil "1" nil "2"]],
+  :hash -442531055},
  1324301988
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -38290,6 +46461,17 @@
    [nil nil "b6" nil "b7"]
    [nil nil nil nil nil]],
   :hash -1643485777},
+ 1363710839
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil nil nil "4" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil nil]
+   ["1" nil "2" nil nil]
+   ["5" nil nil "b7" nil]],
+  :hash 1363710839},
  9989483
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -38355,6 +46537,15 @@
    [nil "6" "b7" nil "1"]
    ["b3" "3" "4" "b5" "5"]],
   :hash 819403817},
+ -2028916231
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "3" "4" nil "5" nil]
+   [nil nil nil nil "7" "1" "b2"]
+   [nil nil "3" "4" nil "5" "b6"]
+   ["5" "b6" nil nil "7" "1" "b2"]],
+  :hash -2028916231},
  894419984
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -38386,6 +46577,15 @@
    [nil nil "b7" nil "1"]
    [nil nil nil nil nil]],
   :hash 857084958},
+ 1342879877
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil nil nil]
+   [nil "b6" nil "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" "b5"]
+   ["4" "b5" nil "b6" nil "b7" nil]],
+  :hash 1342879877},
  938835736
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -38404,6 +46604,15 @@
    [nil nil "b6" nil nil "7" "1"]
    [nil nil nil nil nil nil nil]],
   :hash -1835729127},
+ -1856327427
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil nil nil]
+   ["2" nil "3" "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" nil]
+   ["1" nil "2" nil "3" "4" nil]],
+  :hash -1856327427},
  1748262015
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -38431,6 +46640,15 @@
    ["b6" nil "b7" nil "1" "b2"]
    ["b2" nil "b3" nil "4" "b5"]],
   :hash -212879569},
+ 1818096848
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" nil "5" "b6" nil]
+   [nil nil "b7" nil "1" nil "2"]
+   [nil "3" "4" nil "5" "b6" nil]
+   ["b6" nil "b7" nil "1" nil "2"]],
+  :hash 1818096848},
  -364585632
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -38547,6 +46765,33 @@
    ["5" "b6" nil nil "7" "1" "b2"]
    [nil "b2" nil "b3" nil "4" nil]],
   :hash 325268993},
+ -1668401216
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" "b2" nil nil]
+   [nil "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" "b2"]
+   [nil "b2" nil "b3" nil "4" nil]],
+  :hash -1668401216},
+ -1764775493
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil "6" nil]
+   [nil nil "7" "1" "b2" nil "b3"]
+   [nil "4" nil "5" nil "6" nil]
+   ["6" nil "7" "1" "b2" nil "b3"]],
+  :hash -1764775493},
+ -1040608776
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil "3" "4" nil "5"]
+   ["5" nil "6" "b7" nil "1"]
+   ["1" nil "2" nil "3" "4"]
+   [nil nil "5" nil "6" "b7"]],
+  :hash -1040608776},
  932281028
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -38567,6 +46812,17 @@
    ["7" "1" nil "2" "b3" nil "4"]
    [nil nil nil nil nil nil nil]],
   :hash 263532743},
+ -719997388
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil nil]
+   [nil "5" nil "6" "b7"]
+   [nil "b3" "3" nil "b5"]
+   ["6" "b7" nil "1" "b2"]
+   ["3" nil "b5" "5" nil]
+   [nil nil "b2" nil "b3"]],
+  :hash -719997388},
  -1083282767
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -38649,6 +46905,17 @@
    [nil "b7" nil "1" nil]
    [nil nil nil "5" "b6"]],
   :hash 923487074},
+ 2086831155
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" nil nil nil]
+   [nil "6" "b7" nil "1"]
+   ["3" "4" "b5" "5" nil]
+   [nil "1" nil "2" "b3"]
+   ["b5" "5" nil "6" "b7"]
+   [nil "2" "b3" "3" "4"]],
+  :hash 2086831155},
  1166812186
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -38658,6 +46925,15 @@
    [nil "3" "4" "b5" nil nil "6"]
    [nil nil nil nil nil nil nil]],
   :hash 1166812186},
+ -1600326353
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil "1" nil]
+   [nil nil nil "b3" nil "4" nil]
+   ["5" nil "6" "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]],
+  :hash -1600326353},
  1722187026
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -38709,6 +46985,17 @@
    ["b6" nil nil "7" "1" nil "2"]
    [nil nil nil nil nil nil nil]],
   :hash 980801774},
+ -1440397957
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" nil nil nil]
+   [nil "5" nil "6"]
+   ["2" nil "3" "4"]
+   ["6" nil "7" "1"]
+   ["3" "4" nil "5"]
+   ["7" "1" nil "2"]],
+  :hash -1440397957},
  -288443922
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -38758,6 +47045,37 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 684711837},
+ 1213413504
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil nil "6" "b7" nil]
+   [nil "3" "4" "b5" nil]
+   ["b7" nil "1" "b2" nil]
+   ["4" "b5" nil nil "6"]
+   ["1" "b2" nil nil "3"]],
+  :hash 1213413504},
+ -580003181
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7" nil "1" nil]
+   [nil nil nil "b3" nil "4" nil]
+   ["5" "b6" nil "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]],
+  :hash -580003181},
+ -1865474915
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil]
+   [nil "b7" nil "1" "b2"]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil "b3" nil]
+   ["5" "b6" nil "b7" nil]
+   [nil nil nil "4" nil]],
+  :hash -1865474915},
  -1751493064
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -38794,6 +47112,17 @@
    ["3" "4" "b5" nil nil "6" "b7"]
    [nil nil nil "1" "b2" nil nil]],
   :hash -1822091418},
+ -1708636055
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil nil nil]
+   [nil "4" nil "5" "b6"]
+   ["1" "b2" nil nil "3"]
+   ["5" "b6" nil "b7" nil]
+   [nil nil "3" "4" nil]
+   [nil "b7" nil "1" "b2"]],
+  :hash -1708636055},
  -1848256957
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -38876,6 +47205,17 @@
    ["3" "4" "b5" nil nil]
    [nil nil nil nil nil]],
   :hash -2116133571},
+ -806023839
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil nil nil]
+   [nil "1" nil "2"]
+   ["5" nil "6" nil]
+   ["2" nil "3" nil]
+   ["6" nil nil "1"]
+   ["3" nil nil "5"]],
+  :hash -806023839},
  -496777637
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -38936,6 +47276,26 @@
    [nil nil nil nil "4" nil "5"]
    [nil nil nil nil nil nil nil]],
   :hash 1976094101},
+ -1334584892
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil nil "6" nil "7"]
+   [nil "3" "4" nil "5"]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" nil "3"]],
+  :hash -1334584892},
+ -15173621
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" "3" "4" nil]
+   ["4" "b5" "5" nil "6" "b7" nil]
+   ["b7" nil "1" nil "2" "b3" "3"]
+   [nil nil "4" "b5" "5" nil "6"]],
+  :hash -15173621},
  441032237
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -38954,6 +47314,15 @@
    [nil nil "1" "b2" nil nil "3"]
    [nil nil nil nil nil nil nil]],
   :hash -1137117700},
+ 418447277
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" nil "3" nil nil nil]
+   [nil "5" nil "6" nil "7" "1"]
+   ["7" "1" nil "2" nil "3" "4"]
+   ["3" "4" nil "5" nil "6" nil]],
+  :hash 418447277},
  -810907502
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -38983,6 +47352,17 @@
    ["b3" "3" "4" "b5" "5" nil "6"]
    [nil nil nil nil "1" nil "2"]],
   :hash 1132633801},
+ 1943897198
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil nil "5"]
+   [nil "1" nil "2"]
+   ["5" nil "6" nil]
+   ["2" nil "3" nil]
+   ["6" nil nil "1"]
+   [nil nil nil "5"]],
+  :hash 1943897198},
  -2101438338
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -39084,6 +47464,15 @@
    ["b3" nil "4" "b5" nil "b6" "6"]
    [nil "6" nil "7" "1" nil "2"]],
   :hash 1783000432},
+ -968913364
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil "3" "4" nil nil nil]
+   ["5" nil "6" nil "7" "1" nil]
+   ["1" nil "2" nil "3" "4" nil]
+   ["4" nil "5" nil "6" nil "7"]],
+  :hash -968913364},
  -931508638
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -39093,6 +47482,17 @@
    [nil nil "3" "4" "b5" "5"]
    [nil nil nil nil nil nil]],
   :hash -931508638},
+ 488584632
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil nil nil]
+   [nil "b7" nil "1" "b2"]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil "b3" nil]
+   ["5" "b6" nil "b7" nil]
+   [nil "b3" nil "4" nil]],
+  :hash 488584632},
  2118313142
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -39102,6 +47502,26 @@
    ["6" nil "7" "1" nil "2"]
    [nil "b3" nil "4" nil "5"]],
   :hash 2118313142},
+ -1414997420
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil "3" "4" nil nil nil]
+   [nil "b6" nil "b7" nil "1" nil]
+   ["1" nil "2" nil "3" "4" "b5"]
+   ["4" "b5" nil "b6" nil "b7" nil]],
+  :hash -1414997420},
+ -1581014369
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "7" "1" nil]
+   [nil "4" nil "5" "b6"]
+   ["1" nil "2" "b3" nil]
+   ["5" "b6" nil nil "7"]
+   ["2" "b3" nil "4" nil]
+   [nil nil nil "1" nil]],
+  :hash -1581014369},
  27537768
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -39298,6 +47718,17 @@
    ["2" nil "3" "4" nil "5"]
    [nil nil nil nil nil "1"]],
   :hash 174523799},
+ -517488004
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil nil "5" "b6" nil]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" "b2" nil]],
+  :hash -517488004},
  1963969517
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -39338,6 +47769,15 @@
    [nil "b6" nil nil "7" "1"]
    [nil nil nil nil nil nil]],
   :hash 2130370625},
+ -1856687990
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil "3" "4" nil nil]
+   ["5" nil "6" "b7" nil "1"]
+   ["1" nil "2" nil "3" "4"]
+   ["4" nil "5" nil "6" "b7"]],
+  :hash -1856687990},
  2082652712
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -39529,6 +47969,15 @@
    [nil "1" "b2" nil "b3" "3" nil]
    [nil nil nil nil "b6" nil "b7"]],
   :hash 1636237158},
+ 734114061
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil nil nil]
+   ["7" "1" nil "2" "b3" nil "4"]
+   [nil "4" nil "5" nil "6" nil]
+   ["6" nil "7" "1" nil "2" "b3"]],
+  :hash 734114061},
  378999310
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -39558,6 +48007,17 @@
    [nil nil nil nil "5" nil "6"]
    [nil nil nil nil nil nil nil]],
   :hash 1566003266},
+ -1181517760
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" nil]
+   [nil "1" "b2" nil nil]
+   ["5" "b6" nil nil "7"]
+   [nil nil "3" "4" nil]
+   [nil nil "7" "1" "b2"]
+   [nil nil nil "5" "b6"]],
+  :hash -1181517760},
  1001689703
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -39596,6 +48056,17 @@
    ["b7" nil "1"]
    ["4" "b5" "5"]],
   :hash 1370079626},
+ 1910534126
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" nil nil nil]
+   [nil "1" nil "2" nil]
+   ["5" nil "6" nil "7"]
+   ["2" nil "3" "4" nil]
+   ["6" nil "7" "1" nil]
+   [nil "4" nil "5" nil]],
+  :hash 1910534126},
  -1766452030
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -39614,6 +48085,15 @@
    ["3" "4" "b5" nil nil "6"]
    [nil nil nil nil "b2" nil]],
   :hash -1717738191},
+ -1954393350
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil nil]
+   ["5" nil nil "b7" nil "1"]
+   ["1" nil nil "b3" nil "4"]
+   ["4" nil "5" nil nil "b7"]],
+  :hash -1954393350},
  29667947
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -39663,6 +48143,15 @@
    ["b3" "3" nil "b5" nil]
    [nil nil nil "b2" nil]],
   :hash -858908502},
+ -1914543077
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "b7" nil "1" nil nil]
+   [nil nil "b3" nil "4" "b5" "5"]
+   ["b5" "5" nil nil "b7" nil "1"]
+   [nil "1" nil nil "b3" nil "4"]],
+  :hash -1914543077},
  -92450423
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -39772,6 +48261,17 @@
    ["5" "b6" nil "b7" nil "1"]
    ["1" nil "2" nil "3" "4"]],
   :hash -1460847183},
+ -1332330476
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" "1" "b2" nil]
+   [nil nil "5" "b6" nil]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil nil nil "b2" nil]],
+  :hash -1332330476},
  1698000683
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -39803,6 +48303,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 105456048},
+ 1111535753
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" nil "6"]
+   [nil nil "7" "1" nil "2"]
+   ["3" "4" nil "5" nil "6"]
+   ["6" nil "7" "1" nil "2"]],
+  :hash 1111535753},
  1771446921
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -39852,6 +48361,17 @@
    [nil nil nil "4" "b5"]
    [nil nil nil nil nil]],
   :hash 1453232843},
+ 1711531598
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil nil nil]
+   ["3" nil nil "5"]
+   ["1" nil "2" nil]
+   ["5" nil "6" nil]
+   ["2" nil "3" nil]
+   ["6" nil nil "1"]],
+  :hash 1711531598},
  1681921738
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -39861,6 +48381,26 @@
    [nil "b7" nil "1" nil "2" nil]
    ["2" nil "3" "4" nil "5" "b6"]],
   :hash 1681921738},
+ -553163236
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" nil "3" "4" nil]
+   ["4" nil "5" nil "6" "b7" nil]
+   ["b7" nil "1" nil "2" nil "3"]
+   [nil nil "4" nil "5" nil "6"]],
+  :hash -553163236},
+ 771610990
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" nil nil]
+   [nil nil "6" "b7" nil]
+   ["b3" "3" "4" "b5" "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" "b5" "5" nil "6"]
+   [nil nil "2" "b3" "3"]],
+  :hash 771610990},
  668702103
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -39950,6 +48490,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1104801386},
+ -1790624413
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil nil "2" nil "3"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" "b5" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" "b5" nil "b6" nil]],
+  :hash -1790624413},
  1964481086
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -40008,6 +48559,24 @@
    [nil nil nil nil nil "b3"]
    [nil nil nil nil nil nil]],
   :hash -1918832461},
+ 1467540260
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil "2" "b3" nil]
+   ["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil "b7" nil "1" nil "2"]
+   [nil nil "b3" nil "4" nil "5"]],
+  :hash 1467540260},
+ -1948179986
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" "b3" nil "4" nil nil]
+   ["b5" nil "b6" "6" nil "7" "1"]
+   ["7" "1" nil "2" "b3" nil "4"]
+   [nil "4" "b5" nil "b6" "6" nil]],
+  :hash -1948179986},
  1925957112
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -40057,6 +48626,15 @@
    [nil nil nil "b7"]
    [nil nil nil nil]],
   :hash -466305961},
+ 1412080898
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" nil nil "5" nil "6"]
+   [nil nil nil "1" nil "2"]
+   ["3" nil nil "5" nil "6"]
+   ["6" nil nil "1" nil "2"]],
+  :hash 1412080898},
  469484568
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -40155,6 +48733,17 @@
    [nil nil nil nil nil "4" "b5"]
    [nil nil nil nil nil nil nil]],
   :hash 36695120},
+ 591064104
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil]
+   [nil "1" nil "2" "b3"]
+   ["5" "b6" nil "b7" nil]
+   ["2" "b3" nil "4" nil]
+   [nil "b7" nil "1" nil]
+   [nil nil nil "5" "b6"]],
+  :hash 591064104},
  1597504534
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -40164,6 +48753,17 @@
    [nil nil nil nil nil "5" nil]
    [nil nil nil nil nil nil nil]],
   :hash 1597504534},
+ 85536690
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil nil nil nil]
+   [nil nil "7" "1" nil]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" nil "7"]
+   ["2" nil "3" "4" nil]],
+  :hash 85536690},
  -683290632
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -40186,6 +48786,15 @@
    ["7" "1" nil "2"]
    [nil "5" nil "6"]],
   :hash -190106326},
+ -1987516944
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil "6" "b7" nil]
+   ["b7" nil "1" nil "2" "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]
+   [nil nil "b7" nil "1" nil "2"]],
+  :hash -1987516944},
  -1398179198
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -40244,6 +48853,17 @@
    ["7" "1" nil "2" "b3"]
    [nil nil nil "5" "b6"]],
   :hash -2109801044},
+ -1652450459
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "b3" nil nil]
+   [nil nil "b7" nil "1"]
+   [nil "4" "b5" "5" nil]
+   [nil "1" nil nil "b3"]
+   ["b5" "5" nil nil "b7"]
+   [nil nil "b3" nil "4"]],
+  :hash -1652450459},
  -2144589752
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -40273,6 +48893,17 @@
    ["b6" nil nil "7" "1" nil "2"]
    [nil nil nil nil "4" nil "5"]],
   :hash -2024382326},
+ 940463494
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" nil nil]
+   [nil nil "6" nil "7"]
+   [nil "3" "4" nil "5"]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   [nil nil "2" nil "3"]],
+  :hash 940463494},
  -1121134904
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -40333,6 +48964,17 @@
    [nil "7" "1" nil "2" "b3"]
    ["b3" nil "4" nil "5" "b6"]],
   :hash 1817418016},
+ -1798038708
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil nil nil]
+   [nil "5" "b6" nil "b7"]
+   ["2" nil "3" "4" nil]
+   [nil "b7" nil "1" nil]
+   ["3" "4" nil "5" "b6"]
+   [nil "1" nil "2" nil]],
+  :hash -1798038708},
  659566946
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -40342,6 +48984,17 @@
    ["7" "1" nil "2" "b3" nil "4"]
    [nil nil nil nil nil nil nil]],
   :hash 659566946},
+ -1411830219
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" nil nil nil]
+   [nil "b5" nil "b6" nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil nil "7" "1"]
+   [nil "3" "4" "b5" nil]
+   [nil "7" "1" "b2" nil]],
+  :hash -1411830219},
  73571384
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -40369,6 +49022,17 @@
    [nil nil nil nil "b3" nil "4"]
    [nil nil nil nil nil nil nil]],
   :hash 1277568477},
+ -16486037
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil]
+   ["1" "b2" nil "b3"]
+   ["b6" nil "b7" nil]
+   ["b3" nil "4" "b5"]
+   ["b7" nil "1" "b2"]
+   ["4" "b5" nil "b6"]],
+  :hash -16486037},
  1563555133
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -40411,6 +49075,17 @@
    [nil nil nil nil nil nil]
    [nil nil nil nil nil nil]],
   :hash 1928660426},
+ -35635809
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil nil]
+   [nil nil "4" nil "5"]
+   [nil "1" nil "2" "b3"]
+   [nil "5" "b6" nil "b7"]
+   [nil "2" "b3" nil "4"]
+   [nil nil "b7" nil "1"]],
+  :hash -35635809},
  -1577028308
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -40518,6 +49193,17 @@
    [nil nil nil nil nil "b2" nil]
    [nil nil nil nil nil nil nil]],
   :hash -1812456292},
+ 1108265754
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil nil nil]
+   [nil nil "b6" nil "b7"]
+   [nil "b3" "3" nil "b5"]
+   [nil "b7" nil "1" "b2"]
+   ["3" nil "b5" nil "b6"]
+   [nil "1" "b2" nil "b3"]],
+  :hash 1108265754},
  -601765370
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -40647,6 +49333,17 @@
    [nil nil "2" nil "3" "4" "b5"]
    [nil nil nil nil nil nil nil]],
   :hash 851898152},
+ 915964954
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil]
+   [nil "1" nil "2" "b3"]
+   ["5" nil "6" "b7" nil]
+   ["2" "b3" nil "4" nil]
+   ["6" "b7" nil "1" nil]
+   [nil nil nil "5" nil]],
+  :hash 915964954},
  88286125
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -40683,6 +49380,26 @@
    [nil "3" "4" nil "5" "b6" nil]
    [nil nil nil nil nil nil "2"]],
   :hash -1689706499},
+ -607038060
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" "b3" nil nil]
+   [nil "b7" nil "1"]
+   ["4" nil "5" "b6"]
+   ["1" nil "2" "b3"]
+   ["5" "b6" nil "b7"]
+   [nil "b3" nil "4"]],
+  :hash -607038060},
+ -598502088
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b5" nil "b6" nil "b7" nil]
+   [nil nil "1" "b2" nil "b3" "3"]
+   [nil "b5" nil "b6" nil "b7" nil]
+   ["b7" nil "1" "b2" nil "b3" "3"]],
+  :hash -598502088},
  525851899
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -40785,6 +49502,24 @@
    ["1" "b2" nil "b3" nil]
    [nil nil nil nil "7"]],
   :hash -1608207705},
+ -863922999
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil "3" "4" "b5" nil nil]
+   [nil "b6" nil "b7" nil "1" nil]
+   ["1" nil "2" nil "3" "4" "b5"]
+   [nil "b5" nil "b6" nil "b7" nil]],
+  :hash -863922999},
+ -1023237938
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" "3" "4" "b5" "5"]
+   [nil nil "6" "b7" nil "1"]
+   ["2" "b3" "3" "4" "b5" "5"]
+   ["5" nil "6" "b7" nil "1"]],
+  :hash -1023237938},
  -1965157351
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -40794,6 +49529,17 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash -1965157351},
+ 1374768036
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" "b6" nil nil]
+   [nil nil "b3" nil "4"]
+   [nil nil "7" "1" "b2"]
+   [nil "4" nil "5" "b6"]
+   ["7" "1" "b2" nil "b3"]
+   [nil nil "b6" nil nil]],
+  :hash 1374768036},
  -159090333
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -40852,6 +49598,17 @@
    [nil nil "2" "b3" nil]
    [nil nil nil nil nil]],
   :hash -847352585},
+ -726125331
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil nil]
+   [nil nil "5" "b6" nil]
+   [nil "2" "b3" nil "4"]
+   ["b6" nil nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil nil "1" nil "2"]],
+  :hash -726125331},
  1115619476
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -40923,6 +49680,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1382156264},
+ -1390379231
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7" nil]
+   [nil "b3" nil "4" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" "b3" nil]
+   [nil nil nil "b7" nil]],
+  :hash -1390379231},
  930336995
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -40961,6 +49729,17 @@
    ["3" nil "b5" nil "b6" nil "b7"]
    [nil "b7" nil "1" "b2" nil "b3"]],
   :hash 1386231528},
+ 2102674644
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil nil]
+   [nil nil "5" "b6" nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil nil "7" "1"]
+   [nil "3" "4" nil "5"]
+   [nil nil "1" "b2" nil]],
+  :hash 2102674644},
  991007609
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -40981,6 +49760,17 @@
    ["1" "b2" nil nil "3" "4"]
    ["4" "b5" nil nil "6" "b7"]],
   :hash -1074850585},
+ -1362578504
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b5" nil nil nil]
+   [nil "b2" nil "b3" "3"]
+   [nil "6" "b7" nil "1"]
+   ["b3" "3" nil "b5" "5"]
+   ["b7" nil "1" "b2" nil]
+   [nil "b5" "5" nil "6"]],
+  :hash -1362578504},
  -1759435557
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -40990,6 +49780,15 @@
    ["1" nil nil "b3" nil "4"]
    [nil nil nil nil nil "b7"]],
   :hash -1759435557},
+ -725084319
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil nil nil]
+   [nil "b3" "3" nil "b5" nil "b6"]
+   [nil "b6" nil "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" "3" nil "b5"]],
+  :hash -725084319},
  1999955186
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -41041,6 +49840,15 @@
    ["b2" nil "b3" nil "4" nil "5"]
    [nil nil nil nil nil "7" "1"]],
   :hash 1276798955},
+ -1764424235
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" nil "3" "4" "b5" nil]
+   ["b5" nil "b6" nil "b7" nil "1"]
+   [nil "1" nil "2" nil "3" "4"]
+   [nil nil "b5" nil "b6" nil "b7"]],
+  :hash -1764424235},
  -1097986682
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -41081,6 +49889,15 @@
    ["5" nil "6" nil "7" "1"]
    [nil nil nil "b3" nil "4"]],
   :hash 871051534},
+ -459204317
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil "2" nil nil]
+   [nil nil "4" nil "5" nil nil]
+   [nil nil "b7" nil "1" nil "2"]
+   [nil "2" nil nil "4" nil "5"]],
+  :hash -459204317},
  1923455032
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -41092,6 +49909,17 @@
    ["b7" nil "1" "b2"]
    [nil nil nil nil]],
   :hash 1923455032},
+ -1561149387
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil nil "5" "b6" nil]
+   [nil "2" "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   [nil nil "1" nil "2"]],
+  :hash -1561149387},
  674148736
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -41101,6 +49929,28 @@
    [nil nil nil nil nil nil]
    [nil nil nil nil nil nil]],
   :hash 674148736},
+ -1074709505
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil "7" "1" nil]
+   [nil "4" "b5" nil "b6"]
+   ["1" nil "2" "b3" nil]
+   [nil "b6" "6" nil "7"]
+   ["2" "b3" nil "4" "b5"]
+   [nil nil nil "1" nil]],
+  :hash -1074709505},
+ -409377575
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" nil nil]
+   ["7" "1" nil "2"]
+   ["5" nil "6" nil]
+   ["2" nil "3" "4"]
+   ["6" nil "7" "1"]
+   [nil "4" nil "5"]],
+  :hash -409377575},
  336073312
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -41193,6 +50043,17 @@
    [nil nil nil nil "b2" nil "b3"]
    [nil nil nil nil nil nil nil]],
   :hash -1838171456},
+ 177704799
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" nil nil]
+   [nil "b6" nil "b7" nil]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   [nil nil "2" "b3" nil]],
+  :hash 177704799},
  -458449936
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -41242,6 +50103,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 1196197849},
+ 413305760
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil "1" "b2" nil]
+   [nil nil "b3" nil "4" nil "5"]
+   ["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]],
+  :hash 413305760},
  1926297995
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -41362,6 +50232,26 @@
    ["4" nil "5" "b6" nil "b7" nil]
    [nil nil nil nil nil nil "3"]],
   :hash -1335364858},
+ 2082490005
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" "b3" nil nil nil]
+   [nil nil "7" "1" nil]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" "b3" nil]
+   ["5" nil "6" nil "7"]
+   [nil "b3" nil "4" nil]],
+  :hash 2082490005},
+ -923671833
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" nil nil "4"]
+   ["4" nil "5" nil nil "b7"]
+   ["b7" nil "1" nil "2" nil]
+   [nil nil "4" nil "5" nil]],
+  :hash -923671833},
  651409264
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -41391,6 +50281,15 @@
    ["5" nil "6" "b7" nil "1" "b2"]
    [nil "b2" nil "b3" nil "4" nil]],
   :hash 1048489684},
+ 1945584345
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" "3" nil "b5" "5" nil nil]
+   [nil "6" "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" "3" nil "b5" "5"]
+   [nil "5" nil "6" "b7" nil "1"]],
+  :hash 1945584345},
  -1620710581
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -41400,6 +50299,17 @@
    [nil nil nil nil "3" "4" "b5"]
    [nil nil nil nil nil nil nil]],
   :hash -1620710581},
+ -1214749922
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil nil nil nil]
+   [nil nil "1" nil "2"]
+   ["b5" "5" nil "6" "b7"]
+   [nil "2" "b3" "3" "4"]
+   [nil "6" "b7" nil "1"]
+   ["b3" "3" "4" "b5" "5"]],
+  :hash -1214749922},
  -70019283
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -41409,6 +50319,15 @@
    [nil nil nil nil nil nil]
    [nil nil nil nil nil nil]],
   :hash -70019283},
+ 1067922618
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" nil "7" "1" nil]
+   ["1" nil "2" "b3" nil "4" nil]
+   ["4" nil "5" nil "6" nil "7"]
+   [nil nil "1" nil "2" "b3" nil]],
+  :hash 1067922618},
  -2015311897
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -41590,6 +50509,15 @@
    [nil nil nil nil "6" nil]
    [nil nil nil nil nil nil]],
   :hash 1927534313},
+ 2064072279
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b5" "5" nil "6" nil nil nil]
+   [nil "1" nil "2" "b3" "3" "4"]
+   ["3" "4" "b5" "5" nil "6" "b7"]
+   ["6" "b7" nil "1" nil "2" "b3"]],
+  :hash 2064072279},
  1587088529
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -41619,6 +50547,48 @@
    ["5" nil nil "b7" nil "1"]
    ["1" nil nil "b3" nil "4"]],
   :hash -69296525},
+ -1261850214
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil]
+   [nil "b6" nil "b7"]
+   ["b3" nil "4" "b5"]
+   ["b7" nil "1" "b2"]
+   ["4" "b5" nil "b6"]
+   [nil "b2" nil "b3"]],
+  :hash -1261850214},
+ 2096760850
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil nil nil]
+   [nil "b7" nil "1"]
+   ["4" nil "5" "b6"]
+   ["1" nil "2" "b3"]
+   ["5" "b6" nil "b7"]
+   ["2" "b3" nil "4"]],
+  :hash 2096760850},
+ -2097389123
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil nil]
+   [nil "1" nil "2"]
+   ["5" nil nil "b7"]
+   ["2" nil nil "4"]
+   [nil "b7" nil "1"]
+   [nil "4" nil "5"]],
+  :hash -2097389123},
+ -1510642839
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil nil]
+   ["5" nil "6" "b7" nil "1"]
+   ["1" nil "2" "b3" nil "4"]
+   ["4" nil "5" nil "6" "b7"]],
+  :hash -1510642839},
  -961191727
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -41677,6 +50647,15 @@
    [nil "4" nil "5" nil]
    [nil nil nil nil "b3"]],
   :hash 1956343943},
+ 585456654
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" "b5" "5" nil "6" nil]
+   ["6" "b7" nil "1" nil "2" "b3"]
+   ["2" "b3" "3" "4" "b5" "5" nil]
+   [nil nil "6" "b7" nil "1" nil]],
+  :hash 585456654},
  -817293769
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -41830,6 +50809,15 @@
    [nil "1" "b2" nil "b3" nil "4"]
    [nil nil nil nil nil nil nil]],
   :hash -435314601},
+ 557391307
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil "3" nil]
+   ["3" "4" "b5" nil "b6" nil "b7"]
+   [nil "b7" nil "1" nil "2" nil]
+   [nil nil "3" "4" "b5" nil "b6"]],
+  :hash 557391307},
  1444500849
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -41868,6 +50856,15 @@
    [nil "6" "b7" nil "1" "b2" nil]
    [nil nil "b3" "3" nil "b5" "5"]],
   :hash -1677729518},
+ -59886517
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil "5"]
+   ["5" nil nil "b7" nil "1"]
+   ["1" nil nil "b3" nil "4"]
+   [nil nil "5" nil nil "b7"]],
+  :hash -59886517},
  -450317698
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -41964,6 +50961,28 @@
    ["b3" nil "4" nil "5" "b6" nil]
    ["b6" nil "b7" nil "1" nil "2"]],
   :hash -1700751031},
+ -1398501372
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil]
+   [nil nil "b6" nil "b7"]
+   ["2" nil "3" "4" "b5"]
+   [nil "b7" nil "1" nil]
+   ["3" "4" "b5" nil "b6"]
+   [nil nil nil "2" nil]],
+  :hash -1398501372},
+ 1140431320
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil nil nil]
+   [nil "5" nil "6" "b7"]
+   ["2" "b3" nil "4" nil]
+   ["6" "b7" nil "1" nil]
+   [nil "4" nil "5" nil]
+   [nil "1" nil "2" "b3"]],
+  :hash 1140431320},
  383456888
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -41993,6 +51012,17 @@
    [nil "5" nil nil "b7" nil "1"]
    [nil nil nil nil nil nil nil]],
   :hash -1795373185},
+ -1122236461
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" "b7" nil nil nil]
+   [nil "4" "b5" nil nil]
+   ["1" "b2" nil nil "3"]
+   [nil nil "6" "b7" nil]
+   [nil nil "3" "4" "b5"]
+   [nil "b7" nil "1" "b2"]],
+  :hash -1122236461},
  94444323
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -42013,6 +51043,15 @@
    ["3" nil "b5" "5" nil "6" nil]
    ["6" "b7" nil "1" "b2" nil "b3"]],
   :hash -1212350738},
+ 1949176343
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil "7" nil nil]
+   ["1" "b2" nil nil "3" "4" nil]
+   ["4" nil "5" "b6" nil nil "7"]
+   [nil "7" "1" "b2" nil nil "3"]],
+  :hash 1949176343},
  -1564646973
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -42033,6 +51072,15 @@
    [nil "b7" nil "1"]
    [nil nil nil nil]],
   :hash 1325087314},
+ -2011120123
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" "b6" nil nil "7" nil]
+   ["7" "1" "b2" nil "b3" nil "4"]
+   [nil "4" nil "5" "b6" nil nil]
+   [nil nil "7" "1" "b2" nil "b3"]],
+  :hash -2011120123},
  -929270125
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -42233,6 +51281,28 @@
    [nil nil nil nil "1" nil "2"]
    [nil nil nil nil nil nil nil]],
   :hash 146824315},
+ -1122414344
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil "b6" nil nil "7"]
+   [nil "3" "4" "b5" nil]
+   [nil "7" "1" "b2" nil]
+   ["4" "b5" nil "b6" nil]
+   ["1" "b2" nil nil "3"]],
+  :hash -1122414344},
+ -1535161553
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil nil nil]
+   [nil nil "4" "b5" nil]
+   [nil "1" "b2" nil "b3"]
+   ["b5" nil "b6" nil "b7"]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]],
+  :hash -1535161553},
  -1336523681
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -42333,6 +51403,17 @@
    ["3" "4" "b5" "5" nil]
    [nil nil nil nil "b3"]],
   :hash -1862399297},
+ 332974570
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil nil nil nil]
+   [nil "4" nil "5" nil]
+   ["1" "b2" nil "b3" nil]
+   ["5" nil "6" nil "7"]
+   [nil "b3" nil "4" nil]
+   ["6" nil "7" "1" "b2"]],
+  :hash 332974570},
  236383969
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -42344,6 +51425,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 236383969},
+ -1989751071
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" nil "7" "1" nil "2"]
+   ["2" nil "3" "4" nil "5"]
+   ["5" nil "6" nil "7" "1"]
+   [nil nil "2" nil "3" "4"]],
+  :hash -1989751071},
  -552444065
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -42498,6 +51588,28 @@
    ["4" nil "5" nil "6" "b7"]
    [nil nil nil nil nil nil]],
   :hash 1796344954},
+ -53895736
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil "b2" nil nil "3"]
+   ["b6" nil nil "7" "1"]
+   [nil "3" "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" "b6" nil]],
+  :hash -53895736},
+ 924693128
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" "b5" nil nil]
+   [nil "1" "b2" nil nil]
+   [nil nil "6" "b7" nil]
+   [nil nil "3" "4" "b5"]
+   ["6" "b7" nil "1" "b2"]
+   [nil nil "b5" nil nil]],
+  :hash 924693128},
  1080697934
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -42536,6 +51648,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 437556826},
+ 1496309410
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil "b3" "3" nil nil nil]
+   ["b5" nil "b6" nil "b7" nil "1"]
+   [nil "1" "b2" nil "b3" "3" nil]
+   ["3" nil "b5" nil "b6" nil "b7"]],
+  :hash 1496309410},
  1065164011
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -42567,6 +51688,17 @@
    [nil nil "5" nil nil]
    [nil nil nil nil nil]],
   :hash -1589630983},
+ 848282007
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil "b7" nil]
+   [nil "b3" nil "4" "b5"]
+   ["b7" nil "1" nil nil]
+   ["4" "b5" "5" nil nil]
+   ["1" nil nil "b3" nil]
+   [nil nil nil "b7" nil]],
+  :hash 848282007},
  -1838439279
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -42620,6 +51752,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 1146221520},
+ -19938785
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil "5"]
+   ["5" nil "6" "b7" nil "1"]
+   ["1" nil "2" "b3" nil "4"]
+   [nil nil "5" nil "6" "b7"]],
+  :hash -19938785},
  309539643
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -42685,6 +51826,17 @@
    [nil nil "b7" nil "1" nil]
    [nil nil nil nil nil nil]],
   :hash -1056173831},
+ 1409350276
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1"]
+   [nil "4" nil "5"]
+   ["1" nil nil "b3"]
+   ["5" nil nil "b7"]
+   [nil "b3" nil "4"]
+   [nil nil nil "1"]],
+  :hash 1409350276},
  201536637
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -42694,6 +51846,37 @@
    [nil nil nil nil "b3" nil "4"]
    [nil nil nil nil nil nil nil]],
   :hash 201536637},
+ -1423765163
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil]
+   ["5" nil nil "b7"]
+   ["b3" nil "4" nil]
+   ["b7" nil "1" nil]
+   ["4" nil "5" nil]
+   ["1" nil nil "b3"]],
+  :hash -1423765163},
+ 1238088331
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil nil nil]
+   [nil "b7" nil "1" "b2"]
+   [nil "b5" nil "b6" nil]
+   ["1" "b2" nil "b3" "3"]
+   [nil "b6" nil "b7" nil]
+   [nil "b3" "3" nil "b5"]],
+  :hash 1238088331},
+ -138148504
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" "3" nil "b5" "5" nil]
+   ["5" nil "6" "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" "3" nil "b5"]
+   [nil nil "5" nil "6" "b7" nil]],
+  :hash -138148504},
  976134688
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -42703,6 +51886,15 @@
    [nil nil "b7" nil "1" nil "2"]
    [nil nil nil nil nil nil nil]],
   :hash 976134688},
+ -1419455746
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil nil nil]
+   [nil "b6" "6" nil "7" "1" nil]
+   ["1" nil "2" "b3" nil "4" "b5"]
+   ["4" "b5" nil "b6" "6" nil "7"]],
+  :hash -1419455746},
  -491803222
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -42774,6 +51966,15 @@
    ["b7" nil "1" "b2" nil "b3"]
    [nil nil nil nil "5" "b6"]],
   :hash -1598051789},
+ 100589389
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil "b3" nil "4" nil nil]
+   ["b5" nil "b6" nil "b7" nil "1"]
+   [nil "1" "b2" nil "b3" nil "4"]
+   [nil "4" "b5" nil "b6" nil "b7"]],
+  :hash 100589389},
  1091507963
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -42796,6 +51997,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -633261602},
+ -1377084672
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" nil "3" nil]
+   [nil nil "b7" nil "1"]
+   ["3" "4" nil "5" "b6"]
+   [nil "1" nil "2" nil]
+   [nil "5" "b6" nil "b7"]
+   [nil nil nil "3" "4"]],
+  :hash -1377084672},
  -1279265197
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -42827,6 +52039,15 @@
    [nil "b5" nil "b6" nil nil "7"]
    [nil nil nil nil nil nil nil]],
   :hash 1078257621},
+ -988930470
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil "1" nil]
+   ["1" "b2" nil "b3" "3" nil "b5"]
+   [nil "b5" "5" nil "6" "b7" nil]
+   [nil nil "1" "b2" nil "b3" "3"]],
+  :hash -988930470},
  708183285
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -42880,6 +52101,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 1351778536},
+ -400337568
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" "b3" "3" "4" nil nil]
+   ["b5" "5" nil "6" "b7" nil "1"]
+   [nil "1" nil "2" "b3" "3" "4"]
+   [nil "4" "b5" "5" nil "6" "b7"]],
+  :hash -400337568},
  1309601286
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -42898,6 +52128,15 @@
    ["b7" nil "1" nil nil "b3"]
    [nil nil "4" nil "5" nil]],
   :hash 1873922605},
+ 1736337106
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" nil nil nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil "5" "b6" nil nil "7" "1"]
+   ["7" "1" "b2" nil "b3" nil "4"]],
+  :hash 1736337106},
  55396940
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -42909,6 +52148,17 @@
    [nil nil "b7" nil "1"]
    [nil nil nil nil nil]],
   :hash 55396940},
+ -101284258
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil]
+   [nil "2" "b3" nil "4"]
+   ["6" nil "7" "1" nil]
+   [nil "4" nil "5" nil]
+   ["7" "1" nil "2" "b3"]
+   [nil nil nil "6" nil]],
+  :hash -101284258},
  384731282
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -42938,6 +52188,17 @@
    ["6" "b7" nil "1" "b2" nil]
    [nil "b3" "3" nil "b5" "5"]],
   :hash -1892329100},
+ -1819524235
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" nil nil]
+   [nil "1" nil "2"]
+   ["5" nil "6" "b7"]
+   ["2" nil "3" "4"]
+   ["6" "b7" nil "1"]
+   [nil "4" nil "5"]],
+  :hash -1819524235},
  2091308928
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -42958,6 +52219,26 @@
    ["b7" nil "1" nil "2"]
    [nil nil nil nil nil]],
   :hash -983475095},
+ -1369521562
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil nil "5" "b6" nil]
+   [nil "2" nil "3" "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" nil "2"]],
+  :hash -1369521562},
+ 829818320
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil "7" nil nil]
+   ["1" nil "2" "b3" nil "4" nil]
+   ["4" nil "5" "b6" nil nil "7"]
+   [nil "7" "1" nil "2" "b3" nil]],
+  :hash 829818320},
  926684563
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -42978,6 +52259,15 @@
    ["b6" nil nil "7" "1"]
    [nil nil "4" "b5" nil]],
   :hash 1434284114},
+ 1253958451
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" nil nil nil]
+   ["b2" nil nil "3" "4" nil "5"]
+   [nil "5" "b6" nil nil "7" "1"]
+   ["7" "1" "b2" nil nil "3" "4"]],
+  :hash 1253958451},
  -850884558
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -42996,6 +52286,26 @@
    [nil "2" "b3" nil "4" "b5" nil]
    [nil nil nil nil nil nil nil]],
   :hash 1629992142},
+ 1166591979
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil "b3" nil]
+   [nil nil "4" nil "5" nil "6"]
+   ["b7" nil "1" "b2" nil "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]],
+  :hash 1166591979},
+ 2080973803
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil "b5" "5" nil nil]
+   [nil nil "b3" nil "4"]
+   [nil nil "b7" nil "1"]
+   ["b3" nil "4" "b5" "5"]
+   ["b7" nil "1" nil nil]],
+  :hash 2080973803},
  1159636455
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -43027,6 +52337,17 @@
    ["5" "b6" nil nil "7" "1"]
    [nil nil nil "b3" nil "4"]],
   :hash 1239979517},
+ -712431829
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil nil nil]
+   [nil "3" nil "b5" nil]
+   [nil "1" "b2" nil "b3"]
+   ["b5" nil "b6" nil "b7"]
+   ["b2" nil "b3" "3" nil]
+   ["b6" nil "b7" nil "1"]],
+  :hash -712431829},
  390002611
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -43065,6 +52386,15 @@
    ["4" nil "5" nil "6" nil "7"]
    [nil "7" "1" nil "2" "b3" nil]],
   :hash 1589518165},
+ 530315706
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil "5" nil]
+   ["5" "b6" nil "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]
+   [nil nil "5" "b6" nil "b7" nil]],
+  :hash 530315706},
  -2079914565
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -43074,6 +52404,15 @@
    [nil nil nil nil nil nil]
    ["b3" nil "4" nil "5" nil]],
   :hash -2079914565},
+ -972826333
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "3" "4" nil nil nil]
+   ["5" "b6" nil "b7" nil "1" "b2"]
+   ["1" "b2" nil nil "3" "4" nil]
+   ["4" nil "5" "b6" nil "b7" nil]],
+  :hash -972826333},
  1428964454
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -43123,6 +52462,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -479818377},
+ 2063772645
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil "6" nil]
+   [nil nil nil "1" nil "2" "b3"]
+   [nil "4" nil "5" nil "6" "b7"]
+   ["6" "b7" nil "1" nil "2" "b3"]],
+  :hash 2063772645},
  494236036
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -43214,6 +52562,17 @@
    [nil "b2" nil nil "3" "4" "b5"]
    [nil nil nil nil nil nil nil]],
   :hash -1524746807},
+ 2030040222
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil nil]
+   [nil "5" nil "6"]
+   ["2" nil "3" nil]
+   ["6" nil nil "1"]
+   ["3" nil nil "5"]
+   [nil "1" nil "2"]],
+  :hash 2030040222},
  1274334806
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -43419,6 +52778,53 @@
    [nil nil nil nil "1"]
    [nil nil nil nil nil]],
   :hash -1717888123},
+ 1976492886
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil "2" "b3"]
+   [nil nil "4" nil "5" "b6"]
+   ["b7" nil "1" nil "2" "b3"]
+   ["b3" nil "4" nil "5" "b6"]],
+  :hash 1976492886},
+ 1328076671
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" "b3" nil "4" "b5" nil]
+   [nil nil "b6" "6" nil "7" "1"]
+   [nil "2" "b3" nil "4" "b5" nil]
+   ["b5" nil "b6" "6" nil "7" "1"]],
+  :hash 1328076671},
+ 1970934862
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "6" nil nil nil]
+   [nil "3" "4" "b5" nil]
+   [nil "1" "b2" nil nil]
+   ["b5" nil nil "6" "b7"]
+   ["b2" nil nil "3" "4"]
+   [nil "6" "b7" nil "1"]],
+  :hash 1970934862},
+ 1877755404
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" "b5" "5" nil nil]
+   [nil nil "b7" nil "1" nil nil]
+   [nil nil "b3" nil "4" "b5" "5"]
+   [nil "5" nil nil "b7" nil "1"]],
+  :hash 1877755404},
+ 786997468
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" "b5" nil nil]
+   [nil "b6" nil "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" "b5"]
+   [nil "b5" nil "b6" nil "b7" nil]],
+  :hash 786997468},
  1356021671
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -43479,6 +52885,17 @@
    ["b6" nil nil "7" "1"]
    [nil nil nil nil "5"]],
   :hash -94796565},
+ -336380783
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil "7" "1" nil]
+   [nil "4" nil "5" nil]
+   ["1" nil "2" "b3" nil]
+   ["5" nil "6" nil "7"]
+   ["2" "b3" nil "4" nil]
+   [nil nil nil "1" nil]],
+  :hash -336380783},
  1137764431
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -43501,6 +52918,15 @@
    [nil nil nil nil]
    [nil "b7" nil "1"]],
   :hash -506872553},
+ -835655570
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "6" "b7" nil "1" nil]
+   [nil nil nil nil "3" "4" "b5"]
+   [nil nil "6" "b7" nil "1" "b2"]
+   ["1" "b2" nil nil "3" "4" "b5"]],
+  :hash -835655570},
  -101239828
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -43738,6 +53164,17 @@
    ["5" nil "6" "b7" nil "1"]
    [nil nil nil "b3" nil "4"]],
   :hash -755462578},
+ 1150475042
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "3" "4" nil nil]
+   [nil nil "1" nil "2"]
+   [nil "5" "b6" nil "b7"]
+   [nil "2" nil "3" "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil nil "4" nil "5"]],
+  :hash 1150475042},
  1669076702
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -43838,6 +53275,15 @@
    [nil "5" "b6" nil nil "7" "1"]
    [nil nil nil nil nil nil "4"]],
   :hash -1028619195},
+ -1318331890
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil "6" "b7"]
+   [nil nil "1" "b2" nil "b3"]
+   ["4" nil "5" nil "6" "b7"]
+   ["b7" nil "1" "b2" nil "b3"]],
+  :hash -1318331890},
  -1271977949
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -43896,6 +53342,15 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash 1132091019},
+ -1402713980
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" nil "7" "1" nil "2"]
+   [nil nil "3" "4" nil "5"]
+   ["6" nil "7" "1" nil "2"]
+   ["2" nil "3" "4" nil "5"]],
+  :hash -1402713980},
  1616035432
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -43907,6 +53362,17 @@
    [nil "7" "1" nil "2"]
    [nil nil "5" nil "6"]],
   :hash 1616035432},
+ 975911428
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" nil]
+   [nil nil nil "7" "1"]
+   ["3" "4" nil "5" "b6"]
+   ["7" "1" "b2" nil nil]
+   [nil "5" "b6" nil nil]
+   [nil nil nil "3" "4"]],
+  :hash 975911428},
  -1069148987
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -43980,6 +53446,15 @@
    [nil "6" nil "7" "1"]
    ["b3" nil "4" nil "5"]],
   :hash 650486362},
+ 378100031
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" "3" nil nil]
+   [nil "b5" nil "b6" nil "b7" nil]
+   ["b7" nil "1" "b2" nil "b3" "3"]
+   [nil "3" nil "b5" nil "b6" nil]],
+  :hash 378100031},
  -90197053
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -44049,6 +53524,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 48873787},
+ -472986217
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil nil "6" "b7" nil]
+   ["b3" "3" "4" "b5" "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" "b5" "5" nil "6"]
+   ["1" nil "2" "b3" "3"]],
+  :hash -472986217},
  -168762030
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -44118,6 +53604,15 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash -1748968476},
+ -564299128
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" nil "5" "b6" nil]
+   ["b6" nil nil "7" "1" "b2" nil]
+   ["b2" nil nil "3" "4" nil "5"]
+   [nil nil "b6" nil nil "7" "1"]],
+  :hash -564299128},
  -1784264239
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -44149,6 +53644,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1927923759},
+ 1608519259
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7" nil "1" nil]
+   [nil nil nil nil "3" "4" nil]
+   ["5" "b6" nil "b7" nil "1" "b2"]
+   ["1" "b2" nil nil "3" "4" nil]],
+  :hash 1608519259},
  -1926969075
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -44167,6 +53671,17 @@
    [nil nil "b3" nil "4" nil "5"]
    [nil nil nil nil nil nil nil]],
   :hash 77147858},
+ 1783559587
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil nil nil]
+   [nil "b7" nil "1" "b2"]
+   [nil "b5" "5" nil "6"]
+   ["1" "b2" nil "b3" "3"]
+   ["5" nil "6" "b7" nil]
+   [nil "b3" "3" nil "b5"]],
+  :hash 1783559587},
  -1047433763
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -44205,6 +53720,15 @@
    ["b6" nil "b7" nil "1" nil "2"]
    [nil nil nil "3" "4" nil "5"]],
   :hash -586666925},
+ -540772910
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" nil "3" "4" nil]
+   ["4" nil "5" "b6" nil "b7" nil]
+   ["b7" nil "1" nil "2" nil "3"]
+   [nil nil "4" nil "5" "b6" nil]],
+  :hash -540772910},
  -148974459
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -44214,6 +53738,39 @@
    [nil nil "4" "b5" nil "b6" "6"]
    [nil nil nil nil nil nil nil]],
   :hash -148974459},
+ 1344645611
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil "3" "4" nil]
+   [nil "b7" nil "1" nil]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" "b7" nil]
+   [nil nil nil "4" nil]],
+  :hash 1344645611},
+ -1439193371
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil "b6" nil nil "7"]
+   [nil "3" "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil nil "3"]],
+  :hash -1439193371},
+ -828849684
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" "b5" "5" nil]
+   [nil "1" nil "2" "b3"]
+   ["5" nil "6" "b7" nil]
+   ["2" "b3" "3" "4" "b5"]
+   ["6" "b7" nil "1" nil]
+   [nil nil nil "5" nil]],
+  :hash -828849684},
  -289547622
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -44243,6 +53800,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1558995500},
+ -810839947
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "3" nil nil]
+   [nil "b7" nil "1" "b2"]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil nil "3"]
+   ["5" "b6" nil "b7" nil]
+   [nil nil "3" "4" nil]],
+  :hash -810839947},
  548795131
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -44323,6 +53891,17 @@
    ["b6" nil "b7" nil]
    [nil nil "4" "b5"]],
   :hash 1205611064},
+ 1097128694
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil nil]
+   [nil nil "1" "b2" nil]
+   [nil "5" nil "6" "b7"]
+   ["b2" nil "b3" nil "4"]
+   [nil "6" "b7" nil "1"]
+   [nil nil "4" nil "5"]],
+  :hash 1097128694},
  -104980824
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -44466,6 +54045,15 @@
    [nil nil nil nil nil "5"]
    [nil nil nil nil nil nil]],
   :hash -789314943},
+ -1090819433
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" nil "7" "1" nil nil]
+   ["2" nil "3" "4" nil "5"]
+   ["5" nil "6" nil "7" "1"]
+   ["1" nil "2" nil "3" "4"]],
+  :hash -1090819433},
  1592935172
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -44475,6 +54063,24 @@
    ["3" "4" nil "5" "b6" nil "b7"]
    [nil nil nil nil nil "2" nil]],
   :hash 1592935172},
+ -163999066
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" "3" nil "b5" nil]
+   ["b5" nil "b6" nil "b7" nil "1"]
+   [nil nil "b2" nil "b3" "3" nil]],
+  :hash -163999066},
+ -153570831
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil "6" nil nil]
+   ["b7" nil "1" nil "2" "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]
+   [nil "6" "b7" nil "1" nil "2"]],
+  :hash -153570831},
  -1707244275
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -44502,6 +54108,15 @@
    ["b7" nil "1" "b2" nil "b3"]
    [nil "3" nil "b5" nil "b6"]],
   :hash 118622241},
+ 763275936
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil "6" "b7"]
+   [nil nil "1" nil "2" "b3"]
+   ["4" nil "5" nil "6" "b7"]
+   ["b7" nil "1" nil "2" "b3"]],
+  :hash 763275936},
  -1237673317
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -44520,6 +54135,15 @@
    [nil nil "b2" nil nil "3" "4"]
    [nil nil nil nil nil nil nil]],
   :hash -522531204},
+ -81538599
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" "b5" nil nil]
+   ["5" nil nil "b7" nil "1" nil]
+   ["1" nil nil "b3" nil "4" "b5"]
+   [nil "b5" "5" nil nil "b7" nil]],
+  :hash -81538599},
  -1818884562
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -44540,6 +54164,26 @@
    [nil nil nil nil nil nil]
    [nil nil nil nil nil nil]],
   :hash -1853055759},
+ -923288954
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" nil "7" "1" nil]
+   ["1" "b2" nil "b3" nil "4" nil]
+   ["4" nil "5" nil "6" nil "7"]
+   [nil nil "1" "b2" nil "b3" nil]],
+  :hash -923288954},
+ -2040874687
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil "b6" "6" nil]
+   [nil "2" "b3" nil "4"]
+   ["6" nil "7" "1" nil]
+   [nil "4" "b5" nil "b6"]
+   ["7" "1" nil "2" "b3"]
+   [nil nil nil "6" nil]],
+  :hash -2040874687},
  -222654597
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -44551,6 +54195,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -222654597},
+ 1359505470
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil "b3" nil "4" nil]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" nil "6"]
+   ["1" "b2" nil "b3" nil]
+   ["5" nil "6" "b7" nil]],
+  :hash 1359505470},
  -537381498
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -44651,6 +54306,17 @@
    [nil nil nil nil nil "5" nil]
    [nil nil nil nil nil nil nil]],
   :hash -434519480},
+ -1477331458
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil]
+   [nil "b6" nil nil "7"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   [nil nil nil "b3" nil]],
+  :hash -1477331458},
  1601449474
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -44702,6 +54368,39 @@
    [nil nil nil nil nil "b6"]
    [nil nil nil nil nil nil]],
   :hash -1325861966},
+ 1171473208
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil nil nil nil]
+   [nil "7" "1" nil "2"]
+   ["b5" nil "b6" "6" nil]
+   [nil "2" "b3" nil "4"]
+   ["b6" "6" nil "7" "1"]
+   ["b3" nil "4" "b5" nil]],
+  :hash 1171473208},
+ -318805238
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil]
+   [nil "b6" nil "b7"]
+   ["b3" nil "4" "b5"]
+   ["b7" nil "1" "b2"]
+   ["4" "b5" nil "b6"]
+   ["1" "b2" nil "b3"]],
+  :hash -318805238},
+ 2036918688
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil nil nil nil]
+   [nil "1" "b2" nil nil]
+   [nil nil "6" "b7" nil]
+   [nil nil "3" "4" "b5"]
+   ["6" "b7" nil "1" "b2"]
+   ["3" "4" "b5" nil nil]],
+  :hash 2036918688},
  -72742708
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -44784,6 +54483,15 @@
    ["2" nil "3" nil]
    ["6" nil nil "1"]],
   :hash -675294963},
+ 1002185883
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil "6" nil nil]
+   [nil "7" "1" "b2" nil "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]
+   [nil "6" nil "7" "1" "b2" nil]],
+  :hash 1002185883},
  406922798
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -44941,6 +54649,17 @@
    ["b2" nil "b3" nil "4" nil "5"]
    [nil nil "b6" nil "b7" nil "1"]],
   :hash -26375343},
+ -132007088
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil nil nil]
+   [nil "1" nil "2" "b3"]
+   [nil "b6" "6" nil "7"]
+   ["2" "b3" nil "4" "b5"]
+   ["6" nil "7" "1" nil]
+   [nil "4" "b5" nil "b6"]],
+  :hash -132007088},
  992397129
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -45017,6 +54736,28 @@
    [nil nil nil nil nil nil]
    [nil nil nil nil nil nil]],
   :hash -39941168},
+ -88427959
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil nil nil]
+   [nil "4" nil "5"]
+   ["1" nil "2" "b3"]
+   ["5" nil "6" "b7"]
+   ["2" "b3" nil "4"]
+   ["6" "b7" nil "1"]],
+  :hash -88427959},
+ 1291112325
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil nil "3" "4" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" nil "3"]
+   ["5" "b6" nil "b7" nil]],
+  :hash 1291112325},
  1115717045
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -45175,6 +54916,15 @@
    [nil nil nil nil "4" nil "5"]
    [nil nil nil nil nil nil nil]],
   :hash -1575816600},
+ -2103336723
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil nil "b7" nil "1"]
+   [nil nil "2" nil nil "4"]
+   ["5" nil nil "b7" nil "1"]
+   ["1" nil "2" nil nil "4"]],
+  :hash -2103336723},
  -2075231215
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -45246,6 +54996,17 @@
    [nil nil nil "4" nil]
    [nil nil nil nil nil]],
   :hash 1093564056},
+ 1518269264
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" nil nil nil nil]
+   [nil "5" nil "6" nil]
+   ["2" "b3" nil "4" nil]
+   ["6" nil "7" "1" nil]
+   [nil "4" nil "5" nil]
+   ["7" "1" nil "2" "b3"]],
+  :hash 1518269264},
  -1399510017
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -45273,6 +55034,15 @@
    ["4" "b5" nil "b6" "6" nil]
    [nil nil nil nil nil nil]],
   :hash -1152199477},
+ 1073715643
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "3" "4" nil "5" nil]
+   ["5" "b6" nil "b7" nil "1" "b2"]
+   ["1" "b2" nil nil "3" "4" nil]
+   [nil nil "5" "b6" nil "b7" nil]],
+  :hash 1073715643},
  1781925613
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -45300,6 +55070,17 @@
    ["b6" "6" nil "7" "1" nil "2"]
    [nil "2" "b3" nil "4" "b5" nil]],
   :hash -363281298},
+ 1764385233
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" "b5" nil nil nil]
+   [nil nil "2" "b3" "3"]
+   [nil "6" "b7" nil "1"]
+   ["b3" "3" "4" "b5" "5"]
+   ["b7" nil "1" nil "2"]
+   [nil "b5" "5" nil "6"]],
+  :hash 1764385233},
  265067442
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -45320,6 +55101,17 @@
    [nil "6" nil "7" "1" "b2" nil]
    [nil nil nil nil nil nil nil]],
   :hash -1210288573},
+ -402222273
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil nil]
+   [nil "4" nil "5"]
+   ["1" nil "2" nil]
+   ["5" nil nil "b7"]
+   ["2" nil nil "4"]
+   [nil "b7" nil "1"]],
+  :hash -402222273},
  975163490
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -45351,6 +55143,15 @@
    [nil "b3" "3" nil "b5"]
    [nil "b7" nil "1" "b2"]],
   :hash -1135598860},
+ 2056456857
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" "b6" nil nil]
+   [nil "b7" nil "1" nil "2" nil]
+   ["2" nil "3" "4" nil "5" "b6"]
+   [nil "b6" nil "b7" nil "1" nil]],
+  :hash 2056456857},
  -612294361
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -45382,6 +55183,15 @@
    ["4" nil "5" nil "6" nil]
    [nil nil nil nil nil "b3"]],
   :hash 1707631366},
+ 561345903
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" "b5" nil nil nil]
+   ["b6" nil nil "7" "1" "b2" nil]
+   ["b2" nil nil "3" "4" "b5" nil]
+   ["b5" nil "b6" nil nil "7" "1"]],
+  :hash 561345903},
  552672797
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -45471,6 +55281,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -914734965},
+ -690218461
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil nil nil]
+   ["5" nil "6" "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]
+   ["4" nil "5" nil "6" "b7" nil]],
+  :hash -690218461},
  849220552
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -45511,6 +55330,17 @@
    [nil nil nil nil]
    [nil "4" nil "5"]],
   :hash 1182949964},
+ -380832380
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil nil nil]
+   [nil nil nil "6" "b7"]
+   [nil nil "3" "4" "b5"]
+   ["6" "b7" nil "1" "b2"]
+   ["3" "4" "b5" nil nil]
+   [nil "1" "b2" nil nil]],
+  :hash -380832380},
  -1481551863
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -45520,6 +55350,17 @@
    ["4" nil "5" nil "6" nil]
    [nil "7" "1" "b2" nil "b3"]],
   :hash -1481551863},
+ 300752348
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil nil nil nil]
+   [nil "1" nil "2" nil]
+   [nil "b6" nil "b7" nil]
+   ["2" nil "3" "4" "b5"]
+   [nil "b7" nil "1" nil]
+   ["3" "4" "b5" nil "b6"]],
+  :hash 300752348},
  449474438
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -45576,6 +55417,26 @@
    ["4" nil "5" nil "6" nil "7"]
    [nil nil "1" "b2" nil "b3" nil]],
   :hash 2087823439},
+ -540614694
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil nil]
+   [nil nil "6" nil "7"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" nil "6"]
+   [nil "b2" nil "b3" nil]],
+  :hash -540614694},
+ 784934929
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["7" "1" nil "2" nil nil nil]
+   [nil "4" nil "5" nil "6" nil]
+   ["6" nil "7" "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" nil]],
+  :hash 784934929},
  -272816935
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -45587,6 +55448,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -272816935},
+ -1666583065
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" nil nil nil]
+   ["b5" nil "b6" nil nil "7" "1"]
+   ["7" "1" "b2" nil nil "3" "4"]
+   ["3" "4" "b5" nil "b6" nil nil]],
+  :hash -1666583065},
  5437518
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -45645,6 +55515,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 1694025097},
+ 902870474
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "b3" nil "4" "b5" nil]
+   [nil nil nil nil "b7" nil "1"]
+   [nil nil "b3" nil "4" "b5" "5"]
+   ["b5" "5" nil nil "b7" nil "1"]],
+  :hash 902870474},
  1195108238
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -45665,6 +55544,15 @@
    ["b5" nil "b6" nil "b7" nil "1"]
    [nil nil nil nil "b3" nil "4"]],
   :hash 2004343538},
+ -1401401642
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" "b5" nil "b6" "6" nil]
+   ["6" nil "7" "1" nil "2" "b3"]
+   ["2" "b3" nil "4" "b5" nil "b6"]
+   [nil nil "6" nil "7" "1" nil]],
+  :hash -1401401642},
  -167062138
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -45790,6 +55678,15 @@
    [nil nil nil nil nil "b7" nil]
    [nil nil nil nil nil nil nil]],
   :hash 892356661},
+ -1325385631
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["7" "1" nil "2" nil "3"]
+   ["3" "4" nil "5" nil "6"]
+   ["6" nil "7" "1" nil "2"]
+   [nil nil "3" "4" nil "5"]],
+  :hash -1325385631},
  -1753522926
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -45899,6 +55796,28 @@
    ["2" nil "3" "4" nil "5" "b6"]
    [nil nil nil nil nil nil nil]],
   :hash -599940590},
+ 1439000511
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" "5" nil nil nil]
+   [nil "2" "b3" "3" "4"]
+   ["6" "b7" nil "1" nil]
+   ["3" "4" "b5" "5" nil]
+   [nil "1" nil "2" "b3"]
+   [nil "5" nil "6" "b7"]],
+  :hash 1439000511},
+ 534170019
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" nil nil nil]
+   [nil nil "5" "b6" nil]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" "b2" nil]],
+  :hash 534170019},
  1440399538
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -45928,6 +55847,15 @@
    ["b7" nil "1" "b2" nil nil "3"]
    [nil nil "4" nil "5" "b6" nil]],
   :hash -1812601399},
+ -1073039302
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil "4" nil]
+   ["4" nil "5" "b6" nil nil "7"]
+   [nil "7" "1" nil "2" "b3" nil]
+   [nil nil "4" nil "5" "b6" nil]],
+  :hash -1073039302},
  -445869500
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -45964,6 +55892,17 @@
    ["b2" nil nil "3" "4" "b5" nil]
    [nil nil nil nil nil nil "1"]],
   :hash 415636163},
+ -2106081439
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3"]
+   [nil "b6" nil "b7"]
+   ["b3" nil "4" "b5"]
+   ["b7" nil "1" "b2"]
+   ["4" "b5" nil "b6"]
+   [nil nil nil "b3"]],
+  :hash -2106081439},
  -2054000859
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -45984,6 +55923,15 @@
    [nil nil "1" "b2"]
    [nil nil nil nil]],
   :hash -261346385},
+ 1753276726
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" "b3" nil "4" "b5" nil]
+   ["b5" nil "b6" "6" nil "7" "1"]
+   ["7" "1" nil "2" "b3" nil "4"]
+   [nil nil "b5" nil "b6" "6" nil]],
+  :hash 1753276726},
  -357238514
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -46075,6 +56023,17 @@
    [nil nil nil "b6" nil "b7"]
    [nil nil nil nil nil nil]],
   :hash -964207617},
+ -808605888
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil]
+   [nil nil "2" nil nil]
+   [nil nil "b7" nil "1"]
+   [nil nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   [nil nil "5" nil nil]],
+  :hash -808605888},
  -574937327
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -46113,6 +56072,15 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash -1740676538},
+ 886482413
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil "1"]
+   ["1" nil "2" "b3" nil "4"]
+   ["4" nil "5" nil "6" "b7"]
+   [nil nil "1" nil "2" "b3"]],
+  :hash 886482413},
  -264216677
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -46369,6 +56337,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 309854879},
+ -312107720
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" "b7" nil "1" nil nil]
+   [nil "2" "b3" "3" "4" "b5" "5"]
+   ["b5" "5" nil "6" "b7" nil "1"]
+   [nil "1" nil "2" "b3" "3" "4"]],
+  :hash -312107720},
  -702849658
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -46378,6 +56355,15 @@
    [nil nil nil "b7" nil "1" "b2"]
    [nil nil nil nil nil nil nil]],
   :hash -702849658},
+ 1193617168
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" "b6"]
+   [nil nil "b7" nil "1" "b2"]
+   ["b3" nil "4" nil "5" "b6"]
+   ["b6" nil "b7" nil "1" "b2"]],
+  :hash 1193617168},
  1580763134
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -46454,6 +56440,15 @@
    ["b7" nil "1" "b2" nil]
    [nil nil "5" nil "6"]],
   :hash 731245549},
+ -1094428360
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil "5" nil]
+   ["5" "b6" nil nil "7" "1" nil]
+   ["1" nil "2" "b3" nil "4" nil]
+   [nil nil "5" "b6" nil nil "7"]],
+  :hash -1094428360},
  125851452
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -46570,6 +56565,26 @@
    ["1" "b2" nil "b3" nil]
    [nil nil nil nil "7"]],
   :hash 1113362153},
+ 106765524
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil]
+   [nil nil "6" "b7" nil]
+   ["b3" "3" nil "b5" "5"]
+   ["b7" nil "1" "b2" nil]
+   [nil "b5" "5" nil "6"]
+   [nil nil nil "b3" "3"]],
+  :hash 106765524},
+ 786546802
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b5" "5" nil "6" "b7" nil nil]
+   [nil "1" "b2" nil "b3" "3" nil]
+   ["3" nil "b5" "5" nil "6" "b7"]
+   [nil "b7" nil "1" "b2" nil "b3"]],
+  :hash 786546802},
  -769532774
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -46633,6 +56648,15 @@
    [nil nil nil "4" nil "5" nil]
    [nil nil nil nil nil nil nil]],
   :hash -305107565},
+ -533604680
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" "b5" nil "b6" nil]
+   ["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" nil "4" "b5" nil]
+   [nil nil "b6" nil "b7" nil "1"]],
+  :hash -533604680},
  -1986861278
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -46787,6 +56811,26 @@
    ["1" "b2" nil "b3" nil "4"]
    [nil nil nil "b6" nil "b7"]],
   :hash -1522361962},
+ -1095563950
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil "b6" nil "b7" nil]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" nil "3"]],
+  :hash -1095563950},
+ -1560824803
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil "6" nil]
+   ["6" nil "7" "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" nil]
+   [nil nil "6" nil "7" "1" nil]],
+  :hash -1560824803},
  1782766627
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -46845,6 +56889,17 @@
    [nil nil nil nil nil "b3"]
    [nil nil nil nil nil nil]],
   :hash -1960919464},
+ 12429206
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil "b3" nil nil]
+   [nil nil "b7" nil "1"]
+   [nil "4" nil "5" "b6"]
+   [nil "1" "b2" nil "b3"]
+   [nil "5" "b6" nil "b7"]
+   [nil nil "b3" nil "4"]],
+  :hash 12429206},
  574621601
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -46856,6 +56911,17 @@
    ["4" nil "5" "b6"]
    [nil "b2" nil "b3"]],
   :hash 574621601},
+ -31636474
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil "b5" nil nil "6"]
+   ["b2" nil nil "3" "4"]
+   [nil "6" "b7" nil "1"]
+   [nil "3" "4" "b5" nil]
+   ["b7" nil "1" "b2" nil]],
+  :hash -31636474},
  -1870651756
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -46923,6 +56989,17 @@
    [nil nil nil "6" nil "7" "1"]
    [nil nil nil nil nil nil nil]],
   :hash 912090356},
+ 420559814
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" "b5" nil nil nil]
+   [nil "b2" nil "b3" nil]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" "b5" nil]
+   ["b7" nil "1" "b2" nil]
+   [nil "b5" nil "b6" nil]],
+  :hash 420559814},
  -172627459
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -46977,6 +57054,17 @@
    ["b6" nil "b7" nil "1" "b2" nil]
    [nil nil nil nil nil nil nil]],
   :hash 2025655622},
+ -1422093537
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" "b5" nil nil]
+   [nil "1" nil nil "b3"]
+   ["5" nil nil "b7" nil]
+   [nil "b3" nil "4" "b5"]
+   [nil "b7" nil "1" nil]
+   [nil nil "b5" "5" nil]],
+  :hash -1422093537},
  -417588741
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -47182,6 +57270,17 @@
    [nil nil nil nil nil "2" "b3"]
    [nil nil nil nil nil nil nil]],
   :hash -214661327},
+ 358239979
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" "b6" nil nil]
+   [nil "2" "b3" nil "4"]
+   [nil nil "7" "1" nil]
+   [nil "4" nil "5" "b6"]
+   ["7" "1" nil "2" "b3"]
+   [nil nil "b6" nil nil]],
+  :hash 358239979},
  -18964405
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -47247,6 +57346,26 @@
    ["b7" nil "1" "b2" nil "b3"]
    [nil nil "4" "b5" nil "b6"]],
   :hash -688819891},
+ 598965339
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil "3" nil]
+   ["3" "4" nil "5" "b6" nil "b7"]
+   [nil "b7" nil "1" nil "2" nil]
+   [nil nil "3" "4" nil "5" "b6"]],
+  :hash 598965339},
+ 221525863
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil]
+   [nil "b7" nil "1" nil]
+   ["4" "b5" "5" nil nil]
+   ["1" nil nil "b3" nil]
+   ["5" nil nil "b7" nil]
+   [nil nil nil "4" "b5"]],
+  :hash 221525863},
  1405693023
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -47256,6 +57375,17 @@
    [nil nil nil "b2" nil "b3" "3"]
    [nil nil nil nil nil nil nil]],
   :hash 1405693023},
+ 1475290438
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil]
+   [nil nil "7" "1" nil]
+   ["4" "b5" nil "b6" "6"]
+   ["1" nil "2" "b3" nil]
+   [nil "b6" "6" nil "7"]
+   [nil nil nil "4" "b5"]],
+  :hash 1475290438},
  -1118832320
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -47294,6 +57424,17 @@
    [nil nil "1" "b2" nil "b3"]
    [nil nil nil nil nil nil]],
   :hash 58782393},
+ -770241401
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil]
+   [nil nil "2" nil "3"]
+   [nil "6" "b7" nil "1"]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   [nil nil "5" nil "6"]],
+  :hash -770241401},
  -1006650466
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -47396,6 +57537,28 @@
    [nil nil nil nil]
    [nil "3" nil "b5"]],
   :hash -524272094},
+ 1345033103
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil nil nil nil]
+   [nil nil nil "7" "1"]
+   ["3" "4" nil "5" "b6"]
+   ["7" "1" "b2" nil nil]
+   [nil "5" "b6" nil nil]
+   ["b2" nil nil "3" "4"]],
+  :hash 1345033103},
+ 1408580012
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil]
+   [nil "b7" nil "1" "b2"]
+   ["4" "b5" nil "b6" nil]
+   ["1" "b2" nil "b3" nil]
+   [nil "b6" nil "b7" nil]
+   [nil nil nil "4" "b5"]],
+  :hash 1408580012},
  -1582564089
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -47436,6 +57599,17 @@
    [nil nil nil "5" nil "6"]
    [nil nil nil nil nil nil]],
   :hash -1902372217},
+ 1805790092
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil nil "6" nil "7"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" "b3" nil]],
+  :hash 1805790092},
  -1409496999
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -47516,6 +57690,15 @@
    ["4" nil "5" nil "6" nil "7"]
    [nil nil nil nil nil "b3" nil]],
   :hash 1129174543},
+ 809618274
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil "4" nil]
+   ["4" nil "5" nil "6" "b7" nil]
+   ["b7" nil "1" "b2" nil "b3" nil]
+   [nil nil "4" nil "5" nil "6"]],
+  :hash 809618274},
  1701011417
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -47527,6 +57710,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1701011417},
+ 2098118077
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" "b3" "3" nil]
+   ["3" "4" "b5" "5" nil "6" "b7"]
+   ["6" "b7" nil "1" nil "2" "b3"]
+   [nil nil "3" "4" "b5" "5" nil]],
+  :hash 2098118077},
  -510394118
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -47556,6 +57748,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 398382569},
+ 1036925973
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil]
+   [nil "b2" nil "b3" nil]
+   ["b6" nil nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   [nil nil nil "b6" nil]],
+  :hash 1036925973},
  -337735194
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -47567,6 +57770,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -337735194},
+ -1542246004
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil nil]
+   ["1" "b2" nil "b3" nil "4"]
+   ["4" nil "5" nil "6" "b7"]
+   ["b7" nil "1" "b2" nil "b3"]],
+  :hash -1542246004},
  -434954613
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -47636,6 +57848,17 @@
    [nil nil "1" nil "2" "b3" "3"]
    [nil nil nil nil nil nil nil]],
   :hash -41290658},
+ 1241274087
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil nil nil nil]
+   [nil "7" "1" "b2" nil]
+   [nil "5" nil "6" nil]
+   ["b2" nil "b3" nil "4"]
+   [nil "6" nil "7" "1"]
+   ["b3" nil "4" nil "5"]],
+  :hash 1241274087},
  705028144
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -47656,6 +57879,15 @@
    ["b2" nil nil "3" "4"]
    [nil nil nil nil nil]],
   :hash 809466664},
+ -1568825927
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil nil]
+   ["b3" "3" nil "b5" nil "b6"]
+   ["b6" nil "b7" nil "1" "b2"]
+   ["b2" nil "b3" "3" nil "b5"]],
+  :hash -1568825927},
  810127904
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -47723,6 +57955,15 @@
    [nil "6" nil "7" "1" "b2" nil]
    ["b2" nil "b3" nil "4" nil "5"]],
   :hash 535883699},
+ 2023063500
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil nil "b6" nil "b7" nil "1"]],
+  :hash 2023063500},
  -1421414951
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -47774,6 +58015,15 @@
    [nil nil nil nil "3" "4"]
    [nil nil nil nil nil nil]],
   :hash 859454512},
+ -890720363
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" "3" nil "b5" nil nil nil]
+   [nil "6" "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" "3" nil "b5" "5"]
+   ["b5" "5" nil "6" "b7" nil "1"]],
+  :hash -890720363},
  609748640
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -47830,6 +58080,26 @@
    [nil "b3" nil "4" "b5"]
    [nil nil nil nil nil]],
   :hash -651935564},
+ 52169051
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil nil nil]
+   [nil "1" nil "2" "b3"]
+   ["5" "b6" nil "b7" nil]
+   ["2" "b3" nil "4" nil]
+   [nil "b7" nil "1" nil]
+   [nil "4" nil "5" "b6"]],
+  :hash 52169051},
+ -1312790946
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil "4" nil]
+   [nil nil "5" nil "6" nil "7"]
+   ["1" nil "2" "b3" nil "4" nil]
+   ["4" nil "5" nil "6" nil "7"]],
+  :hash -1312790946},
  -1032140799
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -47912,6 +58182,17 @@
    [nil nil nil nil "1" "b2"]
    [nil nil nil nil nil nil]],
   :hash 497785003},
+ 292514115
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" "b5" "5" nil]
+   [nil "1" nil nil "b3"]
+   ["5" nil nil "b7" nil]
+   [nil "b3" nil "4" "b5"]
+   [nil "b7" nil "1" nil]
+   [nil nil nil "5" nil]],
+  :hash 292514115},
  -1838610838
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -47923,6 +58204,15 @@
    [nil "1" "b2" nil "b3"]
    ["b5" nil "b6" nil "b7"]],
   :hash -1838610838},
+ 2057638946
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" "b5" nil "b6" nil nil]
+   [nil nil "7" "1" "b2" nil nil]
+   [nil nil "3" "4" "b5" nil "b6"]
+   [nil "b6" nil nil "7" "1" "b2"]],
+  :hash 2057638946},
  27035729
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -48021,6 +58311,17 @@
    ["b6" nil nil "7" "1" "b2" nil]
    [nil nil nil nil nil nil nil]],
   :hash -258073614},
+ -323094808
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil nil nil nil]
+   [nil nil nil "7" "1"]
+   [nil "4" nil "5" "b6"]
+   ["7" "1" "b2" nil "b3"]
+   [nil "5" "b6" nil nil]
+   ["b2" nil "b3" nil "4"]],
+  :hash -323094808},
  -912502269
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -48041,6 +58342,17 @@
    [nil nil nil nil "b5"]
    [nil nil nil nil nil]],
   :hash 1701433727},
+ 1406817921
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil "b3" "3" nil]
+   [nil nil "b7" nil "1"]
+   ["3" nil "b5" nil "b6"]
+   [nil "1" "b2" nil "b3"]
+   ["b5" nil "b6" nil "b7"]
+   [nil nil nil "3" nil]],
+  :hash 1406817921},
  1350864173
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -48081,6 +58393,17 @@
    [nil nil nil "4" nil "5" nil]
    [nil nil nil nil nil nil nil]],
   :hash -1014552977},
+ 1742949826
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" nil nil]
+   [nil nil "6" nil nil]
+   [nil "3" nil nil "5"]
+   [nil nil "1" nil "2"]
+   [nil nil "5" nil "6"]
+   [nil nil "2" nil "3"]],
+  :hash 1742949826},
  907582184
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -48090,6 +58413,17 @@
    ["b7" nil "1" nil "2" nil "3"]
    [nil "3" "4" nil "5" nil "6"]],
   :hash 907582184},
+ -931015606
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil]
+   [nil "5" "b6" nil "b7"]
+   ["2" nil "3" "4" nil]
+   [nil "b7" nil "1" nil]
+   ["3" "4" nil "5" "b6"]
+   [nil nil nil "2" nil]],
+  :hash -931015606},
  470788705
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -48266,6 +58600,15 @@
    [nil nil "5" nil]
    [nil nil nil nil]],
   :hash 1481924692},
+ 376493122
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" "5" nil nil "b7"]
+   ["b7" nil "1" nil nil "b3"]
+   ["b3" nil "4" "b5" "5" nil]
+   [nil nil "b7" nil "1" nil]],
+  :hash 376493122},
  2111268976
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -48357,6 +58700,15 @@
    ["b7" nil "1" nil "2"]
    [nil nil "5" nil "6"]],
   :hash -1041101870},
+ -2031617603
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" "b6" nil nil "7" nil]
+   [nil nil "b2" nil nil "3" "4"]
+   [nil "5" "b6" nil nil "7" "1"]
+   ["7" "1" "b2" nil nil "3" "4"]],
+  :hash -2031617603},
  -1471952125
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -48496,6 +58848,39 @@
    ["4" "b5" nil "b6" "6" nil "7"]
    [nil nil nil nil nil "b3" nil]],
   :hash 699328398},
+ -758269600
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil "7" "1" nil]
+   [nil "4" nil "5" nil]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" nil "7"]
+   ["2" nil "3" "4" nil]
+   [nil nil nil "1" nil]],
+  :hash -758269600},
+ 1645624917
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil nil "5" nil "6"]
+   [nil "2" nil "3" "4"]
+   [nil "6" "b7" nil "1"]
+   [nil "3" "4" nil "5"]
+   [nil nil "1" nil "2"]],
+  :hash 1645624917},
+ 298415881
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil]
+   [nil "b6" nil "b7" nil]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   [nil nil nil "b3" nil]],
+  :hash 298415881},
  1333448365
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -48505,6 +58890,17 @@
    ["4" "b5" nil "b6" nil "b7"]
    [nil nil "1" "b2" nil "b3"]],
   :hash 1333448365},
+ -54582902
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "6" "b7" nil nil]
+   [nil nil "4" nil "5"]
+   [nil "1" "b2" nil "b3"]
+   [nil "5" nil "6" "b7"]
+   ["b2" nil "b3" nil "4"]
+   [nil nil "b7" nil "1"]],
+  :hash -54582902},
  1707106166
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -48744,6 +59140,35 @@
    [nil nil nil nil "5"]
    [nil nil nil nil nil]],
   :hash -1872054331},
+ 225373851
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil nil "5" nil nil]
+   [nil nil "b3" nil "4"]
+   [nil nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil nil]],
+  :hash 225373851},
+ -1456585860
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["7" "1" nil "2" "b3" nil nil]
+   [nil "4" "b5" nil "b6" "6" nil]
+   ["6" nil "7" "1" nil "2" "b3"]
+   [nil "b3" nil "4" "b5" nil "b6"]],
+  :hash -1456585860},
+ 621448068
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil "6" nil]
+   ["6" "b7" nil "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" nil]
+   [nil nil "6" "b7" nil "1" nil]],
+  :hash 621448068},
  -1603159063
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -48762,6 +59187,17 @@
    ["6" "b7" nil "1" "b2" nil "b3"]
    [nil nil nil nil "b5" "5" nil]],
   :hash -1996919214},
+ -670665565
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" "b5" nil nil]
+   [nil "1" nil "2" "b3"]
+   [nil "b6" "6" nil "7"]
+   ["2" "b3" nil "4" "b5"]
+   ["6" nil "7" "1" nil]
+   [nil nil "b5" nil "b6"]],
+  :hash -670665565},
  1775622856
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -49031,6 +59467,17 @@
    ["2" "b3" nil "4" "b5" nil "b6"]
    [nil nil nil nil nil "1" nil]],
   :hash -482758157},
+ -1581403285
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil]
+   [nil "b3" nil "4" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" "b3" nil]
+   [nil nil nil "b7" nil]],
+  :hash -1581403285},
  -547443305
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -49049,6 +59496,37 @@
    [nil nil nil nil nil nil]
    [nil nil nil nil nil nil]],
   :hash 1637050664},
+ 2018481715
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" nil nil nil]
+   [nil nil "b7" nil "1"]
+   ["3" "4" nil "5" "b6"]
+   [nil "1" nil "2" nil]
+   [nil "5" "b6" nil "b7"]
+   [nil "2" nil "3" "4"]],
+  :hash 2018481715},
+ 263376237
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil "3" "4" nil]
+   [nil "b7" nil "1" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" nil "3"]
+   ["5" "b6" nil "b7" nil]
+   [nil nil nil "4" nil]],
+  :hash 263376237},
+ -1387573116
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" "1" nil nil]
+   [nil "2" "b3" nil "4" nil "5"]
+   [nil "5" "b6" nil nil "7" "1"]
+   [nil "1" nil "2" "b3" nil "4"]],
+  :hash -1387573116},
  -689465377
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -49087,6 +59565,17 @@
    [nil nil "4" nil "5" "b6" nil]
    [nil nil nil nil nil nil nil]],
   :hash -959043599},
+ 651236849
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" "b6" nil nil]
+   [nil nil nil "3" "4"]
+   [nil "b7" nil "1" "b2"]
+   ["3" "4" nil "5" "b6"]
+   [nil "1" "b2" nil nil]
+   [nil nil "b6" nil "b7"]],
+  :hash 651236849},
  -961171752
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -49116,6 +59605,26 @@
    ["b2" nil "b3" nil "4" nil "5"]
    [nil "5" nil "6" nil "7" "1"]],
   :hash 1444111036},
+ 256709137
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil nil]
+   [nil nil "5" nil "6"]
+   [nil "2" "b3" nil "4"]
+   [nil "6" nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil nil "1" nil "2"]],
+  :hash 256709137},
+ 1840196776
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" nil "3" "4" nil nil]
+   [nil "5" nil "6" nil "7" "1"]
+   ["7" "1" nil "2" nil "3" "4"]
+   [nil "4" nil "5" nil "6" nil]],
+  :hash 1840196776},
  35108593
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -49165,6 +59674,17 @@
    ["5" "b6" nil "b7" nil]
    [nil nil "3" "4" nil]],
   :hash 1528002428},
+ -753790988
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "3" "4" nil]
+   [nil nil "7" "1" "b2"]
+   ["4" "b5" nil "b6" nil]
+   ["1" "b2" nil nil "3"]
+   [nil "b6" nil nil "7"]
+   [nil nil nil "4" "b5"]],
+  :hash -753790988},
  1412246422
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -49185,6 +59705,26 @@
    ["5" nil nil "b7" nil "1"]
    [nil nil nil "b3" nil "4"]],
   :hash 1900664167},
+ 14026864
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" "5" nil "6" nil nil]
+   ["b7" nil "1" nil "2" "b3" "3"]
+   ["b3" "3" "4" "b5" "5" nil "6"]
+   [nil "6" "b7" nil "1" nil "2"]],
+  :hash 14026864},
+ 918476559
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" "b2" nil nil]
+   [nil nil "b6" nil nil]
+   [nil nil "3" "4" "b5"]
+   [nil nil "7" "1" "b2"]
+   ["3" "4" "b5" nil "b6"]
+   [nil nil "b2" nil nil]],
+  :hash 918476559},
  1469565383
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -49196,6 +59736,15 @@
    ["4" nil "5" "b6" nil]
    [nil nil nil "b3" nil]],
   :hash 1469565383},
+ -610084403
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil nil "b7" nil "1"]
+   ["1" nil "2" nil nil "4"]
+   ["4" nil "5" nil nil "b7"]
+   [nil nil "1" nil "2" nil]],
+  :hash -610084403},
  -866745749
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -49243,6 +59792,15 @@
    ["5" nil "6" "b7" nil "1"]
    [nil nil nil "b3" nil "4"]],
   :hash 1318008570},
+ -746365140
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil "4"]
+   [nil nil "5" nil "6" "b7"]
+   ["1" "b2" nil "b3" nil "4"]
+   ["4" nil "5" nil "6" "b7"]],
+  :hash -746365140},
  1744789728
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -49321,6 +59879,15 @@
    [nil nil "1" "b2" nil "b3" nil]
    [nil nil nil nil nil nil nil]],
   :hash -1105538355},
+ 1995353306
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil "4" nil]
+   ["4" nil "5" nil "6" nil "7"]
+   [nil "7" "1" nil "2" "b3" nil]
+   [nil nil "4" nil "5" nil "6"]],
+  :hash 1995353306},
  -1333119396
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -49339,6 +59906,15 @@
    ["5" nil "6" "b7" nil "1" nil]
    ["1" "b2" nil "b3" "3" nil "b5"]],
   :hash 379285345},
+ 779782714
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil "7" nil]
+   [nil nil "b2" nil "b3" nil "4"]
+   [nil "5" nil "6" nil "7" "1"]
+   ["7" "1" "b2" nil "b3" nil "4"]],
+  :hash 779782714},
  1178309766
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -49426,6 +60002,15 @@
    ["1" "b2" nil "b3"]
    ["5" nil "6" "b7"]],
   :hash 1476845769},
+ -2061711510
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b6" nil "b7" nil "1" nil]
+   [nil nil nil "b3" nil "4" "b5"]
+   [nil "b6" nil "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" "b5"]],
+  :hash -2061711510},
  36945435
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -49435,6 +60020,26 @@
    [nil nil nil "1" "b2" nil "b3"]
    [nil nil nil nil nil nil nil]],
   :hash 36945435},
+ 1329350748
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil nil nil]
+   [nil "4" "b5" "5" nil]
+   ["1" nil nil "b3" nil]
+   ["5" nil nil "b7" nil]
+   [nil "b3" nil "4" "b5"]
+   [nil "b7" nil "1" nil]],
+  :hash 1329350748},
+ 514350601
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" "b2" nil "b3" nil]
+   [nil nil "4" nil "5" nil "6"]
+   [nil "7" "1" "b2" nil "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]],
+  :hash 514350601},
  -532865493
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -49519,6 +60124,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 496131549},
+ -1617614193
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil "b3" "3" nil "b5" nil]
+   ["b5" nil "b6" nil "b7" nil "1"]
+   [nil "1" "b2" nil "b3" "3" nil]
+   [nil nil "b5" nil "b6" nil "b7"]],
+  :hash -1617614193},
  -107673775
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -49537,6 +60151,17 @@
    [nil nil "1" nil "2" nil]
    [nil nil nil nil nil nil]],
   :hash -305035794},
+ 345644881
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil "b3" nil "4" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" "b3" nil]
+   ["5" "b6" nil "b7" nil]],
+  :hash 345644881},
  -562861937
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -49548,6 +60173,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -562861937},
+ 1170503388
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil nil nil]
+   [nil "b7" nil "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" nil]],
+  :hash 1170503388},
  659167422
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -49559,6 +60193,17 @@
    [nil "7" "1" nil "2"]
    [nil nil nil "b6" "6"]],
   :hash 659167422},
+ 1766905571
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil nil "5" nil nil]
+   [nil "2" nil nil "4"]
+   [nil nil "b7" nil "1"]
+   [nil nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]],
+  :hash 1766905571},
  862475664
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -49601,6 +60246,17 @@
    ["3" "4" "b5" nil]
    [nil nil "b2" nil]],
   :hash 705425599},
+ 903567645
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil]
+   [nil nil "7" "1" nil]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" "b3" nil]
+   ["5" nil "6" nil "7"]
+   [nil nil nil "4" nil]],
+  :hash 903567645},
  129640012
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -49659,6 +60315,17 @@
    ["1" "b2" nil nil "3" "4" nil]
    [nil nil "5" "b6" nil nil "7"]],
   :hash -746759102},
+ 1006163789
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" "b2" nil nil]
+   [nil "5" "b6" nil nil]
+   [nil "b3" nil "4" nil]
+   [nil nil "7" "1" "b2"]
+   [nil "4" nil "5" "b6"]
+   [nil nil "b2" nil "b3"]],
+  :hash 1006163789},
  -1397113267
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -49688,6 +60355,17 @@
    ["3" "4" nil "5" nil "6"]
    [nil nil nil nil nil nil]],
   :hash -55570492},
+ 279232547
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b5" nil "b6" nil]
+   [nil "b2" nil "b3" "3"]
+   ["b6" nil "b7" nil "1"]
+   ["b3" "3" nil "b5" nil]
+   ["b7" nil "1" "b2" nil]
+   [nil nil nil "b6" nil]],
+  :hash 279232547},
  -28200696
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -49708,6 +60386,17 @@
    [nil nil nil nil nil nil]
    [nil nil nil nil nil nil]],
   :hash 1895236322},
+ 1362090913
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil nil nil nil]
+   [nil "4" nil "5" nil]
+   ["1" "b2" nil "b3" nil]
+   ["5" nil "6" "b7" nil]
+   [nil "b3" nil "4" nil]
+   ["6" "b7" nil "1" "b2"]],
+  :hash 1362090913},
  -69566339
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -49717,6 +60406,15 @@
    ["3" "4" "b5" nil nil "6"]
    ["6" "b7" nil "1" "b2" nil]],
   :hash -69566339},
+ 1255800544
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil nil nil]
+   [nil nil "7" "1" "b2" nil "b3"]
+   [nil "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil nil "7" "1" "b2"]],
+  :hash 1255800544},
  473055748
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -49726,6 +60424,17 @@
    ["b5" nil "b6" "6" nil "7" nil]
    ["7" "1" nil "2" "b3" nil "4"]],
   :hash 473055748},
+ -919134408
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil nil "2" "b3" nil]
+   ["b6" "6" nil "7" "1"]
+   ["b3" nil "4" "b5" nil]
+   [nil "7" "1" nil "2"]
+   ["4" "b5" nil "b6" "6"]],
+  :hash -919134408},
  -661532335
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -49802,6 +60511,17 @@
    [nil nil nil "4"]
    [nil nil nil nil]],
   :hash 499755696},
+ 1995921336
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil nil]
+   [nil "b6" nil "b7" nil]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   [nil "b2" nil "b3" nil]],
+  :hash 1995921336},
  -700342335
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -49955,6 +60675,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash 686127337},
+ -179182543
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil]
+   [nil nil "7" "1" "b2"]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil "b3" nil]
+   ["5" "b6" nil nil "7"]
+   [nil nil nil "4" nil]],
+  :hash -179182543},
  -1467524312
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -49986,6 +60717,17 @@
    [nil "b6" nil "b7" nil "1" nil]
    [nil nil nil nil nil nil nil]],
   :hash -1470129300},
+ -1754945735
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil]
+   [nil "b2" nil "b3" nil]
+   ["b6" nil nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   [nil nil "5" "b6" nil]],
+  :hash -1754945735},
  1593119181
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -50006,6 +60748,17 @@
    [nil nil "b7" nil "1" nil nil]
    [nil nil nil nil nil "b5" "5"]],
   :hash 714431468},
+ -1524521088
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil nil]
+   [nil nil "1" nil "2"]
+   [nil "5" "b6" nil "b7"]
+   [nil "2" "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil nil "4" nil "5"]],
+  :hash -1524521088},
  978783374
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -50053,6 +60806,17 @@
    ["2" "b3" "3" "4" "b5" "5"]
    [nil nil nil "b7" nil "1"]],
   :hash 1186092878},
+ -2086982354
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" nil]
+   [nil "3" "4" "b5" nil]
+   ["7" "1" "b2" nil nil]
+   ["b5" nil "b6" nil nil]
+   ["b2" nil nil "3" "4"]
+   [nil nil nil "7" "1"]],
+  :hash -2086982354},
  -91307340
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -50127,6 +60891,17 @@
    [nil "6" "b7" nil "1" "b2" nil]
    [nil nil "b3" nil "4" nil "5"]],
   :hash -105102202},
+ -1457373936
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil nil nil]
+   [nil "b7" nil "1" "b2"]
+   ["4" "b5" nil "b6" nil]
+   ["1" "b2" nil "b3" nil]
+   [nil "b6" nil "b7" nil]
+   [nil "b3" nil "4" "b5"]],
+  :hash -1457373936},
  815107683
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -50158,6 +60933,17 @@
    ["4" "b5" nil "b6" nil]
    [nil nil nil nil nil]],
   :hash 577210177},
+ 1679051140
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil nil "4"]
+   [nil "b7" nil "1"]
+   ["4" nil "5" nil]
+   ["1" nil "2" nil]
+   ["5" nil nil "b7"]
+   [nil nil nil "4"]],
+  :hash 1679051140},
  -924194595
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -50187,6 +60973,15 @@
    [nil nil "6" nil "7" "1"]
    [nil nil nil nil nil nil]],
   :hash -1731756936},
+ -879533610
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" "b6" nil nil "7" nil]
+   [nil nil "b2" nil "b3" nil "4"]
+   [nil "5" "b6" nil nil "7" "1"]
+   ["7" "1" "b2" nil "b3" nil "4"]],
+  :hash -879533610},
  1334835018
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -50225,6 +61020,17 @@
    ["4" nil "5" "b6" nil "b7" nil]
    [nil nil nil "b2" nil nil "3"]],
   :hash 417487607},
+ 1572319344
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil "b3" nil nil]
+   [nil "6" "b7" nil "1"]
+   ["3" nil "b5" "5" nil]
+   [nil "1" "b2" nil "b3"]
+   ["b5" "5" nil "6" "b7"]
+   [nil nil "b3" "3" nil]],
+  :hash 1572319344},
  1790440108
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -50292,6 +61098,24 @@
    ["3" "4" "b5" nil "b6"]
    [nil nil "7" "1" "b2"]],
   :hash -1439670114},
+ -1171113259
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil "7" nil]
+   ["7" "1" nil "2" nil "3" "4"]
+   ["3" "4" nil "5" nil "6" nil]
+   [nil nil "7" "1" nil "2" nil]],
+  :hash -1171113259},
+ -1495524576
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil "b7"]
+   ["b7" nil "1" "b2" nil "b3"]
+   ["b3" nil "4" nil "5" "b6"]
+   [nil nil "b7" nil "1" "b2"]],
+  :hash -1495524576},
  -512291856
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -50310,6 +61134,15 @@
    [nil nil nil "4" nil "5" nil]
    [nil nil nil nil nil nil nil]],
   :hash 908519190},
+ 1002199762
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" "1" "b2" nil]
+   ["b2" nil nil "3" "4" "b5" nil]
+   ["b5" nil "b6" nil nil "7" "1"]
+   [nil nil "b2" nil nil "3" "4"]],
+  :hash 1002199762},
  1883750146
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -50328,6 +61161,15 @@
    ["4" nil "5" "b6" nil nil "7"]
    [nil "7" "1" "b2" nil "b3" nil]],
   :hash -1759903301},
+ 716498801
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" "b7" nil "1" nil nil]
+   ["b2" nil "b3" "3" nil "b5" "5"]
+   ["b5" "5" nil "6" "b7" nil "1"]
+   [nil "1" "b2" nil "b3" "3" nil]],
+  :hash 716498801},
  -318047607
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -50379,6 +61221,28 @@
    ["6" "b7" nil "1" nil "2"]
    ["2" "b3" nil "4" nil "5"]],
   :hash -914346253},
+ 634955463
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil "b6" nil nil]
+   [nil nil "b3" "3" nil]
+   [nil "b7" nil "1" "b2"]
+   ["3" nil "b5" nil "b6"]
+   [nil "1" "b2" nil "b3"]
+   [nil nil "b6" nil "b7"]],
+  :hash 634955463},
+ 606615287
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil "b3" nil "4" nil]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" nil "6"]
+   ["1" "b2" nil "b3" nil]
+   ["5" nil "6" nil "7"]],
+  :hash 606615287},
  -1647178211
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -50430,6 +61294,17 @@
    [nil nil "b3" nil "4" "b5" "5"]
    [nil nil nil nil nil nil nil]],
   :hash -1297185853},
+ -502136239
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil nil nil]
+   [nil "3" "4" nil "5"]
+   [nil "1" "b2" nil nil]
+   [nil "5" "b6" nil "b7"]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil "b7" nil "1"]],
+  :hash -502136239},
  -1111548283
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -50479,6 +61354,15 @@
    [nil nil nil nil nil "1"]
    [nil nil nil nil nil nil]],
   :hash -970906921},
+ -1244047429
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" "b5" nil "b6" nil]
+   ["b6" nil nil "7" "1" "b2" nil]
+   ["b2" nil nil "3" "4" "b5" nil]
+   [nil nil "b6" nil nil "7" "1"]],
+  :hash -1244047429},
  -1333725469
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -50488,6 +61372,26 @@
    ["6" "b7" nil "1" nil "2" "b3"]
    [nil nil nil nil nil nil nil]],
   :hash -1333725469},
+ 1741704516
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil nil "4" nil "5"]
+   ["5" nil nil "b7" nil "1"]
+   ["1" nil "2" nil nil "4"]
+   [nil nil "5" nil nil "b7"]],
+  :hash 1741704516},
+ -422735979
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "7" nil nil]
+   [nil "4" nil "5" "b6"]
+   ["1" "b2" nil "b3" nil]
+   ["5" "b6" nil nil "7"]
+   [nil "b3" nil "4" nil]
+   [nil nil "7" "1" "b2"]],
+  :hash -422735979},
  -1888656231
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -50528,6 +61432,17 @@
    [nil "5" "b6" nil nil "7" "1"]
    [nil nil nil nil nil nil nil]],
   :hash 519237685},
+ -1127225958
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "7" "1" nil]
+   [nil "4" nil "5" "b6"]
+   ["1" "b2" nil nil "3"]
+   ["5" "b6" nil nil "7"]
+   [nil nil "3" "4" nil]
+   [nil nil nil "1" "b2"]],
+  :hash -1127225958},
  -1512694843
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -50711,6 +61626,17 @@
    [nil nil "4" "b5" nil "b6"]
    [nil nil nil nil nil nil]],
   :hash -1595509584},
+ 1155731270
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil nil nil "b7" nil]
+   [nil nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil nil]
+   ["1" nil "2" nil nil]],
+  :hash 1155731270},
  499650556
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -50780,6 +61706,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -229520140},
+ -788856471
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil nil nil]
+   [nil "1" nil "2" "b3"]
+   ["5" nil "6" nil "7"]
+   ["2" "b3" nil "4" nil]
+   ["6" nil "7" "1" nil]
+   [nil "4" nil "5" nil]],
+  :hash -788856471},
  -781139597
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -50791,6 +61728,17 @@
    [nil "4" nil "5"]
    [nil nil nil nil]],
   :hash -781139597},
+ -2034539353
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil]
+   [nil "b3" nil "4"]
+   ["b7" nil "1" "b2"]
+   ["4" nil "5" "b6"]
+   ["1" "b2" nil "b3"]
+   [nil "b6" nil "b7"]],
+  :hash -2034539353},
  742325912
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -50869,6 +61817,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1351022701},
+ 71223167
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" "6" nil nil nil]
+   [nil nil "4" "b5" nil]
+   ["7" "1" nil "2" "b3"]
+   ["b5" nil "b6" "6" nil]
+   [nil "2" "b3" nil "4"]
+   [nil "6" nil "7" "1"]],
+  :hash 71223167},
  -1412533364
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -50880,6 +61839,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1412533364},
+ 62130526
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" "b6" nil "b7" nil]
+   [nil nil "3" "4" nil]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil nil "3"]
+   [nil nil nil "b7" nil]],
+  :hash 62130526},
  289943912
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -50994,6 +61964,17 @@
    ["5" "b6" nil "b7" nil "1" "b2"]
    [nil nil nil nil nil "4" nil]],
   :hash 1180478190},
+ -1868081257
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" "b3" nil nil nil]
+   [nil nil "7" "1" nil]
+   ["4" "b5" nil "b6" "6"]
+   ["1" nil "2" "b3" nil]
+   [nil "b6" "6" nil "7"]
+   [nil "b3" nil "4" "b5"]],
+  :hash -1868081257},
  1266679279
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -51154,6 +62135,15 @@
    ["6" "b7" nil "1" nil "2"]
    ["2" nil "3" "4" nil "5"]],
   :hash 807340272},
+ -2033042595
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil nil nil]
+   ["5" "b6" nil nil "7" "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]
+   ["4" nil "5" "b6" nil nil "7"]],
+  :hash -2033042595},
  -397602968
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -51174,6 +62164,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1668905605},
+ 2077031947
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" nil nil "1" nil]
+   ["1" nil "2" nil "3" nil nil]
+   [nil nil "5" nil "6" nil nil]
+   [nil nil "1" nil "2" nil "3"]],
+  :hash 2077031947},
  -1936606993
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -51203,6 +62202,15 @@
    [nil "4" nil "5" nil]
    [nil nil "b2" nil "b3"]],
   :hash 1146290022},
+ -949884929
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil "b3" nil nil]
+   [nil "4" nil "5" nil "6" "b7"]
+   ["6" "b7" nil "1" "b2" nil "b3"]
+   [nil "b3" nil "4" nil "5" nil]],
+  :hash -949884929},
  -1184508187
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -51223,6 +62231,39 @@
    [nil nil nil nil nil "b5" "5"]
    [nil nil nil nil nil nil nil]],
   :hash -1089028277},
+ -1291530530
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil]
+   [nil "b5" nil "b6" nil]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" "b5" nil]
+   [nil nil nil "b2" nil]],
+  :hash -1291530530},
+ -797296725
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil nil nil]
+   [nil "1" nil nil "b3"]
+   ["5" nil nil "b7" nil]
+   [nil "b3" nil "4" nil]
+   [nil "b7" nil "1" nil]
+   [nil "4" nil "5" nil]],
+  :hash -797296725},
+ -1021692563
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil nil nil nil]
+   [nil nil "7" "1" nil]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" "b3" nil]
+   ["5" nil "6" nil "7"]
+   ["2" "b3" nil "4" nil]],
+  :hash -1021692563},
  -1217226729
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -51368,6 +62409,17 @@
    ["b6" nil "b7" nil "1" nil "2"]
    [nil nil nil nil "4" nil "5"]],
   :hash 1389378604},
+ 620744965
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil "b2" nil nil "3"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" "b6" nil]],
+  :hash 620744965},
  2017699877
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -51388,6 +62440,28 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 2096926996},
+ 1249520569
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil nil nil]
+   [nil "1" nil "2"]
+   ["5" nil "6" "b7"]
+   ["2" nil "3" "4"]
+   ["6" "b7" nil "1"]
+   ["3" "4" nil "5"]],
+  :hash 1249520569},
+ 1909114764
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "b7" nil nil]
+   [nil nil "4" "b5" "5"]
+   [nil "1" nil nil "b3"]
+   ["b5" "5" nil nil "b7"]
+   [nil nil "b3" nil "4"]
+   [nil nil "b7" nil "1"]],
+  :hash 1909114764},
  -1276648020
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -51537,6 +62611,17 @@
    ["4" nil "5" "b6"]
    [nil "b2" nil "b3"]],
   :hash -1216381857},
+ 2051895235
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" nil nil nil]
+   [nil "1" nil "2" nil]
+   [nil "b6" nil "b7" nil]
+   ["2" nil "3" "4" "b5"]
+   [nil "b7" nil "1" nil]
+   [nil "4" "b5" nil "b6"]],
+  :hash 2051895235},
  124639525
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -51717,6 +62802,15 @@
    ["b5" "5" nil "6" "b7"]
    [nil nil "b3" "3" "4"]],
   :hash 1969280196},
+ 2016776079
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil nil "b3" nil nil]
+   ["4" nil "5" nil nil "b7"]
+   ["b7" nil "1" nil nil "b3"]
+   ["b3" nil "4" nil "5" nil]],
+  :hash 2016776079},
  -217914730
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -51804,6 +62898,17 @@
    ["5" nil "6" nil nil "1"]
    ["1" nil "2" nil "3" nil]],
   :hash -2098160440},
+ 1549314013
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil nil nil nil]
+   [nil "4" "b5" nil "b6"]
+   ["1" nil "2" "b3" nil]
+   [nil "b6" "6" nil "7"]
+   ["2" "b3" nil "4" "b5"]
+   ["6" nil "7" "1" nil]],
+  :hash 1549314013},
  -1903016351
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -51833,6 +62938,17 @@
    [nil nil nil "6"]
    [nil nil nil nil]],
   :hash -1815669879},
+ 912939427
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" nil nil]
+   [nil nil "6" "b7" nil]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   [nil nil "2" nil "3"]],
+  :hash 912939427},
  1708438639
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -51891,6 +63007,26 @@
    ["b5" "5" nil "6" "b7" nil "1"]
    [nil nil nil nil "b3" "3" nil]],
   :hash 1889216091},
+ -1358133284
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil nil]
+   ["2" "b3" nil "4" nil "5"]
+   ["5" nil "6" "b7" nil "1"]
+   ["1" nil "2" "b3" nil "4"]],
+  :hash -1358133284},
+ -1783625056
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" nil nil]
+   [nil nil nil "b7" nil]
+   [nil nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil nil]
+   [nil nil "2" nil nil]],
+  :hash -1783625056},
  1173433539
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -51942,6 +63078,17 @@
    ["1" "b2" nil "b3" nil "4"]
    ["4" nil "5" "b6" nil "b7"]],
   :hash -213810677},
+ -1715689335
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" "b5" nil nil]
+   ["1" "b2" nil "b3"]
+   ["b6" nil "b7" nil]
+   ["b3" nil "4" "b5"]
+   ["b7" nil "1" "b2"]
+   [nil "b5" nil "b6"]],
+  :hash -1715689335},
  1512168972
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -51951,6 +63098,17 @@
    ["b7" nil "1" "b2" nil "b3"]
    ["b3" nil "4" nil "5" "b6"]],
   :hash 1512168972},
+ -938288338
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil nil nil nil]
+   [nil nil "1" nil nil]
+   [nil "5" nil nil "b7"]
+   [nil nil "b3" nil "4"]
+   [nil nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]],
+  :hash -938288338},
  -131516605
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -51960,6 +63118,17 @@
    ["b6" nil "b7" nil "1" nil "2"]
    [nil nil nil nil nil "b5" nil]],
   :hash -131516605},
+ -295716688
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil nil "5" nil "6"]
+   ["b2" nil "b3" nil "4"]
+   [nil "6" "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" "b2" nil]],
+  :hash -295716688},
  -1116196273
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -51998,6 +63167,24 @@
    [nil nil nil nil "1"]
    [nil nil nil nil nil]],
   :hash -332410621},
+ -1119095405
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" nil "b6" nil "b7"]
+   ["b7" nil "1" "b2" nil "b3"]
+   ["b3" nil "4" "b5" nil "b6"]
+   [nil nil "b7" nil "1" "b2"]],
+  :hash -1119095405},
+ 835915675
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil "6" nil]
+   ["6" "b7" nil "1" "b2" nil "b3"]
+   [nil "b3" nil "4" nil "5" nil]
+   [nil nil "6" "b7" nil "1" "b2"]],
+  :hash 835915675},
  1191421987
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -52025,6 +63212,17 @@
    ["4" nil "5" nil nil "b7"]
    [nil nil nil nil nil nil]],
   :hash 1200632701},
+ 110703948
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil nil nil nil]
+   [nil nil "1" "b2" nil]
+   ["b5" nil "b6" nil "b7"]
+   ["b2" nil "b3" "3" nil]
+   ["b6" nil "b7" nil "1"]
+   ["b3" "3" nil "b5" nil]],
+  :hash 110703948},
  -585289536
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -52098,6 +63296,15 @@
    [nil nil nil nil nil "5"]
    [nil nil nil nil nil nil]],
   :hash 719472267},
+ 1964357044
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil nil]
+   [nil "b3" nil "4" nil "5"]
+   ["5" nil nil "b7" nil "1"]
+   ["1" nil nil "b3" nil "4"]],
+  :hash 1964357044},
  -1835782717
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -52205,6 +63412,17 @@
    ["4" nil "5" nil "6" nil "7"]
    [nil nil nil nil "2" nil "3"]],
   :hash -774228721},
+ 295511581
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" "b7" nil nil nil]
+   [nil "4" "b5" "5" nil]
+   ["1" nil "2" "b3" "3"]
+   ["5" nil "6" "b7" nil]
+   ["2" "b3" "3" "4" "b5"]
+   [nil "b7" nil "1" nil]],
+  :hash 295511581},
  -946776780
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -52296,6 +63514,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1557777039},
+ -1116163846
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["2" nil "3" nil nil "5"]
+   ["5" nil "6" nil nil "1"]
+   ["1" nil "2" nil "3" nil]
+   [nil nil "5" nil "6" nil]],
+  :hash -1116163846},
  -1576814535
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -52387,6 +63614,15 @@
    [nil "3" "4" nil "5"]
    [nil nil "1" "b2" nil]],
   :hash 332768218},
+ -535234882
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" nil nil]
+   ["b6" nil "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil "5" "b6" nil "b7" nil "1"]],
+  :hash -535234882},
  -141421727
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -52447,6 +63683,15 @@
    ["1" "b2" nil "b3" nil "4" nil]
    [nil nil nil nil nil nil "7"]],
   :hash -877386657},
+ 954919314
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" "b5" nil "b6"]
+   [nil nil "b7" nil "1" "b2"]
+   ["b3" nil "4" "b5" nil "b6"]
+   ["b6" nil "b7" nil "1" "b2"]],
+  :hash 954919314},
  626432829
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -52458,6 +63703,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 626432829},
+ 586069647
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil]
+   [nil "4" "b5" nil "b6"]
+   ["1" nil "2" nil "3"]
+   [nil "b6" nil "b7" nil]
+   ["2" nil "3" "4" "b5"]
+   [nil nil nil "1" nil]],
+  :hash 586069647},
  712016450
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -52480,6 +63736,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1419605114},
+ 1363050916
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil nil]
+   [nil "5" "b6" nil "b7"]
+   [nil nil "3" "4" nil]
+   [nil "b7" nil "1" "b2"]
+   ["3" "4" nil "5" "b6"]
+   [nil nil "b2" nil nil]],
+  :hash 1363050916},
  1601679208
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -52509,6 +63776,15 @@
    [nil nil nil nil nil "5" nil]
    [nil nil nil nil nil nil nil]],
   :hash -1874055178},
+ 2132005594
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" nil "b6" nil nil nil]
+   [nil "7" "1" nil "2" "b3" nil]
+   ["b3" nil "4" "b5" nil "b6" "6"]
+   ["b6" "6" nil "7" "1" nil "2"]],
+  :hash 2132005594},
  1539630588
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -52576,6 +63852,17 @@
    ["5" "b6" nil "b7" nil "1" "b2"]
    [nil nil nil "b3" nil "4" nil]],
   :hash 1279701657},
+ 84695055
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil nil nil nil]
+   [nil nil "b5" "5" nil]
+   ["1" "b2" nil "b3" "3"]
+   ["5" nil "6" "b7" nil]
+   [nil "b3" "3" nil "b5"]
+   ["6" "b7" nil "1" "b2"]],
+  :hash 84695055},
  -971877716
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -52798,6 +64085,15 @@
    ["2" "b3" nil "4" "b5"]
    [nil nil nil "1" nil]],
   :hash -1240049038},
+ -1475100615
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" "1" "b2" nil]
+   [nil nil "b3" nil "4" nil "5"]
+   ["b6" nil nil "7" "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]],
+  :hash -1475100615},
  567819539
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -52849,6 +64145,15 @@
    ["6" "b7" nil "1" "b2"]
    [nil nil "3" "4" "b5"]],
   :hash -906835578},
+ -1419861275
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil "1" nil nil]
+   [nil "2" nil "3" "4" "b5" nil]
+   ["b5" nil "b6" nil "b7" nil "1"]
+   [nil "1" nil "2" nil "3" "4"]],
+  :hash -1419861275},
  1325049713
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -52925,6 +64230,15 @@
    [nil nil nil nil nil "2"]
    [nil nil nil nil nil nil]],
   :hash -1401409429},
+ -679267600
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" nil "7" "1" nil "2" nil]
+   [nil nil nil "4" nil "5" nil]
+   ["6" nil "7" "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" nil]],
+  :hash -679267600},
  1038662786
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -52934,6 +64248,15 @@
    [nil nil nil nil nil nil]
    [nil nil nil nil nil nil]],
   :hash 1038662786},
+ -602237710
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil "b3" "3" nil "b5" nil]
+   [nil nil "b6" nil "b7" nil "1"]
+   ["b2" nil "b3" "3" nil "b5" nil]
+   ["b5" nil "b6" nil "b7" nil "1"]],
+  :hash -602237710},
  1058584291
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -52963,6 +64286,17 @@
    ["4" "b5" nil nil "6" "b7" nil]
    [nil nil nil nil nil nil nil]],
   :hash -1859257876},
+ -667976849
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil]
+   [nil "b2" nil nil "3"]
+   ["b6" nil nil "7" "1"]
+   [nil "3" "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   [nil nil "5" "b6" nil]],
+  :hash -667976849},
  -1144107166
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -53065,6 +64399,24 @@
    [nil nil "b2" nil nil]
    [nil nil nil nil nil]],
   :hash -522996923},
+ -60912985
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil "5" nil]
+   ["5" nil "6" "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]
+   [nil nil "5" nil "6" "b7" nil]],
+  :hash -60912985},
+ -1907359916
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil "2"]
+   ["2" nil nil "4" nil "5"]
+   ["5" nil nil "b7" nil "1"]
+   [nil nil "2" nil nil "4"]],
+  :hash -1907359916},
  -1656685205
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -53125,6 +64477,15 @@
    ["b3" nil "4" nil "5" nil "6"]
    [nil nil nil nil nil "b2" nil]],
   :hash 246462522},
+ 543261134
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" "b6" nil nil "7" nil]
+   ["7" "1" nil "2" "b3" nil "4"]
+   [nil "4" nil "5" "b6" nil nil]
+   [nil nil "7" "1" nil "2" "b3"]],
+  :hash 543261134},
  -2128680947
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -53134,6 +64495,15 @@
    ["1" "b2" nil "b3" nil "4" nil]
    [nil nil nil nil nil nil nil]],
   :hash -2128680947},
+ -1497252567
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" "1" "b2" nil]
+   ["b2" nil "b3" nil "4" nil "5"]
+   [nil "5" "b6" nil nil "7" "1"]
+   [nil nil "b2" nil "b3" nil "4"]],
+  :hash -1497252567},
  1754151828
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -53254,6 +64624,28 @@
    ["b5" nil "b6" nil "b7"]
    [nil nil nil nil "4"]],
   :hash -269165550},
+ -253584286
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil "6" nil nil]
+   [nil "b3" nil "4" nil]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" "b3" nil]
+   [nil nil "6" nil "7"]],
+  :hash -253584286},
+ 2072885800
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" "b7" nil nil nil]
+   [nil "4" nil "5" nil]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" "b7" nil]
+   ["2" nil "3" "4" nil]
+   [nil "b7" nil "1" nil]],
+  :hash 2072885800},
  -134428691
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -53314,6 +64706,15 @@
    [nil nil nil "b6" nil]
    [nil nil nil nil nil]],
   :hash 254113283},
+ -1323097310
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil "3" nil]
+   [nil nil "b5" nil "b6" nil "b7"]
+   [nil "1" nil "2" nil "3" "4"]
+   ["3" "4" "b5" nil "b6" nil "b7"]],
+  :hash -1323097310},
  2022212622
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -53343,6 +64744,15 @@
    ["b2" nil "b3" nil "4" nil "5"]
    [nil nil nil "6" nil "7" "1"]],
   :hash 999535786},
+ -1636917563
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil nil nil]
+   [nil "1" "b2" nil "b3" nil "4"]
+   [nil "4" nil "5" nil "6" "b7"]
+   ["6" "b7" nil "1" "b2" nil "b3"]],
+  :hash -1636917563},
  -896248757
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -53372,6 +64782,17 @@
    [nil nil nil "5" nil "6" "b7"]
    [nil nil nil nil nil nil nil]],
   :hash -374019800},
+ 135522282
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil nil "3" "4" nil]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil nil "3"]
+   ["5" "b6" nil nil "7"]],
+  :hash 135522282},
  810233603
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -53466,6 +64887,17 @@
    [nil "b5" nil "b6" nil "b7" nil]
    ["b7" nil "1" "b2" nil "b3" "3"]],
   :hash -1512936364},
+ -1457367709
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4" nil]
+   [nil nil "7" "1" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" "b3" nil]
+   ["5" "b6" nil nil "7"]
+   [nil nil nil "4" nil]],
+  :hash -1457367709},
  -1410062273
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -53475,6 +64907,17 @@
    ["7" "1" "b2" nil "b3" nil "4"]
    [nil "4" nil "5" nil "6" nil]],
   :hash -1410062273},
+ -566730239
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" "3" nil nil nil]
+   [nil nil "1" "b2" nil]
+   ["b5" "5" nil "6" "b7"]
+   ["b2" nil "b3" "3" nil]
+   [nil "6" "b7" nil "1"]
+   [nil "3" nil "b5" "5"]],
+  :hash -566730239},
  -237153397
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -53591,6 +65034,15 @@
    [nil "b3" nil "4" nil]
    [nil nil "7" "1" "b2"]],
   :hash -658604048},
+ 533847310
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" nil "7" "1" nil]
+   [nil nil nil "b3" nil "4" nil]
+   ["5" nil "6" nil "7" "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]],
+  :hash 533847310},
  -726792787
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -53633,6 +65085,17 @@
    ["b5" nil "b6" nil "b7"]
    [nil nil nil "3" nil]],
   :hash -1966936804},
+ 1587079727
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil]
+   [nil "b3" nil "4" nil]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" nil "6"]
+   ["1" "b2" nil "b3" nil]
+   [nil nil nil "b7" nil]],
+  :hash 1587079727},
  -1216318687
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -53673,6 +65136,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1828347263},
+ 2120867337
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "3" "4" nil]
+   [nil nil "7" "1" "b2"]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil nil "3"]
+   ["5" "b6" nil nil "7"]
+   [nil nil nil "4" nil]],
+  :hash 2120867337},
  -2066059206
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -53722,6 +65196,15 @@
    ["b3" nil "4" nil "5"]
    ["b7" nil "1" nil "2"]],
   :hash 2050691536},
+ -1014953674
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" nil nil nil]
+   [nil "5" "b6" nil "b7" nil "1"]
+   [nil "1" "b2" nil nil "3" "4"]
+   ["3" "4" nil "5" "b6" nil "b7"]],
+  :hash -1014953674},
  2034364074
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -53791,6 +65274,17 @@
    ["b3" nil "4" nil "5"]
    [nil nil "1" "b2" nil]],
   :hash -2054296103},
+ -176636237
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil nil]
+   [nil "3" "4" nil "5"]
+   [nil "1" "b2" nil nil]
+   [nil "5" "b6" nil "b7"]
+   ["b2" nil nil "3" "4"]
+   [nil nil "b7" nil "1"]],
+  :hash -176636237},
  1799620859
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -53840,6 +65334,15 @@
    [nil "4" nil "5" nil]
    [nil nil nil nil nil]],
   :hash 1668955007},
+ -1286321261
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil "b7" nil "1" nil nil]
+   [nil "2" nil "3" "4" nil "5"]
+   [nil "5" "b6" nil "b7" nil "1"]
+   [nil "1" nil "2" nil "3" "4"]],
+  :hash -1286321261},
  -203218696
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -53882,6 +65385,15 @@
    [nil "7" "1" nil "2"]
    ["4" nil "5" nil "6"]],
   :hash -1481711778},
+ -750517720
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil "7" nil nil]
+   ["1" "b2" nil "b3" nil "4" nil]
+   ["4" nil "5" "b6" nil nil "7"]
+   [nil "7" "1" "b2" nil "b3" nil]],
+  :hash -750517720},
  -1308767403
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -53902,6 +65414,15 @@
    ["b7" nil "1"]
    ["4" nil "5"]],
   :hash -902971847},
+ -493669326
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil "4" nil]
+   ["4" nil "5" nil "6" "b7" nil]
+   ["b7" nil "1" nil "2" "b3" nil]
+   [nil nil "4" nil "5" nil "6"]],
+  :hash -493669326},
  -439679257
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -53920,6 +65441,15 @@
    [nil nil "5" "b6" nil nil "7"]
    [nil nil nil nil nil nil nil]],
   :hash 156716973},
+ 1433863250
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil nil "3" "4" nil]
+   ["4" "b5" nil nil "6" "b7" nil]
+   ["b7" nil "1" "b2" nil nil "3"]
+   [nil nil "4" "b5" nil nil "6"]],
+  :hash 1433863250},
  370624689
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -53960,6 +65490,15 @@
    [nil nil "4" nil "5"]
    [nil nil nil nil nil]],
   :hash -797308029},
+ 1335637346
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil nil "b7" nil "1" nil]
+   [nil nil nil "b3" nil "4" "b5"]
+   ["5" nil nil "b7" nil "1" nil]
+   ["1" nil nil "b3" nil "4" "b5"]],
+  :hash 1335637346},
  -1889348942
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -54127,6 +65666,17 @@
    [nil nil nil "4" nil "5" "b6"]
    [nil nil nil nil nil nil nil]],
   :hash -855944035},
+ -2422655
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil nil "6" nil "7"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" nil "6"]
+   ["1" "b2" nil "b3" nil]],
+  :hash -2422655},
  996937717
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -54167,6 +65717,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 963537193},
+ 1428945056
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" nil "2" "b3" nil]
+   ["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil nil "7" "1" nil "2"]
+   [nil nil "b3" nil "4" nil "5"]],
+  :hash 1428945056},
  -780890845
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -54196,6 +65755,17 @@
    ["1" nil nil "b3" nil "4" "b5"]
    [nil nil nil nil nil nil nil]],
   :hash -807594121},
+ -354095202
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" nil nil nil nil]
+   [nil nil "7" "1" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" "b3" nil]
+   ["5" "b6" nil nil "7"]
+   ["2" "b3" nil "4" nil]],
+  :hash -354095202},
  -1652988510
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -54214,6 +65784,15 @@
    ["b6" nil nil "7" "1" "b2" nil]
    [nil nil nil nil nil nil "5"]],
   :hash 255043496},
+ -79252727
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" nil "3" "4" nil]
+   [nil nil "5" nil "6" nil "7"]
+   ["1" nil "2" nil "3" "4" nil]
+   ["4" nil "5" nil "6" nil "7"]],
+  :hash -79252727},
  -778549225
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -54223,6 +65802,15 @@
    [nil "1" "b2" nil "b3" "3" nil]
    ["3" nil "b5" "5" nil "6" "b7"]],
   :hash -778549225},
+ -311527930
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil "2" nil]
+   ["2" "b3" "3" "4" "b5" "5" nil]
+   ["5" nil "6" "b7" nil "1" nil]
+   [nil nil "2" "b3" "3" "4" "b5"]],
+  :hash -311527930},
  115562818
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -54234,6 +65822,24 @@
    ["b7" nil "1" "b2"]
    [nil "b5" nil "b6"]],
   :hash 115562818},
+ 1490759171
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" nil "6"]
+   ["6" "b7" nil "1" nil "2"]
+   ["2" nil "3" "4" nil "5"]
+   [nil nil "6" "b7" nil "1"]],
+  :hash 1490759171},
+ 1379878860
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil nil nil]
+   [nil "b7" nil "1" "b2" nil "b3"]
+   [nil "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" "b2"]],
+  :hash 1379878860},
  -204029595
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -54263,6 +65869,17 @@
    ["1" nil "2" "b3" nil "4" "b5"]
    [nil nil nil "b6" "6" nil "7"]],
   :hash -1720334162},
+ 1266161467
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" "b6" nil nil]
+   [nil "2" nil "3" "4"]
+   [nil "b7" nil "1" nil]
+   ["3" "4" nil "5" "b6"]
+   [nil "1" nil "2" nil]
+   [nil nil "b6" nil "b7"]],
+  :hash 1266161467},
  -1497071007
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -54448,6 +66065,17 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash 1568595150},
+ -242197354
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil nil nil nil]
+   [nil "4" "b5" nil nil]
+   ["1" "b2" nil nil "3"]
+   [nil nil "6" "b7" nil]
+   [nil nil "3" "4" "b5"]
+   ["6" "b7" nil "1" "b2"]],
+  :hash -242197354},
  -240722995
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -54506,6 +66134,17 @@
    [nil "5" "b6" nil nil]
    [nil nil nil nil nil]],
   :hash 1547061210},
+ -1802135738
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" nil nil nil]
+   [nil "6" "b7" nil "1"]
+   ["3" "4" nil "5" nil]
+   [nil "1" nil "2" nil]
+   [nil "5" nil "6" "b7"]
+   [nil "2" nil "3" "4"]],
+  :hash -1802135738},
  125203117
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -54517,6 +66156,17 @@
    ["3" nil "b5" nil "b6"]
    [nil nil nil nil nil]],
   :hash 125203117},
+ 2137061884
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil "7" "1" nil]
+   [nil "4" nil "5" nil]
+   ["1" "b2" nil "b3" nil]
+   ["5" nil "6" nil "7"]
+   [nil "b3" nil "4" nil]
+   [nil nil nil "1" "b2"]],
+  :hash 2137061884},
  -518380798
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -54575,6 +66225,28 @@
    [nil nil "b6" nil]
    [nil nil nil nil]],
   :hash 234569554},
+ -1701003795
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" nil "7" nil nil]
+   [nil "4" nil "5" nil]
+   ["1" nil "2" nil "3"]
+   ["5" nil "6" nil "7"]
+   ["2" nil "3" "4" nil]
+   [nil nil "7" "1" nil]],
+  :hash -1701003795},
+ -1645334156
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" nil "3" nil]
+   [nil "6" "b7" nil "1"]
+   ["3" "4" nil "5" nil]
+   [nil "1" nil "2" nil]
+   [nil "5" nil "6" "b7"]
+   [nil nil nil "3" "4"]],
+  :hash -1645334156},
  599560157
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -54624,6 +66296,15 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -240960126},
+ -573647482
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" "b5" nil nil "6" nil nil]
+   ["b7" nil "1" "b2" nil nil "3"]
+   [nil "3" "4" "b5" nil nil "6"]
+   [nil "6" "b7" nil "1" "b2" nil]],
+  :hash -573647482},
  -1741608095
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -54644,6 +66325,26 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash 1898989669},
+ -1430659254
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" nil nil nil]
+   [nil "5" nil "6" "b7"]
+   ["2" nil "3" "4" nil]
+   ["6" "b7" nil "1" nil]
+   ["3" "4" nil "5" nil]
+   [nil "1" nil "2" nil]],
+  :hash -1430659254},
+ -1909855232
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" "1" nil nil]
+   ["b2" nil nil "3" "4" nil "5"]
+   [nil "5" "b6" nil nil "7" "1"]
+   [nil "1" "b2" nil nil "3" "4"]],
+  :hash -1909855232},
  -516864308
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -54800,6 +66501,15 @@
    [nil nil "1" nil "2" nil]
    [nil nil nil nil nil nil]],
   :hash -1199587622},
+ -1987932590
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" nil "3" "4" nil]
+   [nil nil nil "b6" nil "b7" nil]
+   ["1" nil "2" nil "3" "4" "b5"]
+   ["4" "b5" nil "b6" nil "b7" nil]],
+  :hash -1987932590},
  1463455273
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -54820,6 +66530,15 @@
    [nil nil nil nil "7" "1"]
    [nil nil nil nil nil nil]],
   :hash 1948066107},
+ -1515442095
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" "1" "b2" nil]
+   ["b2" nil nil "3" "4" nil "5"]
+   [nil "5" "b6" nil nil "7" "1"]
+   [nil nil "b2" nil nil "3" "4"]],
+  :hash -1515442095},
  2032347078
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -54842,6 +66561,26 @@
    ["4" nil "5" "b6" nil]
    [nil nil nil nil nil]],
   :hash -752796871},
+ -1597995614
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil nil]
+   [nil nil "3" "4" nil]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   ["1" nil "2" nil "3"]
+   [nil "b6" nil "b7" nil]],
+  :hash -1597995614},
+ 200698144
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "3" "4" nil nil nil]
+   [nil nil "6" "b7" nil "1" "b2"]
+   ["1" "b2" nil nil "3" "4" "b5"]
+   ["4" "b5" nil nil "6" "b7" nil]],
+  :hash 200698144},
  2079324049
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -54918,6 +66657,15 @@
    [nil "4" "b5" nil "b6" "6" nil]
    [nil nil nil "1" nil "2" "b3"]],
   :hash 1275206597},
+ 427489094
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil nil nil]
+   ["7" "1" nil "2" nil "3" "4"]
+   ["3" "4" nil "5" nil "6" nil]
+   ["6" nil "7" "1" nil "2" nil]],
+  :hash 427489094},
  -1055382913
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -54967,6 +66715,17 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash -1576984843},
+ 476528992
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "6" nil nil nil]
+   [nil "3" "4" "b5" "5"]
+   [nil "1" nil "2" "b3"]
+   ["b5" "5" nil "6" "b7"]
+   [nil "2" "b3" "3" "4"]
+   [nil "6" "b7" nil "1"]],
+  :hash 476528992},
  -668068198
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -54978,6 +66737,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -668068198},
+ 976597656
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" "b5" nil "b6"]
+   [nil nil nil "7" "1" "b2"]
+   [nil "3" "4" "b5" nil "b6"]
+   ["b6" nil nil "7" "1" "b2"]],
+  :hash 976597656},
  2036482223
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -55029,6 +66797,15 @@
    [nil "3" "4" nil "5" "b6" nil]
    [nil nil nil nil nil nil nil]],
   :hash -1281408369},
+ 2110183731
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil nil "b3" nil "4"]
+   ["4" "b5" "5" nil nil "b7"]
+   ["b7" nil "1" nil nil "b3"]
+   [nil nil "4" "b5" "5" nil]],
+  :hash 2110183731},
  424635511
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -55098,6 +66875,28 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1304779340},
+ -1099178854
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "6" nil nil nil]
+   [nil nil "4" nil "5"]
+   [nil "1" "b2" nil "b3"]
+   [nil "5" nil "6" "b7"]
+   ["b2" nil "b3" nil "4"]
+   [nil "6" "b7" nil "1"]],
+  :hash -1099178854},
+ 902064418
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil nil nil]
+   [nil "2" "b3" nil "4"]
+   [nil nil "7" "1" nil]
+   [nil "4" nil "5" "b6"]
+   ["7" "1" nil "2" "b3"]
+   [nil "5" "b6" nil nil]],
+  :hash 902064418},
  440647535
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -55187,6 +66986,15 @@
    ["b7" nil "1" nil nil "b3"]
    [nil nil nil nil nil nil]],
   :hash -198990324},
+ 1075307367
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" nil nil nil]
+   [nil "5" "b6" nil nil "7" "1"]
+   ["7" "1" "b2" nil nil "3" "4"]
+   ["3" "4" nil "5" "b6" nil nil]],
+  :hash 1075307367},
  -51517671
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -55258,6 +67066,15 @@
    [nil nil "4" nil "5"]
    [nil nil nil nil nil]],
   :hash 622387503},
+ -75263727
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil "6" "b7" nil "1"]
+   [nil nil "2" nil "3" "4"]
+   ["5" nil "6" "b7" nil "1"]
+   ["1" nil "2" nil "3" "4"]],
+  :hash -75263727},
  91491270
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -55296,6 +67113,17 @@
    ["2" nil "3" "4" nil "5"]
    [nil nil nil nil nil nil]],
   :hash -1957010458},
+ -2031357285
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b6" nil nil nil]
+   [nil "b3" nil "4" "b5"]
+   [nil "7" "1" nil "2"]
+   ["4" "b5" nil "b6" "6"]
+   ["1" nil "2" "b3" nil]
+   [nil "b6" "6" nil "7"]],
+  :hash -2031357285},
  -1052906902
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -55334,6 +67162,15 @@
    ["b5" nil nil "6" "b7" nil "1"]
    [nil nil nil nil nil nil "4"]],
   :hash -1980925133},
+ -1776826163
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil "6" "b7" nil]
+   ["b7" nil "1" nil "2" nil "3"]
+   [nil "3" "4" nil "5" nil "6"]
+   [nil nil "b7" nil "1" nil "2"]],
+  :hash -1776826163},
  1096336062
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -55352,6 +67189,17 @@
    ["2" "b3" nil "4" nil "5" "b6"]
    [nil "b6" nil nil "7" "1" nil]],
   :hash 1482280609},
+ 687509395
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil nil nil nil]
+   [nil nil "1" nil "2"]
+   [nil "5" "b6" nil "b7"]
+   [nil "2" "b3" nil "4"]
+   ["b6" nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]],
+  :hash 687509395},
  180939526
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -55381,6 +67229,28 @@
    [nil "7" "1" nil "2" "b3" nil]
    ["b3" nil "4" nil "5" nil "6"]],
   :hash 1628395379},
+ 1663373346
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" nil nil nil]
+   [nil "1" nil "2" nil]
+   ["5" "b6" nil "b7" nil]
+   ["2" nil "3" "4" nil]
+   [nil "b7" nil "1" nil]
+   [nil "4" nil "5" "b6"]],
+  :hash 1663373346},
+ -795897835
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "7" "1" nil]
+   [nil "4" "b5" nil "b6"]
+   ["1" "b2" nil nil "3"]
+   [nil "b6" nil nil "7"]
+   [nil nil "3" "4" "b5"]
+   [nil nil nil "1" "b2"]],
+  :hash -795897835},
  -972084431
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -55403,6 +67273,35 @@
    [nil nil nil "4" nil]
    [nil nil nil nil nil]],
   :hash 313240330},
+ -1583272144
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil nil nil]
+   ["4" "b5" nil "b6" "6" nil "7"]
+   [nil "7" "1" nil "2" "b3" nil]
+   ["b3" nil "4" "b5" nil "b6" "6"]],
+  :hash -1583272144},
+ 1348605088
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil nil nil]
+   ["3" "4" nil "5" nil "6" "b7"]
+   ["6" "b7" nil "1" nil "2" nil]
+   ["2" nil "3" "4" nil "5" nil]],
+  :hash 1348605088},
+ -276335671
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil nil "7" "1" nil]
+   [nil "4" nil "5" "b6"]
+   ["1" "b2" nil "b3" nil]
+   ["5" "b6" nil nil "7"]
+   [nil "b3" nil "4" nil]
+   [nil nil nil "1" "b2"]],
+  :hash -276335671},
  -981819173
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -55452,6 +67351,26 @@
    [nil "b6" nil "b7" nil "1" nil]
    [nil nil nil nil nil nil nil]],
   :hash 865858080},
+ 282994786
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil nil "5" nil nil]
+   [nil nil "b3" nil "4"]
+   [nil nil "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   [nil nil "1" nil nil]],
+  :hash 282994786},
+ 996876176
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" nil "5" nil nil]
+   ["b6" nil nil "7" "1" "b2" nil]
+   ["b2" nil nil "3" "4" nil "5"]
+   [nil "5" "b6" nil nil "7" "1"]],
+  :hash 996876176},
  -241627475
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -55461,6 +67380,15 @@
    ["b7" nil "1" "b2" nil nil]
    [nil nil "4" nil "5" "b6"]],
   :hash -241627475},
+ 823995002
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" nil nil "b7" nil nil]
+   ["1" nil nil "b3" nil "4"]
+   ["4" nil "5" nil nil "b7"]
+   ["b7" nil "1" nil nil "b3"]],
+  :hash 823995002},
  -529937981
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -55494,6 +67422,17 @@
    ["3" nil nil "5"]
    [nil nil nil "2"]],
   :hash 1730135496},
+ 1981625908
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil]
+   [nil "b3" nil "4"]
+   ["b7" nil "1" "b2"]
+   ["4" nil "5" "b6"]
+   ["1" "b2" nil "b3"]
+   ["5" "b6" nil "b7"]],
+  :hash 1981625908},
  -1441736877
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -55514,6 +67453,26 @@
    [nil "1" "b2" nil "b3"]
    [nil nil nil nil "b7"]],
   :hash -1339084219},
+ 2091790088
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil nil nil nil]
+   [nil "1" nil "2" "b3"]
+   ["5" nil "6" "b7" nil]
+   ["2" "b3" "3" "4" "b5"]
+   ["6" "b7" nil "1" nil]
+   ["3" "4" "b5" "5" nil]],
+  :hash 2091790088},
+ 1940551073
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" "b2" nil nil]
+   [nil nil "3" "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" "b2"]
+   [nil "b2" nil nil "3" "4" nil]],
+  :hash 1940551073},
  1683033298
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -55770,6 +67729,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 572911969},
+ 290402875
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil "2" nil nil]
+   [nil "3" "4" nil "5" nil "6"]
+   [nil "6" "b7" nil "1" nil "2"]
+   [nil "2" nil "3" "4" nil "5"]],
+  :hash 290402875},
  967821071
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -55797,6 +67765,24 @@
    ["6" "b7" nil "1" nil "2" "b3"]
    [nil nil nil nil nil "5" nil]],
   :hash -314666327},
+ -1819012289
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil "4"]
+   ["4" nil "5" "b6" nil "b7"]
+   ["b7" nil "1" nil "2" "b3"]
+   [nil nil "4" nil "5" "b6"]],
+  :hash -1819012289},
+ 561721711
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil nil nil]
+   ["b7" nil "1" nil "2" nil "3"]
+   [nil "3" "4" nil "5" "b6" nil]
+   ["b6" nil "b7" nil "1" nil "2"]],
+  :hash 561721711},
  -1052088076
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -55826,6 +67812,15 @@
    [nil nil "5" "b6" nil]
    [nil nil nil nil nil]],
   :hash -1148764768},
+ -1969043100
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" "b5" nil "b6" nil]
+   ["b6" "6" nil "7" "1" nil "2"]
+   [nil "2" "b3" nil "4" "b5" nil]
+   [nil nil "b6" "6" nil "7" "1"]],
+  :hash -1969043100},
  172508557
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -55877,6 +67872,24 @@
    ["7" "1" "b2" nil nil "3"]
    [nil "4" nil "5" "b6" nil]],
   :hash -569116366},
+ 1344696309
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil "3"]
+   [nil nil nil "5" nil "6"]
+   [nil "1" nil "2" nil "3"]
+   ["3" nil nil "5" nil "6"]],
+  :hash 1344696309},
+ 1863250557
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" nil nil nil]
+   ["b5" nil nil "6" "b7" nil "1"]
+   [nil "1" "b2" nil nil "3" "4"]
+   ["3" "4" "b5" nil nil "6" "b7"]],
+  :hash 1863250557},
  -188875400
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -55899,6 +67912,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -825857360},
+ 758664946
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil nil nil]
+   [nil "4" nil "5" "b6"]
+   ["1" nil "2" nil "3"]
+   ["5" "b6" nil "b7" nil]
+   ["2" nil "3" "4" nil]
+   [nil "b7" nil "1" nil]],
+  :hash 758664946},
  -1595125447
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -55959,6 +67983,15 @@
    ["1" nil "2" nil "3" "4"]
    [nil "b5" nil "b6" nil "b7"]],
   :hash -564737148},
+ -1197124262
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b5" nil "b6" "6" nil nil nil]
+   ["7" "1" nil "2" "b3" nil "4"]
+   [nil "4" "b5" nil "b6" "6" nil]
+   ["6" nil "7" "1" nil "2" "b3"]],
+  :hash -1197124262},
  1245041906
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -56015,6 +68048,15 @@
    ["7" "1" "b2" nil nil]
    ["3" "4" "b5" nil "b6"]],
   :hash 1146164106},
+ -221281510
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil nil nil]
+   [nil "b7" nil "1" nil nil "b3"]
+   [nil "b3" nil "4" nil "5" nil]
+   ["5" nil nil "b7" nil "1" nil]],
+  :hash -221281510},
  -1275746420
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -56051,6 +68093,24 @@
    ["2" nil "3" nil nil "5"]
    [nil nil nil nil nil nil]],
   :hash -922880463},
+ -798872438
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "3" "4" nil "5" nil]
+   [nil nil nil "b7" nil "1" "b2"]
+   [nil nil "3" "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" "b2"]],
+  :hash -798872438},
+ 1737708411
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil "b3" nil]
+   [nil nil nil "b5" "5" nil "6"]
+   ["b7" nil "1" "b2" nil "b3" "3"]
+   ["b3" "3" nil "b5" "5" nil "6"]],
+  :hash 1737708411},
  -558926622
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -56089,6 +68149,35 @@
    ["6" "b7" nil "1" "b2" nil "b3"]
    [nil nil nil "4" nil "5" nil]],
   :hash -50355112},
+ -1400696013
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil nil nil]
+   ["4" nil "5" nil "6" "b7" nil]
+   ["b7" nil "1" "b2" nil "b3" nil]
+   ["b3" nil "4" nil "5" nil "6"]],
+  :hash -1400696013},
+ 1511078512
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "3" "4" nil "5" "b6"]
+   [nil nil "b7" nil "1" "b2"]
+   [nil "3" "4" nil "5" "b6"]
+   ["b6" nil "b7" nil "1" "b2"]],
+  :hash 1511078512},
+ -2120851350
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil nil nil nil]
+   [nil "7" "1" "b2" nil]
+   [nil "5" "b6" nil nil]
+   ["b2" nil "b3" nil "4"]
+   ["b6" nil nil "7" "1"]
+   ["b3" nil "4" nil "5"]],
+  :hash -2120851350},
  -289579073
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -56222,6 +68311,17 @@
    [nil nil nil "1" nil]
    [nil nil nil nil nil]],
   :hash -1898799971},
+ 1361624247
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil nil]
+   [nil nil nil "6" "b7"]
+   [nil nil "3" "4" "b5"]
+   ["6" "b7" nil "1" "b2"]
+   ["3" "4" "b5" nil nil]
+   [nil nil "b2" nil nil]],
+  :hash 1361624247},
  1205167191
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -56345,6 +68445,15 @@
    [nil "b6" nil "b7" nil "1" nil]
    ["1" nil "2" nil "3" "4" "b5"]],
   :hash -942114600},
+ -828572413
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil "2" "b3" nil]
+   ["b3" "3" "4" "b5" "5" nil "6"]
+   [nil "6" "b7" nil "1" nil "2"]
+   [nil nil "b3" "3" "4" "b5" "5"]],
+  :hash -828572413},
  -621037995
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -56365,6 +68474,17 @@
    [nil "b7" nil "1" nil]
    [nil nil nil nil nil]],
   :hash 413989999},
+ -184004854
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil nil nil nil]
+   [nil nil "b7" nil "1"]
+   [nil "4" nil "5" "b6"]
+   [nil "1" "b2" nil "b3"]
+   [nil "5" "b6" nil "b7"]
+   ["b2" nil "b3" nil "4"]],
+  :hash -184004854},
  1530660425
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -56387,6 +68507,37 @@
    [nil nil "6" nil nil]
    [nil nil nil nil nil]],
   :hash -178364321},
+ 775884447
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b6" nil "b7" nil]
+   [nil "b3" nil "4" "b5"]
+   ["b7" nil "1" "b2" nil]
+   ["4" "b5" nil "b6" nil]
+   ["1" "b2" nil "b3" nil]
+   [nil nil nil "b7" nil]],
+  :hash 775884447},
+ -960167620
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil "4" "b5" nil]
+   [nil nil "1" nil nil]
+   ["b5" "5" nil nil "b7"]
+   [nil nil "b3" nil "4"]
+   [nil nil "b7" nil "1"]
+   [nil nil nil "b5" "5"]],
+  :hash -960167620},
+ 750263697
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "7" "1" nil nil nil]
+   [nil nil "3" "4" "b5" nil "b6"]
+   [nil "b6" nil nil "7" "1" "b2"]
+   ["1" "b2" nil nil "3" "4" "b5"]],
+  :hash 750263697},
  -960506474
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -56414,6 +68565,17 @@
    ["1" nil "2" "b3" nil "4" nil]
    ["4" nil "5" "b6" nil nil "7"]],
   :hash -28113945},
+ 1449777857
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" nil]
+   [nil "1" nil "2" nil]
+   ["5" nil "6" nil "7"]
+   ["2" nil "3" "4" nil]
+   ["6" nil "7" "1" nil]
+   [nil nil nil "5" nil]],
+  :hash 1449777857},
  1258883375
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -56454,6 +68616,24 @@
    [nil nil nil "4" "b5"]
    [nil nil nil nil nil]],
   :hash -1077797217},
+ -1376935264
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil nil nil]
+   [nil "4" nil "5" nil nil "b7"]
+   [nil "b7" nil "1" nil "2" nil]
+   ["2" nil nil "4" nil "5" nil]],
+  :hash -1376935264},
+ 208913518
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil nil nil]
+   [nil "b3" nil "4" "b5" nil "b6"]
+   [nil "b6" nil "b7" nil "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" "b5"]],
+  :hash 208913518},
  439725626
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -56534,6 +68714,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -511181996},
+ 555190151
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" "b6" nil "b7" nil]
+   [nil nil "1" "b2" nil nil "3"]
+   ["4" nil "5" "b6" nil "b7" nil]
+   ["b7" nil "1" "b2" nil nil "3"]],
+  :hash 555190151},
  1995888115
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -56614,6 +68803,15 @@
    ["6" nil nil "1" nil "2"]
    [nil nil "3" nil nil "5"]],
   :hash 1143658026},
+ 1453704377
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" nil nil nil]
+   [nil "4" nil "5" nil "6" "b7"]
+   ["6" "b7" nil "1" nil "2" "b3"]
+   ["2" "b3" nil "4" nil "5" nil]],
+  :hash 1453704377},
  -46375852
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -56676,6 +68874,26 @@
    ["b5" nil "b6" "6" nil]
    [nil nil nil nil "4"]],
   :hash -885786775},
+ 1978177798
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil nil]
+   [nil "1" nil "2" nil "3"]
+   ["3" nil nil "5" nil "6"]
+   ["6" nil nil "1" nil "2"]],
+  :hash 1978177798},
+ -1120548239
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil "b7"]
+   [nil "b3" nil "4"]
+   ["b7" nil "1" nil]
+   ["4" nil "5" nil]
+   ["1" nil nil "b3"]
+   [nil nil nil "b7"]],
+  :hash -1120548239},
  -1475691203
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -56685,6 +68903,15 @@
    ["b3" nil "4" nil "5" nil]
    [nil nil nil nil nil nil]],
   :hash -1475691203},
+ -227952414
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil "4" nil]
+   ["4" nil "5" nil "6" nil "7"]
+   [nil "7" "1" "b2" nil "b3" nil]
+   [nil nil "4" nil "5" nil "6"]],
+  :hash -227952414},
  -559668924
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -56752,6 +68979,17 @@
    ["5" nil nil "b7" nil "1" nil]
    [nil nil nil "b3" nil "4" "b5"]],
   :hash -2108878321},
+ 626216825
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b6" nil nil "7" nil]
+   [nil nil "4" nil "5"]
+   ["7" "1" nil "2" "b3"]
+   [nil "5" "b6" nil nil]
+   [nil "2" "b3" nil "4"]
+   [nil nil nil "7" "1"]],
+  :hash 626216825},
  -156716575
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -56781,6 +69019,17 @@
    ["5" "b6" nil "b7" nil "1" "b2"]
    [nil "b2" nil "b3" nil "4" nil]],
   :hash -372520121},
+ 1122431353
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil nil nil "b7" nil]
+   ["b3" nil "4" "b5" "5"]
+   ["b7" nil "1" nil nil]
+   ["4" "b5" "5" nil nil]
+   ["1" nil nil "b3" nil]],
+  :hash 1122431353},
  422673513
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -56935,6 +69184,15 @@
    ["b5" "5" nil nil "b7" nil "1"]
    [nil "1" nil nil "b3" nil "4"]],
   :hash -801987569},
+ -1488661140
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil "7" "1"]
+   [nil nil "2" "b3" nil "4"]
+   ["5" "b6" nil nil "7" "1"]
+   ["1" nil "2" "b3" nil "4"]],
+  :hash -1488661140},
  1605716144
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -57057,6 +69315,15 @@
    [nil nil nil nil "b7" nil "1"]
    [nil nil nil nil nil nil nil]],
   :hash -856654757},
+ 1840415286
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" "3" nil nil]
+   ["4" "b5" "5" nil "6" "b7" nil]
+   ["b7" nil "1" nil "2" "b3" "3"]
+   [nil "3" "4" "b5" "5" nil "6"]],
+  :hash 1840415286},
  161615589
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -57095,6 +69362,39 @@
    ["7" "1" nil "2" "b3" nil "4"]
    [nil nil nil nil nil nil nil]],
   :hash 560477754},
+ -1884183921
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" "b5" nil nil]
+   [nil "1" nil "2" "b3"]
+   ["5" nil "6" "b7" nil]
+   ["2" "b3" "3" "4" "b5"]
+   ["6" "b7" nil "1" nil]
+   [nil nil "b5" "5" nil]],
+  :hash -1884183921},
+ -1506960383
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil]
+   ["2" nil nil "4"]
+   ["b7" nil "1" nil]
+   ["4" nil "5" nil]
+   ["1" nil "2" nil]
+   ["5" nil nil "b7"]],
+  :hash -1506960383},
+ 519407772
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "3" nil nil nil]
+   [nil nil "1" "b2" nil]
+   ["b5" nil nil "6" "b7"]
+   ["b2" nil nil "3" "4"]
+   [nil "6" "b7" nil "1"]
+   [nil "3" "4" "b5" nil]],
+  :hash 519407772},
  -2108132280
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -57213,6 +69513,26 @@
    [nil "b6" nil nil "7" "1" nil]
    ["1" "b2" nil nil "3" "4" "b5"]],
   :hash 1736625106},
+ -1666824934
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "7" "1" "b2" nil]
+   [nil "b5" nil "b6" nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil nil "7" "1"]
+   [nil "3" "4" "b5" nil]
+   [nil nil nil "b2" nil]],
+  :hash -1666824934},
+ -1543756680
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "7" "1" "b2" nil nil]
+   [nil nil "3" "4" nil "5" "b6"]
+   ["5" "b6" nil nil "7" "1" "b2"]
+   [nil "b2" nil nil "3" "4" nil]],
+  :hash -1543756680},
  -261915754
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -57246,6 +69566,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -275015781},
+ -638489870
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" "b3" "3" nil]
+   [nil "6" "b7" nil "1"]
+   ["3" "4" "b5" "5" nil]
+   [nil "1" nil "2" "b3"]
+   ["b5" "5" nil "6" "b7"]
+   [nil nil nil "3" "4"]],
+  :hash -638489870},
  291904199
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -57255,6 +69586,15 @@
    [nil "b3" nil "4" nil "5" "b6"]
    [nil nil nil nil nil nil nil]],
   :hash 291904199},
+ -1664186472
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil "2" nil nil]
+   ["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil "b7" nil "1" nil "2"]
+   [nil "2" "b3" nil "4" nil "5"]],
+  :hash -1664186472},
  110544710
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -57264,6 +69604,17 @@
    ["4" nil "5" nil "6" nil "7"]
    [nil nil nil nil "2" "b3" nil]],
   :hash 110544710},
+ 1035935628
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "6" nil "7" nil]
+   [nil nil "4" nil "5"]
+   ["7" "1" nil "2" "b3"]
+   [nil "5" nil "6" nil]
+   [nil "2" "b3" nil "4"]
+   [nil nil nil "7" "1"]],
+  :hash 1035935628},
  -729530282
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -57304,6 +69655,24 @@
    ["5" nil "6" "b7"]
    [nil nil nil "4"]],
   :hash -795446360},
+ -1907963744
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil nil nil]
+   ["6" "b7" nil "1" "b2" nil "b3"]
+   [nil "b3" nil "4" nil "5" nil]
+   ["5" nil "6" "b7" nil "1" "b2"]],
+  :hash -1907963744},
+ -2126259331
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil nil "b3" nil nil]
+   ["4" "b5" "5" nil nil "b7"]
+   ["b7" nil "1" nil nil "b3"]
+   ["b3" nil "4" "b5" "5" nil]],
+  :hash -2126259331},
  -1462695205
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -57322,6 +69691,15 @@
    ["b3" nil "4" nil "5" nil "6"]
    [nil nil nil nil nil "b2" nil]],
   :hash 1682810138},
+ 1050654511
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "6" nil "7" nil nil nil]
+   [nil "2" "b3" nil "4" nil "5"]
+   [nil "5" nil "6" nil "7" "1"]
+   ["7" "1" nil "2" "b3" nil "4"]],
+  :hash 1050654511},
  550131871
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -57565,6 +69943,17 @@
    ["7" "1" "b2" nil "b3" nil "4"]
    [nil "4" nil "5" nil "6" nil]],
   :hash -481115360},
+ 809263194
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil nil "5" "b6" nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" nil "5"]
+   [nil nil "1" "b2" nil]],
+  :hash 809263194},
  876991978
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -57612,6 +70001,15 @@
    [nil nil "2" "b3" nil]
    [nil nil nil nil nil]],
   :hash 1623438717},
+ -1921094106
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["4" nil "5" nil nil "b7"]
+   [nil nil "1" nil "2" nil]
+   ["4" nil "5" nil nil "b7"]
+   ["b7" nil "1" nil "2" nil]],
+  :hash -1921094106},
  1174246302
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -57643,6 +70041,17 @@
    ["b7" nil "1" nil "2" nil]
    [nil nil nil nil nil "b6"]],
   :hash 1045379791},
+ 692588855
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" nil]
+   [nil nil "b7" nil "1"]
+   ["3" "4" nil "5" "b6"]
+   [nil "1" "b2" nil nil]
+   [nil "5" "b6" nil "b7"]
+   [nil nil nil "3" "4"]],
+  :hash 692588855},
  1310415333
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -57826,6 +70235,15 @@
    ["4" "b5" nil "b6" nil "b7"]
    [nil nil nil "b2" nil "b3"]],
   :hash -560662834},
+ 533012672
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["5" "b6" nil nil "7" "1" nil]
+   ["1" nil "2" "b3" nil "4" nil]
+   ["4" nil "5" "b6" nil nil "7"]
+   [nil nil "1" nil "2" "b3" nil]],
+  :hash 533012672},
  -399533342
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -57848,6 +70266,28 @@
    ["6" "b7" nil "1" nil]
    [nil nil nil "5" nil]],
   :hash 2085466628},
+ 482133815
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil "b2" nil "b3" nil]
+   [nil "6" "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" nil "6"]],
+  :hash 482133815},
+ 1174201785
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil nil nil nil]
+   [nil "b3" nil "4" nil]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   ["1" "b2" nil "b3" nil]
+   ["5" "b6" nil nil "7"]],
+  :hash 1174201785},
  -66061422
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -57937,6 +70377,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -67330243},
+ 900696382
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil]
+   [nil "4" nil "5" "b6"]
+   ["1" "b2" nil nil "3"]
+   ["5" "b6" nil "b7" nil]
+   [nil nil "3" "4" nil]
+   [nil nil nil "1" "b2"]],
+  :hash 900696382},
  1224469333
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -57975,6 +70426,17 @@
    ["b2" nil "b3" nil "4" nil "5"]
    [nil nil nil nil nil nil "1"]],
   :hash -1288466222},
+ 424330501
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" "b5" nil nil nil]
+   [nil nil nil "b3" nil]
+   [nil nil "b7" nil "1"]
+   ["b3" nil "4" "b5" "5"]
+   ["b7" nil "1" nil nil]
+   [nil "b5" "5" nil nil]],
+  :hash 424330501},
  -1703775684
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -58033,6 +70495,17 @@
    ["3" "4" "b5" nil "b6" nil]
    [nil nil nil nil nil "2"]],
   :hash -1889287590},
+ 42275939
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["5" nil "6" nil nil]
+   [nil "b3" nil "4" nil]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" nil "6"]
+   ["1" "b2" nil "b3" nil]
+   [nil nil "6" "b7" nil]],
+  :hash 42275939},
  -278821343
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -58142,6 +70615,17 @@
    [nil nil nil "b2" nil]
    [nil nil nil nil nil]],
   :hash 681003305},
+ -829463799
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil nil nil]
+   [nil "4" "b5" nil "b6"]
+   ["1" "b2" nil "b3" nil]
+   [nil "b6" nil "b7" nil]
+   [nil "b3" nil "4" "b5"]
+   [nil "b7" nil "1" "b2"]],
+  :hash -829463799},
  2129529467
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -58222,6 +70706,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -704683202},
+ 729892123
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" "b3" nil "4"]
+   [nil "b7" nil "1"]
+   ["4" nil "5" "b6"]
+   ["1" nil "2" "b3"]
+   ["5" "b6" nil "b7"]
+   [nil nil nil "4"]],
+  :hash 729892123},
  748019135
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -58311,6 +70806,17 @@
    [nil "b3" nil "4" "b5"]
    [nil nil nil "1" nil]],
   :hash 1078837265},
+ -2036756064
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil]
+   [nil "4" "b5" "5" nil]
+   ["1" nil "2" "b3" "3"]
+   ["5" nil "6" "b7" nil]
+   ["2" "b3" "3" "4" "b5"]
+   [nil nil nil "1" nil]],
+  :hash -2036756064},
  213590419
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -58351,6 +70857,24 @@
    [nil nil nil nil]
    ["b3" "3" nil "b5"]],
   :hash -2132648433},
+ -947771665
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "7" "1" "b2" nil nil]
+   [nil "3" "4" "b5" nil "b6"]
+   ["b6" nil nil "7" "1" "b2"]
+   ["b2" nil nil "3" "4" "b5"]],
+  :hash -947771665},
+ 1524417569
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["7" "1" nil "2" nil nil nil]
+   [nil "4" "b5" nil "b6" "6" nil]
+   ["6" nil "7" "1" nil "2" "b3"]
+   ["2" "b3" nil "4" "b5" nil "b6"]],
+  :hash 1524417569},
  607916417
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -58360,6 +70884,24 @@
    [nil nil nil "4" nil "5" "b6"]
    [nil nil nil nil nil nil nil]],
   :hash 607916417},
+ -1446571508
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil nil "3" "4" "b5" nil]
+   ["b5" nil "b6" nil nil "7" "1"]
+   ["7" "1" "b2" nil nil "3" "4"]
+   [nil nil "b5" nil "b6" nil nil]],
+  :hash -1446571508},
+ -261197950
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" nil "3" "4"]
+   [nil nil "5" "b6" nil "b7"]
+   ["1" nil "2" nil "3" "4"]
+   ["4" nil "5" "b6" nil "b7"]],
+  :hash -261197950},
  894472744
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -58445,6 +70987,15 @@
    [nil nil nil nil "2"]
    [nil nil nil nil nil]],
   :hash 374349755},
+ 2073118601
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil "6" nil]
+   [nil nil "7" "1" nil "2" "b3"]
+   [nil "4" nil "5" nil "6" nil]
+   ["6" nil "7" "1" nil "2" "b3"]],
+  :hash 2073118601},
  -614524313
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -58487,6 +71038,15 @@
    [nil nil "b7" nil "1"]
    [nil nil nil nil nil]],
   :hash 971528217},
+ 1096719658
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" "b3" "3" "4" "b5" nil]
+   ["b5" "5" nil "6" "b7" nil "1"]
+   [nil "1" nil "2" "b3" "3" "4"]
+   [nil nil "b5" "5" nil "6" "b7"]],
+  :hash 1096719658},
  -478223575
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -58507,6 +71067,17 @@
    [nil nil nil nil]
    ["1" nil "2" "b3"]],
   :hash 1099477994},
+ 880433008
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil nil "5" nil "6"]
+   ["b2" nil "b3" nil "4"]
+   [nil "6" "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   [nil nil "1" "b2" nil]],
+  :hash 880433008},
  1046547820
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -58565,6 +71136,15 @@
    ["b2" nil nil "3" "4" "b5" nil]
    [nil nil "b6" nil nil "7" "1"]],
   :hash 1340044345},
+ -1234669393
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "5" nil "6" nil "7" nil]
+   [nil nil nil "2" nil "3" "4"]
+   [nil "5" nil "6" nil "7" "1"]
+   ["7" "1" nil "2" nil "3" "4"]],
+  :hash -1234669393},
  -726316018
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -58594,6 +71174,17 @@
    [nil "4" "b5" nil "b6" nil "b7"]
    [nil nil nil nil nil nil nil]],
   :hash -1387109175},
+ -172979962
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil nil nil]
+   [nil "4" nil "5" "b6"]
+   ["1" nil "2" "b3" nil]
+   ["5" "b6" nil "b7" nil]
+   ["2" "b3" nil "4" nil]
+   [nil "b7" nil "1" nil]],
+  :hash -172979962},
  901009739
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -58667,6 +71258,17 @@
    ["b2" nil "b3" "3" nil "b5" "5"]
    [nil nil nil nil nil nil nil]],
   :hash -1344370460},
+ -962410740
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil]
+   [nil nil "5" nil "6"]
+   ["b2" nil "b3" nil "4"]
+   [nil "6" "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   [nil nil nil "b2" nil]],
+  :hash -962410740},
  1918779841
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -58725,6 +71327,17 @@
    [nil nil nil nil]
    [nil nil nil nil]],
   :hash -652446982},
+ -1452276309
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "4" nil "5" nil]
+   [nil "1" "b2" nil "b3"]
+   ["5" nil "6" "b7" nil]
+   [nil "b3" nil "4" nil]
+   ["6" "b7" nil "1" "b2"]
+   [nil nil nil "5" nil]],
+  :hash -1452276309},
  -957269056
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -58754,6 +71367,17 @@
    [nil nil "3" "4" "b5" nil "b6"]
    [nil nil nil nil nil nil nil]],
   :hash -134511661},
+ -87860346
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil "6"]
+   [nil "2" nil "3"]
+   ["6" nil nil "1"]
+   ["3" nil nil "5"]
+   [nil "1" nil "2"]
+   [nil nil nil "6"]],
+  :hash -87860346},
  -1816636952
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -58763,6 +71387,15 @@
    ["3" "4" "b5" "5" nil "6" nil]
    ["6" "b7" nil "1" nil "2" "b3"]],
   :hash -1816636952},
+ -627055796
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" nil "4" nil "5" "b6" nil]
+   [nil nil "b7" nil "1" nil "2"]
+   ["b3" nil "4" nil "5" "b6" nil]
+   ["b6" nil "b7" nil "1" nil "2"]],
+  :hash -627055796},
  -765731895
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -58774,6 +71407,15 @@
    [nil "1" nil "2" nil]
    [nil nil nil nil nil]],
   :hash -765731895},
+ -1896862143
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" nil "2" "b3" nil nil]
+   ["3" "4" "b5" "5" nil "6" "b7"]
+   ["6" "b7" nil "1" nil "2" "b3"]
+   [nil "b3" "3" "4" "b5" "5" nil]],
+  :hash -1896862143},
  641332826
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -58847,6 +71489,15 @@
    [nil "7" "1" nil "2" "b3" nil]
    [nil nil nil nil nil "b6" "6"]],
   :hash 264129097},
+ -1143993159
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" "3" "4" nil]
+   [nil nil "5" nil "6" "b7" nil]
+   ["1" nil "2" "b3" "3" "4" "b5"]
+   ["4" "b5" "5" nil "6" "b7" nil]],
+  :hash -1143993159},
  -1874819371
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -58885,6 +71536,15 @@
    ["3" "4" nil "5" nil "6" "b7"]
    [nil nil nil "1" nil "2" nil]],
   :hash -40765907},
+ 287252401
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil nil]
+   ["2" nil nil "4" nil "5"]
+   ["5" nil nil "b7" nil "1"]
+   ["1" nil "2" nil nil "4"]],
+  :hash 287252401},
  -1817555230
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -58934,6 +71594,26 @@
    ["b7" nil "1" "b2" nil nil "3"]
    [nil nil nil nil nil nil "6"]],
   :hash -1492573680},
+ -2100613375
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil "2" nil nil]
+   ["b3" nil "4" nil "5" nil "6"]
+   [nil "6" "b7" nil "1" nil "2"]
+   [nil "2" "b3" nil "4" nil "5"]],
+  :hash -2100613375},
+ -1604776375
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil nil nil nil]
+   [nil "1" "b2" nil "b3"]
+   ["5" nil "6" "b7" nil]
+   [nil "b3" "3" nil "b5"]
+   ["6" "b7" nil "1" "b2"]
+   ["3" nil "b5" "5" nil]],
+  :hash -1604776375},
  -1962917988
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -58961,6 +71641,24 @@
    ["b3" nil "4" nil "5" "b6"]
    ["b6" nil "b7" nil "1" "b2"]],
   :hash 1704895293},
+ 465047523
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" "4" nil "5" nil "6" nil]
+   [nil nil nil "1" nil "2" nil]
+   ["3" "4" nil "5" nil "6" "b7"]
+   ["6" "b7" nil "1" nil "2" nil]],
+  :hash 465047523},
+ -2059645663
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["3" nil "b5" "5" nil "6" nil]
+   ["6" "b7" nil "1" "b2" nil "b3"]
+   [nil "b3" "3" nil "b5" "5" nil]
+   [nil nil "6" "b7" nil "1" "b2"]],
+  :hash -2059645663},
  560196300
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -58988,6 +71686,15 @@
    [nil nil nil "b3" nil "4" nil]
    [nil nil nil nil nil nil nil]],
   :hash 984055183},
+ 1711910978
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b2" nil "b3" nil "4" nil nil]
+   [nil "5" nil "6" "b7" nil "1"]
+   [nil "1" "b2" nil "b3" nil "4"]
+   [nil "4" nil "5" nil "6" "b7"]],
+  :hash 1711910978},
  -216926714
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -59048,6 +71755,15 @@
    [nil nil "4" "b5" nil]
    [nil nil nil nil nil]],
   :hash -42564005},
+ 503424478
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "4" "b5" nil "b6" "6" nil]
+   [nil nil "7" "1" nil "2" "b3"]
+   [nil "4" "b5" nil "b6" "6" nil]
+   ["6" nil "7" "1" nil "2" "b3"]],
+  :hash 503424478},
  -301384947
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -59079,6 +71795,24 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash -29957892},
+ 521732099
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["6" "b7" nil "1" nil nil nil]
+   [nil nil "3" "4" "b5" nil nil]
+   [nil nil "6" "b7" nil "1" "b2"]
+   ["1" "b2" nil nil "3" "4" "b5"]],
+  :hash 521732099},
+ -1090567167
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" nil "2" nil "3" nil nil]
+   ["4" nil "5" "b6" nil "b7" nil]
+   ["b7" nil "1" nil "2" nil "3"]
+   [nil "3" "4" nil "5" "b6" nil]],
+  :hash -1090567167},
  1008672850
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -59204,6 +71938,17 @@
    ["7" "1" nil "2" nil "3" "4"]
    [nil nil nil nil nil "6" nil]],
   :hash -375894074},
+ -69333537
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b3" nil nil nil nil]
+   [nil nil "1" nil nil]
+   ["b5" "5" nil nil "b7"]
+   [nil nil "b3" nil "4"]
+   [nil nil "b7" nil "1"]
+   ["b3" nil "4" "b5" "5"]],
+  :hash -69333537},
  1614338361
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -59273,6 +72018,17 @@
    [nil nil nil nil nil nil nil]
    [nil nil nil nil nil nil nil]],
   :hash 828076248},
+ 1945234576
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil nil nil nil]
+   [nil nil "6" "b7" nil]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" nil "6"]
+   ["1" "b2" nil "b3" nil]],
+  :hash 1945234576},
  1479252891
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -59313,6 +72069,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1958327325},
+ -1210852478
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b3" "3" nil "b5" nil "b6"]
+   [nil nil "b7" nil "1" "b2"]
+   ["b3" "3" nil "b5" nil "b6"]
+   ["b6" nil "b7" nil "1" "b2"]],
+  :hash -1210852478},
  -245072535
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -59563,6 +72328,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 811116579},
+ -663427397
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" "b5" nil "b6" nil]
+   [nil nil "2" nil "3"]
+   ["b6" nil "b7" nil "1"]
+   [nil "3" "4" "b5" nil]
+   ["b7" nil "1" nil "2"]
+   [nil nil nil "b6" nil]],
+  :hash -663427397},
  -1060111196
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -59701,6 +72477,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1504617338},
+ -190426224
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["7" "1" nil "2" nil]
+   [nil "5" "b6" nil nil]
+   ["2" "b3" nil "4" nil]
+   [nil nil "7" "1" nil]
+   [nil "4" nil "5" "b6"]
+   [nil nil nil "2" "b3"]],
+  :hash -190426224},
  378909074
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -59761,6 +72548,28 @@
    ["3" "4" "b5" nil "b6" nil]
    [nil "b7" nil "1" nil "2"]],
   :hash 697437091},
+ 2064900588
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" "b3" nil]
+   [nil nil "6" "b7" nil]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" nil "6"]
+   [nil nil nil "b3" nil]],
+  :hash 2064900588},
+ 2087755936
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "5" nil nil nil]
+   [nil nil "b3" nil "4"]
+   ["6" nil "7" "1" "b2"]
+   [nil "4" nil "5" nil]
+   ["7" "1" "b2" nil "b3"]
+   [nil "5" nil "6" nil]],
+  :hash 2087755936},
  -2059528845
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -59770,6 +72579,15 @@
    ["b3" nil "4" nil "5" "b6"]
    [nil nil nil "7" "1" "b2"]],
   :hash -2059528845},
+ 169763419
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "1" "b2" nil nil "3" nil]
+   [nil nil "b5" nil nil "6" "b7"]
+   [nil "1" "b2" nil nil "3" "4"]
+   ["3" "4" "b5" nil nil "6" "b7"]],
+  :hash 169763419},
  -770144954
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -59797,6 +72615,37 @@
    [nil nil nil nil "1" "b2"]
    [nil nil nil nil nil nil]],
   :hash -68791727},
+ -1459661597
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil nil "6" nil]
+   [nil nil nil "3" "4"]
+   ["6" "b7" nil "1" "b2"]
+   ["3" "4" "b5" nil nil]
+   [nil "1" "b2" nil nil]
+   [nil nil nil "6" "b7"]],
+  :hash -1459661597},
+ 980412823
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b5" nil nil "6" nil nil nil]
+   [nil "1" "b2" nil nil "3" "4"]
+   ["3" "4" "b5" nil nil "6" "b7"]
+   ["6" "b7" nil "1" "b2" nil nil]],
+  :hash 980412823},
+ 290342326
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" nil nil nil nil]
+   [nil "1" "b2" nil nil]
+   [nil "b6" nil nil "7"]
+   [nil nil "3" "4" "b5"]
+   [nil nil "7" "1" "b2"]
+   ["3" "4" "b5" nil "b6"]],
+  :hash 290342326},
  -1847991993
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -59928,6 +72777,28 @@
    [nil "2" "b3" nil "4" "b5" nil]
    [nil nil "b6" "6" nil "7" "1"]],
   :hash -774767723},
+ 668562561
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil nil nil nil]
+   [nil "2" "b3" nil "4"]
+   ["6" nil "7" "1" nil]
+   [nil "4" "b5" nil "b6"]
+   ["7" "1" nil "2" "b3"]
+   ["b5" nil "b6" "6" nil]],
+  :hash 668562561},
+ -996399749
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil nil nil nil]
+   [nil "b5" nil "b6" nil]
+   ["b2" nil "b3" "3" nil]
+   ["b6" nil "b7" nil "1"]
+   ["b3" "3" nil "b5" nil]
+   ["b7" nil "1" "b2" nil]],
+  :hash -996399749},
  907265683
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -60006,6 +72877,15 @@
    [nil nil nil nil]
    ["b7" nil "1" nil]],
   :hash 291204846},
+ -1556601470
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil "b3" nil]
+   [nil nil nil "b5" nil "b6" nil]
+   ["b7" nil "1" "b2" nil "b3" "3"]
+   ["b3" "3" nil "b5" nil "b6" nil]],
+  :hash -1556601470},
  -1042316993
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -60093,6 +72973,15 @@
    ["3" "4" "b5" nil "b6" nil "b7"]
    [nil nil nil "1" nil "2" nil]],
   :hash 1048693519},
+ 1445164308
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil nil nil]
+   [nil nil "3" "4" nil "5" "b6"]
+   ["5" "b6" nil "b7" nil "1" "b2"]
+   ["1" "b2" nil nil "3" "4" nil]],
+  :hash 1445164308},
  -944973354
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -60120,6 +73009,17 @@
    [nil nil "6" "b7" nil "1" "b2"]
    [nil nil nil nil nil nil nil]],
   :hash 389859912},
+ 182310678
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "2" nil "3" nil]
+   [nil nil "b7" nil "1"]
+   ["3" "4" "b5" nil "b6"]
+   [nil "1" nil "2" nil]
+   ["b5" nil "b6" nil "b7"]
+   [nil nil nil "3" "4"]],
+  :hash 182310678},
  1764408521
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -60142,6 +73042,26 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -1270578157},
+ 1208132789
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil nil "2" nil "3"]
+   [nil "6" nil "7" "1"]
+   [nil "3" "4" nil "5"]
+   [nil "7" "1" nil "2"]
+   ["4" nil "5" nil "6"]],
+  :hash 1208132789},
+ 1440500934
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b6" nil "b7" nil "1" nil]
+   ["1" "b2" nil "b3" "3" nil "b5"]
+   [nil "b5" nil "b6" nil "b7" nil]
+   [nil nil "1" "b2" nil "b3" "3"]],
+  :hash 1440500934},
  273168501
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -60184,6 +73104,24 @@
    ["b6" nil nil "7" "1" "b2"]
    [nil nil nil "3" "4" "b5"]],
   :hash 635124816},
+ 1526586111
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["7" "1" "b2" nil nil "3" nil]
+   [nil nil "b5" nil "b6" nil nil]
+   ["7" "1" "b2" nil nil "3" "4"]
+   ["3" "4" "b5" nil "b6" nil nil]],
+  :hash 1526586111},
+ 1405810451
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b6" nil "b7" nil nil nil]
+   ["1" nil "2" nil "3" "4" "b5"]
+   ["4" "b5" nil "b6" nil "b7" nil]
+   ["b7" nil "1" nil "2" nil "3"]],
+  :hash 1405810451},
  688715390
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -60213,6 +73151,17 @@
    [nil "b3" nil "4" nil "5" nil]
    ["5" "b6" nil nil "7" "1" "b2"]],
   :hash 154068495},
+ 1054725155
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil "4" nil]
+   [nil "b7" nil "1" "b2"]
+   ["4" nil "5" nil "6"]
+   ["1" "b2" nil "b3" nil]
+   ["5" nil "6" "b7" nil]
+   [nil nil nil "4" nil]],
+  :hash 1054725155},
  1021101635
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -60273,6 +73222,17 @@
    [nil nil "3" "4" "b5"]
    [nil nil nil "1" "b2"]],
   :hash -1076636794},
+ -633815819
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b7" nil nil nil]
+   [nil "4" "b5" nil "b6"]
+   ["1" nil "2" nil "3"]
+   [nil "b6" nil "b7" nil]
+   ["2" nil "3" "4" "b5"]
+   [nil "b7" nil "1" nil]],
+  :hash -633815819},
  -449432867
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -60335,6 +73295,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -414460481},
+ -1362277296
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "b3" nil "4" "b5" nil]
+   ["b5" "5" nil nil "b7" nil "1"]
+   [nil "1" nil nil "b3" nil "4"]
+   [nil nil "b5" "5" nil nil "b7"]],
+  :hash -1362277296},
  -1759361376
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -60384,6 +73353,28 @@
    [nil nil nil nil nil "b2"]
    [nil nil nil nil nil nil]],
   :hash 1588205056},
+ -2047089347
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil]
+   [nil "b6" nil "b7" nil]
+   ["b3" nil "4" nil "5"]
+   ["b7" nil "1" "b2" nil]
+   ["4" nil "5" "b6" nil]
+   [nil nil nil "b3" nil]],
+  :hash -2047089347},
+ 632685676
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" nil nil nil nil]
+   [nil "b2" nil "b3" nil]
+   ["b6" nil nil "7" "1"]
+   ["b3" nil "4" nil "5"]
+   [nil "7" "1" "b2" nil]
+   ["4" nil "5" "b6" nil]],
+  :hash 632685676},
  -274509748
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -60402,6 +73393,17 @@
    ["b6" "6" nil "7" "1" nil "2"]
    [nil nil "b3" nil "4" "b5" nil]],
   :hash 416455193},
+ -1805110640
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["1" nil "2" nil nil]
+   [nil "b6" nil "b7" nil]
+   [nil "3" "4" nil "5"]
+   ["b7" nil "1" nil "2"]
+   ["4" nil "5" "b6" nil]
+   [nil nil "2" nil "3"]],
+  :hash -1805110640},
  -1722400428
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -60567,6 +73569,17 @@
    [nil "b7" nil "1" nil]
    ["3" "4" nil "5" "b6"]],
   :hash -1451874742},
+ -974299626
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "3" "4" nil nil]
+   [nil "7" "1" "b2" nil]
+   ["b5" nil "b6" nil nil]
+   ["b2" nil nil "3" "4"]
+   ["b6" nil nil "7" "1"]
+   [nil nil "4" "b5" nil]],
+  :hash -974299626},
  1919707565
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -60578,6 +73591,15 @@
    ["4" nil "5" nil nil]
    [nil nil "2" nil nil]],
   :hash 1919707565},
+ -1186800880
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "2" nil "3" "4" "b5" nil]
+   [nil nil "b6" nil "b7" nil "1"]
+   [nil "2" nil "3" "4" "b5" nil]
+   ["b5" nil "b6" nil "b7" nil "1"]],
+  :hash -1186800880},
  1428134430
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -60627,6 +73649,17 @@
    ["4" "b5" nil nil "6" "b7" nil]
    [nil nil nil "b2" nil nil "3"]],
   :hash -1225972419},
+ 2051075688
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b5" nil "b6" nil nil]
+   [nil "2" "b3" nil "4"]
+   ["6" nil "7" "1" nil]
+   [nil "4" "b5" nil "b6"]
+   ["7" "1" nil "2" "b3"]
+   [nil nil "b6" "6" nil]],
+  :hash 2051075688},
  1534929731
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -60759,6 +73792,15 @@
    [nil nil nil nil "5"]
    [nil nil nil nil nil]],
   :hash -1144443064},
+ -1695654947
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["7" "1" "b2" nil nil "3" nil]
+   ["3" "4" nil "5" "b6" nil nil]
+   [nil nil "7" "1" "b2" nil nil]
+   [nil nil "3" "4" nil "5" "b6"]],
+  :hash -1695654947},
  1624107313
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -60854,6 +73896,15 @@
    ["b7" nil "1"]
    [nil nil "5"]],
   :hash -1351163506},
+ 908218798
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b7" nil "1" nil "2" nil]
+   ["2" nil "3" "4" "b5" nil "b6"]
+   [nil "b6" nil "b7" nil "1" nil]
+   [nil nil "2" nil "3" "4" "b5"]],
+  :hash 908218798},
  -985037605
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -60863,6 +73914,17 @@
    [nil nil nil nil nil "6"]
    [nil nil nil nil nil nil]],
   :hash -985037605},
+ 1137895494
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["3" "4" "b5" nil nil]
+   [nil "1" nil "2" nil]
+   [nil "b6" nil "b7" nil]
+   ["2" nil "3" "4" "b5"]
+   [nil "b7" nil "1" nil]
+   [nil nil "b5" nil "b6"]],
+  :hash 1137895494},
  1097182588
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -60894,6 +73956,17 @@
    [nil nil nil nil "5" nil "6"]
    [nil nil nil nil nil nil nil]],
   :hash 589712100},
+ -1318410593
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["b7" nil "1" nil nil]
+   [nil nil "5" nil "6"]
+   [nil "2" "b3" nil "4"]
+   [nil "6" "b7" nil "1"]
+   ["b3" nil "4" nil "5"]
+   [nil nil "1" nil "2"]],
+  :hash -1318410593},
  516903134
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -60934,6 +74007,15 @@
    [nil "2" nil "3" "4"]
    ["b6" nil "b7" nil "1"]],
   :hash 60953249},
+ 657558240
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "3" "4" "b5" nil nil]
+   [nil "b6" nil nil "7" "1" "b2"]
+   ["1" "b2" nil nil "3" "4" "b5"]
+   [nil "b5" nil "b6" nil nil "7"]],
+  :hash 657558240},
  2086058155
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -60996,6 +74078,15 @@
    [nil nil nil "b3"]
    [nil nil nil nil]],
   :hash -1665458508},
+ 265894793
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b6" nil "b7" nil nil nil]
+   ["1" "b2" nil "b3" "3" nil "b5"]
+   [nil "b5" nil "b6" nil "b7" nil]
+   ["b7" nil "1" "b2" nil "b3" "3"]],
+  :hash 265894793},
  1679073597
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -61036,6 +74127,15 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -64041713},
+ 1691725494
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil "4" nil]
+   [nil nil nil "b6" nil "b7" nil]
+   ["1" "b2" nil "b3" nil "4" "b5"]
+   ["4" "b5" nil "b6" nil "b7" nil]],
+  :hash 1691725494},
  2138783455
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -61098,6 +74198,15 @@
    ["b2" nil nil "3" "4"]
    ["b6" nil nil "7" "1"]],
   :hash 415479795},
+ 135947912
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b5" "5" nil "6" nil nil]
+   ["b7" nil "1" "b2" nil "b3" "3"]
+   ["b3" "3" nil "b5" "5" nil "6"]
+   [nil "6" "b7" nil "1" "b2" nil]],
+  :hash 135947912},
  1083103051
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -61136,6 +74245,15 @@
    [nil "b5" nil "b6" nil "b7" nil]
    [nil nil nil nil nil nil nil]],
   :hash -955229342},
+ 1864742788
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil "b6" nil nil "7" "1" nil]
+   [nil nil nil nil "3" "4" "b5"]
+   [nil "b6" nil nil "7" "1" "b2"]
+   ["1" "b2" nil nil "3" "4" "b5"]],
+  :hash 1864742788},
  1287176303
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -61176,6 +74294,15 @@
    ["b3" nil "4" nil "5" nil "6"]
    [nil nil nil nil "1" nil "2"]],
   :hash -183261976},
+ -369929752
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["7" "1" "b2" nil "b3" nil nil]
+   [nil "4" nil "5" nil "6" nil]
+   ["6" nil "7" "1" "b2" nil "b3"]
+   [nil "b3" nil "4" nil "5" nil]],
+  :hash -369929752},
  1993890495
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -61379,6 +74506,15 @@
    [nil nil "b3" nil "4" nil "5"]
    [nil nil nil nil nil nil nil]],
   :hash -1183623196},
+ 2108893415
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["b7" nil "1" "b2" nil nil nil]
+   ["b3" "3" nil "b5" "5" nil "6"]
+   [nil "6" "b7" nil "1" "b2" nil]
+   ["b2" nil "b3" "3" nil "b5" "5"]],
+  :hash 2108893415},
  -663085344
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -61428,6 +74564,15 @@
    ["2" nil "3" "4" nil "5" "b6"]
    [nil nil nil nil nil nil nil]],
   :hash -794228798},
+ 794006300
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "7" "1" nil nil nil]
+   [nil "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil nil "7" "1" "b2"]
+   ["1" "b2" nil "b3" nil "4" nil]],
+  :hash 794006300},
  1056790282
  {:intervals-between ["4" "4" "4" "3" "4"],
   :start-indexes [0 0 0 0 0 0],
@@ -61568,6 +74713,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash -54123900},
+ 1091729387
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["2" "b3" nil nil nil]
+   [nil "b7" nil "1" nil]
+   ["4" nil "5" nil "6"]
+   ["1" nil "2" "b3" nil]
+   ["5" nil "6" "b7" nil]
+   [nil "b3" nil "4" nil]],
+  :hash 1091729387},
  -650718730
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -61577,6 +74733,26 @@
    ["b3" nil "4" "b5" nil "b6" "6"]
    [nil nil nil nil nil nil nil]],
   :hash -650718730},
+ -559812754
+ {:intervals-between ["5" "5" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [[nil nil "7" "1" "b2" nil nil]
+   [nil "b3" nil "4" nil "5" "b6"]
+   ["5" "b6" nil nil "7" "1" "b2"]
+   [nil "b2" nil "b3" nil "4" nil]],
+  :hash -559812754},
+ -1034773694
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [["4" "b5" nil "b6" nil]
+   [nil "b2" nil nil "3"]
+   ["b6" nil nil "7" "1"]
+   [nil "3" "4" "b5" nil]
+   [nil "7" "1" "b2" nil]
+   [nil nil nil "b6" nil]],
+  :hash -1034773694},
  -1522854807
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],
@@ -61637,6 +74813,15 @@
    [nil nil "b6" nil nil]
    [nil nil nil nil nil]],
   :hash 1303733269},
+ -606288263
+ {:intervals-between ["5" "4" "5"],
+  :start-indexes [0 0 0 0],
+  :pattern
+  [["1" "b2" nil "b3" nil "4" nil]
+   [nil nil "5" nil "6" nil "7"]
+   ["1" "b2" nil "b3" nil "4" nil]
+   ["4" nil "5" nil "6" nil "7"]],
+  :hash -606288263},
  942833214
  {:intervals-between ["5" "5" "5"],
   :start-indexes [0 0 0 0],
@@ -61762,6 +74947,17 @@
    [nil nil nil nil nil]
    [nil nil nil nil nil]],
   :hash 1262280333},
+ -2137535635
+ {:intervals-between ["4" "4" "4" "3" "4"],
+  :start-indexes [0 0 0 0 0 0],
+  :pattern
+  [[nil "b3" nil nil nil]
+   [nil "b7" nil "1" "b2"]
+   ["4" nil "5" nil "6"]
+   ["1" "b2" nil "b3" nil]
+   ["5" nil "6" "b7" nil]
+   [nil "b3" nil "4" nil]],
+  :hash -2137535635},
  -1522912048
  {:intervals-between ["5" "4" "5"],
   :start-indexes [0 0 0 0],

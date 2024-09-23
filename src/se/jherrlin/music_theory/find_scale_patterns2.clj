@@ -77,16 +77,9 @@
        (partition-all nr-of-frets)
        (mapv (partial mapv identity))))
 
-(defn ->pattern-str
-  [pattern-matrix]
-  (->> pattern-matrix
-       (map #(map (fn [x] (if (nil? x) "-" x)) %))
-       (map (partial str/join "   "))
-       (str/join "\n")))
-
 (defn find-scale-patterns
   [intervals fretboard-matrix-with-intervals]
-  (let [intervals-to-find (conj intervals (first intervals))
+  (let [intervals-to-find intervals #_(conj intervals (first intervals))
         x-min             (->> fretboard-matrix-with-intervals first first :x)
         x-max             (->> fretboard-matrix-with-intervals first last :x)
         nr-of-strings     (-> fretboard-matrix-with-intervals count)
@@ -96,10 +89,21 @@
              (mapv (partial ->pattern-matrix nr-of-strings nr-of-frets x-min x-max))
              (mapv trim-matrix))))
 
+(defn different-intervals
+  [intervals]
+  [(conj intervals (first intervals))
+   (-> (concat intervals intervals [(first intervals)])
+       vec)])
+
+(different-intervals ["1" "2" "3" "5" "6"])
+
+
+
 (comment
   (find-scale-patterns
-   ["1" "2" "3" "5" "6"]
-   (->> [[{:x 5, :y 0, :interval "5"}
+   ["1" "2" "3" "5" "6" "1"]
+   #_["1" "2" "3" "5" "6" "1" "2" "3" "5" "6" "1"]
+   [[{:x 5, :y 0, :interval "5"}
           {:x 6, :y 0, :interval "b6"}
           {:x 7, :y 0, :interval "6"}
           {:x 8, :y 0, :interval "b7"}
@@ -126,8 +130,7 @@
           {:x 8, :y 3, :interval "b2"}
           {:x 9, :y 3, :interval "2"}
           {:x 10, :y 3, :interval "b3"}
-          {:x 11, :y 3, :interval "3"}]]
-        (map-matrix #(select-keys % [:x :y :interval]))))
+          {:x 11, :y 3, :interval "3"}]])
   )
 
 (defn rotate-intervals
@@ -240,8 +243,9 @@
                                                (vec))
                r                          (range r1 (inc r2))
                intervals                  (rotate-intervals intervals-from-definitions)
-               fretboard-matrix           (fretboard-matrix-portions r fretboard-matrix-with-intervals)]
-           (->> (find-scale-patterns intervals fretboard-matrix)
+               fretboard-matrix           (fretboard-matrix-portions r fretboard-matrix-with-intervals)
+               intervals'                 (different-intervals intervals)]
+           (->> (find-scale-patterns intervals' fretboard-matrix)
                 (map (fn [pattern]
                        (let [m (-> (intervals-between-and-start-indexes instrument-id)
                                    (assoc :pattern pattern))
