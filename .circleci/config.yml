@@ -38,7 +38,7 @@ jobs:
           command: make deploy
       - run:
           name: Release version
-          command: make release-version
+          command: make echo-release-version
 
 workflows:
   version: 2

@@ -1,4 +1,4 @@
-.PHONY: all test clean release-version
+.PHONY: all test clean echo-release-version
 
 SERVICE_NAME = music-theory
 
@@ -41,5 +41,5 @@ update-index-html-with-hash:
 deploy:
 	./scripts/commit-to-github-pages.sh
 
-release-version:
+echo-release-version:
 	./scripts/echo-release-version.sh
