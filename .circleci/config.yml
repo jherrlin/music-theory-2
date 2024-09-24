@@ -36,9 +36,6 @@ jobs:
       - run:
           name: Commit to GitHub
           command: make deploy
-      - run:
-          name: Release version
-          command: make echo-release-version
 
 workflows:
   version: 2
