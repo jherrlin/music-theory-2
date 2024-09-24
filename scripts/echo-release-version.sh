@@ -1,6 +1,6 @@
 #!/bin/bash
 
 
-RELEASE_FILE=$(ls . | grep -E "main\..*\.js$" | head)
+RELEASE_FILE=$(ls ./ | grep -E "main\..*\.js$" | head)
 
-echo $RELEASE_FILE
+echo "$RELEASE_FILE"
