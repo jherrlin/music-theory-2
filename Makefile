@@ -1,4 +1,4 @@
-.PHONY: all test clean
+.PHONY: all test clean release-version
 
 SERVICE_NAME = music-theory
 
