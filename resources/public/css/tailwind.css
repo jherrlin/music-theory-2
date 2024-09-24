@@ -1270,11 +1270,6 @@ body {
   background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
 
-.bg-green-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 252 231 / var(--tw-bg-opacity));
-}
-
 .bg-green-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(187 247 208 / var(--tw-bg-opacity));
@@ -1533,6 +1528,12 @@ body {
 .shadow-md {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-sm {
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -1799,6 +1800,10 @@ body {
   background-color: hsl(var(--accent) / 0.5);
 }
 
+.data-\[state\\\\x3dopen\]\:bg-accent[data-state\\x3dopen] {
+  background-color: hsl(var(--accent));
+}
+
 .data-\[state\\x3dchecked\]\:bg-primary[data-state\x3dchecked] {
   background-color: hsl(var(--primary));
 }
@@ -1815,8 +1820,8 @@ body {
   background-color: hsl(var(--input));
 }
 
-.data-\[state\\\\x3dopen\]\:bg-accent\/50[data-state\\x3dopen] {
-  background-color: hsl(var(--accent) / 0.5);
+.data-\[state\\\\x3dopen\]\:text-accent-foreground[data-state\\x3dopen] {
+  color: hsl(var(--accent-foreground));
 }
 
 .data-\[state\\x3dopen\]\:text-accent-foreground[data-state\x3dopen] {
@@ -1828,6 +1833,16 @@ body {
 }
 
 .data-\[motion\^\\x3dfrom-\]\:animate-in[data-motion\x3dfrom-] {
+  animation-name: enter;
+  animation-duration: 150ms;
+  --tw-enter-opacity: initial;
+  --tw-enter-scale: initial;
+  --tw-enter-rotate: initial;
+  --tw-enter-translate-x: initial;
+  --tw-enter-translate-y: initial;
+}
+
+.data-\[state\\\\x3dopen\]\:animate-in[data-state\\x3dopen] {
   animation-name: enter;
   animation-duration: 150ms;
   --tw-enter-opacity: initial;
@@ -1857,37 +1872,17 @@ body {
   --tw-enter-translate-y: initial;
 }
 
-.data-\[motion\^\\\\x3dfrom-\]\:animate-in[data-motion\\x3dfrom-] {
-  animation-name: enter;
-  animation-duration: 150ms;
-  --tw-enter-opacity: initial;
-  --tw-enter-scale: initial;
-  --tw-enter-rotate: initial;
-  --tw-enter-translate-x: initial;
-  --tw-enter-translate-y: initial;
-}
-
-.data-\[state\\\\x3dopen\]\:animate-in[data-state\\x3dopen] {
-  animation-name: enter;
-  animation-duration: 150ms;
-  --tw-enter-opacity: initial;
-  --tw-enter-scale: initial;
-  --tw-enter-rotate: initial;
-  --tw-enter-translate-x: initial;
-  --tw-enter-translate-y: initial;
-}
-
-.data-\[state\\\\x3dvisible\]\:animate-in[data-state\\x3dvisible] {
-  animation-name: enter;
-  animation-duration: 150ms;
-  --tw-enter-opacity: initial;
-  --tw-enter-scale: initial;
-  --tw-enter-rotate: initial;
-  --tw-enter-translate-x: initial;
-  --tw-enter-translate-y: initial;
-}
-
 .data-\[motion\^\\x3dto-\]\:animate-out[data-motion\x3dto-] {
+  animation-name: exit;
+  animation-duration: 150ms;
+  --tw-exit-opacity: initial;
+  --tw-exit-scale: initial;
+  --tw-exit-rotate: initial;
+  --tw-exit-translate-x: initial;
+  --tw-exit-translate-y: initial;
+}
+
+.data-\[state\\\\x3dclosed\]\:animate-out[data-state\\x3dclosed] {
   animation-name: exit;
   animation-duration: 150ms;
   --tw-exit-opacity: initial;
@@ -1917,42 +1912,20 @@ body {
   --tw-exit-translate-y: initial;
 }
 
-.data-\[motion\^\\\\x3dto-\]\:animate-out[data-motion\\x3dto-] {
-  animation-name: exit;
-  animation-duration: 150ms;
-  --tw-exit-opacity: initial;
-  --tw-exit-scale: initial;
-  --tw-exit-rotate: initial;
-  --tw-exit-translate-x: initial;
-  --tw-exit-translate-y: initial;
-}
-
-.data-\[state\\\\x3dclosed\]\:animate-out[data-state\\x3dclosed] {
-  animation-name: exit;
-  animation-duration: 150ms;
-  --tw-exit-opacity: initial;
-  --tw-exit-scale: initial;
-  --tw-exit-rotate: initial;
-  --tw-exit-translate-x: initial;
-  --tw-exit-translate-y: initial;
-}
-
-.data-\[state\\\\x3dhidden\]\:animate-out[data-state\\x3dhidden] {
-  animation-name: exit;
-  animation-duration: 150ms;
-  --tw-exit-opacity: initial;
-  --tw-exit-scale: initial;
-  --tw-exit-rotate: initial;
-  --tw-exit-translate-x: initial;
-  --tw-exit-translate-y: initial;
-}
-
 .data-\[motion\^\\x3dfrom-\]\:fade-in[data-motion\x3dfrom-] {
   --tw-enter-opacity: 0;
 }
 
 .data-\[motion\^\\x3dto-\]\:fade-out[data-motion\x3dto-] {
   --tw-exit-opacity: 0;
+}
+
+.data-\[state\\\\x3dclosed\]\:fade-out-0[data-state\\x3dclosed] {
+  --tw-exit-opacity: 0;
+}
+
+.data-\[state\\\\x3dopen\]\:fade-in-0[data-state\\x3dopen] {
+  --tw-enter-opacity: 0;
 }
 
 .data-\[state\\x3dclosed\]\:fade-out-0[data-state\x3dclosed] {
@@ -1971,20 +1944,12 @@ body {
   --tw-enter-opacity: 0;
 }
 
-.data-\[motion\^\\\\x3dfrom-\]\:fade-in[data-motion\\x3dfrom-] {
-  --tw-enter-opacity: 0;
+.data-\[state\\\\x3dclosed\]\:zoom-out-95[data-state\\x3dclosed] {
+  --tw-exit-scale: .95;
 }
 
-.data-\[motion\^\\\\x3dto-\]\:fade-out[data-motion\\x3dto-] {
-  --tw-exit-opacity: 0;
-}
-
-.data-\[state\\\\x3dhidden\]\:fade-out[data-state\\x3dhidden] {
-  --tw-exit-opacity: 0;
-}
-
-.data-\[state\\\\x3dvisible\]\:fade-in[data-state\\x3dvisible] {
-  --tw-enter-opacity: 0;
+.data-\[state\\\\x3dopen\]\:zoom-in-95[data-state\\x3dopen] {
+  --tw-enter-scale: .95;
 }
 
 .data-\[state\\x3dclosed\]\:zoom-out-95[data-state\x3dclosed] {
@@ -1997,14 +1962,6 @@ body {
 
 .data-\[state\\x3dopen\]\:zoom-in-95[data-state\x3dopen] {
   --tw-enter-scale: .95;
-}
-
-.data-\[state\\\\x3dclosed\]\:zoom-out-95[data-state\\x3dclosed] {
-  --tw-exit-scale: .95;
-}
-
-.data-\[state\\\\x3dopen\]\:zoom-in-90[data-state\\x3dopen] {
-  --tw-enter-scale: .9;
 }
 
 .data-\[motion\\x3dfrom-end\]\:slide-in-from-right-52[data-motion\x3dfrom-end] {
@@ -2023,6 +1980,22 @@ body {
   --tw-exit-translate-x: -13rem;
 }
 
+.data-\[side\\\\x3dbottom\]\:slide-in-from-top-2[data-side\\x3dbottom] {
+  --tw-enter-translate-y: -0.5rem;
+}
+
+.data-\[side\\\\x3dleft\]\:slide-in-from-right-2[data-side\\x3dleft] {
+  --tw-enter-translate-x: 0.5rem;
+}
+
+.data-\[side\\\\x3dright\]\:slide-in-from-left-2[data-side\\x3dright] {
+  --tw-enter-translate-x: -0.5rem;
+}
+
+.data-\[side\\\\x3dtop\]\:slide-in-from-bottom-2[data-side\\x3dtop] {
+  --tw-enter-translate-y: 0.5rem;
+}
+
 .data-\[side\\x3dbottom\]\:slide-in-from-top-2[data-side\x3dbottom] {
   --tw-enter-translate-y: -0.5rem;
 }
@@ -2039,28 +2012,7 @@ body {
   --tw-enter-translate-y: 0.5rem;
 }
 
-.data-\[motion\\\\x3dfrom-end\]\:slide-in-from-right-52[data-motion\\x3dfrom-end] {
-  --tw-enter-translate-x: 13rem;
-}
-
-.data-\[motion\\\\x3dfrom-start\]\:slide-in-from-left-52[data-motion\\x3dfrom-start] {
-  --tw-enter-translate-x: -13rem;
-}
-
-.data-\[motion\\\\x3dto-end\]\:slide-out-to-right-52[data-motion\\x3dto-end] {
-  --tw-exit-translate-x: 13rem;
-}
-
-.data-\[motion\\\\x3dto-start\]\:slide-out-to-left-52[data-motion\\x3dto-start] {
-  --tw-exit-translate-x: -13rem;
-}
-
 .group[data-state\x3dopen] .group-data-\[state\\x3dopen\]\:rotate-180 {
-  --tw-rotate: 180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.group[data-state\\x3dopen] .group-data-\[state\\\\x3dopen\]\:rotate-180 {
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
