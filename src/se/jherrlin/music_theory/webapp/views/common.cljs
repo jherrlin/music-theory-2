@@ -7,6 +7,7 @@
    [reitit.frontend.easy :as rfe]
    [se.jherrlin.utils :as basic-utils]
    [reitit.coercion.malli]
+   [cljs.pprint]
    [se.jherrlin.music-theory.webapp.views.instrument-render]
    [se.jherrlin.music-theory.webapp.utils :refer [<sub >evt]]
    [se.jherrlin.music-theory.webapp.events :as events]
@@ -19,9 +20,10 @@
   ([]
    (debug-view @re-frame.db/app-db))
   ([x]
-   [:pre
-    (with-out-str
-      (cljs.pprint/pprint x))]))
+   (when x
+     [:pre
+      (with-out-str
+        (cljs.pprint/pprint x))])))
 
 (defn menu []
   (let [current-route-name   @(re-frame/subscribe [:current-route-name])
