@@ -27,11 +27,18 @@ jobs:
           fingerprints:
             - "SHA256:AKBnW00688qMrbkk/zHqrO7lkN5KK5PqiMvz8mcnKcM"
       - checkout
-      - run: make install
-      - run: make release-frontend
+      - run:
+          name: Install dependencies
+          command: make install
+      - run:
+          name: Build frontend
+          command: make release-frontend
       - run:
           name: Commit to GitHub
-          command: ./scripts/commit-to-github-pages.sh
+          command: make deploy
+      - run:
+          name: Release version
+          command: make release-version
 
 workflows:
   version: 2

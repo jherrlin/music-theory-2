@@ -37,3 +37,9 @@ test:
 
 update-index-html-with-hash:
 	./scripts/update-index-html-with-hash.sh
+
+deploy:
+	./scripts/commit-to-github-pages.sh
+
+release-version:
+	./scripts/echo-release-version.sh
