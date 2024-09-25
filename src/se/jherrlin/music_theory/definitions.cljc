@@ -5,12 +5,14 @@
    [se.jherrlin.music-theory.models.fretboard-pattern :as models-fretboard-pattern]
    [se.jherrlin.music-theory.definitions.helpers :as helpers]
    [se.jherrlin.music-theory.definitions.generated-scale-patterns-mandolin :as generated-scale-patterns-mandolin]
-   [se.jherrlin.music-theory.definitions.generated-scale-patterns-mandolin-aeae :as generated-scale-patterns-mandolin-aeae]))
+   [se.jherrlin.music-theory.definitions.generated-scale-patterns-mandolin-aeae :as generated-scale-patterns-mandolin-aeae]
+   [se.jherrlin.music-theory.definitions.generated-scale-patterns-cittern-dgdad :as generated-scale-patterns-cittern-dgdad]))
 
 
 (def definitions
   (let [generated-scale-patterns (merge generated-scale-patterns-mandolin/generated-scale-patterns
-                                        generated-scale-patterns-mandolin-aeae/generated-scale-patterns)]
+                                        generated-scale-patterns-mandolin-aeae/generated-scale-patterns
+                                        generated-scale-patterns-cittern-dgdad/generated-scale-patterns)]
     (atom {:chords         {}
            :chord-patterns {}
            :scales         {}
