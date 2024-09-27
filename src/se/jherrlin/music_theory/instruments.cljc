@@ -70,6 +70,24 @@
                                              {:tone        :e
                                               :octave      5
                                               :start-index 0}]}
+   :mandolin-gdad          {:id                  :mandolin-gdad
+                            :text                "Mandolin (GDAD)"
+                            :description         "Mandolin in GDAD tuning"
+                            :type                :fretboard
+                            :scale-pattern-range [6 7]
+                            :order               5
+                            :tuning              [{:tone        :g
+                                                   :octave      3
+                                                   :start-index 0}
+                                                  {:tone        :d
+                                                   :octave      4
+                                                   :start-index 0}
+                                                  {:tone        :a
+                                                   :octave      4
+                                                   :start-index 0}
+                                                  {:tone        :d
+                                                   :octave      5
+                                                   :start-index 0}]}
    :mandolin-aeae     {:id                  :mandolin-aeae
                        :text                "Mandolin (AEAE)"
                        :description         "Mandolin AEAE tuning"
