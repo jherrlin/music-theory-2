@@ -202,27 +202,27 @@
                                              {:tone        :a
                                               :octave      3
                                               :start-index 0}]}
-   :pers-banjo-tuning {:id          :pers-banjo-tuning
-                       :text        "Pers banjo tuning"
-                       :description "Pers banjo tuning"
-                       :type        :fretboard
+   :banjo-5-string-open-a {:id          :banjo-5-string-open-a
+                           :text        "Five-string banjo in open A tuning"
+                           :description "Five-string banjo in open A tuning"
+                           :type        :fretboard
                        ;; :scale-pattern-range [4 5]
-                       :order       8
-                       :tuning      [{:tone        :a
-                                      :octave      4
-                                      :start-index 3}
-                                     {:tone        :d
-                                      :octave      3
-                                      :start-index 0}
-                                     {:tone        :a
-                                      :octave      3
-                                      :start-index 0}
-                                     {:tone        :d
-                                      :octave      3
-                                      :start-index 0}
-                                     {:tone        :e
-                                      :octave      4
-                                      :start-index 0}]}})
+                           :order       8
+                           :tuning      [{:tone        :a
+                                          :octave      2
+                                          :start-index 3}
+                                         {:tone        :e
+                                          :octave      3
+                                          :start-index 0}
+                                         {:tone        :a
+                                          :octave      3
+                                          :start-index 0}
+                                         {:tone        :c#
+                                          :octave      3
+                                          :start-index 0}
+                                         {:tone        :e
+                                          :octave      4
+                                          :start-index 0}]}})
 
 (defn instrument
   "Get `instrument'` map."
