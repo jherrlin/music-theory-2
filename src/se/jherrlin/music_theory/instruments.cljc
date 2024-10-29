@@ -145,6 +145,27 @@
                                      {:tone        :d
                                       :octave      4
                                       :start-index 0}]}
+   :banjo-5-string-oldtime {:id          :banjo-5-string-oldtime
+                            :text        "Banjo, oldtime tuning"
+                            :description "Five-string banjo in oldtime tuning."
+                            :type        :fretboard
+                            ;; :scale-pattern-range [4 5]
+                            :order       6
+                            :tuning      [{:tone        :a
+                                           :octave      4
+                                           :start-index 5}
+                                          {:tone        :e
+                                           :octave      3
+                                           :start-index 0}
+                                          {:tone        :a
+                                           :octave      3
+                                           :start-index 0}
+                                          {:tone        :d
+                                           :octave      3
+                                           :start-index 0}
+                                          {:tone        :e
+                                           :octave      4
+                                           :start-index 0}]}
    :mandocello        {:id                  :mandocello
                        :text                "Mandocello"
                        :description         "Standard mandocello tuning"
