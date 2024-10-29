@@ -106,6 +106,24 @@
                                              {:tone        :e
                                               :octave      5
                                               :start-index 0}]}
+   :mandolin-gdgd     {:id                  :mandolin-gdgd
+                       :text                "Mandolin (GDGD)"
+                       :description         "Mandolin GDGD tuning"
+                       :type                :fretboard
+                       :scale-pattern-range [6 7]
+                       :order               4
+                       :tuning              [{:tone        :g
+                                              :octave      3
+                                              :start-index 0}
+                                             {:tone        :d
+                                              :octave      4
+                                              :start-index 0}
+                                             {:tone        :g
+                                              :octave      4
+                                              :start-index 0}
+                                             {:tone        :d
+                                              :octave      5
+                                              :start-index 0}]}
    :mandola           {:id                  :mandola
                        :text                "Mandola"
                        :description         "Standard mandola tuning"
