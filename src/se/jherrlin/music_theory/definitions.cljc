@@ -443,6 +443,11 @@
   {:order 7}
   "1, 2, 3, 5, 6")
 
+(define-scale #uuid "0b675c5b-a6fe-44fe-b7cc-6596c6c570a4"
+  #{:bluegrass-pentatonic-major}
+  {:order 7}
+  "1, 2, b3, 3, 5, 6")
+
 (define-scale #uuid "8c0a7209-4ac4-4ec7-b8a5-e4fdaf449ad6"
   #{:lydian}
   "1, 2, 3, #4, 5, 6, 7")
