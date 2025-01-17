@@ -1208,7 +1208,7 @@
              identity)
            (if as-intervals
              (center-text :match? :interval)
-             (center-text :match? :interval-tone))
+             (center-text :match? :out))
            (partial left-is-blank? frets-to-matrix))))))
 
 (defn min-x
