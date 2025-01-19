@@ -3,12 +3,13 @@
    [clojure.string :as str]
    [re-frame.alpha :as rf-alpha]
    [re-frame.db :as db]
+   [clojure.string :as str]
    [re-frame.interop :refer [debug-enabled?]]
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.music-theory :as music-theory]
    [se.jherrlin.music-theory.webapp.components.tonejs]
    [se.jherrlin.music-theory.webapp.events :as events]
-   [se.jherrlin.music-theory.webapp.utils :refer [<sub >evt]]
+   [se.jherrlin.music-theory.webapp.utils :refer [<sub <sub-flow >evt]]
    [se.jherrlin.music-theory.webapp.views.common :as views.common]
    [se.jherrlin.music-theory.webapp.views.instruments.fretboard2 :as fretboard2]))
 
@@ -39,6 +40,8 @@
 (def game-start-inst-path (path ::game-start-inst))
 (def game-end-inst-path (path ::game-end-inst))
 (def game-duration-path (path ::game-duration))
+(def pretty-print-chord-names-path (path ::pretty-print-chord-names))
+(def demo-inst-path (path ::demo-inst))
 
 (def events-
   [{:n ::fretboard-size
@@ -92,35 +95,49 @@
     :path        chords-path}))
 
 (rf-alpha/reg-flow
- (let [inputs {:chords    (rf-alpha/flow<- ::chords)
-               :chord-idx chord-idx-path}]
-   {:doc         "Get the current chord"
-    :id          ::chord
+  (let [inputs {:chords    (rf-alpha/flow<- ::chords)
+                :chord-idx chord-idx-path}]
+    {:doc         "Get the current chord"
+     :id          ::chord
+     :live-inputs inputs
+     :live?       :chords
+     :inputs      inputs
+     :output      (fn [{:keys [chords chord-idx]}]
+                    (let [chord (nth chords chord-idx)
+                          interval-tones (music-theory/interval-tones (:key-of chord) (:chord/intervals chord))]
+                      (assoc chord :interval-tones interval-tones)))
+     :path        chord-path}))
+
+(rf-alpha/reg-flow
+ (let [inputs {:chords (rf-alpha/flow<- ::chords)}]
+   {:doc         "Pretty print of chords string"
+    :id          ::pretty-print-chord-names
     :live-inputs inputs
     :live?       :chords
     :inputs      inputs
-    :output      (fn [{:keys [chords chord-idx]}]
-                   (let [chord (nth chords chord-idx)
-                         interval-tones (music-theory/interval-tones (:key-of chord) (:chord/intervals chord))]
-                     (assoc chord :interval-tones interval-tones)))
-    :path        chord-path}))
+    :output      (fn [{:keys [chords]}]
+                   (->> chords
+                        (map (fn [{suffix :chord/suffix k :key-of}]
+                               (-> k name str/capitalize (str suffix))))
+                        (str/join ", ")))
+    :path        pretty-print-chord-names-path}))
 
 (rf-alpha/reg-flow
- (let [inputs {:chord (rf-alpha/flow<- ::chord)
-               :nr-of-frets nr-of-frets-path}]
-   {:doc         "Facit fretboard matrix"
-    :id          ::facit-fretboard-matrix
-    :live-inputs inputs
-    :live?       :chord
-    :inputs      inputs
-    :output      (fn [{:keys [nr-of-frets chord]}]
-                   (let [{:keys [key-of id]} chord]
-                     (music-theory/instrument-data-structure
-                      {:id         id
-                       :instrument :mandolin
-                       :key-of     key-of}
-                      {:nr-of-frets nr-of-frets})))
-    :path        facit-fretboard-matrix-path}))
+  (let [inputs {:chord (rf-alpha/flow<- ::chord)
+                :nr-of-frets nr-of-frets-path}]
+    {:doc         "Facit fretboard matrix"
+     :id          ::facit-fretboard-matrix
+     :live-inputs inputs
+     :live?       :chord
+     :inputs      inputs
+     :output      (fn [{:keys [nr-of-frets chord]}]
+                    (let [{:keys [key-of id]} chord]
+                      (music-theory/instrument-data-structure
+                        {:id         id
+                         :instrument :mandolin
+                         :key-of     key-of}
+                        {:nr-of-frets nr-of-frets})))
+     :path        facit-fretboard-matrix-path}))
 
 (rf-alpha/reg-flow
  (let [inputs {:facit-fretboard-matrix (rf-alpha/flow<- ::facit-fretboard-matrix)}]
@@ -201,8 +218,11 @@
     {:db (assoc-in db game-state-path :game)
      :fx [[:dispatch [::start-timer]]]}))
 
+
+
 (defn guide []
-  (let [react-key "0s7CcdEsh0q7VXcVIsqXmK"]
+  (let [react-key "0s7CcdEsh0q7VXcVIsqXmK"
+        chord-names (<sub-flow ::pretty-print-chord-names)]
     [:div
      [:h1 "Practice chord tone locations"]
      [:p "Practice chord tones by clicking on a virtual mandolin fretboard."]
@@ -211,28 +231,34 @@
 
      [:br]
 
+     [:p "Chords in this exercise:"]
+     [:b chord-names]
+
+     [:br]
+     [:br]
+
      [:p "When you click on a tone on the fretboard the tone will show and the"]
      [:p "tone will be played through your speakers."]
-
-     [fretboard2/styled-view
-      {:id               (str "hehe" react-key)
-       :fretboard-matrix (->> (music-theory/fretboard-matrix->fretboard2
-                                {}
-                                (music-theory/create-fretboard-matrix-for-instrument
-                                  :d 7 :mandolin))
-                           (music-theory/map-matrix
-                             (comp
-                               (music-theory/circle-color
-                                 (fn [{:keys [yx]}]
-                                   (#{2 100 200 302} yx))
-                                 "green")
-                               (music-theory/center-text
-                                 (fn [{:keys [yx]}]
-                                   (#{2 100 200 302} yx))
-                                 (fn [{:keys [out tone-str interval-tone]}]
-                                   (or out tone-str interval-tone))))))
-       :entity-str       react-key
-       :fretboard-size   1}]
+     (let [clicked #{2 5 100 105 200 204 302}]
+       [fretboard2/styled-view
+        {:id               (str "hehe" react-key)
+         :fretboard-matrix (->> (music-theory/fretboard-matrix->fretboard2
+                                  {}
+                                  (music-theory/create-fretboard-matrix-for-instrument
+                                    :d 7 :mandolin))
+                             (music-theory/map-matrix
+                               (comp
+                                 (music-theory/circle-color
+                                   (fn [{:keys [yx]}]
+                                     (clicked yx))
+                                   "green")
+                                 (music-theory/center-text
+                                   (fn [{:keys [yx]}]
+                                     (clicked yx))
+                                   (fn [{:keys [out tone-str interval-tone]}]
+                                     (or out tone-str interval-tone))))))
+         :entity-str       react-key
+         :fretboard-size   1}])
 
      [:br]
 
@@ -374,10 +400,10 @@
    {:db (assoc db :time/now now)}))
 
 (rf-alpha/reg-event-fx
-  ::on-tick
-  (fn [{:keys [db]} [_event-id]]
-    (js/console.log ::on-tick)
-    {:fx [[:dispatch [:time/now]]]}))
+ ::on-tick
+ (fn [{:keys [db]} [_event-id]]
+   (js/console.log ::on-tick)
+   {:fx [[:dispatch [:time/now]]]}))
 
 (rf-alpha/reg-flow
  (let [inputs {:time-now        [:time/now]

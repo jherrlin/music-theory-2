@@ -3,4 +3,6 @@
 
 
 (def <sub (comp deref re-frame/subscribe))
+(defn <sub-flow [flow-id]
+  (deref (re-frame/sub :flow {:id flow-id})))
 (def >evt re-frame/dispatch)
