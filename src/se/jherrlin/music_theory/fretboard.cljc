@@ -585,7 +585,9 @@
 
   Example:
   tones->intervals: `[[:c \"1\"] [:d \"2\"] [:e \"3\"] [:f \"4\"] [:g \"5\"] [:a \"6\"] [:b \"7\"]]`"
-  [tones->intervals {:keys [x y tone pattern-match? interval] :as m}]
+  [tones->intervals {:keys [x y tone pattern-match? interval]
+                     :or {interval "#"} ;; Favor # if no interval exists
+                     :as m}]
   {:pre [(set? tone)]}
   (if-let [i (->> tones->intervals
                   (filter (fn [[tone' interval']]
@@ -594,8 +596,8 @@
                   (second))]
     (cond-> m
       :always            (assoc :interval i)
-      :always            (assoc :tone-str (-> tone (general/sharp-or-flat "b") name str/capitalize))
-      :always            (assoc :interval-tone (-> tone (general/sharp-or-flat "b") name str/capitalize))
+      :always            (assoc :tone-str (-> tone (general/sharp-or-flat interval) name str/capitalize))
+      :always            (assoc :interval-tone (-> tone (general/sharp-or-flat interval) name str/capitalize))
       :always            (assoc :index-tone tone)
       (= 2 (count tone)) (assoc :sharp (-> tone (general/sharp-or-flat "#") name str/capitalize))
       (= 2 (count tone)) (assoc :flat (-> tone (general/sharp-or-flat "b") name str/capitalize))
@@ -1045,7 +1047,7 @@
         (add-basics-to-fretboard-matrix key-of))))
 
 (create-fretboard-matrix
- :c
+ :d
  15
  [{:tone :e, :octave 2, :start-index 0}
   {:tone :a, :octave 2, :start-index 0}
@@ -1185,7 +1187,7 @@
     (->> matrix
          (utils/map-matrix
           (comp
-           #(select-keys % fretboard2-keys)
+           ;; #(select-keys % fretboard2-keys)
            (circle-color :highlight? :color/highlight)
            (circle-color
             (fn [{:keys [root? match?]}]

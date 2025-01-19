@@ -27,7 +27,6 @@
    :color/highlight highlight-color
    :color/grey      grey})
 
-
 (defn fret-component
   [{:as   m
     :keys [background-color

@@ -11,7 +11,8 @@
    [se.jherrlin.music-theory.webapp.views.find-chord :as find-chord]
    [se.jherrlin.music-theory.webapp.views.find-scale :as find-scale]
    [se.jherrlin.music-theory.webapp.views.dev :as dev]
-   [se.jherrlin.music-theory.webapp.views.dev.fretboard2 :as dev.fretboard2]))
+   [se.jherrlin.music-theory.webapp.views.dev.fretboard2 :as dev.fretboard2]
+   [se.jherrlin.music-theory.webapp.views.dev.learn-harmonizations :as dev.learn-harmonizations]))
 
 
 (defn ^:dev/after-load routes [deps]
@@ -27,4 +28,5 @@
    (find-scale/routes deps)
 
    (dev/routes deps)
-   (dev.fretboard2/routes deps)])
+   (dev.fretboard2/routes deps)
+   (dev.learn-harmonizations/routes deps)])

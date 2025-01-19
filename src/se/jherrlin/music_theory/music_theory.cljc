@@ -121,6 +121,15 @@
 (def pattern-with-intervals fretboard/pattern-with-intervals)
 (def pattern-with-tones fretboard/pattern-with-tones)
 (def create-fretboard-matrix fretboard/create-fretboard-matrix)
+(defn create-fretboard-matrix-for-instrument
+  [key-of nr-of-frets instrument]
+  (let [instrument-tuning (get-instrument-tuning instrument)]
+    (fretboard/create-fretboard-matrix key-of nr-of-frets instrument-tuning)))
+
+(comment
+  (create-fretboard-matrix-for-instrument :d 10 :mandolin)
+  :-)
+
 (def merge-fretboards-matrixes fretboard/merge-fretboards-matrixes)
 (def filter-matches fretboard/filter-matches)
 (def fretboard-matrix->tonejs-dispatches fretboard/fretboard-matrix->tonejs-dispatches)

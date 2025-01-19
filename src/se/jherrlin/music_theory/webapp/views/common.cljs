@@ -453,6 +453,11 @@
         (apply str)
         (str "Interval -> Tone\n"))])
 
+(defn intervals [intervals']
+  [:p (->> intervals'
+           (map #(-> % name str/capitalize))
+           (str/join ", "))])
+
 (defn highlight-tones [tones key-of]
   [:div {:style {:margin-top  "1em"
                  :display     "flex"
