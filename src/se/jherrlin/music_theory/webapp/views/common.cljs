@@ -84,6 +84,13 @@
          {:disabled (= current-route-name route-name)}
          "Find scale"]])
 
+     #_(let [route-name :se.jherrlin.music-theory.webapp.views.learn.chord-tones/chord-tones]
+       [:a {:style {:margin-right "10px"}
+            :href  (rfe/href route-name path-params changed-query-params)}
+        [:button
+         {:disabled (= current-route-name route-name)}
+         "Learn chord tones"]])
+
      [:a {:style  {:margin-right "10px"}
           :href   "https://github.com/jherrlin/music-theory-2"
           :target "_blank"}
