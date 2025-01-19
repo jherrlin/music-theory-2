@@ -251,7 +251,7 @@
 
 (defn ^:dev/after-load routes [deps]
   (let [route-name :learn-harmonizations]
-    ["/dev/learn-harmonizations"
+    ["/dev/learn"
      {:name  route-name
       :view  [view deps]
       :controllers
