@@ -3,7 +3,6 @@
    [clojure.string :as str]
    [re-frame.alpha :as rf-alpha]
    [re-frame.db :as db]
-   [clojure.string :as str]
    [re-frame.interop :refer [debug-enabled?]]
    [reitit.coercion.malli]
    [se.jherrlin.music-theory.music-theory :as music-theory]
@@ -12,8 +11,6 @@
    [se.jherrlin.music-theory.webapp.utils :refer [<sub <sub-flow >evt]]
    [se.jherrlin.music-theory.webapp.views.common :as views.common]
    [se.jherrlin.music-theory.webapp.views.instruments.fretboard2 :as fretboard2]))
-
-
 
 
 
@@ -80,15 +77,16 @@
   (rf-alpha/reg-event-db n (or e (fn [db [_ e]] (assoc-in db (or p (path n)) e)))))
 
 (rf-alpha/reg-flow
- (let [inputs {:key-of key-of-path}]
+ (let [inputs {:key-of key-of-path
+               :instrument instrument-path}]
    {:doc         "Calculate the chords in the harmonization"
     :id          ::chords
     :live-inputs inputs
     :live?       :key-of
     :inputs      inputs
-    :output      (fn [{:keys [key-of]}]
+    :output      (fn [{:keys [key-of instrument]}]
                    (music-theory/calc-harmonization-chords
-                    {:instrument          :mandolin,
+                    {:instrument          instrument #_:mandolin
                      :key-of              key-of,
                      :harmonization-id    :triads,
                      :harmonization-scale :major}))
@@ -124,17 +122,18 @@
 
 (rf-alpha/reg-flow
   (let [inputs {:chord (rf-alpha/flow<- ::chord)
-                :nr-of-frets nr-of-frets-path}]
+                :nr-of-frets nr-of-frets-path
+                :instrument instrument-path}]
     {:doc         "Facit fretboard matrix"
      :id          ::facit-fretboard-matrix
      :live-inputs inputs
      :live?       :chord
      :inputs      inputs
-     :output      (fn [{:keys [nr-of-frets chord]}]
+     :output      (fn [{:keys [nr-of-frets chord instrument]}]
                     (let [{:keys [key-of id]} chord]
                       (music-theory/instrument-data-structure
                         {:id         id
-                         :instrument :mandolin
+                         :instrument instrument #_:mandolin
                          :key-of     key-of}
                         {:nr-of-frets nr-of-frets})))
      :path        facit-fretboard-matrix-path}))
@@ -222,7 +221,8 @@
 
 (defn guide []
   (let [react-key "0s7CcdEsh0q7VXcVIsqXmK"
-        chord-names (<sub-flow ::pretty-print-chord-names)]
+        chord-names (<sub-flow ::pretty-print-chord-names)
+        instrument (<sub [::instrument])]
     [:div
      [:h1 "Practice chord tone locations"]
      [:p "Practice chord tones by clicking on a virtual mandolin fretboard."]
@@ -245,7 +245,7 @@
          :fretboard-matrix (->> (music-theory/fretboard-matrix->fretboard2
                                   {}
                                   (music-theory/create-fretboard-matrix-for-instrument
-                                    :d 7 :mandolin))
+                                    :d 7 instrument #_:mandolin))
                              (music-theory/map-matrix
                                (comp
                                  (music-theory/circle-color
@@ -283,7 +283,8 @@
         show-facit? (<sub [::show-facit?])
         chord (<sub [::chord])
         nr-of-frets (<sub [::nr-of-frets])
-        facit-fretboard-matrix (<sub [::facit-fretboard-matrix])]
+        facit-fretboard-matrix (<sub [::facit-fretboard-matrix])
+        instrument (<sub [::instrument])]
     [:div
      [:h1 "Find all the notes in the chord!"]
 
@@ -301,7 +302,7 @@
         :fretboard-matrix (->> (music-theory/fretboard-matrix->fretboard2
                                 {}
                                 (music-theory/create-fretboard-matrix-for-instrument
-                                 :d nr-of-frets :mandolin))
+                                 :d nr-of-frets instrument #_:mandolin))
                                (music-theory/map-matrix
                                 (comp
                                  (music-theory/circle-color

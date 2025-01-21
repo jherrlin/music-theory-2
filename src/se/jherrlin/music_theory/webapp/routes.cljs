@@ -13,7 +13,8 @@
    [se.jherrlin.music-theory.webapp.views.dev :as dev]
    [se.jherrlin.music-theory.webapp.views.dev.fretboard2 :as dev.fretboard2]
    [se.jherrlin.music-theory.webapp.views.dev.learn-harmonizations :as dev.learn-harmonizations]
-   [se.jherrlin.music-theory.webapp.views.learn.chord-tones :as learn.chord-tones]))
+   [se.jherrlin.music-theory.webapp.views.learn.chord-tones :as learn.chord-tones]
+   [se.jherrlin.music-theory.webapp.views.dev.intersecting-tones :as dev.intersecting-tones]))
 
 
 (defn ^:dev/after-load routes [deps]
@@ -32,4 +33,5 @@
 
    (dev/routes deps)
    (dev.fretboard2/routes deps)
-   (dev.learn-harmonizations/routes deps)])
+   (dev.learn-harmonizations/routes deps)
+   (dev.intersecting-tones/routes deps)])

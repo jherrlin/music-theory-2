@@ -41,7 +41,8 @@
            x-min?
            left-is-blank?
            fretboard-size
-           entity-str]
+           entity-str
+           circle-background]
     :or   {circle-color   note-color
            fretboard-size 1}}]
   (let [string-hight     (/ y 10)
@@ -82,16 +83,17 @@
                      :z-index          100}}
        (when center-text
          [:div {:id    (music-theory/circle-dom-id entity-str x y)
-                :style {:display          "flex"
-                        :align-items      :center
-                        :justify-content  :center
-                        :height           (str (* fretboard-size 2) "rem")
-                        :width            (str (* fretboard-size 2) "rem")
-                        :background-color (if (keyword? circle-color)
-                                            (get colors circle-color)
-                                            circle-color)
-                        :border-radius    "50%"
-                        :z-index          0}}
+                :style (cond-> {:display          "flex"
+                                :align-items      :center
+                                :justify-content  :center
+                                :height           (str (* fretboard-size 2) "rem")
+                                :width            (str (* fretboard-size 2) "rem")
+                                :background-color (if (keyword? circle-color)
+                                                    (get colors circle-color)
+                                                    circle-color)
+                                :border-radius    "50%"
+                                :z-index          0}
+                         circle-background (assoc :background circle-background))}
           [:<>
            center-text
            (when down-right-text
