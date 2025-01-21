@@ -1,4 +1,4 @@
-(ns se.jherrlin.music-theory.webapp.views.dev.intersecting-tones
+(ns se.jherrlin.music-theory.webapp.views.intersecting-tones
   (:require
    [re-frame.alpha :as rf-alpha]
    [reitit.coercion.malli]
@@ -85,51 +85,57 @@
         path-params          (<sub [:path-params])
         changed-query-params (<sub [:changed-query-params])]
     [:div
-     [:h2 "Intersecting tones"]
+     [common/menu]
+     [:br]
+
+     [:h1 "Intersecting tones"]
+
+     [:p "Select two scales in difference keys and see the intersecting tones."]
+     [:br]
 
      [key-selection :key-of-1]
-
+     [:br]
      [:div {:style {:display "flex"}}
       (let [sub id-1
             i   :id-1]
         [:<>
-         (let [id    #uuid "bac1ab62-34df-4232-b205-b197d25d8892"
-               title "pentatonic-blues"]
-           [:a {:style {:margin-right "10px"}
-                :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
-            [:button
-             {:disabled (= sub id)}
-             title]])
          (let [id    #uuid "39af7096-b5c6-45e9-b743-6791b217a3df"
-               title "major"]
+               title "Major"]
            [:a {:style {:margin-right "10px"}
                 :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
             [:button
              {:disabled (= sub id)}
              title]])
          (let [id    #uuid "d091b747-63b9-4db2-9daa-6e9974852080"
-               title "minor"]
-           [:a {:style {:margin-right "10px"}
-                :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
-            [:button
-             {:disabled (= sub id)}
-             title]])
-         (let [id    #uuid "0b675c5b-a6fe-44fe-b7cc-6596c6c570a4"
-               title "bluegrass-pentatonic-major"]
-           [:a {:style {:margin-right "10px"}
-                :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
-            [:button
-             {:disabled (= sub id)}
-             title]])
-         (let [id    #uuid "82751272-7c3a-445e-a589-24c1ad87a30e"
-               title "pentatonic-minor"]
+               title "Minor"]
            [:a {:style {:margin-right "10px"}
                 :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
             [:button
              {:disabled (= sub id)}
              title]])
          (let [id    #uuid "e7ad3188-1e4c-4d19-bd4b-99e97213c6f6"
-               title "pentatonic-major"]
+               title "Pentatonic major"]
+           [:a {:style {:margin-right "10px"}
+                :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
+            [:button
+             {:disabled (= sub id)}
+             title]])
+         (let [id    #uuid "82751272-7c3a-445e-a589-24c1ad87a30e"
+               title "Pentatonic minor"]
+           [:a {:style {:margin-right "10px"}
+                :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
+            [:button
+             {:disabled (= sub id)}
+             title]])
+         (let [id    #uuid "bac1ab62-34df-4232-b205-b197d25d8892"
+               title "Pentatonic blues"]
+           [:a {:style {:margin-right "10px"}
+                :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
+            [:button
+             {:disabled (= sub id)}
+             title]])
+         (let [id    #uuid "0b675c5b-a6fe-44fe-b7cc-6596c6c570a4"
+               title "Pentatonic bluegrass"]
            [:a {:style {:margin-right "10px"}
                 :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
             [:button
@@ -138,48 +144,49 @@
 
      [:br]
      [key-selection :key-of-2]
+     [:br]
 
      [:div {:style {:display "flex"}}
       (let [sub id-2
             i   :id-2]
         [:<>
-         (let [id    #uuid "bac1ab62-34df-4232-b205-b197d25d8892"
-               title "pentatonic-blues"]
-           [:a {:style {:margin-right "10px"}
-                :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
-            [:button
-             {:disabled (= sub id)}
-             title]])
          (let [id    #uuid "39af7096-b5c6-45e9-b743-6791b217a3df"
-               title "major"]
+               title "Major"]
            [:a {:style {:margin-right "10px"}
                 :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
             [:button
              {:disabled (= sub id)}
              title]])
          (let [id    #uuid "d091b747-63b9-4db2-9daa-6e9974852080"
-               title "minor"]
-           [:a {:style {:margin-right "10px"}
-                :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
-            [:button
-             {:disabled (= sub id)}
-             title]])
-         (let [id    #uuid "0b675c5b-a6fe-44fe-b7cc-6596c6c570a4"
-               title "bluegrass-pentatonic-major"]
-           [:a {:style {:margin-right "10px"}
-                :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
-            [:button
-             {:disabled (= sub id)}
-             title]])
-         (let [id    #uuid "82751272-7c3a-445e-a589-24c1ad87a30e"
-               title "pentatonic-minor"]
+               title "Minor"]
            [:a {:style {:margin-right "10px"}
                 :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
             [:button
              {:disabled (= sub id)}
              title]])
          (let [id    #uuid "e7ad3188-1e4c-4d19-bd4b-99e97213c6f6"
-               title "pentatonic-major"]
+               title "Pentatonic major"]
+           [:a {:style {:margin-right "10px"}
+                :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
+            [:button
+             {:disabled (= sub id)}
+             title]])
+         (let [id    #uuid "82751272-7c3a-445e-a589-24c1ad87a30e"
+               title "Pentatonic minor"]
+           [:a {:style {:margin-right "10px"}
+                :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
+            [:button
+             {:disabled (= sub id)}
+             title]])
+         (let [id    #uuid "bac1ab62-34df-4232-b205-b197d25d8892"
+               title "Pentatonic blues"]
+           [:a {:style {:margin-right "10px"}
+                :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
+            [:button
+             {:disabled (= sub id)}
+             title]])
+         (let [id    #uuid "0b675c5b-a6fe-44fe-b7cc-6596c6c570a4"
+               title "Pentatonic bluegrass"]
            [:a {:style {:margin-right "10px"}
                 :href  (rfe/href current-route-name (assoc path-params i id) changed-query-params)}
             [:button
@@ -193,8 +200,8 @@
          [:pre
           (with-out-str
             (cljs.pprint/pprint
-              (-> (music-theory/get-definition id-1)
-                (select-keys [:type :scale/scale-names :scale/intervals]))))]]])
+             (-> (music-theory/get-definition id-1)
+                 (select-keys [:type :scale/scale-names :scale/intervals]))))]]])
 
      (when id-2
        [:div {:style {:background color-2}}
@@ -242,7 +249,7 @@
 
 (defn ^:dev/after-load routes [deps]
   (let [route-name ::intersecting-tones]
-    ["/dev/intersecting-tones/:instrument/:key-of-1/:key-of-2/:id-1/:id-2"
+    ["/intersecting-tones/:instrument/:key-of-1/:key-of-2/:id-1/:id-2"
      {:name  route-name
       :view  [view deps]
       :coercion   reitit.coercion.malli/coercion

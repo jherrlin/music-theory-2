@@ -10,7 +10,8 @@
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.webapp.utils :refer [<sub <sub-flow >evt]]
    [se.jherrlin.music-theory.webapp.views.common :as views.common]
-   [se.jherrlin.music-theory.webapp.views.instruments.fretboard2 :as fretboard2]))
+   [se.jherrlin.music-theory.webapp.views.instruments.fretboard2 :as fretboard2]
+   [se.jherrlin.music-theory.webapp.views.common :as common]))
 
 
 
@@ -286,6 +287,8 @@
         facit-fretboard-matrix (<sub [::facit-fretboard-matrix])
         instrument (<sub [::instrument])]
     [:div
+     [common/menu]
+     [:br]
      [:h1 "Find all the notes in the chord!"]
 
      [:<>
