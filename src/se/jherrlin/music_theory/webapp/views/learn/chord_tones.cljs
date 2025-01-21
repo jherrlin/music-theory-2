@@ -231,6 +231,7 @@
      [:p "and if you are correct you will be taken to the next chord in the harmonization."]
 
      [:br]
+     [common/key-selection]
 
      [:p "Chords in this exercise:"]
      [:b chord-names]
@@ -287,8 +288,7 @@
         facit-fretboard-matrix (<sub [::facit-fretboard-matrix])
         instrument (<sub [::instrument])]
     [:div
-     [common/menu]
-     [:br]
+
      [:h1 "Find all the notes in the chord!"]
 
      [:<>
@@ -338,11 +338,14 @@
 
 (defn ^:dev/after-load view [deps]
   (let [game-state (<sub [::game-state])]
-    (case game-state
-      :lobby [guide]
-      :game [game-view]
-      :success [success-view]
-      [:p "Unknown `game-state`"])))
+    [:div
+     [common/menu]
+     [:br]
+     (case game-state
+       :lobby [guide]
+       :game [game-view]
+       :success [success-view]
+       [:p "Unknown `game-state`"])]))
 
 (rf-alpha/reg-event-fx
  ::start
@@ -372,7 +375,8 @@
       [{:parameters {:path  [:instrument :key-of :harmonization-id]
                      :query events/query-keys}
         :start      (fn [{p :path q :query}]
-                      (>evt [::start (merge p q)]))
+                      (>evt [::start (merge p q)])
+                      (events/do-on-url-change route-name p q))
         :stop       (fn [{p :path q :query}]
                       (>evt [::stop-tick]))}]}]))
 
