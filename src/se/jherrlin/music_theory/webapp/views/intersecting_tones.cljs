@@ -73,7 +73,7 @@
 
 (defn view [_deps]
   (let [react-key            "B8xw8F83Ci5vnPpVI2CXVy"
-        nr-of-frets          13
+        nr-of-frets          16
         instrument           (<sub [::instrument])
         color-1              "rgb(252, 94, 3)"
         color-2              "rgb(252, 173, 3)"
