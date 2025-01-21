@@ -77,8 +77,8 @@
         instrument           (<sub [::instrument])
         color-1              "rgb(252, 94, 3)"
         color-2              "rgb(252, 173, 3)"
-        key-of-1             (<sub ::key-of-1)
-        key-of-2             (<sub ::key-of-2)
+        key-of-1             (<sub [::key-of-1])
+        key-of-2             (<sub [::key-of-2])
         id-1                 (<sub [::id-1])
         id-2                 (<sub [::id-2])
         current-route-name   (<sub [:current-route-name])
