@@ -17,6 +17,7 @@
   (remove-ns 'se.jherrlin.music-theory.music-theory)
   )
 
+
 ;;
 ;; Basic utils
 ;;
@@ -68,6 +69,7 @@
 ;;
 ;; General
 ;;
+(def tones [:a :a# :b :c :c# :d :d# :e :f :f# :g :g#])
 (def all-tones (general/all-tones))
 (def tones-starting-at general/tones-starting-at)
 (def interval-tones general/interval-tones)
@@ -105,12 +107,14 @@
 (def get-instrument instruments/instrument)
 (def get-instrument-type instruments/get-instrument-type)
 (def get-instrument-tuning instruments/get-instrument-tuning)
+(def get-fretboard-instruments (instruments/fretboard-instruments))
 
 (comment
   instruments
+  (->> get-fretboard-instruments
+       (map :text))
   (get-instrument :five-string-banjo)
-  (get-instrument-tuning :five-string-banjo)
-  )
+  (get-instrument-tuning :five-string-banjo))
 
 
 ;;

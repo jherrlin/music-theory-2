@@ -1,6 +1,7 @@
 (ns se.jherrlin.music-theory.webapp.views.common
   (:require
    [clojure.set :as set]
+   [clojure.edn :as edn]
    [clojure.string :as str]
    [re-frame.core :as re-frame]
    [re-frame.alpha :as re-frame-alpha]
@@ -214,7 +215,7 @@
                    :overflow-x     "auto"
                    :white-space    "nowrap"}}
      (for [{:keys [title key]}
-           (->> [:a :a# :b :c :c# :d :d# :e :f :f# :g :g#]
+           (->> music-theory/tones
                 (map (fn [x] {:key   x
                               :title (-> x name str/capitalize)})))]
        ^{:key title}
@@ -884,3 +885,59 @@
                   :type      "number"
                   :id        "bpm-input"
                   :name      "bpm-input"}]])]]))
+
+(defn select-instrument []
+  (let [current-route-name                   (<sub [:current-route-name])
+        {:keys [instrument] :as path-params} (<sub [:path-params])
+        changed-query-params                 (<sub [:changed-query-params])]
+    [:select {:value     (prn-str instrument)
+              :on-change (fn [evt]
+                           (let [value  (-> evt .-target .-value)
+                                 value' (edn/read-string value)]
+                             (>evt [:href [current-route-name
+                                           (assoc path-params :instrument value')
+                                           changed-query-params]])))}
+     (for [{:keys [id text]} music-theory/get-fretboard-instruments]
+       ^{:key id}
+       [:option {:value (prn-str id)} text])]))
+
+(defn select-key
+  ([]
+   (select-key :key-of))
+  ([k]
+   (let [current-route-name   (<sub [:current-route-name])
+         path-params          (<sub [:path-params])
+         value                (get path-params k)
+         changed-query-params (<sub [:changed-query-params])]
+     [:select {:value     (prn-str value)
+               :on-change (fn [evt]
+                            (let [value  (-> evt .-target .-value)
+                                  value' (edn/read-string value)]
+                              (>evt [:href [current-route-name
+                                            (assoc path-params k value')
+                                            changed-query-params]])))}
+      (for [key-of music-theory/tones]
+        ^{:key (str k key-of)}
+        [:option {:value (prn-str key-of)} (-> key-of name str/capitalize)])])))
+
+
+(defn select-scale-or-chord [k]
+  (let [current-route-name   (<sub [:current-route-name])
+        path-params          (<sub [:path-params])
+        value                (get path-params k)
+        changed-query-params (<sub [:changed-query-params])]
+    [:select {:value     (prn-str value)
+              :on-change (fn [evt]
+                           (let [value  (-> evt .-target .-value)
+                                 value' (edn/read-string value)]
+                             (>evt [:href [current-route-name
+                                           (assoc path-params k value')
+                                           changed-query-params]])))}
+     [:optgroup {:label "Chords"}
+      (for [{s :chord/chord-name-str :keys [id]} music-theory/chords]
+        ^{:key (str k id)}
+        [:option {:value (prn-str id)} (str/capitalize s)])]
+     [:optgroup {:label "Scales"}
+      (for [{:keys [id scale]} music-theory/scales]
+        ^{:key (str k scale)}
+        [:option {:value (prn-str id)} (-> scale name str/capitalize)])]]))

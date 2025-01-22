@@ -71,8 +71,8 @@
                                               :octave      5
                                               :start-index 0}]}
    :mandolin-adae  {:id                  :mandolin-adae
-                    :text                "Mandolin ADAE"
-                    :description         "Mandolin ADAE"
+                    :text                "Mandolin (ADAE)"
+                    :description         "Mandolin (ADAE)"
                     :type                :fretboard
                     :scale-pattern-range [6 7]
                     :order               4
@@ -280,11 +280,15 @@
        (vals)
        (sort-by :order)))
 
+(defn fretboard-instruments []
+  (->> (instruments)
+       (filter (comp #{:fretboard} :type))))
+
 (defn get-instrument-tuning
   "Get tuning and text from `instrument'`."
   [instrument']
   (-> (instrument instrument')
-      :tuning))
+    :tuning))
 
 (defn get-description
   "Get description and text from `instrument'`."
