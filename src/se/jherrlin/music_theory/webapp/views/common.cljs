@@ -79,19 +79,6 @@
          {:disabled (= current-route-name route-name)}
          "Tone intersections"]])
 
-     (let [route-name ::intersecting-tones/intersecting-tones]
-       [:a {:style {:margin-right "10px"}
-            :href  (rfe/href route-name
-                             {:instrument :mandolin
-                              :id-1 #uuid "0b675c5b-a6fe-44fe-b7cc-6596c6c570a4"
-                              :id-2 #uuid "bac1ab62-34df-4232-b205-b197d25d8892"
-                              :key-of-1 :d
-                              :key-of-2 :e}
-                             changed-query-params)}
-        [:button
-         {:disabled (= current-route-name route-name)}
-         "Tone intersections"]])
-
      (let [route-name ::learn.chord-tones/chord-tones]
        [:a {:style {:margin-right "10px"}
             :href  (rfe/href route-name

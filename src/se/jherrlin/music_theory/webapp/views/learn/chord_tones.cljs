@@ -55,7 +55,8 @@
    {:n ::nr-of-frets
     :p nr-of-frets-path}
    {:n ::game-state
-    :p game-state-path}
+    :p game-state-path
+    :d :lobby}
    {:n ::chord-idx
     :p chord-idx-path}
    {:n ::facit-fretboard-matrix
@@ -218,55 +219,54 @@
     {:db (assoc-in db game-state-path :game)
      :fx [[:dispatch [::start-timer]]]}))
 
-
-
 (defn guide []
   (let [react-key "0s7CcdEsh0q7VXcVIsqXmK"
         chord-names (<sub-flow ::pretty-print-chord-names)
         instrument (<sub [::instrument])]
-    [:div
-     [:h1 "Practice chord tone locations"]
-     [:p "Practice chord tones by clicking on a virtual mandolin fretboard."]
-     [:p "When you have selected all of the tones  all over the fretboard you submit"]
-     [:p "and if you are correct you will be taken to the next chord in the harmonization."]
+    (when (and chord-names instrument)
+      [:div
+       [:h1 "Practice chord tone locations"]
+       [:p "Practice chord tones by clicking on a virtual mandolin fretboard."]
+       [:p "When you have selected all of the tones  all over the fretboard you submit"]
+       [:p "and if you are correct you will be taken to the next chord in the harmonization."]
 
-     [:br]
-     [common/key-selection]
+       [:br]
+       [common/key-selection]
 
-     [:p "Chords in this exercise:"]
-     [:b chord-names]
+       [:p "Chords in this exercise:"]
+       [:b chord-names]
 
-     [:br]
-     [:br]
+       [:br]
+       [:br]
 
-     [:p "When you click on a tone on the fretboard the tone will show and the"]
-     [:p "tone will be played through your speakers."]
-     (let [clicked #{2 5 100 105 200 204 302}]
-       [fretboard2/styled-view
-        {:id               (str "hehe" react-key)
-         :fretboard-matrix (->> (music-theory/fretboard-matrix->fretboard2
-                                  {}
-                                  (music-theory/create-fretboard-matrix-for-instrument
+       [:p "When you click on a tone on the fretboard the tone will show and the"]
+       [:p "tone will be played through your speakers."]
+       (let [clicked #{2 5 100 105 200 204 302}]
+         [fretboard2/styled-view
+          {:id               (str "hehe" react-key)
+           :fretboard-matrix (->> (music-theory/fretboard-matrix->fretboard2
+                                   {}
+                                   (music-theory/create-fretboard-matrix-for-instrument
                                     :d 7 instrument #_:mandolin))
-                             (music-theory/map-matrix
-                               (comp
-                                 (music-theory/circle-color
-                                   (fn [{:keys [yx]}]
-                                     (clicked yx))
-                                   "green")
-                                 (music-theory/center-text
-                                   (fn [{:keys [yx]}]
-                                     (clicked yx))
-                                   (fn [{:keys [out tone-str interval-tone]}]
-                                     (or out tone-str interval-tone))))))
-         :entity-str       react-key
-         :fretboard-size   1}])
+                                  (music-theory/map-matrix
+                                   (comp
+                                    (music-theory/circle-color
+                                     (fn [{:keys [yx]}]
+                                       (clicked yx))
+                                     "green")
+                                    (music-theory/center-text
+                                     (fn [{:keys [yx]}]
+                                       (clicked yx))
+                                     (fn [{:keys [out tone-str interval-tone]}]
+                                       (or out tone-str interval-tone))))))
+           :entity-str       react-key
+           :fretboard-size   1}])
 
-     [:br]
+       [:br]
 
-     [:p "The app currenly only have support for mandolin in the key of D major."]
+       [:p "The app currenly only have support for mandolin in the key of D major."]
 
-     [:button {:on-click #(>evt [::begin-game])} "Start"]]))
+       [:button {:on-click #(>evt [::begin-game])} "Start"]])))
 
 (defn game-duration []
   (let [duration (<sub [::game-duration])]
