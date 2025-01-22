@@ -4,9 +4,11 @@
    [re-frame.core :as re-frame]
    [reitit.frontend.easy :as rfe]
    [reitit.coercion.malli]
+   [se.jherrlin.music-theory.webapp.utils :refer [<sub <sub-flow >evt]]
    [se.jherrlin.music-theory.webapp.events :as events]
    [se.jherrlin.music-theory.music-theory :as music-theory]
-   [se.jherrlin.music-theory.webapp.views.common :as common]))
+   [se.jherrlin.music-theory.webapp.views.common :as common]
+   [re-frame.alpha :as rf-alpha]))
 
 
 {:chord/intervals      ["1" "3" "5"],
@@ -31,15 +33,57 @@
  :scale/order       1,
  :scale             :ionian}
 
+(def app-db-path ::learn-harmonizations)
+
+(defn path [x]
+  (-> [app-db-path x] flatten vec))
+
+(def notes-to-play-path (path ::notes-to-play))
+
+(defonce interval-handler         ;; notice the use of defonce
+  (let [live-intervals (atom {})] ;; storage for live intervals
+    (fn handler [{:keys [action id frequency event]}] ;; the effect handler
+      (condp = action
+        :clean   (doall ;; clean up all existing
+                   (map #(handler {:action :end  :id  %1}) (keys @live-intervals)))
+        :start   (swap! live-intervals assoc id
+                   (js/setInterval #(>evt event) frequency))
+        :end     (do (js/clearInterval (get @live-intervals id))
+                   (swap! live-intervals dissoc id))))))
+
+(rf-alpha/reg-fx ::tick interval-handler)
+
+(rf-alpha/reg-event-fx
+ ::on-tick
+ (fn [{:keys [db]} [_event-id]]
+   (js/console.log ::tick)
+   (let [[x & rst] (get-in db notes-to-play-path)]
+     (if x
+       {:db (assoc-in db notes-to-play-path rst)
+        :fx [[:dispatch [:tonejs/play-tone x]]]}
+       {:db db}))))
+
+(rf-alpha/reg-event-db
+ ::add-notes-to-play
+ (fn [db [_event-id notes]]
+   (js/console.log ::add-notes-to-play)
+   (assoc-in db notes-to-play-path notes)))
+
+(comment
+  (interval-handler {:action :clean})
+  (interval-handler {:action    :start
+                     :id        ::tick
+                     :frequency 500
+                     :event     [::on-tick]})
+
+  (>evt [::add-notes-to-play
+         (->> (music-theory/tones-by-key-and-intervals :d ["1" "3" "5"])
+              (map (comp #(hash-map :tone % :octave 3) clojure.string/capitalize name)))])
+  :-)
+
 (defn table-component [deps]
   (let [{:keys [key-of] :as path-params} @(re-frame/subscribe [:path-params])
-        query-params                     @(re-frame/subscribe [:query-params])
-        chords                           (->> music-theory/chords
-                                              (map (fn [{intervals :chord/intervals :as m}]
-                                                     (assoc m :tones (music-theory/tones-by-key-and-intervals key-of intervals)))))
-        scales                           (->> music-theory/scales
-                                              (map (fn [{intervals :scale/intervals :as m}]
-                                                     (assoc m :tones (music-theory/tones-by-key-and-intervals key-of intervals)))))]
+        query-params                     @(re-frame/subscribe [:query-params])]
     [:<>
      [common/menu]
      [:br]
@@ -66,17 +110,17 @@
             [:a
              {:href
               (rfe/href
-               :chord
-               (assoc path-params :chord chord-name)
-               query-params)}
+                :chord
+                (assoc path-params :chord chord-name)
+                query-params)}
              (or display-text suffix)]]
            [:td
             (->> intervals
-                 (str/join ", "))]
+              (str/join ", "))]
            [:td
             (->> (music-theory/tones-by-key-and-intervals key-of intervals)
-                 (map (comp str/capitalize name))
-                 (str/join ", "))]])]]]
+              (map (comp str/capitalize name))
+              (str/join ", "))]])]]]
 
      [:<>
       [:h3 "Scales"]
@@ -97,15 +141,15 @@
             [:a
              {:href
               (rfe/href
-               :scale
-               (assoc path-params :scale scale-name)
-               query-params)}
+                :scale
+                (assoc path-params :scale scale-name)
+                query-params)}
              (-> scale-name name str/capitalize)]]
            [:td (str/join ", " intervals)]
            [:td
             (->> (music-theory/tones-by-key-and-intervals key-of intervals)
-                 (map (comp str/capitalize name))
-                 (str/join ", "))]])]]]]))
+              (map (comp str/capitalize name))
+              (str/join ", "))]])]]]]))
 
 
 (defn routes [deps]
