@@ -11,7 +11,7 @@
                        :text                "Guitar"
                        :description         "Standard guitar tuning"
                        :type                :fretboard
-                       :order               2
+                       :order               10
                        :scale-pattern-range [4 5]
                        :tuning              [{:tone        :e
                                               :octave      2
@@ -31,33 +31,13 @@
                                              {:tone        :e
                                               :octave      4
                                               :start-index 0}]}
-   :cittern-dgdad     {:id                  :cittern-dgdad
-                       :text                "Cittern (DGDAD)"
-                       :description         ""
-                       :type                :fretboard
-                       :order               9
-                       :scale-pattern-range [4 5]
-                       :tuning              [{:tone        :d
-                                              :octave      2
-                                              :start-index 0}
-                                             {:tone        :g
-                                              :octave      2
-                                              :start-index 0}
-                                             {:tone        :d
-                                              :octave      3
-                                              :start-index 0}
-                                             {:tone        :a
-                                              :octave      3
-                                              :start-index 0}
-                                             {:tone        :d
-                                              :octave      4
-                                              :start-index 0}]}
+
    :mandolin          {:id                  :mandolin
                        :text                "Mandolin"
                        :description         "Standard mandolin tuning"
                        :type                :fretboard
                        :scale-pattern-range [6 7]
-                       :order               3
+                       :order               20
                        :tuning              [{:tone        :g
                                               :octave      3
                                               :start-index 0}
@@ -75,7 +55,7 @@
                     :description         "Mandolin (ADAE)"
                     :type                :fretboard
                     :scale-pattern-range [6 7]
-                    :order               4
+                    :order               21
                     :tuning              [{:tone        :a
                                            :octave      3
                                            :start-index 0}
@@ -93,7 +73,7 @@
                             :description         "Mandolin in GDAD tuning"
                             :type                :fretboard
                             :scale-pattern-range [6 7]
-                            :order               5
+                            :order               22
                             :tuning              [{:tone        :g
                                                    :octave      3
                                                    :start-index 0}
@@ -111,7 +91,7 @@
                        :description         "Mandolin AEAE tuning"
                        :type                :fretboard
                        :scale-pattern-range [6 7]
-                       :order               4
+                       :order               23
                        :tuning              [{:tone        :a
                                               :octave      3
                                               :start-index 0}
@@ -129,7 +109,7 @@
                        :description         "Mandolin GDGD tuning"
                        :type                :fretboard
                        :scale-pattern-range [6 7]
-                       :order               4
+                       :order               24
                        :tuning              [{:tone        :g
                                               :octave      3
                                               :start-index 0}
@@ -142,11 +122,33 @@
                                              {:tone        :d
                                               :octave      5
                                               :start-index 0}]}
+   :mandolin-gdaeb    {:id                  :mandolin-gdaeb
+                       :text                "Mandolin (GDAEB)"
+                       :description         "Mandolin (GDAEB) tuning"
+                       :type                :fretboard
+                       :scale-pattern-range [6 7]
+                       :order               25
+                       :tuning              [{:tone        :g
+                                              :octave      3
+                                              :start-index 0}
+                                             {:tone        :d
+                                              :octave      4
+                                              :start-index 0}
+                                             {:tone        :a
+                                              :octave      4
+                                              :start-index 0}
+                                             {:tone        :e
+                                              :octave      5
+                                              :start-index 0}
+                                             {:tone        :b
+                                              :octave      5
+                                              :start-index 0}]}
+
    :mandola           {:id                  :mandola
                        :text                "Mandola"
                        :description         "Standard mandola tuning"
                        :type                :fretboard
-                       :order               5
+                       :order               30
                        :scale-pattern-range [4 6]
                        :tuning              [{:tone        :c
                                               :octave      3
@@ -160,12 +162,54 @@
                                              {:tone        :a
                                               :octave      4
                                               :start-index 0}]}
+
+   :mandocello        {:id                  :mandocello
+                       :text                "Mandocello"
+                       :description         "Standard mandocello tuning"
+                       :type                :fretboard
+                       :scale-pattern-range [4 5]
+                       :order               31
+                       :tuning              [{:tone        :c
+                                              :octave      2
+                                              :start-index 0}
+                                             {:tone        :g
+                                              :octave      2
+                                              :start-index 0}
+                                             {:tone        :d
+                                              :octave      3
+                                              :start-index 0}
+                                             {:tone        :a
+                                              :octave      3
+                                              :start-index 0}]}
+
+   :cittern-dgdad     {:id                  :cittern-dgdad
+                       :text                "Cittern (DGDAD)"
+                       :description         ""
+                       :type                :fretboard
+                       :order               40
+                       :scale-pattern-range [4 5]
+                       :tuning              [{:tone        :d
+                                              :octave      2
+                                              :start-index 0}
+                                             {:tone        :g
+                                              :octave      2
+                                              :start-index 0}
+                                             {:tone        :d
+                                              :octave      3
+                                              :start-index 0}
+                                             {:tone        :a
+                                              :octave      3
+                                              :start-index 0}
+                                             {:tone        :d
+                                              :octave      4
+                                              :start-index 0}]}
+
    :five-string-banjo {:id          :five-string-banjo
                        :text        "Banjo, 5-string"
                        :description "Standard modern five-string banjo."
                        :type        :fretboard
                        ;; :scale-pattern-range [4 5]
-                       :order       6
+                       :order       50
                        :tuning      [{:tone        :g
                                       :octave      4
                                       :start-index 5}
@@ -186,7 +230,7 @@
                             :description "Five-string banjo in oldtime tuning."
                             :type        :fretboard
                             ;; :scale-pattern-range [4 5]
-                            :order       6
+                            :order       51
                             :tuning      [{:tone        :a
                                            :octave      4
                                            :start-index 5}
@@ -202,30 +246,13 @@
                                           {:tone        :e
                                            :octave      4
                                            :start-index 0}]}
-   :mandocello        {:id                  :mandocello
-                       :text                "Mandocello"
-                       :description         "Standard mandocello tuning"
-                       :type                :fretboard
-                       :scale-pattern-range [4 5]
-                       :order               7
-                       :tuning              [{:tone        :c
-                                              :octave      2
-                                              :start-index 0}
-                                             {:tone        :g
-                                              :octave      2
-                                              :start-index 0}
-                                             {:tone        :d
-                                              :octave      3
-                                              :start-index 0}
-                                             {:tone        :a
-                                              :octave      3
-                                              :start-index 0}]}
+
    :banjo-5-string-open-a {:id          :banjo-5-string-open-a
                            :text        "Five-string banjo in open A tuning"
                            :description "Five-string banjo in open A tuning"
                            :type        :fretboard
                        ;; :scale-pattern-range [4 5]
-                           :order       8
+                           :order       52
                            :tuning      [{:tone        :a
                                           :octave      2
                                           :start-index 3}
@@ -246,7 +273,7 @@
                               :description "Five-string banjo in oldtime A tuning"
                               :type        :fretboard
                               ;; :scale-pattern-range [4 5]
-                              :order       8
+                              :order       53
                               :tuning      [{:tone        :a
                                              :octave      2
                                              :start-index 3}
