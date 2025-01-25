@@ -24,6 +24,15 @@
 
 (all-tones)
 
+(defn interval-tone->index-tone
+  [interval-tone]
+  (->> (all-tones)
+       (filter #(% interval-tone))
+       first))
+
+(interval-tone->index-tone :c#) ;; => #{:db :c#}
+(interval-tone->index-tone :c)  ;; => #{:c}
+
 (defn tones-starting-at
   "`x` - can be both a index tone and a interval tone.
 

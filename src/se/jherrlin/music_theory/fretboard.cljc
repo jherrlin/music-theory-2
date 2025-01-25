@@ -816,22 +816,38 @@
   (-> (index-tone-at-interval root interval)
       (general/sharp-or-flat interval)))
 
-(interval-tone-at-interval :g "5")
-;; => :d
+(interval-tone-at-interval :f "5")  ;; => :c
+(interval-tone-at-interval :c "5")  ;; => :g
+(interval-tone-at-interval :g "5")  ;; => :d
+(interval-tone-at-interval :d "5")  ;; => :a
+(interval-tone-at-interval :a "5")  ;; => :e
+(interval-tone-at-interval :e "5")  ;; => :b
+(interval-tone-at-interval :b "5")  ;; => :f#
+(interval-tone-at-interval :f# "5") ;; => :c#
 
 (defn interval-between-two-interval-tones
   [t1 t2]
-  (->> intervals/most-common
-       (filter
-        (fn [common-interval]
-          (= (interval-tone-at-interval t1 common-interval) t2)))
-       first))
+  (let [t2-index (general/interval-tone->index-tone t2)]
+    (->> intervals/most-common
+         (filter
+           (fn [common-interval]
+             (t2-index (interval-tone-at-interval t1 common-interval))))
+         first)))
 
-(interval-between-two-interval-tones :g :d)
-;; => "5"
-(interval-between-two-interval-tones :b :g)
-;; => "b6"
+(interval-between-two-interval-tones :a :e)  ;; => "5"
+(interval-between-two-interval-tones :g :d)  ;; => "5"
+(interval-between-two-interval-tones :b :g)  ;; => "b6"
+(interval-between-two-interval-tones :c :c#) ;; => "b2"
 
+(comment
+  (->> (for [t1 (apply concat (general/all-tones))
+             t2 (apply concat (general/all-tones))]
+         {:t1 t1
+          :t2 t2
+          :interval (interval-between-two-interval-tones t1 t2)})
+       (filter (comp #{"5"} :interval))
+       (sort-by :t1))
+  :-)
 
 (defn intervals-between-interval-tones
   [interval-tones]
@@ -840,16 +856,12 @@
     (if (nil? y)
       acc
       (recur
-       (rest tones)
-       (conj acc (interval-between-two-interval-tones x y))))))
+        (rest tones)
+        (conj acc (interval-between-two-interval-tones x y))))))
 
-(intervals-between-interval-tones
- [:g :d :a :e])
-;; => ["5" "5" "5"]
-
-(intervals-between-interval-tones
- [:e :a :d :g :b :e])
-
+(intervals-between-interval-tones [:g :d :a :e])       ;; => ["5" "5" "5"]
+(intervals-between-interval-tones [:g :d :a :e :b])    ;; => ["5" "5" "5" "5"]
+(intervals-between-interval-tones [:e :a :d :g :b :e]) ;; => ["4" "4" "4" "3" "4"]
 
 (defn interval-tones-fifth?
   "Is there a 5 interval between all the tones?
@@ -867,12 +879,9 @@
          (rest tones)
          (conj acc fifth?))))))
 
-(interval-tones-fifth? [:g :d :a :e])
-
-
-
-
-
+(interval-tones-fifth? [:g :d :a :e])       ;; => true
+(interval-tones-fifth? [:g :d :a :e :b])    ;; => true
+(interval-tones-fifth? [:e :a :d :g :b :e]) ;; => false
 
 (defn fretboard-matrix-in-fifth?
   [fretboard-matrix]
