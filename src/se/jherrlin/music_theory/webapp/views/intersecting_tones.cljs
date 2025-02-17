@@ -25,6 +25,8 @@
 (def id-1-path (path ::id-1))
 (def id-2-path (path ::id-2))
 (def instrument-path (path ::instrument))
+(def color1-path (path ::color1))
+(def color2-path (path ::color2))
 
 (def events-
   [{:n ::key-of-1
@@ -36,7 +38,13 @@
    {:n ::id-2
     :p id-2-path}
    {:n ::instrument
-    :p instrument-path}])
+    :p instrument-path}
+   {:n ::color1
+    :p color1-path
+    :d "rgb(252, 94, 3)"}
+   {:n ::color2
+    :p color2-path
+    :d "rgb(252, 173, 3)"}])
 
 (doseq [{:keys [n s e d p]} events-]
   (rf-alpha/reg-sub n      (or s (fn [db [_]]     (get-in db (or p (path n)) d))))
@@ -75,8 +83,8 @@
   (let [react-key            "B8xw8F83Ci5vnPpVI2CXVy"
         nr-of-frets          16
         instrument           (<sub [::instrument])
-        color-1              "rgb(252, 94, 3)"
-        color-2              "rgb(252, 173, 3)"
+        color-1              (<sub [::color1])
+        color-2              (<sub [::color2])
         key-of-1             (<sub [::key-of-1])
         key-of-2             (<sub [::key-of-2])
         id-1                 (<sub [::id-1])
@@ -155,31 +163,38 @@
 
 (rf-alpha/reg-event-fx
  ::start
- (fn [{:keys [db]} [_event-id {:keys [key-of-1 key-of-2 id-1 id-2 instrument]}]]
-   {:db (-> db
-            (assoc-in key-of-1-path key-of-1)
-            (assoc-in key-of-2-path key-of-2)
-            (assoc-in id-1-path id-1)
-            (assoc-in id-2-path id-2)
-            (assoc-in instrument-path instrument))}))
+ (fn [{:keys [db]} [_event-id {:keys [key-of-1 key-of-2 id-1 id-2 instrument
+                                      color1 color2]}]]
+   {:db (cond-> db
+          true   (assoc-in key-of-1-path key-of-1)
+          true   (assoc-in key-of-2-path key-of-2)
+          true   (assoc-in id-1-path id-1)
+          true   (assoc-in id-2-path id-2)
+          true   (assoc-in instrument-path instrument)
+          color1 (assoc-in color1-path color1)
+          color2 (assoc-in color2-path color2))}))
 
 (defn ^:dev/after-load routes [deps]
   (let [route-name ::intersecting-tones]
     ["/intersecting-tones/:instrument/:key-of-1/:key-of-2/:id-1/:id-2"
-     {:name  route-name
-      :view  [view deps]
+     {:name       route-name
+      :view       [view deps]
       :coercion   reitit.coercion.malli/coercion
       :parameters {:path [:map
                           [:instrument    keyword?]
                           [:key-of-1      keyword?]
                           [:key-of-2      keyword?]
                           [:id-1          uuid?]
-                          [:id-2          uuid?]]}
+                          [:id-2          uuid?]]
+                   :query [:map
+                           [:color1 {:optional true} string?]
+                           [:color2 {:optional true} string?]]}
       :controllers
-      [{:identity (comp :path :parameters)
-        :start (fn [params]
-                 (events/do-on-url-change route-name params {})
-                 (>evt [::start params]))}]}]))
+      [{:identity (fn [{{q :query p :path} :parameters}]
+                    {:p p :q q})
+        :start    (fn [{:keys [p q]}]
+                    (events/do-on-url-change route-name p q)
+                    (>evt [::start (merge p q)]))}]}]))
 
 (comment
 
@@ -206,4 +221,6 @@
   (music-theory/get-definition #uuid "bac1ab62-34df-4232-b205-b197d25d8892")
 
   :fretboard-pattern/belongs-to
+
+  (get-in @re-frame.db/app-db color1-path)
   :-)
