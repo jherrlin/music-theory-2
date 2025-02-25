@@ -91,12 +91,15 @@
 (def match-tones-with-scales
   (partial general/match-tones-with-coll generated-scales))
 
+(def all-intervals (fretboard/all-intervals))
+
 
 (comment
   (tones-starting-at :c)
   (match-tones-with-chords #{#{:c} #{:e} #{:g}})
   (match-tones-with-chords #{#{:c} #{:g} #{:e}})
   (match-tones-with-scales #{#{:c} #{:e} #{:g}})
+  all-intervals
   )
 
 

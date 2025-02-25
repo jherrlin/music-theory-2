@@ -825,19 +825,30 @@
 (interval-tone-at-interval :b "5")  ;; => :f#
 (interval-tone-at-interval :f# "5") ;; => :c#
 
+
 (defn interval-between-two-interval-tones
   [t1 t2]
   (let [t2-index (general/interval-tone->index-tone t2)]
     (->> intervals/most-common
-         (filter
-           (fn [common-interval]
-             (t2-index (interval-tone-at-interval t1 common-interval))))
-         first)))
+      (filter
+        (fn [common-interval]
+          (t2-index (interval-tone-at-interval t1 common-interval))))
+      first)))
 
 (interval-between-two-interval-tones :a :e)  ;; => "5"
 (interval-between-two-interval-tones :g :d)  ;; => "5"
 (interval-between-two-interval-tones :b :g)  ;; => "b6"
 (interval-between-two-interval-tones :c :c#) ;; => "b2"
+
+
+(defn all-intervals []
+  (->> (for [t1 (apply concat (general/all-tones))
+             t2 (apply concat (general/all-tones))]
+         {:t1 t1
+          :t2 t2
+          :interval (interval-between-two-interval-tones t1 t2)})
+       (filter (comp not #{"1"} :interval))
+       (sort-by :t1)))
 
 (comment
   (->> (for [t1 (apply concat (general/all-tones))
@@ -845,8 +856,8 @@
          {:t1 t1
           :t2 t2
           :interval (interval-between-two-interval-tones t1 t2)})
-       (filter (comp #{"5"} :interval))
-       (sort-by :t1))
+    (filter (comp #{"5"} :interval))
+    (sort-by :t1))
   :-)
 
 (defn intervals-between-interval-tones

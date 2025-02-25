@@ -149,7 +149,27 @@
            [:td
             (->> (music-theory/tones-by-key-and-intervals key-of intervals)
               (map (comp str/capitalize name))
-              (str/join ", "))]])]]]]))
+              (str/join ", "))]])]]]
+
+     [:<>
+      [:h3 "Intervals"]
+      [:table
+       [:thead
+        [:tr
+         [:th "From tone"]
+         [:th "To tone"]
+         [:th "Intervals"]]]
+       [:tbody
+        (for [{t1 :t1
+               t2 :t2
+               interval :interval
+               :as m}
+              music-theory/all-intervals]
+          ^{:key (str "interval-" (hash m))}
+          [:tr
+           [:td (-> t1 name str/capitalize)]
+           [:td (-> t2 name str/capitalize)]
+           [:td interval]])]]]]))
 
 
 (defn routes [deps]
