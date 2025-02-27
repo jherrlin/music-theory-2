@@ -1,6 +1,5 @@
 (ns se.jherrlin.music-theory.webapp.views.instruments.fretboard2
   (:require
-    [se.jherrlin.music-theory.models.entity :as entity]
     [se.jherrlin.music-theory.music-theory :as music-theory]))
 
 
@@ -10,9 +9,7 @@
                  :height          (str (* fretboard-size 2) "rem")
                  :display         "flex"
                  :justify-content :center}}
-   (if (= n 0)
-     ""
-     n)])
+   (if (= n 0) "" n)])
 
 (def root-note-color "#ff7600")
 (def note-color "#ffa500") ;; orange
@@ -107,8 +104,6 @@
                     :z-index          50
                     :width            (str (* fretboard-size 0.5) "rem")
                     :height           "100%"}}]]))
-
-
 
 (defn styled-view [{:keys [fretboard-matrix
                            id

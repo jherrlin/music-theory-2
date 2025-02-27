@@ -1,9 +1,27 @@
 (ns se.jherrlin.music-theory.webapp.views.scores
+  ;; [M:2/4] http://www.lesession.co.uk/abc/abc_notation.htm
   (:require ["abcjs" :as abcjs]
-            [reagent.dom.client :as rdc]
-            [clojure.edn :as edn]
-            [reagent.core :as r]))
+    [clojure.string :as str]
+    [clojure.walk :as walk]
+    ["abcjs/plugin" :as abcjs-plugs]
+    [reagent.dom.client :as rdc]
+    [clojure.edn :as edn]
+    [reagent.core :as r]
+    [se.jherrlin.music-theory.music-theory :as music-theory]
+    [se.jherrlin.music-theory.webapp.views.instruments.fretboard2 :as fretboard2]))
 
+
+(defn flat? [s]
+  (when (string? s)
+    (str/includes? s "_")))
+
+(defn sharp? [s]
+  (when (string? s)
+    (str/includes? s "^")))
+
+(def mandolin-fretboard-matrix
+  (music-theory/create-fretboard-matrix-for-instrument
+   8 :mandolin))
 
 (defonce state (r/atom nil))
 
@@ -39,23 +57,6 @@
     (cond-> {:responsive "resize"}
       tab (assoc :tablature [tab])))))
 
-(def whiskey-original-abc
-  "
-X: 1
-T: Whiskey Before Breakfast
-T: Original
-M: 4/4
-L: 1/8
-K: D
-P:A
-DD |: \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEF EDCE |
-   |  \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF  \\
-   |1 \"A\" EDEF \"D\" D2 DD :|2 \"A\" EDEF \"D\" D2 FE ||
-P:B
-   |:\"D\" DFAc d2 d2  | cdde fe d2 | \"Em\" eeef e2 ef      | \"A\" gfed cABc |
-   | \"D\" defd \"A\" c2 ec | \"G\" BABc \"D\" BAFD | \"G\" GABG \"D\" F2 AF \" \\
-   |1 \"A\" EDEF \"D\" D2 FE :|2 \"A\" EDEF \"D\" D4 || ")
-
 (def whiskey-abc-1
   "
 X: 1
@@ -65,105 +66,406 @@ M: 4/4
 L: 1/8
 K: D
 P:A
-DD |: \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEA cefe |
+DD |: \"D\" AEFG A2 FG | ^ABAG F_DEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEA cefe |
    |  \"D\" ae ge fe ed | dA =cA BA FD  | \"G\" GABG \"D\" F2 AF  \\
    |1 \"A\" EDEF \"D\" D2 DD :|2 \"A\" EDEF \"D\" D2 FE ||
-P:B
-   |:\"D\" DFAc d2 d2  | cdde fe d2 | \"Em\" eeef e2 ef      | \"A\" gfed cABc |
-   | \"D\" defd \"A\" c2 ec | \"G\" BABc \"D\" BAFD | \"G\" GABG \"D\" F2 AF \" \\
-   |1 \"A\" EDEF \"D\" D2 FE :|2 \"A\" EDEF \"D\" D4 || ")
-
-(defn whiskey-original-score [tab]
-  (render "whiskey-original-score" whiskey-original-abc tab))
-
-(def cherokee-abc
-"
-X: 1
-T: Cherokee Shuffle
-M: 4/4
-L: 1/8
-K: A
-T: A part
-EF |: \"A\" A2 Ac BAFE  | ABAF E2 FG        | AGAB cdeA        | \"F#m\" effa f2 ag |
-   |  \"D\" fefg  aAaf  | \"A\" efed cBAB   | \"E\" cBAc BAFE   \\
-   |1 \"A\" AAAB A2 EF :|2 \"A\" AAAB A2 ag ||
-T: B part
-   |: \"D\" fefg aAaf    | \"A\" efed cAag   | \"D\" fefg aA e2  | \"A\" bc'c'd' c'eag | \"D\" fefg abaf |
-   |  \"A\" efed cBAG    | A2 AB cd e2       | \"F#m\" effa fAaf | \"E\" efed cABc | \\
-   |1 \"A\" A2 AB A2 ag :|2 \"A\" A2 AB A4 ||")
-
-(defn cherokee-score [tab]
-  (render-abc
-    "cherokee-score"
-    cherokee-abc
-    (clj->js
-     (cond-> {:responsive "resize"}
-      tab (assoc :tablature [tab])))))
-
-;; [M:2/4] http://www.lesession.co.uk/abc/abc_notation.htm
-
-(def jerusalem-abc
-"
-X: 1
-T: Jerusalem Ridge
-M: 4/4
-L: 1/8
-K: Am
-T: A part
-|: \"Am\"  A,B,CD E2 EF | EDCE DCEC | A,B,CD EGAG | \"E\" EDCE DCEC |
-|  \"Am\"  A,B,CD E2 EF | EDCE DCEC | A,B,CD EGAG | \"E\" EDCB, \"Am\" A,4 :|
-T: B part
-|: \"Am\"  [EA]2 AA A2 AG | EGAB cdcA | EA AA A2 AB | \"E\" cdee e4          |
-|  \"Am\"  [EA]2 AA A2 AG | EGAB cdcA | EGAB cdcA   | \"E\" GEDC \"Am\" A,4 :|
-T: C part
-| [M:2/4] A,2 (3AGF   | [M:4/4] \"Am\" E2 E2 EE^FE | \"D\" D2 D2 D^FED | \"Am\" CC C2 \"E\" B,B, B,2 | \"Am\" A,2 A,2 A,2 (3AGF |
-| \"Am\"  E2 E2 EE^FE | \"D\" DA,D^F DFED | \"Am\" CE C2 \"E\" B,CB,2 | \"Am\" A,2 A,A, A,4 |
-T: D part
-|: \"Am\" e2 a2 a2 g  | a2 b2 c'4   | \"C\" egga g2 ge | gc'ag edcd |
-|  \"Am\" eaag a2 ab  | c'abg  aged | e2 eg edcd | \"E\" edc A4 |
-|  \"Am\" A2 Ac AGED  | E2 EG EDCD  | [M:2/4] EC DC | [M:4/4] A,2 A,2 A,2 (3DCB, | A,2 A,2 A,4 :|
 ")
 
+(def all-pitches
+  {"C,,," {:octav 0 :tone "c"}
+   "D,,," {:octav 0 :tone "d"}
+   "E,,," {:octav 0 :tone "e"}
+   "F,,," {:octav 0 :tone "f"}
+   "G,,," {:octav 0 :tone "g"}
+   "A,,," {:octav 0 :tone "a"}
+   "B,,," {:octav 0 :tone "b"}
+   "C,,"  {:octav 1 :tone "c"}
+   "D,,"  {:octav 1 :tone "d"}
+   "E,,"  {:octav 1 :tone "e"}
+   "F,,"  {:octav 1 :tone "f"}
+   "G,,"  {:octav 1 :tone "g"}
+   "A,,"  {:octav 1 :tone "a"}
+   "B,,"  {:octav 1 :tone "b"}
+   "C,"   {:octav 2 :tone "c"}
+   "D,"   {:octav 2 :tone "d"}
+   "E,"   {:octav 2 :tone "e"}
+   "F,"   {:octav 2 :tone "f"}
+   "G,"   {:octav 2 :tone "g"}
+   "A,"   {:octav 2 :tone "a"}
+   "B,"   {:octav 2 :tone "b"}
+   "C"    {:octav 3 :tone "c"}
+   "D"    {:octav 3 :tone "d"}
+   "E"    {:octav 3 :tone "e"}
+   "F"    {:octav 3 :tone "f"}
+   "G"    {:octav 3 :tone "g"}
+   "A"    {:octav 3 :tone "a"}
+   "B"    {:octav 3 :tone "b"}
+   "c"    {:octav 4 :tone "c"}
+   "d"    {:octav 4 :tone "d"}
+   "e"    {:octav 4 :tone "e"}
+   "f"    {:octav 4 :tone "f"}
+   "g"    {:octav 4 :tone "g"}
+   "a"    {:octav 4 :tone "a"}
+   "b"    {:octav 4 :tone "b"}
+   "c'"   {:octav 5 :tone "c"}
+   "d'"   {:octav 5 :tone "d"}
+   "e'"   {:octav 5 :tone "e"}
+   "f'"   {:octav 5 :tone "f"}
+   "g'"   {:octav 5 :tone "g"}
+   "a'"   {:octav 5 :tone "a"}
+   "b'"   {:octav 5 :tone "b"}
+   "c''"  {:octav 6 :tone "c"}
+   "d''"  {:octav 6 :tone "d"}
+   "e''"  {:octav 6 :tone "e"}
+   "f''"  {:octav 6 :tone "f"}
+   "g''"  {:octav 6 :tone "g"}
+   "a''"  {:octav 6 :tone "a"}
+   "b''"  {:octav 6 :tone "b"}
+   "c'''" {:octav 7 :tone "c"}
+   "d'''" {:octav 7 :tone "d"}
+   "e'''" {:octav 7 :tone "e"}
+   "f'''" {:octav 7 :tone "f"}
+   "g'''" {:octav 7 :tone "g"}
+   "a'''" {:octav 7 :tone "a"}
+   "b'''" {:octav 7 :tone "b"}})
 
-(defn jerusalem-score [tab]
-  (render-abc
-    "jerusalem-score"
-    jerusalem-abc
-    (clj->js
-      (cond-> {:responsive "resize"}
-        tab (assoc :tablature [tab])))))
+
+
+(defn ->interval-tone [s]
+  (let [cleaned              (first (re-seq #"[A-Za-z,']{1,4}" s))
+        {:keys [tone] :as m} (get all-pitches cleaned)]
+    (assoc m
+           :interval-tone
+           (cond-> tone
+             (sharp? s) (str "#")
+             (flat? s)  (str "b")
+             :always    keyword))))
+
+(->interval-tone "C,,")   ;; => {:octav 1, :tone "c", :id "C,,", :interval-tone :c}
+(->interval-tone "_C,,")  ;; => {:octav 1, :tone "c", :id "C,,", :interval-tone :cb}
+
+(defn calc [{:keys [name] :as m}]
+  (merge m (->interval-tone name)))
+
+(defn pitches-key-and-accidentals
+  [abc-data]
+  (let [acc (atom {})]
+    (walk/postwalk
+     (fn [m]
+       (when (and (map? m) (= (get m :el_type) "note"))
+         (swap! acc update :pitches concat (get m :pitches)))
+       (when (and (map? m) (= (get m :el_type) "keySignature"))
+         (swap! acc assoc :accidentals (get m :accidentals))
+         (swap! acc assoc :key-of (get m :root)))
+       m)
+     abc-data)
+    (update @acc :pitches set)))
+
+(defn pitches-key-and-accidentals-2
+  [{:keys [key-of accidentals pitches]}]
+  (let [accidentals'    (->> accidentals
+                             (mapv (fn [{:keys [note] :as accidental}]
+                                     (assoc accidental :note (str/lower-case note)))))
+        accidentals-map (->> accidentals'
+                             (map (juxt :note identity))
+                             (into {}))]
+    {:pitches (->> pitches
+                   (mapv (fn [{:keys [accidental name] :as pitch}]
+                           (let [cleaned              (first (re-seq #"[A-Za-z,']{1,4}" name))
+                                 {:keys [tone] :as m} (get all-pitches cleaned)]
+                             (-> (merge pitch m)
+                                 (dissoc :name :pitch :verticalPos :highestVert)
+                                 (assoc :abc-tone name)
+                                 (assoc :note-inc-acc (let [acc (get-in accidentals-map [tone :acc])]
+                                                        (cond-> tone
+                                                          (= acc "sharp")          (str "#")
+                                                          (= accidental "sharp")   (str "#")
+                                                          (= acc "flat")           (str "b")
+                                                          (= accidental "flat")    (str "b")
+                                                          (= acc "natural")        identity
+                                                          (= accidental "natural") identity
+                                                          :always                  keyword))))))))
+     :key-of  (-> key-of str/lower-case keyword)}))
+
+(comment
+  (def a (render "whiskey-score-1" whiskey-abc-1 nil))
+
+  (->> (js->clj (nth a 0) :keywordize-keys true)
+    pitches-key-and-accidentals
+    pitches-key-and-accidentals-2)
+
+
+  (def b (let [state (atom [])]
+           (walk/postwalk
+             (fn [m]
+               (when (and (map? m) (= (get m :el_type) "note"))
+                 (swap! state concat (get m :pitches)))
+               m)
+             (js->clj (nth a 0) :keywordize-keys true))
+           @state))
+
+  (->> (set b)
+    (mapv calc))
+
+  (def c (let [state (atom nil)]
+           (walk/postwalk
+             (fn [m]
+               (when (and (map? m) (= (get m :el_type) "keySignature"))
+                 (reset! state m))
+               m)
+             (js->clj (nth a 0) :keywordize-keys true))
+           @state))
+
+  :-)
+
+(def derps
+  [{:pitch 5,
+  :name "A",
+  :verticalPos 5,
+  :highestVert 11,
+  :octav 3,
+  :tone "a",
+  :id "A",
+  :interval-tone :a}
+ {:pitch 1,
+  :name "D",
+  :verticalPos 1,
+  :highestVert 7,
+  :octav 3,
+  :tone "d",
+  :id "D",
+  :interval-tone :d}
+ {:pitch 8,
+  :name "d",
+  :verticalPos 8,
+  :highestVert 8,
+  :octav 4,
+  :tone "d",
+  :id "d",
+  :interval-tone :d}
+ {:pitch 4,
+  :name "G",
+  :verticalPos 4,
+  :highestVert 10,
+  :octav 3,
+  :tone "g",
+  :id "G",
+  :interval-tone :g}
+ {:pitch 2,
+  :name "E",
+  :verticalPos 2,
+  :highestVert 8,
+  :octav 3,
+  :tone "e",
+  :id "E",
+  :interval-tone :e}
+ {:pitch 5,
+  :name "A",
+  :verticalPos 5,
+  :highestVert 5,
+  :octav 3,
+  :tone "a",
+  :id "A",
+  :interval-tone :a}
+ {:pitch 9,
+  :name "e",
+  :verticalPos 9,
+  :highestVert 9,
+  :octav 4,
+  :tone "e",
+  :id "e",
+  :interval-tone :e}
+ {:pitch 7,
+  :name "c",
+  :verticalPos 7,
+  :highestVert 7,
+  :octav 4,
+  :tone "c",
+  :id "c",
+  :interval-tone :c}
+ {:pitch 3,
+  :name "F",
+  :verticalPos 3,
+  :highestVert 9,
+  :octav 3,
+  :tone "f",
+  :id "F",
+  :interval-tone :f}
+ {:interval-tone :c,
+  :accidental "natural",
+  :name "=c",
+  :pitch 7,
+  :tone "c",
+  :octav 4,
+  :id "c",
+  :verticalPos 7,
+  :highestVert 7}
+ {:pitch 12,
+  :name "a",
+  :verticalPos 12,
+  :highestVert 12,
+  :octav 4,
+  :tone "a",
+  :id "a",
+  :interval-tone :a}
+ {:interval-tone :db,
+  :accidental "flat",
+  :name "_D",
+  :pitch 1,
+  :tone "d",
+  :octav 3,
+  :id "D",
+  :verticalPos 1,
+  :highestVert 7}
+ {:interval-tone :a#,
+  :accidental "sharp",
+  :name "^A",
+  :pitch 5,
+  :tone "a",
+  :octav 3,
+  :id "A",
+  :verticalPos 5,
+  :highestVert 11}
+ {:pitch 6,
+  :name "B",
+  :verticalPos 6,
+  :highestVert 12,
+  :octav 3,
+  :tone "b",
+  :id "B",
+  :interval-tone :b}
+ {:pitch 10,
+  :name "f",
+  :verticalPos 10,
+  :highestVert 10,
+  :octav 4,
+  :tone "f",
+  :id "f",
+  :interval-tone :f}
+ {:pitch 11,
+  :name "g",
+  :verticalPos 11,
+  :highestVert 11,
+  :octav 4,
+  :tone "g",
+  :id "g",
+  :interval-tone :g}])
+
+(defn map-matrix-by-y
+  "Map over `matrix` applying `f` on each item.
+  Going from through the matrix by `y`."
+  [f matrix]
+  (let [x-length (-> matrix first count)
+        y-length (-> matrix count)]
+    (loop [matrix' matrix
+           x       0
+           y       0
+           exit?   false]
+      (if exit?
+        matrix'
+        (let [item (get-in matrix [y x])
+              [exit? res] (f item)]
+          (recur
+           (assoc-in matrix' [y x] res)
+           (if (= y (dec y-length)) (inc x) x)
+           (if (= y (dec y-length)) 0 (inc y))
+           (or exit?
+               (and (= x (dec x-length))
+                    (= y (dec y-length))))))))))
+
+
+
+(def hehe
+  (loop [[x & rst] #_(->> derps
+                          (map #(select-keys % [:interval-tone :octav]))
+                          (set)
+                          (vec))
+         [{:interval-tone :d, :octav 4}
+          {:interval-tone :e, :octav 6}
+          {:interval-tone :f, :octav 4}
+          {:interval-tone :c, :octav 4}
+          {:interval-tone :b, :octav 3}
+          {:interval-tone :a, :octav 1}
+          {:interval-tone :db, :octav 3}
+          {:interval-tone :a, :octav 3}
+          {:interval-tone :d, :octav 3}
+          {:interval-tone :e, :octav 3}
+          {:interval-tone :e, :octav 4}
+          {:interval-tone :a#, :octav 3}
+          {:interval-tone :g, :octav 3}
+          {:interval-tone :f, :octav 3}
+          {:interval-tone :g, :octav 4}
+          {:interval-tone :a, :octav 4}]
+         acc       mandolin-fretboard-matrix]
+    (if (nil? x)
+      acc
+      (let [{score-interval-tone :interval-tone score-octav :octav} x]
+        (recur
+         rst
+         (map-matrix-by-y
+          (fn [{fretboard-index-tone :tone fretboard-octave :octave :as m}]
+            (let [exit? (and
+                         (= score-octav fretboard-octave)
+                         (contains? fretboard-index-tone score-interval-tone))]
+              [exit?
+               (cond-> m
+                 exit?
+                 (assoc
+                  :match? true
+                  :out    (-> score-interval-tone name str/capitalize)))]))
+          acc))))))
 
 (defn scores [state']
-  (whiskey-original-score (->tablature state'))
-  (cherokee-score (->tablature state'))
-  (jerusalem-score (->tablature state'))
   (render "whiskey-score-1" whiskey-abc-1 (->tablature state')))
+
+(def fretboard2-matrix
+  (music-theory/fretboard-matrix->fretboard2
+    {}
+    hehe))
+
+{:y              0,
+ :index-tone     #{:e},
+ :octave         4,
+ :interval-tone  "E",
+ :tone-str       "E",
+ :yx             0,
+ :left-is-blank? true,
+ :tone           #{:e},
+ :x              0,
+ :circle-color   :color/grey,
+ :interval       "3"}
 
 (defn ui []
   (r/create-class
-     {:component-did-mount  #(scores @state)
-      :component-did-update #(scores @state)
+    {:component-did-mount  #(scores @state)
+     :component-did-update #(scores @state)
 
-       ;; name your component for inclusion in error messages
-      :display-name "scores"
+     ;; name your component for inclusion in error messages
+     :display-name "scores"
 
-       ;; note the keyword for this method
-      :reagent-render
-      (fn []
-        [:div
-         [:select {:value (prn-str (or @state "Select instrument"))
-                   :on-change (fn [evt]
-                                (let [value (-> evt .-target .-value edn/read-string)]
-                                  (reset! state (if (= value "Select instrument")
-                                                  nil
-                                                  value))))}
-          (for [t (concat ["Select instrument"] (keys instruments))]
-            ^{:key t}
-            [:option {:value (prn-str t)} t])]
-         #_[:div {:id "whiskey-original-score"}]
-         [:div {:id "whiskey-score-1"}]
-         #_[:div {:id "cherokee-score"}]
-         #_[:div {:id "jerusalem-score"}]])}))
+     ;; note the keyword for this method
+     :reagent-render
+     (fn []
+       [:div
+        [:select {:value (prn-str (or @state "Select instrument"))
+                  :on-change (fn [evt]
+                               (let [value (-> evt .-target .-value edn/read-string)]
+                                 (reset! state (if (= value "Select instrument")
+                                                 nil
+                                                 value))))}
+         (for [t (concat ["Select instrument"] (keys instruments))]
+           ^{:key t}
+           [:option {:value (prn-str t)} t])]
+        #_[:div {:id "whiskey-original-score"}]
+        [:div {:id "whiskey-score-1"}]
+
+        [fretboard2/styled-view
+         {:id               "akxH4rw4Y682ySSDUo2AEm"
+          :fretboard-matrix fretboard2-matrix
+          :fretboard-size   1}]
+
+        #_[:div {:id "cherokee-score"}]
+        #_[:div {:id "jerusalem-score"}]])}))
 
 
 (defn routes [deps]

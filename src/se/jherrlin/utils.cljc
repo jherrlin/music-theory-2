@@ -260,6 +260,7 @@
   [f matrix]
   (mapv (partial map-xyz f) matrix))
 
+
 (defn add-x-min
   "Add `x-min?` `true` to min x.
 
@@ -279,9 +280,9 @@
   [matrix]
   (let [x-min (->> matrix first (map :x) (apply min))]
     (->> matrix
-         (map-matrix (fn [{:keys [x] :as m}]
-                       (cond-> m
-                         (#{x} x-min) (assoc :x-min? true)))))))
+      (map-matrix (fn [{:keys [x] :as m}]
+                    (cond-> m
+                      (#{x} x-min) (assoc :x-min? true)))))))
 
 (defn add-x-max
   "Add `x-max?` `true` to max x.
@@ -403,3 +404,34 @@
   :key-of     :c,
   :id         #uuid "1cd72972-ca33-4962-871c-1551b7ea5244"}
  :instrument)
+
+(defn map-matrix-by-y
+  "Map over `matrix` applying `f` on each item.
+  Going from through the matrix by `y`."
+  [f matrix]
+  (let [x-length (-> matrix first count)
+        y-length (-> matrix count)]
+    (loop [matrix' matrix
+           x       0
+           y       0
+           exit?   false]
+      (if exit?
+        matrix'
+        (recur
+         (update-in matrix' [y x] f)
+         (if (= y (dec y-length)) (inc x) x)
+         (if (= y (dec y-length)) 0 (inc y))
+         (and (= x (dec x-length))
+              (= y (dec y-length))))))))
+
+(comment
+  (let [state (atom 0)]
+    (map-matrix-by-y
+     (fn [m]
+       (let [new-m (assoc m :counter @state)]
+         (swap! state inc)
+         new-m))
+     [[{:x 0, :y 0} {:x 1, :y 0} {:x 2, :y 0} {:x 3, :y 0}]
+      [{:x 0, :y 1} {:x 1, :y 1} {:x 2, :y 1} {:x 3, :y 1}]
+      [{:x 0, :y 2} {:x 1, :y 2} {:x 2, :y 2} {:x 3, :y 2}]]))
+  :-)

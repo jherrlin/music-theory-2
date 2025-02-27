@@ -25,6 +25,7 @@
 (def update-matrix basic-utils/update-matrix)
 (def rotate-until basic-utils/rotate-until)
 (def map-matrix basic-utils/map-matrix)
+(def map-matrix-by-y basic-utils/map-matrix-by-y)
 (def map-xyz-matrix basic-utils/map-xyz-matrix)
 
 
@@ -129,9 +130,12 @@
 (def pattern-with-tones fretboard/pattern-with-tones)
 (def create-fretboard-matrix fretboard/create-fretboard-matrix)
 (defn create-fretboard-matrix-for-instrument
-  [key-of nr-of-frets instrument]
-  (let [instrument-tuning (get-instrument-tuning instrument)]
-    (fretboard/create-fretboard-matrix key-of nr-of-frets instrument-tuning)))
+  ([nr-of-frets instrument]
+   (let [instrument-tuning (get-instrument-tuning instrument)]
+     (fretboard/create-fretboard-matrix nr-of-frets instrument-tuning)))
+  ([key-of nr-of-frets instrument]
+   (let [instrument-tuning (get-instrument-tuning instrument)]
+     (fretboard/create-fretboard-matrix key-of nr-of-frets instrument-tuning))))
 
 (comment
   (create-fretboard-matrix-for-instrument :d 10 :mandolin)
@@ -161,13 +165,15 @@
 
 
 (comment
+  (create-fretboard-matrix-for-instrument
+    12 :mandolin)
   (fretboard-strings
-   [{:tone :g, :octave 4, :start-index 5}
-    {:tone :d, :octave 3, :start-index 0}
-    {:tone :g, :octave 3, :start-index 0}
-    {:tone :b, :octave 3, :start-index 0}
-    {:tone :d, :octave 4, :start-index 0}]
-   10)
+    [{:tone :g, :octave 4, :start-index 5}
+     {:tone :d, :octave 3, :start-index 0}
+     {:tone :g, :octave 3, :start-index 0}
+     {:tone :b, :octave 3, :start-index 0}
+     {:tone :d, :octave 4, :start-index 0}]
+    10)
   )
 
 

@@ -275,3 +275,20 @@
      [{:x 0, :y 2, :x-min? true, :y-max? true}
       {:x 1, :y 2, :y-max? true}
       {:x 2, :y 2, :x-max? true, :y-max? true}]])))
+
+(deftest map-matrix-by-y
+  (let [state (atom 0)]
+    (is
+     (=
+      (utils/map-matrix-by-y
+       (fn [m]
+         (let [new-m (assoc m :counter @state)]
+           (swap! state inc)
+           new-m))
+       [[{:x 0, :y 0} {:x 1, :y 0} {:x 2, :y 0} {:x 3, :y 0}]
+        [{:x 0, :y 1} {:x 1, :y 1} {:x 2, :y 1} {:x 3, :y 1}]
+        [{:x 0, :y 2} {:x 1, :y 2} {:x 2, :y 2} {:x 3, :y 2}]])
+
+      [[{:x 0, :y 0, :counter 0} {:x 1, :y 0, :counter 3} {:x 2, :y 0, :counter 6} {:x 3, :y 0, :counter 9}]
+       [{:x 0, :y 1, :counter 1} {:x 1, :y 1, :counter 4} {:x 2, :y 1, :counter 7} {:x 3, :y 1, :counter 10}]
+       [{:x 0, :y 2, :counter 2} {:x 1, :y 2, :counter 5} {:x 2, :y 2, :counter 8} {:x 3, :y 2, :counter 11}]]))))
