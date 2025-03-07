@@ -15,7 +15,8 @@
    [se.jherrlin.music-theory.webapp.views.dev.learn-harmonizations :as dev.learn-harmonizations]
    [se.jherrlin.music-theory.webapp.views.learn.chord-tones :as learn.chord-tones]
    [se.jherrlin.music-theory.webapp.views.intersecting-tones :as intersecting-tones]
-   [se.jherrlin.music-theory.webapp.views.scores :as scores]))
+   [se.jherrlin.music-theory.webapp.views.scores :as scores]
+   [se.jherrlin.music-theory.webapp.views.scores1 :as scores1]))
 
 
 (defn ^:dev/after-load routes [deps]
@@ -32,6 +33,7 @@
    (learn.chord-tones/routes deps)
    (intersecting-tones/routes deps)
    (scores/routes deps)
+   (scores1/routes deps)
 
    (dev/routes deps)
    (dev.fretboard2/routes deps)
