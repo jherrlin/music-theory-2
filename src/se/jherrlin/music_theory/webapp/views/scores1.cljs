@@ -12,7 +12,12 @@
     [se.jherrlin.music-theory.webapp.views.instruments.fretboard2 :as fretboard2]))
 
 
-
+(rf/reg-fx
+ ::render-abc
+ (fn [{:keys [dispatch-fn dom-id abc opt] :as m}]
+   (let [visualObj (abcjs/renderAbc dom-id abc opt)]
+     (when (fn? dispatch-fn)
+       (dispatch-fn (assoc m :visualObj (first visualObj)))))))
 
 
 (defonce state (r/atom nil))
@@ -44,31 +49,43 @@
   (set! js/window.AudioContext audio-context))
 
 (comment
-  (set-audio-context! audio-context)
+
+  (def midiBuffer (atom nil))
 
   ;; Works: plays sound
   ;; https://github.com/paulrosen/abcjs/blob/main/examples/basic-synth.html
-  (let [audio-context (new js/window.AudioContext)]
+  (let [_             (set-audio-context! audio-context)
+        audio-context (new js/window.AudioContext)]
     (-> audio-context
         (.resume)
         (.then (fn []
                  (js/console.log "AudioContext resumed")
-                 (let [midiBuffer (new abcjs/synth.CreateSynth)]
-                   (-> (.init midiBuffer (clj->js {:visualObj              @visualObj
-                                                   :audioContext           audio-context
-                                                   :millisecondsPerMeasure (.millisecondsPerMeasure @visualObj)
-                                                   :options                {:swing false}}))
+                 (let [_ (swap! midiBuffer (fn [buffer]
+                                             (try
+                                               (.stop buffer)
+                                               (catch js/Error _))
+                                             (new abcjs/synth.CreateSynth)))]
+                   (-> (.init @midiBuffer (clj->js {:visualObj              @visualObj
+                                                    :audioContext           audio-context
+                                                    :millisecondsPerMeasure (.millisecondsPerMeasure @visualObj)
+                                                    :options                {:swing false}}))
                        (.then (fn [response]
                                 (js/console.log "Note loaded" response)
-                                (.prime midiBuffer)))
+                                (.prime @midiBuffer)))
                        (.then (fn [response]
                                 (js/console.log "Status" (.-status response))
-                                (.start midiBuffer)
+                                (.start @midiBuffer)
                                 (js/Promise.resolve)))
                        (.catch (fn [e]
                                  (def e e)
                                  (js/console.log "error:" e)))
                        (.finally #(js/console.log "Done"))))))))
+
+  @midiBuffer
+
+  ;; Works, stops the buffer
+  (let [buffer @midiBuffer]
+    (when buffer (.stop buffer)))
 
   :-)
 
