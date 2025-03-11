@@ -16,7 +16,11 @@
    [se.jherrlin.music-theory.webapp.views.learn.chord-tones :as learn.chord-tones]
    [se.jherrlin.music-theory.webapp.views.intersecting-tones :as intersecting-tones]
    [se.jherrlin.music-theory.webapp.views.scores :as scores]
-   [se.jherrlin.music-theory.webapp.views.scores1 :as scores1]))
+   [se.jherrlin.music-theory.webapp.views.scores1 :as scores1]
+   [se.jherrlin.music-theory.webapp.views.abcjs.examples :as abcjs.examples]
+   [se.jherrlin.music-theory.webapp.views.abcjs.examples.basic :as abcjs.examples.basic]
+   [se.jherrlin.music-theory.webapp.views.abcjs.examples.editor :as abcjs.examples.editor]
+   [se.jherrlin.music-theory.webapp.views.abcjs.examples.editor-with-play :as examples.editor-with-play]))
 
 
 (defn ^:dev/after-load routes [deps]
@@ -34,6 +38,12 @@
    (intersecting-tones/routes deps)
    (scores/routes deps)
    (scores1/routes deps)
+
+   ;; ABCjs examples
+   (abcjs.examples/routes deps)
+   (abcjs.examples.basic/routes deps)
+   (abcjs.examples.editor/routes deps)
+   (examples.editor-with-play/routes deps)
 
    (dev/routes deps)
    (dev.fretboard2/routes deps)

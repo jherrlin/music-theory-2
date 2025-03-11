@@ -117,6 +117,41 @@
       [:button
        "Source code"]]]))
 
+(defn top-nav-abcjs-examples []
+  (let [current-route-name   @(re-frame/subscribe [:current-route-name])
+        path-params          @(re-frame/subscribe [:path-params])
+        changed-query-params @(re-frame/subscribe [:changed-query-params])
+        key-of               @(re-frame/subscribe [:key-of])]
+    [:div {:style {:display        "flow"
+                   :flow-direction "column"
+                   :overflow-x     "auto"
+                   :white-space    "nowrap"}}
+     (let [k :abcjs-examples]
+       [:a {:style {:margin-right "10px"}
+            :href  (rfe/href k {} {})}
+        [:button
+         {:disabled (= current-route-name k)}
+         "Start"]])
+     (let [k :abcjs-example/basic]
+       [:a {:style {:margin-right "10px"}
+            :href  (rfe/href k {} {})}
+        [:button
+         {:disabled (= current-route-name k)}
+         "Basic"]])
+     (let [k :abcjs-example/editor]
+       [:a {:style {:margin-right "10px"}
+            :href  (rfe/href k {} {})}
+        [:button
+         {:disabled (= current-route-name k)}
+         "Editor"]])
+
+     (let [k :abcjs-example/editor-with-play]
+       [:a {:style {:margin-right "10px"}
+            :href  (rfe/href k {} {})}
+        [:button
+         {:disabled (= current-route-name k)}
+         "Editor with play"]])]))
+
 (defn chord-selection []
   (let [{:keys [chord] :as path-params} @(re-frame/subscribe [:path-params])
         query-params                    @(re-frame/subscribe [:query-params])

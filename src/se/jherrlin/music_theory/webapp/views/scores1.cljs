@@ -48,6 +48,29 @@
 (defn set-audio-context! [audio-context]
   (set! js/window.AudioContext audio-context))
 
+(defn create-cursor []
+  (let [svg    (js/document.querySelector "#whiskey-score svg")
+        cursor (js/document.createElementNS "http://www.w3.org/2000/svg" "line")]
+    (.setAttribute cursor "class" "abcjs-cursor")
+    (.setAttributeNS cursor nil, "x1", 0)
+    (.setAttributeNS cursor nil, "x1", 0)
+    (.setAttributeNS cursor nil, "y1", 0)
+    (.setAttributeNS cursor nil, "x2", 0)
+    (.setAttributeNS cursor nil, "y2", 0)
+    (.appendChild svg cursor)
+    cursor))
+
+(defn beatCallback [cursor currentBeat, totalBeats, lastMoment, position, debugInfo]
+  (let [x1 (- (.-left position) 2)
+        x2 (- (.-left position) 2)
+        y1 (.-top position)
+        y2 (+ (.-top position) (.-height position))]
+    (js/console.log "beatCallback")
+    (.setAttribute cursor "x1" x1)
+    (.setAttribute cursor "x2" x2)
+    (.setAttribute cursor "y1" y1)
+    (.setAttribute cursor "y2" y2)))
+
 (comment
 
   (def midiBuffer (atom nil))
@@ -86,6 +109,22 @@
   ;; Works, stops the buffer
   (let [buffer @midiBuffer]
     (when buffer (.stop buffer)))
+
+  (js-keys (js/document.createElementNS "http://www.w3.org/2000/svg" "line"))
+
+  ;; Cursor animations
+
+  (def tc (atom nil))
+
+  (let [cursor          (create-cursor)
+        timingCallbacks (new abcjs/TimingCallbacks
+                             @visualObj
+                             (clj->js {:beatCallback (partial beatCallback cursor)}))]
+    (reset! tc timingCallbacks)
+    (.start timingCallbacks))
+
+  (.stop @tc)
+
 
   :-)
 
@@ -135,7 +174,6 @@
   "
 X: 1
 T: Whiskey Before Breakfast
-T: David Grisman, Panhandle Country on beat 5 and 6
 M: 4/4
 L: 1/8
 K: D
@@ -146,11 +184,19 @@ DD |: \"D\" AEFG A2 FG | ^ABAG F_DEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEA cefe
 ")
 
 
+;; Jouseff, Nexolink
+;; 073-6659686
+;; Handelsbanken
+;; Senior Java-utvecklare
+;; Konsult och jag fakturerar från min enskilda
+;; Timpris, CV och kravmallen
+;; 650kr/timme
+
 (defn scores []
   (render
-    "whiskey-score"
-    whiskey-abc
-    (get instruments "mandolin")))
+   "whiskey-score"
+   whiskey-abc
+   (get instruments "mandolin")))
 
 (defn ui []
   (r/create-class

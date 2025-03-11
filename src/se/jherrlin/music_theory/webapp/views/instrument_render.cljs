@@ -47,11 +47,11 @@
   [{:keys [definition key-of instrument]}]
   (entity/entity key-of (:id instrument) (:id definition)))
 
-(->> (basic-data
-     {:key-of        :d
-      :instrument-id :mandolin
-      :definition-id #uuid "e99e0f40-93df-4524-b1f8-e6c70b12972f"
-      :query-params  (<sub [:query-params])})
-     instrument-render-data
-     ;;->entity
-     )
+;; (->> (basic-data
+;;      {:key-of        :d
+;;       :instrument-id :mandolin
+;;       :definition-id #uuid "e99e0f40-93df-4524-b1f8-e6c70b12972f"
+;;       :query-params  (<sub [:query-params])})
+;;      instrument-render-data
+;;      ;;->entity
+;;      )
