@@ -4,10 +4,13 @@
 
 (defn view []
   [:div
-   [:p
-    [:a {:href "https://paulrosen.github.io/abcjs/examples/toc.html"}
-     "https://paulrosen.github.io/abcjs/examples/toc.html"]]]
-  )
+   [:h2 "ABC examples"]
+   (let [url "https://github.com/paulrosen/abcjs/tree/main/examples"]
+     [:p
+      [:a {:href url} url]])
+   (let [url "https://paulrosen.github.io/abcjs/examples/toc.html"]
+     [:p
+      [:a {:href url} url]])])
 
 (defn routes [deps]
   (let [route-name :abcjs-examples]

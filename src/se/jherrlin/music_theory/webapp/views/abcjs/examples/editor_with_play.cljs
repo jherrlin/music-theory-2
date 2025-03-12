@@ -2,7 +2,9 @@
   (:require ["abcjs" :as abcjs]
             [reagent.core :as r]
             [re-frame.alpha :as rf]
-            [se.jherrlin.music-theory.webapp.utils :refer [<sub >evt]]))
+            [clojure.walk :as walk]
+            [se.jherrlin.music-theory.webapp.utils :refer [<sub >evt]]
+            [goog.functions :refer [debounce]]))
 
 
 (def whiskey-abc
@@ -116,15 +118,22 @@ DD |: \"D\" AEFG A2 FG |")
 (comment
   (js->clj editor')
 
-  (js->clj (.-tunes editor') :keywordize-keys true)
-
   ;; Find marked pitches
   (->> (.-selected (.-engraver (first (.-tunes editor'))))
        (filter (fn [m] (= "note" (.-type m))))
        (map (fn [x] (js->clj (.-abcelem x) :keywordize-keys true)))
-       #_(mapcat :pitches))
+       (mapcat :pitches))
 
-
+  ;; Find root and accidentals
+  ;; This only works for songs that doesn't change key
+  (let [found (atom nil)]
+    (walk/prewalk
+     (fn [m]
+       (when (and (map? m) (= (get m :el_type) "keySignature"))
+         (reset! found (select-keys m [:accidentals :root])))
+       m)
+     (js->clj (.-tunes editor') :keywordize-keys true))
+    @found)
 
   (.play (.-synthControl (.-synth editor')))
   (.pause (.-synthControl (.-synth editor')))
@@ -133,6 +142,12 @@ DD |: \"D\" AEFG A2 FG |")
   :-)
 
 
+(def deb (debounce (fn []
+                     (js/console.log "Hejsan"))
+                   2000))
+(comment
+  (deb)
+  :-)
 
 (defn ui []
   (r/create-class
@@ -162,7 +177,8 @@ DD |: \"D\" AEFG A2 FG |")
          [:div {:id "abc-canvas-id"}]
          [:hr]
          [:button {:on-click #(>evt [::abc-str whiskey-abc])} "Whiskey"]
-         [:button {:on-click #(>evt [::abc-str cherokee-abc])} "Cherokee"]]))}))
+         [:button {:on-click #(>evt [::abc-str cherokee-abc])} "Cherokee"]
+         [:button {:on-click (fn [_] (deb))} "Bounce"]]))}))
 
 (defn routes [deps]
   (let [route-name :abcjs-example/editor-with-play]

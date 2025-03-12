@@ -150,7 +150,14 @@
             :href  (rfe/href k {} {})}
         [:button
          {:disabled (= current-route-name k)}
-         "Editor with play"]])]))
+         "Editor with play"]])
+
+     (let [k :abcjs-example/basic-synth]
+       [:a {:style {:margin-right "10px"}
+            :href  (rfe/href k {} {})}
+        [:button
+         {:disabled (= current-route-name k)}
+         "Basic synth"]])]))
 
 (defn chord-selection []
   (let [{:keys [chord] :as path-params} @(re-frame/subscribe [:path-params])
