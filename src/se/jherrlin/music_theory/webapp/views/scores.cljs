@@ -1,14 +1,14 @@
 (ns se.jherrlin.music-theory.webapp.views.scores
   ;; [M:2/4] http://www.lesession.co.uk/abc/abc_notation.htm
   (:require ["abcjs" :as abcjs]
-    [clojure.string :as str]
-    [clojure.walk :as walk]
-    ["abcjs/plugin" :as abcjs-plugs]
-    [reagent.dom.client :as rdc]
-    [clojure.edn :as edn]
-    [reagent.core :as r]
-    [se.jherrlin.music-theory.music-theory :as music-theory]
-    [se.jherrlin.music-theory.webapp.views.instruments.fretboard2 :as fretboard2]))
+            [clojure.string :as str]
+            [clojure.walk :as walk]
+            ["abcjs/plugin" :as abcjs-plugs]
+            [reagent.dom.client :as rdc]
+            [clojure.edn :as edn]
+            [reagent.core :as r]
+            [se.jherrlin.music-theory.music-theory :as music-theory]
+            [se.jherrlin.music-theory.webapp.views.instruments.fretboard2 :as fretboard2]))
 
 
 (defn flat? [s]

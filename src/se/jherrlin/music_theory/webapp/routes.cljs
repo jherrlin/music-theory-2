@@ -1,6 +1,9 @@
 (ns se.jherrlin.music-theory.webapp.routes
   (:require
    [taoensso.timbre :as timbre]
+   [reitit.frontend :as rf]
+   [reitit.core :as r]
+   [reitit.coercion.schema :as rsc]
    [se.jherrlin.music-theory.webapp.views.home :as home]
    [se.jherrlin.music-theory.webapp.views.focus :as focus]
    [se.jherrlin.music-theory.webapp.views.chord :as chord]
@@ -21,7 +24,9 @@
    [se.jherrlin.music-theory.webapp.views.abcjs.examples.basic :as abcjs.examples.basic]
    [se.jherrlin.music-theory.webapp.views.abcjs.examples.editor :as abcjs.examples.editor]
    [se.jherrlin.music-theory.webapp.views.abcjs.examples.editor-with-play :as examples.editor-with-play]
-   [se.jherrlin.music-theory.webapp.views.abcjs.examples.basic-synth :as abcjs.examples.basic-synth]))
+   [se.jherrlin.music-theory.webapp.views.abcjs.examples.basic-synth :as abcjs.examples.basic-synth]
+   [se.jherrlin.music-theory.webapp.views.abcjs.examples.animation :as abcjs.examples.animation]
+   [se.jherrlin.music-theory.webapp.views.abcjs.examples.editor-with-play-and-fretboard :as abcjs.examples.editor-with-play-and-fretboard]))
 
 
 (defn ^:dev/after-load routes [deps]
@@ -46,7 +51,16 @@
    (abcjs.examples.editor/routes deps)
    (examples.editor-with-play/routes deps)
    (abcjs.examples.basic-synth/routes deps)
+   (abcjs.examples.animation/routes deps)
+   (abcjs.examples.editor-with-play-and-fretboard/routes deps)
 
    (dev/routes deps)
    (dev.fretboard2/routes deps)
    (dev.learn-harmonizations/routes deps)])
+
+(comment
+  (r/routes
+   (rf/router
+    (routes {})
+    {:data {:coercion rsc/coercion}}))
+  :-)

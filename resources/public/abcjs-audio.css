@@ -123,7 +123,7 @@
 	border-radius: 2px;
 	border: none;
 	margin: 0 2px 0 4px;
-	width: 42px;
+	width: 50px;
 	padding-left: 2px;
 	box-sizing: border-box;
 }
@@ -184,4 +184,9 @@
 
 .abcjs-css-warning {
 	display: none;
+}
+
+.red-note-color {
+    stroke: red;
+	 fill: red;
 }

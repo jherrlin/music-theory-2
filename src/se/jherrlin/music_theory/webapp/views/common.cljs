@@ -152,12 +152,26 @@
          {:disabled (= current-route-name k)}
          "Editor with play"]])
 
+     (let [k :abcjs-example/editor-with-play-and-fretboard]
+       [:a {:style {:margin-right "10px"}
+            :href  (rfe/href k {} {})}
+        [:button
+         {:disabled (= current-route-name k)}
+         "Editor with play and fretboard"]])
+
      (let [k :abcjs-example/basic-synth]
        [:a {:style {:margin-right "10px"}
             :href  (rfe/href k {} {})}
         [:button
          {:disabled (= current-route-name k)}
-         "Basic synth"]])]))
+         "Basic synth"]])
+
+     (let [k :abcjs-example/animation]
+       [:a {:style {:margin-right "10px"}
+            :href  (rfe/href k {} {})}
+        [:button
+         {:disabled (= current-route-name k)}
+         "Animation"]])]))
 
 (defn chord-selection []
   (let [{:keys [chord] :as path-params} @(re-frame/subscribe [:path-params])

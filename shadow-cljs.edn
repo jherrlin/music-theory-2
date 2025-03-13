@@ -6,6 +6,7 @@
   {:target            :browser
    :asset-path        "/js"
    :output-dir        "resources/public/js"
+   :js-options        {:js-package-dirs ["src/js" "node_modules"]}
    :devtools          {:preloads [devtools.preload]}
    :compiler-options  {:warnings-as-errors false
                        :warnings           {:fn-deprecated false}}
