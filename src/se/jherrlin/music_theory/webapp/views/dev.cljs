@@ -18,7 +18,7 @@
   [:<>
    [:div "dev"]])
 
-(defn ^:dev/after-load routes [deps]
+(defn routes [deps]
   (let [route-name :dev]
     ["/dev/dev"
      {:name route-name

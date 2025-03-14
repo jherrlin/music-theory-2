@@ -1,4 +1,5 @@
 (ns se.jherrlin.music-theory.webapp.system
+  "This namespace is not used any more, moving away from integrant."
   (:require
    [reagent.dom :as rd]
    [re-frame.core :as re-frame]
@@ -35,10 +36,10 @@
    :webapp/router       {:routes (routes/routes
                                   {:play-tone (ig/ref :webapp/tonejs)})}})
 
-(defn ^:dev/after-load init
-  "This is the starting point of the web application."
-  []
-  (timbre/info "Starting webapp.")
-  (re-frame/clear-subscription-cache!)
-  (re-frame/dispatch-sync [:initialize-db])
-  (ig/init system-config))
+;; (defn init
+;;   "This is the starting point of the web application."
+;;   []
+;;   (timbre/info "Starting webapp.")
+;;   (re-frame/clear-subscription-cache!)
+;;   (re-frame/dispatch-sync [:initialize-db])
+;;   (ig/init system-config))

@@ -31,8 +31,9 @@
           (number? number-of-frets)]}
    (let [string-without-octave-data (mapv
                                      (fn [x t]
-                                       {:x    x
-                                        :tone t})
+                                       {:x          x
+                                        :tone       t
+                                        :index-tone t})
                                      (iterate inc (if (= start-index 0) 0 start-index))
                                      (->> (general/tones-starting-at all-tones tone)
                                           (cycle)
@@ -55,7 +56,10 @@
            (recur
             rest
             o
-            (conj new-vec (assoc fret :octave o)))))))))
+            (conj new-vec (assoc fret
+                                 :octave o
+                                 :midi-pitch
+                                 (general/->index-tone-with-octave->midi-pitch tone o))))))))))
 
 (defn fretboard-strings
   "Generate fretboard matrix.
@@ -495,30 +499,32 @@
            fretboard-matrix
            found-pattern-xys'))))))
 
-(find-fretboard-pattern
- (general/all-tones)
- :e
- [["1" nil nil]
-  ["5" nil nil]
-  ["b3" nil nil]
-  [nil nil "1"]
-  [nil nil "5"]
-  ["1" nil nil]]
- (fretboard-strings
-  (general/all-tones)
-  [{:tone   :e
-    :octave 2}
-   {:tone   :a
-    :octave 2}
-   {:tone   :d
-    :octave 3}
-   {:tone   :g
-    :octave 3}
-   {:tone   :b
-    :octave 3}
-   {:tone   :e
-    :octave 2}]
-  3))
+(comment
+  (find-fretboard-pattern
+   (general/all-tones)
+   :e
+   [["1" nil nil]
+    ["5" nil nil]
+    ["b3" nil nil]
+    [nil nil "1"]
+    [nil nil "5"]
+    ["1" nil nil]]
+   (fretboard-strings
+    (general/all-tones)
+    [{:tone   :e
+      :octave 2}
+     {:tone   :a
+      :octave 2}
+     {:tone   :d
+      :octave 3}
+     {:tone   :g
+      :octave 3}
+     {:tone   :b
+      :octave 3}
+     {:tone   :e
+      :octave 2}]
+    3))
+  )
 
 (defn add-layer [f fretboard-matrix]
   (utils/map-matrix
@@ -604,57 +610,61 @@
       (= "1" i)          (assoc :root? true))
     m))
 
-(->> (find-fretboard-pattern
-      (general/all-tones)
-      :e
-      [["1" nil nil]
-       ["5" nil nil]
-       ["b3" nil nil]
-       [nil nil "1"]
-       [nil nil "5"]
-       ["1" nil nil]]
-      (fretboard-strings
-       (general/all-tones)
-       [{:tone   :e
-         :octave 2}
-        {:tone   :a
-         :octave 2}
-        {:tone   :d
-         :octave 3}
-        {:tone   :g
-         :octave 3}
-        {:tone   :b
-         :octave 3}
-        {:tone   :e
-         :octave 2}]
-       5))
-     (add-layer
-      #_add-flats
-      #_add-sharps
-      add-pattern)
-     (add-layer
-      (partial add-root :e)))
+(comment
+  (->> (find-fretboard-pattern
+        (general/all-tones)
+        :e
+        [["1" nil nil]
+         ["5" nil nil]
+         ["b3" nil nil]
+         [nil nil "1"]
+         [nil nil "5"]
+         ["1" nil nil]]
+        (fretboard-strings
+         (general/all-tones)
+         [{:tone   :e
+           :octave 2}
+          {:tone   :a
+           :octave 2}
+          {:tone   :d
+           :octave 3}
+          {:tone   :g
+           :octave 3}
+          {:tone   :b
+           :octave 3}
+          {:tone   :e
+           :octave 2}]
+         5))
+       (add-layer
+        #_add-flats
+        #_add-sharps
+        add-pattern)
+       (add-layer
+        (partial add-root :e)))
 
-(->> (fretboard-strings
-      (general/all-tones)
-      [{:tone   :e
-        :octave 2}
-       {:tone   :a
-        :octave 2}
-       {:tone   :d
-        :octave 3}
-       {:tone   :g
-        :octave 3}
-       {:tone   :b
-        :octave 3}
-       {:tone   :e
-        :octave 2}]
-      10)
-     (add-layer
-      #_(partial add-chord-tones [:e :b :g])
-      (partial add-intervals [[:e "1"] [:b "b3"] [:g "5"]]))
-     (add-layer
-      (partial add-root nil)))
+  (->> (fretboard-strings
+        (general/all-tones)
+        [{:tone   :e
+          :octave 2}
+         {:tone   :a
+          :octave 2}
+         {:tone   :d
+          :octave 3}
+         {:tone   :g
+          :octave 3}
+         {:tone   :b
+          :octave 3}
+         {:tone   :e
+          :octave 2}]
+        10)
+       (add-layer
+        #_(partial add-chord-tones [:e :b :g])
+        (partial add-intervals [[:e "1"] [:b "b3"] [:g "5"]]))
+       (add-layer
+        (partial add-root nil)))
+  )
+
+
 
 (defn add-basics-to-fretboard-matrix' [tones-and-intervals matrix]
   (add-layer (partial add-basics tones-and-intervals) matrix))
@@ -691,101 +701,104 @@
          (utils/list-insert (str "|" (apply str (take (- row-length 2) (repeat "-"))) "|") 1)
          (str/join "\n"))))
 
-(->> (fretboard-strings
-      (general/all-tones)
-      [{:tone   :e
-        :octave 2}
-       {:tone   :a
-        :octave 2}
-       {:tone   :d
-        :octave 3}
-       {:tone   :g
-        :octave 3}
-       {:tone   :b
-        :octave 3}
-       {:tone   :e
-        :octave 2}]
-      12)
-     (add-layer
-      #_(partial add-chord-tones [:e :b :g])
-      (partial add-intervals [[:e "1"] [:b "b3"] [:g "5"]]))
-     (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
-     (println))
+(comment
+  (->> (fretboard-strings
+        (general/all-tones)
+        [{:tone   :e
+          :octave 2}
+         {:tone   :a
+          :octave 2}
+         {:tone   :d
+          :octave 3}
+         {:tone   :g
+          :octave 3}
+         {:tone   :b
+          :octave 3}
+         {:tone   :e
+          :octave 2}]
+        12)
+       (add-layer
+        #_(partial add-chord-tones [:e :b :g])
+        (partial add-intervals [[:e "1"] [:b "b3"] [:g "5"]]))
+       (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
+       (println))
 
-(str
- "| 0  | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 10 | 11 |\n"
- "|-----------------------------------------------------------|\n"
- "| 1  |    |    | 5  |    |    |    | b3 |    |    |    |    |\n"
- "| b3 |    |    |    |    | 1  |    |    | 5  |    |    |    |\n"
- "| 5  |    |    |    | b3 |    |    |    |    | 1  |    |    |\n"
- "|    |    | 1  |    |    | 5  |    |    |    | b3 |    |    |\n"
- "|    |    | b3 |    |    |    |    | 1  |    |    | 5  |    |\n"
- "| 1  |    |    | 5  |    |    |    | b3 |    |    |    |    |")
+  (str
+   "| 0  | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 10 | 11 |\n"
+   "|-----------------------------------------------------------|\n"
+   "| 1  |    |    | 5  |    |    |    | b3 |    |    |    |    |\n"
+   "| b3 |    |    |    |    | 1  |    |    | 5  |    |    |    |\n"
+   "| 5  |    |    |    | b3 |    |    |    |    | 1  |    |    |\n"
+   "|    |    | 1  |    |    | 5  |    |    |    | b3 |    |    |\n"
+   "|    |    | b3 |    |    |    |    | 1  |    |    | 5  |    |\n"
+   "| 1  |    |    | 5  |    |    |    | b3 |    |    |    |    |")
 
-(->> (find-fretboard-pattern
-      (general/all-tones)
-      :e
-      [["1" nil nil]
-       ["5" nil nil]
-       ["b3" nil nil]
-       [nil nil "1"]
-       [nil nil "5"]
-       ["1" nil nil]]
-      (fretboard-strings
-       (general/all-tones)
-       [{:tone   :e
-         :octave 2}
-        {:tone   :a
-         :octave 2}
-        {:tone   :d
-         :octave 3}
-        {:tone   :g
-         :octave 3}
-        {:tone   :b
-         :octave 3}
-        {:tone   :e
-         :octave 2}]
-       10))
-     (add-layer
-      #_add-flats
-      #_add-sharps
-      #_add-pattern
-      (partial add-intervals [[:e "1"] [:b "b3"] [:g "5"]]))
-     ;; (trim-matrix #(every? nil? (map :out %))) ;; Trim fretboard
-     (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
-     (println))
+  (->> (find-fretboard-pattern
+        (general/all-tones)
+        :e
+        [["1" nil nil]
+         ["5" nil nil]
+         ["b3" nil nil]
+         [nil nil "1"]
+         [nil nil "5"]
+         ["1" nil nil]]
+        (fretboard-strings
+         (general/all-tones)
+         [{:tone   :e
+           :octave 2}
+          {:tone   :a
+           :octave 2}
+          {:tone   :d
+           :octave 3}
+          {:tone   :g
+           :octave 3}
+          {:tone   :b
+           :octave 3}
+          {:tone   :e
+           :octave 2}]
+         10))
+       (add-layer
+        #_add-flats
+        #_add-sharps
+        #_add-pattern
+        (partial add-intervals [[:e "1"] [:b "b3"] [:g "5"]]))
+       ;; (trim-matrix #(every? nil? (map :out %))) ;; Trim fretboard
+       (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
+       (println))
 
-(->> (find-fretboard-pattern
-      (general/all-tones)
-      :c
-      [["5" nil nil]
-       [nil nil "3"]
-       [nil nil "1"]
-       [nil nil "5"]
-       ["1" nil nil]
-       ["5" nil nil]]
-      (fretboard-strings
-       (general/all-tones)
-       [{:tone   :e
-         :octave 2}
-        {:tone   :a
-         :octave 2}
-        {:tone   :d
-         :octave 3}
-        {:tone   :g
-         :octave 3}
-        {:tone   :b
-         :octave 3}
-        {:tone   :e
-         :octave 2}]
-       10))
-     (add-layer
-      #_add-flats
-      #_add-sharps
-      add-pattern)
-     ;; (trim-matrix #(every? nil? (map :out %))) ;; Trim fretboard
-     (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
-     (println))
+  (->> (find-fretboard-pattern
+        (general/all-tones)
+        :c
+        [["5" nil nil]
+         [nil nil "3"]
+         [nil nil "1"]
+         [nil nil "5"]
+         ["1" nil nil]
+         ["5" nil nil]]
+        (fretboard-strings
+         (general/all-tones)
+         [{:tone   :e
+           :octave 2}
+          {:tone   :a
+           :octave 2}
+          {:tone   :d
+           :octave 3}
+          {:tone   :g
+           :octave 3}
+          {:tone   :b
+           :octave 3}
+          {:tone   :e
+           :octave 2}]
+         10))
+       (add-layer
+        #_add-flats
+        #_add-sharps
+        add-pattern)
+       ;; (trim-matrix #(every? nil? (map :out %))) ;; Trim fretboard
+       (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
+       (println))
+  )
+
 
 ;; Public functions
 
@@ -810,20 +823,26 @@
         index             (intervals/->index interval)]
     (nth all-tones-rotated index)))
 
-(index-tone-at-interval :g "5")
+(comment
+  (index-tone-at-interval :g "5")
+  )
+
 
 (defn interval-tone-at-interval [root interval]
   (-> (index-tone-at-interval root interval)
       (general/sharp-or-flat interval)))
 
-(interval-tone-at-interval :f "5")  ;; => :c
-(interval-tone-at-interval :c "5")  ;; => :g
-(interval-tone-at-interval :g "5")  ;; => :d
-(interval-tone-at-interval :d "5")  ;; => :a
-(interval-tone-at-interval :a "5")  ;; => :e
-(interval-tone-at-interval :e "5")  ;; => :b
-(interval-tone-at-interval :b "5")  ;; => :f#
-(interval-tone-at-interval :f# "5") ;; => :c#
+
+(comment
+  (interval-tone-at-interval :f "5")  ;; => :c
+  (interval-tone-at-interval :c "5")  ;; => :g
+  (interval-tone-at-interval :g "5")  ;; => :d
+  (interval-tone-at-interval :d "5")  ;; => :a
+  (interval-tone-at-interval :a "5")  ;; => :e
+  (interval-tone-at-interval :e "5")  ;; => :b
+  (interval-tone-at-interval :b "5")  ;; => :f#
+  (interval-tone-at-interval :f# "5") ;; => :c#
+  )
 
 
 (defn interval-between-two-interval-tones
@@ -835,10 +854,13 @@
           (t2-index (interval-tone-at-interval t1 common-interval))))
       first)))
 
-(interval-between-two-interval-tones :a :e)  ;; => "5"
-(interval-between-two-interval-tones :g :d)  ;; => "5"
-(interval-between-two-interval-tones :b :g)  ;; => "b6"
-(interval-between-two-interval-tones :c :c#) ;; => "b2"
+(comment
+  (interval-between-two-interval-tones :a :e)  ;; => "5"
+  (interval-between-two-interval-tones :g :d)  ;; => "5"
+  (interval-between-two-interval-tones :b :g)  ;; => "b6"
+  (interval-between-two-interval-tones :c :c#) ;; => "b2"
+
+  )
 
 
 (defn all-intervals []
@@ -870,9 +892,12 @@
         (rest tones)
         (conj acc (interval-between-two-interval-tones x y))))))
 
-(intervals-between-interval-tones [:g :d :a :e])       ;; => ["5" "5" "5"]
-(intervals-between-interval-tones [:g :d :a :e :b])    ;; => ["5" "5" "5" "5"]
-(intervals-between-interval-tones [:e :a :d :g :b :e]) ;; => ["4" "4" "4" "3" "4"]
+(comment
+  (intervals-between-interval-tones [:g :d :a :e])       ;; => ["5" "5" "5"]
+  (intervals-between-interval-tones [:g :d :a :e :b])    ;; => ["5" "5" "5" "5"]
+  (intervals-between-interval-tones [:e :a :d :g :b :e]) ;; => ["4" "4" "4" "3" "4"]
+
+  )
 
 (defn interval-tones-fifth?
   "Is there a 5 interval between all the tones?
@@ -890,9 +915,12 @@
          (rest tones)
          (conj acc fifth?))))))
 
-(interval-tones-fifth? [:g :d :a :e])       ;; => true
-(interval-tones-fifth? [:g :d :a :e :b])    ;; => true
-(interval-tones-fifth? [:e :a :d :g :b :e]) ;; => false
+(comment
+  (interval-tones-fifth? [:g :d :a :e])       ;; => true
+  (interval-tones-fifth? [:g :d :a :e :b])    ;; => true
+  (interval-tones-fifth? [:e :a :d :g :b :e]) ;; => false
+
+  )
 
 (defn fretboard-matrix-in-fifth?
   [fretboard-matrix]
@@ -901,21 +929,23 @@
        (reverse)
        (interval-tones-fifth?)))
 
-(fretboard-matrix-in-fifth?
- (fretboard-strings
-  [{:tone        :g
-    :octave      3
-    :start-index 0}
-   {:tone        :d
-    :octave      4
-    :start-index 0}
-   {:tone        :a
-    :octave      4
-    :start-index 0}
-   {:tone        :e
-    :octave      5
-    :start-index 0}]
-  3))
+(comment
+  (fretboard-matrix-in-fifth?
+   (fretboard-strings
+    [{:tone        :g
+      :octave      3
+      :start-index 0}
+     {:tone        :d
+      :octave      4
+      :start-index 0}
+     {:tone        :a
+      :octave      4
+      :start-index 0}
+     {:tone        :e
+      :octave      5
+      :start-index 0}]
+    3))
+  )
 
 
 (defn instrument-in-fifth?
@@ -924,22 +954,22 @@
        (mapv :tone)
        (interval-tones-fifth?)))
 
-(instrument-in-fifth?
- [{:tone        :g
-   :octave      3
-   :start-index 0}
-  {:tone        :d
-   :octave      4
-   :start-index 0}
-  {:tone        :a
-   :octave      4
-   :start-index 0}
-  {:tone        :e
-   :octave      5
-   :start-index 0}])
+(comment
+  (instrument-in-fifth?
+   [{:tone        :g
+     :octave      3
+     :start-index 0}
+    {:tone        :d
+     :octave      4
+     :start-index 0}
+    {:tone        :a
+     :octave      4
+     :start-index 0}
+    {:tone        :e
+     :octave      5
+     :start-index 0}])
 
-
-(->> (pattern-with-intervals
+  (->> (pattern-with-intervals
       :a
       [["5" nil nil]
        [nil nil "3"]
@@ -965,6 +995,10 @@
      (utils/trim-matrix #(every? nil? (map :out %)))
      (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
      (println))
+  )
+
+
+
 
 (defn pattern-with-tones
   [key-of pattern fretboard-matrix]
@@ -975,71 +1009,8 @@
         fretboard-matrix)
        (add-layer add-pattern)))
 
-(->> (fretboard-strings
-      (general/all-tones)
-      [{:tone   :e
-        :octave 2}
-       {:tone   :a
-        :octave 2}
-       {:tone   :d
-        :octave 3}
-       {:tone   :g
-        :octave 3}
-       {:tone   :b
-        :octave 3}
-       {:tone   :e
-        :octave 2}]
-      10)
-     (pattern-with-tones
-      :c
-      [["5" nil nil]
-       [nil nil "3"]
-       [nil nil "1"]
-       [nil nil "5"]
-       ["1" nil nil]
-       ["5" nil nil]])
-     (utils/trim-matrix #(every? nil? (map :out %)))
-     ;; (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
-     ;; (println)
-     )
-(defn with-all-tones
-  "
-  `tones` - `[:e :b :g]`"
-  [tones fretboard-matrix]
-  (->> fretboard-matrix
-       (add-layer (partial add-chord-tones tones))
-       (add-layer (partial add-root (first tones)))))
-
-(->> (fretboard-strings
-      ;; (general/all-tones)
-      [{:tone   :e
-        :octave 2}
-       {:tone   :a
-        :octave 2}
-       {:tone   :d
-        :octave 3}
-       {:tone   :g
-        :octave 3}
-       {:tone   :b
-        :octave 3}
-       {:tone   :e
-        :octave 2}]
-      16)
-     (with-all-tones [:e :b :g])
-     #_(utils/trim-matrix #(every? nil? (map :out %)))
-     ;; (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
-     ;; (println)
-     )
-(defn with-all-intervals
-  "
-  chord-tones-and-intervals: `[[:c \"1\"] [:d \"2\"] [:e \"3\"] [:f \"4\"] [:g \"5\"] [:a \"6\"] [:b \"7\"]]`"
-  [chord-tones-and-intervals fretboard-matrix]
-  (->> fretboard-matrix
-       (add-layer (partial add-intervals chord-tones-and-intervals))))
-
-(->> (with-all-intervals
-       [[:e "1"] [:b "b3"] [:g "5"]]
-       (fretboard-strings
+(comment
+  (->> (fretboard-strings
         (general/all-tones)
         [{:tone   :e
           :octave 2}
@@ -1053,10 +1024,80 @@
           :octave 3}
          {:tone   :e
           :octave 2}]
-        12))
-     (utils/trim-matrix #(every? nil? (map :out %)))
-     (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
-     (println))
+        10)
+       (pattern-with-tones
+        :c
+        [["5" nil nil]
+         [nil nil "3"]
+         [nil nil "1"]
+         [nil nil "5"]
+         ["1" nil nil]
+         ["5" nil nil]])
+       (utils/trim-matrix #(every? nil? (map :out %)))
+       ;; (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
+       ;; (println)
+       )
+  )
+(defn with-all-tones
+  "
+  `tones` - `[:e :b :g]`"
+  [tones fretboard-matrix]
+  (->> fretboard-matrix
+       (add-layer (partial add-chord-tones tones))
+       (add-layer (partial add-root (first tones)))))
+
+(comment
+  (->> (fretboard-strings
+        ;; (general/all-tones)
+        [{:tone   :e
+          :octave 2}
+         {:tone   :a
+          :octave 2}
+         {:tone   :d
+          :octave 3}
+         {:tone   :g
+          :octave 3}
+         {:tone   :b
+          :octave 3}
+         {:tone   :e
+          :octave 2}]
+        16)
+       (with-all-tones [:e :b :g])
+       #_(utils/trim-matrix #(every? nil? (map :out %)))
+       ;; (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
+       ;; (println)
+       )
+  )
+
+(defn with-all-intervals
+  "
+  chord-tones-and-intervals: `[[:c \"1\"] [:d \"2\"] [:e \"3\"] [:f \"4\"] [:g \"5\"] [:a \"6\"] [:b \"7\"]]`"
+  [chord-tones-and-intervals fretboard-matrix]
+  (->> fretboard-matrix
+       (add-layer (partial add-intervals chord-tones-and-intervals))))
+
+(comment
+  (->> (with-all-intervals
+         [[:e "1"] [:b "b3"] [:g "5"]]
+         (fretboard-strings
+          (general/all-tones)
+          [{:tone   :e
+            :octave 2}
+           {:tone   :a
+            :octave 2}
+           {:tone   :d
+            :octave 3}
+           {:tone   :g
+            :octave 3}
+           {:tone   :b
+            :octave 3}
+           {:tone   :e
+            :octave 2}]
+          12))
+       (utils/trim-matrix #(every? nil? (map :out %)))
+       (fretboard-str (fn [{:keys [out]}] (if (nil? out) "" out)))
+       (println))
+  )
 
 
 (defn create-fretboard-matrix
@@ -1066,24 +1107,28 @@
    (->> (fretboard-strings tuning nr-of-frets)
         (add-basics-to-fretboard-matrix key-of))))
 
-(create-fretboard-matrix
- :d
- 15
- [{:tone :e, :octave 2, :start-index 0}
-  {:tone :a, :octave 2, :start-index 0}
-  {:tone :d, :octave 3, :start-index 0}
-  {:tone :g, :octave 3, :start-index 0}
-  {:tone :b, :octave 3, :start-index 0}
-  {:tone :e, :octave 4, :start-index 0}])
+(comment
+  (create-fretboard-matrix
+   :d
+   15
+   [{:tone :e, :octave 2, :start-index 0}
+    {:tone :a, :octave 2, :start-index 0}
+    {:tone :d, :octave 3, :start-index 0}
+    {:tone :g, :octave 3, :start-index 0}
+    {:tone :b, :octave 3, :start-index 0}
+    {:tone :e, :octave 4, :start-index 0}])
 
-(create-fretboard-matrix
- 15
- [{:tone :e, :octave 2, :start-index 0}
-  {:tone :a, :octave 2, :start-index 0}
-  {:tone :d, :octave 3, :start-index 0}
-  {:tone :g, :octave 3, :start-index 0}
-  {:tone :b, :octave 3, :start-index 0}
-  {:tone :e, :octave 4, :start-index 0}])
+  (create-fretboard-matrix
+   15
+   [{:tone :e, :octave 2, :start-index 0}
+    {:tone :a, :octave 2, :start-index 0}
+    {:tone :d, :octave 3, :start-index 0}
+    {:tone :g, :octave 3, :start-index 0}
+    {:tone :b, :octave 3, :start-index 0}
+    {:tone :e, :octave 4, :start-index 0}])
+  )
+
+
 
 (defn compare-two-frets-
   "Used mainly for sorting frets from low to high pitch."
@@ -1092,9 +1137,11 @@
   ([x1 x2]
    (tone-values/compare-tones x1 x2)))
 
-(compare-two-frets-
- {:x 5, :tone #{:e}, :octave 2}
- {:x 6, :tone #{:f}, :octave 2})
+(comment
+  (compare-two-frets-
+   {:x 5, :tone #{:e}, :octave 2}
+   {:x 6, :tone #{:f}, :octave 2})
+  )
 
 
 (defn sort-frets
@@ -1102,11 +1149,13 @@
   [coll]
   (sort-by compare-two-frets- coll))
 
-(sort-frets
- [{:tone #{:b}, :octave 0}
-  {:tone #{:e}, :octave 4}
-  {:tone #{:g# :ab}, :octave 4}
-  {:tone #{:c}, :octave 0}])
+(comment
+  (sort-frets
+   [{:tone #{:b}, :octave 0}
+    {:tone #{:e}, :octave 4}
+    {:tone #{:g# :ab}, :octave 4}
+    {:tone #{:c}, :octave 0}])
+  )
 
 ;;
 ;; fretboard2 helpers
@@ -1175,8 +1224,8 @@
       f?  (assoc :left-is-blank? true))))
 
 (defn circle-dom-id
-  [entity-str x y]
-  (str entity-str "-" x "-" y "-circle"))
+  [id x y]
+  (str id "-" x "-" y "-circle"))
 
 (def fretboard2-keys
   [:background-color

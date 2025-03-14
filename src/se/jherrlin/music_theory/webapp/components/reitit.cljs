@@ -68,17 +68,17 @@
   (when new-match
     (re-frame/dispatch [::navigated new-match])))
 
-(defn start! [handler]
-  (rfe/start!
-   handler
-   on-navigate
-   {:use-fragment true}))
-
 (defn router [routes]
   (rf/router
    routes
    {:data {:coercion rsc/coercion #_rss/coercion}}))
 
+(defn start! [routes]
+  (rfe/start!
+   (router routes)
+   on-navigate
+   {:use-fragment true}))
+
 (defmethod ig/init-key :webapp/router [_ {:keys [routes]}]
   (timbre/info "Starting Ritit router.")
-  (start! (router routes)))
+  (start! routes))

@@ -29,7 +29,7 @@
    [se.jherrlin.music-theory.webapp.views.abcjs.examples.editor-with-play-and-fretboard :as abcjs.examples.editor-with-play-and-fretboard]))
 
 
-(defn ^:dev/after-load routes [deps]
+(defn routes [deps]
   (timbre/info "Collecting routes.")
   [(home/routes deps)
    (focus/routes deps)

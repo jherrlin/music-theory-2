@@ -185,7 +185,7 @@
              [:dispatch [::success]]
              [:dispatch [::failure]])]})))
 
-(defn ^:dev/after-load view [deps]
+(defn view [deps]
   (let [yxs (<sub [::yxs])
         facit-yxs (<sub [::facit-yxs])
         react-key "bSZ4ppJTu8xhNmZYCoc8uW"
@@ -249,7 +249,7 @@
             (assoc-in game-state-path :lobby)
             (assoc-in chord-idx-path 0))}))
 
-(defn ^:dev/after-load routes [deps]
+(defn routes [deps]
   (let [route-name :learn-harmonizations]
     ["/dev/learn"
      {:name  route-name

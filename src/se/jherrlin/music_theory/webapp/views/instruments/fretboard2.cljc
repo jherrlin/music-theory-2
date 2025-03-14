@@ -29,8 +29,10 @@
     :keys [background-color
            circle-color
            center-text
+           midi-pitch
            down-right-text
            blank?
+           id
            y
            x
            on-click
@@ -80,6 +82,7 @@
                      :z-index          100}}
        (when center-text
          [:div {:id    (music-theory/circle-dom-id entity-str x y)
+                :class (str id "-" midi-pitch "-center-text-div")
                 :style (cond-> {:display          "flex"
                                 :align-items      :center
                                 :justify-content  :center
@@ -95,7 +98,8 @@
            center-text
            (when down-right-text
              [:div {:style {:font-fretboard-size "small"
-                            :margin-top          (str (* fretboard-size 0.5) "rem")}}
+                            :margin-top          (str (* fretboard-size 0.5) "rem")}
+                    :class (str id "-" midi-pitch "-down-right-text-div")}
               down-right-text])]])]]
 
      [:div {:style {:background-image (if blank?
@@ -110,7 +114,8 @@
                            fretboard-size
                            entity-str]
                     :or   {fretboard-size 1}}]
-  [:div {:style {:overflow-x "auto"}}
+  [:div {:style {:overflow-x "auto"}
+         :id    id}
    [:div {:style {:display "flex"}}
     (for [{:keys [x]} (-> fretboard-matrix first)]
       ^{:key (str "fretboard-fret-nr-" x id)}
@@ -121,5 +126,6 @@
       (for [{:keys [x y] :as fret} fretboard-string]
         ^{:key (str "fret-" x y id)}
         [fret-component (assoc fret
+                               :id id
                                :fretboard-size fretboard-size
                                :entity-str entity-str)])])])

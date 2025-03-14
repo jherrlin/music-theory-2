@@ -5,7 +5,7 @@
    [se.jherrlin.music-theory.webapp.views.common :as views.common]))
 
 
-(defn ^:dev/after-load root-component [{:keys [play-tone] :as m}]
+(defn root-component [{:keys [play-tone] :as m}]
   (let [current-route @(re-frame/subscribe [:current-route])
         top-nav       (get-in (<sub [:current-route]) [:data :top-nav])]
     (when current-route

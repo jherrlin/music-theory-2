@@ -10,132 +10,55 @@
             [se.jherrlin.music-theory.music-theory :as music-theory]
             [se.jherrlin.music-theory.webapp.views.instruments.fretboard2 :as fretboard2]))
 
+;; Inputs and state:
+;; dom-identifier
+;; Instrument
+;; Editor obj
+;; Seek start and end
+;; Loop over section?
+;; ABC str
+;; Current beat
+;; Selected tones in editor
+;; Bpm
+;; ABC str errors
+
+;; (defn ->abcjs-editor
+;;   [{:keys [editor-dom-id
+;;            warnings-dom-id
+;;            audio-control-dom-id
+;;            on-change
+;;            selection-change-callback
+
+;;            ]}])
+
+;; (defn abc-component
+;;   [{:keys [dom-identifier
+;;            instrument
+;;            editor-selected-tones
+;;            seek-start
+;;            seek-end
+;;            seek?
+;;            current-beat
+;;            abc-str-errors
+;;            abc-str
+;;            bpm]}]
+;;   (r/with-let [abcjs-editor]
+;;     (r/create-class
+;;      {:component-did-mount  #()
+;;       :component-did-update #(editor)
+;;       :display-name         (str dom-identifier "abc-component")
+;;       :reagent-render
+;;       (fn []
+;;         [])}))
+;;   )
+
+
 (declare editor')
 
-(->> (map
-      (fn [mini-nr index-tone octave]
-        [mini-nr {:index-tone index-tone :octave octave}])
-      (range 24 (+ 24 96))
-      (take 96 (cycle [#{:c}
-                       #{:db :c#}
-                       #{:d}
-                       #{:d# :eb}
-                       #{:e}
-                       #{:f}
-                       #{:gb :f#}
-                       #{:g}
-                       #{:g# :ab}
-                       #{:a}
-                       #{:bb :a#}
-                       #{:b}]))
-      (concat
-       (take 12 (repeat 1))
-       (take 12 (repeat 2))
-       (take 12 (repeat 3))
-       (take 12 (repeat 4))
-       (take 12 (repeat 5))
-       (take 12 (repeat 6))
-       (take 12 (repeat 7))
-       (take 12 (repeat 8))))
-     (into {}))
+(comment
+  (js/console.log editor')
+  )
 
-(def pitch->tone
-  {65  {:index-tone #{:f}, :octave 4},
-   70  {:index-tone #{:bb :a#}, :octave 4},
-   62  {:index-tone #{:d}, :octave 4},
-   74  {:index-tone #{:d}, :octave 5},
-   110 {:index-tone #{:d}, :octave 8},
-   59  {:index-tone #{:b}, :octave 3},
-   86  {:index-tone #{:d}, :octave 6},
-   72  {:index-tone #{:c}, :octave 5},
-   58  {:index-tone #{:bb :a#}, :octave 3},
-   60  {:index-tone #{:c}, :octave 4},
-   27  {:index-tone #{:d# :eb}, :octave 1},
-   69  {:index-tone #{:a}, :octave 4},
-   101 {:index-tone #{:f}, :octave 7},
-   24  {:index-tone #{:c}, :octave 1},
-   102 {:index-tone #{:gb :f#}, :octave 7},
-   55  {:index-tone #{:g}, :octave 3},
-   85  {:index-tone #{:db :c#}, :octave 6},
-   39  {:index-tone #{:d# :eb}, :octave 2},
-   88  {:index-tone #{:e}, :octave 6},
-   46  {:index-tone #{:bb :a#}, :octave 2},
-   77  {:index-tone #{:f}, :octave 5},
-   106 {:index-tone #{:bb :a#}, :octave 7},
-   119 {:index-tone #{:b}, :octave 8},
-   95  {:index-tone #{:b}, :octave 6},
-   54  {:index-tone #{:gb :f#}, :octave 3},
-   92  {:index-tone #{:g# :ab}, :octave 6},
-   104 {:index-tone #{:g# :ab}, :octave 7},
-   48  {:index-tone #{:c}, :octave 3},
-   50  {:index-tone #{:d}, :octave 3},
-   116 {:index-tone #{:g# :ab}, :octave 8},
-   75  {:index-tone #{:d# :eb}, :octave 5},
-   99  {:index-tone #{:d# :eb}, :octave 7},
-   31  {:index-tone #{:g}, :octave 1},
-   113 {:index-tone #{:f}, :octave 8},
-   32  {:index-tone #{:g# :ab}, :octave 1},
-   40  {:index-tone #{:e}, :octave 2},
-   91  {:index-tone #{:g}, :octave 6},
-   117 {:index-tone #{:a}, :octave 8},
-   108 {:index-tone #{:c}, :octave 8},
-   56  {:index-tone #{:g# :ab}, :octave 3},
-   33  {:index-tone #{:a}, :octave 1},
-   90  {:index-tone #{:gb :f#}, :octave 6},
-   109 {:index-tone #{:db :c#}, :octave 8},
-   36  {:index-tone #{:c}, :octave 2},
-   41  {:index-tone #{:f}, :octave 2},
-   118 {:index-tone #{:bb :a#}, :octave 8},
-   89  {:index-tone #{:f}, :octave 6},
-   100 {:index-tone #{:e}, :octave 7},
-   43  {:index-tone #{:g}, :octave 2},
-   61  {:index-tone #{:db :c#}, :octave 4},
-   29  {:index-tone #{:f}, :octave 1},
-   44  {:index-tone #{:g# :ab}, :octave 2},
-   93  {:index-tone #{:a}, :octave 6},
-   111 {:index-tone #{:d# :eb}, :octave 8},
-   28  {:index-tone #{:e}, :octave 1},
-   64  {:index-tone #{:e}, :octave 4},
-   103 {:index-tone #{:g}, :octave 7},
-   51  {:index-tone #{:d# :eb}, :octave 3},
-   25  {:index-tone #{:db :c#}, :octave 1},
-   34  {:index-tone #{:bb :a#}, :octave 1},
-   66  {:index-tone #{:gb :f#}, :octave 4},
-   107 {:index-tone #{:b}, :octave 7},
-   47  {:index-tone #{:b}, :octave 2},
-   35  {:index-tone #{:b}, :octave 1},
-   82  {:index-tone #{:bb :a#}, :octave 5},
-   76  {:index-tone #{:e}, :octave 5},
-   97  {:index-tone #{:db :c#}, :octave 7},
-   57  {:index-tone #{:a}, :octave 3},
-   68  {:index-tone #{:g# :ab}, :octave 4},
-   115 {:index-tone #{:g}, :octave 8},
-   112 {:index-tone #{:e}, :octave 8},
-   83  {:index-tone #{:b}, :octave 5},
-   45  {:index-tone #{:a}, :octave 2},
-   53  {:index-tone #{:f}, :octave 3},
-   78  {:index-tone #{:gb :f#}, :octave 5},
-   26  {:index-tone #{:d}, :octave 1},
-   81  {:index-tone #{:a}, :octave 5},
-   79  {:index-tone #{:g}, :octave 5},
-   38  {:index-tone #{:d}, :octave 2},
-   98  {:index-tone #{:d}, :octave 7},
-   87  {:index-tone #{:d# :eb}, :octave 6},
-   30  {:index-tone #{:gb :f#}, :octave 1},
-   73  {:index-tone #{:db :c#}, :octave 5},
-   96  {:index-tone #{:c}, :octave 7},
-   105 {:index-tone #{:a}, :octave 7},
-   52  {:index-tone #{:e}, :octave 3},
-   114 {:index-tone #{:gb :f#}, :octave 8},
-   67  {:index-tone #{:g}, :octave 4},
-   71  {:index-tone #{:b}, :octave 4},
-   42  {:index-tone #{:gb :f#}, :octave 2},
-   80  {:index-tone #{:g# :ab}, :octave 5},
-   37  {:index-tone #{:db :c#}, :octave 2},
-   63  {:index-tone #{:d# :eb}, :octave 4},
-   94  {:index-tone #{:bb :a#}, :octave 6},
-   49  {:index-tone #{:db :c#}, :octave 3},
-   84  {:index-tone #{:c}, :octave 6}})
 
 (defonce seek-state (atom {:start nil
                            :end   nil}))
@@ -229,7 +152,7 @@ DD |: \"D\" AEFG A2 FG |")
                  (def event event)
 
                  (->> (js->clj (.-midiPitches event) :keywordize-keys true)
-                      (map (comp #(get pitch->tone %) :pitch)))
+                      (map :pitch))
 
                  (js->clj event :keywordize-keys true)))))
 
@@ -254,16 +177,7 @@ DD |: \"D\" AEFG A2 FG |")
 (def add-selected-tones
   (debounce (fn []
               (>evt [::selected-tones (selected-tones)]))
-            1000))
-
-(def deb (debounce (fn []
-                     (js/console.log "Hejsan"))
-                   2000))
-(comment
-  (deb)
-  :-)
-
-
+            500))
 
 (defn editor []
   (def editor'
@@ -274,8 +188,8 @@ DD |: \"D\" AEFG A2 FG |")
       {:canvas_id               "abc-canvas-id"
        :warnings_id             "abc-editor-warnings-id"
        :generate_warnings       true
-       :onchange (fn [a b c]
-                   (js/console.log "editor onchange" a b c))
+       :onchange (fn [new-abc-str]
+                   (js/console.log "editor onchange" new-abc-str))
        :selectionChangeCallback (fn [selection-start selection-end]
                                   (js/console.log "selectionChangeCallback" selection-start selection-end)
                                   (def selection-start selection-start)
@@ -290,7 +204,8 @@ DD |: \"D\" AEFG A2 FG |")
                                   :displayProgress true
                                   :displayWarp     true
                                   :displayLoop     true}}
-       :abcjsParams             {:tablature
+       :abcjsParams             {:responsive "resize"
+                                 :tablature
                                  [{:instrument "mandolin"
                                    :tuning     ["G,", "D", "A", "e"]
                                    :capo       0}]}}))))
@@ -304,9 +219,14 @@ DD |: \"D\" AEFG A2 FG |")
   (js->clj (.-noteTimings (first (.-tunes editor'))) :keywordize-keys true)
 
 
+  (-> (.play (.-synthControl (.-synth editor')))
+      (.then (fn [_]
+               (.pause (.-synthControl (.-synth editor'))))))
+
   (.play (.-synthControl (.-synth editor')))
-  (.seek (.-synthControl (.-synth editor')) 7.0 "beats")
   (.pause (.-synthControl (.-synth editor')))
+  (.seek (.-synthControl (.-synth editor')) 0.75 "beats")
+  (.seek (.-synthControl (.-synth editor')) 7.0 "beats")
   (.restart (.-synthControl (.-synth editor')))
   (js/console.log (new ->cursor-control-obj))
   :-)
@@ -374,23 +294,24 @@ DD |: \"D\" AEFG A2 FG |")
     :display-name         "editor"
     :reagent-render
     (fn []
-      (let [abc-str (<sub [::abc-str])
-            ]
+      (let [abc-str (<sub [::abc-str])]
         [:div
-         [:p "Editor with play example"]
+         [:p "Editor with play example!"]
          (let [url "https://github.com/paulrosen/abcjs/blob/main/examples/printable.html"]
            [:p
             [:a {:href url} url]])
-         [:textarea {:id         "abc-editor-id"
-                     :cols       "80"
-                     :rows       12
-                     :spellCheck false
-                     :value      (or abc-str "")
-                     :onChange   (fn [e]
-                                   (let [value (.. e -target -value)]
-                                     (js/console.log "Editor change")
-                                     (js/console.log value)
-                                     (>evt [::abc-str (clojure.string/trim value)])))}]
+         [:div {:style {:display "flex"}}
+          [:textarea {:style      {:flex "1"}
+                      :id         "abc-editor-id"
+                      :cols       "80"
+                      :rows       12
+                      :spellCheck false
+                      :value      (or abc-str "")
+                      :onChange   (fn [e]
+                                    (let [value (.. e -target -value)]
+                                      (js/console.log "Editor change")
+                                      (js/console.log value)
+                                      (>evt [::abc-str (clojure.string/trim value)])))}]]
          [:div {:id "abc-editor-warnings-id"}]
          [:div {:id "audio"}]
          [:div {:id "abc-canvas-id"}]
@@ -399,7 +320,6 @@ DD |: \"D\" AEFG A2 FG |")
          [:hr]
          [:button {:on-click #(>evt [::abc-str whiskey-abc])} "Whiskey"]
          [:button {:on-click #(>evt [::abc-str cherokee-abc])} "Cherokee"]
-         [:button {:on-click (fn [_] (deb))} "Bounce"]
          [:hr]
          [:br]
          [fretboard2/styled-view

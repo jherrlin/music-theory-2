@@ -336,7 +336,7 @@
            :fretboard-size 1}]
          [:hr]])]]))
 
-(defn ^:dev/after-load view [deps]
+(defn view [deps]
   (let [game-state (<sub [::game-state])]
     [:div
      [common/menu]

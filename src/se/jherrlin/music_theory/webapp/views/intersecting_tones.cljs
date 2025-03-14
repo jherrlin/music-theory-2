@@ -174,7 +174,7 @@
           color1 (assoc-in color1-path color1)
           color2 (assoc-in color2-path color2))}))
 
-(defn ^:dev/after-load routes [deps]
+(defn routes [deps]
   (let [route-name ::intersecting-tones]
     ["/intersecting-tones/:instrument/:key-of-1/:key-of-2/:id-1/:id-2"
      {:name       route-name

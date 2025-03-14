@@ -284,7 +284,7 @@
 
   )
 
-(defn ^:dev/after-load view [deps]
+(defn view [deps]
   (let [fretboard-size (<sub [::fretboard-size])]
     [:<>
      [:button
@@ -307,7 +307,7 @@
               (partial octave-in-down-right-text :match?)
               (partial music-theory/left-is-blank? fretboard-matrix))))}]]))
 
-(defn ^:dev/after-load routes [deps]
+(defn routes [deps]
   (let [route-name :fretboard2]
     ["/dev/fretboard2"
      {:name route-name
