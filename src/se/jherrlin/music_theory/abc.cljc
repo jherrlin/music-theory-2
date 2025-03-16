@@ -61,6 +61,15 @@
    "a'''" {:octav 7 :tone "a"}
    "b'''" {:octav 7 :tone "b"}})
 
+(def regex-pitches
+  (->> (keys all-pitches)
+       (map #(str "[\\^=_]?" %))
+       (clojure.string/join "|")
+       (re-pattern)))
+
+(defn re-seq-pitches [s]
+  (re-seq regex-pitches s))
+
 (defn flat? [s]
   (when (string? s)
     (str/includes? s "_")))
@@ -71,10 +80,12 @@
 
 (defn pitches-key-and-accidentals
   [{:keys [root accidentals pitches]}]
-  (let [accidentals'    (->> accidentals
+  (def root root)
+  (def accidentals accidentals)
+  (def pitches pitches)
+  (let [accidentals-map (->> accidentals
                              (mapv (fn [{:keys [note] :as accidental}]
-                                     (assoc accidental :note (str/lower-case note)))))
-        accidentals-map (->> accidentals'
+                                     (assoc accidental :note (str/lower-case note))))
                              (map (juxt :note identity))
                              (into {}))]
     {:pitches (->> pitches
@@ -83,12 +94,13 @@
                                  {:keys [tone octav] :as m} (get all-pitches cleaned)]
                              {:octav octav
                               :tone  (let [acc (get-in accidentals-map [tone :acc])]
-                                      (cond-> tone
-                                        (= acc "sharp")          (str "#")
-                                        (= accidental "sharp")   (str "#")
-                                        (= acc "flat")           (str "b")
-                                        (= accidental "flat")    (str "b")
-                                        (= acc "natural")        identity
-                                        (= accidental "natural") identity
-                                        :always                  keyword))}))))
+                                       (keyword
+                                        (cond
+                                          (= accidental "sharp")   (str tone "#")
+                                          (= accidental "flat")    (str tone "b")
+                                          (= accidental "natural") tone
+                                          (= acc "sharp")          (str tone "#")
+                                          (= acc "flat")           (str tone "b")
+                                          (= acc "natural")        tone
+                                          :else                    tone)))}))))
      :root    (-> root str/lower-case keyword)}))

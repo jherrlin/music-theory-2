@@ -1,6 +1,9 @@
-(ns se.jherrlin.music-theory.webapp.views.instruments.fretboard2
+(ns se.jherrlin.music-theory.webapp.views.instruments.fretboard3
+  "The main difference between fretboard3 and fretboard2 is that fretboard3
+  appends all the data and hides elements with CSS to make it simple to
+  interact with the DOM directly."
   (:require
-    [se.jherrlin.music-theory.music-theory :as music-theory]))
+   [se.jherrlin.music-theory.music-theory :as music-theory]))
 
 
 (defn fret-number [fretboard-size n]
@@ -65,19 +68,19 @@
                               :display        "flex"
                               :flex-direction "row"}}
             on-click (assoc :on-click #(on-click m)))
-     [:div {:class (str id "-" midi-pitch "-div")
+     [:div {:class              (str id "-" midi-pitch "-div")
             :data-interval-tone interval-tone
-            :data-interval interval
-            :data-x x
-            :data-y y
-            :style {:background-color (if blank?
-                                        "white"
-                                        background-color)
-                    :width            (str (- fret-width 0.3) "rem")
-                    :height           "100%"
-                    :justify-content  :center
-                    :display          "flex"
-                    :flex-direction   "column"}}
+            :data-interval      interval
+            :data-x             x
+            :data-y             y
+            :style              {:background-color (if blank?
+                                                     "white"
+                                                     background-color)
+                                 :width            (str (- fret-width 0.3) "rem")
+                                 :height           "100%"
+                                 :justify-content  :center
+                                 :display          "flex"
+                                 :flex-direction   "column"}}
       [:div {:style {:display          "flex"
                      :align-items      :center
                      :justify-content  :center
@@ -87,22 +90,24 @@
                      :height           string-height
                      :width            (str fret-width "rem")
                      :z-index          100}}
-       (when center-text
+       (when interval-tone
          [:div {:id    (music-theory/circle-dom-id entity-str x y)
                 :class (str id "-" midi-pitch "-center-text-div")
-                :style (cond-> {:display          "flex"
-                                :align-items      :center
-                                :justify-content  :center
-                                :height           (str (* fretboard-size 2) "rem")
-                                :width            (str (* fretboard-size 2) "rem")
-                                :background-color (if (keyword? circle-color)
-                                                    (get colors circle-color)
-                                                    circle-color)
-                                :border-radius    "50%"
-                                :z-index          0}
-                         circle-background (assoc :background circle-background))}
+
+                :style {:display          "flex"
+                        :align-items      :center
+                        :justify-content  :center
+                        :visibility       "collapse"
+                        :height           (str (* fretboard-size 2) "rem")
+                        :width            (str (* fretboard-size 2) "rem")
+                        :background-color (if (keyword? circle-color)
+                                            (get colors circle-color)
+                                            circle-color)
+                        :border-radius    "50%"
+                        :z-index          0
+                        :background       "#ffa500"}}
           [:<>
-           center-text
+           interval-tone
            (when down-right-text
              [:div {:style {:font-fretboard-size "small"
                             :margin-top          (str (* fretboard-size 0.5) "rem")}

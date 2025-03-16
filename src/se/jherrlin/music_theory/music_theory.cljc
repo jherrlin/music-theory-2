@@ -82,6 +82,7 @@
 (def sharp-or-flat general/sharp-or-flat)
 (def generated-chords
   (general/generate chords :chord/intervals :chord/indexes))
+(def ->midi-pitch->index-tone-with-octave general/->midi-pitch->index-tone-with-octave)
 
 (def generated-scales
   (general/generate scales :scale/intervals :scale/indexes))
