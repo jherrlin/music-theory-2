@@ -437,7 +437,7 @@ I dagsläget finns det inte så många komponenter men"]]
             [:iframe {:src             "https://www.youtube.com/watch?v=VtxdaAui4tw"
                       :frameborder     "0"
                       :allow           "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      :allowfullscreen true}]]]]
+                      :allowFullScreen true}]]]]
 
          [:br]
 

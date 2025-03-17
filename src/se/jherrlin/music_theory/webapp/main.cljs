@@ -14,7 +14,6 @@
    [se.jherrlin.music-theory.webapp.components.tonejs :as tonejs]
    [se.jherrlin.music-theory.webapp.components.reitit :as reitit]
    [se.jherrlin.music-theory.webapp.routes :as routes]
-   [se.jherrlin.music-theory.webapp.components.dom :as dom]
    [se.jherrlin.music-theory.webapp.components.music-theory :as music-theory]
    [se.jherrlin.music-theory.webapp.views.root-component :refer [root-component]]
    [se.jherrlin.music-theory.webapp.events]))
