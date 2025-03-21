@@ -4,62 +4,62 @@
 
 (def all-pitches
   "https://github.com/paulrosen/abcjs/blob/947d3c8956847ca929deea5c33e1c2e44fc0a7fb/src/parse/all-notes.js#L3"
-  {"C,,," {:octav 0 :tone "c"}
-   "D,,," {:octav 0 :tone "d"}
-   "E,,," {:octav 0 :tone "e"}
-   "F,,," {:octav 0 :tone "f"}
-   "G,,," {:octav 0 :tone "g"}
-   "A,,," {:octav 0 :tone "a"}
-   "B,,," {:octav 0 :tone "b"}
-   "C,,"  {:octav 1 :tone "c"}
-   "D,,"  {:octav 1 :tone "d"}
-   "E,,"  {:octav 1 :tone "e"}
-   "F,,"  {:octav 1 :tone "f"}
-   "G,,"  {:octav 1 :tone "g"}
-   "A,,"  {:octav 1 :tone "a"}
-   "B,,"  {:octav 1 :tone "b"}
-   "C,"   {:octav 2 :tone "c"}
-   "D,"   {:octav 2 :tone "d"}
-   "E,"   {:octav 2 :tone "e"}
-   "F,"   {:octav 2 :tone "f"}
-   "G,"   {:octav 2 :tone "g"}
-   "A,"   {:octav 2 :tone "a"}
-   "B,"   {:octav 2 :tone "b"}
-   "C"    {:octav 3 :tone "c"}
-   "D"    {:octav 3 :tone "d"}
-   "E"    {:octav 3 :tone "e"}
-   "F"    {:octav 3 :tone "f"}
-   "G"    {:octav 3 :tone "g"}
-   "A"    {:octav 3 :tone "a"}
-   "B"    {:octav 3 :tone "b"}
-   "c"    {:octav 4 :tone "c"}
-   "d"    {:octav 4 :tone "d"}
-   "e"    {:octav 4 :tone "e"}
-   "f"    {:octav 4 :tone "f"}
-   "g"    {:octav 4 :tone "g"}
-   "a"    {:octav 4 :tone "a"}
-   "b"    {:octav 4 :tone "b"}
-   "c'"   {:octav 5 :tone "c"}
-   "d'"   {:octav 5 :tone "d"}
-   "e'"   {:octav 5 :tone "e"}
-   "f'"   {:octav 5 :tone "f"}
-   "g'"   {:octav 5 :tone "g"}
-   "a'"   {:octav 5 :tone "a"}
-   "b'"   {:octav 5 :tone "b"}
-   "c''"  {:octav 6 :tone "c"}
-   "d''"  {:octav 6 :tone "d"}
-   "e''"  {:octav 6 :tone "e"}
-   "f''"  {:octav 6 :tone "f"}
-   "g''"  {:octav 6 :tone "g"}
-   "a''"  {:octav 6 :tone "a"}
-   "b''"  {:octav 6 :tone "b"}
-   "c'''" {:octav 7 :tone "c"}
-   "d'''" {:octav 7 :tone "d"}
-   "e'''" {:octav 7 :tone "e"}
-   "f'''" {:octav 7 :tone "f"}
-   "g'''" {:octav 7 :tone "g"}
-   "a'''" {:octav 7 :tone "a"}
-   "b'''" {:octav 7 :tone "b"}})
+  {"C,,," {:octave 0 :tone "c"}
+   "D,,," {:octave 0 :tone "d"}
+   "E,,," {:octave 0 :tone "e"}
+   "F,,," {:octave 0 :tone "f"}
+   "G,,," {:octave 0 :tone "g"}
+   "A,,," {:octave 0 :tone "a"}
+   "B,,," {:octave 0 :tone "b"}
+   "C,,"  {:octave 1 :tone "c"}
+   "D,,"  {:octave 1 :tone "d"}
+   "E,,"  {:octave 1 :tone "e"}
+   "F,,"  {:octave 1 :tone "f"}
+   "G,,"  {:octave 1 :tone "g"}
+   "A,,"  {:octave 1 :tone "a"}
+   "B,,"  {:octave 1 :tone "b"}
+   "C,"   {:octave 2 :tone "c"}
+   "D,"   {:octave 2 :tone "d"}
+   "E,"   {:octave 2 :tone "e"}
+   "F,"   {:octave 2 :tone "f"}
+   "G,"   {:octave 2 :tone "g"}
+   "A,"   {:octave 2 :tone "a"}
+   "B,"   {:octave 2 :tone "b"}
+   "C"    {:octave 3 :tone "c"}
+   "D"    {:octave 3 :tone "d"}
+   "E"    {:octave 3 :tone "e"}
+   "F"    {:octave 3 :tone "f"}
+   "G"    {:octave 3 :tone "g"}
+   "A"    {:octave 3 :tone "a"}
+   "B"    {:octave 3 :tone "b"}
+   "c"    {:octave 4 :tone "c"}
+   "d"    {:octave 4 :tone "d"}
+   "e"    {:octave 4 :tone "e"}
+   "f"    {:octave 4 :tone "f"}
+   "g"    {:octave 4 :tone "g"}
+   "a"    {:octave 4 :tone "a"}
+   "b"    {:octave 4 :tone "b"}
+   "c'"   {:octave 5 :tone "c"}
+   "d'"   {:octave 5 :tone "d"}
+   "e'"   {:octave 5 :tone "e"}
+   "f'"   {:octave 5 :tone "f"}
+   "g'"   {:octave 5 :tone "g"}
+   "a'"   {:octave 5 :tone "a"}
+   "b'"   {:octave 5 :tone "b"}
+   "c''"  {:octave 6 :tone "c"}
+   "d''"  {:octave 6 :tone "d"}
+   "e''"  {:octave 6 :tone "e"}
+   "f''"  {:octave 6 :tone "f"}
+   "g''"  {:octave 6 :tone "g"}
+   "a''"  {:octave 6 :tone "a"}
+   "b''"  {:octave 6 :tone "b"}
+   "c'''" {:octave 7 :tone "c"}
+   "d'''" {:octave 7 :tone "d"}
+   "e'''" {:octave 7 :tone "e"}
+   "f'''" {:octave 7 :tone "f"}
+   "g'''" {:octave 7 :tone "g"}
+   "a'''" {:octave 7 :tone "a"}
+   "b'''" {:octave 7 :tone "b"}})
 
 (def regex-pitches
   (->> (keys all-pitches)
@@ -80,9 +80,6 @@
 
 (defn pitches-key-and-accidentals
   [{:keys [root accidentals pitches]}]
-  (def root root)
-  (def accidentals accidentals)
-  (def pitches pitches)
   (let [accidentals-map (->> accidentals
                              (mapv (fn [{:keys [note] :as accidental}]
                                      (assoc accidental :note (str/lower-case note))))
@@ -92,8 +89,8 @@
                    (mapv (fn [{:keys [accidental name] :as pitch}]
                            (let [cleaned                    (first (re-seq #"[A-Za-z,']{1,4}" name))
                                  {:keys [tone octav] :as m} (get all-pitches cleaned)]
-                             {:octav octav
-                              :tone  (let [acc (get-in accidentals-map [tone :acc])]
+                             {:octave octav
+                              :tone   (let [acc (get-in accidentals-map [tone :acc])]
                                        (keyword
                                         (cond
                                           (= accidental "sharp")   (str tone "#")

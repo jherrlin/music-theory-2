@@ -60,9 +60,9 @@ M: 4/4
 L: 1/8
 K: D
 P: A
-DD |: \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEF EDCE |
-   |  \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF |
-   |1 \"A\" EDEF \"D\" D2 DD :|2 \"A\" EDEF \"D\" D2 FE ||")
+DD |: \"D\" D,,EFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEF EDCE |
+   |  \"D\" DEFG A2 FG | c'''BAG FDEF  | \"G\" GABG \"D\" F2 AF |
+   |1 \"A\" EDE,,,F \"D\" D2 DD :|2 \"A\" EDEF \"D\" D2 FE ||")
 
 
 
@@ -194,11 +194,14 @@ DD |: \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEF EDCE |
                 m)
               (js->clj (.-tunes editor') :keywordize-keys true))
              @found)
+           ;; Move this over to use tone name and accidental instread of pitch as pitch seems to be wrong
            (assoc :pitches (->> (.-selected (.-engraver (first (.-tunes editor'))))
                                 (filter (fn [m] (= "note" (.-type m))))
                                 (map (fn [x] (js->clj (.-abcelem x) :keywordize-keys true)))
                                 (mapcat :pitches)
                                 (vec))))))))
+
+[{:pitch 1, :name "D", :verticalPos 1, :highestVert 7}]
 
 (def add-selected-tones
   (debounce (fn []
@@ -246,16 +249,19 @@ DD |: \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEF EDCE |
        x)
      (js->clj (.-noteTimings (first (.-tunes editor'))) :keywordize-keys true))
     (->> @pitches
-         (map music-theory/->midi-pitch->index-tone-with-octave))))
+         (mapv music-theory/->midi-pitch->index-tone-with-octave))))
 
 
 (comment
   (js/console.log editor')
+  (js/console.log (.-lines (first (.-tunes editor'))))
+  (js->clj (.-lines (first (.-tunes editor'))) :keywordize-keys true)
+
+  (mark-note-timings)
 
   (.-noteTimings (first (.-tunes editor')))
 
   (js->clj (first (.-tunes editor')) :keywordize-keys true)
-
 
 
 
@@ -309,19 +315,26 @@ DD |: \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEF EDCE |
   (music-theory/create-fretboard-matrix-for-instrument
    :d 13 :mandolin))
 
+(comment
+
+
+
+
+  )
+
 (defn hehe [derp]
   (let [root (:root derp)]
     (loop [[x & rst] (:pitches derp)
            acc       mandolin-fretboard-matrix]
       (if (nil? x)
         acc
-        (let [{score-interval-tone :tone score-octav :octav} x]
+        (let [{score-interval-tone :tone score-octave :octave} x]
           (recur
            rst
            (map-matrix-by-y
             (fn [{fretboard-index-tone :tone fretboard-octave :octave :as m}]
               (let [exit? (and
-                           (= score-octav fretboard-octave)
+                           (= score-octave fretboard-octave)
                            (contains? fretboard-index-tone score-interval-tone))]
                 [exit?
                  (cond-> m
@@ -341,6 +354,9 @@ DD |: \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEF EDCE |
   (fretboard2-matrix nil)
   )
 
+(defn abc-editor+canvas+fretboard-component
+  [])
+
 (defn ui []
   (r/create-class
    {:component-did-mount  #(editor)
@@ -353,7 +369,7 @@ DD |: \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEF EDCE |
             loop-section-start (<sub [::loop-section-start])
             loop-section-end   (<sub [::loop-section-end])]
         [:div
-         [:div {:style {:border "dashed #00000026"
+         [:div {:style {:border  "dashed #00000026"
                         :display "flex"}}
           [:textarea {:spellCheck false
                       :rows       9
@@ -367,10 +383,6 @@ En lärare kan komponerar dessa komponenter och sedan publiserar så att en stud
 I dagsläget finns det inte så många komponenter men"]]
          [:br]
          [:div {:style {:border "dashed #00000026"}}
-          #_[:p "Editor with play example!"]
-          #_(let [url "https://github.com/paulrosen/abcjs/blob/main/examples/printable.html"]
-              [:p
-               [:a {:href url} url]])
           [:div {:style {:display "flex"}}
            [:textarea {:style      {:flex "1"}
                        :id         "abc-editor-id"
@@ -404,15 +416,11 @@ I dagsläget finns det inte så många komponenter men"]]
                                 (>evt [::loop-section-end (.. e -target -value)]))}]
           [:button {:on-click #(>evt [::loop-section-end @current-beat])} "Set end"]
 
-
-          [:hr]
           [:br]
           [fretboard2/styled-view
            {:id               "akxH4rw4Y682ySSDUo2AEm"
             :fretboard-matrix (fretboard2-matrix (<sub [::selected-tones]))
-            :fretboard-size   1}]
-
-          ]
+            :fretboard-size   1}]]
 
 
          [:br]
@@ -424,7 +432,7 @@ I dagsläget finns det inte så många komponenter men"]]
            [:div
             [:p "Här finns en inspelning som lärraren gjort"]
             [:audio {:controls true
-                     :src "https://staglaberget-string-band.se/resources/media/whiskey-2025-02-19.mp3"}]]]]
+                     :src      "https://staglaberget-string-band.se/resources/media/whiskey-2025-02-19.mp3"}]]]]
 
          [:br]
 
@@ -448,9 +456,9 @@ I dagsläget finns det inte så många komponenter men"]]
                          :justify-content "center"}}
            [:div
             [:p "Läraren kan lägga till en bild och skriva en text till"]
-            [:img {:style {:max-width "100%"
+            [:img {:style {:max-width  "100%"
                            :max-height "100%"}
-                   :src "https://online.berklee.edu/takenote/wp-content/uploads/2023/02/circle_of_fifths_article_image_2023.png"}]]]]]))}))
+                   :src   "https://online.berklee.edu/takenote/wp-content/uploads/2023/02/circle_of_fifths_article_image_2023.png"}]]]]]))}))
 
 
 
@@ -475,7 +483,7 @@ I dagsläget finns det inte så många komponenter men"]]
     ["/abcjs/examples/editor-with-play-and-fretboard"
      {:name    route-name
       :view    [ui]
-      ;; :top-nav :abcjs-examples
+      :top-nav :abcjs-examples
       :controllers [{:start #(>evt [::start])}]
       }]))
 
@@ -488,7 +496,7 @@ I dagsläget finns det inte så många komponenter men"]]
 
 (comment
   (let [canvas-cursor (create-cursor)]
-    {:component-type                   :abc-editor
+    {:component-version                {:version 1 :type :abc-editor}
      :component-identifier             "OYRGxhOybwzwAzOMiNl0ds"
      :tab-instrument                   {:instrument "mandolin"
                                         :tuning     ["G,", "D", "A", "e"]

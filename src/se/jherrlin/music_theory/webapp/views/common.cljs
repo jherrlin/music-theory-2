@@ -171,7 +171,21 @@
             :href  (rfe/href k {} {})}
         [:button
          {:disabled (= current-route-name k)}
-         "Animation"]])]))
+         "Animation"]])
+
+     (let [k :abcjs-example/instaparse]
+       [:a {:style {:margin-right "10px"}
+            :href  (rfe/href k {} {})}
+        [:button
+         {:disabled (= current-route-name k)}
+         "Instaparse"]])
+
+     (let [k :abcjs-example/editor-component]
+       [:a {:style {:margin-right "10px"}
+            :href  (rfe/href k {} {})}
+        [:button
+         {:disabled (= current-route-name k)}
+         "Editor component"]])]))
 
 (defn chord-selection []
   (let [{:keys [chord] :as path-params} @(re-frame/subscribe [:path-params])

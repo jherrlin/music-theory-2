@@ -26,7 +26,9 @@
    [se.jherrlin.music-theory.webapp.views.abcjs.examples.editor-with-play :as examples.editor-with-play]
    [se.jherrlin.music-theory.webapp.views.abcjs.examples.basic-synth :as abcjs.examples.basic-synth]
    [se.jherrlin.music-theory.webapp.views.abcjs.examples.animation :as abcjs.examples.animation]
-   [se.jherrlin.music-theory.webapp.views.abcjs.examples.editor-with-play-and-fretboard :as abcjs.examples.editor-with-play-and-fretboard]))
+   [se.jherrlin.music-theory.webapp.views.abcjs.examples.editor-with-play-and-fretboard :as abcjs.examples.editor-with-play-and-fretboard]
+   [se.jherrlin.music-theory.webapp.views.abcjs.examples.parser :as abcjs.examples.parser]
+   [se.jherrlin.music-theory.webapp.views.abcjs.examples.editor-component :as abcjs.examples.editor-component]))
 
 
 (defn routes [deps]
@@ -53,6 +55,8 @@
    (abcjs.examples.basic-synth/routes deps)
    (abcjs.examples.animation/routes deps)
    (abcjs.examples.editor-with-play-and-fretboard/routes deps)
+   (abcjs.examples.parser/routes deps)
+   (abcjs.examples.editor-component/routes deps)
 
    (dev/routes deps)
    (dev.fretboard2/routes deps)
