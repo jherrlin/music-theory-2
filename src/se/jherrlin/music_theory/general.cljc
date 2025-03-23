@@ -520,21 +520,23 @@
          (take 10))))
 
 (def midi-pitch->index-tone-with-octave
-  (let [octaves (concat
-                 (take 12 (repeat 0))
-                 (take 12 (repeat 1))
-                 (take 12 (repeat 2))
-                 (take 12 (repeat 3))
-                 (take 12 (repeat 4))
-                 (take 12 (repeat 5))
-                 (take 12 (repeat 6))
-                 (take 12 (repeat 7)))]
+  (let [nr-of-tones (count (all-tones))
+        octaves     (concat
+                     (take nr-of-tones (repeat 1))
+                     (take nr-of-tones (repeat 2))
+                     (take nr-of-tones (repeat 3))
+                     (take nr-of-tones (repeat 4))
+                     (take nr-of-tones (repeat 5))
+                     (take nr-of-tones (repeat 6))
+                     (take nr-of-tones (repeat 7))
+                     (take nr-of-tones (repeat 8))
+                     (take nr-of-tones (repeat 9)))]
     (->> (map
           (fn [index-tone octave midi-pitch-nr]
             [midi-pitch-nr {:index-tone index-tone :octave octave}])
           (take (count octaves) (cycle (all-tones)))
           octaves
-          (range 24 (count octaves)))
+          (range 24 (+ (count octaves) 24)))
          (into {}))))
 
 (defn ->midi-pitch->index-tone-with-octave
@@ -543,21 +545,23 @@
   (midi-pitch->index-tone-with-octave midi-pitch))
 
 (def index-tone-with-octave->midi-pitch
-  (let [octaves (concat
-                 (take 12 (repeat 0))
-                 (take 12 (repeat 1))
-                 (take 12 (repeat 2))
-                 (take 12 (repeat 3))
-                 (take 12 (repeat 4))
-                 (take 12 (repeat 5))
-                 (take 12 (repeat 6))
-                 (take 12 (repeat 7)))]
+  (let [nr-of-tones (count (all-tones))
+        octaves     (concat
+                     (take nr-of-tones (repeat 1))
+                     (take nr-of-tones (repeat 2))
+                     (take nr-of-tones (repeat 3))
+                     (take nr-of-tones (repeat 4))
+                     (take nr-of-tones (repeat 5))
+                     (take nr-of-tones (repeat 6))
+                     (take nr-of-tones (repeat 7))
+                     (take nr-of-tones (repeat 8))
+                     (take nr-of-tones (repeat 9)))]
     (->> (map
           (fn [index-tone octave midi-pitch-nr]
             [{:index-tone index-tone :octave octave} midi-pitch-nr])
           (take (count octaves) (cycle (all-tones)))
           octaves
-          (range 24 (count octaves)))
+          (range 24 (+ (count octaves) 24)))
          (into {}))))
 
 (defn ->index-tone-with-octave->midi-pitch

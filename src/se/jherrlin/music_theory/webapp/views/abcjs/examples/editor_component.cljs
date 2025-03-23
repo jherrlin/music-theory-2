@@ -53,15 +53,7 @@
    (assoc-in db (conj editors-path component-identifier) editor)))
 
 (def whiskey-abc
-  "X: 1
-T: Whiskey Before Breakfast
-M: 4/4
-L: 1/8
-K: D
-P: A
-DD |: \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEF EDCE |
-   |  \"D\" DEFG A2 FG | cBAG FDEF  | \"G\" GABG \"D\" F2 AF |
-   |1 \"A\" EDEF \"D\" D2 DD :|2 \"A\" EDEF \"D\" D2 FE ||")
+  "X: 1                                                                       \nT: Wagon Wheel, mandolin solo                                              \nM: 4/4                                                                     \nL: 1/8                                                                     \nK: A                                                                       \nP: A                                                                       \n|: \"A\" A,2A,A, B,CEF | \"E\" E2EE GFEF | \"F#m\" F2FF ABcB  | \"D\" d2ef abaf |  \n|  \"A\" a2aa    fecB  | \"E\" B2BB cBGF | \"D\"   D2F2 dBAB  | \"D\" dABA A4 |    ")
 
 
 (defn move-cursor! [cursor {:keys [x1 x2 y1 y2]}]
@@ -123,9 +115,15 @@ DD |: \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEF EDCE |
                                 :displayWarp     true
                                 :displayLoop     true}}
      :abcjsParams             {:responsive "resize"
-                               :tablature  tab-instrument}})))
-
-(random-uuid)
+                               :tablature  tab-instrument
+                               :afterParsing (fn [tune, tuneNumber, abcString]
+                                               (js/console.log
+                                                "afterParsing"
+                                                tune, tuneNumber, abcString))
+                               :clickListener (fn [abcelem tuneNumber classes analysis drag]
+                                                (js/console.log
+                                                 "clickListener"
+                                                 abcelem tuneNumber classes analysis drag))}})))
 
 (defn ->component [{:keys [component-identifier component-version]}]
   (case (:type component-version)
@@ -168,11 +166,10 @@ DD |: \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEF EDCE |
     (fn []
       (let [abc-str         (<sub [::abc-str component-identifier])
             abc-editor-rows (<sub [::abc-editor-rows component-identifier])]
-        [:div
+        [:<>
          [:div {:style {:display "flex"}}
           [:textarea {:style      {:flex "1"}
                       :id         editor-dom-id
-                      ;; :cols       "80"
                       :rows       abc-editor-rows
                       :spellCheck false
                       :value      (or abc-str "")
@@ -194,9 +191,10 @@ DD |: \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEF EDCE |
  ::components
  (fn [db [_sub-id]]
    (->> (get-in db components-path)
-        (mapv (fn [c]
-                (let [abc-str (get c :abc-str)]
-                  (merge c (->component c))))))))
+        (mapv (fn [{:keys [component-version] :as c}]
+                (if (= component-version {:version 1 :type :abc-editor})
+                  (merge c (->component c))
+                  c))))))
 
 (rf/reg-event-db
  ::components
@@ -210,30 +208,55 @@ DD |: \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEF EDCE |
          (assoc-in components-path components)
          (assoc-in components-index-path components-index)))))
 
+(defn v1-h2-title
+  [{:keys [text]}]
+  [:h2 text])
+
+(defn v1-textarea
+  [{:keys [text]}]
+  [:div {:style {:flex 1}}
+   [:textarea {:value text}]])
+
 (defn view []
-  [:div
-   [:h2 "View"]
+  [:<>
    (for [component (<sub [::components])]
-     ^{:key (str (:component-identifier component) "-parent")}
      (case (:component-version component)
        {:version 1, :type :abc-editor}
-       [v1-abc-editor-component component]
+       (with-meta
+         [v1-abc-editor-component component]
+         {:key (str (:component-identifier component) "-parent")})
+
+       {:version 1 :type :h2-title}
+       (with-meta
+         [v1-h2-title component]
+         {:key (str (:component-identifier component) "-parent")})
+
+       {:version 1 :type :textarea}
+       (with-meta
+         [v1-textarea component]
+         {:key (str (:component-identifier component) "-parent")})
 
        [:div "Unsupported component"]))])
 
 (rf/reg-event-fx
  ::start
  (fn [{:keys [db]} [_event-id]]
-   (let [components [{:component-version    {:version 1 :type :abc-editor}
-                      :component-identifier "OYRGxhOybwzwAzOMiNl0ds"
+   (let [components [{:component-version    {:version 1 :type :h2-title}
+                      :component-identifier (random-uuid)
+                      :text                 "Whiskey before breakfast lesson"}
+                     {:component-version    {:version 1 :type :textarea}
+                      :component-identifier (random-uuid)
+                      :text                 "hejsan"}
+                     {:component-version    {:version 1 :type :abc-editor}
+                      :component-identifier #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"
                       :tab-instrument       [{:instrument "mandolin"
                                               :tuning     ["G,", "D", "A", "e"]
                                               :capo       0}]
                       :abc-str              whiskey-abc}
-                     {:component-version    {:version 1 :type :abc-editor}
-                      :component-identifier "RS0X3skMhNlnFqz0QTXfLn"
-                      :tab-instrument       []
-                      :abc-str              whiskey-abc}]]
+                     #_{:component-version    {:version 1 :type :abc-editor}
+                        :component-identifier #uuid "3527b219-92fc-45ee-b950-22a88746d36d"
+                        :tab-instrument       []
+                        :abc-str              whiskey-abc}]]
      {:fx [[:dispatch
             [::components components]]]})))
 
@@ -260,16 +283,148 @@ DD |: \"D\" DEFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEF EDCE |
   (get-in @re-frame.db/app-db editors-path)
 
   (<sub [::components])
-  (->> (<sub [::abc-str "OYRGxhOybwzwAzOMiNl0ds"])
+  (->> (<sub [::abc-str #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])
        (str/split-lines)
        (count)
        (inc))
 
-  (>evt [::abc-str "OYRGxhOybwzwAzOMiNl0ds" "a"])
+  (>evt [::abc-str #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270" "a"])
 
 
   (->> (get-in @re-frame.db/app-db components-path)
        (map ->component))
 
 
+
+
+  (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
+    (-> (.play (.-synthControl (.-synth editor)))
+        (.then (fn [_]
+                 (.pause (.-synthControl (.-synth editor)))))))
+
+
+  (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
+    (-> (.play (.-synthControl (.-synth editor)))
+        (.then (fn []
+                 (js/console.log "Playing")))))
+
+  (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
+    (.pause (.-synthControl (.-synth editor))))
+
+  (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
+    (->> (js->clj (.-noteTimings (first (.-tunes editor))) :keywordize-keys true)
+         (mapcat :midiPitches)
+         (filter (comp #{"note"} :cmd))
+         (map :pitch)
+         (into #{})
+         (map music-theory/->midi-pitch->index-tone-with-octave)))
+
+  (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
+    (js/console.log (.-noteTimings (first (.-tunes editor)))))
+
+
+  (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
+    (.seek (.-synthControl (.-synth editor)) 1 "beats"))
+
+  (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
+    (js/console.log (.-synth editor)))
+
+  (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
+    (js/console.log (.-synthControl (.-synth editor))))
+
+  (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
+    (.go (.-synthControl (.-synth editor))))
+
+
+  (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
+    (->> (.-selected (.-engraver (first (.-tunes editor))))
+         (filter #(= "note" (.-type %)))
+         (map #(js->clj (.-abcelem %) :keywordize-keys true))
+         (mapcat :pitches)))
+
+
   )
+
+
+;; X: 1
+;; T: Wagon Wheel, mandolin solo
+;; M: 4/4
+;; L: 1/8
+;; K: A
+;; P: A
+;; |: "A" A,2A,A, B,CEF | "E" E2EE GFEF | "F#m" F2FF ABcB  | "D" d2ef abaf |
+;; |  "A" a2aa    fecB  | "E" B2BB cBGF | "D"   D2F2 dBAB  | "D" dABA A4 |
+
+
+
+;; Sjön Suger - Nere på stan
+;;
+;; Vers 1
+;; A            D              A
+;; Jag tror jag var på mitt 20 år just den dan
+;;             D             E            A
+;; Jag sa till mamma nu vill jag ensam gå ut
+;;           D                     A
+;; Du brukar alltid va med mej och hålla mig i hand
+;;    D               E
+;; då detta måste bli ett slut
+
+;; Ref 1
+;; A     D                    A
+;; Fööör nere på stan har man roligt som fan
+;;     D                          A
+;; där får man sig ett glas eller två
+;;     D                      A
+;; Där träffar man tjejer med finfina grejer
+;;         E                   A
+;; som man ibland kan få smaka på
+
+;; Banjo solo
+
+;; Vers 2
+;; Men hon svarade mig min stackars lilla pojk
+;; ska du gå ifrån din kära mor
+;; Så jag ilskna väll till och med min manligaste röst
+;; sa jag - ser du inte att jag blivit stor
+
+;; Vers 3
+;; Hon sa det ser jag nog och jag ser något mer
+;; som får kvinnfolket att springa efter dig
+;; Sen på kvällen påväg ut tänkte jag på vad hon sagt
+;; och det kändes något pirrigt inom mig
+
+;; Ref 1
+
+;; Mandolin solo
+
+;; Vers 4
+;; Jag gick in på en pub slog mig ner vid ett bord
+;; Fick in en öl av en fin servitris
+;; Hon stack till mig en lapp som sa jag slutar om en kvar
+;; sen kan du och jag ha skönt på många vis
+
+;; Vers 5
+;; Men jag sprang där ifrån skrämd av den vänliga tant
+;; och sökte skydd i dunklet på en krog
+;; Men där tog fyra flickor hand om mig och dom kladdade runt
+;; och bjöd på drinkar från mitt vinesnabbedog(?)
+
+;; Ref 1
+
+;; Fiol solo
+
+;; Vers 6
+;; När jag vakna ur mitt rus naken i en dubbelsäng
+;; med dessa ladies och jag undrar vad som hänt
+;; Åå när svaret stog klart fick jag brått där ifrån
+;; och inom mig kändes något som förvrängt
+
+;; Ref 2
+;; Men nere på stan ser man en dam
+;; en tjej jag aldrig vågat mig på
+;; nu stannar jag hemma nu får mamma bestämma
+;; För hon är nog den som är bäst ändå
+
+;; Banjo
+
+;; För hon är nog den som är bäst ändå
