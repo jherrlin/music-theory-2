@@ -1,0 +1,82 @@
+;; X: 1
+;; T: Wagon Wheel, mandolin solo
+;; M: 4/4
+;; L: 1/8
+;; K: A
+;; P: A
+;; |: "A" A,2A,A, B,CEF | "E" E2EE GFEF | "F#m" F2FF ABcB  | "D" d2ef abaf |
+;; |  "A" a2aa    fecB  | "E" B2BB cBGF | "D"   D2F2 dBAB  | "D" dABA A4 |
+
+
+
+;; Sjön Suger - Nere på stan
+;;
+;; Vers 1
+;; A            D              A
+;; Jag tror jag var på mitt 20 år just den dan
+;;             D             E            A
+;; Jag sa till mamma nu vill jag ensam gå ut
+;;           D                     A
+;; Du brukar alltid va med mej och hålla mig i hand
+;;    D               E
+;; då detta måste bli ett slut
+
+;; Ref 1
+;; A     D                    A
+;; Fööör nere på stan har man roligt som fan
+;;     D                          A
+;; där får man sig ett glas eller två
+;;     D                      A
+;; Där träffar man tjejer med finfina grejer
+;;         E                   A
+;; som man ibland kan få smaka på
+
+;; Banjo solo
+
+;; Vers 2
+;; Men hon svarade mig min stackars lilla pojk
+;; ska du gå ifrån din kära mor
+;; Så jag ilskna väll till och med min manligaste röst
+;; sa jag - ser du inte att jag blivit stor
+
+;; Vers 3
+;; Hon sa det ser jag nog och jag ser något mer
+;; som får kvinnfolket att springa efter dig
+;; Sen på kvällen påväg ut tänkte jag på vad hon sagt
+;; och det kändes något pirrigt inom mig
+
+;; Ref 1
+
+;; Mandolin solo
+
+;; Vers 4
+;; Jag gick in på en pub slog mig ner vid ett bord
+;; Fick in en öl av en fin servitris
+;; Hon stack till mig en lapp som sa jag slutar om en kvar
+;; sen kan du och jag ha skönt på många vis
+
+;; Vers 5
+;; Men jag sprang där ifrån skrämd av den vänliga tant
+;; och sökte skydd i dunklet på en krog
+;; Men där tog fyra flickor hand om mig och dom kladdade runt
+;; och bjöd på drinkar från mitt vinesnabbedog(?)
+
+;; Ref 1
+
+;; Fiol solo
+
+;; Vers 6
+;; När jag vakna ur mitt rus naken i en dubbelsäng
+;; med dessa ladies och jag undrar vad som hänt
+;; Åå när svaret stog klart fick jag brått där ifrån
+;; och inom mig kändes något som förvrängt
+
+;; Ref 2
+;; Men nere på stan ser man en dam
+;; en tjej jag aldrig vågat mig på
+;; nu stannar jag hemma nu får mamma bestämma
+;; För hon är nog den som är bäst ändå
+
+;; Banjo
+
+;; För hon är nog den som är bäst ändå

@@ -45,12 +45,66 @@
 (rf/reg-sub
  ::editor
  (fn [db [_sub-id component-identifier]]
-   (get-in db (conj editors-path component-identifier))))
+   (get-in db (conj editors-path component-identifier :editor))))
+
+(rf/reg-sub
+ ::editor-is-loaded?
+ (fn [db [_sub-id component-identifier]]
+   (get-in db (conj editors-path component-identifier :is-loaded?))))
 
 (rf/reg-event-db
  ::editor
  (fn [db [_event-id component-identifier editor]]
-   (assoc-in db (conj editors-path component-identifier) editor)))
+   (let [is-loaded? (.-isLoaded (.-synthControl (.-synth editor)))]
+     (-> db
+         (assoc-in (conj editors-path component-identifier :editor) editor)
+         (assoc-in (conj editors-path component-identifier :is-loaded?) is-loaded?)))))
+
+(rf/reg-fx
+ ::editor-go!
+ (fn [{:keys [component-identifier editor]}]
+   (-> (.runWhenReady
+        (.-synthControl (.-synth editor))
+        #(js/Promise.resolve
+          (>evt [::editor component-identifier editor]))
+        true)
+       (.then #(js/console.log "loaded"))
+       (.catch #(js/console.log "error")))))
+
+(def audio-context
+  (or js/window.AudioContext
+      js/window.webkitAudioContext
+      js/navigator.mozAudioContext
+      js/navigator.msAudioContext))
+
+(defn set-audio-context! [audio-context]
+  (set! js/window.AudioContext audio-context))
+
+(set-audio-context! audio-context)
+
+(comment
+
+
+  (-> (new js/window.AudioContext)
+      (.resume)
+      (.then (fn [e]
+               (js/console.log "then:" (.-state (new js/window.AudioContext)))))
+      (.catch (fn [e]
+                (js/console.log "catch:" e))))
+
+  (def db @re-frame.db/app-db)
+
+  (.-activeAudioContext abcjs)
+  )
+;; => nil
+
+(rf/reg-event-fx
+ ::activate-editor!
+ (fn [{:keys [db]} [_event-id component-identifier]]
+   (js/console.log ::activate-editor!)
+   (let [editor (get-in db (conj editors-path component-identifier :editor))]
+     {::editor-go! {:component-identifier component-identifier
+                    :editor               editor}})))
 
 (def whiskey-abc
   "X: 1                                                                       \nT: Wagon Wheel, mandolin solo                                              \nM: 4/4                                                                     \nL: 1/8                                                                     \nK: A                                                                       \nP: A                                                                       \n|: \"A\" A,2A,A, B,CEF | \"E\" E2EE GFEF | \"F#m\" F2FF ABcB  | \"D\" d2ef abaf |  \n|  \"A\" a2aa    fecB  | \"E\" B2BB cBGF | \"D\"   D2F2 dBAB  | \"D\" dABA A4 |    ")
@@ -148,7 +202,19 @@
 (rf/reg-fx
  ::new-editor!
  (fn [{:keys [component-identifier] :as args}]
-   (>evt [::editor component-identifier (new-editor! args)])))
+   (let [editor (new-editor! args)]
+     ;; If user have clicked somewhere on the page it's possible to create a
+     ;; sound context. ABCjs needs that sound context for providing the correct
+     ;; pitches and we use those to visualize the fretboard data.
+     (>evt [::editor component-identifier editor])
+     (when-not (= (.-state (new js/window.AudioContext)) "suspended")
+       (-> (.runWhenReady
+            (.-synthControl (.-synth editor))
+            #(js/Promise.resolve
+              (>evt [::editor component-identifier editor]))
+            nil)
+           (.then #(js/console.log "then" %))
+           (.catch #(js/console.log "error" %)))))))
 
 (rf/reg-event-fx
  ::create-new-editor!
@@ -160,13 +226,17 @@
            editor-dom-id canvas-dom-id warnings-dom-id synth-controller-dom-id]
     :as   args}]
   (r/create-class
-   {:component-did-mount  #(>evt [::create-new-editor! args])
-    :display-name         (str "v1-abc-editor-component" component-identifier)
+   {:component-did-mount #(>evt [::create-new-editor! args])
+    :display-name        (str "v1-abc-editor-component" component-identifier)
     :reagent-render
     (fn []
-      (let [abc-str         (<sub [::abc-str component-identifier])
-            abc-editor-rows (<sub [::abc-editor-rows component-identifier])]
-        [:<>
+      (let [abc-str           (<sub [::abc-str component-identifier])
+            abc-editor-rows   (<sub [::abc-editor-rows component-identifier])
+            editor-is-loaded? (<sub [::editor-is-loaded? component-identifier])]
+        [:div
+         [:p (if editor-is-loaded? "Active" "Not active")]
+         [:button {:on-click #(>evt [::activate-editor! component-identifier])}
+          "Activate"]
          [:div {:style {:display "flex"}}
           [:textarea {:style      {:flex "1"}
                       :id         editor-dom-id
@@ -344,87 +414,3 @@
 
 
   )
-
-
-;; X: 1
-;; T: Wagon Wheel, mandolin solo
-;; M: 4/4
-;; L: 1/8
-;; K: A
-;; P: A
-;; |: "A" A,2A,A, B,CEF | "E" E2EE GFEF | "F#m" F2FF ABcB  | "D" d2ef abaf |
-;; |  "A" a2aa    fecB  | "E" B2BB cBGF | "D"   D2F2 dBAB  | "D" dABA A4 |
-
-
-
-;; Sjön Suger - Nere på stan
-;;
-;; Vers 1
-;; A            D              A
-;; Jag tror jag var på mitt 20 år just den dan
-;;             D             E            A
-;; Jag sa till mamma nu vill jag ensam gå ut
-;;           D                     A
-;; Du brukar alltid va med mej och hålla mig i hand
-;;    D               E
-;; då detta måste bli ett slut
-
-;; Ref 1
-;; A     D                    A
-;; Fööör nere på stan har man roligt som fan
-;;     D                          A
-;; där får man sig ett glas eller två
-;;     D                      A
-;; Där träffar man tjejer med finfina grejer
-;;         E                   A
-;; som man ibland kan få smaka på
-
-;; Banjo solo
-
-;; Vers 2
-;; Men hon svarade mig min stackars lilla pojk
-;; ska du gå ifrån din kära mor
-;; Så jag ilskna väll till och med min manligaste röst
-;; sa jag - ser du inte att jag blivit stor
-
-;; Vers 3
-;; Hon sa det ser jag nog och jag ser något mer
-;; som får kvinnfolket att springa efter dig
-;; Sen på kvällen påväg ut tänkte jag på vad hon sagt
-;; och det kändes något pirrigt inom mig
-
-;; Ref 1
-
-;; Mandolin solo
-
-;; Vers 4
-;; Jag gick in på en pub slog mig ner vid ett bord
-;; Fick in en öl av en fin servitris
-;; Hon stack till mig en lapp som sa jag slutar om en kvar
-;; sen kan du och jag ha skönt på många vis
-
-;; Vers 5
-;; Men jag sprang där ifrån skrämd av den vänliga tant
-;; och sökte skydd i dunklet på en krog
-;; Men där tog fyra flickor hand om mig och dom kladdade runt
-;; och bjöd på drinkar från mitt vinesnabbedog(?)
-
-;; Ref 1
-
-;; Fiol solo
-
-;; Vers 6
-;; När jag vakna ur mitt rus naken i en dubbelsäng
-;; med dessa ladies och jag undrar vad som hänt
-;; Åå när svaret stog klart fick jag brått där ifrån
-;; och inom mig kändes något som förvrängt
-
-;; Ref 2
-;; Men nere på stan ser man en dam
-;; en tjej jag aldrig vågat mig på
-;; nu stannar jag hemma nu får mamma bestämma
-;; För hon är nog den som är bäst ändå
-
-;; Banjo
-
-;; För hon är nog den som är bäst ändå
