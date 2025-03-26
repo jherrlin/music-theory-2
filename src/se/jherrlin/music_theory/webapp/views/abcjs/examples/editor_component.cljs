@@ -32,7 +32,42 @@
 (def selected-in-abc-path         (partial derived-data ::selected-in-abc))
 (def all-or-selected-path         (partial derived-data ::all-or-selected))
 (def fretboard-matrix-path        (partial derived-data ::fretboard-matrix))
+(def current-beat-number-path     (partial derived-data ::current-beat-number))
+(def loop-start-at-beat-path      (partial derived-data ::loop-start-at-beat))
+(def loop-ends-at-beat-path       (partial derived-data ::loop-ends-at-beat))
+(def loop?-path                   (partial derived-data ::loop?))
 
+(rf/reg-event-db
+ ::loop-start-at-beat
+ (fn [db [_event-id component-identifier]]
+   (let [beat (get-in db (current-beat-number-path component-identifier) 0)]
+     (assoc-in db (loop-start-at-beat-path component-identifier) beat))))
+
+(rf/reg-sub
+ ::loop-start-at-beat
+ (fn [db [_sub-id component-identifier]]
+   (get-in db (loop-start-at-beat-path component-identifier))))
+
+(rf/reg-event-db
+ ::loop-ends-at-beat
+ (fn [db [_event-id component-identifier beat]]
+   (let [beat (get-in db (current-beat-number-path component-identifier) 0)]
+     (assoc-in db (loop-ends-at-beat-path component-identifier) beat))))
+
+(rf/reg-sub
+ ::loop-ends-at-beat
+ (fn [db [_sub-id component-identifier]]
+   (get-in db (loop-ends-at-beat-path component-identifier))))
+
+(rf/reg-event-db
+ ::loop?
+ (fn [db [_event-id component-identifier loop?]]
+   (assoc-in db (loop?-path component-identifier) loop?)))
+
+(rf/reg-sub
+ ::loop?
+ (fn [db [_sub-id component-identifier]]
+   (get-in db (loop?-path component-identifier) false)))
 
 (rf/reg-sub
  ::abc-str
@@ -125,7 +160,7 @@
    (assoc-in db (all-or-selected-path component-identifier) k)))
 
 (def whiskey-abc
-  "X: 1                                                                       \nT: Wagon Wheel, mandolin solo                                              \nM: 4/4                                                                     \nL: 1/8                                                                     \nK: A                                                                       \nP: A                                                                       \n|: \"A\" A,2A,A, B,CEF | \"E\" E2EE GFEF | \"F#m\" F2FF ABcB  | \"D\" d2ef abaf |  \n|  \"A\" a2aa    fecB  | \"E\" B2BB cBGF | \"D\"   D2F2 dBAB  | \"D\" dABA A4 |    ")
+  "X: 1                                                                       \nT: Wagon Wheel, mandolin solo                                              \nM: 4/4                                                                     \nL: 1/8                                                                     \nK: A                                                                       \nP: A                                                                       \n|: \"A\" A,2A,2 A,2A,2 | \"E\" E2EE GFEF | \"F#m\" F2FF ABcB  | \"D\" d2ef abaf |  \n|  \"A\" a2aa    fecB  | \"E\" B2BB cBGF | \"D\"   D2F2 dBAB  | \"D\" dABA A4 |    ")
 
 
 (defn move-cursor! [cursor {:keys [x1 x2 y1 y2]}]
@@ -192,7 +227,34 @@
                       :index-tone (music-theory/interval-tone->index-tone tone)}))
               (set)))))
 
+(rf/reg-event-db
+ ::current-beat-number
+ (fn [db [_event-id component-identifier current-beat-number]]
+   (assoc-in db (current-beat-number-path component-identifier) current-beat-number)))
+
+(rf/reg-sub
+ ::current-beat-number
+ (fn [db [_sub-id component-identifier]]
+   (get-in db (current-beat-number-path component-identifier) 0)))
+
+(rf/reg-fx
+ ::seek
+ (fn [{:keys [editor value kind]}]
+   (.seek (.-synthControl (.-synth editor)) value kind)))
+
+(rf/reg-event-fx
+ ::seek-beat
+ (fn [{:keys [db]} [_event-id component-identifier f value]]
+   (let [current-beat (get-in db (current-beat-number-path component-identifier))
+         editor       (get-in db (editor-path component-identifier))
+         new-beat     (f current-beat value)]
+     {:db    (assoc-in db (current-beat-number-path component-identifier) new-beat)
+      ::seek {:editor editor
+              :value  new-beat
+              :kind   "beats"}})))
+
 (defn ->cursor-control-obj [{:keys [cursor canvas-dom-id component-identifier]}]
+  (def component-identifier component-identifier)
   (js-obj
    "onReady" (fn [synthController]
                (let [svg (js/document.querySelector (str "#" canvas-dom-id " svg"))]
@@ -206,10 +268,18 @@
    "onFinished" (fn []
                   (js/console.log "onFinished"))
    "onBeat" (fn [beatNumber totalBeats totalTime position]
-              (move-cursor! cursor {:x1 (- (.-left position) 2)
-                                    :x2 (- (.-left position) 2)
-                                    :y1 (.-top position)
-                                    :y2 (+ (.-top position) (.-height position))}))
+              (let [current-beat (js/Math.round beatNumber)]
+                (js/console.log "onBeat" current-beat)
+                (>evt [::current-beat-number component-identifier current-beat])
+                (move-cursor! cursor {:x1 (- (.-left position) 2)
+                                      :x2 (- (.-left position) 2)
+                                      :y1 (.-top position)
+                                      :y2 (+ (.-top position) (.-height position))})
+                (when (and (get-in @re-frame.db/app-db (loop?-path component-identifier))
+                           (= current-beat (get-in @re-frame.db/app-db (loop-ends-at-beat-path component-identifier))))
+                  (let [editor (get-in @re-frame.db/app-db (editor-path component-identifier))
+                        beat   (get-in @re-frame.db/app-db (loop-start-at-beat-path component-identifier))]
+                    (.seek (.-synthControl (.-synth editor)) beat "beats")))))
    "onEvent" (fn [event]
                (js/console.log "onEvent" event)
                (doseq [n (->> (js->clj (.-midiPitches event) :keywordize-keys true)
@@ -377,13 +447,17 @@
             index-tones-used-in-abc (<sub [::index-tones-used-in-abc component-identifier])
             selected-in-abc         (<sub [::selected-in-abc component-identifier])
             all-or-selected         (<sub [::all-or-selected component-identifier])
-            fretboard-matrix        (<sub [::fretboard-matrix component-identifier])]
+            fretboard-matrix        (<sub [::fretboard-matrix component-identifier])
+            current-beat-number     (<sub [::current-beat-number component-identifier])
+            loop-start-at-beat      (<sub [::loop-start-at-beat component-identifier])
+            loop-ends-at-beat       (<sub [::loop-ends-at-beat component-identifier])
+            loop?                   (<sub [::loop? component-identifier])]
         [:div
          ;; [:p (if editor-is-loaded? "Active" "Not active")]
          ;; [:button {:on-click #(>evt [::activate-editor! component-identifier])}
          ;;  "Activate"]
-         [:div {:style {:display "flex" #_"none"}}
-          [:textarea {:style      {:flex       "1"}
+         [:div {:style {:display "flex" #_ "none"}}
+          [:textarea {:style      {:flex "1"}
                       :id         editor-dom-id
                       :rows       abc-editor-rows
                       :spellCheck false
@@ -397,6 +471,33 @@
          [:div {:id canvas-dom-id}]
 
          [:div {:id synth-controller-dom-id}]
+
+         [:div
+          [:label {:for (str component-identifier "current-beat-input")}
+           "Beat "]
+          [:button {:on-click #(>evt [::seek-beat component-identifier - 1])} "<"]
+
+          [:input {:id    (str component-identifier "current-beat-input")
+                   :value current-beat-number
+                   :type  "number"
+                   :min   "0"}]
+          [:button {:on-click #(>evt [::seek-beat component-identifier + 1])} ">"]
+
+          [:label {:for (str component-identifier "loop")} "Loop?"]
+          [:input {:id        (str component-identifier "loop")
+                   :type      "checkbox"
+                   :checked   loop?
+                   :on-change #(>evt [::loop? component-identifier (not loop?)])}]
+          [:button {:on-click #(>evt [::loop-start-at-beat component-identifier])}
+           (if loop-start-at-beat
+             (str "Loop start at beat: " loop-start-at-beat)
+             "Start beat")]
+          [:button {:on-click #(>evt [::loop-ends-at-beat component-identifier])}
+           (if loop-start-at-beat
+             (str "Loop ends at beat: " loop-ends-at-beat)
+             "End beat")]]
+
+
 
          [fretboard2/styled-view
           {:id               component-identifier
@@ -568,8 +669,8 @@
     (js/console.log (.-noteTimings (first (.-tunes editor)))))
 
 
-  (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
-    (.seek (.-synthControl (.-synth editor)) 1 "beats"))
+  (let [editor (<sub [::editor "c-3cf5d204-15b2-4e6c-9c1e-4094f54868ca"])]
+    (.seek (.-synthControl (.-synth editor)) 0.2 "beats"))
 
   (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
     (js/console.log (.-synth editor)))
