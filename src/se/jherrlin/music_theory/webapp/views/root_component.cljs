@@ -13,14 +13,10 @@
        {:style {:height         "100%"
                 :display        "flex"
                 :flex-direction "column"}}
-       [:div {:style {:height      "100%"
-                      :overflow-y  "auto"
-                      :overflow-x  "hidden"
-                      :padding-top "0.5em"}}
 
-        (when (= top-nav :abcjs-examples)
-          [views.common/top-nav-abcjs-examples])
+       (when (= top-nav :abcjs-examples)
+         [views.common/top-nav-abcjs-examples])
 
-        ;; This is the main location on the page.
-        (when current-route
-          (-> current-route :data :view))]])))
+       ;; This is the main location on the page.
+       (when current-route
+         (-> current-route :data :view))])))

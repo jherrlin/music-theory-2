@@ -178,8 +178,8 @@ DD |: \"D\" D,,EFG A2 FG | ABAG FDEF  | \"G\" GABG \"D\" F2 AF | \"A\" EDEF EDCE
                  (def event event)
 
                  (doseq [n (->> (js->clj (.-midiPitches event) :keywordize-keys true)
-                              (map :pitch))]
-                        (unmark-and-mark-fretboard-tone n))
+                                (map :pitch))]
+                   (unmark-and-mark-fretboard-tone n))
                  (js->clj event :keywordize-keys true)))))
 
 (defn selected-tones []

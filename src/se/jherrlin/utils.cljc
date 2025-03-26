@@ -399,11 +399,13 @@
    {}
    m))
 
-(add-qualified-ns
- {:instrument :guitar,
-  :key-of     :c,
-  :id         #uuid "1cd72972-ca33-4962-871c-1551b7ea5244"}
- :instrument)
+(comment
+  (add-qualified-ns
+   {:instrument :guitar,
+    :key-of     :c,
+    :id         #uuid "1cd72972-ca33-4962-871c-1551b7ea5244"}
+   :instrument)
+  )
 
 (defn map-matrix-by-y
   "Map over `matrix` applying `f` on each item.

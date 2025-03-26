@@ -39,16 +39,16 @@
                        :scale-pattern-range [6 7]
                        :order               20
                        :tuning              [{:tone        :g
-                                              :octave      2
+                                              :octave      3
                                               :start-index 0}
                                              {:tone        :d
-                                              :octave      3
+                                              :octave      4
                                               :start-index 0}
                                              {:tone        :a
-                                              :octave      3
+                                              :octave      4
                                               :start-index 0}
                                              {:tone        :e
-                                              :octave      4
+                                              :octave      5
                                               :start-index 0}]}
    :mandolin-adae  {:id                  :mandolin-adae
                     :text                "Mandolin (ADAE)"

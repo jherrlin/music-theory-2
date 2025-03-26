@@ -17,9 +17,19 @@
 (defn path [x]
   (vec (flatten [app-db-path x])))
 
+(defn derived-data [k component-identifier]
+  (path [:derived component-identifier k]))
+
 (def components-path (path ::components))
 (def components-index-path (path ::components-index))
 (def editors-path (path ::editors))
+
+(def key-of-path           (partial derived-data ::key-of))
+(def signature-path        (partial derived-data ::signature))
+(def editor-path           (partial derived-data ::editor))
+(def editor-loaded?-path   (partial derived-data ::editor-loaded?))
+(def index-tones-used-in-abc-path (partial derived-data ::index-tones-used-in-abc))
+
 
 (rf/reg-sub
  ::abc-str
@@ -32,8 +42,8 @@
  (fn [db [_sub-id component-identifier]]
    (let [component-idx (get-in db (conj components-index-path component-identifier))
          rows          (some-> (get-in db (conj components-path component-idx :abc-str))
-                      (str/split-lines)
-                      (count))]
+                               (str/split-lines)
+                               (count))]
      (if (< rows 5) 5 (inc rows)))))
 
 (rf/reg-event-db
@@ -45,20 +55,20 @@
 (rf/reg-sub
  ::editor
  (fn [db [_sub-id component-identifier]]
-   (get-in db (conj editors-path component-identifier :editor))))
+   (get-in db (editor-path component-identifier))))
 
 (rf/reg-sub
  ::editor-is-loaded?
  (fn [db [_sub-id component-identifier]]
-   (get-in db (conj editors-path component-identifier :is-loaded?))))
+   (get-in db (editor-loaded?-path component-identifier))))
 
 (rf/reg-event-db
  ::editor
  (fn [db [_event-id component-identifier editor]]
    (let [is-loaded? (.-isLoaded (.-synthControl (.-synth editor)))]
      (-> db
-         (assoc-in (conj editors-path component-identifier :editor) editor)
-         (assoc-in (conj editors-path component-identifier :is-loaded?) is-loaded?)))))
+         (assoc-in (editor-path component-identifier) editor)
+         (assoc-in (editor-loaded?-path component-identifier) is-loaded?)))))
 
 (rf/reg-fx
  ::editor-go!
@@ -82,27 +92,11 @@
 
 (set-audio-context! audio-context)
 
-(comment
-
-
-  (-> (new js/window.AudioContext)
-      (.resume)
-      (.then (fn [e]
-               (js/console.log "then:" (.-state (new js/window.AudioContext)))))
-      (.catch (fn [e]
-                (js/console.log "catch:" e))))
-
-  (def db @re-frame.db/app-db)
-
-  (.-activeAudioContext abcjs)
-  )
-;; => nil
-
 (rf/reg-event-fx
  ::activate-editor!
  (fn [{:keys [db]} [_event-id component-identifier]]
    (js/console.log ::activate-editor!)
-   (let [editor (get-in db (conj editors-path component-identifier :editor))]
+   (let [editor (get-in db (editor-path component-identifier))]
      {::editor-go! {:component-identifier component-identifier
                     :editor               editor}})))
 
@@ -126,7 +120,30 @@
     (.setAttributeNS cursor nil, "y2", 0)
     cursor))
 
-(defn ->cursor-control-obj [{:keys [cursor canvas-dom-id]}]
+(def fretboard-checked-state (atom []))
+
+(defn unmark-and-mark-fretboard-tone! [component-identifier pitch-nr]
+  ;; Remove old markers
+  (let [elements @fretboard-checked-state]
+    (.forEach
+     (js/Array.from elements)
+     (fn [el]
+       (set! (.-backgroundColor (.-style el)) "rgb(255, 165, 0)"))))
+
+  ;; Add new markers
+  (reset!
+   fretboard-checked-state
+   (.map
+    (js/Array.from
+     (.querySelectorAll
+      (js/document.querySelector
+       (str "#" component-identifier))
+      (str "." component-identifier "-" pitch-nr "-center-text-div")))
+    (fn [el]
+      (set! (.-backgroundColor (.-style el)) "green")
+      el))))
+
+(defn ->cursor-control-obj [{:keys [cursor canvas-dom-id component-identifier]}]
   (js-obj
    "onReady" (fn [synthController]
                (let [svg (js/document.querySelector (str "#" canvas-dom-id " svg"))]
@@ -142,7 +159,41 @@
                                     :y1 (.-top position)
                                     :y2 (+ (.-top position) (.-height position))}))
    "onEvent" (fn [event]
-               (js/console.log "onEvent" event))))
+               (js/console.log "onEvent" event)
+               (doseq [n (->> (js->clj (.-midiPitches event) :keywordize-keys true)
+                              (map :pitch))]
+                 (unmark-and-mark-fretboard-tone! component-identifier n)))))
+
+(rf/reg-event-fx
+ ::abc-after-parsing
+ (fn [{:keys [db]} [_event-id {:keys [tune tune-number abc-string component-identifier]}]]
+   (let [signature (-> (.getKeySignature tune)
+                       (js->clj  :keywordize-keys true)
+                       (select-keys [:accidentals :root :acc :mode]))
+         key-of    (some-> signature :root clojure.string/lower-case keyword)]
+     {:db (-> db
+              (assoc-in (key-of-path    component-identifier) key-of)
+              (assoc-in (signature-path component-identifier) signature))
+      :fx [[:dispatch [::index-tones-used-in-abc component-identifier]]]})))
+
+(rf/reg-event-fx
+ ::index-tones-used-in-abc
+ (fn [{:keys [db]} [_event-id component-identifier]]
+   (js/console.log ::index-tones-used-in-abc)
+   (let [editor             (get-in db (editor-path component-identifier))
+         index-tones+octave (some->> (js->clj (.-noteTimings (first (.-tunes editor))) :keywordize-keys true)
+                                     (mapcat :midiPitches)
+                                     (filter (comp #{"note"} :cmd))
+                                     (map :pitch)
+                                     (into #{})
+                                     (mapv music-theory/->midi-pitch->index-tone-with-octave))]
+     {:db (cond-> db
+            index-tones+octave (assoc-in (index-tones-used-in-abc-path component-identifier) index-tones+octave))})))
+
+(rf/reg-sub
+ ::index-tones-used-in-abc
+ (fn [db [_sub-id component-identifier]]
+   (get-in db (index-tones-used-in-abc-path component-identifier))))
 
 (defn new-editor!
   [{:keys [component-identifier
@@ -168,12 +219,17 @@
                                 :displayProgress true
                                 :displayWarp     true
                                 :displayLoop     true}}
-     :abcjsParams             {:responsive "resize"
-                               :tablature  tab-instrument
-                               :afterParsing (fn [tune, tuneNumber, abcString]
-                                               (js/console.log
-                                                "afterParsing"
-                                                tune, tuneNumber, abcString))
+     :abcjsParams             {:responsive    "resize"
+                               :tablature     tab-instrument
+                               :afterParsing  (fn [tune, tuneNumber, abcString]
+                                                (js/console.log
+                                                 "afterParsing"
+                                                 tune, tuneNumber, abcString)
+                                                (>evt [::abc-after-parsing
+                                                       {:tune                 tune
+                                                        :tune-number          tuneNumber
+                                                        :abc-string           abcString
+                                                        :component-identifier component-identifier}]))
                                :clickListener (fn [abcelem tuneNumber classes analysis drag]
                                                 (js/console.log
                                                  "clickListener"
@@ -186,11 +242,12 @@
           canvas-dom-id        (str component-identifier "-canvas-dom-id")
           canvas-cursor        (create-cursor canvas-cursor-dom-id)]
       {:synth-controller        (new ->cursor-control-obj
-                                     {:cursor        canvas-cursor
-                                      :canvas-dom-id canvas-dom-id})
+                                     {:cursor               canvas-cursor
+                                      :canvas-dom-id        canvas-dom-id
+                                      :component-identifier component-identifier})
        :editor-onchange         (fn [new-abc-str]
-                                  ;; This is not how ABC string is updated.
-                                  ;; But could be a good place for callbacks
+                                  ;; This is not how ABC string is updated. But
+                                  ;; could be a good place for callbacks.
                                   (js/console.log "new-abc-str:" new-abc-str))
        :canvas-cursor           canvas-cursor
        :editor-dom-id           (str component-identifier "-editor-dom-id")
@@ -221,6 +278,33 @@
  (fn [{:keys [db]} [_event-id args]]
    {:fx [[::new-editor! args]]}))
 
+(def mandolin-fretboard-matrix
+  (music-theory/create-fretboard-matrix-for-instrument
+   :d 13 :mandolin))
+
+(defn fretboard2-matrix [index-tones-used-in-abc]
+  (music-theory/fretboard-matrix->fretboard2
+   {}
+   (let [m         (->> mandolin-fretboard-matrix
+                        (apply concat)
+                        (group-by
+                         (juxt :index-tone :octave))
+                        (map (fn [[[index-tone octave] frets]]
+                               [{:index-tone index-tone :octave octave}
+                                (->> frets (sort-by :x) first)]))
+                        (into {}))
+         frets     (->> index-tones-used-in-abc
+                        (map #(get m % (assoc % :not-found true))))
+         not-found (filter :not-found frets)
+         found     (remove :not-found frets)]
+  (reduce
+   (fn [acc {:keys [x y interval-tone]}]
+     (-> acc
+         (assoc-in [y x :out] interval-tone)
+         (assoc-in [y x :match?] true)))
+   mandolin-fretboard-matrix
+   found))))
+
 (defn v1-abc-editor-component
   [{:keys [component-identifier component-version
            editor-dom-id canvas-dom-id warnings-dom-id synth-controller-dom-id]
@@ -230,9 +314,10 @@
     :display-name        (str "v1-abc-editor-component" component-identifier)
     :reagent-render
     (fn []
-      (let [abc-str           (<sub [::abc-str component-identifier])
-            abc-editor-rows   (<sub [::abc-editor-rows component-identifier])
-            editor-is-loaded? (<sub [::editor-is-loaded? component-identifier])]
+      (let [abc-str                 (<sub [::abc-str component-identifier])
+            abc-editor-rows         (<sub [::abc-editor-rows component-identifier])
+            editor-is-loaded?       (<sub [::editor-is-loaded? component-identifier])
+            index-tones-used-in-abc (<sub [::index-tones-used-in-abc component-identifier])]
         [:div
          [:p (if editor-is-loaded? "Active" "Not active")]
          [:button {:on-click #(>evt [::activate-editor! component-identifier])}
@@ -251,7 +336,12 @@
 
          [:div {:id canvas-dom-id}]
 
-         [:div {:id synth-controller-dom-id}]]))}))
+         [:div {:id synth-controller-dom-id}]
+
+         [fretboard2/styled-view
+          {:id               component-identifier
+           :fretboard-matrix (fretboard2-matrix index-tones-used-in-abc)
+           :fretboard-size   1}]]))}))
 
 (comment
   (def db @re-frame.db/app-db)
@@ -285,7 +375,7 @@
 (defn v1-textarea
   [{:keys [text]}]
   [:div {:style {:flex 1}}
-   [:textarea {:value text}]])
+   [:textarea {:defaultValue text}]])
 
 (defn view []
   [:<>
@@ -311,12 +401,13 @@
 (rf/reg-event-fx
  ::start
  (fn [{:keys [db]} [_event-id]]
-   (let [components [{:component-version    {:version 1 :type :h2-title}
-                      :component-identifier (random-uuid)
-                      :text                 "Whiskey before breakfast lesson"}
-                     {:component-version    {:version 1 :type :textarea}
-                      :component-identifier (random-uuid)
-                      :text                 "hejsan"}
+   (let [components [
+                     ;; {:component-version    {:version 1 :type :h2-title}
+                     ;;  :component-identifier (random-uuid)
+                     ;;  :text                 "Whiskey before breakfast lesson"}
+                     ;; {:component-version    {:version 1 :type :textarea}
+                     ;;  :component-identifier (random-uuid)
+                     ;;  :text                 "hejsan"}
                      {:component-version    {:version 1 :type :abc-editor}
                       :component-identifier #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"
                       :tab-instrument       [{:instrument "mandolin"
@@ -347,24 +438,15 @@
 
 (comment
 
+
+
   (get @re-frame.db/app-db app-db-path)
   (get-in @re-frame.db/app-db components-path)
   (get-in @re-frame.db/app-db components-index-path)
-  (get-in @re-frame.db/app-db editors-path)
 
   (<sub [::components])
-  (->> (<sub [::abc-str #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])
-       (str/split-lines)
-       (count)
-       (inc))
 
   (>evt [::abc-str #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270" "a"])
-
-
-  (->> (get-in @re-frame.db/app-db components-path)
-       (map ->component))
-
-
 
 
   (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
@@ -387,7 +469,19 @@
          (filter (comp #{"note"} :cmd))
          (map :pitch)
          (into #{})
-         (map music-theory/->midi-pitch->index-tone-with-octave)))
+         (mapv music-theory/->midi-pitch->index-tone-with-octave)))
+
+  (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
+    (-> (.getKeySignature (first (.-tunes editor)))
+        (js->clj  :keywordize-keys true)
+        :root
+        clojure.string/lower-case
+        keyword))
+  {:accidentals [], :root "A", :acc "", :mode "m", :el_type "keySignature"}
+
+
+  (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
+    (js/console.log (.getKeySignature (first (.-tunes editor)))))
 
   (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
     (js/console.log (.-noteTimings (first (.-tunes editor)))))
