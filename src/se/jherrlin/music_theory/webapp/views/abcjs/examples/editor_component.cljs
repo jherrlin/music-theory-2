@@ -148,6 +148,7 @@
    "onReady" (fn [synthController]
                (let [svg (js/document.querySelector (str "#" canvas-dom-id " svg"))]
                  (js/console.log "onReady" synthController)
+                 (>evt [::index-tones-used-in-abc component-identifier])
                  (.appendChild svg cursor)))
    "onStart" (fn []
                (js/console.log "onStart"))
