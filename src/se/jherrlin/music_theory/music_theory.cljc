@@ -72,6 +72,7 @@
 ;;
 (def tones [:a :a# :b :c :c# :d :d# :e :f :f# :g :g#])
 (def all-tones (general/all-tones))
+(def interval-tone->index-tone general/interval-tone->index-tone)
 (def tones-starting-at general/tones-starting-at)
 (def interval-tones general/interval-tones)
 (def scales-to-chord general/scales-to-chord)

@@ -24,11 +24,13 @@
 (def components-index-path (path ::components-index))
 (def editors-path (path ::editors))
 
-(def key-of-path           (partial derived-data ::key-of))
-(def signature-path        (partial derived-data ::signature))
-(def editor-path           (partial derived-data ::editor))
-(def editor-loaded?-path   (partial derived-data ::editor-loaded?))
+(def key-of-path                  (partial derived-data ::key-of))
+(def signature-path               (partial derived-data ::signature))
+(def editor-path                  (partial derived-data ::editor))
+(def editor-loaded?-path          (partial derived-data ::editor-loaded?))
 (def index-tones-used-in-abc-path (partial derived-data ::index-tones-used-in-abc))
+(def selected-in-abc-path         (partial derived-data ::selected-in-abc))
+(def all-or-selected-path         (partial derived-data ::all-or-selected))
 
 
 (rf/reg-sub
@@ -100,6 +102,16 @@
      {::editor-go! {:component-identifier component-identifier
                     :editor               editor}})))
 
+(rf/reg-sub
+ ::all-or-selected
+ (fn [db [_sub-id component-identifier]]
+   (get-in db (all-or-selected-path component-identifier) :all)))
+
+(rf/reg-event-db
+ ::all-or-selected
+ (fn [db [_event-id component-identifier k]]
+   (assoc-in db (all-or-selected-path component-identifier) k)))
+
 (def whiskey-abc
   "X: 1                                                                       \nT: Wagon Wheel, mandolin solo                                              \nM: 4/4                                                                     \nL: 1/8                                                                     \nK: A                                                                       \nP: A                                                                       \n|: \"A\" A,2A,A, B,CEF | \"E\" E2EE GFEF | \"F#m\" F2FF ABcB  | \"D\" d2ef abaf |  \n|  \"A\" a2aa    fecB  | \"E\" B2BB cBGF | \"D\"   D2F2 dBAB  | \"D\" dABA A4 |    ")
 
@@ -143,6 +155,31 @@
       (set! (.-backgroundColor (.-style el)) "green")
       el))))
 
+(rf/reg-event-fx
+ ::selected-in-abc
+ (fn [{:keys [db]} [_event-id component-identifier]]
+   (if-let [editor (get-in db (editor-path component-identifier))]
+     (let [pitches (->> (.-selected (.-engraver (first (.-tunes editor))))
+                        (filter #(= "note" (.-type %)))
+                        (map #(js->clj (.-abcelem %) :keywordize-keys true))
+                        (mapcat :pitches))]
+       {:db (assoc-in db (selected-in-abc-path component-identifier) pitches)})
+     {})))
+
+(rf/reg-sub
+ ::selected-in-abc
+ (fn [db [_sub-id component-identifier]]
+   (let [selected    (get-in db (selected-in-abc-path component-identifier))
+         signature   (get-in db (signature-path component-identifier))
+         accidentals (:accidentals signature)]
+     (some->> (abc-utils/->pitches
+               {:accidentals accidentals
+                :pitches     selected})
+              (map (fn [{:keys [octave tone]}]
+                     {:octave     octave
+                      :index-tone (music-theory/interval-tone->index-tone tone)}))
+              (set)))))
+
 (defn ->cursor-control-obj [{:keys [cursor canvas-dom-id component-identifier]}]
   (js-obj
    "onReady" (fn [synthController]
@@ -151,7 +188,9 @@
                  (>evt [::index-tones-used-in-abc component-identifier])
                  (.appendChild svg cursor)))
    "onStart" (fn []
-               (js/console.log "onStart"))
+               (js/console.log "onStart")
+               (>evt [::all-or-selected component-identifier :all])
+               (>evt [::selected-in-abc-path component-identifier []]))
    "onFinished" (fn []
                   (js/console.log "onFinished"))
    "onBeat" (fn [beatNumber totalBeats totalTime position]
@@ -211,7 +250,9 @@
      :onchange                (fn [new-abc-str]
                                 (js/console.log "editor onchange" new-abc-str))
      :selectionChangeCallback (fn [selection-start selection-end]
-                                (js/console.log "selectionChangeCallback" selection-start selection-end))
+                                (js/console.log "selectionChangeCallback")
+                                (>evt [::all-or-selected component-identifier :selected])
+                                (>evt [::selected-in-abc component-identifier]))
      :synth                   {:el            (str "#" synth-controller-dom-id)
                                :cursorControl synth-controller
                                :options
@@ -288,8 +329,7 @@
    {}
    (let [m         (->> mandolin-fretboard-matrix
                         (apply concat)
-                        (group-by
-                         (juxt :index-tone :octave))
+                        (group-by (juxt :index-tone :octave))
                         (map (fn [[[index-tone octave] frets]]
                                [{:index-tone index-tone :octave octave}
                                 (->> frets (sort-by :x) first)]))
@@ -298,13 +338,13 @@
                         (map #(get m % (assoc % :not-found true))))
          not-found (filter :not-found frets)
          found     (remove :not-found frets)]
-  (reduce
-   (fn [acc {:keys [x y interval-tone]}]
-     (-> acc
-         (assoc-in [y x :out] interval-tone)
-         (assoc-in [y x :match?] true)))
-   mandolin-fretboard-matrix
-   found))))
+     (reduce
+      (fn [acc {:keys [x y interval-tone]}]
+        (-> acc
+            (assoc-in [y x :out] interval-tone)
+            (assoc-in [y x :match?] true)))
+      mandolin-fretboard-matrix
+      found))))
 
 (defn v1-abc-editor-component
   [{:keys [component-identifier component-version
@@ -318,7 +358,9 @@
       (let [abc-str                 (<sub [::abc-str component-identifier])
             abc-editor-rows         (<sub [::abc-editor-rows component-identifier])
             editor-is-loaded?       (<sub [::editor-is-loaded? component-identifier])
-            index-tones-used-in-abc (<sub [::index-tones-used-in-abc component-identifier])]
+            index-tones-used-in-abc (<sub [::index-tones-used-in-abc component-identifier])
+            selected-in-abc         (<sub [::selected-in-abc component-identifier])
+            all-or-selected         (<sub [::all-or-selected component-identifier])]
         [:div
          [:p (if editor-is-loaded? "Active" "Not active")]
          [:button {:on-click #(>evt [::activate-editor! component-identifier])}
@@ -341,7 +383,9 @@
 
          [fretboard2/styled-view
           {:id               component-identifier
-           :fretboard-matrix (fretboard2-matrix index-tones-used-in-abc)
+           :fretboard-matrix (fretboard2-matrix
+                              (if (= all-or-selected :selected)
+                                selected-in-abc index-tones-used-in-abc))
            :fretboard-size   1}]]))}))
 
 (comment
@@ -440,7 +484,6 @@
 (comment
 
 
-
   (get @re-frame.db/app-db app-db-path)
   (get-in @re-frame.db/app-db components-path)
   (get-in @re-frame.db/app-db components-index-path)
@@ -448,6 +491,11 @@
   (<sub [::components])
 
   (>evt [::abc-str #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270" "a"])
+
+  (<sub [::index-tones-used-in-abc #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])
+  (<sub [::selected-in-abc #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])
+  (<sub [::all-or-selected #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])
+  (>evt [::all-or-selected #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270" :selected])
 
 
   (let [editor (<sub [::editor #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"])]
