@@ -281,7 +281,7 @@
 
 (def mandolin-fretboard-matrix
   (music-theory/create-fretboard-matrix-for-instrument
-   :d 13 :mandolin))
+   :a 13 :mandolin))
 
 (defn fretboard2-matrix [index-tones-used-in-abc]
   (music-theory/fretboard-matrix->fretboard2
