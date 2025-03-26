@@ -24,7 +24,10 @@
   `number-of-frets`  - Width of the freatboard."
   ([m number-of-frets]
    (fretboard-string (general/all-tones) m number-of-frets))
-  ([all-tones {:keys [tone octave start-index] :or {start-index 0}} number-of-frets]
+  ([all-tones
+    {:keys [tone octave start-index]
+     :or   {start-index 0}}
+    number-of-frets]
    {:pre [(models.tone/valid-index-tones? all-tones)
           (models.tone/valid-interval-tone? tone)
           (number? octave)

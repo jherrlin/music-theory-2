@@ -10,6 +10,7 @@
    [se.jherrlin.music-theory.fretboard :as fretboard]
    [se.jherrlin.music-theory.models.tone :as models.tone]
    [se.jherrlin.music-theory.models.entity :as models.entity]
+   [se.jherrlin.music-theory.abc :as abc]
    [se.jherrlin.music-theory.models.harmonization :as models.harmonization]
    [se.jherrlin.music-theory.models.fretboard-matrix :as models.fretboard-matrix]))
 
@@ -45,7 +46,6 @@
 ;;
 ;; Definitions
 ;;
-
 (def get-definition definitions/get-definition)
 (def get-definition-type definitions/definition-type)
 (def get-chord definitions/chord)
@@ -66,6 +66,10 @@
   (scale-patterns-for-scale-and-instrument #{:major} :guitar)
   )
 
+;;
+;; ABC
+;;
+(def abc-tones->tone+octave abc/abc-tones->tone+octave)
 
 ;;
 ;; General

@@ -190,7 +190,7 @@
    "onStart" (fn []
                (js/console.log "onStart")
                (>evt [::all-or-selected component-identifier :all])
-               (>evt [::selected-in-abc-path component-identifier []]))
+               (>evt [::selected-in-abc component-identifier []]))
    "onFinished" (fn []
                   (js/console.log "onFinished"))
    "onBeat" (fn [beatNumber totalBeats totalTime position]
@@ -322,7 +322,9 @@
 
 (def mandolin-fretboard-matrix
   (music-theory/create-fretboard-matrix-for-instrument
-   :a 13 :mandolin))
+   :a
+   13
+   :mandolin))
 
 (defn fretboard2-matrix [index-tones-used-in-abc]
   (music-theory/fretboard-matrix->fretboard2
@@ -408,7 +410,13 @@
                                (map-indexed vector)
                                (map (fn [[idx {:keys [component-identifier]}]]
                                       [component-identifier idx]))
-                               (into {}))]
+                               (into {}))
+         components       (->> components
+                               (mapv (fn [{:keys [instrument] :as m}]
+                                       (let [tab-instrument (:abc (music-theory/get-instrument instrument))]
+                                         (cond-> m
+                                           tab-instrument
+                                           (assoc :tab-instrument [tab-instrument]))))))]
      (-> db
          (assoc-in components-path components)
          (assoc-in components-index-path components-index)))))
@@ -455,9 +463,10 @@
                      ;;  :text                 "hejsan"}
                      {:component-version    {:version 1 :type :abc-editor}
                       :component-identifier #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"
-                      :tab-instrument       [{:instrument "mandolin"
-                                              :tuning     ["G,", "D", "A", "e"]
-                                              :capo       0}]
+                      :instrument           :mandolin
+                      ;; :tab-instrument       [{:instrument "mandolin"
+                      ;;                         :tuning     ["G,", "D", "A", "e"]
+                      ;;                         :capo       0}]
                       :abc-str              whiskey-abc}
                      #_{:component-version    {:version 1 :type :abc-editor}
                         :component-identifier #uuid "3527b219-92fc-45ee-b950-22a88746d36d"
