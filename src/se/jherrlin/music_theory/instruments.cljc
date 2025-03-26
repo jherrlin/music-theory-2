@@ -14,23 +14,26 @@
             :order               10
             :scale-pattern-range [4 5]
             :tuning              [{:tone        :e
-                                   :octave      2
+                                   :octave      3
                                    :start-index 0}
                                   {:tone        :a
-                                   :octave      2
+                                   :octave      3
                                    :start-index 0}
                                   {:tone        :d
-                                   :octave      3
+                                   :octave      4
                                    :start-index 0}
                                   {:tone        :g
-                                   :octave      3
+                                   :octave      4
                                    :start-index 0}
                                   {:tone        :b
-                                   :octave      3
+                                   :octave      4
                                    :start-index 0}
                                   {:tone        :e
-                                   :octave      4
-                                   :start-index 0}]}
+                                   :octave      5
+                                   :start-index 0}]
+            :abc                 {:instrument "guitar"
+                                  :tuning     ["E,", "A,", "D", "G", "B", "e"]
+                                  :capo       0}}
 
    :mandolin       {:id                  :mandolin
                     :text                "Mandolin"

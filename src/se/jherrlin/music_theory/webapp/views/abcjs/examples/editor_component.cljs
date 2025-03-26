@@ -31,6 +31,7 @@
 (def index-tones-used-in-abc-path (partial derived-data ::index-tones-used-in-abc))
 (def selected-in-abc-path         (partial derived-data ::selected-in-abc))
 (def all-or-selected-path         (partial derived-data ::all-or-selected))
+(def fretboard-matrix-path        (partial derived-data ::fretboard-matrix))
 
 
 (rf/reg-sub
@@ -53,6 +54,17 @@
  (fn [db [_event-id component-identifier abc-str]]
    (let [component-idx (get-in db (conj components-index-path component-identifier))]
      (assoc-in db (conj components-path component-idx :abc-str) abc-str))))
+
+
+(rf/reg-event-db
+ ::fretboard-matrix
+ (fn [db [_event-id component-identifier fretboard]]
+   (assoc-in db (fretboard-matrix-path component-identifier) fretboard)))
+
+(rf/reg-sub
+ ::fretboard-matrix
+ (fn [db [_sub-id component-identifier]]
+   (get-in db (fretboard-matrix-path component-identifier))))
 
 (rf/reg-sub
  ::editor
@@ -207,14 +219,22 @@
 (rf/reg-event-fx
  ::abc-after-parsing
  (fn [{:keys [db]} [_event-id {:keys [tune tune-number abc-string component-identifier]}]]
-   (let [signature (-> (.getKeySignature tune)
-                       (js->clj  :keywordize-keys true)
-                       (select-keys [:accidentals :root :acc :mode]))
-         key-of    (some-> signature :root clojure.string/lower-case keyword)]
+   (let [component-idx (get-in db (conj components-index-path component-identifier))
+         instrument    (get-in db (conj components-path component-idx :instrument))
+         signature     (-> (.getKeySignature tune)
+                           (js->clj  :keywordize-keys true)
+                           (select-keys [:accidentals :root :acc :mode]))
+         key-of        (some-> signature :root clojure.string/lower-case keyword)]
      {:db (-> db
               (assoc-in (key-of-path    component-identifier) key-of)
               (assoc-in (signature-path component-identifier) signature))
-      :fx [[:dispatch [::index-tones-used-in-abc component-identifier]]]})))
+      :fx [[:dispatch [::index-tones-used-in-abc component-identifier]]
+           [:dispatch [::fretboard-matrix component-identifier
+                       (if key-of
+                         (music-theory/create-fretboard-matrix-for-instrument
+                          key-of 13 instrument)
+                         (music-theory/create-fretboard-matrix-for-instrument
+                          13 instrument))]]]})))
 
 (rf/reg-event-fx
  ::index-tones-used-in-abc
@@ -320,16 +340,10 @@
  (fn [{:keys [db]} [_event-id args]]
    {:fx [[::new-editor! args]]}))
 
-(def mandolin-fretboard-matrix
-  (music-theory/create-fretboard-matrix-for-instrument
-   :a
-   13
-   :mandolin))
-
-(defn fretboard2-matrix [index-tones-used-in-abc]
+(defn fretboard2-matrix [fretboard-matrix index-tones-used-in-abc]
   (music-theory/fretboard-matrix->fretboard2
    {}
-   (let [m         (->> mandolin-fretboard-matrix
+   (let [m         (->> fretboard-matrix
                         (apply concat)
                         (group-by (juxt :index-tone :octave))
                         (map (fn [[[index-tone octave] frets]]
@@ -345,7 +359,7 @@
         (-> acc
             (assoc-in [y x :out] interval-tone)
             (assoc-in [y x :match?] true)))
-      mandolin-fretboard-matrix
+      fretboard-matrix
       found))))
 
 (defn v1-abc-editor-component
@@ -362,13 +376,14 @@
             editor-is-loaded?       (<sub [::editor-is-loaded? component-identifier])
             index-tones-used-in-abc (<sub [::index-tones-used-in-abc component-identifier])
             selected-in-abc         (<sub [::selected-in-abc component-identifier])
-            all-or-selected         (<sub [::all-or-selected component-identifier])]
+            all-or-selected         (<sub [::all-or-selected component-identifier])
+            fretboard-matrix        (<sub [::fretboard-matrix component-identifier])]
         [:div
-         [:p (if editor-is-loaded? "Active" "Not active")]
-         [:button {:on-click #(>evt [::activate-editor! component-identifier])}
-          "Activate"]
-         [:div {:style {:display "flex"}}
-          [:textarea {:style      {:flex "1"}
+         ;; [:p (if editor-is-loaded? "Active" "Not active")]
+         ;; [:button {:on-click #(>evt [::activate-editor! component-identifier])}
+         ;;  "Activate"]
+         [:div {:style {:display "flex" #_"none"}}
+          [:textarea {:style      {:flex       "1"}
                       :id         editor-dom-id
                       :rows       abc-editor-rows
                       :spellCheck false
@@ -386,6 +401,7 @@
          [fretboard2/styled-view
           {:id               component-identifier
            :fretboard-matrix (fretboard2-matrix
+                              fretboard-matrix
                               (if (= all-or-selected :selected)
                                 selected-in-abc index-tones-used-in-abc))
            :fretboard-size   1}]]))}))
@@ -455,23 +471,30 @@
  ::start
  (fn [{:keys [db]} [_event-id]]
    (let [components [
-                     ;; {:component-version    {:version 1 :type :h2-title}
-                     ;;  :component-identifier (random-uuid)
-                     ;;  :text                 "Whiskey before breakfast lesson"}
-                     ;; {:component-version    {:version 1 :type :textarea}
-                     ;;  :component-identifier (random-uuid)
-                     ;;  :text                 "hejsan"}
+                     #_{:component-version    {:version 1 :type :h2-title}
+                      :component-identifier (random-uuid)
+                      :text                 "Whiskey before breakfast lesson"}
+                     #_{:component-version    {:version 1 :type :textarea}
+                      :component-identifier (random-uuid)
+                      :text                 "hejsan"}
+                     #_{:component-version    {:version 1 :type :abc-editor}
+                      :component-identifier (str "c-" #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270")
+                      :instrument           :guitar
+                      ;; :tab-instrument       [{:instrument "mandolin"
+                      ;;                         :tuning     ["G,", "D", "A", "e"]
+                      ;;                         :capo       0}]
+                      :abc-str              whiskey-abc}
                      {:component-version    {:version 1 :type :abc-editor}
-                      :component-identifier #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"
+                      :component-identifier (str "c-" #uuid "3cf5d204-15b2-4e6c-9c1e-4094f54868ca")
                       :instrument           :mandolin
                       ;; :tab-instrument       [{:instrument "mandolin"
                       ;;                         :tuning     ["G,", "D", "A", "e"]
                       ;;                         :capo       0}]
                       :abc-str              whiskey-abc}
                      #_{:component-version    {:version 1 :type :abc-editor}
-                        :component-identifier #uuid "3527b219-92fc-45ee-b950-22a88746d36d"
-                        :tab-instrument       []
-                        :abc-str              whiskey-abc}]]
+                      :component-identifier (str "c-" #uuid "3527b219-92fc-45ee-b950-22a88746d36d")
+                      :tab-instrument       []
+                      :abc-str              whiskey-abc}]]
      {:fx [[:dispatch
             [::components components]]]})))
 
