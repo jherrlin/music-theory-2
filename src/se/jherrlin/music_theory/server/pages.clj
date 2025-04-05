@@ -25,10 +25,12 @@
    [:head
     [:meta {:charset "UTF-8"}]
     [:meta {:name    "viewport"
-            :content "width=device-width, initial-scale=1"}]]
-   [:body {:style "height: 100%"}
-    [:div#app {:style           "height: 100%"
-               :data-csrf-token (:anti-forgery-token req)} "loading..."]
+            :content "width=device-width, initial-scale=1"}]
+    [:link {:rel "shortcut icon" :type "image/x-icon" :href "favicon.ico"}]
+    [:link {:rel "stylesheet" :type "text/css" :href "abcjs-audio.css"}]]
+    [:body {:style "height: 100%"}
+     [:div#app {:style           "height: 100%"
+                :data-csrf-token (:anti-forgery-token req)} "loading..."]
     (->> "public/js/manifest.edn"
          (read-resource-edn-file)
          (map :output-name)
