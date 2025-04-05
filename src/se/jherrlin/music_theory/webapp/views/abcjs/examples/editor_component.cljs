@@ -1,5 +1,6 @@
 (ns se.jherrlin.music-theory.webapp.views.abcjs.examples.editor-component
   (:require ["abcjs" :as abcjs]
+            ["functions/fns" :as js-fns]
             [se.jherrlin.music-theory.abc :as abc-utils]
             [clojure.string :as str]
             [reagent.core :as r]
@@ -73,22 +74,22 @@
  ::abc-str
  (fn [db [_sub-id component-identifier]]
    (let [component-idx (get-in db (conj components-index-path component-identifier))]
-     (get-in db (conj components-path component-idx :abc-str)))))
+     (get-in db (conj components-path component-idx :component-data :abc-str)))))
 
 (rf/reg-sub
  ::abc-editor-rows
  (fn [db [_sub-id component-identifier]]
    (let [component-idx (get-in db (conj components-index-path component-identifier))
-         rows          (some-> (get-in db (conj components-path component-idx :abc-str))
-                               (str/split-lines)
-                               (count))]
+         rows          (count
+                        (some-> (get-in db (conj components-path component-idx :component-data :abc-str))
+                                (str/split-lines)))]
      (if (< rows 5) 5 (inc rows)))))
 
 (rf/reg-event-db
  ::abc-str
  (fn [db [_event-id component-identifier abc-str]]
    (let [component-idx (get-in db (conj components-index-path component-identifier))]
-     (assoc-in db (conj components-path component-idx :abc-str) abc-str))))
+     (assoc-in db (conj components-path component-idx :component-data :abc-str) abc-str))))
 
 
 (rf/reg-event-db
@@ -160,7 +161,12 @@
    (assoc-in db (all-or-selected-path component-identifier) k)))
 
 (def whiskey-abc
-  "X: 1                                                                       \nT: Wagon Wheel, mandolin solo                                              \nM: 4/4                                                                     \nL: 1/8                                                                     \nK: A                                                                       \nP: A                                                                       \n|: \"A\" A,2A,2 A,2A,2 | \"E\" E2EE GFEF | \"F#m\" F2FF ABcB  | \"D\" d2ef abaf |  \n|  \"A\" a2aa    fecB  | \"E\" B2BB cBGF | \"D\"   D2F2 dBAB  | \"D\" dABA A4 |    ")
+  "X: 1 \nT: Wagon Wheel, mandolin solo \nM: 4/4 \nL: 1/8 \nK: A \nP: A
+|: \"A\" A,2A,2 A,2A,2 | \"E\" E2EE GFEF | \"F#m\" F2FF ABcB  | \"D\" d2ef abaf |  \n|  \"A\" a2aa    fecB  | \"E\" B2BB cBGF | \"D\"   D2F2 dBAB  | \"D\" dABA A4 |    ")
+
+;; (def whiskey-abc
+;;   "X: 1 \nT: Wagon Wheel, mandolin solo \nM: 4/4 \nL: 1/8 \nK: A \nP: A
+;; ")
 
 
 (defn move-cursor! [cursor {:keys [x1 x2 y1 y2]}]
@@ -179,25 +185,29 @@
     (.setAttributeNS cursor nil, "y2", 0)
     cursor))
 
-(def fretboard-checked-state (atom []))
+(def fretboard-checked-state (atom {}))
 
-(defn unmark-and-mark-fretboard-tone! [component-identifier pitch-nr]
+(defn unmark-and-mark-fretboard-tone!
+  [{:keys [component-identifier fretboard-id]}
+   pitch-nr]
   ;; Remove old markers
-  (let [elements @fretboard-checked-state]
+  (when-let [elements (get @fretboard-checked-state component-identifier)]
     (.forEach
      (js/Array.from elements)
      (fn [el]
        (set! (.-backgroundColor (.-style el)) "rgb(255, 165, 0)"))))
 
   ;; Add new markers
-  (reset!
+  (swap!
    fretboard-checked-state
+   assoc
+   component-identifier
    (.map
     (js/Array.from
      (.querySelectorAll
       (js/document.querySelector
-       (str "#" component-identifier))
-      (str "." component-identifier "-" pitch-nr "-center-text-div")))
+       (str "#" fretboard-id))
+      (str "." fretboard-id "-" pitch-nr "-center-text-div")))
     (fn [el]
       (set! (.-backgroundColor (.-style el)) "green")
       el))))
@@ -253,8 +263,16 @@
               :value  new-beat
               :kind   "beats"}})))
 
-(defn ->cursor-control-obj [{:keys [cursor canvas-dom-id component-identifier]}]
-  (def component-identifier component-identifier)
+(def lastEls (atom {}))
+
+(defn clear-colored-notes [component-identifier]
+  (js-fns/colorElements
+   "red-note-color"
+   (get @lastEls component-identifier #js [])
+   #js [])
+  (swap! lastEls assoc component-identifier #js []))
+
+(defn ->cursor-control-obj [{:keys [cursor canvas-dom-id component-identifier] :as args}]
   (js-obj
    "onReady" (fn [synthController]
                (let [svg (js/document.querySelector (str "#" canvas-dom-id " svg"))]
@@ -266,31 +284,42 @@
                (>evt [::all-or-selected component-identifier :all])
                (>evt [::selected-in-abc component-identifier []]))
    "onFinished" (fn []
-                  (js/console.log "onFinished"))
+                  (js/console.log "onFinished")
+                  (clear-colored-notes component-identifier))
    "onBeat" (fn [beatNumber totalBeats totalTime position]
-              (let [current-beat (js/Math.round beatNumber)]
+              (let [current-beat beatNumber ]
                 (js/console.log "onBeat" current-beat)
                 (>evt [::current-beat-number component-identifier current-beat])
-                (move-cursor! cursor {:x1 (- (.-left position) 2)
-                                      :x2 (- (.-left position) 2)
-                                      :y1 (.-top position)
-                                      :y2 (+ (.-top position) (.-height position))})
+                ;; (when-let [left-pos (.-left position)]
+                ;;   (move-cursor! cursor {:x1 (- left-pos 2)
+                ;;                         :x2 (- left-pos 2)
+                ;;                         :y1 (.-top position)
+                ;;                         :y2 (+ (.-top position) (.-height position))}))
                 (when (and (get-in @re-frame.db/app-db (loop?-path component-identifier))
-                           (= current-beat (get-in @re-frame.db/app-db (loop-ends-at-beat-path component-identifier))))
+                           (> current-beat (get-in @re-frame.db/app-db (loop-ends-at-beat-path component-identifier))))
                   (let [editor (get-in @re-frame.db/app-db (editor-path component-identifier))
                         beat   (get-in @re-frame.db/app-db (loop-start-at-beat-path component-identifier))]
                     (.seek (.-synthControl (.-synth editor)) beat "beats")))))
    "onEvent" (fn [event]
                (js/console.log "onEvent" event)
-               (doseq [n (->> (js->clj (.-midiPitches event) :keywordize-keys true)
-                              (map :pitch))]
-                 (unmark-and-mark-fretboard-tone! component-identifier n)))))
+               (when-let [left-pos (.-left event)]
+                 (move-cursor! cursor {:x1 (- left-pos 2)
+                                       :x2 (- left-pos 2)
+                                       :y1 (.-top event)
+                                       :y2 (+ (.-top event) (.-height event))}))
+               (let [midi-pitches (->> (js->clj (.-midiPitches event) :keywordize-keys true)
+                                       (map :pitch))
+                     elements     (.-elements event)]
+                 (js-fns/colorElements "red-note-color" (get @lastEls component-identifier #js []) elements)
+                 (swap! lastEls assoc component-identifier elements)
+                 (doseq [n midi-pitches]
+                   (unmark-and-mark-fretboard-tone! args n))))))
 
 (rf/reg-event-fx
  ::abc-after-parsing
  (fn [{:keys [db]} [_event-id {:keys [tune tune-number abc-string component-identifier]}]]
    (let [component-idx (get-in db (conj components-index-path component-identifier))
-         instrument    (get-in db (conj components-path component-idx :instrument))
+         instrument    (get-in db (conj components-path component-idx :component-data :instrument))
          signature     (-> (.getKeySignature tune)
                            (js->clj  :keywordize-keys true)
                            (select-keys [:accidentals :root :acc :mode]))
@@ -367,26 +396,29 @@
                                                  "clickListener"
                                                  abcelem tuneNumber classes analysis drag))}})))
 
-(defn ->component [{:keys [component-identifier component-version]}]
+(defn ->component [{:keys [component-identifier component-version ]}]
   (case (:type component-version)
     :abc-editor
-    (let [canvas-cursor-dom-id (str component-identifier "-canvas-cursor-dom-id")
-          canvas-dom-id        (str component-identifier "-canvas-dom-id")
-          canvas-cursor        (create-cursor canvas-cursor-dom-id)]
+    (let [canvas-cursor-dom-id (str "canvas-cursor-dom-id-" component-identifier)
+          canvas-dom-id        (str "canvas-dom-id-" component-identifier)
+          canvas-cursor        (create-cursor canvas-cursor-dom-id)
+          fretboard-id         (str "fretboard-id-" component-identifier)]
       {:synth-controller        (new ->cursor-control-obj
                                      {:cursor               canvas-cursor
                                       :canvas-dom-id        canvas-dom-id
-                                      :component-identifier component-identifier})
+                                      :component-identifier component-identifier
+                                      :fretboard-id         fretboard-id})
        :editor-onchange         (fn [new-abc-str]
                                   ;; This is not how ABC string is updated. But
                                   ;; could be a good place for callbacks.
                                   (js/console.log "new-abc-str:" new-abc-str))
        :canvas-cursor           canvas-cursor
-       :editor-dom-id           (str component-identifier "-editor-dom-id")
+       :editor-dom-id           (str "editor-dom-id-" component-identifier)
+       :fretboard-id            fretboard-id
        :canvas-dom-id           canvas-dom-id
        :canvas-cursor-dom-id    canvas-cursor-dom-id
-       :warnings-dom-id         (str component-identifier "-warnings-dom-id")
-       :synth-controller-dom-id (str component-identifier "-audio-control-dom-id")})))
+       :warnings-dom-id         (str "warnings-dom-id-" component-identifier)
+       :synth-controller-dom-id (str "audio-control-dom-id-" component-identifier )})))
 
 (rf/reg-fx
  ::new-editor!
@@ -434,11 +466,11 @@
 
 (defn v1-abc-editor-component
   [{:keys [component-identifier component-version
-           editor-dom-id canvas-dom-id warnings-dom-id synth-controller-dom-id]
+           editor-dom-id canvas-dom-id warnings-dom-id synth-controller-dom-id fretboard-id]
     :as   args}]
   (r/create-class
    {:component-did-mount #(>evt [::create-new-editor! args])
-    :display-name        (str "v1-abc-editor-component" component-identifier)
+    :display-name        (str "v1-abc-editor-component-" component-identifier)
     :reagent-render
     (fn []
       (let [abc-str                 (<sub [::abc-str component-identifier])
@@ -456,6 +488,9 @@
          ;; [:p (if editor-is-loaded? "Active" "Not active")]
          ;; [:button {:on-click #(>evt [::activate-editor! component-identifier])}
          ;;  "Activate"]
+
+         [:div {:id canvas-dom-id}]
+
          [:div {:style {:display "flex" #_ "none"}}
           [:textarea {:style      {:flex "1"}
                       :id         editor-dom-id
@@ -468,23 +503,25 @@
 
          [:div {:id warnings-dom-id}]
 
-         [:div {:id canvas-dom-id}]
-
          [:div {:id synth-controller-dom-id}]
 
          [:div
-          [:label {:for (str component-identifier "current-beat-input")}
+          [:label {:for (str "current-beat-input-" component-identifier)}
            "Beat "]
-          [:button {:on-click #(>evt [::seek-beat component-identifier - 1])} "<"]
+          [:button {:on-click #(>evt [::seek-beat component-identifier - 1])} "<<<"]
+          [:button {:on-click #(>evt [::seek-beat component-identifier - 0.5])} "<<"]
+          [:button {:on-click #(>evt [::seek-beat component-identifier - 0.1])} "<"]
 
-          [:input {:id    (str component-identifier "current-beat-input")
+          [:input {:id    (str "current-beat-input-" component-identifier)
                    :value current-beat-number
                    :type  "number"
                    :min   "0"}]
-          [:button {:on-click #(>evt [::seek-beat component-identifier + 1])} ">"]
+          [:button {:on-click #(>evt [::seek-beat component-identifier + 0.1])} ">"]
+          [:button {:on-click #(>evt [::seek-beat component-identifier + 0.5])} ">>"]
+          [:button {:on-click #(>evt [::seek-beat component-identifier + 1])} ">>>"]
 
-          [:label {:for (str component-identifier "loop")} "Loop?"]
-          [:input {:id        (str component-identifier "loop")
+          [:label {:for (str "loop-" component-identifier)} "Loop?"]
+          [:input {:id        (str "loop-" component-identifier)
                    :type      "checkbox"
                    :checked   loop?
                    :on-change #(>evt [::loop? component-identifier (not loop?)])}]
@@ -497,10 +534,8 @@
              (str "Loop ends at beat: " loop-ends-at-beat)
              "End beat")]]
 
-
-
          [fretboard2/styled-view
-          {:id               component-identifier
+          {:id               fretboard-id
            :fretboard-matrix (fretboard2-matrix
                               fretboard-matrix
                               (if (= all-or-selected :selected)
@@ -529,8 +564,9 @@
                                       [component-identifier idx]))
                                (into {}))
          components       (->> components
-                               (mapv (fn [{:keys [instrument] :as m}]
-                                       (let [tab-instrument (:abc (music-theory/get-instrument instrument))]
+                               (mapv (fn [{:keys [component-data] :as m}]
+                                       (let [instrument     (get component-data :instrument)
+                                             tab-instrument (get (music-theory/get-instrument instrument) :abc)]
                                          (cond-> m
                                            tab-instrument
                                            (assoc :tab-instrument [tab-instrument]))))))]
@@ -539,11 +575,11 @@
          (assoc-in components-index-path components-index)))))
 
 (defn v1-h2-title
-  [{:keys [text]}]
+  [{{:keys [text]} :component-data}]
   [:h2 text])
 
 (defn v1-textarea
-  [{:keys [text]}]
+  [{{:keys [text]} :component-data}]
   [:div {:style {:flex 1}}
    [:textarea {:defaultValue text}]])
 
@@ -572,30 +608,31 @@
  ::start
  (fn [{:keys [db]} [_event-id]]
    (let [components [
-                     #_{:component-version    {:version 1 :type :h2-title}
+                     {:component-version    {:version 1 :type :h2-title}
                       :component-identifier (random-uuid)
-                      :text                 "Whiskey before breakfast lesson"}
-                     #_{:component-version    {:version 1 :type :textarea}
+                      :component-data       {:text "Whiskey before breakfast lesson"}}
+                     {:component-version    {:version 1 :type :textarea}
                       :component-identifier (random-uuid)
-                      :text                 "hejsan"}
-                     #_{:component-version    {:version 1 :type :abc-editor}
-                      :component-identifier (str "c-" #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270")
-                      :instrument           :guitar
+                      :component-data       {:text "hejsan"}}
+                     {:component-version    {:version 1 :type :abc-editor}
+                      :component-identifier #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"
+                      :component-data       {:instrument :guitar}
                       ;; :tab-instrument       [{:instrument "mandolin"
                       ;;                         :tuning     ["G,", "D", "A", "e"]
                       ;;                         :capo       0}]
                       :abc-str              whiskey-abc}
                      {:component-version    {:version 1 :type :abc-editor}
-                      :component-identifier (str "c-" #uuid "3cf5d204-15b2-4e6c-9c1e-4094f54868ca")
-                      :instrument           :mandolin
+                      :component-identifier #uuid "3cf5d204-15b2-4e6c-9c1e-4094f54868ca"
+                      :component-data       {:instrument :mandolin
+                                             :abc-str    whiskey-abc}
                       ;; :tab-instrument       [{:instrument "mandolin"
                       ;;                         :tuning     ["G,", "D", "A", "e"]
                       ;;                         :capo       0}]
-                      :abc-str              whiskey-abc}
+                      }
                      #_{:component-version    {:version 1 :type :abc-editor}
-                      :component-identifier (str "c-" #uuid "3527b219-92fc-45ee-b950-22a88746d36d")
-                      :tab-instrument       []
-                      :abc-str              whiskey-abc}]]
+                        :component-identifier (str "c-" #uuid "3527b219-92fc-45ee-b950-22a88746d36d")
+                        :tab-instrument       []
+                        :abc-str              whiskey-abc}]]
      {:fx [[:dispatch
             [::components components]]]})))
 

@@ -16,7 +16,9 @@
    [se.jherrlin.music-theory.webapp.routes :as routes]
    [se.jherrlin.music-theory.webapp.components.music-theory :as music-theory]
    [se.jherrlin.music-theory.webapp.views.root-component :refer [root-component]]
-   [se.jherrlin.music-theory.webapp.events]))
+   [se.jherrlin.music-theory.webapp.events]
+
+   [taoensso.sente :as sente :refer [cb-success?]]))
 
 
 ;; -- Entry Point -------------------------------------------------------------
@@ -37,6 +39,27 @@
   (reitit/start! (routes/routes {}))
   (mount-ui))
 
+(defn handler [m]
+  (js/console.log "Websocket handler" m)
+  (def m m))
+
+(defn start-websocket [csrf-token]
+  (let [{:keys [chsk ch-recv send-fn state] :as m}
+        (sente/make-channel-socket!
+         "/websocket/chsk"
+         csrf-token
+         {:type :auto})
+        ret (sente/start-client-chsk-router! ch-recv handler)]
+    (def ret             ret)
+    (def chsk            chsk)
+    (def ch-recv         ch-recv)
+    (def send-fn      send-fn)
+    (def websocket-state state)))
+
+(comment
+  @websocket-state
+  )
+
 (defn init
   "This is the starting point of the web application."
   []
@@ -44,4 +67,6 @@
   (re-frame/clear-subscription-cache!)
   (re-frame/dispatch-sync [:initialize-db])
   (reitit/start! (routes/routes {}))
-  (mount-ui))
+  (mount-ui)
+  (when-let [el (.getElementById js/document "app")]
+    (start-websocket (.getAttribute el "data-csrf-token"))))
