@@ -1,20 +1,18 @@
 (ns se.jherrlin.music-theory.server.routes
   (:require
-
    [taoensso.sente :as sente]
-
    [reitit.dev.pretty :as pretty]
    [reitit.ring :as ring]
    [reitit.ring.coercion :as ring.coercion]
    [reitit.ring.middleware.parameters :as parameters]
-
    [ring.middleware.anti-forgery]
    [ring.middleware.keyword-params]
    [ring.middleware.params]
    [ring.middleware.session :as session]
    [ring.middleware.session.memory :as memory]
-
-   [se.jherrlin.music-theory.server.pages :as pages]))
+   [se.jherrlin.music-theory.server.pages :as pages]
+   [taoensso.timbre :as timbre]
+   [se.jherrlin.music-theory.server.database :as server.database]))
 
 (defn- get-sch-adapter []
   (when-let [server-name
@@ -42,8 +40,22 @@
      ring.middleware.params/wrap-params
      ring.middleware.keyword-params/wrap-keyword-params]}})
 
-(defn ws-event-handler [event]
-  (def event event))
+(defn fetch-document [{:keys [?reply-fn ?data] :as event}]
+  (let [document (server.database/pull-document ?data)]
+    (when ?reply-fn
+      (?reply-fn "Hejsan"))))
+
+(defn fetch-documents [{:keys [?reply-fn ?data] :as event}]
+  (let [documents (server.database/pull-documents)]
+    (if (and ?reply-fn documents)
+      (?reply-fn documents)
+      (timbre/error "`?reply-fn` or `documents` not present"))))
+
+(defn ws-event-handler [{:keys [id] :as event}]
+  (case id
+    :fetch/document  (#'fetch-document event)
+    :fetch/documents (#'fetch-documents event)
+    (timbre/error "Don't know how to hadle `ws-event` with id: " id)))
 
 (let [{:keys [ch-recv send-fn connected-uids
               ajax-post-fn ajax-get-or-ws-handshake-fn]}

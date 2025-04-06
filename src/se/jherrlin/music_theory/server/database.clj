@@ -44,7 +44,27 @@
 
 (def conn (init client datomic-schema))
 
+(defn pull-documents []
+  (d/q '[:find  ?title ?id
+         :where [?d :document/id ?id]
+                [?d :document/title ?title]]
+       (d/db conn)))
+
+(defn pull-document [document-id]
+  (d/pull
+   (d/db conn)
+   [:document/id
+    :document/title
+    :document/version
+    {:document/components
+     [:component/id
+      :component/version
+      :component/type
+      :component/data]}]
+   [:document/id document-id]))
+
 (comment
+  (pull-documents)
   (d/transact conn {:tx-data
                     [{:document/id      #uuid "3378e81a-0c56-4a2d-a2c2-cbff03829eae"
                       :document/title   "First document"
@@ -87,7 +107,7 @@
 
   (d/q '[:find  ?d ?title ?components
          :where [?d :document/id]
-                [?d :document/components ?components]
+         [?d :document/components ?components]
          [?d :document/title ?title]]
        (d/db conn))
 

@@ -17,7 +17,7 @@
    [se.jherrlin.music-theory.webapp.components.music-theory :as music-theory]
    [se.jherrlin.music-theory.webapp.views.root-component :refer [root-component]]
    [se.jherrlin.music-theory.webapp.events]
-
+   [se.jherrlin.music-theory.webapp.websocket :as webapp.websocket]
    [taoensso.sente :as sente :refer [cb-success?]]))
 
 
@@ -58,6 +58,7 @@
 
 (comment
   @websocket-state
+  (send-fn [:fetch/document ])
   )
 
 (defn init
@@ -69,4 +70,7 @@
   (reitit/start! (routes/routes {}))
   (mount-ui)
   (when-let [el (.getElementById js/document "app")]
-    (start-websocket (.getAttribute el "data-csrf-token"))))
+    #_(start-websocket (.getAttribute el "data-csrf-token"))
+    (webapp.websocket/start!
+     (.getAttribute el "data-csrf-token")
+     (fn [_]))))
