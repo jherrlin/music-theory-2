@@ -28,39 +28,48 @@
    [se.jherrlin.music-theory.webapp.views.abcjs.examples.animation :as abcjs.examples.animation]
    [se.jherrlin.music-theory.webapp.views.abcjs.examples.editor-with-play-and-fretboard :as abcjs.examples.editor-with-play-and-fretboard]
    [se.jherrlin.music-theory.webapp.views.abcjs.examples.parser :as abcjs.examples.parser]
-   [se.jherrlin.music-theory.webapp.views.abcjs.examples.editor-component :as abcjs.examples.editor-component]))
+   [se.jherrlin.music-theory.webapp.views.abcjs.examples.editor-component :as abcjs.examples.editor-component]
+
+   [se.jherrlin.music-theory.webapp.teacher.list :as teacher.list]
+   [se.jherrlin.music-theory.webapp.teacher.document :as teacher.document]))
 
 
-(defn routes [deps]
+(defn routes [{:keys [backend?] :as deps}]
   (timbre/info "Collecting routes.")
-  [(home/routes deps)
-   (focus/routes deps)
-   (chord/routes deps)
-   (scale/routes deps)
-   (table/routes deps)
-   (harmonizations/routes deps)
-   (bookmarks/routes deps)
-   (find-chord/routes deps)
-   (find-scale/routes deps)
-   (learn.chord-tones/routes deps)
-   (intersecting-tones/routes deps)
-   (scores/routes deps)
-   (scores1/routes deps)
+  (->> [(home/routes deps)
+        (focus/routes deps)
+        (chord/routes deps)
+        (scale/routes deps)
+        (table/routes deps)
+        (harmonizations/routes deps)
+        (bookmarks/routes deps)
+        (find-chord/routes deps)
+        (find-scale/routes deps)
+        (learn.chord-tones/routes deps)
+        (intersecting-tones/routes deps)
+        (scores/routes deps)
+        (scores1/routes deps)
 
-   ;; ABCjs examples
-   (abcjs.examples/routes deps)
-   (abcjs.examples.basic/routes deps)
-   (abcjs.examples.editor/routes deps)
-   (examples.editor-with-play/routes deps)
-   (abcjs.examples.basic-synth/routes deps)
-   (abcjs.examples.animation/routes deps)
-   (abcjs.examples.editor-with-play-and-fretboard/routes deps)
-   (abcjs.examples.parser/routes deps)
-   (abcjs.examples.editor-component/routes deps)
+        ;; ABCjs examples
+        (abcjs.examples/routes deps)
+        (abcjs.examples.basic/routes deps)
+        (abcjs.examples.editor/routes deps)
+        (examples.editor-with-play/routes deps)
+        (abcjs.examples.basic-synth/routes deps)
+        (abcjs.examples.animation/routes deps)
+        (abcjs.examples.editor-with-play-and-fretboard/routes deps)
+        (abcjs.examples.parser/routes deps)
+        (abcjs.examples.editor-component/routes deps)
 
-   (dev/routes deps)
-   (dev.fretboard2/routes deps)
-   (dev.learn-harmonizations/routes deps)])
+        (when backend?
+          (teacher.list/routes deps))
+        (when backend?
+          (teacher.document/routes deps))
+
+        (dev/routes deps)
+        (dev.fretboard2/routes deps)
+        (dev.learn-harmonizations/routes deps)]
+       (remove nil?)))
 
 (comment
   (r/routes

@@ -67,27 +67,23 @@
   (pull-documents)
   (d/transact conn {:tx-data
                     [{:document/id      #uuid "3378e81a-0c56-4a2d-a2c2-cbff03829eae"
-                      :document/title   "First document"
+                      :document/title   "Wagon Wheel, mandolin solo"
                       :document/version 1
                       :document/components
                       [{:component/version 1
                         :component/type    :h2-title
                         :component/id      #uuid "2e0d5b61-319e-488f-a1e7-690f1bbee468"
-                        :component/data    (pr-str {:text "Whiskey before breakfast lesson"})}
+                        :component/data    (pr-str {:text "Wagon Wheel, mandolin solo"})}
                        {:component/version 1
                         :component/type    :textarea
                         :component/id      #uuid "8d75e4e1-6963-4110-bca4-3a05bbffd863"
                         :component/data    (pr-str {:text "hejsan"})}
                        {:component/version 1
                         :component/type    :abc-editor
-                        :component/id      #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"
-                        :component/data    (pr-str {:instrument :guitar
-                                                    :abc-str    "abc-str"})}
-                       {:component/version 1
-                        :component/type    :abc-editor
                         :component/id      #uuid "3cf5d204-15b2-4e6c-9c1e-4094f54868ca"
-                        :component/data    (pr-str {:instrument :mandolin
-                                                    :abc-str    "derp dep"})}]}]})
+                        :component/data    (pr-str
+                                            {:instrument :mandolin
+                                             :abc-str    "X: 1 \nT: Wagon Wheel, mandolin solo\nM: 4/4\nL: 1/8\nK: A\nP: A\n|: \"A\" A,2A,A, B,CEF | \"E\" E2EE GFEF | \"F#m\" F2FF ABcB  | \"D\" d2ef abaf |  \n|  \"A\" a2aa    fecB  | \"E\" B2BB cBGF | \"D\"   D2F2 dBAB  | \"D\" dABA A4 |"})}]}]})
 
   (d/transact
    conn

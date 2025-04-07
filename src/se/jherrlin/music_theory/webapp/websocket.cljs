@@ -10,7 +10,7 @@
 (def app-db-path ::websocket)
 
 (defn path [x]
-  (-> [app-db-path x] flatten vec))
+  (vec (flatten [app-db-path x])))
 
 (def open?-path (path ::open?))
 (def ever-opened?-path (path ::ever-opened?))

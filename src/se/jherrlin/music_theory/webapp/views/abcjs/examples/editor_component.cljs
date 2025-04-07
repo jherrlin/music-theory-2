@@ -165,12 +165,7 @@
    (assoc-in db (all-or-selected-path component-id) k)))
 
 (def whiskey-abc
-  "X: 1                                                                       \nT: Wagon Wheel, mandolin solo                                              \nM: 4/4                                                                     \nL: 1/8                                                                     \nK: A                                                                       \nP: A                                                                       \n|: \"A\" A,2A,A, B,CEF | \"E\" E2EE GFEF | \"F#m\" F2FF ABcB  | \"D\" d2ef abaf |  \n|  \"A\" a2aa    fecB  | \"E\" B2BB cBGF | \"D\"   D2F2 dBAB  | \"D\" dABA A4 |    ")
-
-;; (def whiskey-abc
-;;   "X: 1 \nT: Wagon Wheel, mandolin solo \nM: 4/4 \nL: 1/8 \nK: A \nP: A
-;; ")
-
+  "X: 1 \nT: Wagon Wheel, mandolin solo\nM: 4/4\nL: 1/8\nK: A\nP: A\n|: \"A\" A,2A,A, B,CEF | \"E\" E2EE GFEF | \"F#m\" F2FF ABcB  | \"D\" d2ef abaf |  \n|  \"A\" a2aa    fecB  | \"E\" B2BB cBGF | \"D\"   D2F2 dBAB  | \"D\" dABA A4 |")
 
 (defn move-cursor! [cursor {:keys [x1 x2 y1 y2]}]
   (.setAttribute cursor "x1" x1)
@@ -618,11 +613,6 @@
                       :component/type    :textarea
                       :component/id      #uuid "8d75e4e1-6963-4110-bca4-3a05bbffd863"
                       :component/data    {:text "hejsan"}}
-                     ;; {:component/version 1
-                     ;;  :component/type    :abc-editor
-                     ;;  :component/id      #uuid "c5b7748e-9d60-4602-ac4c-61cc488e6270"
-                     ;;  :component/data    {:instrument :guitar
-                     ;;                      :abc-str    whiskey-abc}}
                      {:component/version 1
                       :component/type    :abc-editor
                       :component/id      #uuid "3cf5d204-15b2-4e6c-9c1e-4094f54868ca"

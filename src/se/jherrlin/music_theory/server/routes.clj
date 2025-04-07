@@ -11,7 +11,9 @@
    [ring.middleware.session :as session]
    [ring.middleware.session.memory :as memory]
    [se.jherrlin.music-theory.server.pages :as pages]
+   [clojure.edn :as edn]
    [taoensso.timbre :as timbre]
+   [clojure.walk :as walk]
    [se.jherrlin.music-theory.server.database :as server.database]))
 
 (defn- get-sch-adapter []
@@ -41,9 +43,14 @@
      ring.middleware.keyword-params/wrap-keyword-params]}})
 
 (defn fetch-document [{:keys [?reply-fn ?data] :as event}]
-  (let [document (server.database/pull-document ?data)]
+  (let [document  (server.database/pull-document ?data)
+        document' (walk/prewalk
+                   #(cond-> %
+                      (and (map? %) (contains? % :component/data))
+                      (update :component/data edn/read-string))
+                   document)]
     (when ?reply-fn
-      (?reply-fn "Hejsan"))))
+      (?reply-fn document'))))
 
 (defn fetch-documents [{:keys [?reply-fn ?data] :as event}]
   (let [documents (server.database/pull-documents)]

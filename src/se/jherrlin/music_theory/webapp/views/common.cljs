@@ -97,6 +97,12 @@
        {:disabled (= current-route-name :bookmarks)}
        "Bookmarks"]]
 
+     #_[:a {:style {:margin-right "10px"}
+          :href  (rfe/href :teacher/list path-params changed-query-params)}
+      [:button
+       {:disabled (= current-route-name :teacher/list)}
+       "Teacher list"]]
+
      #_(let [route-name :find-chord]
          [:a {:style {:margin-right "10px"}
               :href  (rfe/href route-name path-params changed-query-params)}

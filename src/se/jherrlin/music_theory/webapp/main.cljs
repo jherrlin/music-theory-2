@@ -1,7 +1,8 @@
 (ns se.jherrlin.music-theory.webapp.main
   (:require
    [reagent.dom :as rd]
-   [re-frame.core :as re-frame]
+   [re-frame.alpha :as re-frame]
+   [se.jherrlin.music-theory.webapp.websocket :as websocket]
    [reitit.coercion.spec :as rss]
    [reagent.dom.client :as rdc]
    [reitit.frontend :as rf]
@@ -11,14 +12,13 @@
    [clojure.set :as set]
    [integrant.core :as ig]
    [taoensso.timbre :as timbre]
-   [se.jherrlin.music-theory.webapp.components.tonejs :as tonejs]
    [se.jherrlin.music-theory.webapp.components.reitit :as reitit]
    [se.jherrlin.music-theory.webapp.routes :as routes]
    [se.jherrlin.music-theory.webapp.components.music-theory :as music-theory]
    [se.jherrlin.music-theory.webapp.views.root-component :refer [root-component]]
    [se.jherrlin.music-theory.webapp.events]
    [se.jherrlin.music-theory.webapp.websocket :as webapp.websocket]
-   [taoensso.sente :as sente :refer [cb-success?]]))
+   [se.jherrlin.music-theory.webapp.ws-handlers :as ws-handlers]))
 
 
 ;; -- Entry Point -------------------------------------------------------------
@@ -35,42 +35,52 @@
   ;; The `:dev/after-load` metadata causes this function to be called
   ;; after shadow-cljs hot-reloads code. We force a UI update by clearing
   ;; the Reframe subscription cache.
-  (re-frame/clear-subscription-cache!)
-  (reitit/start! (routes/routes {}))
-  (mount-ui))
+  (let [app-el     (.getElementById js/document "app")
+        csrf-token (.getAttribute app-el "data-csrf-token")]
+    (re-frame/clear-subscription-cache!)
+    (reitit/start! (routes/routes {:backend? (string? csrf-token)}))
+    (mount-ui)))
 
-(defn handler [m]
-  (js/console.log "Websocket handler" m)
-  (def m m))
+(re-frame/reg-fx
+ ::start-router!
+ (fn [{:keys [backend?]}]
+   (timbre/info "Router starting up...")
+   (reitit/start! (routes/routes {:backend? backend?}))))
 
-(defn start-websocket [csrf-token]
-  (let [{:keys [chsk ch-recv send-fn state] :as m}
-        (sente/make-channel-socket!
-         "/websocket/chsk"
-         csrf-token
-         {:type :auto})
-        ret (sente/start-client-chsk-router! ch-recv handler)]
-    (def ret             ret)
-    (def chsk            chsk)
-    (def ch-recv         ch-recv)
-    (def send-fn      send-fn)
-    (def websocket-state state)))
+(re-frame/reg-event-fx
+ ::ws-failed-to-start
+ (fn [{:keys [db]} [_event-id]]
+   (timbre/error "Failed to init websocket! Won't start router.")))
 
-(comment
-  @websocket-state
-  (send-fn [:fetch/document ])
-  )
+(re-frame/reg-event-fx
+ ::start-router
+ (fn [{:keys [db]} [_event-id {:keys [nr-of-calls backend?]
+                               :or   {nr-of-calls 0}
+                               :as   args}]]
+   (timbre/info "Trying to start websocket...")
+   (cond
+     (or (false? backend?)
+         (get-in db websocket/open?-path))
+     {::start-router! {:backend? backend?}}
+
+     (< nr-of-calls 10)
+     {:fx [[:dispatch-later {:ms 100 :dispatch [::start-router (update args :nr-of-calls inc)]}]]}
+
+     :else
+     {:fx [[:dispatch [::ws-failed-to-start]]]})))
 
 (defn init
   "This is the starting point of the web application."
   []
-  (timbre/info "Starting webapp.")
-  (re-frame/clear-subscription-cache!)
-  (re-frame/dispatch-sync [:initialize-db])
-  (reitit/start! (routes/routes {}))
-  (mount-ui)
-  (when-let [el (.getElementById js/document "app")]
-    #_(start-websocket (.getAttribute el "data-csrf-token"))
-    (webapp.websocket/start!
-     (.getAttribute el "data-csrf-token")
-     (fn [_]))))
+  (timbre/info "Starting webapp...")
+  (let [app-el     (.getElementById js/document "app")
+        csrf-token (.getAttribute app-el "data-csrf-token")]
+    (when csrf-token
+      (webapp.websocket/start! csrf-token #'ws-handlers/incoming-events-handler))
+
+    (re-frame/clear-subscription-cache!)
+    (re-frame/dispatch-sync [:initialize-db])
+    (re-frame/dispatch-sync [::start-router
+                             {:nr-of-calls 0
+                              :backend?    (string? csrf-token)}])
+    (mount-ui)))
