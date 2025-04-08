@@ -49,7 +49,11 @@
              (fn [{:keys [id state] :as event}]
                (timbre/debug "Incomming event:" event)
                (case id
-                 :chsk/state (>evt [::update-state @state])
+                 :chsk/state         (>evt [::update-state @state])
+                 :chsk/uidport-open  (timbre/debug "Websocket `uidport-open`" event)
+                 :chsk/ws-pong       (timbre/debug "Websocket `ws-pong`" event)
+                 :chsk/ws-ping       (timbre/debug "Websocket `ws-ping`" event)
+                 :chsk/uidport-close (timbre/debug "Websocket `uidport-close`" event)
                  (incomming-events-handler event))))]
 
     (re-frame/reg-fx

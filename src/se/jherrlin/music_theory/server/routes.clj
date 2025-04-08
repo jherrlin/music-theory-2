@@ -60,8 +60,14 @@
 
 (defn ws-event-handler [{:keys [id] :as event}]
   (case id
-    :fetch/document  (#'fetch-document event)
-    :fetch/documents (#'fetch-documents event)
+    :fetch/document     (#'fetch-document event)
+    :fetch/documents    (#'fetch-documents event)
+
+    :chsk/uidport-open  (timbre/debug "Websocket `uidport-open`" event)
+    :chsk/ws-pong       (timbre/debug "Websocket `ws-pong`" event)
+    :chsk/ws-ping       (timbre/debug "Websocket `ws-ping`" event)
+    :chsk/uidport-close (timbre/debug "Websocket `uidport-close`" event)
+
     (timbre/error "Don't know how to hadle `ws-event` with id: " id)))
 
 (let [{:keys [ch-recv send-fn connected-uids
