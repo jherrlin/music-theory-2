@@ -211,6 +211,12 @@
    :order        6}
   "1 4 5 b7")
 
+(define-chord #uuid "0dfc642f-1f37-4d77-985b-0afc3ff57b0e"
+  :sus9
+  {:suffix       "sus9"
+   :order        6}
+  "1 4 b7 9")
+
 (define-chord #uuid "ae6c7f03-819d-446e-a99a-edcee7c9d849"
   :seven-sharp-five
   {:suffix       "7#5"
