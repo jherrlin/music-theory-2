@@ -7,6 +7,33 @@
    ;;                     :description "Standard guitar tuning"
    ;;                     :type        :keyboard
    ;;                     :order       1}
+   :guitar-dadgad {:id                  :guitar-dadgad
+            :text                "Guitar (DADGAD)"
+            :description         "DADGAD"
+            :type                :fretboard
+            :order               11
+            :scale-pattern-range [4 5]
+            :tuning              [{:tone        :d
+                                   :octave      3
+                                   :start-index 0}
+                                  {:tone        :a
+                                   :octave      3
+                                   :start-index 0}
+                                  {:tone        :d
+                                   :octave      4
+                                   :start-index 0}
+                                  {:tone        :g
+                                   :octave      4
+                                   :start-index 0}
+                                  {:tone        :a
+                                   :octave      4
+                                   :start-index 0}
+                                  {:tone        :d
+                                   :octave      5
+                                   :start-index 0}]
+            :abc                 {:instrument "Guitar DADGAD"
+                                  :tuning     ["D,", "A,", "D", "G", "A", "d"]
+                                  :capo       0}}
    :guitar {:id                  :guitar
             :text                "Guitar"
             :description         "Standard guitar tuning"
@@ -34,6 +61,7 @@
             :abc                 {:instrument "guitar"
                                   :tuning     ["E,", "A,", "D", "G", "B", "e"]
                                   :capo       0}}
+
 
    :mandolin       {:id                  :mandolin
                     :text                "Mandolin"
