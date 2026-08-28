@@ -322,7 +322,45 @@
                                              :start-index 0}
                                             {:tone        :e
                                              :octave      4
-                                             :start-index 0}]}})
+                                             :start-index 0}]}
+   :pedal-steel-e9 {:id                  :pedal-steel-e9
+            :text                "Pedal steel e9"
+            :description         "Pedal steel e9"
+            :type                :fretboard
+            :order               12
+            :scale-pattern-range [4 5]
+            :tuning              [{:tone        :b
+                                   :octave      2
+                                   :start-index 0}
+                                  {:tone        :d
+                                   :octave      3
+                                   :start-index 0}
+                                  {:tone        :e
+                                   :octave      3
+                                   :start-index 0}
+                                  {:tone        :f#
+                                   :octave      3
+                                   :start-index 0}
+                                  {:tone        :g#
+                                   :octave      3
+                                   :start-index 0}
+                                  {:tone        :b
+                                   :octave      3
+                                   :start-index 0}
+                                  {:tone        :e
+                                   :octave      4
+                                   :start-index 0}
+                                  {:tone        :g#
+                                   :octave      4
+                                   :start-index 0}
+                                  {:tone        :d#
+                                   :octave      4
+                                   :start-index 0}
+                                  {:tone        :f#
+                                   :octave      4
+                                   :start-index 0}
+                                  ]
+                    }})
 
 (defn instrument
   "Get `instrument'` map."
